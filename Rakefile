@@ -8,15 +8,6 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern   = 'spec/**/*_spec.rb'
 end
 
-namespace :spec do
-  RSpec::Core::RakeTask.new(:html) do |spec|
-    spec.ruby_opts  = "-I lib:spec"
-    spec.pattern    = 'spec/**/*_spec.rb'
-    spec.rspec_opts = "--format html --out #{ENV["SPEC_REPORT"] || "specs.html"}"
-  end
-
-end
-
 task :spec
 
 task :lib do
