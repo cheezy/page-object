@@ -1,6 +1,6 @@
 = page-object
 
-A simple gem that assists testers in creating flexible page objects for testing browser based appications
+A simple gem that assists in creating flexible page objects for testing browser based appications.  It works with both watir-webdriver and selenium-webdriver.
 
 == Note on Patches/Pull Requests
  
