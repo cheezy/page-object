@@ -1,6 +1,8 @@
 source "http://rubygems.org"
 
-gem "simplecov", ">= 0.4.2", :platform => :ruby_19
+group :test do
+  gem 'guard-rspec'
+  gem 'growl'
+end
 
-# Specify your gem's dependencies in page-object.gemspec
 gemspec

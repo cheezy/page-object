@@ -9,13 +9,7 @@ if ENV['coverage']
   SimpleCov.start { add_filter "spec/" }
 end
 
-require 'spec'
-require 'spec/autorun'
+require 'rspec'
+require 'watir-webdriver'
 
-Spec::Runner.configure do |config|
-  
-end
-
-
-
-
+require 'page-object'
