@@ -20,4 +20,20 @@ describe PageObject do
     end
   end
 
+  context "when created with a selenium browser" do
+    before(:each) do
+      @browser = Selenium::WebDriver.for :firefox
+    end
+
+    after(:each) do
+      @browser.close
+    end
+    
+    it "should include the SeleniumPageObject module" do
+      page_object = TestPageObject.new(@browser)
+      page_object.should be_kind_of PageObject::SeleniumPageObject
+    end
+
+  end
+
 end
