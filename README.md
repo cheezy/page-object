@@ -1,10 +1,11 @@
-= page-object
+# page-object
 
-"!http://travis-ci.org/cheezy/page-object.png!":http://travis-ci.org/cheezy/page-object
+[![Build Status](http://travis-ci.org/cheezy/page-object.png)](http://travis-ci.org/cheezy/page-object)
+
 
 A simple gem that assists in creating flexible page objects for testing browser based appications.  It works with both watir-webdriver and selenium-webdriver.
 
-== Note on Patches/Pull Requests
+## Note on Patches/Pull Requests
  
 * Fork the project.
 * Test drive your feature addition or bug fix.  Adding specs is important so I don't break it in a future version unintentionally.
