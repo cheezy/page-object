@@ -1,21 +1,26 @@
 
 require 'page-object/version'
-require 'page-object/watir_page_object'
-require 'page-object/selenium_page_object'
 
 module PageObject
+  attr_reader :driver
+  
   def initialize(browser)
-    @browser = browser
-    include_platform_module
+    include_platform_driver(browser)
+  end
+
+  def text
+    driver.text
   end
 
   private
 
-  def include_platform_module
-    if @browser.kind_of? Watir::Browser
-      self.class.send :include, PageObject::WatirPageObject
-    elsif @browser.kind_of? Selenium::WebDriver::Driver
-      self.class.send :include, PageObject::SeleniumPageObject
+  def include_platform_driver(browser)
+    if browser.is_a? Watir::Browser
+      require 'page-object/watir_page_object'
+      @driver = PageObject::WatirPageObject.new(browser)
+    elsif browser.is_a? Selenium::WebDriver::Driver
+      require 'page-object/selenium_page_object'
+      @driver = PageObject::SeleniumPageObject.new(browser)
     else
       raise ArgumentError, "expect Watir::Browser or Selenium::WebDriver::Driver"
     end
