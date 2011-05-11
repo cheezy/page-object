@@ -1,0 +1,4 @@
+default: --no-source
+watir: --no-source --tags @watir
+selenium: --no-source --tags @selenium
+

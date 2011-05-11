@@ -1,14 +1,21 @@
 require 'rubygems'
 require 'bundler'
+require 'rspec/core/rake_task'
+require 'cucumber'
+require 'cucumber/rake/task'
+
 Bundler::GemHelper.install_tasks
 
-require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.ruby_opts = "-I lib:spec"
   spec.pattern   = 'spec/**/*_spec.rb'
 end
 
 task :spec
+
+Cucumber::Rake::Task.new(:features) do |t|
+  t.cucumber_opts = "features --format pretty"
+end
 
 task :lib do
   $LOAD_PATH.unshift(File.expand_path("lib", File.dirname(__FILE__)))
