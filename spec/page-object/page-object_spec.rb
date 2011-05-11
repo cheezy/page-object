@@ -38,18 +38,31 @@ describe PageObject do
       
       it "should display the page text" do
         watir_browser.should_receive(:text).and_return("browser text")
-        page_object = TestPageObject.new(watir_browser)
-        page_object.text.should == "browser text"
+        page = TestPageObject.new(watir_browser)
+        page.text.should == "browser text"
       end
+
+      it "should be able to navigate to a page" do
+        watir_browser.should_receive(:goto).with("cheezyworld.com")
+        page = TestPageObject.new(watir_browser)
+        page.navigate_to("cheezyworld.com")
+      end
+
     end
 
     context "when using SeleniumPageObject" do
       let(:selenium_browser) { mock_selenium_browser }
       
       it "should display the page text" do
-        selenium_browser.should_receive(:body_text).and_return("browser text")
+        selenium_browser.stub_chain(:find_element, :text).and_return("browser text")
         page = TestPageObject.new(selenium_browser)
         page.text.should == "browser text"
+      end
+      
+      it "should be able to navigate to a page" do
+        selenium_browser.stub_chain(:navigate, :to).with('cheezyworld.com')
+        page = TestPageObject.new(selenium_browser)
+        page.navigate_to('cheezyworld.com')
       end
 
     end

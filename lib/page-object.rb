@@ -11,6 +11,11 @@ module PageObject
     include_platform_driver(browser)
   end
   
+  # navigate to the provided url
+  def navigate_to(url)
+    driver.navigate_to(url)
+  end
+  
   # Gets the entire text of the page
   def text
     driver.text
