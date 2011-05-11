@@ -13,6 +13,6 @@ A simple gem that assists in creating flexible page objects for testing browser 
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2011 Jeffrey S. Morgan. See LICENSE for details.
