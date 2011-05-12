@@ -10,9 +10,7 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.ruby_opts = "-I lib:spec"
   spec.pattern   = 'spec/**/*_spec.rb'
 end
-
 task :spec
-
 
 namespace :features do
   Cucumber::Rake::Task.new(:watir, "Run features with Watir") do |t|
@@ -35,6 +33,7 @@ task :lib do
 end
 
 task :default => :spec
+
 
 begin
   require 'yard'
