@@ -17,6 +17,7 @@ Including this module adds an initialize method that takes either a Watir::Brows
     my_page_object = MyPageObject.new(browser)
 
 or
+
     browser = Selenium::WebDriver.for :firefox
     my_page_object = MyPageObject.new(browser)
 
