@@ -7,18 +7,18 @@ end
 describe PageObject do
   let(:watir_browser) { mock_watir_browser }
   let(:selenium_browser) { mock_selenium_browser }
+  let(:watir_page_object) { TestPageObject.new(watir_browser) }
+  let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
 
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
-      page_object = TestPageObject.new(watir_browser)
-      page_object.driver.should be_kind_of PageObject::WatirPageObject
+      watir_page_object.driver.should be_kind_of PageObject::WatirPageObject
     end
   end
 
   context "when created with a selenium browser" do
     it "should include the SeleniumPageObject module" do
-      page_object = TestPageObject.new(selenium_browser)
-      page_object.driver.should be_kind_of PageObject::SeleniumPageObject
+      selenium_page_object.driver.should be_kind_of PageObject::SeleniumPageObject
     end
   end
   
@@ -34,28 +34,24 @@ describe PageObject do
     context "when using WatirPageObject" do
       it "should display the page text" do
         watir_browser.should_receive(:text).and_return("browser text")
-        page = TestPageObject.new(watir_browser)
-        page.text.should == "browser text"
+        watir_page_object.text.should == "browser text"
       end
 
       it "should be able to navigate to a page" do
         watir_browser.should_receive(:goto).with("cheezyworld.com")
-        page = TestPageObject.new(watir_browser)
-        page.navigate_to("cheezyworld.com")
+        watir_page_object.navigate_to("cheezyworld.com")
       end
     end
 
     context "when using SeleniumPageObject" do
       it "should display the page text" do
         selenium_browser.stub_chain(:find_element, :text).and_return("browser text")
-        page = TestPageObject.new(selenium_browser)
-        page.text.should == "browser text"
+        selenium_page_object.text.should == "browser text"
       end
       
       it "should be able to navigate to a page" do
         selenium_browser.stub_chain(:navigate, :to).with('cheezyworld.com')
-        page = TestPageObject.new(selenium_browser)
-        page.navigate_to('cheezyworld.com')
+        selenium_page_object.navigate_to('cheezyworld.com')
       end
     end
   end
