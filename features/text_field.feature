@@ -23,6 +23,9 @@ Feature: Text Fields
   | id        |
   | class     |
   | name      |
+  | xpath     |
+  
+  
 
 
 

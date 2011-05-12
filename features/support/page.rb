@@ -6,5 +6,5 @@ class Page
   text_field(:text_field_name, :name => "text_field_name")
   text_field(:text_field_css, :css => "input[type='text']")
   text_field(:text_field_tag_name, :tag_name => "input[type='text']")
-  
+  text_field(:text_field_xpath, :xpath => "//input[@type='text']")
 end
