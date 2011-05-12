@@ -22,5 +22,14 @@ module PageObject
     def text_field_value_set(identifier, value)
       @browser.text_field(identifier).set(value)
     end
+    
+    
+    def click_link_for(identifier)
+      @browser.link(identifier).click
+    end
+    
+    def click_link_no_wait_for(identifier)
+      @browser.link(identifier).click_no_wait
+    end
   end
 end

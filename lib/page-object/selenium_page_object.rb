@@ -23,6 +23,18 @@ module PageObject
       @browser.find_element(how, what).send_keys(value)
     end
 
+    
+    def click_link_for(identifier)
+      how, what = values_for(identifier)
+      @browser.find_element(how, what).click
+    end
+    
+    def click_link_no_wait_for(identifier)
+      how, what = values_for(identifier)
+      @browser.find_element(how, what).click
+    end
+
+
     def values_for(identifier)
       return identifier.keys[0], identifier.values[0]
     end
