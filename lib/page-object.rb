@@ -1,5 +1,6 @@
 
 require 'page-object/version'
+require 'page-object/accessors'
 
 # Module that when included adds core functionality to a page object.
 module PageObject
@@ -9,6 +10,10 @@ module PageObject
   # Watir::Browser or Selenium::WebDriver::Driver.
   def initialize(browser)
     include_platform_driver(browser)
+  end
+
+  def self.included(cls)
+    cls.extend PageObject::Accessors
   end
   
   # navigate to the provided url
