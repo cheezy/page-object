@@ -3,14 +3,9 @@ Feature: Page level actions
   Testers will need to use the page object to encapsulate access
 
 
-  @watir
   Scenario: Getting the text from a web page using Watir
     Given I am on the static elements page
     Then the page should contain the text "Static Elements Page"
 
-  @selenium
-  Scenario: Getting the text from a web page using Selenium
-    Given I am on the static elements page
-    Then the page should contain the text "Static Elements Page"  
   
   

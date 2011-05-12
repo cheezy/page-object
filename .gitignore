@@ -3,3 +3,4 @@ Gemfile.lock
 .rspec
 .rvmrc
 .idea/
+pkg

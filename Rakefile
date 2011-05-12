@@ -13,9 +13,22 @@ end
 
 task :spec
 
-Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "features --format pretty"
+
+namespace :features do
+  Cucumber::Rake::Task.new(:watir, "Run features with Watir") do |t|
+    t.profile = "watir"
+  end
+  
+  Cucumber::Rake::Task.new(:selenium, "Run features with Selenium") do |t|
+    t.profile = "selenium"
+  end
+  
+  desc 'Run all features'
+  task :all => [:watir, :selenium]
 end
+
+desc 'Run all specs and cukes'
+task :test => ['spec', 'features:all']
 
 task :lib do
   $LOAD_PATH.unshift(File.expand_path("lib", File.dirname(__FILE__)))
