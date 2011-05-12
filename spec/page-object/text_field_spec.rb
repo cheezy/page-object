@@ -29,6 +29,17 @@ describe "text_field" do
       watir_browser.stub_chain(:text_field, :set).with('Kim')
       watir_page_object.first_name = 'Kim'
     end
+  end
 
+  context "Selenium implementation" do
+    it "should get the text from the text field element" do
+      selenium_browser.stub_chain(:find_element, :text).and_return('Katie')
+      selenium_page_object.first_name.should == 'Katie'
+    end
+
+    it "should set some text on a text field element" do
+      selenium_browser.stub_chain(:find_element, :send_keys)
+      selenium_page_object.first_name = 'Katie'
+    end
   end
 end

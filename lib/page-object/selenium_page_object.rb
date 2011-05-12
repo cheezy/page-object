@@ -12,5 +12,14 @@ module PageObject
     def text
       @browser.find_element(:tag_name, 'body').text
     end
+    
+    def text_field_value_for(identifier)
+      @browser.find_element(identifier).text
+    end
+    
+    def text_field_value_set(identifier, value)
+      @browser.find_element(identifier).send_keys(value)
+    end
+  
   end
 end
