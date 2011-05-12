@@ -33,7 +33,7 @@ describe "text_field" do
 
   context "Selenium implementation" do
     it "should get the text from the text field element" do
-      selenium_browser.stub_chain(:find_element, :text).and_return('Katie')
+      selenium_browser.stub_chain(:find_element, :value).and_return('Katie')
       selenium_page_object.first_name.should == 'Katie'
     end
 

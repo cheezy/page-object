@@ -14,12 +14,17 @@ module PageObject
     end
     
     def text_field_value_for(identifier)
-      @browser.find_element(identifier).text
+      how, what = values_for(identifier)
+      @browser.find_element(how, what).value
     end
     
     def text_field_value_set(identifier, value)
-      @browser.find_element(identifier).send_keys(value)
+      how, what = values_for(identifier)
+      @browser.find_element(how, what).send_keys(value)
     end
-  
+
+    def values_for(identifier)
+      return identifier.keys[0], identifier.values[0]
+    end
   end
 end

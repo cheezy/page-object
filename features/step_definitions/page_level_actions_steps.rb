@@ -1,4 +1,4 @@
 
 Then /^the page should contain the text "([^\"]*)"$/ do |text|
-  @page.text.should == text  
+  @page.text.should include text  
 end
