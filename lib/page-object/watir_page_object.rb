@@ -13,7 +13,9 @@ module PageObject
       @browser.text
     end
 
-
+    def html
+      @browser.html
+    end
 
     def text_field_value_for(identifier)
       @browser.text_field(identifier).value

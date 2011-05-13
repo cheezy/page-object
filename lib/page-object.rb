@@ -26,6 +26,10 @@ module PageObject
     driver.text
   end
 
+  def html
+    driver.html
+  end
+
   private
 
   def include_platform_driver(browser)

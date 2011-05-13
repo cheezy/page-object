@@ -12,6 +12,10 @@ module PageObject
     def text
       @browser.find_element(:tag_name, 'body').text
     end
+
+    def html
+      @browser.get_html_source
+    end
     
     def text_field_value_for(identifier)
       how, what = values_for(identifier)

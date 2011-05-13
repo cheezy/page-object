@@ -37,6 +37,11 @@ describe PageObject do
         watir_page_object.text.should == "browser text"
       end
 
+      it "should display the html of the page" do
+        watir_browser.should_receive(:html).and_return("<html>Some Sample HTML</html>")
+        watir_page_object.html.should == "<html>Some Sample HTML</html>"
+      end
+
       it "should be able to navigate to a page" do
         watir_browser.should_receive(:goto).with("cheezyworld.com")
         watir_page_object.navigate_to("cheezyworld.com")
@@ -47,6 +52,11 @@ describe PageObject do
       it "should display the page text" do
         selenium_browser.stub_chain(:find_element, :text).and_return("browser text")
         selenium_page_object.text.should == "browser text"
+      end
+
+      it "should display the html of the page" do
+        selenium_browser.should_receive(:html).and_return("<html>Some Sample HTML</html>")
+        selenium_page_object.html.should == "<html>Some Sample HTML</html>"
       end
       
       it "should be able to navigate to a page" do
