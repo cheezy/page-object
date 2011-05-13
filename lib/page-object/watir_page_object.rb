@@ -27,9 +27,5 @@ module PageObject
     def click_link_for(identifier)
       @browser.link(identifier).click
     end
-    
-    def click_link_no_wait_for(identifier)
-      @browser.link(identifier).click_no_wait
-    end
   end
 end

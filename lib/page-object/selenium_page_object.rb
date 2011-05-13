@@ -28,11 +28,6 @@ module PageObject
       how, what = values_for(identifier)
       @browser.find_element(how, what).click
     end
-    
-    def click_link_no_wait_for(identifier)
-      how, what = values_for(identifier)
-      @browser.find_element(how, what).click
-    end
 
 
     def values_for(identifier)

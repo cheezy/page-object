@@ -14,19 +14,13 @@ module PageObject
       end
     end
     
-    # adds two methods - one to select a link and another
-    # to select a link and not wait for the corresponding
-    # action to complete.
+    # adds a methods to select a link.
     #
     # Example:  link(:add_to_cart, {:text => "Add to Cart"})
-    # will generate the 'add_to_cart' and 'add_to_cart_no_wait'
-    # methods
+    # will generate the 'add_to_cart' method.
     def link(name, identifier)
       define_method(name) do
         driver.click_link_for identifier
-      end
-      define_method("#{name}_no_wait") do
-        driver.click_link_no_wait_for identifier
       end
     end
     
