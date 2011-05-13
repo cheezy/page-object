@@ -14,7 +14,8 @@ module PageObject
     end
 
     def html
-      @browser.get_html_source
+      
+      @browser.page_source
     end
     
     def text_field_value_for(identifier)

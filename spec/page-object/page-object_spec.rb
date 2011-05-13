@@ -55,7 +55,7 @@ describe PageObject do
       end
 
       it "should display the html of the page" do
-        selenium_browser.should_receive(:html).and_return("<html>Some Sample HTML</html>")
+        selenium_browser.should_receive(:page_source).and_return("<html>Some Sample HTML</html>")
         selenium_page_object.html.should == "<html>Some Sample HTML</html>"
       end
       
