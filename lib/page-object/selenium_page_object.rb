@@ -14,7 +14,6 @@ module PageObject
     end
 
     def html
-      
       @browser.page_source
     end
     

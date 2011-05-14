@@ -3,7 +3,7 @@ Feature: Text Fields
   Testers will need access and integoration ability
 
   Note:
-    Watir supports tag_name finder.
+    Watir supports tag_name, value, index finder.
     Selenium supports css finder.
 
   
@@ -19,11 +19,11 @@ Feature: Text Fields
     Then I should be able to type "I found it" into the field
 
   Scenarios:
-  | search_by |
-  | id        |
-  | class     |
-  | name      |
-  | xpath     |
+    | search_by |
+    | id        |
+    | class     |
+    | name      |
+    | xpath     |
   
   
 

@@ -3,7 +3,7 @@ Feature: Links
   Testers will need access and integoration ability
 
   Note:
-    Watir supports text finder.
+    Watir supports text, href, url, html, index, src finder.
     Selenium supports link, link_text, and partial_link_text finder.
 
   Background:
@@ -18,8 +18,9 @@ Feature: Links
     Then I should be able to select the link
 
   Scenarios:
-  | search_by |
-  | id        |
-  | class     |
-  | name      |
-  | xpath     |
+    | search_by |
+    | id        |
+    | class     |
+    | name      |
+    | xpath     |
+
