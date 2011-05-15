@@ -1,4 +1,5 @@
 default: DRIVER=WATIR --no-source --color --format pretty
 watir: DRIVER=WATIR --no-source --color --format pretty
 selenium: DRIVER=SELENIUM --no-source --color --format pretty
+autotest: DRIVER=WATIR --no-source --color --format pretty
 

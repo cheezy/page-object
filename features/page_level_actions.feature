@@ -11,7 +11,7 @@ Feature: Page level actions
     Given I am on the static elements page
     Then the page should contain the html "<title>Static Elements Page</title>"
 
-Scenario: Getting the title from a web page
+  Scenario: Getting the title from a web page
     Given I am on the static elements page
     Then the page should have the title "Static Elements Page"
 
