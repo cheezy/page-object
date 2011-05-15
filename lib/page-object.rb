@@ -30,6 +30,10 @@ module PageObject
     driver.html
   end
 
+  def title
+    driver.title
+  end
+
   private
 
   def include_platform_driver(browser)

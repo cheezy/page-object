@@ -16,6 +16,10 @@ module PageObject
     def html
       @browser.page_source
     end
+
+    def title
+      @browser.title
+    end
     
     def text_field_value_for(identifier)
       how, what = values_for(identifier)

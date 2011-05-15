@@ -42,6 +42,11 @@ describe PageObject do
         watir_page_object.html.should == "<html>Some Sample HTML</html>"
       end
 
+      it "should display the title of the page" do
+        watir_browser.should_receive(:title).and_return("I am the title of a page")
+        watir_page_object.title.should == "I am the title of a page"
+      end
+
       it "should be able to navigate to a page" do
         watir_browser.should_receive(:goto).with("cheezyworld.com")
         watir_page_object.navigate_to("cheezyworld.com")
@@ -57,6 +62,11 @@ describe PageObject do
       it "should display the html of the page" do
         selenium_browser.should_receive(:page_source).and_return("<html>Some Sample HTML</html>")
         selenium_page_object.html.should == "<html>Some Sample HTML</html>"
+      end
+
+      it "should display the title of the page" do
+        selenium_browser.should_receive(:title).and_return("I am the title of a page")
+        selenium_page_object.title.should == "I am the title of a page"
       end
       
       it "should be able to navigate to a page" do
