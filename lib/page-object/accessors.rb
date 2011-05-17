@@ -20,12 +20,19 @@ module PageObject
     # will generate the 'add_to_cart' method that will click the link.
     #
     # @param identifier is a has.  The valid keys are
-    # [:id, :class, :name, :xpath, :link, :link_text, :text]
+    #   :class => Watir and Selenium
+    #   :href => Watir only
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :link => Watir and Selenium
+    #   :link_text => Watir and Selenium
+    #   :name => Watir and Selenium
+    #   :text => Watir and Selenium
+    #   :xpath => Watir and Selenium
     def link(name, identifier)
       define_method(name) do
         driver.click_link_for identifier
       end
     end
-    
   end
 end

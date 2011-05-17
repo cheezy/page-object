@@ -26,3 +26,13 @@ Feature: Links
     | link_text |
     | text      |
 
+  @watir_only
+  Scenario: Locating links by their href
+    When I search for the link by "href"
+    Then I should be able to select the link
+    
+  @watir_only
+  Scenario: Should be able to find a link by index
+    When I search for the link by "link"
+    Then I should be able to select the link
+    

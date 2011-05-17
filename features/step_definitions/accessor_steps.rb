@@ -26,4 +26,3 @@ Then /^I should be able to select the link$/ do
   @page.send "google_search_#{@how}".to_sym
 end
 
-
