@@ -1,10 +1,9 @@
 Feature: Links
   In order to interact with links
-  Testers will need access and integoration ability
+  Testers will need access and interrogation ability
 
   Note:
-    Watir supports text, href, url, html, index, src finder.
-    Selenium supports link, link_text, and partial_link_text finder.
+    Watir supports href
 
   Background:
     Given I am on the static elements page
@@ -23,4 +22,7 @@ Feature: Links
     | class     |
     | name      |
     | xpath     |
+    | link      |
+    | link_text |
+    | text      |
 

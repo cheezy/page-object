@@ -17,7 +17,10 @@ module PageObject
     # adds a methods to select a link.
     #
     # Example:  link(:add_to_cart, {:text => "Add to Cart"})
-    # will generate the 'add_to_cart' method.
+    # will generate the 'add_to_cart' method that will click the link.
+    #
+    # @param identifier is a has.  The valid keys are
+    # [:id, :class, :name, :xpath, :link, :link_text, :text]
     def link(name, identifier)
       define_method(name) do
         driver.click_link_for identifier

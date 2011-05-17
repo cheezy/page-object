@@ -1,3 +1,4 @@
+require 'page-object/elements/link'
 
 module PageObject
   class SeleniumPageObject
@@ -33,7 +34,7 @@ module PageObject
 
     
     def click_link_for(identifier)
-      how, what = values_for(identifier)
+      how, what = Link.selenium_identifier_for identifier
       @browser.find_element(how, what).click
     end
 

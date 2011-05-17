@@ -1,3 +1,4 @@
+require 'page-object/elements/link'
 
 module PageObject
   class WatirPageObject
@@ -30,7 +31,8 @@ module PageObject
     end
         
     def click_link_for(identifier)
-      @browser.link(identifier).click
+      identifier = Link.watir_identifier_for identifier
+      @browser.link(identifier).click if identifier
     end
   end
 end
