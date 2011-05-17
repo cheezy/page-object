@@ -2,10 +2,6 @@ Feature: Text Fields
   In order to interact with text fields
   Testers will need access and integoration ability
 
-  Note:
-    Watir supports tag_name, value, index finder.
-    Selenium supports css finder.
-
   
   Background:
     Given I am on the static elements page
@@ -23,12 +19,17 @@ Feature: Text Fields
     | id        |
     | class     |
     | name      |
-    | xpath     |
-  
-  
+    | xpath     |  
+    | css       |
+    | tag_name  |
 
+  @watir_only
+  Scenario Outline: Locating text fields on Watir only
+    When I search for the text field by "<search_by>"
 
-
-
-
+  Scenarios:
+    | search_by |
+    | index     |
+    | text      |
+    | value     |
 

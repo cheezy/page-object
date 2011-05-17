@@ -23,10 +23,12 @@ module PageObject
     end
 
     def text_field_value_for(identifier)
+      identifier = TextField.watir_identifier_for identifier
       @browser.text_field(identifier).value
     end
     
     def text_field_value_set(identifier, value)
+      identifier = TextField.watir_identifier_for identifier
       @browser.text_field(identifier).set(value)
     end
         

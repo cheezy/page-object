@@ -7,6 +7,9 @@ class Page
   text_field(:text_field_xpath, :xpath => "//input[@type='text']")
   text_field(:text_field_css, :css => "input[type='text']")
   text_field(:text_field_tag_name, :tag_name => "input[type='text']")
+  text_field(:text_field_index, :index => 0)
+  text_field(:text_field_text, :text => "")
+  text_field(:text_field_value, :value => "")
 
   link(:google_search_id, :id => "link_id")
   link(:google_search_name, :name => "link_name")

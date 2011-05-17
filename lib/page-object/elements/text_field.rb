@@ -2,16 +2,15 @@
 class TextField
   include Element
   
-  WATIR_FIND_BY = [:class, :id, :index, :name, :text, :value, :xpath]
-  SELENIUM_FIND_BY = [:class, :id, :name, :xpath]
+  WATIR_FIND_BY = [:class, :id, :index, :name, :tag_name, :text, :value, :xpath]
+  SELENIUM_FIND_BY = [:class, :css, :id, :name, :xpath]
   
   WATIR_FIND_BY_MAPPING = {
-    :link => :text,
-    :link_text => :text
+    :css => :tag_name
   }
   
   SELENIUM_FIND_BY_MAPPING = {
-    :text => :link_text
+    :tag_name => :css
   }
   
   def self.watir_identifier_for identifier
