@@ -1,9 +1,9 @@
 
-class Link
+class TextField
   include Element
   
-  WATIR_FIND_BY = [:class, :href, :id, :index, :name, :text, :xpath]
-  SELENIUM_FIND_BY = [:class, :id, :link, :link_text, :name, :xpath]
+  WATIR_FIND_BY = [:class, :id, :index, :name, :text, :value, :xpath]
+  SELENIUM_FIND_BY = [:class, :id, :name, :xpath]
   
   WATIR_FIND_BY_MAPPING = {
     :link => :text,
@@ -21,5 +21,5 @@ class Link
   def self.selenium_identifier_for identifier
     identifier = identifier_for identifier, SELENIUM_FIND_BY, SELENIUM_FIND_BY_MAPPING
     return identifier.keys.first, identifier.values.first
-  end    
+  end
 end

@@ -6,7 +6,7 @@ class TestPageObject
   text_field(:first_name, {:id => 'first_name'})
 end
 
-describe "text_field" do
+describe "text_field accessors" do
   let(:watir_browser) { mock_watir_browser }
   let(:selenium_browser) { mock_selenium_browser }
   let(:watir_page_object) { TestPageObject.new(watir_browser) }

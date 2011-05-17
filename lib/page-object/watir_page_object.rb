@@ -1,4 +1,4 @@
-require 'page-object/elements/link'
+require 'page-object/elements'
 
 module PageObject
   class WatirPageObject

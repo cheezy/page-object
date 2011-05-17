@@ -6,7 +6,7 @@ class TestPageObject
   link(:google_search, {:link => 'Google Search'})
 end
 
-describe "link" do
+describe "link accessors" do
   let(:watir_browser) { mock_watir_browser }
   let(:selenium_browser) { mock_selenium_browser }
   let(:watir_page_object) { TestPageObject.new(watir_browser) }
