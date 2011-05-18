@@ -32,6 +32,16 @@ module PageObject
       @browser.find_element(how, what).send_keys(value)
     end
     
+    def select_list_value_for(identifier)
+      how, what = SelectList.selenium_identifier_for identifier
+      @browser.find_element(how, what).attribute('value')
+    end
+    
+    def select_list_value_set(identifier, value)
+      how, what = SelectList.selenium_identifier_for identifier
+      @browser.find_element(how, what).send_keys(value)
+    end
+
     def click_link_for(identifier)
       how, what = Link.selenium_identifier_for identifier
       @browser.find_element(how, what).click

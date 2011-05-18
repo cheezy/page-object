@@ -1,6 +1,6 @@
 Feature: Text Fields
   In order to interact with text fields
-  Testers will need access and integoration ability
+  Testers will need access and interrogation ability
 
   
   Background:

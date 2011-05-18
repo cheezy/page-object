@@ -31,6 +31,16 @@ module PageObject
       identifier = TextField.watir_identifier_for identifier
       @browser.text_field(identifier).set(value)
     end
+    
+    def select_list_value_for(identifier)
+      identifier = SelectList.watir_identifier_for identifier
+      @browser.select_list(identifier).value
+    end
+    
+    def select_list_value_set(identifier, value)
+      identifier = SelectList.watir_identifier_for identifier
+      @browser.select_list(identifier).select(value)
+    end
         
     def click_link_for(identifier)
       identifier = Link.watir_identifier_for identifier
