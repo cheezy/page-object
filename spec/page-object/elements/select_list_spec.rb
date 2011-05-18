@@ -4,7 +4,7 @@ require 'page-object/elements'
 describe SelectList do
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
+      [:class, :id, :index, :name, :text, :value, :xpath].each do |t|
         identifier = SelectList.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end

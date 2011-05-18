@@ -34,6 +34,13 @@ module PageObject
     #
     # @param the name used for the generated methods
     # @param identifies how we find a select_list.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :text => Watir only
+    #   :value => Watir only
+    #   :xpath => Watir and Selenium
     def select_list(name, identifier)
       define_method(name) do
         driver.select_list_value_for identifier

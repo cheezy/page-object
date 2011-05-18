@@ -2,7 +2,7 @@
 class SelectList
   include Element
   
-  WATIR_FIND_BY = [:class, :id, :index, :name, :xpath]
+  WATIR_FIND_BY = [:class, :id, :index, :name, :text, :value, :xpath]
   SELENIUM_FIND_BY = [:class, :id, :name, :xpath]
   
   WATIR_FIND_BY_MAPPING = {}
