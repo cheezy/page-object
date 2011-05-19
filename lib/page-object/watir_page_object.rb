@@ -46,5 +46,17 @@ module PageObject
       identifier = Link.watir_identifier_for identifier
       @browser.link(identifier).click if identifier
     end
+
+    def check_checkbox(identifier)
+      @browser.checkbox(identifier).set
+    end
+
+    def uncheck_checkbox(identifier)
+      @browser.checkbox(identifier).clear
+    end
+
+    def checkbox_checked?(identifier)
+      @browser.checkbox(identifier).set?
+    end
   end
 end

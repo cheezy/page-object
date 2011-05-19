@@ -46,3 +46,11 @@ Then /^the value for the selected item should be "([^\"]*)"$/ do |value|
   result = @page.send "sel_list_#{@how}".to_sym
   result.should == value
 end
+
+When /^I select the First check box$/ do
+  @page.check_cb_id
+end
+
+Then /^the First check box should be selected$/ do
+  @page.cb_id_checked?.should be_true
+end
