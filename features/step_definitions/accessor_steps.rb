@@ -54,3 +54,11 @@ end
 Then /^the First check box should be selected$/ do
   @page.cb_id_checked?.should be_true
 end
+
+When /^I unselect the First check box$/ do
+  @page.uncheck_cb_id
+end
+
+Then /^the First check box should not be selected$/ do
+  @page.cb_id_checked?.should be_false
+end

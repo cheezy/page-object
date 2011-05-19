@@ -9,3 +9,5 @@ Feature: Check Box
   Scenario: Selecting an element on the select list
     When I select the First check box
     Then the First check box should be selected
+    When I unselect the First check box
+    Then the First check box should not be selected
