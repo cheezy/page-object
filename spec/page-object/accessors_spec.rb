@@ -7,6 +7,7 @@ class TestPageObject
   text_field(:first_name, {:id => 'first_name'})
   select_list(:state, {:id => 'state'})
   checkbox(:active, {:id => 'is_active_id'})
+  button(:click_me, { :id => 'button_submit'})
 end
 
 describe PageObject::Accessors do
@@ -174,4 +175,19 @@ describe PageObject::Accessors do
       end
     end
   end
+
+    describe "button accessors" do
+      let(:watir_browser) { mock_watir_browser }
+      let(:selenium_browser) { mock_selenium_browser }
+      let(:watir_page_object) { TestPageObject.new(watir_browser) }
+      let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
+
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to :click_me
+      end
+    end
+      
+    end
+
 end
