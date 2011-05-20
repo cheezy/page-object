@@ -62,3 +62,12 @@ end
 Then /^the First check box should not be selected$/ do
   @page.cb_id_checked?.should be_false
 end
+
+When /^I search for the check box by "([^\"]*)"$/ do |how|
+  @how = how
+end
+
+Then /^I should be able to check the check box$/ do
+  @page.send "check_cb_#{@how}".to_sym
+end
+
