@@ -182,12 +182,12 @@ describe PageObject::Accessors do
       let(:watir_page_object) { TestPageObject.new(watir_browser) }
       let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
 
-    context "when called on a page object" do
-      it "should generate accessor methods" do
-        watir_page_object.should respond_to :click_me
+      context "when called on a page object" do
+        it "should generate accessor methods" do
+          watir_page_object.should respond_to :click_me
+        end
       end
-    end
-      
+
     end
 
 end
