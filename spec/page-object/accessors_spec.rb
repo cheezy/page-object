@@ -7,16 +7,16 @@ class TestPageObject
   text_field(:first_name, {:id => 'first_name'})
   select_list(:state, {:id => 'state'})
   checkbox(:active, {:id => 'is_active_id'})
+  radio_button(:first, {:id => 'first_choice'})
 end
 
 describe PageObject::Accessors do
+  let(:watir_browser) { mock_watir_browser }
+  let(:selenium_browser) { mock_selenium_browser }
+  let(:watir_page_object) { TestPageObject.new(watir_browser) }
+  let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
   
   describe "link accessors" do
-    let(:watir_browser) { mock_watir_browser }
-    let(:selenium_browser) { mock_selenium_browser }
-    let(:watir_page_object) { TestPageObject.new(watir_browser) }
-    let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
-
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:google_search)
@@ -40,11 +40,6 @@ describe PageObject::Accessors do
 
 
   describe "text_field accessors" do
-    let(:watir_browser) { mock_watir_browser }
-    let(:selenium_browser) { mock_selenium_browser }
-    let(:watir_page_object) { TestPageObject.new(watir_browser) }
-    let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
-
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:first_name)
@@ -79,11 +74,6 @@ describe PageObject::Accessors do
   
   
   describe "select_list accessors" do
-    let(:watir_browser) { mock_watir_browser }
-    let(:selenium_browser) { mock_selenium_browser }
-    let(:watir_page_object) { TestPageObject.new(watir_browser) }
-    let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
-  
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :state
@@ -119,11 +109,6 @@ describe PageObject::Accessors do
 
   
   describe "check_box accessors" do
-    let(:watir_browser) { mock_watir_browser }
-    let(:selenium_browser) { mock_selenium_browser }
-    let(:watir_page_object) { TestPageObject.new(watir_browser) }
-    let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
-
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :check_active
@@ -172,6 +157,60 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:selected?).and_return(true)
         selenium_page_object.active_checked?.should be_true
       end
+    end
+  end
+  
+  
+  describe "radio accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to :select_first
+        watir_page_object.should respond_to :clear_first
+        watir_page_object.should respond_to :first_selected?
+      end
+    end
+
+    context "Watir implementation" do
+      it "should select a radio button" do
+        watir_browser.should_receive(:radio).and_return(watir_browser)
+        watir_browser.should_receive(:set)
+        watir_page_object.select_first
+      end
+      
+      it "should clear a radio button" do
+        watir_browser.should_receive(:radio).and_return(watir_browser)
+        watir_browser.should_receive(:clear)
+        watir_page_object.clear_first
+      end
+      
+      it "should determine if a radio is selected" do
+        watir_browser.should_receive(:radio).and_return(watir_browser)
+        watir_browser.should_receive(:set?)
+        watir_page_object.first_selected?
+      end
+    end
+
+    context "Selenium implementation" do
+      it "should select a radio button" do
+        selenium_browser.should_receive(:find_element).twice.and_return(selenium_browser)
+        selenium_browser.should_receive(:selected?).and_return(false)
+        selenium_browser.should_receive(:click)
+        selenium_page_object.select_first
+      end
+      
+      it "should clear a radio button" do
+        selenium_browser.should_receive(:find_element).twice.and_return(selenium_browser)
+        selenium_browser.should_receive(:selected?).and_return(true)
+        selenium_browser.should_receive(:click)
+        selenium_page_object.clear_first
+      end
+
+      it "should determine if a radio is selected" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:selected?).and_return(true)
+        selenium_page_object.first_selected?
+      end
+
     end
   end
 end

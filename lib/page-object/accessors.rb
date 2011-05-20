@@ -1,5 +1,6 @@
 module PageObject
   module Accessors
+    #
     # adds two methods to the page object - one to set text in a text field
     # and another to retrieve text from a text field.
     #
@@ -17,6 +18,7 @@ module PageObject
     #   :text => Watir only
     #   :value => Watir only
     #   :xpath => Watir and Selenium
+    #
     def text_field(name, identifier)
       define_method(name) do
         driver.text_field_value_for identifier
@@ -25,7 +27,8 @@ module PageObject
         driver.text_field_value_set(identifier, value)
       end
     end
-    
+
+    #
     # adds two methods - one to select an item in a drop-down and
     # another to fetch the currently selected item.
     #
@@ -41,6 +44,7 @@ module PageObject
     #   :text => Watir only
     #   :value => Watir only
     #   :xpath => Watir and Selenium
+    #
     def select_list(name, identifier)
       define_method(name) do
         driver.select_list_value_for identifier
@@ -49,7 +53,8 @@ module PageObject
         driver.select_list_value_set(identifier, value)
       end
     end
-    
+
+    #
     # adds a methods to select a link.
     #
     # Example:  link(:add_to_cart, {:text => "Add to Cart"})
@@ -66,12 +71,14 @@ module PageObject
     #   :name => Watir and Selenium
     #   :text => Watir and Selenium
     #   :xpath => Watir and Selenium
+    #
     def link(name, identifier)
       define_method(name) do
         driver.click_link_for identifier
       end
     end
-
+    
+    #
     # adds three methods - one to check, another to uncheck and a
     # third to return the state of a checkbox
     #
@@ -86,6 +93,7 @@ module PageObject
     #   :index => Watir only
     #   :name => Watir and Selenium
     #   :xpath => Watir and Selenium
+    #
     def checkbox(name, identifier)
       define_method("check_#{name}") do
         driver.check_checkbox(identifier)
@@ -95,6 +103,34 @@ module PageObject
       end
       define_method("#{name}_checked?") do
         driver.checkbox_checked?(identifier)
+      end
+    end
+    
+    #
+    # adds three methods - one to select, another to clear and
+    # another to return if a radio button is selected
+    #
+    # Example:  radio_button(:north, {:id => "north"})
+    # will generate 'select_north', 'clear_north', and
+    # 'north_selected?' methods
+    #
+    # @param the name used for the generated methods
+    # @param identifies how we find a checkbox.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :xpath => Watir and Selenium
+    #
+    def radio_button(name, identifier)
+      define_method("select_#{name}") do
+        driver.select_radio(identifier)
+      end
+      define_method("clear_#{name}") do
+        driver.clear_radio(identifier)
+      end
+      define_method("#{name}_selected?")  do
+        driver.radio_selected?(identifier)
       end
     end
   end

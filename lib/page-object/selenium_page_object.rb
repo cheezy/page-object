@@ -61,5 +61,20 @@ module PageObject
       how, what = CheckBox.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
     end
+
+    def select_radio(identifier)
+      how, what = RadioButton.selenium_identifier_for identifier
+      @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
+    end
+
+    def clear_radio(identifier)
+      how, what = RadioButton.selenium_identifier_for identifier
+      @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
+    end
+
+    def radio_selected?(identifier)
+      how, what = RadioButton.selenium_identifier_for identifier
+      @browser.find_element(how, what).selected?
+    end
   end
 end

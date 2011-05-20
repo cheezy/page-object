@@ -71,3 +71,18 @@ Then /^I should be able to check the check box$/ do
   @page.send "check_cb_#{@how}".to_sym
 end
 
+When /^I select the "([^\"]*)" radio button$/ do |how|
+  @page.send "select_#{how.downcase}_id".to_sym
+end
+
+Then /^the "([^\"]*)" radio button should be selected$/ do |how|
+  @page.send "#{how.downcase}_id_selected?".to_sym
+end
+
+When /^I search for the radio button by "([^\"]*)"$/ do |how|
+  @how = how
+end
+
+When /^I select the radio button$/ do 
+  @page.send "select_milk_#{@how}".to_sym
+end

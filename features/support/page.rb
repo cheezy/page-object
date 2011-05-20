@@ -34,4 +34,12 @@ class Page
   checkbox(:cb_class, :class => 'cb_class')
   checkbox(:cb_index, :index => 0)
   checkbox(:cb_xpath, :xpath => "//input[@type='checkbox']")
+
+  radio_button(:milk_id, :id => 'milk_id')
+  radio_button(:milk_name, :name => 'milk_name')
+  radio_button(:milk_class, :class => 'milk_class')
+  radio_button(:milk_index, :index => 0)
+  radio_button(:milk_xpath, :xpath => "//input[@type='radio']")
+  
+  radio_button(:butter_id, :id => 'butter_id')
 end

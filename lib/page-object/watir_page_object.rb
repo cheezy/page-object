@@ -48,15 +48,33 @@ module PageObject
     end
 
     def check_checkbox(identifier)
+      identifier = CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).set
     end
 
     def uncheck_checkbox(identifier)
+      identifier = CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).clear
     end
 
     def checkbox_checked?(identifier)
+      identifier = CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).set?
+    end
+
+    def select_radio(identifier)
+      identifier = RadioButton.watir_identifier_for identifier
+      @browser.radio(identifier).set
+    end
+
+    def clear_radio(identifier)
+      identifier = RadioButton.watir_identifier_for identifier
+      @browser.radio(identifier).clear
+    end
+
+    def radio_selected?(identifier)
+      identifier = RadioButton.watir_identifier_for identifier
+      @browser.radio(identifier).set?
     end
   end
 end
