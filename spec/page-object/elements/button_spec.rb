@@ -9,6 +9,13 @@ describe Button do
         identifier.keys.first.should == t
       end
     end
+
+    it "should map selenium types to same" do
+      [:class, :id, :name, :xpath].each do |t|
+        key, value = Button.selenium_identifier_for t => 'value'
+        key.should == t
+      end
+    end
   end
 
 end

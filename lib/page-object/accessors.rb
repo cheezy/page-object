@@ -133,5 +133,11 @@ module PageObject
         driver.radio_selected?(identifier)
       end
     end
+
+    def button(name, identifier)
+      define_method(name) do
+        
+      end
+    end
   end
 end

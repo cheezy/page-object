@@ -8,6 +8,7 @@ class TestPageObject
   select_list(:state, {:id => 'state'})
   checkbox(:active, {:id => 'is_active_id'})
   radio_button(:first, {:id => 'first_choice'})
+  button(:click_me, { :id => 'button_submit'})
 end
 
 describe PageObject::Accessors do
@@ -212,5 +213,14 @@ describe PageObject::Accessors do
       end
 
     end
+  end
+
+  describe "button accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to :click_me
+      end
+    end
+
   end
 end
