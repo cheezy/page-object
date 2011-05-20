@@ -136,7 +136,6 @@ module PageObject
 
     def button(name, identifier)
       define_method(name) do
-        
       end
     end
   end

@@ -21,13 +21,17 @@ or
     browser = Selenium::WebDriver.for :firefox
     my_page_object = MyPageObject.new(browser)
 
-# Documentation
+## Documentation
 
 The rdocs for this project can be found at [rubydoc.info](http://rubydoc.info/github/cheezy/page-object/master/frames).
 
 If you wish to view the current tracker board you can view it on [Pivotal Tracker](https://www.pivotaltracker.com/projects/289099)
 
-## Note on Patches/Pull Requests
+## Known Issues
+
+See [http://github.com/cheezy/page-object/issues](http://github.com/cheezy/page-object/issues)
+
+## Contribute
  
 * Fork the project.
 * Test drive your feature addition or bug fix.  Adding specs is important so I don't break it in a future version unintentionally.
