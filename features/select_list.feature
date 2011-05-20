@@ -21,3 +21,15 @@ Feature: Select List
       | class     |
       | name      |
       | xpath     |  
+
+  @watir_only
+  Scenario Outline: Locating select lists on Watir only
+    When I search for the select list by "<search_by>"
+    Then I should be able to select "Test 2"
+    And the value for the selected item should be "option2"
+
+    Scenarios:
+      | search_by |
+      | index     |
+#      | value     |
+#      | text      |

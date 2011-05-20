@@ -46,5 +46,20 @@ module PageObject
       how, what = Link.selenium_identifier_for identifier
       @browser.find_element(how, what).click
     end
+
+    def check_checkbox(identifier)
+      how, what = CheckBox.selenium_identifier_for identifier
+      @browser.find_element(how, what).toggle unless checkbox_checked?(identifier)
+    end
+
+    def uncheck_checkbox(identifier)
+      how, what = CheckBox.selenium_identifier_for identifier
+      @browser.find_element(how, what).toggle if checkbox_checked?(identifier)
+    end
+
+    def checkbox_checked?(identifier)
+      how, what = CheckBox.selenium_identifier_for identifier
+      @browser.find_element(how, what).selected?
+    end
   end
 end

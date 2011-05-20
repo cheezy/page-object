@@ -23,6 +23,15 @@ class Page
   
   select_list(:sel_list_id, :id => "sel_list_id")
   select_list(:sel_list_class, :class => "sel_list_class")
+  select_list(:sel_list_index, :index => 0)
   select_list(:sel_list_name, :name => "sel_list_name")
+  select_list(:sel_list_value, :value => "option1")
   select_list(:sel_list_xpath, :xpath => "//select")
+  select_list(:sel_list_text, :text => "Test 1")
+
+  checkbox(:cb_id, :id => 'cb_id')
+  checkbox(:cb_name, :name => 'cb_name')
+  checkbox(:cb_class, :class => 'cb_class')
+  checkbox(:cb_index, :index => 0)
+  checkbox(:cb_xpath, :xpath => "//input[@type='checkbox']")
 end

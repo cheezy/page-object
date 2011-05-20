@@ -34,6 +34,13 @@ module PageObject
     #
     # @param the name used for the generated methods
     # @param identifies how we find a select_list.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :text => Watir only
+    #   :value => Watir only
+    #   :xpath => Watir and Selenium
     def select_list(name, identifier)
       define_method(name) do
         driver.select_list_value_for identifier
@@ -62,6 +69,32 @@ module PageObject
     def link(name, identifier)
       define_method(name) do
         driver.click_link_for identifier
+      end
+    end
+
+    # adds three methods - one to check, another to uncheck and a
+    # third to return the state of a checkbox
+    #
+    # Example: checkbox(:active, {:name => "is_active"})
+    # will generate the 'check_active', 'uncheck_active' and
+    # 'active_checked?' methods.
+    #
+    # @param the name used for the generated methods
+    # @param identifies how we find a checkbox.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :xpath => Watir and Selenium
+    def checkbox(name, identifier)
+      define_method("check_#{name}") do
+        driver.check_checkbox(identifier)
+      end
+      define_method("uncheck_#{name}") do
+        driver.uncheck_checkbox(identifier)
+      end
+      define_method("#{name}_checked?") do
+        driver.checkbox_checked?(identifier)
       end
     end
   end
