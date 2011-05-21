@@ -9,15 +9,15 @@ module PageObject
     #
     # @param  the name used for the generated methods
     # @param identifies how we find a text_field.  The valid values are:
-    #   :class => Watir and Selenium
-    #   :css => Watir and Selenium
-    #   :id => Watir and Selenium
-    #   :index => Watir only
-    #   :name => Watir and Selenium
-    #   :tag_name => Watir and Selenium
-    #   :text => Watir only
-    #   :value => Watir only
-    #   :xpath => Watir and Selenium
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir only
+    #   - :name => Watir and Selenium
+    #   - :tag_name => Watir and Selenium
+    #   - :text => Watir only
+    #   - :value => Watir only
+    #   - :xpath => Watir and Selenium
     #
     def text_field(name, identifier)
       define_method(name) do
