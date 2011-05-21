@@ -61,6 +61,12 @@ module PageObject
       identifier = Elements::CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).set?
     end
+    
+    def checkbox_for(identifier)
+      identifier = Elements::CheckBox.watir_identifier_for identifier
+      element = @browser.checkbox(identifier)
+      Elements::CheckBox.new(element, :platform => :watir)
+    end
 
     def select_radio(identifier)
       identifier = Elements::RadioButton.watir_identifier_for identifier

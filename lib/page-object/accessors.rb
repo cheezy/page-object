@@ -85,12 +85,13 @@ module PageObject
     end
     
     #
-    # adds three methods - one to check, another to uncheck and a
-    # third to return the state of a checkbox
+    # adds four methods - one to check, another to uncheck, another
+    # to return the state of a checkbox, and a final method to return
+    # a PageObject::Elements::CheckBox object representing the checkbox.
     #
     # Example: checkbox(:active, {:name => "is_active"})
-    # will generate the 'check_active', 'uncheck_active' and
-    # 'active_checked?' methods.
+    # will generate the 'check_active', 'uncheck_active',
+    # 'active_checked?' and 'active_checkbox' methods.
     #
     # @param the name used for the generated methods
     # @param identifier how we find a checkbox.  The valid values are:
@@ -109,6 +110,9 @@ module PageObject
       end
       define_method("#{name}_checked?") do
         driver.checkbox_checked?(identifier)
+      end
+      define_method("#{name}_checkbox") do
+        driver.checkbox_for identifier
       end
     end
     

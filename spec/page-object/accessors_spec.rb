@@ -115,6 +115,7 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to :check_active
         watir_page_object.should respond_to :uncheck_active
         watir_page_object.should respond_to :active_checked?
+        watir_page_object.should respond_to(:active_checkbox)
       end
     end
 
@@ -135,6 +136,12 @@ describe PageObject::Accessors do
         watir_browser.should_receive(:checkbox).and_return(watir_browser)
         watir_browser.should_receive(:set?).and_return(true)
         watir_page_object.active_checked?.should be_true
+      end
+      
+      it "should retrieve a checkbox element" do
+        watir_browser.should_receive(:checkbox).and_return(watir_browser)
+        element = watir_page_object.active_checkbox
+        element.should be_instance_of PageObject::Elements::CheckBox
       end
     end
 

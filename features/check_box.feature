@@ -33,3 +33,8 @@ Feature: Check Box
     | index     |
 
     
+  Scenario: Retrieve a CheckBox
+    When I retrieve a check box element
+    Then I should know it exists
+    And I should know it is visible
+      

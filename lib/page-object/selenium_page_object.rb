@@ -61,6 +61,12 @@ module PageObject
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
     end
+    
+    def checkbox_for(identifier)
+      how, what = Elements::CheckBox.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      Elements::CheckBox.new(element, :platform => :selenium)
+    end
 
     def select_radio(identifier)
       how, what = Elements::RadioButton.selenium_identifier_for identifier
