@@ -61,10 +61,13 @@ module PageObject
     end
 
     #
-    # adds a methods to select a link.
+    # adds two methods - one to select a link and another
+    # to return a PageObject::Elements::Link object representing
+    # the link.
     #
     # Example:  link(:add_to_cart, {:text => "Add to Cart"})
-    # will generate the 'add_to_cart' method that will click the link.
+    # will generate the 'add_to_cart' and 'add_to_cart_link'
+    # method.
     #
     # @param the name used for the generated methods
     # @param identifier how we find a link.  The valid values are:
@@ -81,6 +84,9 @@ module PageObject
     def link(name, identifier)
       define_method(name) do
         driver.click_link_for identifier
+      end
+      define_method("#{name}_link") do
+        driver.link_for identifier
       end
     end
     

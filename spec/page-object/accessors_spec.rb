@@ -21,6 +21,7 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:google_search)
+        watir_page_object.should respond_to(:google_search_link)
       end
     end
 
@@ -29,12 +30,24 @@ describe PageObject::Accessors do
         watir_browser.stub_chain(:link, :click)
         watir_page_object.google_search
       end
+      
+      it "should return a link element" do
+        watir_browser.should_receive(:link).and_return(watir_browser)
+        element = watir_page_object.google_search_link
+        element.should be_instance_of PageObject::Elements::Link
+      end
     end
 
     context "Selenium implementation" do
       it "should select a link" do
         selenium_browser.stub_chain(:find_element, :click)
         selenium_page_object.google_search
+      end
+      
+      it "should return a link element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.google_search_link
+        element.should be_instance_of PageObject::Elements::Link
       end
     end
   end

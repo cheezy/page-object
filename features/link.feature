@@ -36,3 +36,7 @@ Feature: Links
     | href      |
     | index     |
     
+  Scenario: Retrieve a Link
+    When I retrieve a link element
+    Then I should know it exists
+    And I should know it is visible

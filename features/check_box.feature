@@ -31,8 +31,7 @@ Feature: Check Box
   Scenarios:
     | search_by |
     | index     |
-
-    
+   
   Scenario: Retrieve a CheckBox
     When I retrieve a check box element
     Then I should know it exists

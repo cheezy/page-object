@@ -42,9 +42,23 @@ module PageObject
       @browser.select_list(identifier).select(value)
     end
         
+    #
+    # platform method to click a link
+    # See PageObject::Accessors#link
+    #
     def click_link_for(identifier)
       identifier = Elements::Link.watir_identifier_for identifier
       @browser.link(identifier).click if identifier
+    end
+    
+    #
+    # platform method to return a PageObject::Elements::Link object
+    # see PageObject::Accessors#link
+    #
+    def link_for(identifier)
+      identifier = Elements::Link.watir_identifier_for identifier
+      element = @browser.link(identifier)
+      Elements::Link.new(element, :platform => :watir)
     end
 
     #

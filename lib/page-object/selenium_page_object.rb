@@ -42,9 +42,23 @@ module PageObject
       @browser.find_element(how, what).send_keys(value)
     end
 
+    #
+    # platform method to click a link
+    # See PageObject::Accessors#link
+    #
     def click_link_for(identifier)
       how, what = Elements::Link.selenium_identifier_for identifier
       @browser.find_element(how, what).click
+    end
+    
+    #
+    # platform method to return a PageObject::Elements::Link object
+    # see PageObject::Accessors#link
+    #
+    def link_for(identifier)
+      how, what = Elements::Link.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      Elements::Link.new(element, :platform => :selenium)
     end
 
     #

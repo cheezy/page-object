@@ -42,7 +42,7 @@ module PageObject
         if platform[:platform] == :watir
           require 'page-object/watir_element'
           self.class.send :include, PageObject::WatirElement
-        elsif
+        else
           require 'page-object/selenium_element'
           self.class.send :include, PageObject::SeleniumElement
         end
