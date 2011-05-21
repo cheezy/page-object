@@ -1,28 +1,34 @@
 module PageObject
   module Elements
-    class Link
-      include Element
-
-      WATIR_FIND_BY = [:class, :href, :id, :index, :name, :text, :xpath]
-      SELENIUM_FIND_BY = [:class, :id, :link, :link_text, :name, :xpath]
-
-      WATIR_FIND_BY_MAPPING = {
-        :link => :text,
-        :link_text => :text
-      }
-
-      SELENIUM_FIND_BY_MAPPING = {
-        :text => :link_text
-      }
-
+    class Link < Element
+      
       def self.watir_identifier_for identifier
-        identifier_for identifier, WATIR_FIND_BY, WATIR_FIND_BY_MAPPING
+        identifier_for identifier, watir_finders, watir_mapping
       end
 
       def self.selenium_identifier_for identifier
-        identifier = identifier_for identifier, SELENIUM_FIND_BY, SELENIUM_FIND_BY_MAPPING
+        identifier = identifier_for identifier, selenium_finders, selenium_mapping
         return identifier.keys.first, identifier.values.first
       end    
+      
+      protected
+      
+      def self.watir_finders
+        super + [:href, :text]
+      end
+      
+      def self.watir_mapping
+        super.merge({ :link => :text, :link_text => :text })
+      end
+      
+      def self.selenium_finders
+        super + [:link, :link_text]
+      end
+      
+      def self.selenium_mapping
+        super.merge(:text => :link_text)
+      end
+
     end
   end
 end

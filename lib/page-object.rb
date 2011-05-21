@@ -21,15 +21,17 @@ module PageObject
     driver.navigate_to(url)
   end
   
-  # Gets the entire text of the page
+  # Returns the text of the page
   def text
     driver.text
   end
 
+  # Returns the html of the page
   def html
     driver.html
   end
 
+  # Returns the page title
   def title
     driver.title
   end

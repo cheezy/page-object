@@ -1,6 +1,8 @@
 
 #
-# 
+# Contains the class level methods that are inserted into your page objects
+# when you include the PageObject module.  These methods will generate another
+# set of methods that provide access to the elements on the web pages.
 #
 module PageObject
   module Accessors

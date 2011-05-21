@@ -1,17 +1,13 @@
 module PageObject
   module Elements
-    class CheckBox
-      include Element
-
-      WATIR_FIND_BY = [:class, :id, :index, :name, :xpath]
-      SELENIUM_FIND_BY = [:class, :id, :name, :xpath]
+    class CheckBox < Element
 
       def self.watir_identifier_for identifier
-        identifier_for identifier, WATIR_FIND_BY, {}
+        identifier_for identifier, watir_finders, watir_mapping
       end
 
       def self.selenium_identifier_for identifier
-        identifier = identifier_for identifier, SELENIUM_FIND_BY, {}
+        identifier = identifier_for identifier, selenium_finders, selenium_mapping
         return identifier.keys.first, identifier.values.first
       end
     end
