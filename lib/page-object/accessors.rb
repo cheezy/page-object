@@ -8,7 +8,7 @@ module PageObject
     # will generate the 'first_name' and 'first_name=' methods.
     #
     # @param  the name used for the generated methods
-    # @param identifies how we find a text_field.  The valid values are:
+    # @param identifier how we find a text_field.  The valid values are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -36,7 +36,7 @@ module PageObject
     # will generate the 'state' and 'state=' methods
     #
     # @param the name used for the generated methods
-    # @param identifies how we find a select_list.  The valid values are:
+    # @param identifier how we find a select_list.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -61,7 +61,7 @@ module PageObject
     # will generate the 'add_to_cart' method that will click the link.
     #
     # @param the name used for the generated methods
-    # @param identifies how we find a link.  The valid values are:
+    # @param identifier how we find a link.  The valid values are:
     #   :class => Watir and Selenium
     #   :href => Watir only
     #   :id => Watir and Selenium
@@ -87,7 +87,7 @@ module PageObject
     # 'active_checked?' methods.
     #
     # @param the name used for the generated methods
-    # @param identifies how we find a checkbox.  The valid values are:
+    # @param identifier how we find a checkbox.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -115,7 +115,7 @@ module PageObject
     # 'north_selected?' methods
     #
     # @param the name used for the generated methods
-    # @param identifies how we find a checkbox.  The valid values are:
+    # @param identifier how we find a checkbox.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
