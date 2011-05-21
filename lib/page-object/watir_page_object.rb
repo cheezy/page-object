@@ -47,21 +47,37 @@ module PageObject
       @browser.link(identifier).click if identifier
     end
 
+    #
+    # platform method to check a checkbox
+    # See PageObject::Accessors#checkbox
+    #
     def check_checkbox(identifier)
       identifier = Elements::CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).set
     end
 
+    #
+    # platform method to uncheck a checkbox
+    # See PageObject::Accessors#checkbox
+    #
     def uncheck_checkbox(identifier)
       identifier = Elements::CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).clear
     end
 
+    #
+    # platform method to determine if a checkbox is checked
+    # See PageObject::Accessors#checkbox
+    #
     def checkbox_checked?(identifier)
       identifier = Elements::CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).set?
     end
     
+    #
+    # platform method to return a PageObject::Elements::CheckBox element
+    # See PageObject::Accessors#checkbox
+    #
     def checkbox_for(identifier)
       identifier = Elements::CheckBox.watir_identifier_for identifier
       element = @browser.checkbox(identifier)

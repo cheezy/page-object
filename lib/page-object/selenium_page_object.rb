@@ -47,21 +47,37 @@ module PageObject
       @browser.find_element(how, what).click
     end
 
+    #
+    # platform method to check a checkbox
+    # See PageObject::Accessors#checkbox
+    #
     def check_checkbox(identifier)
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       @browser.find_element(how, what).toggle unless checkbox_checked?(identifier)
     end
 
+    #
+    # platform method to uncheck a checkbox
+    # See PageObject::Accessors#checkbox
+    #
     def uncheck_checkbox(identifier)
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       @browser.find_element(how, what).toggle if checkbox_checked?(identifier)
     end
 
+    #
+    # platform method to determine if a checkbox is checked
+    # See PageObject::Accessors#checkbox
+    #
     def checkbox_checked?(identifier)
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
     end
     
+    #
+    # platform method to return a PageObject::Elements::CheckBox element
+    # See PageObject::Accessors#checkbox
+    #
     def checkbox_for(identifier)
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
