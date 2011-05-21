@@ -123,12 +123,14 @@ module PageObject
     end
     
     #
-    # adds three methods - one to select, another to clear and
-    # another to return if a radio button is selected
+    # adds four methods - one to select, another to clear,
+    # another to return if a radio button is selected, and
+    # another method to return a PageObject::Elements::RadioButton
+    # object representing the radio button element
     #
     # Example:  radio_button(:north, {:id => "north"})
-    # will generate 'select_north', 'clear_north', and
-    # 'north_selected?' methods
+    # will generate 'select_north', 'clear_north',
+    # 'north_selected?' and 'north_radio_button' methods
     #
     # @param the name used for the generated methods
     # @param identifier how we find a checkbox.  The valid values are:
@@ -147,6 +149,9 @@ module PageObject
       end
       define_method("#{name}_selected?")  do
         driver.radio_selected?(identifier)
+      end
+      define_method("#{name}_radio_button") do
+        driver.radio_button_for identifier
       end
     end
 

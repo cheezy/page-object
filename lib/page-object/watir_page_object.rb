@@ -98,19 +98,41 @@ module PageObject
       Elements::CheckBox.new(element, :platform => :watir)
     end
 
+    #
+    # platform method to select a radio button
+    # See PageObject::Accessors#radio_button
+    #
     def select_radio(identifier)
       identifier = Elements::RadioButton.watir_identifier_for identifier
       @browser.radio(identifier).set
     end
 
+    #
+    # platform method to clear a radio button
+    # See PageObject::Accessors#radio_button
+    #
     def clear_radio(identifier)
       identifier = Elements::RadioButton.watir_identifier_for identifier
       @browser.radio(identifier).clear
     end
 
+    #
+    # platform method to determine if a radio button is selected
+    # See PageObject::Accessors#radio_button
+    #
     def radio_selected?(identifier)
       identifier = Elements::RadioButton.watir_identifier_for identifier
       @browser.radio(identifier).set?
+    end
+    
+    #
+    # platform method to return a PageObject::Eements::RadioButton element
+    # See PageObject::Accessors#radio_button
+    #
+    def radio_button_for(identifier)
+      identifier = Elements::RadioButton.watir_identifier_for identifier
+      element = @browser.radio(identifier)
+      PageObject::Elements::RadioButton.new(element, :platform => :watir)
     end
   end
 end

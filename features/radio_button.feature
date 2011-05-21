@@ -1,4 +1,4 @@
-Feature: Text Fields
+Feature: Radio Buttons
   In order to interact with radio buttons
   Testers will need access and interrogation ability
 
@@ -33,3 +33,8 @@ Feature: Text Fields
     Scenarios:
       | search_by |
       | index     |
+
+  Scenario: Retrieve a radio button
+    When I retrieve a radio button
+    Then I should know it exists
+    And I should know it is visible

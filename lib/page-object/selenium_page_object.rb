@@ -98,19 +98,41 @@ module PageObject
       Elements::CheckBox.new(element, :platform => :selenium)
     end
 
+    #
+    # platform method to select a radio button
+    # See PageObject::Accessors#radio_button
+    #
     def select_radio(identifier)
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
     end
 
+    #
+    # platform method to clear a radio button
+    # See PageObject::Accessors#radio_button
+    #
     def clear_radio(identifier)
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
     end
 
+    #
+    # platform method to determine if a radio button is selected
+    # See PageObject::Accessors#radio_button
+    #
     def radio_selected?(identifier)
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
+    end
+    
+    #
+    # platform method to return a PageObject::Eements::RadioButton element
+    # See PageObject::Accessors#radio_button
+    #
+    def radio_button_for(identifier)
+      how, what = Elements::RadioButton.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::RadioButton.new(element, :platform => :selenium)
     end
   end
 end

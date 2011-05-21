@@ -178,6 +178,12 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:selected?).and_return(true)
         selenium_page_object.active_checked?.should be_true
       end
+      
+      it "should retrieve a checkbox element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.active_checkbox
+        element.should be_instance_of PageObject::Elements::CheckBox
+      end
     end
   end
   
@@ -188,6 +194,7 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to :select_first
         watir_page_object.should respond_to :clear_first
         watir_page_object.should respond_to :first_selected?
+        watir_page_object.should respond_to(:first_radio_button)
       end
     end
 
@@ -208,6 +215,12 @@ describe PageObject::Accessors do
         watir_browser.should_receive(:radio).and_return(watir_browser)
         watir_browser.should_receive(:set?)
         watir_page_object.first_selected?
+      end
+      
+      it "should retrieve a radio button element" do
+        watir_browser.should_receive(:radio).and_return(watir_browser)
+        element = watir_page_object.first_radio_button
+        element.should be_instance_of PageObject::Elements::RadioButton
       end
     end
 
@@ -231,7 +244,12 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:selected?).and_return(true)
         selenium_page_object.first_selected?
       end
-
+      
+      it "should retrieve a radio button element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.first_radio_button
+        element.should be_instance_of PageObject::Elements::RadioButton
+      end
     end
   end
 
