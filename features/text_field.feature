@@ -33,3 +33,7 @@ Feature: Text Fields
     | text      |
     | value     |
 
+  Scenario: Retrieve a text field
+    When I retrieve a text field
+    Then I should know it exists
+    And I should know it is visible

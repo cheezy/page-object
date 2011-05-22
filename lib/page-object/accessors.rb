@@ -7,11 +7,12 @@
 module PageObject
   module Accessors
     #
-    # adds two methods to the page object - one to set text in a text field
-    # and another to retrieve text from a text field.
+    # adds three methods to the page object - one to set text in a text field,
+    # another to retrieve text from a text field and another to return the text
+    # field element.
     #
     # Example:  text_field(:first_name, {:id => "first_name"})
-    # will generate the 'first_name' and 'first_name=' methods.
+    # will generate the 'first_name', 'first_name=' and 'first_name_text_field methods.
     #
     # @param  the name used for the generated methods
     # @param identifier how we find a text_field.  The valid values are:
@@ -27,10 +28,13 @@ module PageObject
     #
     def text_field(name, identifier)
       define_method(name) do
-        driver.text_field_value_for identifier
+        platform.text_field_value_for identifier
       end
       define_method("#{name}=") do |value|
-        driver.text_field_value_set(identifier, value)
+        platform.text_field_value_set(identifier, value)
+      end
+      define_method("#{name}_text_field") do
+        platform.text_field_for identifier
       end
     end
 
@@ -54,13 +58,13 @@ module PageObject
     #
     def select_list(name, identifier)
       define_method(name) do
-        driver.select_list_value_for identifier
+        platform.select_list_value_for identifier
       end
       define_method("#{name}=") do |value|
-        driver.select_list_value_set(identifier, value)
+        platform.select_list_value_set(identifier, value)
       end
       define_method("#{name}_select_list") do
-        driver.select_list_for identifier
+        platform.select_list_for identifier
       end
     end
 
@@ -87,10 +91,10 @@ module PageObject
     #
     def link(name, identifier)
       define_method(name) do
-        driver.click_link_for identifier
+        platform.click_link_for identifier
       end
       define_method("#{name}_link") do
-        driver.link_for identifier
+        platform.link_for identifier
       end
     end
     
@@ -113,16 +117,16 @@ module PageObject
     #
     def checkbox(name, identifier)
       define_method("check_#{name}") do
-        driver.check_checkbox(identifier)
+        platform.check_checkbox(identifier)
       end
       define_method("uncheck_#{name}") do
-        driver.uncheck_checkbox(identifier)
+        platform.uncheck_checkbox(identifier)
       end
       define_method("#{name}_checked?") do
-        driver.checkbox_checked?(identifier)
+        platform.checkbox_checked?(identifier)
       end
       define_method("#{name}_checkbox") do
-        driver.checkbox_for identifier
+        platform.checkbox_for identifier
       end
     end
     
@@ -146,16 +150,16 @@ module PageObject
     #
     def radio_button(name, identifier)
       define_method("select_#{name}") do
-        driver.select_radio(identifier)
+        platform.select_radio(identifier)
       end
       define_method("clear_#{name}") do
-        driver.clear_radio(identifier)
+        platform.clear_radio(identifier)
       end
       define_method("#{name}_selected?")  do
-        driver.radio_selected?(identifier)
+        platform.radio_selected?(identifier)
       end
       define_method("#{name}_radio_button") do
-        driver.radio_button_for identifier
+        platform.radio_button_for identifier
       end
     end
 

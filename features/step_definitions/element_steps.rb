@@ -14,6 +14,9 @@ When /^I retrieve a select list$/ do
   @element = @page.sel_list_id_select_list
 end
 
+When /^I retrieve a text field$/ do
+  @element = @page.text_field_id_text_field
+end
 
 Then /^I should know it exists$/ do
   @element.should exist

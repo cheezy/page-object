@@ -4,7 +4,7 @@ require 'page-object/accessors'
 
 # Module that when included adds core functionality to a page object.
 module PageObject
-  attr_reader :driver
+  attr_reader :platform
 
   # Construct a new page object.  The browser parameter must be either a
   # Watir::Browser or Selenium::WebDriver::Driver.
@@ -18,22 +18,22 @@ module PageObject
   
   # navigate to the provided url
   def navigate_to(url)
-    driver.navigate_to(url)
+    platform.navigate_to(url)
   end
   
   # Returns the text of the page
   def text
-    driver.text
+    platform.text
   end
 
   # Returns the html of the page
   def html
-    driver.html
+    platform.html
   end
 
   # Returns the page title
   def title
-    driver.title
+    platform.title
   end
 
   private
@@ -41,10 +41,10 @@ module PageObject
   def include_platform_driver(browser)
     if browser.is_a? Watir::Browser
       require 'page-object/watir_page_object'
-      @driver = PageObject::WatirPageObject.new(browser)
+      @platform = PageObject::WatirPageObject.new(browser)
     elsif browser.is_a? Selenium::WebDriver::Driver
       require 'page-object/selenium_page_object'
-      @driver = PageObject::SeleniumPageObject.new(browser)
+      @platform = PageObject::SeleniumPageObject.new(browser)
     else
       raise ArgumentError, "expect Watir::Browser or Selenium::WebDriver::Driver"
     end

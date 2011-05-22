@@ -6,30 +6,64 @@ module PageObject
       @browser = browser
     end
 
+    #
+    # platform method to navigate to a provided url
+    # See PageObject#navigate_to
+    #
     def navigate_to(url)
       @browser.navigate.to url
     end
     
+    #
+    # platform method to retrieve the text from the current page
+    # See PageObject#text
+    #
     def text
       @browser.find_element(:tag_name, 'body').text
     end
 
+    #
+    # platform method to retrieve the html for the current page
+    # See PageObject#html
+    #
     def html
       @browser.page_source
     end
 
+    #
+    # platform method to retrieve the title for the current page
+    # See PageObject#title
+    #
     def title
       @browser.title
     end
     
+    #
+    # platform method to get the value stored in a text field
+    # See PageObject::Accessors#text_field
+    #
     def text_field_value_for(identifier)
       how, what = Elements::TextField.selenium_identifier_for identifier
       @browser.find_element(how, what).value
     end
     
+    #
+    # platform method to set the value for a text field
+    # See PageObject::Accessors#text_field
+    #
     def text_field_value_set(identifier, value)
       how, what = Elements::TextField.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
+    end
+    
+    #
+    # platform method to retrieve a text field element
+    # See PageObject::Accessors#text_field
+    #
+    def text_field_for(identifier)
+      how, what = Elements::TextField.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::TextField.new(element, :platform => :selenium)
     end
     
     #

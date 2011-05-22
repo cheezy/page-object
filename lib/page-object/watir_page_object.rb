@@ -6,6 +6,9 @@ module PageObject
       @browser = browser      
     end
 
+    #
+    # platform method to navigate to a provided url
+    #
     def navigate_to(url)
       @browser.goto url
     end
@@ -22,14 +25,32 @@ module PageObject
       @browser.title
     end
 
+    #
+    # platform method to get the value stored in a text field
+    # See PageObject::Accessors#text_field
+    #
     def text_field_value_for(identifier)
       identifier = Elements::TextField.watir_identifier_for identifier
       @browser.text_field(identifier).value
     end
     
+    #
+    # platform method to set the value for a text field
+    # See PageObject::Accessors#text_field
+    #
     def text_field_value_set(identifier, value)
       identifier = Elements::TextField.watir_identifier_for identifier
       @browser.text_field(identifier).set(value)
+    end
+    
+    #
+    # platform method to retrieve a text field element
+    # See PageObject::Accessors#text_field
+    #
+    def text_field_for(identifier)
+      identifier = Elements::TextField.watir_identifier_for identifier
+      element = @browser.text_field(identifier)
+      Elements::TextField.new(element, :platform => :watir)
     end
     
     #

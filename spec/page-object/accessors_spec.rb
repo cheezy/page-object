@@ -58,30 +58,47 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:first_name)
         watir_page_object.should respond_to(:first_name=)
+        watir_page_object.should respond_to(:first_name_text_field)
       end
     end
 
     context "Watir implementation" do
       it "should get the text from the text field element" do
-        watir_browser.stub_chain(:text_field, :value).and_return('Kim')
+        watir_browser.should_receive(:text_field).and_return(watir_browser)
+        watir_browser.should_receive(:value).and_return('Kim')
         watir_page_object.first_name.should == 'Kim'
       end
     
       it "should set some text on a text field element" do
-        watir_browser.stub_chain(:text_field, :set).with('Kim')
+        watir_browser.should_receive(:text_field).and_return(watir_browser)
+        watir_browser.should_receive(:set).with('Kim')
         watir_page_object.first_name = 'Kim'
+      end
+      
+      it "should retrieve a text field element" do
+        watir_browser.should_receive(:text_field).and_return(watir_browser)
+        element = watir_page_object.first_name_text_field
+        element.should be_instance_of PageObject::Elements::TextField
       end
     end
 
     context "Selenium implementation" do
       it "should get the text from the text field element" do
-        selenium_browser.stub_chain(:find_element, :value).and_return('Katie')
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:value).and_return('Katie')
         selenium_page_object.first_name.should == 'Katie'
       end
 
       it "should set some text on a text field element" do
-        selenium_browser.stub_chain(:find_element, :send_keys)
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:send_keys).with('Katie')
         selenium_page_object.first_name = 'Katie'
+      end
+      
+      it "should should retrieve a text field element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.first_name_text_field
+        element.should be_instance_of PageObject::Elements::TextField
       end
     end
   end
