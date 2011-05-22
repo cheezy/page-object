@@ -18,6 +18,11 @@ When /^I retrieve a text field$/ do
   @element = @page.text_field_id_text_field
 end
 
+When /^I retrieve the div element$/ do
+  @element = @page.div_id_div
+end
+
+
 Then /^I should know it exists$/ do
   @element.should exist
 end

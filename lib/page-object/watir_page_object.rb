@@ -190,5 +190,10 @@ module PageObject
     def div_text_for(identifier)
       @browser.div(identifier).text
     end
+    
+    def div_for(identifier)
+      element = @browser.div(identifier)
+      PageObject::Elements::Div.new(element, :platform => :watir)
+    end
   end
 end

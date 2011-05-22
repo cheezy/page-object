@@ -310,6 +310,12 @@ describe PageObject::Accessors do
         watir_browser.should_receive(:text).and_return("Message from div")
         watir_page_object.message.should == "Message from div"
       end
+      
+      it "should retrieve the div element from the page" do
+        watir_browser.should_receive(:div).and_return(watir_browser)
+        element = watir_page_object.message_div
+        element.should be_instance_of PageObject::Elements::Div
+      end
     end
     
     context "selenium implementation" do
@@ -317,6 +323,13 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         selenium_browser.should_receive(:text).and_return("Message from div")
         selenium_page_object.message.should == "Message from div"
+        
+      end
+      
+      it "should retrieve the div element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.message_div
+        element.should be_instance_of PageObject::Elements::Div
         
       end
     end

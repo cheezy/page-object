@@ -191,5 +191,11 @@ module PageObject
       how, what = identifier.keys.first, identifier.values.first
       @browser.find_element(how, what).text
     end
+    
+    def div_for(identifier)
+      how, what = identifier.keys.first, identifier.values.first
+      element = @browser.find_element(how, what)
+      PageObject::Elements::Div.new(element, :platform => :selenium)
+    end
   end
 end

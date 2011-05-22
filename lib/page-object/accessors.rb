@@ -173,7 +173,7 @@ module PageObject
         platform.div_text_for identifier
       end
       define_method("#{name}_div") do
-        
+        platform.div_for identifier
       end
     end
   end
