@@ -86,3 +86,11 @@ end
 When /^I select the radio button$/ do 
   @page.send "select_milk_#{@how}".to_sym
 end
+
+When /^I get the text from the div$/ do
+  @div_text = @page.div_id
+end
+
+Then /^the text should be "([^"]*)"$/ do |expected_text|
+  @div_text.should == expected_text
+end

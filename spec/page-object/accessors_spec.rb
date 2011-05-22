@@ -9,6 +9,7 @@ class TestPageObject
   checkbox(:active, {:id => 'is_active_id'})
   radio_button(:first, {:id => 'first_choice'})
   button(:click_me, { :id => 'button_submit'})
+  div(:message, { :id => 'message_id'} )
 end
 
 describe PageObject::Accessors do
@@ -293,5 +294,31 @@ describe PageObject::Accessors do
       end
     end
 
+  end
+  
+  describe "div accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:message)
+        watir_page_object.should respond_to(:message_div)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the text from a div" do
+        watir_browser.should_receive(:div).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("Message from div")
+        watir_page_object.message.should == "Message from div"
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the text from a div" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("Message from div")
+        selenium_page_object.message.should == "Message from div"
+        
+      end
+    end
   end
 end

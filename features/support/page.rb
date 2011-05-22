@@ -42,4 +42,10 @@ class Page
   radio_button(:milk_xpath, :xpath => "//input[@type='radio']")
   
   radio_button(:butter_id, :id => 'butter_id')
+  
+  div(:div_id, :id => 'div_id')
+  div(:div_name, :name => 'div_name')
+  div(:div_class, :class => 'div_class')
+  div(:div_index, :index => 0)
+  div(:div_xpath, :xpath => '//div')
 end

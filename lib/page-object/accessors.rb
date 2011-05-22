@@ -167,5 +167,14 @@ module PageObject
       define_method(name) do
       end
     end
+    
+    def div(name, identifier) 
+      define_method("#{name}") do
+        platform.div_text_for identifier
+      end
+      define_method("#{name}_div") do
+        
+      end
+    end
   end
 end

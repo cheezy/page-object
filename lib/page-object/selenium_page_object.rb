@@ -186,5 +186,10 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::RadioButton.new(element, :platform => :selenium)
     end
+    
+    def div_text_for(identifier)
+      how, what = identifier.keys.first, identifier.values.first
+      @browser.find_element(how, what).text
+    end
   end
 end

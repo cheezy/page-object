@@ -186,5 +186,9 @@ module PageObject
       element = @browser.radio(identifier)
       PageObject::Elements::RadioButton.new(element, :platform => :watir)
     end
+    
+    def div_text_for(identifier)
+      @browser.div(identifier).text
+    end
   end
 end
