@@ -5,14 +5,14 @@
 
 === Version 0.0.1 / 2011-05-22
 * Enhancements
-  *Support for the following elements
+  * Support for the following elements
     * check box
     * link
     * radio button
     * select list
     * text field
   
-  *Support for the following page level functions
+  * Support for the following page level functions
     * text
     * html
     * title
