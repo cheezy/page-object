@@ -187,13 +187,21 @@ module PageObject
       PageObject::Elements::RadioButton.new(element, :platform => :selenium)
     end
     
+    #
+    # platform method to return the text for a div
+    # See PageObject::Accessors#div
+    #    
     def div_text_for(identifier)
-      how, what = identifier.keys.first, identifier.values.first
+      how, what = Elements::Div.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
     
+    #
+    # platform method to return a PageObject::Elements::Div element
+    # See PageObject::Accessors#div
+    #
     def div_for(identifier)
-      how, what = identifier.keys.first, identifier.values.first
+      how, what = Elements::Div.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Div.new(element, :platform => :selenium)
     end

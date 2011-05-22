@@ -187,11 +187,21 @@ module PageObject
       PageObject::Elements::RadioButton.new(element, :platform => :watir)
     end
     
+    #
+    # platform method to return the text for a div
+    # See PageObject::Accessors#div
+    #
     def div_text_for(identifier)
+      identifier = Elements::Div.watir_identifier_for identifier
       @browser.div(identifier).text
     end
     
+    #
+    # platform method to return a PageObject::Elements::Div element
+    # See PageObject::Accessors#div
+    #
     def div_for(identifier)
+      identifier = Elements::Div.watir_identifier_for identifier
       element = @browser.div(identifier)
       PageObject::Elements::Div.new(element, :platform => :watir)
     end

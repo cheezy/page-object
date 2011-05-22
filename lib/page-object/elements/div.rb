@@ -1,11 +1,11 @@
 module PageObject
   module Elements
-    class SelectList < Element
-
+    class Div < Element
+  
       protected
       
       def self.watir_finders
-        super + [:text, :value]
+        [:class, :id, :index, :xpath]
       end
     end
   end

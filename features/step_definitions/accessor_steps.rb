@@ -94,3 +94,7 @@ end
 Then /^the text should be "([^"]*)"$/ do |expected_text|
   @div_text.should == expected_text
 end
+
+When /^I search for the div by "([^"]*)"$/ do |how|
+  @div_text = @page.send "div_#{how}".to_sym
+end

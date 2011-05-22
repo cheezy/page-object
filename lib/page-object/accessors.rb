@@ -168,6 +168,21 @@ module PageObject
       end
     end
     
+    #
+    # adds two methods - one to retrieve the text from a div
+    # and another to return the div element
+    #
+    # Example:  div(:message, {:id => 'message'})
+    # will generate a 'message' and 'message_div' methods
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a checkbox.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Selenium only
+    #   :xpath => Watir and Selenium
+    #
     def div(name, identifier) 
       define_method("#{name}") do
         platform.div_text_for identifier

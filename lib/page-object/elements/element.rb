@@ -11,6 +11,17 @@ module PageObject
         include_platform_for platform
       end
       
+      def self.watir_identifier_for identifier
+        identifier_for identifier, watir_finders, watir_mapping
+      end
+
+      def self.selenium_identifier_for identifier
+        identifier = identifier_for identifier, selenium_finders, selenium_mapping
+        return identifier.keys.first, identifier.values.first
+      end
+      
+      protected
+
       def self.identifier_for identifier, find_by, find_by_mapping
         how, what = identifier.keys.first, identifier.values.first
         return how => what if find_by.include? how
@@ -18,8 +29,6 @@ module PageObject
         return nil => what
       end
       
-      protected
-
       def self.watir_finders
         [:class, :id, :index, :name, :xpath]
       end

@@ -14,4 +14,24 @@ Feature: Div
     When I retrieve the div element
     Then I should know it exists
     And I should know it is visible
+
+  Scenario Outline: Locating divs on the page
+    When I search for the div by "<search_by>"
+    Then the text should be "page-object rocks!"
+
+  Scenarios:
+    | search_by |
+    | id        |
+    | class     |
+#    | name      |
+    | xpath     |  
+
+  @watir_only
+  Scenario Outline: Locating divs on Watir only
+    When I search for the div by "<search_by>"
+    Then the text should be "page-object rocks!"
+
+  Scenarios:
+    | search_by |
+    | index     |
     
