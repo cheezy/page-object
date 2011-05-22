@@ -21,17 +21,17 @@ module PageObject
     platform.navigate_to(url)
   end
   
-  # Returns the text of the page
+  # Returns the text of the current page
   def text
     platform.text
   end
 
-  # Returns the html of the page
+  # Returns the html of the current page
   def html
     platform.html
   end
 
-  # Returns the page title
+  # Returns the title of the current page
   def title
     platform.title
   end
