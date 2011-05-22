@@ -1,5 +1,5 @@
 default: DRIVER=WATIR --no-source --color --format pretty --tags ~@selenium_only
 watir: DRIVER=WATIR --no-source --color --format pretty --tags ~@selenium_only
 selenium: DRIVER=SELENIUM --no-source --color --format pretty --tags ~@watir_only
-autotest: DRIVER=WATIR --no-source --color --format pretty --tags ~@selenium_only
+autotest: DRIVER=SELENIUM features/table.feature --no-source --color --format pretty --tags ~@watir_only
 

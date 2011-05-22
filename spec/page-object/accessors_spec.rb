@@ -3,13 +3,14 @@ require 'spec_helper'
 class TestPageObject
   include PageObject
 
-  link(:google_search, {:link => 'Google Search'})
-  text_field(:first_name, {:id => 'first_name'})
-  select_list(:state, {:id => 'state'})
-  checkbox(:active, {:id => 'is_active_id'})
-  radio_button(:first, {:id => 'first_choice'})
-  button(:click_me, { :id => 'button_submit'})
-  div(:message, { :id => 'message_id'} )
+  link(:google_search, :link => 'Google Search')
+  text_field(:first_name, :id => 'first_name')
+  select_list(:state, :id => 'state')
+  checkbox(:active, :id => 'is_active_id')
+  radio_button(:first, :id => 'first_choice')
+  button(:click_me,  :id => 'button_submit')
+  div(:message, :id => 'message_id')
+  table(:cart, :id => 'cart_id')
 end
 
 describe PageObject::Accessors do
@@ -330,6 +331,31 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.message_div
         element.should be_instance_of PageObject::Elements::Div
+        
+      end
+    end
+  end
+  
+  describe "table accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:cart_table)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the table element from the page" do
+        watir_browser.should_receive(:table).and_return(watir_browser)
+        element = watir_page_object.cart_table
+        element.should be_instance_of PageObject::Elements::Table
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the table element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.cart_table
+        element.should be_instance_of(PageObject::Elements::Table)
         
       end
     end

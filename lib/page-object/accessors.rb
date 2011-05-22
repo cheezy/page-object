@@ -191,5 +191,11 @@ module PageObject
         platform.div_for identifier
       end
     end
+    
+    def table(name, identifier)
+      define_method("#{name}_table") do
+        platform.table_for identifier
+      end
+    end
   end
 end

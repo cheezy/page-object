@@ -205,5 +205,11 @@ module PageObject
       element = @browser.div(identifier)
       PageObject::Elements::Div.new(element, :platform => :watir)
     end
+    
+    def table_for(identifier)
+      identifier = Elements::Table.watir_identifier_for identifier
+      element = @browser.table(identifier)
+      PageObject::Elements::Table.new(element, :platform => :watir)
+    end
   end
 end

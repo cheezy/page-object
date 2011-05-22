@@ -22,6 +22,10 @@ When /^I retrieve the div element$/ do
   @element = @page.div_id_div
 end
 
+When /^I retrieve a table element$/ do
+  @element = @page.table_id_table
+end
+
 
 Then /^I should know it exists$/ do
   @element.should exist

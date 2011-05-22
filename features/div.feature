@@ -23,7 +23,6 @@ Feature: Div
     | search_by |
     | id        |
     | class     |
-#    | name      |
     | xpath     |  
 
   @watir_only
@@ -35,3 +34,12 @@ Feature: Div
     | search_by |
     | index     |
     
+    
+  @selenium_only
+  Scenario Outline: Locating divs on Watir only
+    When I search for the div by "<search_by>"
+    Then the text should be "page-object rocks!"
+
+  Scenarios:
+    | search_by |
+    | name      |
