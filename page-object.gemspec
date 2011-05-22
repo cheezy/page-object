@@ -21,4 +21,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'watir-webdriver', '>= 0.2.3'
   s.add_dependency 'selenium-webdriver', '>= 0.2.0' 
+  
+  s.add_development_dependency 'rspec', '>= 2.5.0'
+  s.add_development_dependency 'cucumber', '>= 0.10.2'
+  s.add_development_dependency 'yard', '>= 0.6.8'
+  
 end
