@@ -62,7 +62,7 @@ or
 
 ## Documentation
 
-The project [wiki](https://github.com/cheezy/page-object/wiki) is the first place to go to learn about how to use page-object.
+The project [wiki](https://github.com/cheezy/page-object/wiki/page-object) is the first place to go to learn about how to use page-object.
 
 The rdocs for this project can be found at [rubydoc.info](http://rubydoc.info/github/cheezy/page-object/master/frames).
 
