@@ -32,14 +32,32 @@ module PageObject
       @browser.find_element(how, what).send_keys(value)
     end
     
+    #
+    # platform method to get the currently selected value from a select list
+    # See PageObject::Accessors#select_list
+    #
     def select_list_value_for(identifier)
       how, what = Elements::SelectList.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
     
+    #
+    # platform method to select a value from a select list
+    # See PageObject::Accessors#select_list
+    #
     def select_list_value_set(identifier, value)
       how, what = Elements::SelectList.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
+    end
+    
+    #
+    # platform method to return the select list element
+    # See PageObject::Accessors#select_list
+    #
+    def select_list_for(identifier)
+      how, what = Elements::SelectList.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      Elements::SelectList.new(element, :platform => :selenium)
     end
 
     #

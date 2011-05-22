@@ -92,31 +92,47 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :state
         watir_page_object.should respond_to :state=
+        watir_page_object.should respond_to(:state_select_list)
       end
     end
   
     context "Watir implementation" do
       it "should get the current item from a select list" do
-        watir_browser.stub_chain(:select_list, :value).and_return("OH")
+        watir_browser.should_receive(:select_list).and_return watir_browser
+        watir_browser.should_receive(:value).and_return("OH")
         watir_page_object.state.should == "OH"
       end
     
       it "should set the current item of a select list" do
-        watir_browser.stub(:select_list).and_return watir_browser
-        watir_browser.stub(:select).with("OH")
+        watir_browser.should_receive(:select_list).and_return watir_browser
+        watir_browser.should_receive(:select).with("OH")
         watir_page_object.state = "OH"
+      end
+      
+      it "should retreive the select list element" do
+        watir_browser.should_receive(:select_list).and_return(watir_browser)
+        element = watir_page_object.state_select_list
+        element.should be_instance_of PageObject::Elements::SelectList
       end
     end
   
     context "Selenium implementation" do
       it "should should get the current item from a select list" do
-        selenium_browser.stub_chain(:find_element, :attribute).and_return("OH")
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:attribute).and_return("OH")
         selenium_page_object.state.should == "OH"
       end
     
       it "should set the current item of a select list" do
-        selenium_browser.stub_chain(:find_element, :send_keys).with("OH")
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:send_keys).with("OH")
         selenium_page_object.state = "OH"
+      end
+      
+      it "should retrieve the select list element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.state_select_list
+        element.should be_instance_of PageObject::Elements::SelectList
       end
     end
   end

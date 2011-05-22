@@ -33,3 +33,8 @@ Feature: Select List
       | index     |
 #      | value     |
 #      | text      |
+
+  Scenario: Retrieve a select list
+    When I retrieve a select list
+    Then I should know it exists
+    And I should know it is visible

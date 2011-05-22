@@ -10,6 +10,11 @@ When /^I retrieve a radio button$/ do
   @element = @page.milk_id_radio_button
 end
 
+When /^I retrieve a select list$/ do
+  @element = @page.sel_list_id_select_list
+end
+
+
 Then /^I should know it exists$/ do
   @element.should exist
 end

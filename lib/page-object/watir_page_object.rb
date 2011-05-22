@@ -32,14 +32,32 @@ module PageObject
       @browser.text_field(identifier).set(value)
     end
     
+    #
+    # platform method to get the currently selected value from a select list
+    # See PageObject::Accessors#select_list
+    #
     def select_list_value_for(identifier)
       identifier = Elements::SelectList.watir_identifier_for identifier
       @browser.select_list(identifier).value
     end
     
+    #
+    # platform method to select a value from a select list
+    # See PageObject::Accessors#select_list
+    #
     def select_list_value_set(identifier, value)
       identifier = Elements::SelectList.watir_identifier_for identifier
       @browser.select_list(identifier).select(value)
+    end
+    
+    #
+    # platform method to return the select list element
+    # See PageObject::Accessors#select_list
+    #
+    def select_list_for(identifier)
+      identifier = Elements::SelectList.watir_identifier_for identifier
+      element = @browser.select_list(identifier)
+      Elements::SelectList.new(element, :platform => :watir)
     end
         
     #

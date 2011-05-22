@@ -35,11 +35,12 @@ module PageObject
     end
 
     #
-    # adds two methods - one to select an item in a drop-down and
-    # another to fetch the currently selected item.
+    # adds three methods - one to select an item in a drop-down,
+    # another to fetch the currently selected item and another
+    # to retrieve the select list element.
     #
     # Example:  select_list(:state, {:id => "state"})
-    # will generate the 'state' and 'state=' methods
+    # will generate the 'state', 'state=' and 'state_select_list' methods
     #
     # @param the name used for the generated methods
     # @param identifier how we find a select_list.  The valid values are:
@@ -57,6 +58,9 @@ module PageObject
       end
       define_method("#{name}=") do |value|
         driver.select_list_value_set(identifier, value)
+      end
+      define_method("#{name}_select_list") do
+        driver.select_list_for identifier
       end
     end
 
