@@ -34,3 +34,4 @@ Feature: Button
   Scenarios:
     | search_by |
     | index     |
+    | text      |
