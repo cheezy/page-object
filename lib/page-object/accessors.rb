@@ -163,8 +163,27 @@ module PageObject
       end
     end
 
+    #
+    # adds two methods - one to click a button and another to
+    # return the button element.
+    #
+    # Example: button(:purchase, :id => 'purchase')
+    # will generate a 'purchase' and 'purchase_button' methods.
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a checkbox.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :xpath => Watir and Selenium
+    #
     def button(name, identifier)
       define_method(name) do
+        platform.click_button_for identifier
+      end
+      define_method("#{name}_button") do
+        platform.button_for identifier
       end
     end
     

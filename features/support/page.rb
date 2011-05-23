@@ -54,4 +54,10 @@ class Page
   table(:table_class, :class => 'table_class')
   table(:table_index, :index => 0)
   table(:table_xpath, :xpath => '//table')
+  
+  button(:button_id, :id => 'button_id')
+  button(:button_name, :name => 'button_name')
+  button(:button_class, :name => 'button_class')
+  button(:button_index, :index => 0)
+  button(:button_xpath, :xpath=> "//input[@type='radio']")
 end

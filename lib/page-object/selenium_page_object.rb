@@ -206,6 +206,25 @@ module PageObject
       PageObject::Elements::Div.new(element, :platform => :selenium)
     end
     
+    #
+    # platform method to click a button
+    # See PageObject::Accessors#button
+    #
+    def click_button_for(identifier)
+      how, what = Elements::Button.selenium_identifier_for identifier
+      @browser.find_element(how, what).click
+    end
+    
+    #
+    # platform method to retrieve a button element
+    # See PageObject::Accessors#button
+    #
+    def button_for(identifier)
+      how, what = Elements::Button.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::Button.new(element, :platform => :selenium)
+    end
+
     def table_for(identifier)
       how, what = Elements::Table.selenium_identifier_for identifier
       element = @browser.find_element(how, what)

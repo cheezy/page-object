@@ -292,9 +292,38 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :click_me
+        watir_page_object.should respond_to :click_me_button
       end
     end
-
+    
+    context "watir implementation" do
+      it "should be able to click a button" do
+        watir_browser.should_receive(:button).and_return(watir_browser)
+        watir_browser.should_receive(:click)
+        watir_page_object.click_me
+      end
+      
+      it "should retrieve a button element" do
+        watir_browser.should_receive(:button).and_return(watir_browser)
+        element = watir_page_object.click_me_button
+        element.should be_instance_of PageObject::Elements::Button
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should be able to click a button" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:click)
+        selenium_page_object.click_me
+      end
+      
+      it "should retrieve a button element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.click_me_button
+        element.should be_instance_of PageObject::Elements::Button
+        
+      end
+    end
   end
   
   describe "div accessors" do

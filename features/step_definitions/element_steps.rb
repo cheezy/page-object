@@ -26,6 +26,11 @@ When /^I retrieve a table element$/ do
   @element = @page.table_id_table
 end
 
+When /^I retrieve a button element$/ do
+  @element = @page.button_id_button
+end
+  
+
 
 Then /^I should know it exists$/ do
   @element.should exist

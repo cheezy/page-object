@@ -206,6 +206,25 @@ module PageObject
       PageObject::Elements::Div.new(element, :platform => :watir)
     end
     
+    #
+    # platform method to click a button
+    # See PageObject::Accessors#button
+    #
+    def click_button_for(identifier)
+      identifier = Elements::Button.watir_identifier_for identifier
+      @browser.button(identifier).click
+    end
+    
+    #
+    # platform method to retrieve a button element
+    # See PageObject::Accessors#button
+    #
+    def button_for(identifier)
+      identifier = Elements::Button.watir_identifier_for identifier
+      element = @browser.button(identifier)
+      PageObject::Elements::Button.new(element, :platform => :watir)
+    end
+    
     def table_for(identifier)
       identifier = Elements::Table.watir_identifier_for identifier
       element = @browser.table(identifier)

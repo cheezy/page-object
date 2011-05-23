@@ -98,3 +98,12 @@ end
 When /^I search for the div by "([^"]*)"$/ do |how|
   @div_text = @page.send "div_#{how}".to_sym
 end
+
+When /^I click the button$/ do
+  @page.button_id
+end
+
+Then /^I should be on the success page$/ do
+  @page.text.should include 'Success'
+  @page.title.should == 'Success'
+end
