@@ -87,7 +87,7 @@ describe PageObject::Accessors do
     context "Selenium implementation" do
       it "should get the text from the text field element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        selenium_browser.should_receive(:value).and_return('Katie')
+        selenium_browser.should_receive(:attribute).with('value').and_return('Katie')
         selenium_page_object.first_name.should == 'Katie'
       end
 

@@ -44,7 +44,7 @@ module PageObject
     #
     def text_field_value_for(identifier)
       how, what = Elements::TextField.selenium_identifier_for identifier
-      @browser.find_element(how, what).value
+      @browser.find_element(how, what).attribute('value')
     end
     
     #
