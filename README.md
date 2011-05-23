@@ -68,6 +68,8 @@ The rdocs for this project can be found at [rubydoc.info](http://rubydoc.info/gi
 
 If you wish to view the current tracker board you can view it on [Pivotal Tracker](https://www.pivotaltracker.com/projects/289099)
 
+To read about the motivation for this gem please read this [blog entry](http://www.cheezyworld.com/2010/11/19/ui-tests-introducing-a-simple-dsl/)
+
 ## Known Issues
 
 See [http://github.com/cheezy/page-object/issues](http://github.com/cheezy/page-object/issues)
