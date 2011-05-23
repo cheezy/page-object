@@ -15,3 +15,22 @@ Feature: Button
     Then I should know it exists
     And I should know it is visible
 
+  Scenario Outline: Locating buttons on the page
+    When I search for the button by "<search_by>"
+    Then I should be able to click the button
+
+  Scenarios:
+    | search_by |
+    | id        |
+    | class     |
+    | name      |
+    | xpath     |  
+
+  @watir_only
+  Scenario Outline: Locating check boxes on Watir only
+    When I search for the button by "<search_by>"
+    Then I should be able to click the button
+
+  Scenarios:
+    | search_by |
+    | index     |

@@ -107,3 +107,11 @@ Then /^I should be on the success page$/ do
   @page.text.should include 'Success'
   @page.title.should == 'Success'
 end
+
+When /^I search for the button by "([^"]*)"$/ do |how|
+  @how = how
+end
+
+Then /^I should be able to click the button$/ do
+  @page.send "button_#{@how}"
+end
