@@ -176,6 +176,7 @@ module PageObject
     #   :id => Watir and Selenium
     #   :index => Watir only
     #   :name => Watir and Selenium
+    #   :text => Watir only
     #   :xpath => Watir and Selenium
     #
     def button(name, identifier)
