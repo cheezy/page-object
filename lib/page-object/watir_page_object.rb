@@ -232,10 +232,12 @@ module PageObject
     end
     
     def cell_text_for(identifier)
+      identifier = Elements::Table.watir_identifier_for identifier
       @browser.td(identifier).text
     end
     
     def cell_for(identifier)
+      identifier = Elements::Table.watir_identifier_for identifier
       element = @browser.td(identifier)
       PageObject::Elements::TableCell.new(element, :platform => :watir)
     end

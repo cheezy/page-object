@@ -412,5 +412,13 @@ describe PageObject::Accessors do
         element.should be_instance_of PageObject::Elements::TableCell
       end
     end
+    
+    context "selenium implementation" do
+      it "should retrieve the text from the cell" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return('celldata')
+        selenium_page_object.total.should == 'celldata'
+      end
+    end
   end
 end

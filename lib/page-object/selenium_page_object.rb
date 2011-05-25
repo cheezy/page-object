@@ -230,5 +230,16 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::Table.new(element, :platform => :selenium)
     end
+    
+    def cell_text_for(identifier)
+      how, what = Elements::TableCell.selenium_identifier_for identifier
+      @browser.find_element(how, what).text
+    end
+    
+    def cell_for(identifier)
+      how, what = Elements::TableCell.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::TableCell.new(element, :platform => :selenium)
+    end
   end
 end
