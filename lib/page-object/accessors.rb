@@ -218,6 +218,21 @@ module PageObject
       end
     end
     
+    #
+    # adds two methods  one to retrieve the text from a table cell
+    # and another to return the table cell element
+    #
+    # Example: cell(:total, :id => 'total_cell')
+    # will generate a 'total' and 'total_cell' methods
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a checkbox.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Selenium only
+    #   :xpath => Watir and Selenium
+    #
     def cell(name, identifier)
       define_method("#{name}") do
         platform.cell_text_for identifier

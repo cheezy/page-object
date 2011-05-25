@@ -225,17 +225,29 @@ module PageObject
       PageObject::Elements::Button.new(element, :platform => :watir)
     end
     
+    #
+    # platform method to retrieve a table element
+    # See PageObject::Accessors#table
+    #
     def table_for(identifier)
       identifier = Elements::Table.watir_identifier_for identifier
       element = @browser.table(identifier)
       PageObject::Elements::Table.new(element, :platform => :watir)
     end
     
+    #
+    # platform method to retrieve the text from a table cell
+    # See PageObject::Accessors#cell
+    #
     def cell_text_for(identifier)
       identifier = Elements::Table.watir_identifier_for identifier
       @browser.td(identifier).text
     end
     
+    #
+    # platform method to retrieve a table cell element
+    # See PageObject::Accessors#cell
+    #
     def cell_for(identifier)
       identifier = Elements::Table.watir_identifier_for identifier
       element = @browser.td(identifier)

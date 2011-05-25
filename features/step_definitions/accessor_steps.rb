@@ -115,3 +115,7 @@ end
 Then /^I should be able to click the button$/ do
   @page.send "button_#{@how}"
 end
+
+When /^I search for the table cell by "([^"]*)"$/ do |how|
+  @cell_data = @page.send "cell_#{how}"
+end

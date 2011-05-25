@@ -225,17 +225,29 @@ module PageObject
       PageObject::Elements::Button.new(element, :platform => :selenium)
     end
 
+    #
+    # platform method to retrieve a table element
+    # See PageObject::Accessors#table
+    #
     def table_for(identifier)
       how, what = Elements::Table.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Table.new(element, :platform => :selenium)
     end
     
+    #
+    # platform method to retrieve the text from a table cell
+    # See PageObject::Accessors#cell
+    #
     def cell_text_for(identifier)
       how, what = Elements::TableCell.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
     
+    #
+    # platform method to retrieve a table cell element
+    # See PageObject::Accessors#cell
+    #
     def cell_for(identifier)
       how, what = Elements::TableCell.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
