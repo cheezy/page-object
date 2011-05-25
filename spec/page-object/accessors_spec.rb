@@ -11,6 +11,7 @@ class TestPageObject
   button(:click_me,  :id => 'button_submit')
   div(:message, :id => 'message_id')
   table(:cart, :id => 'cart_id')
+  cell(:total, :id => 'total')
 end
 
 describe PageObject::Accessors do
@@ -386,6 +387,29 @@ describe PageObject::Accessors do
         element = selenium_page_object.cart_table
         element.should be_instance_of(PageObject::Elements::Table)
         
+      end
+    end
+  end
+  
+  describe "table cell accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:total)
+        watir_page_object.should respond_to(:total_cell)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the text for the cell" do
+        watir_browser.should_receive(:td).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return('10.00')
+        watir_page_object.total.should == '10.00'
+      end
+      
+      it "should retrieve the cell element from the page" do
+        watir_browser.should_receive(:td).and_return(watir_browser)
+        element = watir_page_object.total_cell
+        element.should be_instance_of PageObject::Elements::TableCell
       end
     end
   end

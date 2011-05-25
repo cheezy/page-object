@@ -19,4 +19,14 @@ describe PageObject::Elements::Table do
       end
     end
   end
+  
+  describe "interface" do
+    context "for watir" do
+      let(:driver) { double('driver') }
+      let(:table_row) { double('table_row') }
+      let(:table) { PageObject::Elements::Table.new(driver, :platform => :watir) }
+      
+      
+    end
+  end
 end

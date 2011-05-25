@@ -55,6 +55,12 @@ class Page
   table(:table_index, :index => 0)
   table(:table_xpath, :xpath => '//table')
   
+  cell(:cell_id, :id => 'cell_id')
+  cell(:cell_name, :name => 'cell_name')
+  cell(:cell_class, :class => 'cell_class')
+  cell(:cell_index, :index => 3)
+  cell(:cell_xpath, :xpath => '//td[3]')
+  
   button(:button_id, :id => 'button_id')
   button(:button_name, :name => 'button_name')
   button(:button_class, :class => 'button_class')

@@ -230,5 +230,14 @@ module PageObject
       element = @browser.table(identifier)
       PageObject::Elements::Table.new(element, :platform => :watir)
     end
+    
+    def cell_text_for(identifier)
+      @browser.td(identifier).text
+    end
+    
+    def cell_for(identifier)
+      element = @browser.td(identifier)
+      PageObject::Elements::TableCell.new(element, :platform => :watir)
+    end
   end
 end

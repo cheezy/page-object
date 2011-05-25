@@ -217,5 +217,14 @@ module PageObject
         platform.table_for identifier
       end
     end
+    
+    def cell(name, identifier)
+      define_method("#{name}") do
+        platform.cell_text_for identifier
+      end
+      define_method("#{name}_cell") do
+        platform.cell_for identifier
+      end
+    end
   end
 end

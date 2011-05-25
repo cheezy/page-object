@@ -29,6 +29,10 @@ end
 When /^I retrieve a button element$/ do
   @element = @page.button_id_button
 end
+
+When /^I retrieve table cell$/ do
+  @element = @page.cell_id_cell
+end
   
 
 
