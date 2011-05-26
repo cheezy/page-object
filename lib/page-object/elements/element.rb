@@ -45,15 +45,15 @@ module PageObject
         {}
       end
       
-      private
+      protected
       
       def include_platform_for platform
         if platform[:platform] == :watir
-          require 'page-object/watir_element'
-          self.class.send :include, PageObject::WatirElement
+          require 'page-object/platforms/watir_element'
+          self.class.send :include, PageObject::Platforms::WatirElement
         else
-          require 'page-object/selenium_element'
-          self.class.send :include, PageObject::SeleniumElement
+          require 'page-object/platforms/selenium_element'
+          self.class.send :include, PageObject::Platforms::SeleniumElement
         end
       end
     end

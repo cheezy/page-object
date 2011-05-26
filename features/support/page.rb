@@ -59,7 +59,7 @@ class Page
   cell(:cell_name, :name => 'cell_name')
   cell(:cell_class, :class => 'cell_class')
   cell(:cell_index, :index => 3)
-  cell(:cell_xpath, :xpath => '//td[4]')
+  cell(:cell_xpath, :xpath => '//table//tr[2]//td[2]')
   
   button(:button_id, :id => 'button_id')
   button(:button_name, :name => 'button_name')
