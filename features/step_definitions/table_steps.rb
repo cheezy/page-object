@@ -1,7 +1,7 @@
 Then /^the data for row "([^"]*)" should be "([^"]*)" and "([^"]*)"$/ do |row, col1, col2|
   table_row = @element[row.to_i - 1]
-  table_row[0].should == col1
-  table_row[1].should == col2
+  table_row[0].text.should == col1
+  table_row[1].text.should == col2
 end
 
 

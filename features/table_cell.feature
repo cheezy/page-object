@@ -37,3 +37,9 @@ Feature: Table Cell
     | search_by |
     | name      |
 
+  Scenario: Retrieve a cell from a table by id
+    When I retrieve table cell
+    Then I should know it exists
+    And I should know it is visible
+
+

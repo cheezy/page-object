@@ -33,19 +33,17 @@ module PageObject
         [:class, :id, :index, :name, :xpath]
       end
       
-      def self.watir_mapping
-        {}
+      def self.watir_mapping 
+        {} 
       end
       
       def self.selenium_finders
         [:class, :id, :name, :xpath]
       end
       
-      def self.selenium_mapping
-        {}
+      def self.selenium_mapping 
+        {} 
       end
-      
-      protected
       
       def include_platform_for platform
         if platform[:platform] == :watir

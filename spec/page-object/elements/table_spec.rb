@@ -26,7 +26,10 @@ describe PageObject::Elements::Table do
       let(:table_row) { double('table_row') }
       let(:table) { PageObject::Elements::Table.new(driver, :platform => :watir) }
       
-      
+      it "should return a table row" do
+        driver.should_receive(:[]).with(1).and_return(table_row)
+        table[1].should be_instance_of PageObject::Elements::TableRow
+      end
     end
   end
 end

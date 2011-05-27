@@ -9,6 +9,10 @@ module PageObject
       def exists?
         @element.exists?
       end
+      
+      def text
+        @element.text
+      end
     end
   end
 end

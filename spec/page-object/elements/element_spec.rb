@@ -28,6 +28,11 @@ describe PageObject::Elements::Element do
       watir_driver.should_receive(:exists?).and_return(false)
       watir_element.exists?.should == false
     end
+    
+    it "should be able to return the text contained in the element" do
+      watir_driver.should_receive(:text).and_return("my text")
+      watir_element.text.should == "my text"
+    end
   end
   
   context "on a Selenium page-object" do
