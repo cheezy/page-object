@@ -211,7 +211,21 @@ module PageObject
         platform.div_for identifier
       end
     end
-    
+
+    #
+    # adds a method to retrieve the table element
+    #
+    # Example: table(:cart, :id => 'shopping_cart')
+    # will generate a 'cart_table' method.
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a checkbox.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Selenium only
+    #   :xpath => Watir and Selenium
+    #
     def table(name, identifier)
       define_method("#{name}_table") do
         platform.table_for identifier

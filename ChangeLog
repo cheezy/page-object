@@ -2,7 +2,11 @@
 * Enhancements
   * Added support for the following elements
     * div
-    * Button
+    * button
+    * table
+    * table row
+    * table cell
+    * added #text to element
 
 === Version 0.0.1 / 2011-05-22
 * Enhancements

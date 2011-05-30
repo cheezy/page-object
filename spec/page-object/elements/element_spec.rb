@@ -53,7 +53,11 @@ describe PageObject::Elements::Element do
     it "should know when it does not exist" do
       selenium_element = PageObject::Elements::Element.new(nil, :platform => :selenium)
       selenium_element.exists?.should == false
-      
+    end
+    
+    it "should be able to return the text contained in the element" do
+      selenium_driver.should_receive(:text).and_return("my text")
+      selenium_element.text.should == "my text"
     end
   end
 end

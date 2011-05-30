@@ -2,10 +2,14 @@ module PageObject
   module Platforms
     module WatirTableRow
       
+      #
+      # Return the PageObject::Elements::TableCell for the index provided.  Index
+      # is zero based.
+      #
       def [](idx)
-        element = @element[idx]
-        PageObject::Elements::TableCell.new(element, :platform => :watir)
+        PageObject::Elements::TableCell.new(@element[idx], :platform => :watir)
       end
+      
     end
   end
 end

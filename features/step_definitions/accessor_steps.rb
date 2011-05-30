@@ -119,3 +119,7 @@ end
 When /^I search for the table cell by "([^"]*)"$/ do |how|
   @cell_data = @page.send "cell_#{how}"
 end
+
+When /^I retrieve a table element by "([^"]*)"$/ do |how|
+  @element = @page.send "table_#{how}_table"
+end
