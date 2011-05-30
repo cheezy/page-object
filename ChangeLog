@@ -1,4 +1,8 @@
-=== Version 0.0.2
+== Version 0.0.3
+* Enhancements
+
+
+=== Version 0.0.2 / 2011-05-30
 * Enhancements
   * Added support for the following elements
     * div
@@ -6,7 +10,7 @@
     * table
     * table row
     * table cell
-    * added #text to element
+  * Added #text to element
 
 === Version 0.0.1 / 2011-05-22
 * Enhancements
