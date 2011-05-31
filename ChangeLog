@@ -1,6 +1,10 @@
 == Version 0.0.3
 * Enhancements
-
+  * Added the following methods to Element
+    * value
+    * ==
+    * tag_name
+    * attribute
 
 === Version 0.0.2 / 2011-05-30
 * Enhancements
@@ -10,7 +14,7 @@
     * table
     * table row
     * table cell
-  * Added #text to element
+  * Added text method to element
 
 === Version 0.0.1 / 2011-05-22
 * Enhancements

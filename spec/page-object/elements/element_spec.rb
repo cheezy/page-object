@@ -33,6 +33,26 @@ describe PageObject::Elements::Element do
       watir_driver.should_receive(:text).and_return("my text")
       watir_element.text.should == "my text"
     end
+    
+    it "should know when it is equal to another" do
+      watir_driver.should_receive(:==).and_return(true)
+      watir_element.should == watir_element
+    end
+    
+    it "should return its tag name" do
+      watir_driver.should_receive(:tag_name).and_return("h1")
+      watir_element.tag_name.should == "h1"
+    end
+    
+    it "should know its value" do
+      watir_driver.should_receive(:value).and_return("value")
+      watir_element.value.should == "value"
+    end
+    
+    it "should know how to retrieve the value of an attribute" do
+      watir_driver.should_receive(:attribute_value).and_return(true)
+      watir_element.attribute("readonly").should be_true
+    end
   end
   
   context "on a Selenium page-object" do
@@ -58,6 +78,26 @@ describe PageObject::Elements::Element do
     it "should be able to return the text contained in the element" do
       selenium_driver.should_receive(:text).and_return("my text")
       selenium_element.text.should == "my text"
+    end
+    
+    it "should know when it is equal to another" do
+      selenium_driver.should_receive(:==).and_return(true)
+      selenium_element.should == selenium_element
+    end
+    
+    it "should return its tag name" do
+      selenium_driver.should_receive(:tag_name).and_return("h1")
+      selenium_element.tag_name.should == "h1"
+    end
+    
+    it "should know its value" do
+      selenium_driver.should_receive(:value).and_return("value")
+      selenium_element.value.should == "value"
+    end
+    
+    it "should know how to retrieve the value of an attribute" do
+      selenium_driver.should_receive(:attribute).and_return(true)
+      selenium_element.attribute('readonly').should be_true
     end
   end
 end
