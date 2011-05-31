@@ -61,4 +61,14 @@ Feature: Elements
     When I retrieve the div element
     And I should know its' value is nil
 
+  Scenario: Radio Button element methods
+    When I retrieve a radio button
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text is ""
+    And I should know its' value is "Milk"
+    And I should know it is equal to itself
+    And I should know its' tag name is "input"
+    And I should know the attribute "readonly" is false
+
   
