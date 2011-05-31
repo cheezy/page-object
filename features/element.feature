@@ -15,7 +15,7 @@ Feature: Elements
   @watir_only
   Scenario: Link element methods for watir
     When I retrieve a link element
-    And I should know its' value is ""
+    Then I should know its' value is ""
     
 
   Scenario: Button element methods
@@ -30,7 +30,7 @@ Feature: Elements
   @watir_only
   Scenario: Button element methods for watir
     When I retrieve a button element
-    And I should know its' text is "Click Me"
+    Then I should know its' text is "Click Me"
 
   Scenario: Check Box element methods
     When I retrieve a check box element
@@ -54,12 +54,12 @@ Feature: Elements
   @watir_only
   Scenario: Div element methods for watir
     When I retrieve the div element
-    And I should know its' value is ""
+    Then I should know its' value is ""
   
   @selenium_only
   Scenario: Div element methods for selenium
     When I retrieve the div element
-    And I should know its' value is nil
+    Then I should know its' value is nil
 
   Scenario: Radio Button element methods
     When I retrieve a radio button
@@ -83,7 +83,7 @@ Feature: Elements
 
   Scenario: Table element methods
     When I retrieve a table element
-    And I should know it is visible
+    Then I should know it is visible
     And I should know its' text includes "Data1"
     And I should know it is equal to itself
     And I should know its' tag name is "table"      
@@ -98,5 +98,33 @@ Feature: Elements
   @selenium_only
   Scenario: Table element methods in selenium
     When I retrieve a table element
-    And I should know its' value is nil
+    Then I should know its' value is nil
   
+  Scenario: Table Cell element methods
+    When I retrieve table cell
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text includes "Data4"
+    And I should know it is equal to itself
+    And I should know its' tag name is "td"      
+    And I should know the attribute "readonly" is false
+
+  @watir_only
+  Scenario: Table Cell element methods in watir
+    When I retrieve table cell
+    Then I should know its' value is ""
+
+  @selenium_only
+  Scenario: Table Cell element methods in selenium
+    When I retrieve table cell
+    Then I should know its' value is nil
+
+  Scenario: Text Field element methods
+    When I retrieve a text field
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text includes ""
+    And I should know its' value is ""
+    And I should know it is equal to itself
+    And I should know its' tag name is "input"      
+    And I should know the attribute "readonly" is false
