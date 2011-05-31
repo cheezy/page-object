@@ -48,6 +48,10 @@ Then /^I should know its' text is "([^"]*)"$/ do |text|
   @element.text.should == text
 end
 
+Then /^I should know its' text includes "([^"]*)"$/ do |text|
+  @element.text.should include text
+end
+
 Then /^I should know its' value is "([^"]*)"$/ do |value|
   @element.value.should == value
 end
