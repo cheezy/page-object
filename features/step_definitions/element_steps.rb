@@ -44,3 +44,24 @@ Then /^I should know it is visible$/ do
   @element.should be_visible
 end
 
+Then /^I should know its' text is "([^"]*)"$/ do |text|
+  @element.text.should == text
+end
+
+Then /^I should know its' value is "([^"]*)"$/ do |value|
+  @element.value.should == value
+end
+
+Then /^I should know it is equal to itself$/ do
+  @element.should == @element
+end
+
+Then /^I should know its' tag name is "([^"]*)"$/ do |tagname|
+  @element.tag_name.should == tagname
+end
+
+Then /^I should know the attribute "([^"]*)" is false$/ do |attr_name|
+  @attr = @element.attribute(attr_name)
+  @attr.should be_false if @attr.is_a? FalseClass
+  @attr.should == "false" if @attr.is_a? String
+end

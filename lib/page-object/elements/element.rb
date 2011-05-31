@@ -6,6 +6,7 @@ module PageObject
     # Contains functionality that is common across all elements.
     #
     class Element
+      attr_reader :element
       
       def initialize(element, platform)
         @element = element

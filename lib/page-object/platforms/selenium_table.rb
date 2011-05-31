@@ -16,7 +16,7 @@ module PageObject
       # available on a table element in Selenium.
       #
       def exists?
-        nil
+        raise "exists? not available on table element"
       end
       
     end

@@ -20,4 +20,15 @@ describe PageObject::Elements::Button do
     end
   end
 
+  describe "interface" do
+    let(:button_element) { double('button_element') }
+    
+    context "for selenium" do
+      it "should return error when asked for its' text" do
+        button = PageObject::Elements::Button.new(button_element, :platform => :selenium)
+        lambda {button.text}.should raise_error
+      end      
+    end
+  end
+  
 end

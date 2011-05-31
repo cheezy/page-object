@@ -31,4 +31,15 @@ describe PageObject::Elements::Link do
       key.should == :link_text
     end
   end
+  
+  describe "interface" do
+    let(:link_element) { double('link_element') }
+    
+    context "for selenium" do
+      it "should return error when asked for its' value" do
+        link = PageObject::Elements::Link.new(link_element, :platform => :selenium)
+        lambda {link.value}.should raise_error
+      end      
+    end
+  end
 end

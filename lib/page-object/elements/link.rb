@@ -2,6 +2,10 @@ module PageObject
   module Elements
     class Link < Element
       
+      def initialize(element, platform)
+        @element = element
+        include_platform_for platform
+      end
       
       protected
       
@@ -21,6 +25,13 @@ module PageObject
         super.merge(:text => :link_text)
       end
 
+      def include_platform_for platform
+        super
+        if platform[:platform] == :selenium
+          require 'page-object/platforms/selenium_link'
+          self.class.send :include, PageObject::Platforms::SeleniumLink
+        end
+      end
     end
   end
 end
