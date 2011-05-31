@@ -42,3 +42,13 @@ Feature: Elements
     And I should know its' tag name is "input"
     And I should know the attribute "readonly" is false
   
+  Scenario: Div element methods
+    When I retrieve the div element
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text is "page-object rocks!"
+    And I should know its' value is nil
+    And I should know it is equal to itself
+    And I should know its' tag name is "div"
+    And I should know the attribute "readonly" is false
+

@@ -52,6 +52,10 @@ Then /^I should know its' value is "([^"]*)"$/ do |value|
   @element.value.should == value
 end
 
+Then /^I should know its' value is nil$/ do
+  @element.value.should be_nil
+end
+
 Then /^I should know it is equal to itself$/ do
   @element.should == @element
 end

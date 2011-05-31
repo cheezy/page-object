@@ -91,7 +91,7 @@ describe PageObject::Elements::Element do
     end
     
     it "should know its value" do
-      selenium_driver.should_receive(:value).and_return("value")
+      selenium_driver.should_receive(:attribute).with('value').and_return("value")
       selenium_element.value.should == "value"
     end
     

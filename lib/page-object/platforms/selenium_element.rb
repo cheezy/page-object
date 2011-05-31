@@ -32,7 +32,7 @@ module PageObject
       # @return [String]
       #
       def value
-        @element.value
+        @element.attribute('value')
       end
       
       #
