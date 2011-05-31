@@ -47,8 +47,18 @@ Feature: Elements
     Then I should know it exists
     And I should know it is visible
     And I should know its' text is "page-object rocks!"
-    And I should know its' value is nil
     And I should know it is equal to itself
     And I should know its' tag name is "div"
     And I should know the attribute "readonly" is false
 
+  @watir_only
+  Scenario: Div element methods for watir
+    When I retrieve the div element
+    And I should know its' value is ""
+  
+  @selenium_only
+  Scenario: Div element methods for selenium
+    When I retrieve the div element
+    And I should know its' value is nil
+
+  
