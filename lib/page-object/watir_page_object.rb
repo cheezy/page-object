@@ -207,6 +207,25 @@ module PageObject
     end
     
     #
+    # platform method to return the text for a span
+    # See PageObject::Accessors#span
+    #
+    def span_text_for(identifier)
+      identifier = Elements::Span.watir_identifier_for identifier
+      @browser.span(identifier).text
+    end
+    
+    #
+    # platform method to return a PageObject::Elements::Span element
+    # See PageObject::Accessors#span
+    #
+    def span_for(identifier)
+      identifier = Elements::Span.watir_identifier_for identifier
+      element = @browser.span(identifier)
+      PageObject::Elements::Span.new(element, :platform => :watir)
+    end
+    
+    #
     # platform method to click a button
     # See PageObject::Accessors#button
     #

@@ -207,6 +207,25 @@ module PageObject
     end
     
     #
+    # platform method to return the text for a span
+    # See PageObject::Accessors#span
+    #
+    def span_text_for(identifier)
+      how, what = Elements::Div.selenium_identifier_for identifier
+      @browser.find_element(how, what).text
+    end
+    
+    #
+    # platform method to return a PageObject::Elements::Span element
+    # See PageObject::Accessors#span
+    #
+    def span_for(identifier)
+      how, what = Elements::Div.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::Span.new(element, :platform => :selenium)
+    end
+    
+    #
     # platform method to click a button
     # See PageObject::Accessors#button
     #

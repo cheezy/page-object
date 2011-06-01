@@ -49,6 +49,12 @@ class Page
   div(:div_index, :index => 0)
   div(:div_xpath, :xpath => '//div')
   
+  span(:span_id, :id => 'span_id')
+  span(:span_name, :name => 'span_name')
+  span(:span_class, :class => 'span_class')
+  span(:span_index, :index => 0)
+  span(:span_xpath, :xpath => '//span')
+  
   table(:table_id, :id => 'table_id')
   table(:table_name, :name => 'table_name')
   table(:table_class, :class => 'table_class')

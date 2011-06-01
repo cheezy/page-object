@@ -204,11 +204,20 @@ module PageObject
     #   :xpath => Watir and Selenium
     #
     def div(name, identifier) 
-      define_method("#{name}") do
+      define_method(name) do
         platform.div_text_for identifier
       end
       define_method("#{name}_div") do
         platform.div_for identifier
+      end
+    end
+
+    def span(name, identifier)
+      define_method(name) do
+        platform.span_text_for identifier
+      end
+      define_method("#{name}_span") do
+        platform.span_for identifier
       end
     end
 

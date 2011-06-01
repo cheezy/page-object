@@ -12,6 +12,7 @@ class TestPageObject
   div(:message, :id => 'message_id')
   table(:cart, :id => 'cart_id')
   cell(:total, :id => 'total')
+  span(:alert, :id => 'alert_id')
 end
 
 describe PageObject::Accessors do
@@ -361,6 +362,44 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.message_div
         element.should be_instance_of PageObject::Elements::Div
+        
+      end
+    end
+  end
+  
+  describe "span accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:alert)
+        watir_page_object.should respond_to(:alert_span)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the text from a span" do
+        watir_browser.should_receive(:span).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("Alert")
+        watir_page_object.alert.should == "Alert"
+      end
+      
+      it "should retrieve the span element from the page" do
+        watir_browser.should_receive(:span).and_return(watir_browser)
+        element = watir_page_object.alert_span
+        element.should be_instance_of PageObject::Elements::Span
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the text from a span" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("Alert")
+        selenium_page_object.alert.should == "Alert"
+      end
+      
+      it "should retrieve the span element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.alert_span
+        element.should be_instance_of PageObject::Elements::Span
         
       end
     end

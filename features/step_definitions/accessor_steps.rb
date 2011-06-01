@@ -88,16 +88,25 @@ When /^I select the radio button$/ do
 end
 
 When /^I get the text from the div$/ do
-  @div_text = @page.div_id
+  @text = @page.div_id
 end
 
 Then /^the text should be "([^"]*)"$/ do |expected_text|
-  @div_text.should == expected_text
+  @text.should == expected_text
 end
 
 When /^I search for the div by "([^"]*)"$/ do |how|
-  @div_text = @page.send "div_#{how}".to_sym
+  @text = @page.send "div_#{how}".to_sym
 end
+
+When /^I get the text from the span$/ do
+  @text = @page.span_id
+end
+
+When /^I search for the span by "([^"]*)"$/ do |how|
+  @text = @page.send "span_#{how}".to_sym
+end
+
 
 When /^I click the button$/ do
   @page.button_id
