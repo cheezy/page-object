@@ -196,7 +196,7 @@ module PageObject
     # will generate a 'message' and 'message_div' methods
     #
     # @param the name used for the generated methods
-    # @param identifier how we find a checkbox.  The valid values are:
+    # @param identifier how we find a div.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -212,6 +212,21 @@ module PageObject
       end
     end
 
+    #
+    # adds two methods - one to retrieve the text from a span
+    # and another to return the span element
+    #
+    # Example:  span(:alert, {:id => 'alert'})
+    # will generate a 'alert' and 'alert_div' methods
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a span.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Selenium only
+    #   :xpath => Watir and Selenium
+    #
     def span(name, identifier)
       define_method(name) do
         platform.span_text_for identifier
