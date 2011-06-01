@@ -1,5 +1,8 @@
 == Version 0.0.3
 * Enhancements
+  * Added support for the following elements
+    * span
+    
   * Added the following methods to Element
     * value
     * ==
@@ -14,6 +17,7 @@
     * table
     * table row
     * table cell
+    
   * Added text method to element
 
 === Version 0.0.1 / 2011-05-22
