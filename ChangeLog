@@ -2,6 +2,7 @@
 * Enhancements
   * Added support for the following elements
     * span
+    * image
     
   * Added the following methods to Element
     * value
