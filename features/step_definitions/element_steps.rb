@@ -73,3 +73,7 @@ Then /^I should know the attribute "([^"]*)" is false$/ do |attr_name|
   @attr.should be_false if @attr.is_a? FalseClass
   @attr.should == "false" if @attr.is_a? String
 end
+
+Then /^I should be able to click it$/ do
+  @element.click
+end

@@ -79,6 +79,13 @@ module PageObject
       def attribute(attribute_name)
         @element.attribute attribute_name
       end
+      
+      #
+      # Click this element
+      #
+      def click
+        @element.click
+      end
     end
   end
 end

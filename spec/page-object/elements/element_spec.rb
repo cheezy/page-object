@@ -53,6 +53,11 @@ describe PageObject::Elements::Element do
       watir_driver.should_receive(:attribute_value).and_return(true)
       watir_element.attribute("readonly").should be_true
     end
+    
+    it "should be clickable" do
+      watir_driver.should_receive(:click)
+      watir_element.click
+    end
   end
   
   context "on a Selenium page-object" do
@@ -98,6 +103,11 @@ describe PageObject::Elements::Element do
     it "should know how to retrieve the value of an attribute" do
       selenium_driver.should_receive(:attribute).and_return(true)
       selenium_element.attribute('readonly').should be_true
+    end
+    
+    it "should be clickable" do
+      selenium_driver.should_receive(:click)
+      selenium_element.click
     end
   end
 end

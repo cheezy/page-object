@@ -1,4 +1,4 @@
-== Version 0.0.3
+== Version 0.0.3 / 2011-06-02
 * Enhancements
   * Added support for the following elements
     * span
@@ -9,6 +9,7 @@
     * ==
     * tag_name
     * attribute
+    * click
   
   * Updated to use selenium-webdriver 0.2.1
   
