@@ -279,5 +279,11 @@ module PageObject
         platform.cell_for identifier
       end
     end
+    
+    def image(name, identifier)
+      define_method("#{name}_image") do
+        platform.image_for identifier
+      end
+    end
   end
 end

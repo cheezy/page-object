@@ -73,4 +73,11 @@ class Page
   button(:button_index, :index => 0)
   button(:button_xpath, :xpath=> "//input[@type='submit']")
   button(:button_text, :text => 'Click Me')
+  
+  image(:image_id, :id => 'image_id')
+  image(:image_name, :name => 'image_name')
+  image(:image_class, :class => 'image_class')
+  image(:image_index, :index => 0)
+  image(:image_xpath, :xpath => '//img')
+
 end

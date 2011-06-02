@@ -272,5 +272,15 @@ module PageObject
       element = @browser.td(identifier)
       PageObject::Elements::TableCell.new(element, :platform => :watir)
     end
+    
+    #
+    # platform method to retrieve an image element
+    # See PageObject::Accessors#image
+    #
+    def image_for(identifier)
+      identifier = Elements::Image.watir_identifier_for identifier
+      element = @browser.image(identifier)
+      PageObject::Elements::Image.new(element, :platform => :watir)
+    end
   end
 end

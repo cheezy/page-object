@@ -211,7 +211,7 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_text_for(identifier)
-      how, what = Elements::Div.selenium_identifier_for identifier
+      how, what = Elements::Span.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
     
@@ -220,7 +220,7 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_for(identifier)
-      how, what = Elements::Div.selenium_identifier_for identifier
+      how, what = Elements::Span.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Span.new(element, :platform => :selenium)
     end
@@ -271,6 +271,16 @@ module PageObject
       how, what = Elements::TableCell.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::TableCell.new(element, :platform => :selenium)
+    end
+
+    #
+    # platform method to retrieve an image element
+    # See PageObject::Accessors#image
+    #
+    def image_for(identifier)
+      how, what = Elements::Image.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::Image.new(element, :platform => :selenium)
     end
   end
 end

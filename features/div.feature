@@ -36,7 +36,7 @@ Feature: Div
     
     
   @selenium_only
-  Scenario Outline: Locating divs on Watir only
+  Scenario Outline: Locating divs on Selenium only
     When I search for the div by "<search_by>"
     Then the text should be "page-object rocks!"
 

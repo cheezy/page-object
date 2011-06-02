@@ -13,6 +13,7 @@ class TestPageObject
   table(:cart, :id => 'cart_id')
   cell(:total, :id => 'total')
   span(:alert, :id => 'alert_id')
+  image(:logo, :id => 'logo')
 end
 
 describe PageObject::Accessors do
@@ -457,6 +458,30 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         selenium_browser.should_receive(:text).and_return('celldata')
         selenium_page_object.total.should == 'celldata'
+      end
+    end
+  end
+  
+  describe "image accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:logo_image)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the image element from the page" do
+        watir_browser.should_receive(:image).and_return(watir_browser)
+        element = watir_page_object.logo_image
+        element.should be_instance_of PageObject::Elements::Image
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the image element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.logo_image
+        element.should be_instance_of PageObject::Elements::Image
       end
     end
   end
