@@ -6,7 +6,7 @@ module PageObject
       # #text does not reliabably return a value in Selenium
       #
       def text
-        raise "value not available on link element with Selenium"
+        raise "text is not available on button element in Selenium"
       end
     end
   end
