@@ -5,7 +5,7 @@ module PageObject
       protected
       
       def self.watir_finders
-        super + [:tag_name, :text, :value]
+        super + [:tag_name]
       end
       
       def self.watir_mapping

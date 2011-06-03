@@ -26,12 +26,11 @@ Feature: Text Fields
   @watir_only
   Scenario Outline: Locating text fields on Watir only
     When I search for the text field by "<search_by>"
+    Then I should be able to type "I found it" into the field
 
   Scenarios:
     | search_by |
     | index     |
-    | text      |
-    | value     |
 
   Scenario: Retrieve a text field
     When I retrieve a text field

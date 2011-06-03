@@ -6,7 +6,7 @@ describe PageObject::Elements::TextField do
   
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
-      [:class, :id, :index, :name, :tag_name, :text, :value, :xpath].each do |t|
+      [:class, :id, :index, :name, :tag_name, :xpath].each do |t|
         identifier = textfield.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end
