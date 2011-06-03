@@ -149,3 +149,19 @@ When /^I get the image element by "([^"]*)"$/ do |how|
   @element = @page.send "image_#{how}_image"
 end
 
+When /^I retrieve the hidden field element$/ do
+  @element = @page.hidden_field_id_hidden_field
+end
+
+Then /^I should see the hidden field contains "([^"]*)"$/ do |text|
+  @page.hidden_field_id.should == text
+end
+
+When /^I search for the hidden field by "([^"]*)"$/ do |how|
+    @element = @page.send "hidden_field_#{how}_hidden_field"
+end
+
+Then /^hidden field element should contains "([^"]*)"$/ do |text|
+  @element.value.should == text
+end
+

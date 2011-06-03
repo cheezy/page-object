@@ -67,6 +67,25 @@ module PageObject
     end
     
     #
+    # platform method to get the value stored in a hidden field
+    # See PageObject::Accessors#hidden_field
+    #
+    def hidden_field_value_for(identifier)
+      identifier = Elements::HiddenField.watir_identifier_for identifier
+      @browser.hidden(identifier).value
+    end
+    
+    #
+    # platform method to retrieve a hidden field element
+    # See PageObject::Accessors#hidden_field
+    #
+    def hidden_field_for(identifier)
+      identifier = Elements::HiddenField.watir_identifier_for identifier
+      element = @browser.hidden(identifier)
+      Elements::HiddenField.new(element, :platform => :watir)
+    end    
+    
+    #
     # platform method to get the currently selected value from a select list
     # See PageObject::Accessors#select_list
     #

@@ -148,13 +148,22 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-    @watir_only
-    Scenario: Image element methods in watir
-      When I get the image element
-      Then I should know its' value is ""
+  @watir_only
+  Scenario: Image element methods in watir
+    When I get the image element
+    Then I should know its' value is ""
 
-    @selenium_only
-    Scenario: Image element methods in selenium
-      When I get the image element
-      Then I should know its' value is nil
+  @selenium_only
+  Scenario: Image element methods in selenium
+    When I get the image element
+    Then I should know its' value is nil
 
+  Scenario: Hidden Field element methods
+    When I retrieve the hidden field element
+    Then I should know it exists
+    And I should know it is not visible
+    And I should know its' text includes ""
+    And I should know its' value is "12345"
+    And I should know it is equal to itself
+    And I should know its' tag name is "input"      
+    And I should know the attribute "readonly" is false

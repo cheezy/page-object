@@ -44,6 +44,10 @@ Then /^I should know it is visible$/ do
   @element.should be_visible
 end
 
+Then /^I should know it is not visible$/ do
+  @element.should_not be_visible
+end
+
 Then /^I should know its' text is "([^"]*)"$/ do |text|
   @element.text.should == text
 end

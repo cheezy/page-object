@@ -37,6 +37,33 @@ module PageObject
         platform.text_field_for identifier
       end
     end
+    
+    #
+    # adds two methods to the page object - one to get the text from a hidden field
+    # and another to retrieve the hidden field element.
+    #
+    # Example:  hidden_field(:user_id, {:id => "user_identity"})
+    # will generate the 'user_id' and 'user_id_hidden_field' methods.
+    #
+    # @param  the name used for the generated methods
+    # @param identifier how we find a text_field.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :css => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :tag_name => Watir and Selenium
+    #   :text => Watir only
+    #   :xpath => Watir and Selenium
+    #
+    def hidden_field(name, identifier)
+      define_method(name) do
+        platform.hidden_field_value_for identifier
+      end
+      define_method("#{name}_hidden_field") do
+        platform.hidden_field_for identifier
+      end
+    end
 
     #
     # adds three methods - one to select an item in a drop-down,
@@ -280,6 +307,20 @@ module PageObject
       end
     end
     
+    #
+    # adds a method to retrieve the image element
+    #
+    # Example: image(:logo, :id => 'logo')
+    # will generate a 'logo_image' method
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a checkbox.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :xpath => Watir and Selenium
+    #
     def image(name, identifier)
       define_method("#{name}_image") do
         platform.image_for identifier

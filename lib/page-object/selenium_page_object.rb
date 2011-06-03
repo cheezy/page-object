@@ -67,6 +67,25 @@ module PageObject
     end
     
     #
+    # platform method to get the value stored in a hidden field
+    # See PageObject::Accessors#hidden_field
+    #
+    def hidden_field_value_for(identifier)
+      how, what = Elements::HiddenField.selenium_identifier_for identifier
+      @browser.find_element(how, what).attribute('value')
+    end
+    
+    #
+    # platform method to retrieve a hidden field element
+    # See PageObject::Accessors#hidden_field
+    #
+    def hidden_field_for(identifier)
+      how, what = Elements::HiddenField.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      Elements::HiddenField.new(element, :platform => :selenium)
+    end    
+
+    #
     # platform method to get the currently selected value from a select list
     # See PageObject::Accessors#select_list
     #

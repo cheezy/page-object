@@ -5,6 +5,7 @@ class TestPageObject
 
   link(:google_search, :link => 'Google Search')
   text_field(:first_name, :id => 'first_name')
+  hidden_field(:social_security_number, :id => 'ssn')
   select_list(:state, :id => 'state')
   checkbox(:active, :id => 'is_active_id')
   radio_button(:first, :id => 'first_choice')
@@ -100,7 +101,7 @@ describe PageObject::Accessors do
         selenium_page_object.first_name = 'Katie'
       end
       
-      it "should should retrieve a text field element" do
+      it "should retrieve a text field element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.first_name_text_field
         element.should be_instance_of PageObject::Elements::TextField
@@ -109,6 +110,37 @@ describe PageObject::Accessors do
   end
   
   
+  describe "hidden field accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:social_security_number)
+        watir_page_object.should respond_to(:social_security_number_hidden_field)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should get the text from a hidden field" do
+        watir_browser.should_receive(:hidden).and_return(watir_browser)
+        watir_browser.should_receive(:value).and_return("value")
+        watir_page_object.social_security_number.should == "value"
+      end
+
+      it "should retrieve a hidden field element" do
+        watir_browser.should_receive(:hidden).and_return(watir_browser)
+        element = watir_page_object.social_security_number_hidden_field
+        element.should be_instance_of(PageObject::Elements::HiddenField)
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should get the text from a hidden field" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:attribute).with('value').and_return("12345")
+        selenium_page_object.social_security_number.should == "12345"
+      end
+    end
+  end
+
   describe "select_list accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
