@@ -15,6 +15,7 @@ class TestPageObject
   cell(:total, :id => 'total')
   span(:alert, :id => 'alert_id')
   image(:logo, :id => 'logo')
+  form(:login, :id => 'login')
 end
 
 describe PageObject::Accessors do
@@ -514,6 +515,30 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.logo_image
         element.should be_instance_of PageObject::Elements::Image
+      end
+    end
+  end
+  
+  describe "form accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:login_form)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the form element from the page" do
+        watir_browser.should_receive(:form).and_return(watir_browser)
+        element = watir_page_object.login_form
+        element.should be_instance_of PageObject::Elements::Form
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the form element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.login_form
+        element.should be_instance_of PageObject::Elements::Form
       end
     end
   end

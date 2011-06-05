@@ -301,5 +301,15 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::Image.new(element, :platform => :selenium)
     end
+    
+    #
+    # platform method to retrieve a form element
+    # See PageObject::Accessors#form
+    #
+    def form_for(identifier)
+      how, what = Elements::Image.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::Form.new(element, :platform => :selenium)
+    end
   end
 end

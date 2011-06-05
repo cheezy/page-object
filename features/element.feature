@@ -167,3 +167,22 @@ Feature: Elements
     And I should know it is equal to itself
     And I should know its' tag name is "input"      
     And I should know the attribute "readonly" is false
+
+  Scenario: Form element methods
+    When I locate the form
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text includes ""
+    And I should know it is equal to itself
+    And I should know its' tag name is "form"      
+    And I should know the attribute "readonly" is false
+
+  @watir_only
+  Scenario: Form element methods in watir
+    When I locate the form
+    Then I should know its' value is ""
+
+  @selenium_only
+  Scenario: Form element methods in selenium
+    When I locate the form
+    Then I should know its' value is nil

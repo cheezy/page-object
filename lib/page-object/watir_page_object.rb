@@ -301,5 +301,15 @@ module PageObject
       element = @browser.image(identifier)
       PageObject::Elements::Image.new(element, :platform => :watir)
     end
+    
+    #
+    # platform method to retrieve a form element
+    # See PageObject::Accessors#form
+    #
+    def form_for(identifier)
+      identifier = Elements::Form.watir_identifier_for identifier
+      element = @browser.form(identifier)
+      PageObject::Elements::Form.new(element, :platform => :watir)
+    end
   end
 end

@@ -46,7 +46,7 @@ module PageObject
     # will generate the 'user_id' and 'user_id_hidden_field' methods.
     #
     # @param  the name used for the generated methods
-    # @param identifier how we find a text_field.  The valid values are:
+    # @param identifier how we find a hidden field.  The valid values are:
     #   :class => Watir and Selenium
     #   :css => Watir and Selenium
     #   :id => Watir and Selenium
@@ -168,7 +168,7 @@ module PageObject
     # 'north_selected?' and 'north_radio_button' methods
     #
     # @param the name used for the generated methods
-    # @param identifier how we find a checkbox.  The valid values are:
+    # @param identifier how we find a radio button.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -198,7 +198,7 @@ module PageObject
     # will generate a 'purchase' and 'purchase_button' methods.
     #
     # @param the name used for the generated methods
-    # @param identifier how we find a checkbox.  The valid values are:
+    # @param identifier how we find a button.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -244,7 +244,7 @@ module PageObject
     # and another to return the span element
     #
     # Example:  span(:alert, {:id => 'alert'})
-    # will generate a 'alert' and 'alert_div' methods
+    # will generate a 'alert' and 'alert_span' methods
     #
     # @param the name used for the generated methods
     # @param identifier how we find a span.  The valid values are:
@@ -270,7 +270,7 @@ module PageObject
     # will generate a 'cart_table' method.
     #
     # @param the name used for the generated methods
-    # @param identifier how we find a checkbox.  The valid values are:
+    # @param identifier how we find a table.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -291,7 +291,7 @@ module PageObject
     # will generate a 'total' and 'total_cell' methods
     #
     # @param the name used for the generated methods
-    # @param identifier how we find a checkbox.  The valid values are:
+    # @param identifier how we find a cell.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -314,7 +314,7 @@ module PageObject
     # will generate a 'logo_image' method
     #
     # @param the name used for the generated methods
-    # @param identifier how we find a checkbox.  The valid values are:
+    # @param identifier how we find an image.  The valid values are:
     #   :class => Watir and Selenium
     #   :id => Watir and Selenium
     #   :index => Watir only
@@ -324,6 +324,25 @@ module PageObject
     def image(name, identifier)
       define_method("#{name}_image") do
         platform.image_for identifier
+      end
+    end
+    
+    #
+    # adds a method to retrieve the form element
+    #
+    # Example: form(:login, :id => 'login')
+    # will generate a 'login_form' method
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a form.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :xpath => Watir and Selenium
+    #
+    def form(name, identifier)
+      define_method("#{name}_form") do
+        platform.form_for identifier
       end
     end
   end

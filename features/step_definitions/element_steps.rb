@@ -34,6 +34,9 @@ When /^I retrieve table cell$/ do
   @element = @page.cell_id_cell
 end
   
+When /^I locate the form$/ do
+  @element = @page.form_id_form
+end
 
 
 Then /^I should know it exists$/ do

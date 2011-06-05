@@ -165,3 +165,11 @@ Then /^hidden field element should contains "([^"]*)"$/ do |text|
   @element.value.should == text
 end
 
+Then /^I should be able to submit the form$/ do
+  @element.submit
+end
+
+When /^I locate the form by "([^"]*)"$/ do |how|
+  @element = @page.send "form_#{how}_form"
+end
+
