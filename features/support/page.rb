@@ -11,6 +11,16 @@ class Page
   text_field(:text_field_text, :text => "")
   text_field(:text_field_value, :value => "")
 
+  text_area(:text_area_id, :id => "text_area_id")
+  text_area(:text_area_class, :class => "text_area_class")
+  text_area(:text_area_name, :name => "text_area_name")
+  text_area(:text_area_xpath, :xpath => "//textarea")
+  text_area(:text_area_css, :css => "textarea")
+  text_area(:text_area_tag_name, :tag_name => "textarea")
+  text_area(:text_area_index, :index => 0)
+  text_area(:text_area_text, :text => "")
+  text_area(:text_area_value, :value => "")
+
   hidden_field(:hidden_field_id, :id => "hidden_field_id")
   hidden_field(:hidden_field_class, :class => "hidden_field_class")
   hidden_field(:hidden_field_name, :name => "hidden_field_name")

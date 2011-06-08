@@ -18,6 +18,10 @@ When /^I retrieve a text field$/ do
   @element = @page.text_field_id_text_field
 end
 
+When /^I retrieve the text area$/ do
+  @element = @page.text_area_id_text_area
+end
+
 When /^I retrieve the div element$/ do
   @element = @page.div_id_div
 end

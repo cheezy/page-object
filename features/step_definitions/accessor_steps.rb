@@ -14,6 +14,22 @@ Then /^I should be able to type "([^\"]*)" into the field$/ do |value|
   @page.send "text_field_#{@how}=".to_sym, value
 end
 
+When /^I type "([^"]*)" into the text area$/ do |text|
+  @page.text_area_id = text
+end
+
+Then /^the text area should contain "([^"]*)"$/ do |expected_text|
+  @page.text_area_id.should == expected_text
+end
+
+When /^I search for the text area by "([^"]*)"$/ do |how|
+  @how = how
+end
+
+Then /^I should be able to type "([^"]*)" into the area$/ do |value|
+  @page.send "text_area_#{@how}=".to_sym, value
+end
+
 When /^I select the link labeled "([^\"]*)"$/ do |text|
   @page.google_search_id
 end

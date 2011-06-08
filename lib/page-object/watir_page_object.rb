@@ -86,6 +86,34 @@ module PageObject
     end    
     
     #
+    # platform method to set text in a textarea
+    # See PageObject::Accessors#text_area
+    #
+    def text_area_value_set(identifier, value)
+      identifier = Elements::TextArea.watir_identifier_for identifier
+      @browser.textarea(identifier).send_keys(value)
+    end
+    
+    #
+    # platform method to get the text from a textarea
+    # See PageObject::Accessors#text_area
+    #
+    def text_area_value_for(identifier)
+      identifier = Elements::TextArea.watir_identifier_for identifier
+      @browser.textarea(identifier).value
+    end
+    
+    #
+    # platform method to get the text area element
+    # See PageObject::Accessors#text_area
+    #
+    def text_area_for(identifier)
+      identifier = Elements::TextArea.watir_identifier_for identifier
+      element = @browser.textarea(identifier)
+      Elements::TextArea.new(element, :platform => :watir)
+    end
+    
+    #
     # platform method to get the currently selected value from a select list
     # See PageObject::Accessors#select_list
     #

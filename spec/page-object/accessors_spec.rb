@@ -6,6 +6,7 @@ class TestPageObject
   link(:google_search, :link => 'Google Search')
   text_field(:first_name, :id => 'first_name')
   hidden_field(:social_security_number, :id => 'ssn')
+  text_area(:address, :id => 'address')
   select_list(:state, :id => 'state')
   checkbox(:active, :id => 'is_active_id')
   radio_button(:first, :id => 'first_choice')
@@ -138,6 +139,62 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         selenium_browser.should_receive(:attribute).with('value').and_return("12345")
         selenium_page_object.social_security_number.should == "12345"
+      end
+      
+      it "should retrieve a hidden field element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.social_security_number_hidden_field
+        element.should be_instance_of PageObject::Elements::HiddenField
+      end
+    end
+  end
+  
+  describe "text area accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:address)
+        watir_page_object.should respond_to(:address=)
+        watir_page_object.should respond_to(:address_text_area)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should set some text on the text area" do
+        watir_browser.should_receive(:textarea).and_return(watir_browser)
+        watir_browser.should_receive(:send_keys).with("123 main street")
+        watir_page_object.address = "123 main street"
+      end
+      
+      it "should get the text from the text area" do
+        watir_browser.should_receive(:textarea).and_return(watir_browser)
+        watir_browser.should_receive(:value).and_return("123 main street")
+        watir_page_object.address.should == "123 main street"
+      end
+      
+      it "should retrieve a text area element" do
+        watir_browser.should_receive(:textarea).and_return(watir_browser)
+        element = watir_page_object.address_text_area
+        element.should be_instance_of PageObject::Elements::TextArea
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should set some text on the text area" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:send_keys).with("123 main street")
+        selenium_page_object.address = "123 main street"
+      end
+      
+      it "should get the text from the text area" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:attribute).with('value').and_return("123 main street")
+        selenium_page_object.address.should == "123 main street"
+      end
+      
+      it "should retrieve a text area element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.address_text_area
+        element.should be_instance_of PageObject::Elements::TextArea
       end
     end
   end

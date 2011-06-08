@@ -11,7 +11,7 @@ module PageObject
     # another to retrieve text from a text field and another to return the text
     # field element.
     #
-    # Example:  text_field(:first_name, {:id => "first_name"})
+    # Example:  text_field(:first_name, :id => "first_name")
     # will generate the 'first_name', 'first_name=' and 'first_name_text_field methods.
     #
     # @param  the name used for the generated methods
@@ -42,7 +42,7 @@ module PageObject
     # adds two methods to the page object - one to get the text from a hidden field
     # and another to retrieve the hidden field element.
     #
-    # Example:  hidden_field(:user_id, {:id => "user_identity"})
+    # Example:  hidden_field(:user_id, :id => "user_identity")
     # will generate the 'user_id' and 'user_id_hidden_field' methods.
     #
     # @param  the name used for the generated methods
@@ -62,6 +62,36 @@ module PageObject
       end
       define_method("#{name}_hidden_field") do
         platform.hidden_field_for identifier
+      end
+    end
+    
+    #
+    # adds three methods to the page object - one to set text in a text area,
+    # another to retrieve text from a text area and another to return the text
+    # area element.
+    #
+    # Example:  text_area(:address, :id => "address")
+    # will generate the 'address', 'address=' and 'address_text_area methods.
+    #
+    # @param  the name used for the generated methods
+    # @param identifier how we find a text area.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :css => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Watir and Selenium
+    #   :tag_name => Watir and Selenium
+    #   :xpath => Watir and Selenium
+    #
+    def text_area(name, identifier)
+      define_method(name) do
+        platform.text_area_value_for identifier
+      end
+      define_method("#{name}=") do |value|
+        platform.text_area_value_set(identifier, value)
+      end
+      define_method("#{name}_text_area") do
+        platform.text_area_for identifier
       end
     end
 
