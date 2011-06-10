@@ -16,7 +16,7 @@ You define a new page object by including the PageObject module:
 When you include this module numerous methods are added to your class that allow you to easily define your page.  For the login page you might add the following:
 
     class LoginPage
-      include Page Object
+      include PageObject
       
       text_field(:username, :id => 'username')
       text_field(:password, :id => 'password')
