@@ -32,7 +32,7 @@ Calling the _text_field_ and _button_ methods adds several methods to our page o
 Another approach might be to create higher level methods on our page object that hide the implementation details even further.  Our page object might look like this:
 
     class LoginPage
-      include Page Object
+      include PageObject
   
       text_field(:username, :id => 'username')
       text_field(:password, :id => 'password')

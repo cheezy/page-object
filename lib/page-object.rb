@@ -10,23 +10,24 @@ require 'page-object/accessors'
 # If we have a login page with a username and password textfield and a login
 # button we might define our page like this:
 #
-#  @example Login page example
-#    class LoginPage
-#      include PageObject
+# @example Login page example 
+#   class LoginPage
+#     include PageObject
 #
-#      text_field(:username, :id => 'user')
-#      text_field(:password, :id => 'pass')
-#      button(:login, :value => 'Login')
-#    end
+#     text_field(:username, :id => 'user')
+#     text_field(:password, :id => 'pass')
+#     button(:login, :value => 'Login')
+#   end
+#
 #
 # We can then interact with this class by calling the generated methods.
 #
-#  @example Interacting with our Login page example
-#    browser = Watir::Browser.new :firefox
-#    login_page = LoginPage.new(browser)
-#    login_page.username = 'cheezy'
-#    login_page.password = 'secret'
-#    login_page.login
+# @example Interacting with our Login page example
+#   browser = Watir::Browser.new :firefox
+#   login_page = LoginPage.new(browser)
+#   login_page.username = 'cheezy'
+#   login_page.password = 'secret'
+#   login_page.login
 #
 module PageObject
   attr_reader :platform
