@@ -11,8 +11,9 @@ module PageObject
     # another to retrieve text from a text field and another to return the text
     # field element.
     #
-    # Example:  text_field(:first_name, :id => "first_name")
-    # will generate the 'first_name', 'first_name=' and 'first_name_text_field methods.
+    # @example  
+    #   text_field(:first_name, :id => "first_name") 
+    #   # => will generate 'first_name', 'first_name=' and 'first_name_text_field' methods.
     #
     # @param  [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text_field.  The valid keys are:
