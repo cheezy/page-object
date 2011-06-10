@@ -14,17 +14,17 @@ module PageObject
     # Example:  text_field(:first_name, :id => "first_name")
     # will generate the 'first_name', 'first_name=' and 'first_name_text_field methods.
     #
-    # @param  the name used for the generated methods
-    # @param identifier how we find a text_field.  The valid values are:
-    #   :class => Watir and Selenium
-    #   :css => Watir and Selenium
-    #   :id => Watir and Selenium
-    #   :index => Watir only
-    #   :name => Watir and Selenium
-    #   :tag_name => Watir and Selenium
-    #   :text => Watir only
-    #   :value => Watir only
-    #   :xpath => Watir and Selenium
+    # @param  [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a text_field.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir only
+    #   * :name => Watir and Selenium
+    #   * :tag_name => Watir and Selenium
+    #   * :text => Watir only
+    #   * :value => Watir only
+    #   * :xpath => Watir and Selenium
     #
     def text_field(name, identifier)
       define_method(name) do
@@ -45,16 +45,16 @@ module PageObject
     # Example:  hidden_field(:user_id, :id => "user_identity")
     # will generate the 'user_id' and 'user_id_hidden_field' methods.
     #
-    # @param  the name used for the generated methods
-    # @param identifier how we find a hidden field.  The valid values are:
-    #   :class => Watir and Selenium
-    #   :css => Watir and Selenium
-    #   :id => Watir and Selenium
-    #   :index => Watir only
-    #   :name => Watir and Selenium
-    #   :tag_name => Watir and Selenium
-    #   :text => Watir only
-    #   :xpath => Watir and Selenium
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a hidden field.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir only
+    #   * :name => Watir and Selenium
+    #   * :tag_name => Watir and Selenium
+    #   * :text => Watir only
+    #   * :xpath => Watir and Selenium
     #
     def hidden_field(name, identifier)
       define_method(name) do
@@ -73,15 +73,15 @@ module PageObject
     # Example:  text_area(:address, :id => "address")
     # will generate the 'address', 'address=' and 'address_text_area methods.
     #
-    # @param  the name used for the generated methods
-    # @param identifier how we find a text area.  The valid values are:
-    #   :class => Watir and Selenium
-    #   :css => Watir and Selenium
-    #   :id => Watir and Selenium
-    #   :index => Watir only
-    #   :name => Watir and Selenium
-    #   :tag_name => Watir and Selenium
-    #   :xpath => Watir and Selenium
+    # @param  [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a text area.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir only
+    #   * :name => Watir and Selenium
+    #   * :tag_name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
     #
     def text_area(name, identifier)
       define_method(name) do
