@@ -339,5 +339,24 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::Form.new(element, :platform => :selenium)
     end
+
+    #
+    # platform method to retrieve the text from a list item
+    # See PageObject::Accessors#list_item
+    #
+    def list_item_text_for(identifier)
+      how, what = Elements::ListItem.selenium_identifier_for identifier
+      @browser.find_element(how, what).text
+    end
+    
+    #
+    # platform method to retrieve a list item element
+    # See PageObject::Accessors#list_item
+    #
+    def list_item_for(identifier)
+      how, what = Elements::ListItem.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::ListItem.new(element, :platform => :selenium)
+    end
   end
 end

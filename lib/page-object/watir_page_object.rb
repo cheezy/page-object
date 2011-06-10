@@ -339,5 +339,24 @@ module PageObject
       element = @browser.form(identifier)
       PageObject::Elements::Form.new(element, :platform => :watir)
     end
+    
+    #
+    # platform method to retrieve the text from a list item
+    # See PageObject::Accessors#list_item
+    #
+    def list_item_text_for(identifier)
+      identifier = Elements::ListItem.watir_identifier_for identifier
+      @browser.li(identifier).text
+    end
+    
+    #
+    # platform method to retrieve a list item element
+    # See PageObject::Accessors#list_item
+    #
+    def list_item_for(identifier)
+      identifier = Elements::ListItem.watir_identifier_for identifier
+      element = @browser.li(identifier)
+      PageObject::Elements::ListItem.new(element, :platform => :watir)
+    end
   end
 end

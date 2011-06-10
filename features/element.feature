@@ -197,3 +197,13 @@ Feature: Elements
   Scenario: Form element methods in selenium
     When I locate the form
     Then I should know its' value is nil
+
+  Scenario: List item element methods
+    When I retrieve a list item element
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text is "Item One"
+    And I should know it is equal to itself
+    And I should know its' tag name is "li"
+    And I should know the attribute "readonly" is false
+    And I should be able to click it

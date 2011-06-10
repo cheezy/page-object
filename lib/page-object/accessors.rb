@@ -375,5 +375,29 @@ module PageObject
         platform.form_for identifier
       end
     end
+    
+    #
+    # adds two methods - one to retrieve the text from a list item
+    # and another to return the list item element
+    #
+    # Example:  list_item(:item_one, {:id => 'one'})
+    # will generate a 'item_one' and 'item_one_list_item' methods
+    #
+    # @param the name used for the generated methods
+    # @param identifier how we find a div.  The valid values are:
+    #   :class => Watir and Selenium
+    #   :id => Watir and Selenium
+    #   :index => Watir only
+    #   :name => Selenium only
+    #   :xpath => Watir and Selenium
+    #
+    def list_item(name, identifier)
+      define_method(name) do
+        platform.list_item_text_for identifier
+      end
+      define_method("#{name}_list_item") do
+        platform.list_item_for identifier
+      end
+    end
   end
 end

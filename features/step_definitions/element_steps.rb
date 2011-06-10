@@ -88,3 +88,7 @@ end
 Then /^I should be able to click it$/ do
   @element.click
 end
+
+When /^I retrieve a list item element$/ do
+  @element = @page.li_id_list_item
+end

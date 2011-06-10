@@ -17,6 +17,7 @@ class TestPageObject
   span(:alert, :id => 'alert_id')
   image(:logo, :id => 'logo')
   form(:login, :id => 'login')
+  list_item(:item_one, :id => 'one')
 end
 
 describe PageObject::Accessors do
@@ -596,6 +597,43 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.login_form
         element.should be_instance_of PageObject::Elements::Form
+      end
+    end
+  end
+  
+  describe "list item accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:item_one)
+        watir_page_object.should respond_to(:item_one_list_item)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the text from the list item" do
+        watir_browser.should_receive(:li).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("value")
+        watir_page_object.item_one.should == "value"
+      end
+      
+      it "should retrieve the list item element from the page" do
+        watir_browser.should_receive(:li).and_return(watir_browser)
+        element = watir_page_object.item_one_list_item
+        element.should be_instance_of PageObject::Elements::ListItem
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the text from the list item" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("value")
+        selenium_page_object.item_one.should == "value"
+      end
+      
+      it "should retrieve the list item from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.item_one_list_item
+        element.should be_instance_of PageObject::Elements::ListItem
       end
     end
   end

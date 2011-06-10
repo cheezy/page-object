@@ -105,4 +105,10 @@ class Page
   form(:form_class, :class => 'form_class')
   form(:form_index, :index => 0)
   form(:form_xpath, :xpath => '//form')
+  
+  list_item(:li_id, :id => 'li_id')
+  list_item(:li_name, :name => 'li_name')
+  list_item(:li_class, :class => 'li_class')
+  list_item(:li_index, :index => 0)
+  list_item(:li_xpath, :xpath => '//li[1]')
 end

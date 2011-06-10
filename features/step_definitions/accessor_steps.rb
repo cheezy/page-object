@@ -189,3 +189,11 @@ When /^I locate the form by "([^"]*)"$/ do |how|
   @element = @page.send "form_#{how}_form"
 end
 
+When /^I get the text from the list item$/ do
+  @text = @page.li_id
+end
+
+When /^I search for the list item by "([^"]*)"$/ do |how|
+  @text = @page.send "li_#{how}"
+end
+
