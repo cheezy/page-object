@@ -1,9 +1,11 @@
 
 module PageObject
   module Elements
-
     #
     # Contains functionality that is common across all elements.
+    #
+    # @see PageObject::Elements::WatirElement for the Watir version of all common methods
+    # @see PageObject::Elements::SeleniumElement for the Selenium version of all common methods
     #
     class Element
       attr_reader :element
@@ -13,10 +15,12 @@ module PageObject
         include_platform_for platform
       end
       
+      # @private
       def self.watir_identifier_for identifier
         identifier_for identifier, watir_finders, watir_mapping
       end
 
+      # @private
       def self.selenium_identifier_for identifier
         identifier = identifier_for identifier, selenium_finders, selenium_mapping
         return identifier.keys.first, identifier.values.first

@@ -1,6 +1,9 @@
 
 module PageObject
   module Platforms
+    #
+    # Watir implementation of the common functionality found across all elements
+    #
     module WatirElement
       
       #

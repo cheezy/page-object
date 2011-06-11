@@ -5,6 +5,9 @@ module PageObject
   # when you include the PageObject module.  These methods will generate another
   # set of methods that provide access to the elements on the web pages.
   #
+  # @see PageObject::WatirPageObject for the watir implementation of the platform delegate
+  # @see PageObject::SeleniumPageObject for the selenium implementation of the platform delegate
+  #
   module Accessors
     #
     # adds three methods to the page object - one to set text in a text field,

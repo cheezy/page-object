@@ -1,6 +1,11 @@
 require 'page-object/elements'
 
 module PageObject
+  #
+  # Watir implementation of the page object platform driver.  You should not use the
+  # class directly.  Instead you should include the PageObject module in your page object
+  # and use the methods dynamically added from the PageObject::Accessors module.
+  #
   class WatirPageObject
     def initialize(browser)
       @browser = browser      

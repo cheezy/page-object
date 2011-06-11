@@ -1,6 +1,9 @@
 
 module PageObject
   module Platforms
+    #
+    # Selenium implementation of the common functionality found across all elements
+    #
     module SeleniumElement
       
       #

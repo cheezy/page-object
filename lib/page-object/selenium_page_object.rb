@@ -1,6 +1,11 @@
 require 'page-object/elements'
 
 module PageObject
+  #
+  # Selenium implementation of the page object platform driver.  You should not use the
+  # class directly.  Instead you should include the PageObject module in your page object
+  # and use the methods dynamically added from the PageObject::Accessors module.
+  #
   class SeleniumPageObject
     def initialize(browser)
       @browser = browser
