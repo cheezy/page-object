@@ -28,35 +28,55 @@ require 'page-object/accessors'
 #   login_page.password = 'secret'
 #   login_page.login
 #
+# @see PageObject::Accessors to see what class level methods are added to this module at runtime.
+#
 module PageObject
+  # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
+  attr_reader :browser
+  # @return [PageObject::WatirPageObject or PageObject::SeleniumPageObject] the platform page object
   attr_reader :platform
 
-  # Construct a new page object.  The browser parameter must be either a
-  # Watir::Browser or Selenium::WebDriver::Driver.
+  #
+  # Construct a new page object.
+  #
+  # @param [Watir::Browser or Selenium::WebDriver::Driver] the platform browser to use
+  #
   def initialize(browser)
+    @browser = browser
     include_platform_driver(browser)
   end
 
+  # @private
   def self.included(cls)
     cls.extend PageObject::Accessors
   end
   
+  #
   # navigate to the provided url
+  #
+  # @param [String] the full url to navigate to
+  #
   def navigate_to(url)
     platform.navigate_to(url)
   end
   
+  #
   # Returns the text of the current page
+  #
   def text
     platform.text
   end
 
+  #
   # Returns the html of the current page
+  #
   def html
     platform.html
   end
 
+  #
   # Returns the title of the current page
+  #
   def title
     platform.title
   end
