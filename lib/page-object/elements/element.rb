@@ -4,8 +4,8 @@ module PageObject
     #
     # Contains functionality that is common across all elements.
     #
-    # @see PageObject::Elements::WatirElement for the Watir version of all common methods
-    # @see PageObject::Elements::SeleniumElement for the Selenium version of all common methods
+    # @see PageObject::Platforms::WatirElement for the Watir version of all common methods
+    # @see PageObject::Platforms::SeleniumElement for the Selenium version of all common methods
     #
     class Element
       attr_reader :element
