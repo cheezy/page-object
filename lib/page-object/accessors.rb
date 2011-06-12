@@ -399,7 +399,7 @@ module PageObject
     #   # will generate 'item_one' and 'item_one_list_item' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a div.  The valid keys are:
+    # @param [Hash] identifier how we find a list item.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir only
@@ -415,6 +415,21 @@ module PageObject
       end
     end
     
+    #
+    # adds a method to retrieve the unordered list element
+    #
+    # @example
+    #   unordered_list(:menu, :id => 'main_menu')
+    #   # will generate a 'menu_unordered_list' method
+    #
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find an unordered list.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir only
+    #   * :name => Selenium only
+    #   * :xpath => Watir and Selenium
+    #
     def unordered_list(name, identifier)
       define_method("#{name}_unordered_list") do
         platform.unordered_list_for identifier
