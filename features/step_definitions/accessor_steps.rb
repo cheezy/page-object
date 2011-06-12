@@ -197,3 +197,18 @@ When /^I search for the list item by "([^"]*)"$/ do |how|
   @text = @page.send "li_#{how}"
 end
 
+When /^I get the first item from the unordered list$/ do
+  @element = @page.ul_id_unordered_list[0]
+end
+
+Then /^the list item's text should be "([^"]*)"$/ do |expected_text|
+  @element.text.should == expected_text
+end
+
+When /^I search for the unordered list by "([^"]*)"$/ do |how|
+  @ul = @page.send "ul_#{how}_unordered_list"
+end
+
+When /^I get the first item from the list$/ do
+  @element = @ul[0]
+end

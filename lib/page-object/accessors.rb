@@ -414,5 +414,11 @@ module PageObject
         platform.list_item_for identifier
       end
     end
+    
+    def unordered_list(name, identifier)
+      define_method("#{name}_unordered_list") do
+        platform.unordered_list_for identifier
+      end
+    end
   end
 end

@@ -18,6 +18,7 @@ class TestPageObject
   image(:logo, :id => 'logo')
   form(:login, :id => 'login')
   list_item(:item_one, :id => 'one')
+  unordered_list(:menu, :id => 'main_menu')
 end
 
 describe PageObject::Accessors do
@@ -517,7 +518,6 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.cart_table
         element.should be_instance_of(PageObject::Elements::Table)
-        
       end
     end
   end
@@ -634,6 +634,30 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.item_one_list_item
         element.should be_instance_of PageObject::Elements::ListItem
+      end
+    end
+  end
+  
+  describe "unordered list accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:menu_unordered_list)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the element from the page" do
+        watir_browser.should_receive(:ul).and_return(watir_browser)
+        element = watir_page_object.menu_unordered_list
+        element.should be_instance_of PageObject::Elements::UnorderedList
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.menu_unordered_list
+        element.should be_instance_of PageObject::Elements::UnorderedList
       end
     end
   end

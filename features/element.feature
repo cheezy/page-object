@@ -207,3 +207,15 @@ Feature: Elements
     And I should know its' tag name is "li"
     And I should know the attribute "readonly" is false
     And I should be able to click it
+
+  Scenario: List item element methods
+    When I retrieve an unordered list element
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text includes "Item One"
+    And I should know its' text includes "Item Two"
+    And I should know its' text includes "Item Three"
+    And I should know it is equal to itself
+    And I should know its' tag name is "ul"
+    And I should know the attribute "readonly" is false
+    And I should be able to click it

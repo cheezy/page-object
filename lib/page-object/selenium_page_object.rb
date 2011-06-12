@@ -363,5 +363,15 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::ListItem.new(element, :platform => :selenium)
     end
+    
+    #
+    # platform method to retrieve an unordered list element
+    # See PageObject::Accessors#unordered_list
+    #
+    def unordered_list_for(identifier)
+      how, what = Elements::UnorderedList.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::UnorderedList.new(element, :platform => :selenium)
+    end
   end
 end

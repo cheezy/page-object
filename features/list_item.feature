@@ -7,7 +7,7 @@ Feature: List item
     When I get the text from the list item
     Then the text should be "Item One"
 
-  Scenario Outline: Locating divs on the page
+  Scenario Outline: Locating list items on the page
     When I search for the list item by "<search_by>"
     Then the text should be "Item One"
 
@@ -18,7 +18,7 @@ Feature: List item
     | xpath     |  
 
   @watir_only
-  Scenario Outline: Locating divs on Watir only
+  Scenario Outline: Locating list items on Watir only
     When I search for the list item by "<search_by>"
     Then the text should be "Item One"
 
@@ -27,7 +27,7 @@ Feature: List item
     | index     |
 
   @selenium_only
-  Scenario Outline: Locating divs on Watir only
+  Scenario Outline: Locating list items on Watir only
     When I search for the list item by "<search_by>"
     Then the text should be "Item One"
 

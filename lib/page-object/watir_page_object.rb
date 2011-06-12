@@ -363,5 +363,15 @@ module PageObject
       element = @browser.li(identifier)
       PageObject::Elements::ListItem.new(element, :platform => :watir)
     end
+
+    #
+    # platform method to retrieve an unordered list element
+    # See PageObject::Accessors#unordered_list
+    #
+    def unordered_list_for(identifier)
+      identifier = Elements::UnorderedList.watir_identifier_for identifier
+      element = @browser.ul(identifier)
+      PageObject::Elements::UnorderedList.new(element, :platform => :watir)
+    end
   end
 end

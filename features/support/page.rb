@@ -111,4 +111,10 @@ class Page
   list_item(:li_class, :class => 'li_class')
   list_item(:li_index, :index => 0)
   list_item(:li_xpath, :xpath => '//li[1]')
+  
+  unordered_list(:ul_id, :id => 'ul_id')
+  unordered_list(:ul_name, :name => 'ul_name')
+  unordered_list(:ul_class, :class => 'ul_class')
+  unordered_list(:ul_index, :index => 0)
+  unordered_list(:ul_xpath, :xpath => '//ul')
 end

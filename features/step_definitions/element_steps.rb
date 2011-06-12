@@ -92,3 +92,7 @@ end
 When /^I retrieve a list item element$/ do
   @element = @page.li_id_list_item
 end
+
+When /^I retrieve an unordered list element$/ do
+  @element = @page.ul_id_unordered_list
+end
