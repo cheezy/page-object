@@ -117,4 +117,10 @@ class Page
   unordered_list(:ul_class, :class => 'ul_class')
   unordered_list(:ul_index, :index => 0)
   unordered_list(:ul_xpath, :xpath => '//ul')
+
+  ordered_list(:ol_id, :id => 'ol_id')
+  ordered_list(:ol_name, :name => 'ol_name')
+  ordered_list(:ol_class, :class => 'ol_class')
+  ordered_list(:ol_index, :index => 0)
+  ordered_list(:ol_xpath, :xpath => '//ol')
 end

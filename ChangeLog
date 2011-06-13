@@ -1,10 +1,11 @@
-=== Version 0.0.4
+=== Version 0.0.4 / 2011-06-13
 * Enhancements
   * Added support for the following elements
     * hidden field
     * form
     * list item
     * unordered list
+    * ordered list
 
 === Version 0.0.3 / 2011-06-02
 * Enhancements

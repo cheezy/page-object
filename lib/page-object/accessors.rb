@@ -435,5 +435,26 @@ module PageObject
         platform.unordered_list_for identifier
       end
     end
+    
+    #
+    # adds a method to retrieve the ordered list element
+    #
+    # @example
+    #   ordered_list(:top_five, :id => 'top')
+    #   # will generate a 'top_five_ordered_list' method
+    #
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find an unordered list.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir only
+    #   * :name => Selenium only
+    #   * :xpath => Watir and Selenium
+    #
+    def ordered_list(name, identifier)
+      define_method("#{name}_ordered_list") do
+        platform.ordered_list_for identifier
+      end
+    end
   end
 end

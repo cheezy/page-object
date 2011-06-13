@@ -96,3 +96,7 @@ end
 When /^I retrieve an unordered list element$/ do
   @element = @page.ul_id_unordered_list
 end
+
+When /^I retrieve an ordered list element$/ do
+  @element = @page.ol_id_ordered_list
+end

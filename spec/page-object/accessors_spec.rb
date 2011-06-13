@@ -19,6 +19,7 @@ class TestPageObject
   form(:login, :id => 'login')
   list_item(:item_one, :id => 'one')
   unordered_list(:menu, :id => 'main_menu')
+  ordered_list(:top_five, :id => 'top')
 end
 
 describe PageObject::Accessors do
@@ -658,6 +659,30 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.menu_unordered_list
         element.should be_instance_of PageObject::Elements::UnorderedList
+      end
+    end
+  end
+  
+  describe "ordered list accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:top_five_ordered_list)
+      end
+    end
+    
+    context "watir implementation" do
+      it "should retrieve the element from the page" do
+        watir_browser.should_receive(:ol).and_return(watir_browser)
+        element = watir_page_object.top_five_ordered_list
+        element.should be_instance_of PageObject::Elements::OrderedList
+      end
+    end
+    
+    context "selenium implementation" do
+      it "should retrieve the element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.top_five_ordered_list
+        element.should be_instance_of PageObject::Elements::OrderedList
       end
     end
   end

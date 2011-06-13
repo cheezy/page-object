@@ -373,5 +373,15 @@ module PageObject
       element = @browser.ul(identifier)
       PageObject::Elements::UnorderedList.new(element, :platform => :watir)
     end
+    
+    #
+    # platform method to retrieve an ordered list element
+    # See PageObject::Accessors#ordered_list
+    #
+    def ordered_list_for(identifier)
+      identifier = Elements::OrderedList.watir_identifier_for identifier
+      element = @browser.ol(identifier)
+      PageObject::Elements::OrderedList.new(element, :platform => :watir)
+    end
   end
 end

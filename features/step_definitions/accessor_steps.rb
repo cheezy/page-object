@@ -206,9 +206,17 @@ Then /^the list item's text should be "([^"]*)"$/ do |expected_text|
 end
 
 When /^I search for the unordered list by "([^"]*)"$/ do |how|
-  @ul = @page.send "ul_#{how}_unordered_list"
+  @list = @page.send "ul_#{how}_unordered_list"
 end
 
 When /^I get the first item from the list$/ do
-  @element = @ul[0]
+  @element = @list[0]
+end
+
+When /^I get the first item from the ordered list$/ do
+  @element = @page.ol_id_ordered_list[0]
+end
+
+When /^I search for the ordered list by "([^"]*)"$/ do |how|
+  @list = @page.send "ol_#{how}_ordered_list"
 end

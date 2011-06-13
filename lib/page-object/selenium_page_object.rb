@@ -373,5 +373,15 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::UnorderedList.new(element, :platform => :selenium)
     end
+    
+    #
+    # platform method to retrieve an ordered list element
+    # See PageObject::Accessors#ordered_list
+    #
+    def ordered_list_for(identifier)
+      how, what = Elements::OrderedList.selenium_identifier_for identifier
+      element = @browser.find_element(how, what)
+      PageObject::Elements::OrderedList.new(element, :platform => :selenium)
+    end
   end
 end

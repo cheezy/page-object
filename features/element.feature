@@ -208,7 +208,7 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  Scenario: List item element methods
+  Scenario: Unordered list element methods
     When I retrieve an unordered list element
     Then I should know it exists
     And I should know it is visible
@@ -217,5 +217,17 @@ Feature: Elements
     And I should know its' text includes "Item Three"
     And I should know it is equal to itself
     And I should know its' tag name is "ul"
+    And I should know the attribute "readonly" is false
+    And I should be able to click it
+
+  Scenario: Ordered list element methods
+    When I retrieve an ordered list element
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text includes "Number One"
+    And I should know its' text includes "Number Two"
+    And I should know its' text includes "Number Three"
+    And I should know it is equal to itself
+    And I should know its' tag name is "ol"
     And I should know the attribute "readonly" is false
     And I should be able to click it
