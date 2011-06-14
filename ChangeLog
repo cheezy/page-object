@@ -3,6 +3,7 @@
   * Added rows method to Table to return number or rows
   * Added columns method to TableRow to return the number of columns
   * Table now supports Enumerable to iterate over the TableRows
+  * TableRow now supports Enumerable to iterate over TableCells
 
 === Version 0.0.4 / 2011-06-13
 * Enhancements

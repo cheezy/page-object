@@ -22,6 +22,7 @@ Feature: Table
     And the table should have "2" rows
     And each row should contain "Data"
     And row "1" should have "2" columns
+    And each column should contain "Data"
   
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"
