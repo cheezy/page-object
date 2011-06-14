@@ -27,7 +27,8 @@ describe PageObject::Elements::OrderedList do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir)
         ol_element.stub(:wd).and_return(ol_element)
-        ol_element.stub(:find_element)
+        ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
+        ol_element.stub(:[]).and_return(ol_element)
         ol[1].should be_instance_of PageObject::Elements::ListItem
       end
     end    
@@ -35,7 +36,8 @@ describe PageObject::Elements::OrderedList do
     context "for selenium" do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium)
-        ol_element.should_receive(:find_element).and_return(ol_element)
+        ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
+        ol_element.should_receive(:[]).and_return(ol_element)
         ol[1].should be_instance_of PageObject::Elements::ListItem
       end
     end

@@ -6,6 +6,8 @@ module PageObject
       # Return the PageObject::Elements::TableRow for the index provided.  Index
       # is zero based.
       #
+      # @return [PageObject::Elements::TableRow]
+      #
       def [](idx)
         eles = @element.find_elements(:xpath, child_xpath)
         PageObject::Elements::TableRow.new(eles[idx], :platform => :selenium)

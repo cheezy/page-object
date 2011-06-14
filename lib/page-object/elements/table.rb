@@ -11,6 +11,8 @@ module PageObject
       #
       # iterator that yields with a PageObject::Elements::TableRow
       #
+      # @return [PageObject::Elements::TableRow]
+      #
       def each
         for index in 1..self.rows do
           yield self[index-1] 

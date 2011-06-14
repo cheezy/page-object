@@ -6,6 +6,8 @@ module PageObject
       # Return the PageObject::Elements::TableRow for the index provided.  Index
       # is zero based.
       #
+      # @return [PageObject::Elements::TableRow]
+      #
       def [](idx)
         PageObject::Elements::TableRow.new(@element[idx], :platform => :watir)
       end

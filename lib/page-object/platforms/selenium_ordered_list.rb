@@ -9,8 +9,8 @@ module PageObject
       # @return [PageObject::Elements::ListItem]
       #
       def [](idx)
-        element = @element.find_element(:xpath, ".//li[#{idx+1}]")
-        PageObject::Elements::ListItem.new(element, :platform => :selenium)
+        eles = @element.find_elements(:xpath, child_xpath)
+        PageObject::Elements::ListItem.new(eles[idx], :platform => :selenium)
       end
       
     end
