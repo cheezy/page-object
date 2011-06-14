@@ -12,6 +12,13 @@ module PageObject
       end
 
       #
+      # Returns the number of rows in the table.
+      #
+      def rows
+        element.find_elements(:xpath, "//child::tr").size
+      end
+ 
+      #
       # override PageObject::Platforms::SeleniumElement because exists? is not
       # available on a table element in Selenium.
       #

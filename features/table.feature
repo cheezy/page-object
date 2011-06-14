@@ -19,6 +19,7 @@ Feature: Table
     When I retrieve a table element
     Then the data for row "1" should be "Data1" and "Data2"
     And the data for row "2" should be "Data3" and "Data4"
+    And the table should have "2" rows
   
   
   Scenario Outline: Locating table cells on the Page

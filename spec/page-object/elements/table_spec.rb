@@ -28,17 +28,32 @@ describe PageObject::Elements::Table do
     
     context "for watir" do
       it "should return a table row when indexed" do
-        wat_table = PageObject::Elements::Table.new(table_element, :platform => :watir)
+        watir_table = PageObject::Elements::Table.new(table_element, :platform => :watir)
         table_element.stub(:[]).with(1)
-        wat_table[1].should be_instance_of PageObject::Elements::TableRow
+        watir_table[1].should be_instance_of PageObject::Elements::TableRow
+      end
+      
+      it "should return the number of rows" do
+        watir_table = PageObject::Elements::Table.new(table_element, :platform => :watir)
+        table_element.stub(:wd).and_return(table_element)
+        table_element.should_receive(:find_elements).with(:xpath, "//child::tr").and_return(table_element)
+        table_element.should_receive(:size).and_return(2)
+        watir_table.rows.should == 2
       end
     end    
 
     context "for selenium" do
       it "should return a table row when indexed" do
-        sel_table = PageObject::Elements::Table.new(table_element, :platform => :selenium)
-        table_element.stub(:find_element).with(:xpath, ".//tr[2]")
-        sel_table[1].should be_instance_of PageObject::Elements::TableRow
+        selenium_table = PageObject::Elements::Table.new(table_element, :platform => :selenium)
+        table_element.should_receive(:find_element).with(:xpath, ".//tr[2]")
+        selenium_table[1].should be_instance_of PageObject::Elements::TableRow
+      end
+      
+      it "should return the number of rows" do
+        selenium_table = PageObject::Elements::Table.new(table_element, :platform => :selenium)
+        table_element.should_receive(:find_elements).with(:xpath, "//child::tr").and_return(table_element)
+        table_element.should_receive(:size).and_return(2)
+        selenium_table.rows.should == 2
       end
     end    
   end
