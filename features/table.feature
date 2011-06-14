@@ -20,7 +20,7 @@ Feature: Table
     Then the data for row "1" should be "Data1" and "Data2"
     And the data for row "2" should be "Data3" and "Data4"
     And the table should have "2" rows
-  
+    And each row should contain "Data"
   
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"

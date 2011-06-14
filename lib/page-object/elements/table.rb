@@ -1,10 +1,20 @@
 module PageObject
   module Elements
     class Table < Element
+      include Enumerable
       
       def initialize(element, platform)
         @element = element
         include_platform_for platform
+      end
+      
+      #
+      # iterator that yields with a PageObject::Elements::TableRow
+      #
+      def each
+        for index in 1..self.rows do
+          yield self[index-1] 
+        end
       end
       
       protected

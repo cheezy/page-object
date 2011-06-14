@@ -40,6 +40,14 @@ describe PageObject::Elements::Table do
         table_element.should_receive(:size).and_return(2)
         watir_table.rows.should == 2
       end
+
+      it "should iterate over the table rows" do
+        watir_table = PageObject::Elements::Table.new(table_element, :platform => :watir)
+        watir_table.should_receive(:rows).and_return(2)
+        count = 0
+        watir_table.each { |e| count += 1 }
+        count.should == 2
+      end    
     end    
 
     context "for selenium" do
@@ -54,6 +62,14 @@ describe PageObject::Elements::Table do
         table_element.should_receive(:find_elements).with(:xpath, "//child::tr").and_return(table_element)
         table_element.should_receive(:size).and_return(2)
         selenium_table.rows.should == 2
+      end
+      
+      it "should iterate over the table rows" do
+        selenium_table = PageObject::Elements::Table.new(table_element, :platform => :selenium)
+        selenium_table.should_receive(:rows).and_return(2)
+        count = 0
+        selenium_table.each { |e| count += 1 }
+        count.should == 2
       end
     end    
   end

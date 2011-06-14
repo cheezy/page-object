@@ -224,3 +224,9 @@ end
 Then /^the table should have "([^"]*)" rows$/ do |rows|
   @element.rows.should == rows.to_i
 end
+
+Then /^each row should contain "([^"]*)"$/ do |text|
+  @element.each do |row|
+    row.text.should include text
+  end
+end
