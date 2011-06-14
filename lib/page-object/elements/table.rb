@@ -19,6 +19,10 @@ module PageObject
       
       protected
       
+      def child_xpath
+        ".//child::tr"
+      end
+      
       def include_platform_for platform
         super
         if platform[:platform] == :watir

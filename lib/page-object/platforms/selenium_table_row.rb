@@ -7,8 +7,15 @@ module PageObject
       # is zero based.
       #
       def [](idx)
-        element = @element.find_element(:xpath, "./th|td[#{idx+1}]")
-        PageObject::Elements::TableCell.new(element, :platform => :selenium)
+        els = element.find_elements(:xpath, child_xpath)
+        PageObject::Elements::TableCell.new(els[idx], :platform => :selenium)
+      end
+      
+      #
+      # Returns the number of columns in the table.
+      #
+      def columns
+        element.find_elements(:xpath, child_xpath).size
       end
       
     end

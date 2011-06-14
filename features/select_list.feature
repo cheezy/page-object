@@ -31,8 +31,6 @@ Feature: Select List
     Scenarios:
       | search_by |
       | index     |
-#      | value     |
-#      | text      |
 
   Scenario: Retrieve a select list
     When I retrieve a select list

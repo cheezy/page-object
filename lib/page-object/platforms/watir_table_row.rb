@@ -7,7 +7,14 @@ module PageObject
       # is zero based.
       #
       def [](idx)
-        PageObject::Elements::TableCell.new(@element[idx], :platform => :watir)
+        PageObject::Elements::TableCell.new(element[idx], :platform => :watir)
+      end
+      
+      #
+      # Returns the number of columns in the table.
+      #
+      def columns
+        element.wd.find_elements(:xpath, child_xpath).size
       end
       
     end

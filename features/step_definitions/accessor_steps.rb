@@ -230,3 +230,7 @@ Then /^each row should contain "([^"]*)"$/ do |text|
     row.text.should include text
   end
 end
+
+Then /^row "([^"]*)" should have "([^"]*)" columns$/ do |row, cols|
+  @element[row.to_i - 1].columns.should == cols.to_i
+end

@@ -14,7 +14,7 @@ module PageObject
       # Returns the number of rows in the table.
       #
       def rows
-        element.wd.find_elements(:xpath, "//child::tr").size
+        element.wd.find_elements(:xpath, child_xpath).size
       end
       
     end

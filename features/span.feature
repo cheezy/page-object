@@ -28,7 +28,7 @@ Feature: Span
     
     
   @selenium_only
-  Scenario Outline: Locating span on Watir only
+  Scenario Outline: Locating span on Selenium only
     When I search for the span by "<search_by>"
     Then the text should be "My alert"
 

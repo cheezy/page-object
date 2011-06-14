@@ -1,5 +1,8 @@
 === Version 0.0.5
-
+* Enhancements
+  * Added rows method to Table to return number or rows
+  * Added columns method to TableRow to return the number of columns
+  * Table now supports Enumerable to iterate over the TableRows
 
 === Version 0.0.4 / 2011-06-13
 * Enhancements
@@ -15,16 +18,13 @@
   * Added support for the following elements
     * span
     * image
-    
   * Added the following methods to Element
     * value
     * ==
     * tag_name
     * attribute
     * click
-  
   * Updated to use selenium-webdriver 0.2.1
-  
   * Updated to use watir-webdriver 0.2.4
 
 === Version 0.0.2 / 2011-05-30
@@ -35,7 +35,6 @@
     * table
     * table row
     * table cell
-    
   * Added text method to element
 
 === Version 0.0.1 / 2011-05-22
@@ -46,7 +45,6 @@
     * radio button
     * select list
     * text field
-  
   * Support for the following page level functions
     * text
     * html

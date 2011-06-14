@@ -7,15 +7,15 @@ module PageObject
       # is zero based.
       #
       def [](idx)
-        element = @element.find_element(:xpath, ".//tr[#{idx+1}]")
-        PageObject::Elements::TableRow.new(element, :platform => :selenium)
+        eles = @element.find_elements(:xpath, child_xpath)
+        PageObject::Elements::TableRow.new(eles[idx], :platform => :selenium)
       end
 
       #
       # Returns the number of rows in the table.
       #
       def rows
-        element.find_elements(:xpath, "//child::tr").size
+        element.find_elements(:xpath, child_xpath).size
       end
  
       #
