@@ -9,10 +9,22 @@ module PageObject
       # @return [PageObject::Elements::ListItem]
       #
       def [](idx)
-        eles = @element.wd.find_elements(:xpath, child_xpath)
-        PageObject::Elements::ListItem.new(eles, :platform => :watir)
+        eles = list_items
+        PageObject::Elements::ListItem.new(eles[idx], :platform => :watir)
       end
       
+      #
+      # Return the number of items contained in the ordered list
+      #
+      def items
+        list_items.size
+      end
+      
+      private
+      
+      def list_items
+        element.wd.find_elements(:xpath, child_xpath)
+      end
     end
   end
 end

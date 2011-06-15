@@ -31,6 +31,24 @@ describe PageObject::Elements::OrderedList do
         ol_element.stub(:[]).and_return(ol_element)
         ol[1].should be_instance_of PageObject::Elements::ListItem
       end
+      
+      it "should know how many list items it contains" do
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir)
+        ol_element.stub(:wd).and_return(ol_element)
+        ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
+        ol_element.stub(:[]).and_return(ol_element)
+        ol_element.stub(:size).and_return(5)
+        ol.items.should == 5
+      end
+      
+      it "should iterate over the list items" do
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir)
+        ol.should_receive(:items).and_return(5)
+        ol.stub(:[])
+        count = 0
+        ol.each { |item| count += 1 }
+        count.should == 5
+      end
     end    
     
     context "for selenium" do
@@ -39,6 +57,22 @@ describe PageObject::Elements::OrderedList do
         ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
         ol_element.should_receive(:[]).and_return(ol_element)
         ol[1].should be_instance_of PageObject::Elements::ListItem
+      end
+      
+      it "should know how many list items it contains" do
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium)
+        ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
+        ol_element.should_receive(:size).and_return(5)
+        ol.items.should == 5
+      end
+      
+      it "should iterate over the list items" do
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium)
+        ol.should_receive(:items).and_return(5)
+        ol.stub(:[])
+        count = 0
+        ol.each { |item| count += 1 }
+        count.should == 5
       end
     end
   end

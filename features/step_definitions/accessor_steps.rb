@@ -241,3 +241,11 @@ Then /^each column should contain "([^"]*)"$/ do |text|
     column.text.should include text
   end
 end
+
+Then /^the list should contain (\d+) items$/ do |items|
+  @list.items.should == items.to_i
+end
+
+Then /^each item should contain "([^"]*)"$/ do |text|
+  @list.each { |item| item.text.should include text }
+end
