@@ -4,6 +4,10 @@
   * Added columns method to TableRow to return the number of columns
   * Table now supports Enumerable to iterate over the TableRows
   * TableRow now supports Enumerable to iterate over TableCells
+  * Added items method to UnorderedList to return number of ListItems
+  * Added items method to OrderedList to return number of ListItems
+  * UnorderedList now supports Enumerable to iterate over the ListItems
+  * OrderedList now supports Enumerable to iterate over the ListItems
 
 === Version 0.0.4 / 2011-06-13
 * Enhancements
