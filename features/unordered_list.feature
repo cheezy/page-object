@@ -11,6 +11,8 @@ Feature: Unordered list
     When I search for the unordered list by "<search_by>"
     And I get the first item from the list
     Then the list item's text should be "Item One"
+    And the list should contain 3 items
+    And each item should contain "Item"
   
   Scenarios:
     | search_by |

@@ -17,8 +17,7 @@ module PageObject
         for index in 1..self.items do
           yield self[index-1] 
         end
-      end
-      
+      end      
       
       protected
       

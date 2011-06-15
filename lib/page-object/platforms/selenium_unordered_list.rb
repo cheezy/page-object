@@ -9,8 +9,21 @@ module PageObject
       # @return [PageObject::Elements::ListItem]
       #
       def [](idx)
-        element = @element.find_element(:xpath, ".//li[#{idx+1}]")
-        PageObject::Elements::ListItem.new(element, :platform => :selenium)
+        eles = list_items
+        PageObject::Elements::ListItem.new(eles[idx], :platform => :selenium)
+      end
+      
+      #
+      # Return the number of items contained in the unordered list
+      #
+      def items
+        list_items.size
+      end
+      
+      private
+      
+      def list_items
+        element.find_elements(:xpath, child_xpath)
       end
       
     end
