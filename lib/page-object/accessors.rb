@@ -9,6 +9,19 @@ module PageObject
   # @see PageObject::SeleniumPageObject for the selenium implementation of the platform delegate
   #
   module Accessors
+    
+    #
+    # Specify the url for the page.  A call to this method will generate a
+    # 'goto' method to take you to the page.
+    #
+    # @param [String] the url for the page.
+    #
+    def page_url(url)
+      define_method("goto") do
+        platform.navigate_to url
+      end
+    end
+    
     #
     # adds three methods to the page object - one to set text in a text field,
     # another to retrieve text from a text field and another to return the text

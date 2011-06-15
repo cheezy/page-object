@@ -41,9 +41,10 @@ module PageObject
   #
   # @param [Watir::Browser or Selenium::WebDriver::Driver] the platform browser to use
   #
-  def initialize(browser)
+  def initialize(browser, visit=false)
     @browser = browser
     include_platform_driver(browser)
+    goto if visit && respond_to?(:goto)
   end
 
   # @private

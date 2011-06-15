@@ -3,6 +3,7 @@ require 'spec_helper'
 class TestPageObject
   include PageObject
 
+  page_url "http://apple.com"
   link(:google_search, :link => 'Google Search')
   text_field(:first_name, :id => 'first_name')
   hidden_field(:social_security_number, :id => 'ssn')
@@ -52,6 +53,23 @@ describe PageObject::Accessors do
   let(:watir_page_object) { TestPageObject.new(watir_browser) }
   let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
   let(:block_page_object) { BlockPageObject.new(watir_browser) }
+  
+  describe "goto a page" do
+    it "should navigate to a page when requested" do
+      watir_browser.should_receive(:goto)
+      page = TestPageObject.new(watir_browser, true)
+    end
+    
+    it "should not navigate to a page when not requested" do
+      watir_browser.should_not_receive(:goto)
+      page = TestPageObject.new(watir_browser)
+    end
+    
+    it "should not navigate to a page when 'page_url' not specified" do
+      watir_browser.should_not_receive(:goto)
+      page = BlockPageObject.new(watir_browser, true)
+    end
+  end
   
   describe "link accessors" do
     context "when called on a page object" do

@@ -8,6 +8,10 @@
   * Added items method to OrderedList to return number of ListItems
   * UnorderedList now supports Enumerable to iterate over the ListItems
   * OrderedList now supports Enumerable to iterate over the ListItems
+  * All element methods now take an optional block that can be executed passing a browser
+  * Created PageFactory module to add factory methods to your step definitions
+    * Thanks Alister Scott for the idea
+  
 
 === Version 0.0.4 / 2011-06-13
 * Enhancements
