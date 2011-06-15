@@ -9,7 +9,7 @@ module PageObject
       # @return [PageObject::Elements::TableRow]
       #
       def [](idx)
-        eles = @element.find_elements(:xpath, child_xpath)
+        eles = table_rows
         PageObject::Elements::TableRow.new(eles[idx], :platform => :selenium)
       end
 
@@ -17,7 +17,7 @@ module PageObject
       # Returns the number of rows in the table.
       #
       def rows
-        element.find_elements(:xpath, child_xpath).size
+        table_rows.size
       end
  
       #
@@ -28,6 +28,11 @@ module PageObject
         raise "exists? not available on table element"
       end
       
+      private
+      
+      def table_rows
+        @element.find_elements(:xpath, child_xpath)
+      end
     end
   end
 end
