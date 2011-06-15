@@ -29,8 +29,9 @@ module PageObject
     #   * :text => Watir only
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def text_field(name, identifier)
+    def text_field(name, identifier=nil, &block)
       define_method(name) do
         platform.text_field_value_for identifier
       end
@@ -38,7 +39,7 @@ module PageObject
         platform.text_field_value_set(identifier, value)
       end
       define_method("#{name}_text_field") do
-        platform.text_field_for identifier
+        block ? block.call(browser) : platform.text_field_for(identifier)
       end
     end
     
@@ -60,13 +61,14 @@ module PageObject
     #   * :tag_name => Watir and Selenium
     #   * :text => Watir only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def hidden_field(name, identifier)
+    def hidden_field(name, identifier=nil, &block)
       define_method(name) do
         platform.hidden_field_value_for identifier
       end
       define_method("#{name}_hidden_field") do
-        platform.hidden_field_for identifier
+        block ? block.call(browser) : platform.hidden_field_for(identifier)
       end
     end
     
@@ -88,8 +90,9 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :tag_name => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def text_area(name, identifier)
+    def text_area(name, identifier=nil, &block)
       define_method(name) do
         platform.text_area_value_for identifier
       end
@@ -97,7 +100,7 @@ module PageObject
         platform.text_area_value_set(identifier, value)
       end
       define_method("#{name}_text_area") do
-        platform.text_area_for identifier
+        block ? block.call(browser) : platform.text_area_for(identifier)
       end
     end
 
@@ -119,8 +122,9 @@ module PageObject
     #   * :text => Watir only
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def select_list(name, identifier)
+    def select_list(name, identifier=nil, &block)
       define_method(name) do
         platform.select_list_value_for identifier
       end
@@ -128,7 +132,7 @@ module PageObject
         platform.select_list_value_set(identifier, value)
       end
       define_method("#{name}_select_list") do
-        platform.select_list_for identifier
+        block ? block.call(browser) : platform.select_list_for(identifier)
       end
     end
 
@@ -152,13 +156,14 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def link(name, identifier)
+    def link(name, identifier=nil, &block)
       define_method(name) do
         platform.click_link_for identifier
       end
       define_method("#{name}_link") do
-        platform.link_for identifier
+        block ? block.call(browser) : platform.link_for(identifier)
       end
     end
     
@@ -178,8 +183,9 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def checkbox(name, identifier)
+    def checkbox(name, identifier=nil, &block)
       define_method("check_#{name}") do
         platform.check_checkbox(identifier)
       end
@@ -190,7 +196,7 @@ module PageObject
         platform.checkbox_checked?(identifier)
       end
       define_method("#{name}_checkbox") do
-        platform.checkbox_for identifier
+        block ? block.call(browser) : platform.checkbox_for(identifier)
       end
     end
     
@@ -211,8 +217,9 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def radio_button(name, identifier)
+    def radio_button(name, identifier=nil, &block)
       define_method("select_#{name}") do
         platform.select_radio(identifier)
       end
@@ -223,7 +230,7 @@ module PageObject
         platform.radio_selected?(identifier)
       end
       define_method("#{name}_radio_button") do
-        platform.radio_button_for identifier
+        block ? block.call(browser) : platform.radio_button_for(identifier)
       end
     end
 
@@ -243,13 +250,14 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :text => Watir only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def button(name, identifier)
+    def button(name, identifier=nil, &block)
       define_method(name) do
         platform.click_button_for identifier
       end
       define_method("#{name}_button") do
-        platform.button_for identifier
+        block ? block.call(browser) : platform.button_for(identifier)
       end
     end
     
@@ -268,13 +276,14 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def div(name, identifier) 
+    def div(name, identifier=nil, &block)
       define_method(name) do
         platform.div_text_for identifier
       end
       define_method("#{name}_div") do
-        platform.div_for identifier
+        block ? block.call(browser) : platform.div_for(identifier)
       end
     end
 
@@ -293,13 +302,14 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def span(name, identifier)
+    def span(name, identifier=nil, &block)
       define_method(name) do
         platform.span_text_for identifier
       end
       define_method("#{name}_span") do
-        platform.span_for identifier
+        block ? block.call(browser) : platform.span_for(identifier)
       end
     end
 
@@ -317,10 +327,11 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def table(name, identifier)
+    def table(name, identifier=nil, &block)
       define_method("#{name}_table") do
-        platform.table_for identifier
+        block ? block.call(browser) : platform.table_for(identifier)
       end
     end
     
@@ -339,13 +350,14 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def cell(name, identifier)
+    def cell(name, identifier=nil, &block)
       define_method("#{name}") do
         platform.cell_text_for identifier
       end
       define_method("#{name}_cell") do
-        platform.cell_for identifier
+        block ? block.call(browser) : platform.cell_for(identifier)
       end
     end
     
@@ -363,10 +375,11 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def image(name, identifier)
+    def image(name, identifier=nil, &block)
       define_method("#{name}_image") do
-        platform.image_for identifier
+        block ? block.call(browser) : platform.image_for(identifier)
       end
     end
     
@@ -383,10 +396,11 @@ module PageObject
     #   * :id => Watir and Selenium
     #   * :index => Watir only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def form(name, identifier)
+    def form(name, identifier=nil, &block)
       define_method("#{name}_form") do
-        platform.form_for identifier
+        block ? block.call(browser) : platform.form_for(identifier)
       end
     end
     
@@ -405,13 +419,14 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def list_item(name, identifier)
+    def list_item(name, identifier=nil, &block)
       define_method(name) do
         platform.list_item_text_for identifier
       end
       define_method("#{name}_list_item") do
-        platform.list_item_for identifier
+        block ? block.call(browser) : platform.list_item_for(identifier)
       end
     end
     
@@ -429,10 +444,11 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def unordered_list(name, identifier)
+    def unordered_list(name, identifier=nil, &block)
       define_method("#{name}_unordered_list") do
-        platform.unordered_list_for identifier
+        block ? block.call(browser) : platform.unordered_list_for(identifier)
       end
     end
     
@@ -450,10 +466,11 @@ module PageObject
     #   * :index => Watir only
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
     #
-    def ordered_list(name, identifier)
+    def ordered_list(name, identifier=nil, &block)
       define_method("#{name}_ordered_list") do
-        platform.ordered_list_for identifier
+        block ? block.call(browser) : platform.ordered_list_for(identifier)
       end
     end
   end
