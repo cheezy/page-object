@@ -35,9 +35,9 @@ module PageObject
     #
     # Create a page object.
     #
-    # @param [PageObject] a class that has included the PageObject module
-    # @param [Bool] should the page be visited?  default is false.
-    # @param an optional block to be called
+    # @param [PageObject]  a class that has included the PageObject module
+    # @param [Boolean]  a boolean indicating if the page should be visited?  default is false.
+    # @param [block]  an optional block to be called
     # @return [PageObject] the newly created page object
     #
     def on_page(page_class, visit=false, &block)
