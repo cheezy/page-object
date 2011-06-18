@@ -34,6 +34,15 @@ describe PageObject::Elements::SelectList do
         sel_list.should_receive(:[]).with(1).and_return(sel_list)
         watir_sel_list[1].should be_instance_of PageObject::Elements::Option
       end
+
+      it "should return an array of options" do
+        opts = [sel_list, sel_list]
+        watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir)
+        sel_list.stub(:wd).and_return(sel_list)
+        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
+        watir_sel_list.options.size.should == 2
+      end
+
     end
 
     context "for selenium" do

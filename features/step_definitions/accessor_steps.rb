@@ -254,3 +254,9 @@ Then /^option "([^\"]*)" should contain "([^\"]*)"$/ do |opt_num, text|
   @element = @page.send "sel_list_#{@how}_select_list".to_sym
   @element[opt_num.to_i - 1].text.should == text
 end
+
+Then /^each option should contain "([^\"]*)"$/ do |text|
+  @element.options.each do |option|
+    option.text.should include text
+  end
+end

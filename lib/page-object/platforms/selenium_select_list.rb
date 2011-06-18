@@ -9,10 +9,21 @@ module PageObject
       # @return [PageObject::Elements::Option]
       #
       def [](idx)
-        eles = @element.find_elements(:xpath, ".//child::option")
-        PageObject::Elements::Option.new(eles[idx], :platform => :selenium)
+        options[idx]
       end
       
+      #
+      # Return an array of Options contained in the select lit.
+      #
+      # @return [array of PageObject::Elements::Option]
+      def options
+        options = @element.find_elements(:xpath, child_xpath)
+        elements = []
+        options.each do |opt|
+          elements << PageObject::Elements::Option.new(opt, :platform => :selenium)
+        end
+        elements
+      end
     end
   end
 end

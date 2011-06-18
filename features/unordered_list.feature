@@ -5,12 +5,12 @@ Feature: Unordered list
   
   Scenario: Getting the first element from the unordered list
     When I get the first item from the unordered list
-    Then the list item's text should be "Item One"
+    Then the list items text should be "Item One"
 
   Scenario Outline: Locating unordered lists on the page
     When I search for the unordered list by "<search_by>"
     And I get the first item from the list
-    Then the list item's text should be "Item One"
+    Then the list items text should be "Item One"
     And the list should contain 3 items
     And each item should contain "Item"
   
@@ -24,7 +24,7 @@ Feature: Unordered list
   Scenario Outline: Locating unordered lists in Watir only
     When I search for the unordered list by "<search_by>"
     And I get the first item from the list
-    Then the list item's text should be "Item One"
+    Then the list items text should be "Item One"
 
   Scenarios:
     | search_by |
@@ -34,7 +34,7 @@ Feature: Unordered list
   Scenario Outline: Locating unordered lists in Selenium only
     When I search for the unordered list by "<search_by>"
     And I get the first item from the list
-    Then the list item's text should be "Item One"
+    Then the list items text should be "Item One"
 
   Scenarios:
     | search_by |

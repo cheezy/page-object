@@ -8,6 +8,10 @@ module PageObject
       end
 
       protected
+
+      def child_xpath
+        ".//child::option"
+      end
       
       def self.watir_finders
         super + [:text, :value]

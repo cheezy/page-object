@@ -5,12 +5,12 @@ Feature: Ordered list
   
   Scenario: Getting the first element from the ordered list
     When I get the first item from the ordered list
-    Then the list item's text should be "Number One"
+    Then the list items text should be "Number One"
 
   Scenario Outline: Locating ordered lists on the page
     When I search for the ordered list by "<search_by>"
     And I get the first item from the list
-    Then the list item's text should be "Number One"
+    Then the list items text should be "Number One"
     And the list should contain 3 items
     And each item should contain "Number"
   
@@ -24,7 +24,7 @@ Feature: Ordered list
   Scenario Outline: Locating ordered lists in Watir only
     When I search for the ordered list by "<search_by>"
     And I get the first item from the list
-    Then the list item's text should be "Number One"
+    Then the list items text should be "Number One"
 
   Scenarios:
     | search_by |
@@ -34,7 +34,7 @@ Feature: Ordered list
   Scenario Outline: Locating ordered lists in Selenium only
     When I search for the ordered list by "<search_by>"
     And I get the first item from the list
-    Then the list item's text should be "Number One"
+    Then the list items text should be "Number One"
 
   Scenarios:
     | search_by |
