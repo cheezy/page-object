@@ -9,13 +9,14 @@ module PageObject
       # @return [PageObject::Elements::Option]
       #
       def [](idx)
-        PageObject::Elements::Option.new(@element.options[idx], :platform => :watir)
+        PageObject::Elements::Option.new(options[idx], :platform => :watir)
       end
 
       #
       # Return an array of Options contained in the select lit.
       #
       # @return [array of PageObject::Elements::Option]
+      #
       def options
         options = @element.wd.find_elements(:xpath, child_xpath)
         elements = []

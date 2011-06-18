@@ -22,21 +22,22 @@ describe PageObject::Elements::SelectList do
 
   describe "interface" do
     let(:sel_list) { double('select_list') }
+    let(:opts) { [sel_list, sel_list] }
 
     before(:each) do
       sel_list.stub(:find_elements).and_return(sel_list)
+      sel_list.stub(:each)
     end
     
     context "for watir" do
       it "should return an option when indexed" do
         watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir)
-        sel_list.stub(:options).and_return(sel_list)
-        sel_list.should_receive(:[]).with(1).and_return(sel_list)
-        watir_sel_list[1].should be_instance_of PageObject::Elements::Option
+        sel_list.stub(:wd).and_return(sel_list)
+        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
+        watir_sel_list[0].should be_instance_of PageObject::Elements::Option
       end
 
       it "should return an array of options" do
-        opts = [sel_list, sel_list]
         watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir)
         sel_list.stub(:wd).and_return(sel_list)
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
@@ -48,9 +49,14 @@ describe PageObject::Elements::SelectList do
     context "for selenium" do
       it "should return an option when indexed" do
         selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
-        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(sel_list)
-        sel_list.should_receive(:[]).with(1).and_return(sel_list)
+        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         selenium_sel_list[1].should be_instance_of PageObject::Elements::Option
+      end
+
+      it "should return an array of options" do
+        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
+        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
+        selenium_sel_list.options.size.should == 2
       end
     end
   end
