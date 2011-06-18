@@ -14,19 +14,19 @@ Then /^I should be able to type "([^\"]*)" into the field$/ do |value|
   @page.send "text_field_#{@how}=".to_sym, value
 end
 
-When /^I type "([^"]*)" into the text area$/ do |text|
+When /^I type "([^\"]*)" into the text area$/ do |text|
   @page.text_area_id = text
 end
 
-Then /^the text area should contain "([^"]*)"$/ do |expected_text|
+Then /^the text area should contain "([^\"]*)"$/ do |expected_text|
   @page.text_area_id.should == expected_text
 end
 
-When /^I search for the text area by "([^"]*)"$/ do |how|
+When /^I search for the text area by "([^\"]*)"$/ do |how|
   @how = how
 end
 
-Then /^I should be able to type "([^"]*)" into the area$/ do |value|
+Then /^I should be able to type "([^\"]*)" into the area$/ do |value|
   @page.send "text_area_#{@how}=".to_sym, value
 end
 
@@ -107,11 +107,11 @@ When /^I get the text from the div$/ do
   @text = @page.div_id
 end
 
-Then /^the text should be "([^"]*)"$/ do |expected_text|
+Then /^the text should be "([^\"]*)"$/ do |expected_text|
   @text.should == expected_text
 end
 
-When /^I search for the div by "([^"]*)"$/ do |how|
+When /^I search for the div by "([^\"]*)"$/ do |how|
   @text = @page.send "div_#{how}".to_sym
 end
 
@@ -119,7 +119,7 @@ When /^I get the text from the span$/ do
   @text = @page.span_id
 end
 
-When /^I search for the span by "([^"]*)"$/ do |how|
+When /^I search for the span by "([^\"]*)"$/ do |how|
   @text = @page.send "span_#{how}".to_sym
 end
 
@@ -133,7 +133,7 @@ Then /^I should be on the success page$/ do
   @page.title.should == 'Success'
 end
 
-When /^I search for the button by "([^"]*)"$/ do |how|
+When /^I search for the button by "([^\"]*)"$/ do |how|
   @how = how
 end
 
@@ -141,11 +141,11 @@ Then /^I should be able to click the button$/ do
   @page.send "button_#{@how}"
 end
 
-When /^I search for the table cell by "([^"]*)"$/ do |how|
+When /^I search for the table cell by "([^\"]*)"$/ do |how|
   @cell_data = @page.send "cell_#{how}"
 end
 
-When /^I retrieve a table element by "([^"]*)"$/ do |how|
+When /^I retrieve a table element by "([^\"]*)"$/ do |how|
   @element = @page.send "table_#{how}_table"
 end
 
@@ -153,15 +153,15 @@ When /^I get the image element$/ do
   @element = @page.image_id_image
 end
 
-Then /^the image should be "([^"]*)" pixels wide$/ do |width|
+Then /^the image should be "([^\"]*)" pixels wide$/ do |width|
   @element.width.should == width.to_i
 end
 
-Then /^the image should be "([^"]*)" pixels tall$/ do |height|
+Then /^the image should be "([^\"]*)" pixels tall$/ do |height|
   @element.height.should == height.to_i
 end
 
-When /^I get the image element by "([^"]*)"$/ do |how|
+When /^I get the image element by "([^\"]*)"$/ do |how|
   @element = @page.send "image_#{how}_image"
 end
 
@@ -169,15 +169,15 @@ When /^I retrieve the hidden field element$/ do
   @element = @page.hidden_field_id_hidden_field
 end
 
-Then /^I should see the hidden field contains "([^"]*)"$/ do |text|
+Then /^I should see the hidden field contains "([^\"]*)"$/ do |text|
   @page.hidden_field_id.should == text
 end
 
-When /^I search for the hidden field by "([^"]*)"$/ do |how|
+When /^I search for the hidden field by "([^\"]*)"$/ do |how|
     @element = @page.send "hidden_field_#{how}_hidden_field"
 end
 
-Then /^hidden field element should contains "([^"]*)"$/ do |text|
+Then /^hidden field element should contains "([^\"]*)"$/ do |text|
   @element.value.should == text
 end
 
@@ -185,7 +185,7 @@ Then /^I should be able to submit the form$/ do
   @element.submit
 end
 
-When /^I locate the form by "([^"]*)"$/ do |how|
+When /^I locate the form by "([^\"]*)"$/ do |how|
   @element = @page.send "form_#{how}_form"
 end
 
@@ -193,7 +193,7 @@ When /^I get the text from the list item$/ do
   @text = @page.li_id
 end
 
-When /^I search for the list item by "([^"]*)"$/ do |how|
+When /^I search for the list item by "([^\"]*)"$/ do |how|
   @text = @page.send "li_#{how}"
 end
 
@@ -201,11 +201,11 @@ When /^I get the first item from the unordered list$/ do
   @element = @page.ul_id_unordered_list[0]
 end
 
-Then /^the list item's text should be "([^"]*)"$/ do |expected_text|
+Then /^the list items text should be "([^\"]*)"$/ do |expected_text|
   @element.text.should == expected_text
 end
 
-When /^I search for the unordered list by "([^"]*)"$/ do |how|
+When /^I search for the unordered list by "([^\"]*)"$/ do |how|
   @list = @page.send "ul_#{how}_unordered_list"
 end
 
@@ -217,25 +217,25 @@ When /^I get the first item from the ordered list$/ do
   @element = @page.ol_id_ordered_list[0]
 end
 
-When /^I search for the ordered list by "([^"]*)"$/ do |how|
+When /^I search for the ordered list by "([^\"]*)"$/ do |how|
   @list = @page.send "ol_#{how}_ordered_list"
 end
 
-Then /^the table should have "([^"]*)" rows$/ do |rows|
+Then /^the table should have "([^\"]*)" rows$/ do |rows|
   @element.rows.should == rows.to_i
 end
 
-Then /^each row should contain "([^"]*)"$/ do |text|
+Then /^each row should contain "([^\"]*)"$/ do |text|
   @element.each do |row|
     row.text.should include text
   end
 end
 
-Then /^row "([^"]*)" should have "([^"]*)" columns$/ do |row, cols|
+Then /^row "([^\"]*)" should have "([^\"]*)" columns$/ do |row, cols|
   @element[row.to_i - 1].columns.should == cols.to_i
 end
 
-Then /^each column should contain "([^"]*)"$/ do |text|
+Then /^each column should contain "([^\"]*)"$/ do |text|
   row = @element[0]
   row.each do |column|
     column.text.should include text
@@ -246,6 +246,11 @@ Then /^the list should contain (\d+) items$/ do |items|
   @list.items.should == items.to_i
 end
 
-Then /^each item should contain "([^"]*)"$/ do |text|
+Then /^each item should contain "([^\"]*)"$/ do |text|
   @list.each { |item| item.text.should include text }
+end
+
+Then /^option "([^\"]*)" should contain "([^\"]*)"$/ do |opt_num, text|
+  @element = @page.send "sel_list_#{@how}_select_list".to_sym
+  @element[opt_num.to_i - 1].text.should == text
 end

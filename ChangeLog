@@ -1,5 +1,8 @@
 === Version 0.0.6
 * Enhancements
+  * Added [] method to SelectList to index Options
+  * Added support for the following elements
+    * Option
 
 === Version 0.0.5 / 2011-06-15
 * Enhancements

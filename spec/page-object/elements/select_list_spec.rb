@@ -19,4 +19,30 @@ describe PageObject::Elements::SelectList do
       end
     end
   end
+
+  describe "interface" do
+    let(:sel_list) { double('select_list') }
+
+    before(:each) do
+      sel_list.stub(:find_elements).and_return(sel_list)
+    end
+    
+    context "for watir" do
+      it "should return an option when indexed" do
+        watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir)
+        sel_list.stub(:options).and_return(sel_list)
+        sel_list.should_receive(:[]).with(1).and_return(sel_list)
+        watir_sel_list[1].should be_instance_of PageObject::Elements::Option
+      end
+    end
+
+    context "for selenium" do
+      it "should return an option when indexed" do
+        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
+        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(sel_list)
+        sel_list.should_receive(:[]).with(1).and_return(sel_list)
+        selenium_sel_list[1].should be_instance_of PageObject::Elements::Option
+      end
+    end
+  end
 end
