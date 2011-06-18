@@ -18,8 +18,8 @@ module PageObject
       # @return [array of PageObject::Elements::Option]
       #
       def options
-        options = @element.wd.find_elements(:xpath, child_xpath)
         elements = []
+        options = @element.wd.find_elements(:xpath, child_xpath)
         options.each do |opt|
           elements << PageObject::Elements::Option.new(opt, :platform => :watir)
         end
