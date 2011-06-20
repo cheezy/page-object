@@ -1,4 +1,4 @@
-Feature: Elements
+Feature: Attributes on Elements
 
   Background:
     Given I am on the static elements page

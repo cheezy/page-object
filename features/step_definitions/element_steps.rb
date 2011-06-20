@@ -1,3 +1,8 @@
+When /^I select a link labeled "([^"]*)" and index "([^"]*)"$/ do |label, index|
+  @page.send "#{label.downcase}#{index}".to_sym
+end
+
+
 When /^I retrieve a check box element$/ do
   @element = @page.cb_id_checkbox
 end

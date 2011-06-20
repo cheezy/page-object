@@ -1,6 +1,10 @@
 class Page
   include PageObject
 
+  link(:hello0, {:text => "Hello", :index => 0})
+  link(:hello1, {:text => "Hello", :index => 1})
+  link(:hello2, {:text => "Hello", :index => 2})
+
   text_field(:text_field_id, :id => "text_field_id")
   text_field(:text_field_class, :class => "text_field_class")
   text_field(:text_field_name, :name => "text_field_name")

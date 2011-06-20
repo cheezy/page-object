@@ -17,7 +17,13 @@ module PageObject
       
       # @private
       def self.watir_identifier_for identifier
-        identifier_for identifier, watir_finders, watir_mapping
+        all_identities = {}
+        identifier.each do |key, value|
+          each = {key => value}
+          ident = identifier_for each, watir_finders, watir_mapping
+          all_identities[ident.keys.first] = ident.values.first
+        end
+        all_identities
       end
 
       # @private
