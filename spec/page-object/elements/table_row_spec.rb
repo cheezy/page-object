@@ -32,6 +32,10 @@ describe PageObject::Elements::TableRow do
     end
 
     context "for watir" do
+      before(:each) do
+        table_row_driver.stub(:find_elements).and_return(table_row_driver)
+      end
+      
       it "should return a table cell when indexed" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)    
         table_row_driver.should_receive(:[]).with(1).and_return(table_cell)
@@ -40,7 +44,7 @@ describe PageObject::Elements::TableRow do
 
       it "should return the number of columns" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)
-        table_row_driver.should_receive(:wd).and_return(table_row_driver)
+        table_row_driver.stub(:wd).and_return(table_row_driver)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
         table_row_driver.should_receive(:size).and_return(3)
         table_row.columns.should == 3
