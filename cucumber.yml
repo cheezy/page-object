@@ -3,5 +3,5 @@ watir: DRIVER=WATIR --no-source --color --format pretty --tags ~@selenium_only
 selenium: DRIVER=SELENIUM --no-source --color --format pretty --tags ~@watir_only
 watir_focus: DRIVER=WATIR --no-source --color --format pretty --tags @focus
 selenium_focus: DRIVER=SELENIUM --no-source --color --format pretty --tags @focus
-autotest: DRIVER=WATIR features/element.feature --no-source --color --format pretty --tags ~@selenium_only
+autotest: DRIVER=WATIR --no-source --color --format pretty --tags ~@selenium_only
 

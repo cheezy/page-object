@@ -151,6 +151,7 @@ module PageObject
     # See PageObject::Accessors#link
     #
     def click_link_for(identifier)
+      identifier = add_tagname_if_needed identifier, "a"
       how, what = Elements::Link.selenium_identifier_for identifier
       @browser.find_element(how, what).click
     end
@@ -383,5 +384,13 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::OrderedList.new(element, :platform => :selenium)
     end
+
+    private
+    
+    def add_tagname_if_needed identifier, tag
+      identifier[:tag_name] = tag if identifier.length > 1
+      identifier
+    end
+    
   end
 end
