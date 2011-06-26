@@ -32,11 +32,12 @@ module PageObject
     #   # will generate 'first_name', 'first_name=' and 'first_name_text_field' methods
     #
     # @param  [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a text_field.  The valid keys are:
+    # @param [Hash] identifier how we find a text_field.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :tag_name => Watir and Selenium
     #   * :text => Watir only
@@ -159,11 +160,12 @@ module PageObject
     #   # will generate 'add_to_cart' and 'add_to_cart_link' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a link.  The valid keys are:
+    # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :href => Watir only
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :link => Watir and Selenium
     #   * :link_text => Watir and Selenium
     #   * :name => Watir and Selenium

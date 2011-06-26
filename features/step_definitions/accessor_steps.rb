@@ -10,6 +10,10 @@ When /^I search for the text field by "([^\"]*)"$/ do |how|
   @how = how
 end
 
+When /^I search for the text field by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @how = "#{param1}_#{param2}"
+end
+
 Then /^I should be able to type "([^\"]*)" into the field$/ do |value|
   @page.send "text_field_#{@how}=".to_sym, value
 end

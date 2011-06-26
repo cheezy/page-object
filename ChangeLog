@@ -1,9 +1,17 @@
 === Version 0.0.6
 * Enhancements
+  * Support for using multiple identifiers when locating the following element:
+    * Link
+    * TextField
+  * Selenium support for using index for the following elements:
+    * Link
+    * TextField
   * Added [] method to SelectList to index Options
   * Added options method to Select List
   * Added support for the following elements
     * Option
+  * Updated to use selenium-webdriver 0.2.2
+  * Updated to use watir-webdriver 0.2.5
 
 === Version 0.0.5 / 2011-06-15
 * Enhancements

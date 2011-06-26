@@ -18,7 +18,7 @@ describe PageObject::Elements::TextField do
     end
     
     it "should map selenium types to same" do
-      [:class, :css, :id, :name, :xpath].each do |t|
+      [:class, :css, :id, :name, :xpath, :index].each do |t|
         key, value = textfield.selenium_identifier_for t => 'value'
         key.should == t
       end

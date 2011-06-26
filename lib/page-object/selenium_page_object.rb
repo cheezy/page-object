@@ -48,6 +48,7 @@ module PageObject
     # See PageObject::Accessors#text_field
     #
     def text_field_value_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'text'
       how, what = Elements::TextField.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
@@ -57,6 +58,7 @@ module PageObject
     # See PageObject::Accessors#text_field
     #
     def text_field_value_set(identifier, value)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'text'
       how, what = Elements::TextField.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
     end
@@ -66,6 +68,7 @@ module PageObject
     # See PageObject::Accessors#text_field
     #
     def text_field_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'text'
       how, what = Elements::TextField.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::TextField.new(element, :platform => :selenium)
@@ -387,10 +390,16 @@ module PageObject
 
     private
     
-    def add_tagname_if_needed identifier, tag
-      identifier[:tag_name] = tag if identifier.length > 1
+    def add_tagname_if_needed identifier, tag, additional=nil
+      return identifier if identifier.length < 2 and identifier[:index].nil?
+      identifier[:tag_name] = tag
+      if additional
+        additional.each do |key, value|
+          identifier[key] = value
+        end
+      end
       identifier
     end
-    
+        
   end
 end

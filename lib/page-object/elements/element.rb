@@ -61,13 +61,13 @@ module PageObject
       end
       
       def self.equal_pair(key, value)
-        if key == :label && should_use_label_element?
+        if key == :label
           "@id=//label[normalize-space()=#{xpath_string(value)}]/@for"
         else
           "#{lhs_for(key)}=#{xpath_string(value)}"
         end
       end
-
+      
       def self.lhs_for(key)
         case key
         when :text, 'text'
@@ -83,7 +83,6 @@ module PageObject
         if value.include? "'"
           parts = value.split("'", -1).map { |part| "'#{part}'" }
           string = parts.join(%{,"'",})
-
           "concat(#{string})"
         else
           "'#{value}'"
@@ -106,7 +105,7 @@ module PageObject
       end
       
       def self.selenium_finders
-        [:class, :id, :name, :xpath]
+        [:class, :id, :name, :xpath, :index]
       end
       
       def self.selenium_mapping 

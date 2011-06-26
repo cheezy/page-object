@@ -22,6 +22,7 @@ Feature: Links
     | link      |
     | link_text |
     | text      |
+    | index     |
 
   @watir_only
   Scenario Outline: Locating links on Watir only
@@ -31,7 +32,6 @@ Feature: Links
   Scenarios:
     | search_by |
     | href      |
-    | index     |
     
   Scenario: Retrieve a Link
     When I retrieve a link element

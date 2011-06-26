@@ -20,7 +20,7 @@ describe PageObject::Elements::Link do
     end
     
     it "should map selenium types to same" do
-      [:class, :id, :link, :link_text, :name, :xpath].each do |t|
+      [:class, :id, :link, :link_text, :name, :xpath, :index].each do |t|
         key, value = link.selenium_identifier_for t => 'value'
         key.should == t
       end

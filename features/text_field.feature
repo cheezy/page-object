@@ -22,15 +22,16 @@ Feature: Text Fields
     | xpath     |  
     | css       |
     | tag_name  |
-
-  @watir_only
-  Scenario Outline: Locating text fields on Watir only
-    When I search for the text field by "<search_by>"
+    | index     |
+    
+  Scenario Outline: Locating a text field using multiple parameters
+    When I search for the text field by "<param1>" and "<param2>"
     Then I should be able to type "I found it" into the field
 
   Scenarios:
-    | search_by |
-    | index     |
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
 
   Scenario: Retrieve a text field
     When I retrieve a text field

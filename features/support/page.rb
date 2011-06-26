@@ -14,6 +14,8 @@ class Page
   text_field(:text_field_index, :index => 0)
   text_field(:text_field_text, :text => "")
   text_field(:text_field_value, :value => "")
+  text_field(:text_field_class_index, :class => "text_field_class", :index => 0)
+  text_field(:text_field_name_index, :name => "text_field_name", :index => 0)
 
   text_area(:text_area_id, :id => "text_area_id")
   text_area(:text_area_class, :class => "text_area_class")
