@@ -147,6 +147,9 @@ When /^I search for the span by "([^\"]*)"$/ do |how|
   @text = @page.send "span_#{how}".to_sym
 end
 
+When /^I search for the span by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @text = @page.send "span_#{param1}_#{param2}".to_sym
+end
 
 When /^I click the button$/ do
   @page.button_id

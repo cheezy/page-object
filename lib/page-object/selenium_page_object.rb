@@ -286,6 +286,7 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'span'
       how, what = Elements::Span.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
@@ -295,6 +296,7 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'span'
       how, what = Elements::Span.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Span.new(element, :platform => :selenium)

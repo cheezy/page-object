@@ -16,16 +16,7 @@ Feature: Span
     | id        |
     | class     |
     | xpath     |  
-
-  @watir_only
-  Scenario Outline: Locating span on Watir only
-    When I search for the span by "<search_by>"
-    Then the text should be "My alert"
-
-  Scenarios:
-    | search_by |
     | index     |
-    
     
   @selenium_only
   Scenario Outline: Locating span on Selenium only
@@ -35,3 +26,12 @@ Feature: Span
   Scenarios:
     | search_by |
     | name      |
+
+  Scenario Outline: Locating divs using multiple parameters
+    When I search for the span by "<param1>" and "<param2>"
+    Then the text should be "My alert"
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

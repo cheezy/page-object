@@ -291,10 +291,11 @@ module PageObject
     #   # will generate 'message' and 'message_div' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a div.  The valid keys are:
+    # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
@@ -317,20 +318,21 @@ module PageObject
     #   # will generate 'alert' and 'alert_span' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a span.  The valid keys are:
+    # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Selenium only
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def span(name, identifier=nil, &block)
       define_method(name) do
-        platform.span_text_for identifier
+        platform.span_text_for identifier.clone
       end
       define_method("#{name}_span") do
-        block ? block.call(browser) : platform.span_for(identifier)
+        block ? block.call(browser) : platform.span_for(identifier.clone)
       end
     end
 

@@ -10,6 +10,7 @@
     * RadioButton
     * Button
     * Div
+    * Span
   * Selenium support for using index for the following elements:
     * Link
     * TextField
@@ -20,6 +21,7 @@
     * RadioButton
     * Button
     * Div
+    * Span
   * Added [] method to SelectList to index Options
   * Added options method to Select List
   * Added support for the following elements
