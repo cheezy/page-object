@@ -23,16 +23,17 @@ Feature: Radio Buttons
       | class     |
       | name      |
       | xpath     |  
+      | index     |
 
-  @watir_only
-  Scenario Outline: Locating radio buttons on Watir only
-    When I search for the radio button by "<search_by>"
+  Scenario Outline: Locating check boxes on Watir only
+    When I search for the radio button by "<param1>" and "<param2>"
     And I select the radio button
     Then the "Milk" radio button should be selected
 
-    Scenarios:
-      | search_by |
-      | index     |
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
 
   Scenario: Retrieve a radio button
     When I retrieve a radio button

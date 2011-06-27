@@ -115,6 +115,10 @@ When /^I search for the radio button by "([^\"]*)"$/ do |how|
   @how = how
 end
 
+When /^I search for the radio button by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @how = "#{param1}_#{param2}"
+end
+
 When /^I select the radio button$/ do 
   @page.send "select_milk_#{@how}".to_sym
 end

@@ -74,6 +74,8 @@ class Page
   radio_button(:milk_class, :class => 'milk_class')
   radio_button(:milk_index, :index => 0)
   radio_button(:milk_xpath, :xpath => "//input[@type='radio']")
+  radio_button(:milk_class_index, :class => "milk_class", :index => 0)
+  radio_button(:milk_name_index, :name => "milk_name", :index => 0)
   
   radio_button(:butter_id, :id => 'butter_id')
   

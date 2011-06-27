@@ -12,7 +12,7 @@ describe PageObject::Elements::RadioButton do
       end
     end
     it "should map selenium types to same" do
-      [:class, :id, :name, :xpath].each do |t|
+      [:class, :id, :name, :xpath, :index].each do |t|
         key, value = radiobutton.selenium_identifier_for t => 'value'
         key.should == t
       end

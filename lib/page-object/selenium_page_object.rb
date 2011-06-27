@@ -224,6 +224,7 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def select_radio(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
     end
@@ -233,6 +234,7 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def clear_radio(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
     end
@@ -242,6 +244,7 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def radio_selected?(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
     end
@@ -251,6 +254,7 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def radio_button_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::RadioButton.new(element, :platform => :selenium)

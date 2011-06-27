@@ -240,16 +240,16 @@ module PageObject
     #
     def radio_button(name, identifier=nil, &block)
       define_method("select_#{name}") do
-        platform.select_radio(identifier)
+        platform.select_radio(identifier.clone)
       end
       define_method("clear_#{name}") do
-        platform.clear_radio(identifier)
+        platform.clear_radio(identifier.clone)
       end
       define_method("#{name}_selected?")  do
-        platform.radio_selected?(identifier)
+        platform.radio_selected?(identifier.clone)
       end
       define_method("#{name}_radio_button") do
-        block ? block.call(browser) : platform.radio_button_for(identifier)
+        block ? block.call(browser) : platform.radio_button_for(identifier.clone)
       end
     end
 
