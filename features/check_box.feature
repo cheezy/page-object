@@ -22,15 +22,17 @@ Feature: Check Box
     | class     |
     | name      |
     | xpath     |  
+    | index     |
 
-  @watir_only
   Scenario Outline: Locating check boxes on Watir only
-    When I search for the check box by "<search_by>"
+    When I search for the check box by "<param1>" and "<param2>"
     Then I should be able to check the check box
 
   Scenarios:
-    | search_by |
-    | index     |
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
+
    
   Scenario: Retrieve a CheckBox
     When I retrieve a check box element

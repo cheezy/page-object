@@ -20,13 +20,14 @@ Feature: Text Area
     | xpath     |  
     | css       |
     | tag_name  |
+    | index     |
 
-  @watir_only
-  Scenario Outline: Locating text fields on Watir only
-    When I search for the text area by "<search_by>"
+
+  Scenario Outline: Locating a hidden field using multiple parameters
+    When I search for the text area by "<param1>" and "<param2>"
     Then I should be able to type "I found it" into the area
 
   Scenarios:
-    | search_by |
-    | index     |
-
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

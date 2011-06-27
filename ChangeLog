@@ -3,9 +3,17 @@
   * Support for using multiple identifiers when locating the following element:
     * Link
     * TextField
+    * HiddenField
+    * TextArea
+    * SelectList
+    * CheckBox
   * Selenium support for using index for the following elements:
     * Link
     * TextField
+    * HiddenField
+    * TextArea
+    * SelectList
+    * CheckBox
   * Added [] method to SelectList to index Options
   * Added options method to Select List
   * Added support for the following elements

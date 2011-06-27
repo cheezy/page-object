@@ -19,6 +19,7 @@ Feature: Hidden Fields
     | xpath     |  
     | css       |
     | tag_name  |
+    | index     |
 
   @watir_only
   Scenario Outline: Locating hidden fields on Watir only
@@ -27,6 +28,13 @@ Feature: Hidden Fields
 
   Scenarios:
     | search_by |
-    | index     |
     | text      |
 
+  Scenario Outline: Locating a hidden field using multiple parameters
+    When I search for the hidden field by "<param1>" and "<param2>"
+    Then hidden field element should contains "12345"
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

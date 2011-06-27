@@ -21,16 +21,17 @@ Feature: Select List
       | class     |
       | name      |
       | xpath     |  
+      | index     |
 
-  @watir_only
-  Scenario Outline: Locating select lists on Watir only
-    When I search for the select list by "<search_by>"
+  Scenario Outline: Locating a hidden field using multiple parameters
+    When I search for the select list by "<param1>" and "<param2>"
     Then I should be able to select "Test 2"
     And the value for the selected item should be "option2"
 
-    Scenarios:
-      | search_by |
-      | index     |
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
 
   Scenario: Iterating through the options in the select list
     When I search for the select list by "id"

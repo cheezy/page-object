@@ -26,6 +26,8 @@ class Page
   text_area(:text_area_index, :index => 0)
   text_area(:text_area_text, :text => "")
   text_area(:text_area_value, :value => "")
+  text_area(:text_area_class_index, :class => "text_area_class", :index => 0)
+  text_area(:text_area_name_index, :name => "text_area_name", :index => 0)
 
   hidden_field(:hidden_field_id, :id => "hidden_field_id")
   hidden_field(:hidden_field_class, :class => "hidden_field_class")
@@ -36,6 +38,8 @@ class Page
   hidden_field(:hidden_field_index, :index => 0)
   hidden_field(:hidden_field_text, :text => "")
   hidden_field(:hidden_field_value, :value => "")
+  hidden_field(:hidden_field_class_index, :class => "hidden_field_class", :index => 0)
+  hidden_field(:hidden_field_name_index, :name => "hidden_field_name", :index => 0)
 
   link(:google_search_id, :id => "link_id")
   link(:google_search_name, :name => "link_name")
@@ -54,12 +58,16 @@ class Page
   select_list(:sel_list_value, :value => "option1")
   select_list(:sel_list_xpath, :xpath => "//select")
   select_list(:sel_list_text, :text => "Test 1")
+  select_list(:sel_list_class_index, :class => "sel_list_class", :index => 0)
+  select_list(:sel_list_name_index, :name => "sel_list_name", :index => 0)
 
   checkbox(:cb_id, :id => 'cb_id')
   checkbox(:cb_name, :name => 'cb_name')
   checkbox(:cb_class, :class => 'cb_class')
   checkbox(:cb_index, :index => 0)
   checkbox(:cb_xpath, :xpath => "//input[@type='checkbox']")
+  checkbox(:cb_class_index, :class => "cb_class", :index => 0)
+  checkbox(:cb_name_index, :name => "cb_name", :index => 0)
 
   radio_button(:milk_id, :id => 'milk_id')
   radio_button(:milk_name, :name => 'milk_name')

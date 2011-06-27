@@ -32,7 +32,7 @@ module PageObject
     #   # will generate 'first_name', 'first_name=' and 'first_name_text_field' methods
     #
     # @param  [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a text_field.  You can use a multiple paramaters
+    # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
@@ -47,13 +47,13 @@ module PageObject
     #
     def text_field(name, identifier=nil, &block)
       define_method(name) do
-        platform.text_field_value_for identifier
+        platform.text_field_value_for identifier.clone
       end
       define_method("#{name}=") do |value|
-        platform.text_field_value_set(identifier, value)
+        platform.text_field_value_set(identifier.clone, value)
       end
       define_method("#{name}_text_field") do
-        block ? block.call(browser) : platform.text_field_for(identifier)
+        block ? block.call(browser) : platform.text_field_for(identifier.clone)
       end
     end
     
@@ -66,11 +66,12 @@ module PageObject
     #   # will generate 'user_id' and 'user_id_hidden_field' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a hidden field.  The valid keys are:
+    # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :tag_name => Watir and Selenium
     #   * :text => Watir only
@@ -79,10 +80,10 @@ module PageObject
     #
     def hidden_field(name, identifier=nil, &block)
       define_method(name) do
-        platform.hidden_field_value_for identifier
+        platform.hidden_field_value_for identifier.clone
       end
       define_method("#{name}_hidden_field") do
-        block ? block.call(browser) : platform.hidden_field_for(identifier)
+        block ? block.call(browser) : platform.hidden_field_for(identifier.clone)
       end
     end
     
@@ -96,11 +97,12 @@ module PageObject
     #   # will generate 'address', 'address=' and 'address_text_area methods
     #
     # @param  [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a text area.  The valid keys are:
+    # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :tag_name => Watir and Selenium
     #   * :xpath => Watir and Selenium
@@ -108,13 +110,13 @@ module PageObject
     #
     def text_area(name, identifier=nil, &block)
       define_method(name) do
-        platform.text_area_value_for identifier
+        platform.text_area_value_for identifier.clone
       end
       define_method("#{name}=") do |value|
-        platform.text_area_value_set(identifier, value)
+        platform.text_area_value_set(identifier.clone, value)
       end
       define_method("#{name}_text_area") do
-        block ? block.call(browser) : platform.text_area_for(identifier)
+        block ? block.call(browser) : platform.text_area_for(identifier.clone)
       end
     end
 
@@ -128,10 +130,11 @@ module PageObject
     #   # will generate 'state', 'state=' and 'state_select_list' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a select_list.  The valid keys are:
+    # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :text => Watir only
     #   * :value => Watir only
@@ -140,13 +143,13 @@ module PageObject
     #
     def select_list(name, identifier=nil, &block)
       define_method(name) do
-        platform.select_list_value_for identifier
+        platform.select_list_value_for identifier.clone
       end
       define_method("#{name}=") do |value|
-        platform.select_list_value_set(identifier, value)
+        platform.select_list_value_set(identifier.clone, value)
       end
       define_method("#{name}_select_list") do
-        block ? block.call(browser) : platform.select_list_for(identifier)
+        block ? block.call(browser) : platform.select_list_for(identifier.clone)
       end
     end
 
@@ -175,10 +178,10 @@ module PageObject
     #
     def link(name, identifier=nil, &block)
       define_method(name) do
-        platform.click_link_for identifier
+        platform.click_link_for identifier.clone
       end
       define_method("#{name}_link") do
-        block ? block.call(browser) : platform.link_for(identifier)
+        block ? block.call(browser) : platform.link_for(identifier.clone)
       end
     end
     
@@ -192,26 +195,27 @@ module PageObject
     #   # will generate 'check_active', 'uncheck_active', 'active_checked?' and 'active_checkbox' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a checkbox.  The valid keys are:
+    # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def checkbox(name, identifier=nil, &block)
       define_method("check_#{name}") do
-        platform.check_checkbox(identifier)
+        platform.check_checkbox(identifier.clone)
       end
       define_method("uncheck_#{name}") do
-        platform.uncheck_checkbox(identifier)
+        platform.uncheck_checkbox(identifier.clone)
       end
       define_method("#{name}_checked?") do
-        platform.checkbox_checked?(identifier)
+        platform.checkbox_checked?(identifier.clone)
       end
       define_method("#{name}_checkbox") do
-        block ? block.call(browser) : platform.checkbox_for(identifier)
+        block ? block.call(browser) : platform.checkbox_for(identifier.clone)
       end
     end
     

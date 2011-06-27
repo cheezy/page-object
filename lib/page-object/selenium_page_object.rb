@@ -79,6 +79,7 @@ module PageObject
     # See PageObject::Accessors#hidden_field
     #
     def hidden_field_value_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'hidden'
       how, what = Elements::HiddenField.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
@@ -88,6 +89,7 @@ module PageObject
     # See PageObject::Accessors#hidden_field
     #
     def hidden_field_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'hidden'
       how, what = Elements::HiddenField.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       Elements::HiddenField.new(element, :platform => :selenium)
@@ -98,6 +100,7 @@ module PageObject
     # See PageObject::Accessors#text_area
     #
     def text_area_value_set(identifier, value)
+      identifier = add_tagname_if_needed identifier, 'textarea'
       how, what = Elements::TextArea.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
     end
@@ -107,6 +110,7 @@ module PageObject
     # See PageObject::Accessors#text_area
     #
     def text_area_value_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'textarea'
       how, what = Elements::TextArea.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
@@ -116,6 +120,7 @@ module PageObject
     # See PageObject::Accessors#text_area
     #
     def text_area_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'textarea'
       how, what = Elements::TextArea.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       Elements::TextArea.new(element, :platform => :selenium)
@@ -126,6 +131,7 @@ module PageObject
     # See PageObject::Accessors#select_list
     #
     def select_list_value_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'select'
       how, what = Elements::SelectList.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
@@ -135,6 +141,7 @@ module PageObject
     # See PageObject::Accessors#select_list
     #
     def select_list_value_set(identifier, value)
+      identifier = add_tagname_if_needed identifier, 'select'
       how, what = Elements::SelectList.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
     end
@@ -144,6 +151,7 @@ module PageObject
     # See PageObject::Accessors#select_list
     #
     def select_list_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'select'
       how, what = Elements::SelectList.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       Elements::SelectList.new(element, :platform => :selenium)
@@ -164,6 +172,7 @@ module PageObject
     # see PageObject::Accessors#link
     #
     def link_for(identifier)
+      identifier = add_tagname_if_needed identifier, "a"
       how, what = Elements::Link.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       Elements::Link.new(element, :platform => :selenium)
@@ -174,8 +183,9 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def check_checkbox(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
       how, what = Elements::CheckBox.selenium_identifier_for identifier
-      @browser.find_element(how, what).toggle unless checkbox_checked?(identifier)
+      @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
     end
 
     #
@@ -183,8 +193,9 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def uncheck_checkbox(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
       how, what = Elements::CheckBox.selenium_identifier_for identifier
-      @browser.find_element(how, what).toggle if checkbox_checked?(identifier)
+      @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
     end
 
     #
@@ -192,6 +203,7 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def checkbox_checked?(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
     end
@@ -201,6 +213,7 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def checkbox_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       Elements::CheckBox.new(element, :platform => :selenium)

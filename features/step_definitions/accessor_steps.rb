@@ -30,6 +30,10 @@ When /^I search for the text area by "([^\"]*)"$/ do |how|
   @how = how
 end
 
+When /^I search for the text area by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @how = "#{param1}_#{param2}"
+end
+
 Then /^I should be able to type "([^\"]*)" into the area$/ do |value|
   @page.send "text_area_#{@how}=".to_sym, value
 end
@@ -56,6 +60,10 @@ end
 
 When /^I search for the select list by "([^\"]*)"$/ do |how|
   @how = how
+end
+
+When /^I search for the select list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @how = "#{param1}_#{param2}"
 end
 
 Then /^I should be able to select "([^\"]*)"$/ do |value|
@@ -85,6 +93,10 @@ end
 
 When /^I search for the check box by "([^\"]*)"$/ do |how|
   @how = how
+end
+
+When /^I search for the check box by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @how = "#{param1}_#{param2}"
 end
 
 Then /^I should be able to check the check box$/ do
@@ -184,6 +196,11 @@ end
 Then /^hidden field element should contains "([^\"]*)"$/ do |text|
   @element.value.should == text
 end
+
+When /^I search for the hidden field by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @element = @page.send "hidden_field_#{param1}_#{param2}_hidden_field"
+end
+
 
 Then /^I should be able to submit the form$/ do
   @element.submit

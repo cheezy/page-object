@@ -360,14 +360,14 @@ describe PageObject::Accessors do
       it "should check a check box element" do
         selenium_browser.should_receive(:find_element).twice.and_return(selenium_browser)
         selenium_browser.should_receive(:selected?).and_return(false)
-        selenium_browser.should_receive(:toggle)
+        selenium_browser.should_receive(:click)
         selenium_page_object.check_active
       end
     
       it "should clear a check box element" do
         selenium_browser.should_receive(:find_element).twice.and_return(selenium_browser)
         selenium_browser.should_receive(:selected?).and_return(true)
-        selenium_browser.should_receive(:toggle)
+        selenium_browser.should_receive(:click)
         selenium_page_object.uncheck_active
       end
     
