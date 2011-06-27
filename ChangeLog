@@ -8,6 +8,7 @@
     * SelectList
     * CheckBox
     * RadioButton
+    * Button
   * Selenium support for using index for the following elements:
     * Link
     * TextField
@@ -16,6 +17,7 @@
     * SelectList
     * CheckBox
     * RadioButton
+    * Button
   * Added [] method to SelectList to index Options
   * Added options method to Select List
   * Added support for the following elements

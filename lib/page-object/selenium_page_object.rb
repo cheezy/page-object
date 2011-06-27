@@ -303,6 +303,7 @@ module PageObject
     # See PageObject::Accessors#button
     #
     def click_button_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'submit'
       how, what = Elements::Button.selenium_identifier_for identifier
       @browser.find_element(how, what).click
     end
@@ -312,6 +313,7 @@ module PageObject
     # See PageObject::Accessors#button
     #
     def button_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'input', :type => 'submit'
       how, what = Elements::Button.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Button.new(element, :platform => :selenium)

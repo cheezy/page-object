@@ -109,6 +109,8 @@ class Page
   button(:button_index, :index => 0)
   button(:button_xpath, :xpath=> "//input[@type='submit']")
   button(:button_text, :text => 'Click Me')
+  button(:button_class_index, :class => "button_class", :index => 0)
+  button(:button_name_index, :name => "button_name", :index => 0)
   
   image(:image_id, :id => 'image_id')
   image(:image_name, :name => 'image_name')

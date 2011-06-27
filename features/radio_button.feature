@@ -25,7 +25,7 @@ Feature: Radio Buttons
       | xpath     |  
       | index     |
 
-  Scenario Outline: Locating check boxes on Watir only
+  Scenario Outline: Locating radio buttons on Watir only
     When I search for the radio button by "<param1>" and "<param2>"
     And I select the radio button
     Then the "Milk" radio button should be selected

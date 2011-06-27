@@ -230,10 +230,11 @@ module PageObject
     #   # will generate 'select_north', 'clear_north', 'north_selected?' and 'north_radio_button' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a radio button.  The valid keys are:
+    # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
@@ -262,10 +263,11 @@ module PageObject
     #   # will generate 'purchase' and 'purchase_button' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a button.  The valid keys are:
+    # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :text => Watir only
     #   * :xpath => Watir and Selenium
@@ -273,10 +275,10 @@ module PageObject
     #
     def button(name, identifier=nil, &block)
       define_method(name) do
-        platform.click_button_for identifier
+        platform.click_button_for identifier.clone
       end
       define_method("#{name}_button") do
-        block ? block.call(browser) : platform.button_for(identifier)
+        block ? block.call(browser) : platform.button_for(identifier.clone)
       end
     end
     

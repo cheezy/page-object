@@ -25,13 +25,22 @@ Feature: Button
     | class     |
     | name      |
     | xpath     |  
+    | index     |
 
   @watir_only
-  Scenario Outline: Locating check boxes on Watir only
+  Scenario Outline: Locating buttons on Watir only
     When I search for the button by "<search_by>"
     Then I should be able to click the button
 
   Scenarios:
     | search_by |
-    | index     |
     | text      |
+
+  Scenario Outline: Locating radio buttons on Watir only
+    When I search for the button by "<param1>" and "<param2>"
+    Then I should be able to click the button
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
