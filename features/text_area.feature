@@ -23,7 +23,7 @@ Feature: Text Area
     | index     |
 
 
-  Scenario Outline: Locating a hidden field using multiple parameters
+  Scenario Outline: Locating a text area using multiple parameters
     When I search for the text area by "<param1>" and "<param2>"
     Then I should be able to type "I found it" into the area
 

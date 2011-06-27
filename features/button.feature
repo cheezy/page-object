@@ -36,7 +36,7 @@ Feature: Button
     | search_by |
     | text      |
 
-  Scenario Outline: Locating radio buttons on Watir only
+  Scenario Outline: Locating button using multiple parameters
     When I search for the button by "<param1>" and "<param2>"
     Then I should be able to click the button
 

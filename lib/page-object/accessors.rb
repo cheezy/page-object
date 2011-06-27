@@ -301,10 +301,10 @@ module PageObject
     #
     def div(name, identifier=nil, &block)
       define_method(name) do
-        platform.div_text_for identifier
+        platform.div_text_for identifier.clone
       end
       define_method("#{name}_div") do
-        block ? block.call(browser) : platform.div_for(identifier)
+        block ? block.call(browser) : platform.div_for(identifier.clone)
       end
     end
 

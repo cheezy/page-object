@@ -265,6 +265,7 @@ module PageObject
     # See PageObject::Accessors#div
     #    
     def div_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'div'
       how, what = Elements::Div.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
@@ -274,6 +275,7 @@ module PageObject
     # See PageObject::Accessors#div
     #
     def div_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'div'
       how, what = Elements::Div.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Div.new(element, :platform => :selenium)

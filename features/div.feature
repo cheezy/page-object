@@ -24,17 +24,9 @@ Feature: Div
     | id        |
     | class     |
     | xpath     |  
-
-  @watir_only
-  Scenario Outline: Locating divs on Watir only
-    When I search for the div by "<search_by>"
-    Then the text should be "page-object rocks!"
-
-  Scenarios:
-    | search_by |
     | index     |
-    
-    
+
+
   @selenium_only
   Scenario Outline: Locating divs on Selenium only
     When I search for the div by "<search_by>"
@@ -43,3 +35,12 @@ Feature: Div
   Scenarios:
     | search_by |
     | name      |
+
+  Scenario Outline: Locating divs using multiple parameters
+    When I search for the div by "<param1>" and "<param2>"
+    Then the text should be "page-object rocks!"
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
