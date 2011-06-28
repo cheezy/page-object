@@ -27,7 +27,7 @@ Feature: Span
     | search_by |
     | name      |
 
-  Scenario Outline: Locating divs using multiple parameters
+  Scenario Outline: Locating span using multiple parameters
     When I search for the span by "<param1>" and "<param2>"
     Then the text should be "My alert"
 

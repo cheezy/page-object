@@ -33,17 +33,7 @@ Feature: Table
     | id        |
     | class     |
     | xpath     |  
-  
-  
-  @watir_only
-  Scenario Outline: Locating table cells on the Page with watir
-    When I retrieve a table element by "<search_by>"
-    Then the data for row "1" should be "Data1" and "Data2"
-
-  Scenarios:
-    | search_by |
     | index     |
-
 
   @selenium_only
   Scenario Outline: Locating table cells on the Page with selenium
@@ -53,3 +43,12 @@ Feature: Table
   Scenarios:
     | search_by |
     | name      |
+
+  Scenario Outline: Locating table using multiple parameters
+    When I retrieve a table element by "<param1>" and "<param2>"
+    Then the data for row "1" should be "Data1" and "Data2"
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

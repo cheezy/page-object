@@ -180,6 +180,10 @@ When /^I retrieve a table element by "([^\"]*)"$/ do |how|
   @element = @page.send "table_#{how}_table"
 end
 
+When /^I retrieve a table element by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @element = @page.send "table_#{param1}_#{param2}_table"
+end
+
 When /^I get the image element$/ do
   @element = @page.image_id_image
 end

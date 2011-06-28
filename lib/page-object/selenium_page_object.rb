@@ -328,6 +328,7 @@ module PageObject
     # See PageObject::Accessors#table
     #
     def table_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'table'
       how, what = Elements::Table.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Table.new(element, :platform => :selenium)

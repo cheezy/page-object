@@ -11,6 +11,7 @@
     * Button
     * Div
     * Span
+    * Table
   * Selenium support for using index for the following elements:
     * Link
     * TextField
@@ -22,6 +23,7 @@
     * Button
     * Div
     * Span
+    * Table
   * Added [] method to SelectList to index Options
   * Added options method to Select List
   * Added support for the following elements

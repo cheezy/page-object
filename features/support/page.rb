@@ -100,6 +100,8 @@ class Page
   table(:table_class, :class => 'table_class')
   table(:table_index, :index => 0)
   table(:table_xpath, :xpath => '//table')
+  table(:table_class_index, :class => "table_class", :index => 0)
+  table(:table_name_index, :name => "table_name", :index => 0)
   
   cell(:cell_id, :id => 'cell_id')
   cell(:cell_name, :name => 'cell_name')

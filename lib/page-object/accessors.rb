@@ -354,7 +354,7 @@ module PageObject
     #
     def table(name, identifier=nil, &block)
       define_method("#{name}_table") do
-        block ? block.call(browser) : platform.table_for(identifier)
+        block ? block.call(browser) : platform.table_for(identifier.clone)
       end
     end
     

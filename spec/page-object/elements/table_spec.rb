@@ -11,7 +11,7 @@ describe PageObject::Elements::Table do
     end
 
     it "should map selenium types to same" do
-      [:class, :id, :name, :xpath].each do |t|
+      [:class, :id, :index, :name, :xpath].each do |t|
         key, value = PageObject::Elements::Table.selenium_identifier_for t => 'value'
         key.should == t
       end
