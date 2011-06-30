@@ -51,7 +51,7 @@ Another approach might be to create higher level methods on our page object that
       text_field(:password, :id => 'password')
       button(:login, :id => 'login')
   
-      def login_with(username, password) do
+      def login_with(username, password)
         self.username = username
         self.password = password
         login
