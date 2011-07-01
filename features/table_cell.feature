@@ -37,9 +37,12 @@ Feature: Table Cell
     | search_by |
     | name      |
 
-  Scenario: Retrieve a cell from a table by id
-    When I retrieve table cell
-    Then I should know it exists
-    And I should know it is visible
+  Scenario Outline: Locating table cell using multiple parameters
+    When I retrieve a table cell element by "<param1>" and "<param2>"
+    Then the cell data should be 'Data4'
 
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
 

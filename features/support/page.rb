@@ -108,6 +108,8 @@ class Page
   cell(:cell_class, :class => 'cell_class')
   cell(:cell_index, :index => 3)
   cell(:cell_xpath, :xpath => '//table//tr[2]//td[2]')
+  cell(:cell_class_index, :class => "cell_class", :index => 0)
+  cell(:cell_name_index, :name => "cell_name", :index => 0)
   
   button(:button_id, :id => 'button_id')
   button(:button_name, :name => 'button_name')

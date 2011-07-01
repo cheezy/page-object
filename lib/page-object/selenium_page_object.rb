@@ -339,6 +339,7 @@ module PageObject
     # See PageObject::Accessors#cell
     #
     def cell_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'td'
       how, what = Elements::TableCell.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
@@ -348,6 +349,7 @@ module PageObject
     # See PageObject::Accessors#cell
     #
     def cell_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'td'
       how, what = Elements::TableCell.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::TableCell.new(element, :platform => :selenium)

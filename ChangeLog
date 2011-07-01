@@ -12,6 +12,7 @@
     * Div
     * Span
     * Table
+    * TableCell
   * Selenium support for using index for the following elements:
     * Link
     * TextField

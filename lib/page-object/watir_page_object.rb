@@ -316,6 +316,7 @@ module PageObject
     # See PageObject::Accessors#cell
     #
     def cell_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, "td"
       identifier = Elements::TableCell.watir_identifier_for identifier
       @browser.td(identifier).text
     end
@@ -325,6 +326,7 @@ module PageObject
     # See PageObject::Accessors#cell
     #
     def cell_for(identifier)
+      identifier = add_tagname_if_needed identifier, "td"
       identifier = Elements::TableCell.watir_identifier_for identifier
       element = @browser.td(identifier)
       PageObject::Elements::TableCell.new(element, :platform => :watir)
