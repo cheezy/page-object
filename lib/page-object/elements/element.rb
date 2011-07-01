@@ -32,7 +32,7 @@ module PageObject
       end
       
       def self.should_build_watir_xpath identifier
-        ['table', 'span', 'div', 'td', 'li', 'ul'].include? identifier[:tag_name] and identifier[:name]
+        ['table', 'span', 'div', 'td', 'li', 'ul', 'ol'].include? identifier[:tag_name] and identifier[:name]
       end
 
       # @private

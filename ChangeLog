@@ -17,6 +17,7 @@
     * Form
     * ListItem
     * UnorderedList
+    * OrderedList
   * Selenium support for using index for the following elements:
     * Link
     * TextField
@@ -33,6 +34,7 @@
     * Form
     * ListItem
     * UnorderedList
+    * OrderedList
   * Added [] method to SelectList to index Options
   * Added options method to Select List
   * Added support for the following elements

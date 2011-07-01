@@ -13,7 +13,7 @@ describe PageObject::Elements::OrderedList do
     end
 
     it "should map selenium types to same" do
-      [:class, :id, :name, :xpath].each do |t|
+      [:class, :id, :index, :name, :xpath].each do |t|
         key, value = ol.selenium_identifier_for t => 'value'
         key.should == t
       end

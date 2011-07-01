@@ -466,11 +466,12 @@ module PageObject
     #   # will generate a 'menu_unordered_list' method
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find an unordered list.  The valid keys are:
+    # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
-    #   * :name => Selenium only
+    #   * :index => Watir and Selenium
+    #   * :name => Selenium always and Watir only when used with other values.
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -488,17 +489,18 @@ module PageObject
     #   # will generate a 'top_five_ordered_list' method
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find an unordered list.  The valid keys are:
+    # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
-    #   * :name => Selenium only
+    #   * :index => Watir and Selenium
+    #   * :name => Selenium always and Watir only when used with other values.
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def ordered_list(name, identifier=nil, &block)
       define_method("#{name}_ordered_list") do
-        block ? block.call(browser) : platform.ordered_list_for(identifier)
+        block ? block.call(browser) : platform.ordered_list_for(identifier.clone)
       end
     end
   end

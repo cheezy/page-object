@@ -389,6 +389,7 @@ module PageObject
     # See PageObject::Accessors#ordered_list
     #
     def ordered_list_for(identifier)
+      identifier = add_tagname_if_needed identifier, "ol"
       identifier = Elements::OrderedList.watir_identifier_for identifier
       element = @browser.ol(identifier)
       PageObject::Elements::OrderedList.new(element, :platform => :watir)

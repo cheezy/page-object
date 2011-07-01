@@ -281,6 +281,10 @@ When /^I search for the ordered list by "([^\"]*)"$/ do |how|
   @list = @page.send "ol_#{how}_ordered_list"
 end
 
+When /^I search for the ordered list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @list = @page.send "ol_#{param1}_#{param2}_ordered_list"
+end
+
 Then /^the table should have "([^\"]*)" rows$/ do |rows|
   @element.rows.should == rows.to_i
 end

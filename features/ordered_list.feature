@@ -19,15 +19,6 @@ Feature: Ordered list
     | id        |
     | class     |
     | xpath     |  
-
-  @watir_only
-  Scenario Outline: Locating ordered lists in Watir only
-    When I search for the ordered list by "<search_by>"
-    And I get the first item from the list
-    Then the list items text should be "Number One"
-
-  Scenarios:
-    | search_by |
     | index     |
 
   @selenium_only
@@ -39,3 +30,13 @@ Feature: Ordered list
   Scenarios:
     | search_by |
     | name      |
+
+  Scenario Outline: Locating ordered lists using multiple parameters
+    When I search for the ordered list by "<param1>" and "<param2>"
+    And I get the first item from the list
+    Then the list items text should be "Number One"
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

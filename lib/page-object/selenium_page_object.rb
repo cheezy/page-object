@@ -414,6 +414,7 @@ module PageObject
     # See PageObject::Accessors#ordered_list
     #
     def ordered_list_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'ol'
       how, what = Elements::OrderedList.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::OrderedList.new(element, :platform => :selenium)
