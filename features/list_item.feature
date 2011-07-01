@@ -16,14 +16,6 @@ Feature: List item
     | id        |
     | class     |
     | xpath     |  
-
-  @watir_only
-  Scenario Outline: Locating list items on Watir only
-    When I search for the list item by "<search_by>"
-    Then the text should be "Item One"
-
-  Scenarios:
-    | search_by |
     | index     |
 
   @selenium_only
@@ -34,3 +26,13 @@ Feature: List item
   Scenarios:
     | search_by |
     | name      |
+
+
+  Scenario Outline: Locating list items using multiple parameters
+    When I search for the list item by "<param1>" and "<param2>"
+    Then the text should be "Item One"
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

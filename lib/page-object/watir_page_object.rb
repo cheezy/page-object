@@ -357,6 +357,7 @@ module PageObject
     # See PageObject::Accessors#list_item
     #
     def list_item_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, "li"
       identifier = Elements::ListItem.watir_identifier_for identifier
       @browser.li(identifier).text
     end
@@ -366,6 +367,7 @@ module PageObject
     # See PageObject::Accessors#list_item
     #
     def list_item_for(identifier)
+      identifier = add_tagname_if_needed identifier, "li"
       identifier = Elements::ListItem.watir_identifier_for identifier
       element = @browser.li(identifier)
       PageObject::Elements::ListItem.new(element, :platform => :watir)

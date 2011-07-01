@@ -21,7 +21,7 @@ Feature: Image
       | xpath     |  
       | index     |
 
-  Scenario Outline: Locating table using multiple parameters
+  Scenario Outline: Locating an image using multiple parameters
     When I get the image element by "<param1>" and "<param2>"
     Then the image should be "106" pixels wide
     And the image should be "106" pixels tall

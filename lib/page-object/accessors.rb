@@ -440,20 +440,21 @@ module PageObject
     #   # will generate 'item_one' and 'item_one_list_item' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a list item.  The valid keys are:
+    # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
-    #   * :name => Selenium only
+    #   * :index => Watir and Selenium
+    #   * :name => Selenium always and Watir only when used with other values.
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def list_item(name, identifier=nil, &block)
       define_method(name) do
-        platform.list_item_text_for identifier
+        platform.list_item_text_for identifier.clone
       end
       define_method("#{name}_list_item") do
-        block ? block.call(browser) : platform.list_item_for(identifier)
+        block ? block.call(browser) : platform.list_item_for(identifier.clone)
       end
     end
     

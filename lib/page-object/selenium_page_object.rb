@@ -382,6 +382,7 @@ module PageObject
     # See PageObject::Accessors#list_item
     #
     def list_item_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'li'
       how, what = Elements::ListItem.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
@@ -391,6 +392,7 @@ module PageObject
     # See PageObject::Accessors#list_item
     #
     def list_item_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'li'
       how, what = Elements::ListItem.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::ListItem.new(element, :platform => :selenium)
