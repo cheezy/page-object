@@ -17,6 +17,11 @@ module PageObject
       
       # @private
       def self.watir_identifier_for identifier
+        if should_build_watir_xpath(identifier)
+          how = :xpath
+          what = build_xpath_for(identifier)
+          return how => what
+        end
         all_identities = {}
         identifier.each do |key, value|
           each = {key => value}
@@ -24,6 +29,10 @@ module PageObject
           all_identities[ident.keys.first] = ident.values.first
         end
         all_identities
+      end
+      
+      def self.should_build_watir_xpath identifier
+        ['table', 'span', 'div'].include? identifier[:tag_name] and identifier[:name]
       end
 
       # @private

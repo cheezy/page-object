@@ -244,6 +244,7 @@ module PageObject
     # See PageObject::Accessors#div
     #
     def div_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, "div"
       identifier = Elements::Div.watir_identifier_for identifier
       @browser.div(identifier).text
     end
@@ -253,6 +254,7 @@ module PageObject
     # See PageObject::Accessors#div
     #
     def div_for(identifier)
+      identifier = add_tagname_if_needed identifier, "div"
       identifier = Elements::Div.watir_identifier_for identifier
       element = @browser.div(identifier)
       PageObject::Elements::Div.new(element, :platform => :watir)
@@ -263,6 +265,7 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_text_for(identifier)
+      identifier = add_tagname_if_needed identifier, "span"
       identifier = Elements::Span.watir_identifier_for identifier
       @browser.span(identifier).text
     end
@@ -272,6 +275,7 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_for(identifier)
+      identifier = add_tagname_if_needed identifier, "span"
       identifier = Elements::Span.watir_identifier_for identifier
       element = @browser.span(identifier)
       PageObject::Elements::Span.new(element, :platform => :watir)
@@ -301,7 +305,8 @@ module PageObject
     # See PageObject::Accessors#table
     #
     def table_for(identifier)
-      identifier = Elements::Table.watir_identifier_for identifier
+      identifier = add_tagname_if_needed identifier, "table"
+      identifier = Elements::Table.watir_identifier_for identifier.clone
       element = @browser.table(identifier)
       PageObject::Elements::Table.new(element, :platform => :watir)
     end
@@ -382,6 +387,14 @@ module PageObject
       identifier = Elements::OrderedList.watir_identifier_for identifier
       element = @browser.ol(identifier)
       PageObject::Elements::OrderedList.new(element, :platform => :watir)
+    end
+
+    private
+    
+    def add_tagname_if_needed identifier, tag
+      return identifier if identifier.length < 2 
+      identifier[:tag_name] = tag if identifier[:name]
+      identifier
     end
   end
 end
