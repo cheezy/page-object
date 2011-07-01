@@ -371,6 +371,7 @@ module PageObject
     # See PageObject::Accessors#form
     #
     def form_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'form'
       how, what = Elements::Form.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Form.new(element, :platform => :selenium)

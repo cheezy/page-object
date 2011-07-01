@@ -16,13 +16,14 @@ Feature: Form
     | id        |
     | class     |
     | xpath     |  
-
-  @watir_only
-  Scenario Outline: Locating a form on the page watir only
-    When I locate the form by "<search_by>"
-    Then I should be able to submit the form
-  
-  Scenarios:
-    | search_by |
     | index     |
+
+  Scenario Outline: Locating table using multiple parameters
+    When I locate the form using "<param1>" and "<param2>"
+    Then I should be able to submit the form
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |
 

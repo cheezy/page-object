@@ -133,6 +133,8 @@ class Page
   form(:form_class, :class => 'form_class')
   form(:form_index, :index => 0)
   form(:form_xpath, :xpath => '//form')
+  form(:form_class_index, :class => "form_class", :index => 0)
+  form(:form_name_index, :name => "form_name", :index => 0)
   
   list_item(:li_id, :id => 'li_id')
   list_item(:li_name, :name => 'li_name')

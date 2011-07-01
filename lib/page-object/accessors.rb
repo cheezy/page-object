@@ -417,16 +417,17 @@ module PageObject
     #   # will generate a 'login_form' method
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a form.  The valid keys are:
+    # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def form(name, identifier=nil, &block)
       define_method("#{name}_form") do
-        block ? block.call(browser) : platform.form_for(identifier)
+        block ? block.call(browser) : platform.form_for(identifier.clone)
       end
     end
     
