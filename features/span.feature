@@ -17,14 +17,6 @@ Feature: Span
     | class     |
     | xpath     |  
     | index     |
-    
-  @selenium_only
-  Scenario Outline: Locating span on Selenium only
-    When I search for the span by "<search_by>"
-    Then the text should be "My alert"
-
-  Scenarios:
-    | search_by |
     | name      |
 
   Scenario Outline: Locating span using multiple parameters

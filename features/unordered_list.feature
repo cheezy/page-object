@@ -20,15 +20,6 @@ Feature: Unordered list
     | class     |
     | xpath     |  
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating unordered lists in Selenium only
-    When I search for the unordered list by "<search_by>"
-    And I get the first item from the list
-    Then the list items text should be "Item One"
-
-  Scenarios:
-    | search_by |
     | name      |
 
   Scenario Outline: Locating unordered lists using multiple parameters

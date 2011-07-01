@@ -25,15 +25,6 @@ Feature: Div
     | class     |
     | xpath     |  
     | index     |
-
-
-  @selenium_only
-  Scenario Outline: Locating divs on Selenium only
-    When I search for the div by "<search_by>"
-    Then the text should be "page-object rocks!"
-
-  Scenarios:
-    | search_by |
     | name      |
 
   Scenario Outline: Locating divs using multiple parameters

@@ -20,15 +20,6 @@ Feature: Ordered list
     | class     |
     | xpath     |  
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating ordered lists in Selenium only
-    When I search for the ordered list by "<search_by>"
-    And I get the first item from the list
-    Then the list items text should be "Number One"
-
-  Scenarios:
-    | search_by |
     | name      |
 
   Scenario Outline: Locating ordered lists using multiple parameters

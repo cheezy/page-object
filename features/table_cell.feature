@@ -17,8 +17,8 @@ Feature: Table Cell
     | id        |
     | class     |
     | xpath     |  
+    | name      |
   
-
   @watir_only
   Scenario Outline: Locating table cells on the Page with watir
     When I search for the table cell by "<search_by>"
@@ -27,15 +27,6 @@ Feature: Table Cell
   Scenarios:
     | search_by |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating table cells on the Page with watir
-    When I search for the table cell by "<search_by>"
-    Then the cell data should be 'Data4'
-
-  Scenarios:
-    | search_by |
-    | name      |
 
   Scenario Outline: Locating table cell using multiple parameters
     When I retrieve a table cell element by "<param1>" and "<param2>"

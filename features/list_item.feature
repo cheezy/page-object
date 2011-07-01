@@ -17,16 +17,7 @@ Feature: List item
     | class     |
     | xpath     |  
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating list items on Watir only
-    When I search for the list item by "<search_by>"
-    Then the text should be "Item One"
-
-  Scenarios:
-    | search_by |
     | name      |
-
 
   Scenario Outline: Locating list items using multiple parameters
     When I search for the list item by "<param1>" and "<param2>"

@@ -398,7 +398,7 @@ module PageObject
     private
     
     def add_tagname_if_needed identifier, tag
-      return identifier if identifier.length < 2 
+      return identifier if identifier.length < 2 and not identifier[:name]
       identifier[:tag_name] = tag if identifier[:name]
       identifier
     end

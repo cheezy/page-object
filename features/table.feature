@@ -34,14 +34,6 @@ Feature: Table
     | class     |
     | xpath     |  
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating table cells on the Page with selenium
-    When I retrieve a table element by "<search_by>"
-    Then the data for row "1" should be "Data1" and "Data2"
-
-  Scenarios:
-    | search_by |
     | name      |
 
   Scenario Outline: Locating table using multiple parameters

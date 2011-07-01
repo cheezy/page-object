@@ -296,7 +296,7 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
-    #   * :name => Selenium always and Watir only when used with other values.
+    #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -323,7 +323,7 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
-    #   * :name => Selenium always and Watir only when used with other values.
+    #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -349,7 +349,7 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
-    #   * :name => Selenium always and Watir only when used with other values.
+    #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -373,7 +373,7 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir only
-    #   * :name => Selenium always and Watir only when used with other values.
+    #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -445,7 +445,7 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
-    #   * :name => Selenium always and Watir only when used with other values.
+    #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -471,7 +471,7 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
-    #   * :name => Selenium always and Watir only when used with other values.
+    #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -494,7 +494,7 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
-    #   * :name => Selenium always and Watir only when used with other values.
+    #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
