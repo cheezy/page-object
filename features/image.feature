@@ -19,14 +19,14 @@ Feature: Image
       | class     |
       | name      |
       | xpath     |  
-
-    @watir_only
-    Scenario Outline: Locating an image on the page with Watir
-      When I get the image element by "<search_by>"
-      Then the image should be "106" pixels wide
-      And the image should be "106" pixels tall
-
-    Scenarios:
-      | search_by |
       | index     |
 
+  Scenario Outline: Locating table using multiple parameters
+    When I get the image element by "<param1>" and "<param2>"
+    Then the image should be "106" pixels wide
+    And the image should be "106" pixels tall
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

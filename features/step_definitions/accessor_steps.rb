@@ -204,6 +204,10 @@ When /^I get the image element by "([^\"]*)"$/ do |how|
   @element = @page.send "image_#{how}_image"
 end
 
+When /^I get the image element by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @element = @page.send "image_#{param1}_#{param2}_image"
+end
+
 When /^I retrieve the hidden field element$/ do
   @element = @page.hidden_field_id_hidden_field
 end

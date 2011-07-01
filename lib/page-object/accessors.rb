@@ -394,17 +394,18 @@ module PageObject
     #   # will generate a 'logo_image' method
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find an image.  The valid keys are:
+    # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
-    #   * :index => Watir only
+    #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def image(name, identifier=nil, &block)
       define_method("#{name}_image") do
-        block ? block.call(browser) : platform.image_for(identifier)
+        block ? block.call(browser) : platform.image_for(identifier.clone)
       end
     end
     

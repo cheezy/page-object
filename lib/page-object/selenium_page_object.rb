@@ -360,6 +360,7 @@ module PageObject
     # See PageObject::Accessors#image
     #
     def image_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'img'
       how, what = Elements::Image.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::Image.new(element, :platform => :selenium)
