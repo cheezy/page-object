@@ -35,6 +35,7 @@
     * ListItem
     * UnorderedList
     * OrderedList
+  * Support name for identification across all elements in Watir
   * Added [] method to SelectList to index Options
   * Added options method to Select List
   * Added support for the following elements
