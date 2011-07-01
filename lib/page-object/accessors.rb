@@ -368,20 +368,21 @@ module PageObject
     #   # will generate 'total' and 'total_cell' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a cell.  The valid keys are:
+    # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir only
-    #   * :name => Selenium only
+    #   * :name => Selenium always and Watir only when used with other values.
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def cell(name, identifier=nil, &block)
       define_method("#{name}") do
-        platform.cell_text_for identifier
+        platform.cell_text_for identifier.clone
       end
       define_method("#{name}_cell") do
-        block ? block.call(browser) : platform.cell_for(identifier)
+        block ? block.call(browser) : platform.cell_for(identifier.clone)
       end
     end
     
