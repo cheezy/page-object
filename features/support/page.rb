@@ -149,6 +149,8 @@ class Page
   unordered_list(:ul_class, :class => 'ul_class')
   unordered_list(:ul_index, :index => 0)
   unordered_list(:ul_xpath, :xpath => '//ul')
+  unordered_list(:ul_class_index, :class => "ul_class", :index => 0)
+  unordered_list(:ul_name_index, :name => "ul_name", :index => 0)
 
   ordered_list(:ol_id, :id => 'ol_id')
   ordered_list(:ol_name, :name => 'ol_name')

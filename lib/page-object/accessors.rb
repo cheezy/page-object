@@ -476,7 +476,7 @@ module PageObject
     #
     def unordered_list(name, identifier=nil, &block)
       define_method("#{name}_unordered_list") do
-        block ? block.call(browser) : platform.unordered_list_for(identifier)
+        block ? block.call(browser) : platform.unordered_list_for(identifier.clone)
       end
     end
     

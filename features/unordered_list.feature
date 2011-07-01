@@ -19,15 +19,6 @@ Feature: Unordered list
     | id        |
     | class     |
     | xpath     |  
-
-  @watir_only
-  Scenario Outline: Locating unordered lists in Watir only
-    When I search for the unordered list by "<search_by>"
-    And I get the first item from the list
-    Then the list items text should be "Item One"
-
-  Scenarios:
-    | search_by |
     | index     |
 
   @selenium_only
@@ -39,3 +30,13 @@ Feature: Unordered list
   Scenarios:
     | search_by |
     | name      |
+
+  Scenario Outline: Locating unordered lists using multiple parameters
+    When I search for the unordered list by "<param1>" and "<param2>"
+    And I get the first item from the list
+    Then the list items text should be "Item One"
+
+  Scenarios:
+    | param1  | param2  |
+    | class   | index   |
+    | name    | index   |

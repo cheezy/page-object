@@ -264,6 +264,11 @@ When /^I search for the unordered list by "([^\"]*)"$/ do |how|
   @list = @page.send "ul_#{how}_unordered_list"
 end
 
+When /^I search for the unordered list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
+  @list = @page.send "ul_#{param1}_#{param2}_unordered_list"
+end
+
+
 When /^I get the first item from the list$/ do
   @element = @list[0]
 end

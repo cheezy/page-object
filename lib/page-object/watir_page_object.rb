@@ -378,6 +378,7 @@ module PageObject
     # See PageObject::Accessors#unordered_list
     #
     def unordered_list_for(identifier)
+      identifier = add_tagname_if_needed identifier, "ul"
       identifier = Elements::UnorderedList.watir_identifier_for identifier
       element = @browser.ul(identifier)
       PageObject::Elements::UnorderedList.new(element, :platform => :watir)

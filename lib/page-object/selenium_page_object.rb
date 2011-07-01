@@ -393,7 +393,7 @@ module PageObject
     #
     def list_item_for(identifier)
       identifier = add_tagname_if_needed identifier, 'li'
-      how, what = Elements::ListItem.selenium_identifier_for identifier
+       how, what = Elements::ListItem.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::ListItem.new(element, :platform => :selenium)
     end
@@ -403,6 +403,7 @@ module PageObject
     # See PageObject::Accessors#unordered_list
     #
     def unordered_list_for(identifier)
+      identifier = add_tagname_if_needed identifier, 'ul'
       how, what = Elements::UnorderedList.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::UnorderedList.new(element, :platform => :selenium)
