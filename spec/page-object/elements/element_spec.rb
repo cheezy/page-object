@@ -7,8 +7,61 @@ describe PageObject::Elements::Element do
   let(:selenium_driver) { double('selenium') }
   let(:watir_element) { PageObject::Elements::Element.new(watir_driver, :platform => :watir) }
   let(:selenium_element) { PageObject::Elements::Element.new(selenium_driver, :platform => :selenium) }
+  let(:element) {PageObject::Elements::Element}
 
-  context "on a Watir page-object" do
+  context "when building the identifiers for Watir" do
+    it "should build xpath when finding elements by name where not supported" do
+      ['table', 'span', 'div', 'td', 'li', 'ol', 'ul'].each do |tag|
+        how = {:tag_name => tag, :name => 'blah'}
+        result = element.watir_identifier_for how
+        result[:xpath].should == ".//#{tag}[@name='blah']"
+      end
+    end
+  end
+  
+  context "when building the identifiers for Selenium" do
+    def all_basic_elements
+      ['textarea', 'select', 'a', 'div', 'span', 'table', 'td', 'img', 'form', 'li', 'ul', 'ol']
+    end
+    
+    def all_input_elements
+      ['text', 'hidden', 'checkbox', 'radio', 'submit']
+    end
+    
+    it "should build xpath when index is provided for basic elements" do
+      all_basic_elements.each do |tag|
+        identifier = {:tag_name => tag, :index => 1}
+        how, what = element.selenium_identifier_for identifier
+        what.should == ".//#{tag}[2]"
+      end
+    end
+    
+    it "should should build xpath when index is provided for input elements" do
+      all_input_elements.each do |tag|
+        identifier = {:tag_name => 'input', :type => tag, :index => 1}
+        how, what = element.selenium_identifier_for identifier
+        what.should == ".//input[@type='#{tag}'][2]"
+      end
+    end
+    
+    it "should build xpath when locating basic elements by name and index" do
+      all_basic_elements.each do |tag|
+        identifier = {:tag_name => tag, :name => 'blah', :index => 0}
+        how, what = element.selenium_identifier_for identifier
+        what.should == ".//#{tag}[@name='blah'][1]"
+      end
+    end
+    
+    it "should build xpath when locating input elements by name and index" do
+      all_input_elements.each do |type|
+        identifier = {:tag_name => 'input', :type => "#{type}", :name => 'blah', :index => 0}
+        how, what = element.selenium_identifier_for identifier
+        what.should == ".//input[@type='#{type}' and @name='blah'][1]"
+      end
+    end
+  end
+
+  context "when using Watir" do
     it "should know when it is visible" do
       watir_driver.should_receive(:present?).and_return(true)
       watir_element.visible?.should == true
@@ -60,7 +113,7 @@ describe PageObject::Elements::Element do
     end
   end
   
-  context "on a Selenium page-object" do
+  context "when using Selenium" do
     it "should know when it is visible" do
       selenium_driver.should_receive(:displayed?).and_return(true)
       selenium_element.visible?.should == true

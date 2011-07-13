@@ -31,10 +31,6 @@ module PageObject
         all_identities
       end
       
-      def self.should_build_watir_xpath identifier
-        ['table', 'span', 'div', 'td', 'li', 'ul', 'ol'].include? identifier[:tag_name] and identifier[:name]
-      end
-
       # @private
       def self.selenium_identifier_for identifier
         if identifier.length == 1
@@ -49,6 +45,10 @@ module PageObject
 
       protected
       
+      def self.should_build_watir_xpath identifier
+        ['table', 'span', 'div', 'td', 'li', 'ul', 'ol'].include? identifier[:tag_name] and identifier[:name]
+      end
+
       def self.build_xpath_for identifier
         tag_locator = identifier.delete(:tag_name)
         idx = identifier.delete(:index)
