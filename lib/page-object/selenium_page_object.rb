@@ -435,7 +435,8 @@ module PageObject
     
     def supported_identifier(identifier, tag, additional)
       return false if identifier[:index]
-      return false if identifier[:text] and additional[:type] == 'hidden'
+      return false if identifier[:text] and tag == 'input' and additional[:type] == 'hidden'
+      return false if identifier[:href] and tag == 'a'
       true
     end
         

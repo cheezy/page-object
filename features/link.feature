@@ -23,16 +23,8 @@ Feature: Links
     | link_text |
     | text      |
     | index     |
-
-  @watir_only
-  Scenario Outline: Locating links on Watir only
-    When I search for the link by "<search_by>"
-    Then I should be able to select the link
-  
-  Scenarios:
-    | search_by |
     | href      |
-    
+
   Scenario: Support for multiple parameters
     When I select a link labeled "Hello" and index "0"
     Then the page should contain the text "Success"

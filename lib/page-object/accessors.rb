@@ -74,7 +74,7 @@ module PageObject
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :tag_name => Watir and Selenium
-    #   * :text => Watir only
+    #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -166,7 +166,7 @@ module PageObject
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
-    #   * :href => Watir only
+    #   * :href => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :link => Watir and Selenium

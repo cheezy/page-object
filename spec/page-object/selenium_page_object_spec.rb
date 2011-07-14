@@ -17,5 +17,12 @@ describe PageObject::SeleniumPageObject do
       selenium_browser.should_receive(:find_element)
       selenium_page_object.platform.hidden_field_for(:text => 'foo')
     end
+    
+    it "should add tag_name when identifying by href for anchor" do
+      expected_identifier = {:href => 'foo', :tag_name => 'a'}
+      PageObject::Elements::Link.should_receive(:selenium_identifier_for).with(expected_identifier)
+      selenium_browser.should_receive(:find_element)
+      selenium_page_object.platform.link_for(:href => 'foo')
+    end
   end
 end

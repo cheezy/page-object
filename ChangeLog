@@ -1,6 +1,7 @@
 === Version 0.1.1
 * Enhancements
   * Support for identifying hidden fields by text when using Selenium
+  * Support for identifying links by href when using Selenium
   * Updated to use selenium-webdriver 2.0.1
   * Updated to use watir-webdriver 0.2.6
 
