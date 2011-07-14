@@ -423,7 +423,7 @@ module PageObject
     private
     
     def add_tagname_if_needed identifier, tag, additional=nil
-      return identifier if identifier.length < 2 and identifier[:index].nil?
+      return identifier if identifier.length < 2 and supported_identifier(identifier, tag, additional)
       identifier[:tag_name] = tag
       if additional
         additional.each do |key, value|
@@ -431,6 +431,12 @@ module PageObject
         end
       end
       identifier
+    end
+    
+    def supported_identifier(identifier, tag, additional)
+      return false if identifier[:index]
+      return false if identifier[:text] and additional[:type] == 'hidden'
+      true
     end
         
   end

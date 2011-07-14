@@ -20,14 +20,6 @@ Feature: Hidden Fields
     | css       |
     | tag_name  |
     | index     |
-
-  @watir_only
-  Scenario Outline: Locating hidden fields on Watir only
-    When I search for the hidden field by "<search_by>"
-    Then hidden field element should contains "12345"
-
-  Scenarios:
-    | search_by |
     | text      |
 
   Scenario Outline: Locating a hidden field using multiple parameters

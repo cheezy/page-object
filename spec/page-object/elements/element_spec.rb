@@ -32,6 +32,7 @@ describe PageObject::Elements::Element do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :index => 1}
         how, what = element.selenium_identifier_for identifier
+        how.should == :xpath
         what.should == ".//#{tag}[2]"
       end
     end
@@ -40,6 +41,7 @@ describe PageObject::Elements::Element do
       all_input_elements.each do |tag|
         identifier = {:tag_name => 'input', :type => tag, :index => 1}
         how, what = element.selenium_identifier_for identifier
+        how.should == :xpath
         what.should == ".//input[@type='#{tag}'][2]"
       end
     end
@@ -48,6 +50,7 @@ describe PageObject::Elements::Element do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :name => 'blah', :index => 0}
         how, what = element.selenium_identifier_for identifier
+        how.should == :xpath
         what.should == ".//#{tag}[@name='blah'][1]"
       end
     end
@@ -56,8 +59,26 @@ describe PageObject::Elements::Element do
       all_input_elements.each do |type|
         identifier = {:tag_name => 'input', :type => "#{type}", :name => 'blah', :index => 0}
         how, what = element.selenium_identifier_for identifier
+        how.should == :xpath
         what.should == ".//input[@type='#{type}' and @name='blah'][1]"
       end
+    end
+    
+    it "should build xpath when locating basic elements by name and class" do
+      all_basic_elements.each do |tag|
+        identifier = {:tag_name => tag, :name => 'foo', :class => 'bar'}
+        how, what = element.selenium_identifier_for identifier
+        how.should == :xpath
+        what.should == ".//#{tag}[@name='foo' and @class='bar']"
+      end      
+    end
+
+    it "should build xpath when locating input elements by name and class" do
+      all_input_elements.each do |type|
+        identifier = {:tag_name => 'input', :type => "#{type}", :name => 'foo', :class => 'bar'}
+        how, what = element.selenium_identifier_for identifier
+        what.should == ".//input[@type='#{type}' and @name='foo' and @class='bar']"
+      end      
     end
   end
 
