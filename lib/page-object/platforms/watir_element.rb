@@ -89,6 +89,48 @@ module PageObject
       def click
         @element.click
       end
+      
+      #
+      # Waits until the element is present
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      #
+      def when_present(timeout=5)
+        @element.wait_until_present(timeout)
+      end
+      
+      #
+      # Waits until the element is visible
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      #
+      def when_visible(timeout=5)
+        Watir::Wait.until(timeout, "Element was not visible in #{timeout} seconds") do
+          visible?
+        end
+      end
+
+      #
+      # Waits until the element is not visible
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      #
+      def when_not_visible(timeout=5)
+        Watir::Wait.while(timeout, "Element still visible after #{timeout} seconds") do
+          visible?
+        end
+      end
+
+      #
+      # Waits until the block returns true
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      # @param [String] the message to display if the event timeouts
+      # @param the block to execute when the event occurrs
+      #
+      def wait_until(timeout=5, message=nil, &block)
+        Watir::Wait.until(timeout, message, &block)
+      end
     end
   end
 end

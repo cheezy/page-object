@@ -132,6 +132,26 @@ describe PageObject::Elements::Element do
       watir_driver.should_receive(:click)
       watir_element.click
     end
+    
+    it "should be able to block until it is present" do
+      watir_driver.should_receive(:wait_until_present).with(10)
+      watir_element.when_present(10)
+    end
+    
+    it "should be able to block until it is visible" do
+      Watir::Wait.should_receive(:until).with(10, "Element was not visible in 10 seconds")
+      watir_element.when_visible(10)
+    end
+    
+    it "should be able to block until it is not visible" do
+      Watir::Wait.should_receive(:while).with(10, "Element still visible after 10 seconds")
+      watir_element.when_not_visible(10)
+    end
+    
+    it "should be able to block until a user define event fires true" do
+      Watir::Wait.should_receive(:until).with(10, "Element blah")
+      watir_element.wait_until(10, "Element blah") {}
+    end
   end
   
   context "when using Selenium" do
@@ -182,6 +202,34 @@ describe PageObject::Elements::Element do
     it "should be clickable" do
       selenium_driver.should_receive(:click)
       selenium_element.click
+    end
+
+    it "should be able to block until it is present" do
+      wait = double('wait')
+      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      wait.should_receive(:until)
+      selenium_element.when_present(10)
+    end
+    
+    it "should be able to block until it is visible" do
+      wait = double('wait')
+      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      wait.should_receive(:until)
+      selenium_element.when_visible(10)
+    end
+    
+    it "should be able to block until it is not visible" do
+      wait = double('wait')
+      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      wait.should_receive(:until)
+      selenium_element.when_not_visible(10)
+    end
+    
+    it "should be able to block until a user define event fires true" do
+      wait = double('wait')
+      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      wait.should_receive(:until)
+      selenium_element.wait_until(10, "Element blah") {}
     end
   end
 end

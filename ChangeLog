@@ -1,6 +1,12 @@
 === Version 0.2
 * Enhancements
-  * Added #wait_until to page object to support for async events at page level
+  * Async handling
+    * Added #wait_until to page object to support async events at page level
+    * Added the following methods to PageObject::Elements::Element
+      * #when_present
+      * #when_visible
+      * #when_not_visible
+      * #wait_until
 
 === Version 0.1.1 / 2011-07-16
 * Enhancements
