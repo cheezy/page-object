@@ -1,4 +1,8 @@
-=== Version 0.1.1
+=== Version 0.2
+* Enhancements
+  * Added #wait_until to page object to support for async events at page level
+
+=== Version 0.1.1 / 2011-07-16
 * Enhancements
   * Support for identifying hidden fields by text when using Selenium
   * Support for identifying links by href when using Selenium

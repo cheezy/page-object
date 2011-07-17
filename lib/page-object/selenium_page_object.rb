@@ -44,6 +44,15 @@ module PageObject
     end
     
     #
+    # platform method to wait for a block to return true
+    # See PageObject#wait_until
+    #
+    def wait_until(timeout, message = nil, &block)
+      wait = Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
+      wait.until &block
+    end
+    
+    #
     # platform method to get the value stored in a text field
     # See PageObject::Accessors#text_field
     #

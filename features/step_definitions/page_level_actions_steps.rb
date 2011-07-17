@@ -10,3 +10,10 @@ end
 Then /^the page should have the title "([^\"]*)"$/ do |title|
   @page.title.should include title
 end
+
+Then /^I should be able to wait for a block to return true$/ do
+  @page.google_search_id
+  @page.wait_until(10, "too long to display page") do
+    @page.text.include? 'Success'
+  end
+end

@@ -42,6 +42,13 @@ module PageObject
     def title
       @browser.title
     end
+    
+    #
+    # platform method to wait for a block to return true
+    # See PageObject#wait_until
+    def wait_until(timeout, message = nil, &block)
+      @browser.wait_until(timeout, message, &block)
+    end
 
     #
     # platform method to get the value stored in a text field

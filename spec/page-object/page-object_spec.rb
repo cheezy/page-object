@@ -51,6 +51,11 @@ describe PageObject do
         watir_browser.should_receive(:goto).with("cheezyworld.com")
         watir_page_object.navigate_to("cheezyworld.com")
       end
+      
+      it "should wait until a block returns true" do
+        watir_browser.should_receive(:wait_until).with(5, "too long")
+        watir_page_object.wait_until(5, "too long")
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -72,6 +77,13 @@ describe PageObject do
       it "should be able to navigate to a page" do
         selenium_browser.stub_chain(:navigate, :to).with('cheezyworld.com')
         selenium_page_object.navigate_to('cheezyworld.com')
+      end
+ 
+      it "should wait until a block returns true" do
+        wait = double('wait')
+        Selenium::WebDriver::Wait.should_receive(:new).with({:timeout => 5, :message => 'too long'}).and_return(wait)
+        wait.should_receive(:until)
+        selenium_page_object.wait_until(5, 'too long')
       end
     end
   end

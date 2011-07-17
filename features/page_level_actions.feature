@@ -14,6 +14,10 @@ Feature: Page level actions
   Scenario: Getting the title from a web page
     Given I am on the static elements page
     Then the page should have the title "Static Elements Page"
+    
+  Scenario: Waiting for something
+    Given I am on the static elements page
+    Then I should be able to wait for a block to return true
 
   
   
