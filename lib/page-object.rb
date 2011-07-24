@@ -115,7 +115,7 @@ module PageObject
   end
   
   #
-  # Override the normal confirm popup soe it does not occurr.
+  # Override the normal confirm popup so it does not occurr.
   #
   # @example
   #   message = @popup.confirm(true) do
@@ -128,6 +128,23 @@ module PageObject
   #
   def confirm(response, &block)
     platform.confirm(response, &block)
+  end
+  
+  #
+  # Override the normal promp popup so it does not occurr.
+  #
+  # @example
+  #   message = @popup.prompt("Some Value") do
+  #     @page.button_that_causes_prompt
+  #   end
+  #
+  # @param [string] the value returned to the caller of the prompt
+  # @param block a block that has the call that will cause the prompt to display
+  # @return [Hash] A has containing two keys - :message contains the prompt message and
+  # :default_value contains the default value for the prompt if provided
+  #
+  def prompt(answer, &block)
+    platform.prompt(answer, &block)
   end
 
   private

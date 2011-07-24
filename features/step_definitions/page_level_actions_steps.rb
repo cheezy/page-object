@@ -37,3 +37,15 @@ end
 Then /^I should be able to get the confirm message$/ do
   @msg.should == 'set the value'
 end
+
+When /^I handle the prompt$/ do
+  @msg = @page.prompt("Cheezy") do
+    @page.prompt_button
+  end
+end
+
+Then /^I should be able to get the message and default value$/ do
+  @msg[:message].should == "enter your name"
+  @msg[:default_value].should == 'John Doe'
+end
+

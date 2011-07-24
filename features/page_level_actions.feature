@@ -25,4 +25,7 @@ Feature: Page level actions
   Scenario: Handling confirm popups
     When I handle the confirm
     Then I should be able to get the confirm message
-  
+    
+  Scenario: Handling prompt popups
+    When I handle the prompt
+    Then I should be able to get the message and default value

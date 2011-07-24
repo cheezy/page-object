@@ -10,6 +10,7 @@
   * Handling popups
     * Added #alert to page object to override default alert popup behavior
     * Added #confirm to page object to override default confirm popup behavior
+    * Added #prompt to page object to override default prompt popup behavior
   * Updated to use selenium-webdriver 2.1.0
 
 === Version 0.1.1 / 2011-07-16

@@ -68,6 +68,12 @@ describe PageObject do
         watir_page_object.confirm(true) do
         end
       end
+      
+      it "should override prompt popup behavior" do
+        watir_browser.should_receive(:prompt)
+        watir_page_object.prompt("blah") do
+        end
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -107,6 +113,11 @@ describe PageObject do
       it "should override confirm popup behavior" do
         selenium_browser.should_receive(:execute_script).twice
         selenium_page_object.confirm(true) do
+        end
+      end
+      it "should override prompt popup behavior" do
+        selenium_browser.should_receive(:execute_script).twice
+        selenium_page_object.prompt("blah") do
         end
       end
     end

@@ -67,6 +67,14 @@ module PageObject
     def confirm(response, &block)
       @browser.confirm(response, &block)
     end
+    
+    #
+    # platform method to handle a prompt popup
+    # See PageObject#prompt
+    #
+    def prompt(answer, &block)
+      @browser.prompt(answer, &block)
+    end
 
     #
     # platform method to get the value stored in a text field

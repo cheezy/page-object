@@ -73,6 +73,19 @@ module PageObject
     end
 
     #
+    # platform method to handle a prompt popup
+    # See PageObject#prompt
+    #
+    def prompt(answer, &block)
+      @browser.execute_script "window.prompt = function(text, value) { window.__lastWatirPrompt = { message: text, default_value: value }; return #{answer.to_json}; }"
+      yield
+      result = @browser.execute_script "return window.__lastWatirPrompt"
+
+      result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k)}
+      result
+    end
+
+    #
     # platform method to get the value stored in a text field
     # See PageObject::Accessors#text_field
     #
