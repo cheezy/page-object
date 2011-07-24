@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'page-object/page_factory'
 
-class TestPageObject
+class FactoryTestPageObject
   include PageObject
   page_url "http://google.com"
 end
@@ -20,15 +20,15 @@ describe PageObject::PageFactory do
   
   it "should create a new page object and execute a block" do
     @world.browser.should_not_receive(:goto)
-    @world.on_page TestPageObject do |page|
-      page.should be_instance_of TestPageObject
+    @world.on_page FactoryTestPageObject do |page|
+      page.should be_instance_of FactoryTestPageObject
     end
   end
   
   it "should create and visit a new page" do
     @world.browser.should_receive(:goto)
-    @world.visit_page TestPageObject do |page|
-      page.should be_instance_of TestPageObject
+    @world.visit_page FactoryTestPageObject do |page|
+      page.should be_instance_of FactoryTestPageObject
     end
   end
 end
