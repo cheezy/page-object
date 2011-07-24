@@ -16,6 +16,8 @@ To see the changes from release to release please look at the [ChangeLog](https:
 To read about the motivation for this gem please read this [blog entry](http://www.cheezyworld.com/2010/11/19/ui-tests-introducing-a-simple-dsl/)
 
 
+## Basic Usage
+
 ### Defining your page object
 
 You define a new page object by including the PageObject module:
