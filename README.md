@@ -5,6 +5,17 @@
 
 A simple gem that assists in creating flexible page objects for testing browser based appications.  The goal is to facilitate creating abstraction layers in your tests to decouple the tests from the item they are testing and to provide a simple interface to the elements on a page.  It works with both watir-webdriver and selenium-webdriver.
 
+## Documentation
+
+The project [wiki](https://github.com/cheezy/page-object/wiki/page-object) is the first place to go to learn about how to use page-object.
+
+The rdocs for this project can be found at [rubydoc.info](http://rubydoc.info/github/cheezy/page-object/master/frames).
+
+To see the changes from release to release please look at the [ChangeLog](https://raw.github.com/cheezy/page-object/master/ChangeLog)
+
+To read about the motivation for this gem please read this [blog entry](http://www.cheezyworld.com/2010/11/19/ui-tests-introducing-a-simple-dsl/)
+
+
 ### Defining your page object
 
 You define a new page object by including the PageObject module:
@@ -60,18 +71,6 @@ or
     browser = Selenium::WebDriver.for :firefox
     my_page_object = MyPageObject.new(browser)
 
-## Documentation
-
-The project [wiki](https://github.com/cheezy/page-object/wiki/page-object) is the first place to go to learn about how to use page-object.
-
-The rdocs for this project can be found at [rubydoc.info](http://rubydoc.info/github/cheezy/page-object/master/frames).
-
-If you wish to view the current tracker board you can view it on [Pivotal Tracker](https://www.pivotaltracker.com/projects/289099)
-
-To see the changes from release to release please look at the [ChangeLog](https://raw.github.com/cheezy/page-object/master/ChangeLog)
-
-To read about the motivation for this gem please read this [blog entry](http://www.cheezyworld.com/2010/11/19/ui-tests-introducing-a-simple-dsl/)
-
 ## Known Issues
 
 See [http://github.com/cheezy/page-object/issues](http://github.com/cheezy/page-object/issues)
@@ -82,7 +81,7 @@ See [http://github.com/cheezy/page-object/issues](http://github.com/cheezy/page-
 * Test drive your feature addition or bug fix.  Adding specs is important and I will not accept a pull request that does not have tests.
 * Make sure you describe your new feature with a cucumber scenario.
 * Make sure you provide RDoc comments for any new public method you add.  Remember, others will be using this gem.
-* Commit, do not mess with rakefile, version, or history.
+* Commit, do not mess with Rakefile, version, or ChangeLog.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 

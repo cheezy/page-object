@@ -1,4 +1,4 @@
-=== Version 0.2
+=== Version 0.2 / 2011-07-24
 * Enhancements
   * Async handling
     * Added #wait_until to page object to support async events at page level
@@ -10,7 +10,12 @@
   * Handling popups
     * Added #alert to page object to override default alert popup behavior
     * Added #confirm to page object to override default confirm popup behavior
-    * Added #prompt to page object to override default prompt popup behavior
+    * Added #prompt to page object to override default prompt popup behaviorit "should override prompt popup behavior" do
+      watir_browser.should_receive(:prompt)
+      watir_page_object.prompt("blah") do
+      end
+    end
+    
   * Updated to use selenium-webdriver 2.1.0
 
 === Version 0.1.1 / 2011-07-16

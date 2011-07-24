@@ -1,4 +1,4 @@
-default: DRIVER=WATIR --no-source --color --format pretty --tags ~@selenium_only
+default: DRIVER=WATIR --no-source --color --format pretty
 watir: DRIVER=WATIR --no-source --color --format pretty --tags ~@selenium_only
 selenium: DRIVER=SELENIUM --no-source --color --format pretty --tags ~@watir_only
 watir_focus: DRIVER=WATIR --no-source --color --format pretty --tags @focus --tags ~@selenium_only
