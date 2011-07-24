@@ -59,6 +59,14 @@ module PageObject
     def alert(&block)
       @browser.alert(&block)
     end
+    
+    #
+    # platform method to handle a confirm popup
+    # See PageObject#confirm
+    #
+    def confirm(response, &block)
+      @browser.confirm(response, &block)
+    end
 
     #
     # platform method to get the value stored in a text field

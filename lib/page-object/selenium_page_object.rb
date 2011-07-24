@@ -63,6 +63,16 @@ module PageObject
     end
     
     #
+    # platform method to handle a confirm popup
+    # See PageObject#confirm
+    #
+    def confirm(response, &block)
+      @browser.execute_script "window.confirm = function(msg) { window.__lastWatirConfirm = msg; return #{!!response} }"
+      yield
+      @browser.execute_script "return window.__lastWatirConfirm"
+    end
+
+    #
     # platform method to get the value stored in a text field
     # See PageObject::Accessors#text_field
     #

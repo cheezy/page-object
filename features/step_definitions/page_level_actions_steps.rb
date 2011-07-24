@@ -27,3 +27,13 @@ end
 Then /^I should be able to get the alert's message$/ do
   @msg.should == "I am an alert"
 end
+
+When /^I handle the confirm$/ do
+  @msg = @page.confirm(true) do
+    @page.confirm_button
+  end
+end
+
+Then /^I should be able to get the confirm message$/ do
+  @msg.should == 'set the value'
+end

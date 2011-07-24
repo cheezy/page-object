@@ -57,9 +57,15 @@ describe PageObject do
         watir_page_object.wait_until(5, "too long")
       end
       
-      it "should provide access to alert popups" do
+      it "should override alert popup behavior" do
         watir_browser.should_receive(:alert)
         watir_page_object.alert do
+        end
+      end
+      
+      it "should override confirm popup behavior" do
+        watir_browser.should_receive(:confirm)
+        watir_page_object.confirm(true) do
         end
       end
     end
@@ -92,9 +98,15 @@ describe PageObject do
         selenium_page_object.wait_until(5, 'too long')
       end
 
-      it "should provide access to alert popups" do
+      it "should override alert popup behavior" do
         selenium_browser.should_receive(:execute_script).twice
         selenium_page_object.alert do
+        end
+      end
+      
+      it "should override confirm popup behavior" do
+        selenium_browser.should_receive(:execute_script).twice
+        selenium_page_object.confirm(true) do
         end
       end
     end

@@ -161,4 +161,6 @@ class Page
   ordered_list(:ol_name_index, :name => "ol_name", :index => 0)
   
   button(:alert_button, :id => 'alert_button')
+  button(:confirm_button, :id => 'confirm_button')
+  button(:prompt_button, :id => 'prompt_button')
 end

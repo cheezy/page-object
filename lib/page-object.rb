@@ -40,6 +40,7 @@ module PageObject
   # Construct a new page object.
   #
   # @param [Watir::Browser or Selenium::WebDriver::Driver] the platform browser to use
+  # @param [bool] open the page if page_url is set
   #
   def initialize(browser, visit=false)
     @browser = browser
@@ -111,6 +112,22 @@ module PageObject
   #
   def alert(&block)
     platform.alert(&block)
+  end
+  
+  #
+  # Override the normal confirm popup soe it does not occurr.
+  #
+  # @example
+  #   message = @popup.confirm(true) do
+  #     @page.button_that_causes_confirm
+  #   end
+  #
+  # @param [bool] what response you want to return back from the confirm popup
+  # @param block a block that has the call that will cause the confirm to display
+  # @return [String] the message that was prompted in the confirm
+  #
+  def confirm(response, &block)
+    platform.confirm(response, &block)
   end
 
   private

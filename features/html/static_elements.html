@@ -85,8 +85,10 @@
     <a href="success.html">Hello</a>
     <a href="success.html">Hello</a>
     
-    <h3>Alerts</h3>
+    <h3>Alerts / Confirms / Prompts</h3>
     <input id=alert_button type=button onclick="alert('I am an alert')" value=Alert>
+    <input id=confirm_button type=button onclick="this.value = confirm('set the value')" value=Confirm>
+    <input id=prompt_button type=button onclick='this.value = prompt("enter your name", "John Doe")' value=Prompt>
   </body>
 </html>
 
