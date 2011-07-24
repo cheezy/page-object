@@ -53,6 +53,16 @@ module PageObject
     end
     
     #
+    # platform method to handle an alert popup
+    # See PageObject#alert
+    #
+    def alert(&block)
+      @browser.execute_script "window.alert = function(msg) { window.__lastWatirAlert = msg; }"
+      yield
+      @browser.execute_script "return window.__lastWatirAlert"
+    end
+    
+    #
     # platform method to get the value stored in a text field
     # See PageObject::Accessors#text_field
     #

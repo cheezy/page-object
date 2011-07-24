@@ -2,22 +2,24 @@ Feature: Page level actions
   In order to act on pages from a web site
   Testers will need to use the page object to encapsulate access
 
+  Background:
+    Given I am on the static elements page
+
 
   Scenario: Getting the text from a web page
-    Given I am on the static elements page
     Then the page should contain the text "Static Elements Page"
 
   Scenario: Getting the html from a web page
-    Given I am on the static elements page
     Then the page should contain the html "<title>Static Elements Page</title>"
 
   Scenario: Getting the title from a web page
-    Given I am on the static elements page
     Then the page should have the title "Static Elements Page"
     
   Scenario: Waiting for something
-    Given I am on the static elements page
     Then I should be able to wait for a block to return true
-
+    
+  Scenario: Handling Alerts
+    When I handle the alert 
+    Then I should be able to get the alert's message
   
   

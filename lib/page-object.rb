@@ -85,17 +85,32 @@ module PageObject
   #
   # Wait until the block returns true or times out
   #
-  # Example:
+  # @example
   #   @page.wait_until(5, 'Success not found on page') do
   #     @page.text.include? 'Success'
   #   end
   #
   # @param [Numeric] the amount of time to wait for the block to return true.
   # @param [String] the message to include with the error if we exceed the timeout duration.
-  # param block the block to execute.  It should return true when successful.
+  # @param block the block to execute.  It should return true when successful.
   #
   def wait_until(timeout = 30, message = nil, &block)
     platform.wait_until(timeout, message, &block)
+  end
+  
+  #
+  # Override the normal alert popup so it does not occurr.
+  #
+  # @example
+  #   message = @page.alert do
+  #     @page.button_that_causes_alert
+  #   end
+  #
+  # @param block a block that has the call that will cause the alert to display
+  # @return [String] the message that was contained in the alert
+  #
+  def alert(&block)
+    platform.alert(&block)
   end
 
   private

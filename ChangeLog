@@ -7,6 +7,8 @@
       * #when_visible
       * #when_not_visible
       * #wait_until
+  * Handling popups
+    * Added #alert to page object to override default alert behavior
   * Updated to use selenium-webdriver 2.1.0
 
 === Version 0.1.1 / 2011-07-16

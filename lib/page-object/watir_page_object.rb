@@ -1,4 +1,6 @@
+require 'watir-webdriver/extensions/alerts'
 require 'page-object/elements'
+
 
 module PageObject
   #
@@ -48,6 +50,14 @@ module PageObject
     # See PageObject#wait_until
     def wait_until(timeout, message = nil, &block)
       @browser.wait_until(timeout, message, &block)
+    end
+    
+    #
+    # platform method to handle an alert popup
+    # See PageObject#alert
+    #
+    def alert(&block)
+      @browser.alert(&block)
     end
 
     #

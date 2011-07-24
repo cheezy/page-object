@@ -159,4 +159,6 @@ class Page
   ordered_list(:ol_xpath, :xpath => '//ol')
   ordered_list(:ol_class_index, :class => "ol_class", :index => 0)
   ordered_list(:ol_name_index, :name => "ol_name", :index => 0)
+  
+  button(:alert_button, :id => 'alert_button')
 end

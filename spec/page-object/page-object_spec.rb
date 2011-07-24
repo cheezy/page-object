@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-class TestPageObject
+class PageObjectTestPageObject
   include PageObject
 end
 
 describe PageObject do
   let(:watir_browser) { mock_watir_browser }
   let(:selenium_browser) { mock_selenium_browser }
-  let(:watir_page_object) { TestPageObject.new(watir_browser) }
-  let(:selenium_page_object) { TestPageObject.new(selenium_browser) }
+  let(:watir_page_object) { PageObjectTestPageObject.new(watir_browser) }
+  let(:selenium_page_object) { PageObjectTestPageObject.new(selenium_browser) }
 
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
@@ -56,6 +56,12 @@ describe PageObject do
         watir_browser.should_receive(:wait_until).with(5, "too long")
         watir_page_object.wait_until(5, "too long")
       end
+      
+      it "should provide access to alert popups" do
+        watir_browser.should_receive(:alert)
+        watir_page_object.alert do
+        end
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -84,6 +90,12 @@ describe PageObject do
         Selenium::WebDriver::Wait.should_receive(:new).with({:timeout => 5, :message => 'too long'}).and_return(wait)
         wait.should_receive(:until)
         selenium_page_object.wait_until(5, 'too long')
+      end
+
+      it "should provide access to alert popups" do
+        selenium_browser.should_receive(:execute_script).twice
+        selenium_page_object.alert do
+        end
       end
     end
   end
