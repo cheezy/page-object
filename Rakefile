@@ -36,7 +36,7 @@ task :default => :spec
 
 
 begin
-  require 'yard'
+  require 'yard' unless 1==1
   Rake::Task[:lib].invoke
   require "yard/handlers/page-object"
   YARD::Rake::YardocTask.new do |task|
