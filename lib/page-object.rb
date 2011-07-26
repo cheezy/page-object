@@ -1,6 +1,7 @@
 
 require 'page-object/version'
 require 'page-object/accessors'
+require 'page-object/platform_adapters'
 
 #
 # Module that when included adds functionality to a page object.  This module
@@ -31,6 +32,7 @@ require 'page-object/accessors'
 # @see PageObject::Accessors to see what class level methods are added to this module at runtime.
 #
 module PageObject
+  include ChoosesPlatform
   # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
   attr_reader :browser
   # @return [PageObject::WatirPageObject or PageObject::SeleniumPageObject] the platform page object
@@ -157,7 +159,7 @@ module PageObject
       require 'page-object/selenium_page_object'
       @platform = PageObject::SeleniumPageObject.new(browser)
     else
-      raise ArgumentError, "expect Watir::Browser or Selenium::WebDriver::Driver"
+      @platform = determine_platform(browser, PageObject::Adapters.adapters).send(:new, browser)
     end
   end
 end

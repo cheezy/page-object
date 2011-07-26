@@ -29,3 +29,14 @@ def mock_selenium_browser
   selenium_browser
 end
   
+
+def mock_adapter(browser, platform)
+      adapter = double('adapter')
+      adapter.stub!(:is_for?).with(anything()).and_return false
+      adapter.stub!(:is_for?).with(browser).and_return true
+      adapter.stub!(:platform).and_return platform
+      adapter
+end
+def mock_adapters(*adapters)
+  PageObject::Adapters.stub!(:adapters).and_return adapters 
+end
