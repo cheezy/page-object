@@ -11,7 +11,7 @@ describe PageObject::Platforms::Selenium do
     let(:browser) { double('browser') }
     let(:subject) { PageObject::Platforms::Selenium.create_page_object(browser) }
     it "should create a SeleniumPageObject" do
-      subject.should be_kind_of PageObject::SeleniumPageObject
+      subject.should be_kind_of PageObject::Platforms::Selenium::PageObject
     end
   end
   describe "is for?" do

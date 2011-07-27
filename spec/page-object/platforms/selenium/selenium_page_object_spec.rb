@@ -1,12 +1,12 @@
 require 'spec_helper'
-require 'page-object/selenium_page_object'
+require 'page-object/platforms/selenium/page_object'
 require 'page-object/elements'
 
 class SeleniumTestPageObject
   include PageObject
 end
 
-describe PageObject::SeleniumPageObject do
+describe PageObject::Platforms::Selenium::PageObject do
   let(:selenium_browser) { mock_selenium_browser }
   let(:selenium_page_object) { SeleniumTestPageObject.new(selenium_browser) }
 

@@ -19,7 +19,7 @@ describe PageObject do
 
   context "when created with a selenium browser" do
     it "should include the SeleniumPageObject module" do
-      selenium_page_object.platform.should be_kind_of PageObject::SeleniumPageObject
+      selenium_page_object.platform.should be_kind_of Object::PageObject::Platforms::Selenium::PageObject
     end
   end
   context "when created with a non_bundled adapter" do

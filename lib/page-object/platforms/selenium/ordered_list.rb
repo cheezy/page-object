@@ -11,7 +11,7 @@ module PageObject
         #
         def [](idx)
           eles = list_items
-          PageObject::Elements::ListItem.new(eles[idx], :platform => :selenium)
+          Object::PageObject::Elements::ListItem.new(eles[idx], :platform => :selenium)
         end
 
         #

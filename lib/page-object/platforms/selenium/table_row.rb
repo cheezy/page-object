@@ -10,7 +10,7 @@ module PageObject
         #
         def [](idx)
           els = table_cells
-          PageObject::Elements::TableCell.new(els[idx], :platform => :selenium)
+          Object::PageObject::Elements::TableCell.new(els[idx], :platform => :selenium)
         end
 
         #

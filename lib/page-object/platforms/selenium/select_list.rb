@@ -21,7 +21,7 @@ module PageObject
           options = @element.find_elements(:xpath, child_xpath)
           elements = []
           options.each do |opt|
-            elements << PageObject::Elements::Option.new(opt, :platform => :selenium)
+            elements << Object::PageObject::Elements::Option.new(opt, :platform => :selenium)
           end
           elements
         end
