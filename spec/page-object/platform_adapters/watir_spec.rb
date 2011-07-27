@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe PageObject::Adapters::Watir do
+describe PageObject::Platforms::Watir do
   it "should be in the PageObjects Adapters list" do
-    PageObject::Adapters.get[:watir].should be PageObject::Adapters::Watir
+    PageObject::Platforms.get[:watir].should be PageObject::Platforms::Watir
   end
   describe "create page object" do
     let(:browser) { double('browser') }
-    let(:subject) { PageObject::Adapters::Watir.create_page_object(browser) }
+    let(:subject) { PageObject::Platforms::Watir.create_page_object(browser) }
     it "should create a WatirPageObject" do
       subject.should be_kind_of PageObject::WatirPageObject
     end
@@ -17,11 +17,11 @@ describe PageObject::Adapters::Watir do
   describe "is for?" do
     it "should be true when the browser is Watir::Browser" do
       browser = mock_watir_browser()
-      PageObject::Adapters::Watir.is_for?(browser).should be true
+      PageObject::Platforms::Watir.is_for?(browser).should be true
     end
     it "should be false at any other point" do
       browser = 'asdf'
-      PageObject::Adapters::Watir.is_for?('asdf').should be false
+      PageObject::Platforms::Watir.is_for?('asdf').should be false
     end
   end
 end

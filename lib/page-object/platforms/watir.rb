@@ -1,8 +1,8 @@
 module PageObject
-  module Adapters
+  module Platforms
     module Watir
       def self.create_page_object(browser)
-        require 'page-object/platform_adapters/watir/page_object'
+        require 'page-object/platforms/watir/page_object'
         PageObject::WatirPageObject.new(browser)
       end
 
@@ -13,4 +13,4 @@ module PageObject
   end
 end
 
-PageObject::Adapters.register(:watir, PageObject::Adapters::Watir)
+PageObject::Platforms.register(:watir, PageObject::Platforms::Watir)

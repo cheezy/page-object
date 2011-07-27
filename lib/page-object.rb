@@ -155,7 +155,7 @@ module PageObject
       require 'page-object/selenium_page_object'
       @platform = PageObject::SeleniumPageObject.new(browser)
     else
-      @platform = load_platform(browser, PageObject::Adapters.get)
+      @platform = load_platform(browser, PageObject::Platforms.get)
     end
   end
 end

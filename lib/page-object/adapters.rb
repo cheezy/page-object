@@ -1,5 +1,5 @@
 module PageObject
-  module Adapters
+  module Platforms
     @@adapters = {}
 
     def self.get
