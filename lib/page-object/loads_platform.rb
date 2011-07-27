@@ -3,18 +3,18 @@ module PageObject
   # module which provides a function for determining
   # which platform to provide to the page object
   # 
-  module ChoosesPlatform
+  module LoadsPlatform
     #
     # Determines which platform the Page Object should use based upon browser
     #
     # @example
-    #  platform =  determine_platform(watir_webdriver_browser, PageObject.Adapters.list).send(:new, watir_webdriver_browser)
+    #  platform =  load_platform(watir_webdriver_browser, PageObject.Adapters.list).send(:new, watir_webdriver_browser)
     # 
     # @param [Object] A browser driver that has a supported adapter
     # @param [adapters] a list of adapters that are currently supported
     # @returns [PageObject] 
     #
-    def determine_platform(browser, adapters)
+    def load_platform(browser, adapters)
       adapters.each_value { | adapter |
         return adapter.create_page_object(browser) if adapter.is_for?(browser)
       }

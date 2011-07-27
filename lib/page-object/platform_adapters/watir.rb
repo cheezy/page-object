@@ -3,7 +3,7 @@ module PageObject
   module Adapters
     module Watir
       def self.create_page_object(browser)
-        require 'page-object/watir_page_object'
+        require 'page-object/platform_adapters/watir/page_object'
         PageObject::WatirPageObject.new(browser)
       end
       def self.is_for?(browser)
