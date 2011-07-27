@@ -28,8 +28,8 @@ module PageObject
       def include_platform_for platform
         super
         if platform[:platform] == :selenium
-          require 'page-object/platforms/selenium_link'
-          self.class.send :include, PageObject::Platforms::SeleniumLink
+          require 'page-object/platforms/selenium/link'
+          self.class.send :include, PageObject::Platforms::Selenium::Link
         end
       end
     end

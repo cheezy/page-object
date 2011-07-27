@@ -14,8 +14,8 @@ module PageObject
           require 'page-object/platforms/watir/image'
           self.class.send :include, PageObject::Platforms::Watir::Image
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium_image'
-          self.class.send :include, PageObject::Platforms::SeleniumImage
+          require 'page-object/platforms/selenium/image'
+          self.class.send :include, PageObject::Platforms::Selenium::Image
         else
           raise ArgumentError, "expect platform to be :watir or :selenium"
         end

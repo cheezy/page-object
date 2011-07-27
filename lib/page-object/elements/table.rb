@@ -31,8 +31,8 @@ module PageObject
           require 'page-object/platforms/watir/table'
           self.class.send :include, PageObject::Platforms::Watir::Table
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium_table'
-          self.class.send :include, PageObject::Platforms::SeleniumTable
+          require 'page-object/platforms/selenium/table'
+          self.class.send :include, PageObject::Platforms::Selenium::Table
         else
           raise ArgumentError, "expect platform to be :watir or :selenium"
         end

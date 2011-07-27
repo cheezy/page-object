@@ -35,8 +35,8 @@ module PageObject
           require 'page-object/platforms/watir/ordered_list'
           self.class.send :include, PageObject::Platforms::Watir::OrderedList
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium_ordered_list'
-          self.class.send :include, PageObject::Platforms::SeleniumOrderedList
+          require 'page-object/platforms/selenium/ordered_list'
+          self.class.send :include, PageObject::Platforms::Selenium::OrderedList
         else
           raise ArgumentError, "expect platform to be :watir or :selenium"
         end

@@ -23,8 +23,8 @@ module PageObject
           require 'page-object/platforms/watir/select_list'
           self.class.send :include, PageObject::Platforms::Watir::SelectList
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium_select_list'
-          self.class.send :include, PageObject::Platforms::SeleniumSelectList
+          require 'page-object/platforms/selenium/select_list'
+          self.class.send :include, PageObject::Platforms::Selenium::SelectList
         else
           raise ArgumentError, "expect platform to be :watir or :selenium"
         end

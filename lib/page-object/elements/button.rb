@@ -16,8 +16,8 @@ module PageObject
       def include_platform_for platform
         super
         if platform[:platform] == :selenium
-          require 'page-object/platforms/selenium_button'
-          self.class.send :include, PageObject::Platforms::SeleniumButton
+          require 'page-object/platforms/selenium/button'
+          self.class.send :include, PageObject::Platforms::Selenium::Button
         end
       end
     end
