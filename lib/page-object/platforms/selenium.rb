@@ -3,6 +3,7 @@ module PageObject
     module Selenium
 
       def self.create_page_object(browser)
+        require 'page-object/selenium_page_object'
         return PageObject::SeleniumPageObject.new(browser)
       end
 

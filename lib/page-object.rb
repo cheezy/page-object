@@ -151,11 +151,6 @@ module PageObject
   private
 
   def include_platform_driver(browser)
-    if browser.is_a? Selenium::WebDriver::Driver
-      require 'page-object/selenium_page_object'
-      @platform = PageObject::SeleniumPageObject.new(browser)
-    else
-      @platform = load_platform(browser, PageObject::Platforms.get)
-    end
+    @platform = load_platform(browser, PageObject::Platforms.get)
   end
 end
