@@ -18,7 +18,7 @@ module PageObject
     def navigate_to(url)
       @browser.navigate.to url
     end
-    
+
     #
     # platform method to retrieve the text from the current page
     # See PageObject#text
@@ -42,7 +42,7 @@ module PageObject
     def title
       @browser.title
     end
-    
+
     #
     # platform method to wait for a block to return true
     # See PageObject#wait_until
@@ -51,7 +51,7 @@ module PageObject
       wait = Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
       wait.until &block
     end
-    
+
     #
     # platform method to handle an alert popup
     # See PageObject#alert
@@ -61,7 +61,7 @@ module PageObject
       yield
       @browser.execute_script "return window.__lastWatirAlert"
     end
-    
+
     #
     # platform method to handle a confirm popup
     # See PageObject#confirm
@@ -81,7 +81,7 @@ module PageObject
       yield
       result = @browser.execute_script "return window.__lastWatirPrompt"
 
-      result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k)}
+      result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k) }
       result
     end
 
@@ -94,7 +94,7 @@ module PageObject
       how, what = Elements::TextField.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
-    
+
     #
     # platform method to set the value for a text field
     # See PageObject::Accessors#text_field
@@ -104,7 +104,7 @@ module PageObject
       how, what = Elements::TextField.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
     end
-    
+
     #
     # platform method to retrieve a text field element
     # See PageObject::Accessors#text_field
@@ -115,7 +115,7 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::TextField.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to get the value stored in a hidden field
     # See PageObject::Accessors#hidden_field
@@ -125,7 +125,7 @@ module PageObject
       how, what = Elements::HiddenField.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
-    
+
     #
     # platform method to retrieve a hidden field element
     # See PageObject::Accessors#hidden_field
@@ -135,7 +135,7 @@ module PageObject
       how, what = Elements::HiddenField.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       Elements::HiddenField.new(element, :platform => :selenium)
-    end    
+    end
 
     #
     # platform method to set text in a textarea
@@ -146,7 +146,7 @@ module PageObject
       how, what = Elements::TextArea.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
     end
-    
+
     #
     # platform method to get the text from a textarea
     # See PageObject::Accessors#text_area
@@ -156,7 +156,7 @@ module PageObject
       how, what = Elements::TextArea.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
-    
+
     #
     # platform method to get the text area element
     # See PageObject::Accessors#text_area
@@ -167,7 +167,7 @@ module PageObject
       element = @browser.find_element(how, what)
       Elements::TextArea.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to get the currently selected value from a select list
     # See PageObject::Accessors#select_list
@@ -177,7 +177,7 @@ module PageObject
       how, what = Elements::SelectList.selenium_identifier_for identifier
       @browser.find_element(how, what).attribute('value')
     end
-    
+
     #
     # platform method to select a value from a select list
     # See PageObject::Accessors#select_list
@@ -187,7 +187,7 @@ module PageObject
       how, what = Elements::SelectList.selenium_identifier_for identifier
       @browser.find_element(how, what).send_keys(value)
     end
-    
+
     #
     # platform method to return the select list element
     # See PageObject::Accessors#select_list
@@ -208,7 +208,7 @@ module PageObject
       how, what = Elements::Link.selenium_identifier_for identifier
       @browser.find_element(how, what).click
     end
-    
+
     #
     # platform method to return a PageObject::Elements::Link object
     # see PageObject::Accessors#link
@@ -249,7 +249,7 @@ module PageObject
       how, what = Elements::CheckBox.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
     end
-    
+
     #
     # platform method to return a PageObject::Elements::CheckBox element
     # See PageObject::Accessors#checkbox
@@ -290,7 +290,7 @@ module PageObject
       how, what = Elements::RadioButton.selenium_identifier_for identifier
       @browser.find_element(how, what).selected?
     end
-    
+
     #
     # platform method to return a PageObject::Eements::RadioButton element
     # See PageObject::Accessors#radio_button
@@ -301,7 +301,7 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::RadioButton.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to return the text for a div
     # See PageObject::Accessors#div
@@ -311,7 +311,7 @@ module PageObject
       how, what = Elements::Div.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
-    
+
     #
     # platform method to return a PageObject::Elements::Div element
     # See PageObject::Accessors#div
@@ -322,7 +322,7 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::Div.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to return the text for a span
     # See PageObject::Accessors#span
@@ -332,7 +332,7 @@ module PageObject
       how, what = Elements::Span.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
-    
+
     #
     # platform method to return a PageObject::Elements::Span element
     # See PageObject::Accessors#span
@@ -343,7 +343,7 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::Span.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to click a button
     # See PageObject::Accessors#button
@@ -353,7 +353,7 @@ module PageObject
       how, what = Elements::Button.selenium_identifier_for identifier
       @browser.find_element(how, what).click
     end
-    
+
     #
     # platform method to retrieve a button element
     # See PageObject::Accessors#button
@@ -375,7 +375,7 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::Table.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to retrieve the text from a table cell
     # See PageObject::Accessors#cell
@@ -385,7 +385,7 @@ module PageObject
       how, what = Elements::TableCell.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
-    
+
     #
     # platform method to retrieve a table cell element
     # See PageObject::Accessors#cell
@@ -407,7 +407,7 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::Image.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to retrieve a form element
     # See PageObject::Accessors#form
@@ -428,18 +428,18 @@ module PageObject
       how, what = Elements::ListItem.selenium_identifier_for identifier
       @browser.find_element(how, what).text
     end
-    
+
     #
     # platform method to retrieve a list item element
     # See PageObject::Accessors#list_item
     #
     def list_item_for(identifier)
       identifier = add_tagname_if_needed identifier, 'li'
-       how, what = Elements::ListItem.selenium_identifier_for identifier
+      how, what = Elements::ListItem.selenium_identifier_for identifier
       element = @browser.find_element(how, what)
       PageObject::Elements::ListItem.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to retrieve an unordered list element
     # See PageObject::Accessors#unordered_list
@@ -450,7 +450,7 @@ module PageObject
       element = @browser.find_element(how, what)
       PageObject::Elements::UnorderedList.new(element, :platform => :selenium)
     end
-    
+
     #
     # platform method to retrieve an ordered list element
     # See PageObject::Accessors#ordered_list
@@ -463,7 +463,7 @@ module PageObject
     end
 
     private
-    
+
     def add_tagname_if_needed identifier, tag, additional=nil
       return identifier if identifier.length < 2 and supported_identifier(identifier, tag, additional)
       identifier[:tag_name] = tag
@@ -474,13 +474,13 @@ module PageObject
       end
       identifier
     end
-    
+
     def supported_identifier(identifier, tag, additional)
       return false if identifier[:index]
       return false if identifier[:text] and tag == 'input' and additional[:type] == 'hidden'
       return false if identifier[:href] and tag == 'a'
       true
     end
-        
+
   end
 end

@@ -13,7 +13,7 @@ describe PageObject::Adapters::Watir do
     it "should give the watir page object the browser" do
       subject.browser.should be browser
     end
-  end 
+  end
   describe "is for?" do
     it "should be true when the browser is Watir::Browser" do
       browser = mock_watir_browser()

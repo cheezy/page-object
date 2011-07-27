@@ -1,7 +1,7 @@
 module PageObject
   module Platforms
     module SeleniumSelectList
-      
+
       #
       # Return the PageObject::Elements::Option for the index provided.  Index
       # is zero based.
@@ -11,7 +11,7 @@ module PageObject
       def [](idx)
         options[idx]
       end
-      
+
       #
       # Return an array of Options contained in the select lit.
       #

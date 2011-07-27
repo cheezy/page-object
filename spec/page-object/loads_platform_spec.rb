@@ -7,7 +7,7 @@ describe TestLoadsPlatform do
   let(:adapters) { {} }
   context "when browser x is registered with platform nom_nom_nom" do
     let(:browser_x) { double('browser') }
-    before { adapters[:browser_x] = mock_adapter(browser_x,:nom_nom_nom) }
+    before { adapters[:browser_x] = mock_adapter(browser_x, :nom_nom_nom) }
 
     it "returns platform nom_nom_nom  when asked about browser_x" do
       subject.load_platform(browser_x, adapters).should == :nom_nom_nom

@@ -8,7 +8,7 @@ Bundler::GemHelper.install_tasks
 
 RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.ruby_opts = "-I lib:spec"
-  spec.pattern   = 'spec/**/*_spec.rb'
+  spec.pattern = 'spec/**/*_spec.rb'
 end
 task :spec
 
@@ -16,11 +16,11 @@ namespace :features do
   Cucumber::Rake::Task.new(:watir, "Run features with Watir") do |t|
     t.profile = "watir"
   end
-  
+
   Cucumber::Rake::Task.new(:selenium, "Run features with Selenium") do |t|
     t.profile = "selenium"
   end
-  
+
   desc 'Run all features'
   task :all => [:watir, :selenium]
 end

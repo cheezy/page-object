@@ -1,9 +1,9 @@
 Feature: Text Area
 
-  
+
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Setting and getting a value from a text area
     When I type "abcdefghijklmnop" into the text area
     Then the text area should contain "abcdefghijklmnop"
@@ -17,7 +17,7 @@ Feature: Text Area
     | id        |
     | class     |
     | name      |
-    | xpath     |  
+    | xpath     |
     | css       |
     | tag_name  |
     | index     |
@@ -28,6 +28,6 @@ Feature: Text Area
     Then I should be able to type "I found it" into the area
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

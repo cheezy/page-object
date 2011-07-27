@@ -2,7 +2,7 @@ Feature: Span
 
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Getting the text from a span
     When I get the text from the span
     Then the text should be "My alert"
@@ -15,7 +15,7 @@ Feature: Span
     | search_by |
     | id        |
     | class     |
-    | xpath     |  
+    | xpath     |
     | index     |
     | name      |
 
@@ -24,6 +24,6 @@ Feature: Span
     Then the text should be "My alert"
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

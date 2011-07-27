@@ -8,7 +8,7 @@ module PageObject
       end
 
       protected
-      
+
       def self.watir_finders
         super + [:text]
       end

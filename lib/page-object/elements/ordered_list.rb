@@ -2,12 +2,12 @@ module PageObject
   module Elements
     class OrderedList < Element
       include Enumerable
-      
+
       def initialize(element, platform)
         @element = element
         include_platform_for platform
       end
-      
+
       #
       # iterator that yields with a PageObject::Elements::ListItem
       #
@@ -15,16 +15,16 @@ module PageObject
       #
       def each
         for index in 1..self.items do
-          yield self[index-1] 
+          yield self[index-1]
         end
-      end      
-      
+      end
+
       protected
-      
+
       def child_xpath
         ".//child::li"
       end
-      
+
       def self.watir_finders
         [:class, :id, :index, :xpath]
       end
@@ -32,16 +32,16 @@ module PageObject
       def include_platform_for platform
         super
         if platform[:platform] == :watir
-          require 'page-object/platforms/watir_ordered_list'
-          self.class.send :include, PageObject::Platforms::WatirOrderedList
+          require 'page-object/platforms/watir/ordered_list'
+          self.class.send :include, PageObject::Platforms::Watir::OrderedList
         elsif platform[:platform] == :selenium
           require 'page-object/platforms/selenium_ordered_list'
           self.class.send :include, PageObject::Platforms::SeleniumOrderedList
         else
-          raise ArgumentError, "expect platform to be :watir or :selenium"          
+          raise ArgumentError, "expect platform to be :watir or :selenium"
         end
       end
-  
+
     end
   end
 end

@@ -2,7 +2,7 @@ Feature: Form
 
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Submitting a form
     When I locate the form by "id"
     Then I should be able to submit the form
@@ -15,7 +15,7 @@ Feature: Form
     | search_by |
     | id        |
     | class     |
-    | xpath     |  
+    | xpath     |
     | index     |
 
   Scenario Outline: Locating table using multiple parameters
@@ -23,7 +23,7 @@ Feature: Form
     Then I should be able to submit the form
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |
 

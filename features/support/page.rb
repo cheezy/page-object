@@ -50,7 +50,7 @@ class Page
   link(:google_search_href, :href => "success.html")
   link(:google_search_text, :text => "Google Search")
   link(:google_search_index, :index => 0)
-  
+
   select_list(:sel_list_id, :id => "sel_list_id")
   select_list(:sel_list_class, :class => "sel_list_class")
   select_list(:sel_list_index, :index => 0)
@@ -76,9 +76,9 @@ class Page
   radio_button(:milk_xpath, :xpath => "//input[@type='radio']")
   radio_button(:milk_class_index, :class => "milk_class", :index => 0)
   radio_button(:milk_name_index, :name => "milk_name", :index => 0)
-  
+
   radio_button(:butter_id, :id => 'butter_id')
-  
+
   div(:div_id, :id => 'div_id')
   div(:div_name, :name => 'div_name')
   div(:div_class, :class => 'div_class')
@@ -86,7 +86,7 @@ class Page
   div(:div_xpath, :xpath => '//div')
   div(:div_class_index, :class => "div_class", :index => 0)
   div(:div_name_index, :name => "div_name", :index => 0)
-  
+
   span(:span_id, :id => 'span_id')
   span(:span_name, :name => 'span_name')
   span(:span_class, :class => 'span_class')
@@ -94,7 +94,7 @@ class Page
   span(:span_xpath, :xpath => '//span')
   span(:span_class_index, :class => "span_class", :index => 0)
   span(:span_name_index, :name => "span_name", :index => 0)
-  
+
   table(:table_id, :id => 'table_id')
   table(:table_name, :name => 'table_name')
   table(:table_class, :class => 'table_class')
@@ -102,7 +102,7 @@ class Page
   table(:table_xpath, :xpath => '//table')
   table(:table_class_index, :class => "table_class", :index => 0)
   table(:table_name_index, :name => "table_name", :index => 0)
-  
+
   cell(:cell_id, :id => 'cell_id')
   cell(:cell_name, :name => 'cell_name')
   cell(:cell_class, :class => 'cell_class')
@@ -110,7 +110,7 @@ class Page
   cell(:cell_xpath, :xpath => '//table//tr[2]//td[2]')
   cell(:cell_class_index, :class => "cell_class", :index => 0)
   cell(:cell_name_index, :name => "cell_name", :index => 0)
-  
+
   button(:button_id, :id => 'button_id')
   button(:button_name, :name => 'button_name')
   button(:button_class, :class => 'button_class')
@@ -119,7 +119,7 @@ class Page
   button(:button_text, :text => 'Click Me')
   button(:button_class_index, :class => "button_class", :index => 0)
   button(:button_name_index, :name => "button_name", :index => 0)
-  
+
   image(:image_id, :id => 'image_id')
   image(:image_name, :name => 'image_name')
   image(:image_class, :class => 'image_class')
@@ -135,7 +135,7 @@ class Page
   form(:form_xpath, :xpath => '//form')
   form(:form_class_index, :class => "form_class", :index => 0)
   form(:form_name_index, :name => "form_name", :index => 0)
-  
+
   list_item(:li_id, :id => 'li_id')
   list_item(:li_name, :name => 'li_name')
   list_item(:li_class, :class => 'li_class')
@@ -143,7 +143,7 @@ class Page
   list_item(:li_xpath, :xpath => '//li[1]')
   list_item(:li_class_index, :class => "li_class", :index => 0)
   list_item(:li_name_index, :name => "li_name", :index => 0)
-  
+
   unordered_list(:ul_id, :id => 'ul_id')
   unordered_list(:ul_name, :name => 'ul_name')
   unordered_list(:ul_class, :class => 'ul_class')
@@ -159,7 +159,7 @@ class Page
   ordered_list(:ol_xpath, :xpath => '//ol')
   ordered_list(:ol_class_index, :class => "ol_class", :index => 0)
   ordered_list(:ol_name_index, :name => "ol_name", :index => 0)
-  
+
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')
   button(:prompt_button, :id => 'prompt_button')

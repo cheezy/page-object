@@ -1,7 +1,7 @@
 module PageObject
   module Platforms
-    module SeleniumTable      
-      
+    module SeleniumTable
+
       #
       # Return the PageObject::Elements::TableRow for the index provided.  Index
       # is zero based.
@@ -19,7 +19,7 @@ module PageObject
       def rows
         table_rows.size
       end
- 
+
       #
       # override PageObject::Platforms::SeleniumElement because exists? is not
       # available on a table element in Selenium.
@@ -27,9 +27,9 @@ module PageObject
       def exists?
         raise "exists? not available on table element"
       end
-      
+
       private
-      
+
       def table_rows
         @element.find_elements(:xpath, child_xpath)
       end

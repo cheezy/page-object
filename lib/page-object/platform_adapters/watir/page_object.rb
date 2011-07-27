@@ -10,8 +10,9 @@ module PageObject
   #
   class WatirPageObject
     attr_reader :browser
+
     def initialize(browser)
-      @browser = browser      
+      @browser = browser
     end
 
     #
@@ -45,14 +46,14 @@ module PageObject
     def title
       @browser.title
     end
-    
+
     #
     # platform method to wait for a block to return true
     # See PageObject#wait_until
     def wait_until(timeout, message = nil, &block)
       @browser.wait_until(timeout, message, &block)
     end
-    
+
     #
     # platform method to handle an alert popup
     # See PageObject#alert
@@ -60,7 +61,7 @@ module PageObject
     def alert(&block)
       @browser.alert(&block)
     end
-    
+
     #
     # platform method to handle a confirm popup
     # See PageObject#confirm
@@ -68,7 +69,7 @@ module PageObject
     def confirm(response, &block)
       @browser.confirm(response, &block)
     end
-    
+
     #
     # platform method to handle a prompt popup
     # See PageObject#prompt
@@ -85,7 +86,7 @@ module PageObject
       identifier = Elements::TextField.watir_identifier_for identifier
       @browser.text_field(identifier).value
     end
-    
+
     #
     # platform method to set the value for a text field
     # See PageObject::Accessors#text_field
@@ -94,7 +95,7 @@ module PageObject
       identifier = Elements::TextField.watir_identifier_for identifier
       @browser.text_field(identifier).set(value)
     end
-    
+
     #
     # platform method to retrieve a text field element
     # See PageObject::Accessors#text_field
@@ -104,7 +105,7 @@ module PageObject
       element = @browser.text_field(identifier)
       Elements::TextField.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to get the value stored in a hidden field
     # See PageObject::Accessors#hidden_field
@@ -113,7 +114,7 @@ module PageObject
       identifier = Elements::HiddenField.watir_identifier_for identifier
       @browser.hidden(identifier).value
     end
-    
+
     #
     # platform method to retrieve a hidden field element
     # See PageObject::Accessors#hidden_field
@@ -122,8 +123,8 @@ module PageObject
       identifier = Elements::HiddenField.watir_identifier_for identifier
       element = @browser.hidden(identifier)
       Elements::HiddenField.new(element, :platform => :watir)
-    end    
-    
+    end
+
     #
     # platform method to set text in a textarea
     # See PageObject::Accessors#text_area
@@ -132,7 +133,7 @@ module PageObject
       identifier = Elements::TextArea.watir_identifier_for identifier
       @browser.textarea(identifier).send_keys(value)
     end
-    
+
     #
     # platform method to get the text from a textarea
     # See PageObject::Accessors#text_area
@@ -141,7 +142,7 @@ module PageObject
       identifier = Elements::TextArea.watir_identifier_for identifier
       @browser.textarea(identifier).value
     end
-    
+
     #
     # platform method to get the text area element
     # See PageObject::Accessors#text_area
@@ -151,7 +152,7 @@ module PageObject
       element = @browser.textarea(identifier)
       Elements::TextArea.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to get the currently selected value from a select list
     # See PageObject::Accessors#select_list
@@ -160,7 +161,7 @@ module PageObject
       identifier = Elements::SelectList.watir_identifier_for identifier
       @browser.select_list(identifier).value
     end
-    
+
     #
     # platform method to select a value from a select list
     # See PageObject::Accessors#select_list
@@ -169,7 +170,7 @@ module PageObject
       identifier = Elements::SelectList.watir_identifier_for identifier
       @browser.select_list(identifier).select(value)
     end
-    
+
     #
     # platform method to return the select list element
     # See PageObject::Accessors#select_list
@@ -179,7 +180,7 @@ module PageObject
       element = @browser.select_list(identifier)
       Elements::SelectList.new(element, :platform => :watir)
     end
-        
+
     #
     # platform method to click a link
     # See PageObject::Accessors#link
@@ -188,7 +189,7 @@ module PageObject
       identifier = Elements::Link.watir_identifier_for identifier
       @browser.link(identifier).click if identifier
     end
-    
+
     #
     # platform method to return a PageObject::Elements::Link object
     # see PageObject::Accessors#link
@@ -225,7 +226,7 @@ module PageObject
       identifier = Elements::CheckBox.watir_identifier_for identifier
       @browser.checkbox(identifier).set?
     end
-    
+
     #
     # platform method to return a PageObject::Elements::CheckBox element
     # See PageObject::Accessors#checkbox
@@ -262,7 +263,7 @@ module PageObject
       identifier = Elements::RadioButton.watir_identifier_for identifier
       @browser.radio(identifier).set?
     end
-    
+
     #
     # platform method to return a PageObject::Eements::RadioButton element
     # See PageObject::Accessors#radio_button
@@ -272,7 +273,7 @@ module PageObject
       element = @browser.radio(identifier)
       PageObject::Elements::RadioButton.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to return the text for a div
     # See PageObject::Accessors#div
@@ -282,7 +283,7 @@ module PageObject
       identifier = Elements::Div.watir_identifier_for identifier
       @browser.div(identifier).text
     end
-    
+
     #
     # platform method to return a PageObject::Elements::Div element
     # See PageObject::Accessors#div
@@ -293,7 +294,7 @@ module PageObject
       element = @browser.div(identifier)
       PageObject::Elements::Div.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to return the text for a span
     # See PageObject::Accessors#span
@@ -303,7 +304,7 @@ module PageObject
       identifier = Elements::Span.watir_identifier_for identifier
       @browser.span(identifier).text
     end
-    
+
     #
     # platform method to return a PageObject::Elements::Span element
     # See PageObject::Accessors#span
@@ -314,7 +315,7 @@ module PageObject
       element = @browser.span(identifier)
       PageObject::Elements::Span.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to click a button
     # See PageObject::Accessors#button
@@ -323,7 +324,7 @@ module PageObject
       identifier = Elements::Button.watir_identifier_for identifier
       @browser.button(identifier).click
     end
-    
+
     #
     # platform method to retrieve a button element
     # See PageObject::Accessors#button
@@ -333,7 +334,7 @@ module PageObject
       element = @browser.button(identifier)
       PageObject::Elements::Button.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to retrieve a table element
     # See PageObject::Accessors#table
@@ -344,7 +345,7 @@ module PageObject
       element = @browser.table(identifier)
       PageObject::Elements::Table.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to retrieve the text from a table cell
     # See PageObject::Accessors#cell
@@ -354,7 +355,7 @@ module PageObject
       identifier = Elements::TableCell.watir_identifier_for identifier
       @browser.td(identifier).text
     end
-    
+
     #
     # platform method to retrieve a table cell element
     # See PageObject::Accessors#cell
@@ -365,7 +366,7 @@ module PageObject
       element = @browser.td(identifier)
       PageObject::Elements::TableCell.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to retrieve an image element
     # See PageObject::Accessors#image
@@ -375,7 +376,7 @@ module PageObject
       element = @browser.image(identifier)
       PageObject::Elements::Image.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to retrieve a form element
     # See PageObject::Accessors#form
@@ -385,7 +386,7 @@ module PageObject
       element = @browser.form(identifier)
       PageObject::Elements::Form.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to retrieve the text from a list item
     # See PageObject::Accessors#list_item
@@ -395,7 +396,7 @@ module PageObject
       identifier = Elements::ListItem.watir_identifier_for identifier
       @browser.li(identifier).text
     end
-    
+
     #
     # platform method to retrieve a list item element
     # See PageObject::Accessors#list_item
@@ -417,7 +418,7 @@ module PageObject
       element = @browser.ul(identifier)
       PageObject::Elements::UnorderedList.new(element, :platform => :watir)
     end
-    
+
     #
     # platform method to retrieve an ordered list element
     # See PageObject::Accessors#ordered_list
@@ -430,7 +431,7 @@ module PageObject
     end
 
     private
-    
+
     def add_tagname_if_needed identifier, tag
       return identifier if identifier.length < 2 and not identifier[:name]
       identifier[:tag_name] = tag if identifier[:name]

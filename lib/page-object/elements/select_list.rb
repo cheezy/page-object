@@ -12,7 +12,7 @@ module PageObject
       def child_xpath
         ".//child::option"
       end
-      
+
       def self.watir_finders
         super + [:text, :value]
       end
@@ -20,13 +20,13 @@ module PageObject
       def include_platform_for platform
         super
         if platform[:platform] == :watir
-          require 'page-object/platforms/watir_select_list'
-          self.class.send :include, PageObject::Platforms::WatirSelectList
+          require 'page-object/platforms/watir/select_list'
+          self.class.send :include, PageObject::Platforms::Watir::SelectList
         elsif platform[:platform] == :selenium
           require 'page-object/platforms/selenium_select_list'
           self.class.send :include, PageObject::Platforms::SeleniumSelectList
         else
-          raise ArgumentError, "expect platform to be :watir or :selenium"          
+          raise ArgumentError, "expect platform to be :watir or :selenium"
         end
       end
 

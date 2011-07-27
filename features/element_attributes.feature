@@ -12,12 +12,12 @@ Feature: Attributes on Elements
     And I should know its' tag name is "a"
     And I should know the attribute "readonly" is false
     And I should be able to click it
-    
+
   @watir_only
   Scenario: Link element methods for watir
     When I retrieve a link element
     Then I should know its' value is ""
-    
+
 
   Scenario: Button element methods
     When I retrieve a button element
@@ -28,7 +28,7 @@ Feature: Attributes on Elements
     And I should know its' tag name is "input"
     And I should know the attribute "readonly" is false
     And I should be able to click it
-    
+
   @watir_only
   Scenario: Button element methods for watir
     When I retrieve a button element
@@ -44,7 +44,7 @@ Feature: Attributes on Elements
     And I should know its' tag name is "input"
     And I should know the attribute "readonly" is false
     And I should be able to click it
-  
+
   Scenario: Div element methods
     When I retrieve the div element
     Then I should know it exists
@@ -59,7 +59,7 @@ Feature: Attributes on Elements
   Scenario: Div element methods for watir
     When I retrieve the div element
     Then I should know its' value is ""
-  
+
   @selenium_only
   Scenario: Div element methods for selenium
     When I retrieve the div element
@@ -83,7 +83,7 @@ Feature: Attributes on Elements
     And I should know its' text includes "Test 1"
     And I should know its' value is "option1"
     And I should know it is equal to itself
-    And I should know its' tag name is "select"      
+    And I should know its' tag name is "select"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -92,7 +92,7 @@ Feature: Attributes on Elements
     Then I should know it is visible
     And I should know its' text includes "Data1"
     And I should know it is equal to itself
-    And I should know its' tag name is "table"      
+    And I should know its' tag name is "table"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -101,19 +101,19 @@ Feature: Attributes on Elements
     When I retrieve a table element
     Then I should know it exists
     And I should know its' value is ""
-  
+
   @selenium_only
   Scenario: Table element methods in selenium
     When I retrieve a table element
     Then I should know its' value is nil
-  
+
   Scenario: Table Cell element methods
     When I retrieve table cell
     Then I should know it exists
     And I should know it is visible
     And I should know its' text includes "Data4"
     And I should know it is equal to itself
-    And I should know its' tag name is "td"      
+    And I should know its' tag name is "td"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -134,7 +134,7 @@ Feature: Attributes on Elements
     And I should know its' text includes ""
     And I should know its' value is ""
     And I should know it is equal to itself
-    And I should know its' tag name is "input"      
+    And I should know its' tag name is "input"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -145,7 +145,7 @@ Feature: Attributes on Elements
     And I should know its' text includes ""
     And I should know its' value is ""
     And I should know it is equal to itself
-    And I should know its' tag name is "textarea"      
+    And I should know its' tag name is "textarea"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -176,7 +176,7 @@ Feature: Attributes on Elements
     And I should know its' text includes ""
     And I should know its' value is "12345"
     And I should know it is equal to itself
-    And I should know its' tag name is "input"      
+    And I should know its' tag name is "input"
     And I should know the attribute "readonly" is false
 
   Scenario: Form element methods
@@ -185,7 +185,7 @@ Feature: Attributes on Elements
     And I should know it is visible
     And I should know its' text includes ""
     And I should know it is equal to itself
-    And I should know its' tag name is "form"      
+    And I should know its' tag name is "form"
     And I should know the attribute "readonly" is false
 
   @watir_only

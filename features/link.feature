@@ -4,7 +4,7 @@ Feature: Links
 
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Selecting a link
     When I select the link labeled "Google Search"
     Then the page should contain the text "Success"

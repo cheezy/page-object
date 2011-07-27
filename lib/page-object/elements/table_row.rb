@@ -7,7 +7,7 @@ module PageObject
         @element = element
         include_platform_for platform
       end
-      
+
       #
       # iterator that yields with a PageObject::Elements::TableCell
       #
@@ -15,26 +15,26 @@ module PageObject
       #
       def each
         for index in 1..self.columns do
-          yield self[index-1] 
+          yield self[index-1]
         end
       end
 
       protected
-      
+
       def child_xpath
         ".//child::td|th"
       end
-      
+
       def include_platform_for platform
         super
         if platform[:platform] == :watir
-          require 'page-object/platforms/watir_table_row'
-          self.class.send :include, PageObject::Platforms::WatirTableRow
+          require 'page-object/platforms/watir/table_row'
+          self.class.send :include, PageObject::Platforms::Watir::TableRow
         elsif platform[:platform] == :selenium
           require 'page-object/platforms/selenium_table_row'
           self.class.send :include, PageObject::Platforms::SeleniumTableRow
         else
-          raise ArgumentError, "expect platform to be :watir or :selenium"          
+          raise ArgumentError, "expect platform to be :watir or :selenium"
         end
       end
     end

@@ -1,18 +1,17 @@
-
 module PageObject
   module Platforms
     #
     # Selenium implementation of the common functionality found across all elements
     #
     module SeleniumElement
-      
+
       #
       # return true if an element is visible
       #
       def visible?
         @element.displayed?
       end
-    
+
       #
       # return true if an element exists
       #
@@ -37,7 +36,7 @@ module PageObject
       def value
         @element.attribute('value')
       end
-      
+
       #
       # compare this element to another to determine if they are equal
       #
@@ -53,7 +52,7 @@ module PageObject
       def tag_name
         @element.tag_name
       end
-      
+
       #
       # Get the value of a the given attribute of the element. Will return the current value, even if
       # this has been modified after the page has been loaded. More exactly, this method will return
@@ -82,14 +81,14 @@ module PageObject
       def attribute(attribute_name)
         @element.attribute attribute_name
       end
-      
+
       #
       # Click this element
       #
       def click
         @element.click
       end
-      
+
       #
       # Waits until the element is present
       #
@@ -101,7 +100,7 @@ module PageObject
           self.exists?
         end
       end
-      
+
       #
       # Waits until the element is visible
       #
@@ -113,7 +112,7 @@ module PageObject
           self.visible?
         end
       end
-      
+
       #
       # Waits until the element is not visible
       #
