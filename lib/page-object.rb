@@ -1,8 +1,8 @@
 
 require 'page-object/version'
 require 'page-object/accessors'
+require 'page-object/adapters'
 require 'page-object/platform_adapters'
-
 #
 # Module that when included adds functionality to a page object.  This module
 # will add numerous class and instance methods that you use to define and
@@ -37,7 +37,7 @@ module PageObject
   attr_reader :browser
   # @return [PageObject::WatirPageObject or PageObject::SeleniumPageObject] the platform page object
   attr_reader :platform
-
+  
   #
   # Construct a new page object.
   #
@@ -159,7 +159,7 @@ module PageObject
       require 'page-object/selenium_page_object'
       @platform = PageObject::SeleniumPageObject.new(browser)
     else
-      @platform = determine_platform(browser, PageObject::Adapters.adapters).send(:new, browser)
+      @platform = determine_platform(browser, PageObject.adapters).send(:new, browser)
     end
   end
 end

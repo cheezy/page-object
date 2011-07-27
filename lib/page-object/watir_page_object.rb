@@ -9,6 +9,7 @@ module PageObject
   # and use the methods dynamically added from the PageObject::Accessors module.
   #
   class WatirPageObject
+    attr_reader :browser
     def initialize(browser)
       @browser = browser      
     end

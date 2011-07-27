@@ -11,7 +11,6 @@ describe PageObject do
   let(:selenium_browser) { mock_selenium_browser }
   let(:watir_page_object) { PageObjectTestPageObject.new(watir_browser) }
   let(:selenium_page_object) { PageObjectTestPageObject.new(selenium_browser) }
-
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
       watir_page_object.platform.should be_kind_of PageObject::WatirPageObject

@@ -38,5 +38,5 @@ def mock_adapter(browser, platform)
       adapter
 end
 def mock_adapters(*adapters)
-  PageObject::Adapters.stub!(:adapters).and_return adapters 
+  PageObject.stub!(:adapters).and_return adapters 
 end
