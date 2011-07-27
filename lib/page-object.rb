@@ -1,7 +1,7 @@
 require 'page-object/version'
 require 'page-object/accessors'
-require 'page-object/adapters'
-require 'page-object/platform_adapters'
+require 'page-object/platforms'
+
 #
 # Module that when included adds functionality to a page object.  This module
 # will add numerous class and instance methods that you use to define and

@@ -206,28 +206,28 @@ describe PageObject::Elements::Element do
 
     it "should be able to block until it is present" do
       wait = double('wait')
-      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
       wait.should_receive(:until)
       selenium_element.when_present(10)
     end
 
     it "should be able to block until it is visible" do
       wait = double('wait')
-      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
       wait.should_receive(:until)
       selenium_element.when_visible(10)
     end
 
     it "should be able to block until it is not visible" do
       wait = double('wait')
-      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
       wait.should_receive(:until)
       selenium_element.when_not_visible(10)
     end
 
     it "should be able to block until a user define event fires true" do
       wait = double('wait')
-      Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
       wait.should_receive(:until)
       selenium_element.wait_until(10, "Element blah") {}
     end

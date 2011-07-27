@@ -1,3 +1,5 @@
+require 'page-object/loads_platform'
+
 module PageObject
   module Platforms
     @@adapters = {}
@@ -11,3 +13,6 @@ module PageObject
     end
   end
 end
+require 'page-object/platforms/watir'
+require 'page-object/platforms/selenium'
+
