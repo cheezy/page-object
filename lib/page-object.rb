@@ -152,14 +152,11 @@ module PageObject
   private
 
   def include_platform_driver(browser)
-    if browser.is_a? Watir::Browser
-      require 'page-object/watir_page_object'
-      @platform = PageObject::WatirPageObject.new(browser)
-    elsif browser.is_a? Selenium::WebDriver::Driver
+    if browser.is_a? Selenium::WebDriver::Driver
       require 'page-object/selenium_page_object'
       @platform = PageObject::SeleniumPageObject.new(browser)
     else
-      @platform = determine_platform(browser, PageObject.adapters).send(:new, browser)
+      @platform = determine_platform(browser, PageObject::Adapters.get)
     end
   end
 end

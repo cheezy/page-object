@@ -14,4 +14,14 @@ describe PageObject::Adapters::Watir do
       subject.browser.should be browser
     end
   end 
+  describe "is for?" do
+    it "should be true when the browser is Watir::Browser" do
+      browser = mock_watir_browser()
+      PageObject::Adapters::Watir.is_for?(browser).should be true
+    end
+    it "should be false at any other point" do
+      browser = 'asdf'
+      PageObject::Adapters::Watir.is_for?('asdf').should be false
+    end
+  end
 end

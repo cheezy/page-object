@@ -25,9 +25,9 @@ describe PageObject do
   context "when created with a non_bundled adapter" do
    let(:custom_adapter) {  mock_adapter(:custom_browser, CustomPlatform) }
    it "should be an instance of whatever that objects adapter is" do
-      mock_adapters(custom_adapter)
+      mock_adapters({:custom_adapter=>custom_adapter})
       custom_page_object = PageObjectTestPageObject.new(:custom_browser)
-      custom_page_object.platform.should be_kind_of custom_adapter.platform 
+      custom_page_object.platform.should be custom_adapter.create_page_object
     end
   end
   context "when created with an object we do not understand" do

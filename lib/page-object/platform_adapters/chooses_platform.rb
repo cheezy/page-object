@@ -15,8 +15,8 @@ module PageObject
     # @returns [PageObject] 
     #
     def determine_platform(browser, adapters)
-      adapters.each { | adapter |
-        return adapter.platform if adapter.is_for?(browser)
+      adapters.each_value { | adapter |
+        return adapter.create_page_object(browser) if adapter.is_for?(browser)
       }
       raise 'Unable to pick a platform for the provided browser' 
     end
