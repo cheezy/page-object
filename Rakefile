@@ -33,19 +33,3 @@ task :lib do
 end
 
 task :default => :spec
-
-
-begin
-  require 'yard' unless 1==1
-  Rake::Task[:lib].invoke
-  require "yard/handlers/page-object"
-  YARD::Rake::YardocTask.new do |task|
-    task.options = %w[--debug] # this is pretty slow, so nice with some output
-  end
-rescue LoadError
-  task :yard do
-    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
-  end
-end
-
-
