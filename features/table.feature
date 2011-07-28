@@ -2,19 +2,19 @@ Feature: Table
   In order to interact with tables
   Testers will need access and interrogation ability
 
-  
+
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Retrieve a table
     When I retrieve a table element
     Then I should know it is visible
-    
+
   @watir_only
   Scenario: Determine if a table exists
     When I retrieve a table element
     Then I should know it exists
-    
+
   Scenario: Retrieve the data from a table
     When I retrieve a table element
     Then the data for row "1" should be "Data1" and "Data2"
@@ -23,7 +23,7 @@ Feature: Table
     And each row should contain "Data"
     And row "1" should have "2" columns
     And each column should contain "Data"
-  
+
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"
     Then the data for row "1" should be "Data1" and "Data2"
@@ -32,7 +32,7 @@ Feature: Table
     | search_by |
     | id        |
     | class     |
-    | xpath     |  
+    | xpath     |
     | index     |
     | name      |
 
@@ -41,6 +41,6 @@ Feature: Table
     Then the data for row "1" should be "Data1" and "Data2"
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

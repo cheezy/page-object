@@ -2,10 +2,10 @@ Feature: Div
   In order to interact with divs
   Testers will need access and interrogation ability
 
-  
+
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Getting the text from a div
     When I get the text from the div
     Then the text should be "page-object rocks!"
@@ -23,7 +23,7 @@ Feature: Div
     | search_by |
     | id        |
     | class     |
-    | xpath     |  
+    | xpath     |
     | index     |
     | name      |
 
@@ -32,6 +32,6 @@ Feature: Div
     Then the text should be "page-object rocks!"
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

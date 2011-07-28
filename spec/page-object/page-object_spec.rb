@@ -4,12 +4,13 @@ class PageObjectTestPageObject
   include PageObject
 end
 
+class CustomPlatform
+end
 describe PageObject do
   let(:watir_browser) { mock_watir_browser }
   let(:selenium_browser) { mock_selenium_browser }
   let(:watir_page_object) { PageObjectTestPageObject.new(watir_browser) }
   let(:selenium_page_object) { PageObjectTestPageObject.new(selenium_browser) }
-
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
       watir_page_object.platform.should be_kind_of PageObject::WatirPageObject
@@ -18,10 +19,17 @@ describe PageObject do
 
   context "when created with a selenium browser" do
     it "should include the SeleniumPageObject module" do
-      selenium_page_object.platform.should be_kind_of PageObject::SeleniumPageObject
+      selenium_page_object.platform.should be_kind_of Object::PageObject::Platforms::Selenium::PageObject
     end
   end
-  
+  context "when created with a non_bundled adapter" do
+    let(:custom_adapter) { mock_adapter(:custom_browser, CustomPlatform) }
+    it "should be an instance of whatever that objects adapter is" do
+      mock_adapters({:custom_adapter=>custom_adapter})
+      custom_page_object = PageObjectTestPageObject.new(:custom_browser)
+      custom_page_object.platform.should be custom_adapter.create_page_object
+    end
+  end
   context "when created with an object we do not understand" do
     it "should throw an error" do
       expect {
@@ -51,24 +59,24 @@ describe PageObject do
         watir_browser.should_receive(:goto).with("cheezyworld.com")
         watir_page_object.navigate_to("cheezyworld.com")
       end
-      
+
       it "should wait until a block returns true" do
         watir_browser.should_receive(:wait_until).with(5, "too long")
         watir_page_object.wait_until(5, "too long")
       end
-      
+
       it "should override alert popup behavior" do
         watir_browser.should_receive(:alert)
         watir_page_object.alert do
         end
       end
-      
+
       it "should override confirm popup behavior" do
         watir_browser.should_receive(:confirm)
         watir_page_object.confirm(true) do
         end
       end
-      
+
       it "should override prompt popup behavior" do
         watir_browser.should_receive(:prompt)
         watir_page_object.prompt("blah") do
@@ -91,12 +99,12 @@ describe PageObject do
         selenium_browser.should_receive(:title).and_return("I am the title of a page")
         selenium_page_object.title.should == "I am the title of a page"
       end
-      
+
       it "should be able to navigate to a page" do
         selenium_browser.stub_chain(:navigate, :to).with('cheezyworld.com')
         selenium_page_object.navigate_to('cheezyworld.com')
       end
- 
+
       it "should wait until a block returns true" do
         wait = double('wait')
         Selenium::WebDriver::Wait.should_receive(:new).with({:timeout => 5, :message => 'too long'}).and_return(wait)
@@ -109,7 +117,7 @@ describe PageObject do
         selenium_page_object.alert do
         end
       end
-      
+
       it "should override confirm popup behavior" do
         selenium_browser.should_receive(:execute_script).twice
         selenium_page_object.confirm(true) do

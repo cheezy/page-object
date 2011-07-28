@@ -2,7 +2,7 @@ Feature: Ordered list
 
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Getting the first element from the ordered list
     When I get the first item from the ordered list
     Then the list items text should be "Number One"
@@ -13,12 +13,12 @@ Feature: Ordered list
     Then the list items text should be "Number One"
     And the list should contain 3 items
     And each item should contain "Number"
-  
+
   Scenarios:
     | search_by |
     | id        |
     | class     |
-    | xpath     |  
+    | xpath     |
     | index     |
     | name      |
 
@@ -28,6 +28,6 @@ Feature: Ordered list
     Then the list items text should be "Number One"
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

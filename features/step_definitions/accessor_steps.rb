@@ -119,7 +119,7 @@ When /^I search for the radio button by "([^"]*)" and "([^"]*)"$/ do |param1, pa
   @how = "#{param1}_#{param2}"
 end
 
-When /^I select the radio button$/ do 
+When /^I select the radio button$/ do
   @page.send "select_milk_#{@how}".to_sym
 end
 
@@ -217,7 +217,7 @@ Then /^I should see the hidden field contains "([^\"]*)"$/ do |text|
 end
 
 When /^I search for the hidden field by "([^\"]*)"$/ do |how|
-    @element = @page.send "hidden_field_#{how}_hidden_field"
+  @element = @page.send "hidden_field_#{how}_hidden_field"
 end
 
 Then /^hidden field element should contains "([^\"]*)"$/ do |text|

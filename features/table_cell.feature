@@ -7,7 +7,7 @@ Feature: Table Cell
   Scenario: Retrieving the text from a table cell
     When I retrieve the data from the table cell
     Then the cell data should be 'Data4'
-  
+
   Scenario Outline: Locating table cells on the Page
     When I search for the table cell by "<search_by>"
     Then the cell data should be 'Data4'
@@ -16,9 +16,9 @@ Feature: Table Cell
     | search_by |
     | id        |
     | class     |
-    | xpath     |  
+    | xpath     |
     | name      |
-  
+
   @watir_only
   Scenario Outline: Locating table cells on the Page with watir
     When I search for the table cell by "<search_by>"
@@ -33,7 +33,7 @@ Feature: Table Cell
     Then the cell data should be 'Data4'
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |
 

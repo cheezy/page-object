@@ -2,10 +2,10 @@ Feature: Check Box
   In order to interact with check boxes
   Testers will need access and interrogation ability
 
-  
+
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Selecting an element on the select list
     When I select the First check box
     Then the First check box should be selected
@@ -15,13 +15,13 @@ Feature: Check Box
   Scenario Outline: Locating check boxes on the page
     When I search for the check box by "<search_by>"
     Then I should be able to check the check box
-    
+
   Scenarios:
     | search_by |
     | id        |
     | class     |
     | name      |
-    | xpath     |  
+    | xpath     |
     | index     |
 
   Scenario Outline: Locating check boxes using multiple parameters
@@ -29,11 +29,11 @@ Feature: Check Box
     Then I should be able to check the check box
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |
 
-   
+
   Scenario: Retrieve a CheckBox
     When I retrieve a check box element
     Then I should know it exists

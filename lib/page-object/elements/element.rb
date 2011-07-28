@@ -1,4 +1,3 @@
-
 module PageObject
   module Elements
     #
@@ -9,12 +8,12 @@ module PageObject
     #
     class Element
       attr_reader :element
-      
+
       def initialize(element, platform)
         @element = element
         include_platform_for platform
       end
-      
+
       # @private
       def self.watir_identifier_for identifier
         if should_build_watir_xpath(identifier)
@@ -30,7 +29,7 @@ module PageObject
         end
         all_identities
       end
-      
+
       # @private
       def self.selenium_identifier_for identifier
         if identifier.length == 1
@@ -44,7 +43,7 @@ module PageObject
       end
 
       protected
-      
+
       def self.should_build_watir_xpath identifier
         ['table', 'span', 'div', 'td', 'li', 'ul', 'ol'].include? identifier[:tag_name] and identifier[:name]
       end
@@ -58,7 +57,7 @@ module PageObject
         xpath << "[#{idx+1}]" if idx
         xpath
       end
-      
+
       def self.attribute_expression(identifier)
         identifier.map do |key, value|
           if value.kind_of?(Array)
@@ -68,7 +67,7 @@ module PageObject
           end
         end.join(" and ")
       end
-      
+
       def self.equal_pair(key, value)
         if key == :label
           "@id=//label[normalize-space()=#{xpath_string(value)}]/@for"
@@ -76,15 +75,15 @@ module PageObject
           "#{lhs_for(key)}=#{xpath_string(value)}"
         end
       end
-      
+
       def self.lhs_for(key)
         case key
-        when :text, 'text'
-          'normalize-space()'
-        when :href
-          'normalize-space(@href)'
-        else
-          "@#{key.to_s.gsub("_", "-")}"
+          when :text, 'text'
+            'normalize-space()'
+          when :href
+            'normalize-space(@href)'
+          else
+            "@#{key.to_s.gsub("_", "-")}"
         end
       end
 
@@ -104,32 +103,32 @@ module PageObject
         return find_by_mapping[how] => what if find_by_mapping[how]
         return nil => what
       end
-      
+
       def self.watir_finders
         [:class, :id, :index, :name, :xpath]
       end
-      
-      def self.watir_mapping 
-        {} 
+
+      def self.watir_mapping
+        {}
       end
-      
+
       def self.selenium_finders
         [:class, :id, :name, :xpath, :index]
       end
-      
-      def self.selenium_mapping 
-        {} 
+
+      def self.selenium_mapping
+        {}
       end
-      
+
       def include_platform_for platform
         if platform[:platform] == :watir
-          require 'page-object/platforms/watir_element'
-          self.class.send :include, PageObject::Platforms::WatirElement
+          require 'page-object/platforms/watir/element'
+          self.class.send :include, PageObject::Platforms::Watir::Element
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium_element'
-          self.class.send :include, PageObject::Platforms::SeleniumElement
+          require 'page-object/platforms/selenium/element'
+          self.class.send :include, PageObject::Platforms::Selenium::Element
         else
-          raise ArgumentError, "expect platform to be :watir or :selenium"          
+          raise ArgumentError, "expect platform to be :watir or :selenium"
         end
       end
     end

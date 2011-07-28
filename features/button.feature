@@ -2,14 +2,14 @@ Feature: Button
   In order to interact with buttons
   Testers will need access and interrogation ability
 
-  
+
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Getting the text from a div
     When I click the button
     Then I should be on the success page
-    
+
   Scenario: Retrieve a button element
     When I retrieve a button element
     Then I should know it exists
@@ -24,7 +24,7 @@ Feature: Button
     | id        |
     | class     |
     | name      |
-    | xpath     |  
+    | xpath     |
     | index     |
 
   @watir_only
@@ -41,6 +41,6 @@ Feature: Button
     Then I should be able to click the button
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

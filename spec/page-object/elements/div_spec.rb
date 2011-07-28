@@ -3,7 +3,7 @@ require 'page-object/elements'
 
 describe PageObject::Elements::Div do
   let(:div) { PageObject::Elements::Div }
-  
+
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
       [:class, :id, :index, :xpath].each do |t|

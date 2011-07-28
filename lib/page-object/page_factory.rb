@@ -19,7 +19,7 @@ module PageObject
   #   end
   #
   module PageFactory
-    
+
     #
     # Create and navigate to a page object.  The navigation will only work if the
     # 'page_url' method was call on the page object.
@@ -31,7 +31,7 @@ module PageObject
     def visit_page(page_class, &block)
       on_page page_class, true, &block
     end
-    
+
     #
     # Create a page object.
     #
@@ -45,6 +45,6 @@ module PageObject
       block.call page if block
       page
     end
-    
+
   end
 end

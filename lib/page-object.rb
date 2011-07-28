@@ -1,6 +1,6 @@
-
 require 'page-object/version'
 require 'page-object/accessors'
+require 'page-object/platforms'
 
 #
 # Module that when included adds functionality to a page object.  This module
@@ -31,6 +31,7 @@ require 'page-object/accessors'
 # @see PageObject::Accessors to see what class level methods are added to this module at runtime.
 #
 module PageObject
+  include LoadsPlatform
   # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
   attr_reader :browser
   # @return [PageObject::WatirPageObject or PageObject::SeleniumPageObject] the platform page object
@@ -52,7 +53,7 @@ module PageObject
   def self.included(cls)
     cls.extend PageObject::Accessors
   end
-  
+
   #
   # navigate to the provided url
   #
@@ -61,7 +62,7 @@ module PageObject
   def navigate_to(url)
     platform.navigate_to(url)
   end
-  
+
   #
   # Returns the text of the current page
   #
@@ -82,7 +83,7 @@ module PageObject
   def title
     platform.title
   end
-  
+
   #
   # Wait until the block returns true or times out
   #
@@ -98,7 +99,7 @@ module PageObject
   def wait_until(timeout = 30, message = nil, &block)
     platform.wait_until(timeout, message, &block)
   end
-  
+
   #
   # Override the normal alert popup so it does not occurr.
   #
@@ -113,7 +114,7 @@ module PageObject
   def alert(&block)
     platform.alert(&block)
   end
-  
+
   #
   # Override the normal confirm popup so it does not occurr.
   #
@@ -129,7 +130,7 @@ module PageObject
   def confirm(response, &block)
     platform.confirm(response, &block)
   end
-  
+
   #
   # Override the normal promp popup so it does not occurr.
   #
@@ -150,14 +151,6 @@ module PageObject
   private
 
   def include_platform_driver(browser)
-    if browser.is_a? Watir::Browser
-      require 'page-object/watir_page_object'
-      @platform = PageObject::WatirPageObject.new(browser)
-    elsif browser.is_a? Selenium::WebDriver::Driver
-      require 'page-object/selenium_page_object'
-      @platform = PageObject::SeleniumPageObject.new(browser)
-    else
-      raise ArgumentError, "expect Watir::Browser or Selenium::WebDriver::Driver"
-    end
+    @platform = load_platform(browser, PageObject::Platforms.get)
   end
 end

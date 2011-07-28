@@ -3,7 +3,7 @@ require 'page-object/elements'
 
 describe PageObject::Elements::SelectList do
   let(:selectlist) { PageObject::Elements::SelectList }
-  
+
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
       [:class, :id, :index, :name, :text, :value, :xpath].each do |t|
@@ -28,7 +28,7 @@ describe PageObject::Elements::SelectList do
       sel_list.stub(:find_elements).and_return(sel_list)
       sel_list.stub(:each)
     end
-    
+
     context "for watir" do
       it "should return an option when indexed" do
         watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir)

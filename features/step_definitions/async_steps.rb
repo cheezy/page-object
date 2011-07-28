@@ -1,5 +1,5 @@
 def success
-  
+
 end
 
 Then /^I should be able to wait until it is present$/ do

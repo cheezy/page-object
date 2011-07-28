@@ -1,4 +1,3 @@
-
 module PageObject
   #
   # Contains the class level methods that are inserted into your page objects
@@ -9,7 +8,7 @@ module PageObject
   # @see PageObject::SeleniumPageObject for the selenium implementation of the platform delegate
   #
   module Accessors
-    
+
     #
     # Specify the url for the page.  A call to this method will generate a
     # 'goto' method to take you to the page.
@@ -21,7 +20,7 @@ module PageObject
         platform.navigate_to url
       end
     end
-    
+
     #
     # adds three methods to the page object - one to set text in a text field,
     # another to retrieve text from a text field and another to return the text
@@ -56,7 +55,7 @@ module PageObject
         block ? block.call(browser) : platform.text_field_for(identifier.clone)
       end
     end
-    
+
     #
     # adds two methods to the page object - one to get the text from a hidden field
     # and another to retrieve the hidden field element.
@@ -86,7 +85,7 @@ module PageObject
         block ? block.call(browser) : platform.hidden_field_for(identifier.clone)
       end
     end
-    
+
     #
     # adds three methods to the page object - one to set text in a text area,
     # another to retrieve text from a text area and another to return the text
@@ -184,7 +183,7 @@ module PageObject
         block ? block.call(browser) : platform.link_for(identifier.clone)
       end
     end
-    
+
     #
     # adds four methods - one to check, another to uncheck, another
     # to return the state of a checkbox, and a final method to return
@@ -218,7 +217,7 @@ module PageObject
         block ? block.call(browser) : platform.checkbox_for(identifier.clone)
       end
     end
-    
+
     #
     # adds four methods - one to select, another to clear,
     # another to return if a radio button is selected, and
@@ -246,7 +245,7 @@ module PageObject
       define_method("clear_#{name}") do
         platform.clear_radio(identifier.clone)
       end
-      define_method("#{name}_selected?")  do
+      define_method("#{name}_selected?") do
         platform.radio_selected?(identifier.clone)
       end
       define_method("#{name}_radio_button") do
@@ -281,7 +280,7 @@ module PageObject
         block ? block.call(browser) : platform.button_for(identifier.clone)
       end
     end
-    
+
     #
     # adds two methods - one to retrieve the text from a div
     # and another to return the div element
@@ -358,7 +357,7 @@ module PageObject
         block ? block.call(browser) : platform.table_for(identifier.clone)
       end
     end
-    
+
     #
     # adds two methods  one to retrieve the text from a table cell
     # and another to return the table cell element
@@ -385,7 +384,7 @@ module PageObject
         block ? block.call(browser) : platform.cell_for(identifier.clone)
       end
     end
-    
+
     #
     # adds a method to retrieve the image element
     #
@@ -408,7 +407,7 @@ module PageObject
         block ? block.call(browser) : platform.image_for(identifier.clone)
       end
     end
-    
+
     #
     # adds a method to retrieve the form element
     #
@@ -430,7 +429,7 @@ module PageObject
         block ? block.call(browser) : platform.form_for(identifier.clone)
       end
     end
-    
+
     #
     # adds two methods - one to retrieve the text from a list item
     # and another to return the list item element
@@ -457,7 +456,7 @@ module PageObject
         block ? block.call(browser) : platform.list_item_for(identifier.clone)
       end
     end
-    
+
     #
     # adds a method to retrieve the unordered list element
     #
@@ -480,7 +479,7 @@ module PageObject
         block ? block.call(browser) : platform.unordered_list_for(identifier.clone)
       end
     end
-    
+
     #
     # adds a method to retrieve the ordered list element
     #

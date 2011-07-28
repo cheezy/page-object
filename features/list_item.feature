@@ -2,7 +2,7 @@ Feature: List item
 
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Getting the text from a list item
     When I get the text from the list item
     Then the text should be "Item One"
@@ -15,7 +15,7 @@ Feature: List item
     | search_by |
     | id        |
     | class     |
-    | xpath     |  
+    | xpath     |
     | index     |
     | name      |
 
@@ -24,6 +24,6 @@ Feature: List item
     Then the text should be "Item One"
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

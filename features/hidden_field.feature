@@ -2,7 +2,7 @@ Feature: Hidden Fields
 
   Background:
     Given I am on the static elements page
-  
+
   Scenario: Setting and getting a value from a hidden field
     When I retrieve the hidden field element
     Then I should see the hidden field contains "12345"
@@ -16,7 +16,7 @@ Feature: Hidden Fields
     | id        |
     | class     |
     | name      |
-    | xpath     |  
+    | xpath     |
     | css       |
     | tag_name  |
     | index     |
@@ -27,6 +27,6 @@ Feature: Hidden Fields
     Then hidden field element should contains "12345"
 
   Scenarios:
-    | param1  | param2  |
-    | class   | index   |
-    | name    | index   |
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |

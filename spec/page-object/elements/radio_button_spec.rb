@@ -3,7 +3,7 @@ require 'page-object/elements'
 
 describe PageObject::Elements::RadioButton do
   let(:radiobutton) { PageObject::Elements::RadioButton }
-  
+
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
       [:class, :id, :index, :name, :xpath].each do |t|

@@ -3,7 +3,7 @@ require 'page-object/elements'
 
 describe PageObject::Elements::Span do
   let(:span) { PageObject::Elements::Span }
-  
+
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
       [:class, :id, :index, :xpath].each do |t|

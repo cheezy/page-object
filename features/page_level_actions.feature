@@ -14,18 +14,18 @@ Feature: Page level actions
 
   Scenario: Getting the title from a web page
     Then the page should have the title "Static Elements Page"
-    
+
   Scenario: Waiting for something
     Then I should be able to wait for a block to return true
-    
+
   Scenario: Handling alert popups
-    When I handle the alert 
+    When I handle the alert
     Then I should be able to get the alert's message
-    
+
   Scenario: Handling confirm popups
     When I handle the confirm
     Then I should be able to get the confirm message
-    
+
   Scenario: Handling prompt popups
     When I handle the prompt
     Then I should be able to get the message and default value

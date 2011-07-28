@@ -1,4 +1,5 @@
 Gemfile.lock
 .bundle
+*.swp
 .idea/
 pkg
