@@ -82,6 +82,7 @@ class Page
   div(:div_id, :id => 'div_id')
   div(:div_name, :name => 'div_name')
   div(:div_class, :class => 'div_class')
+  div(:div_text, :text => 'page-object rocks!')
   div(:div_index, :index => 0)
   div(:div_xpath, :xpath => '//div')
   div(:div_class_index, :class => "div_class", :index => 0)

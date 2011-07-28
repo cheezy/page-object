@@ -1,5 +1,6 @@
 === Version 0.2.1
 * Enhancements
+  * Added ability to locate div by the contained text
   * Updated to use selenium-webdriver 2.2.0
   * Updated to use watir-webdriver 0.2.8
 
