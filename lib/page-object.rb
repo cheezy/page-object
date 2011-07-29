@@ -161,6 +161,9 @@ module PageObject
     platform.attach_to_window(identifier)
   end
   
+  #
+  # Refresh to current page
+  #
   def refresh
     platform.refresh
   end
