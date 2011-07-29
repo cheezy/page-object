@@ -84,6 +84,22 @@ module PageObject
       result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k)}
       result
     end
+    
+    #
+    # platform method to handle attaching to a running window
+    # See PageObject#attach_to_window
+    #
+    def attach_to_window(identifier)
+      handles = @browser.window_handles
+      handles.each do |handle|
+        @browser.switch_to.window handle
+        if identifier.keys.first == :title
+          return if @browser.title == identifier.values.first
+        elsif identifier.keys.first == :url
+          return if @browser.current_url == identifier.values.first
+        end
+      end
+    end
 
     #
     # platform method to get the value stored in a text field

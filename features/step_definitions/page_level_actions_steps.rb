@@ -49,3 +49,21 @@ Then /^I should be able to get the message and default value$/ do
   @msg[:default_value].should == 'John Doe'
 end
 
+When /^I open a second window$/ do
+  @page.open_window
+end
+
+class SecondPage
+  include PageObject
+end
+
+Then /^I should be able to attach to a page object using title$/ do
+  @second_page = SecondPage.new(@browser)
+  @second_page.attach_to_window(:title => "Success")
+end
+
+Then /^I should be able to attach to a page object using url$/ do
+  @second_page = SecondPage.new(@browser)
+  @second_page.attach_to_window(:url => "success.html")
+end
+

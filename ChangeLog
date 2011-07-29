@@ -1,6 +1,7 @@
 === Version 0.2.1
 * Enhancements
   * Added ability to locate div by the contained text
+  * Added #attach_to_window so a page object and operate on another window
   * Updated to use selenium-webdriver 2.2.0
   * Updated to use watir-webdriver 0.2.8
 

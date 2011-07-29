@@ -12,7 +12,7 @@ Before do
 end
 
 After do |s|
-  @browser.close
+  @browser.quit
 end
 
 
