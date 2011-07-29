@@ -102,6 +102,14 @@ module PageObject
     end
 
     #
+    # platform method to refresh the page
+    # See PageObject#refresh
+    #
+    def refresh
+      @browser.navigate.refresh
+    end
+
+    #
     # platform method to get the value stored in a text field
     # See PageObject::Accessors#text_field
     #

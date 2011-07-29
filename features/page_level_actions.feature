@@ -37,3 +37,6 @@ Feature: Page level actions
   Scenario: Attach to window using url
     When I open a second window
     Then I should be able to attach to a page object using url
+    
+  Scenario: Refreshing the page
+    Then I should be able to refresh the page

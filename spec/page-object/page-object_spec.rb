@@ -86,6 +86,11 @@ describe PageObject do
         watir_browser.should_receive(:use)
         watir_page_object.attach_to_window(:url => "success.html")
       end
+      
+      it "should refresh the page contents" do
+        watir_browser.should_receive(:refresh)
+        watir_page_object.refresh
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -147,6 +152,12 @@ describe PageObject do
         selenium_browser.should_receive(:window).with("win1").and_return(selenium_browser)
         selenium_browser.should_receive(:current_url).and_return("page.html")
         selenium_page_object.attach_to_window(:url => "page.html")
+      end
+
+      it "should refresh the page contents" do
+        selenium_browser.should_receive(:navigate).and_return(selenium_browser)
+        selenium_browser.should_receive(:refresh)
+        selenium_page_object.refresh
       end
     end
   end

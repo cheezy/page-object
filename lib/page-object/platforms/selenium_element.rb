@@ -137,6 +137,23 @@ module PageObject
         wait = Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
         wait.until &block
       end
+      
+      #
+      # Send keystrokes to this element
+      #
+      # @param [String, Symbol, Array]
+      #
+      # Examples:
+      #
+      #     element.send_keys "foo"                     #=> value: 'foo'
+      #     element.send_keys "tet", :arrow_left, "s"   #=> value: 'test'
+      #     element.send_keys [:control, 'a'], :space   #=> value: ' '
+      #
+      # @see Selenium::WebDriver::Keys::KEYS
+      #
+      def send_keys(*args)
+        @element.send_keys(*args)
+      end
     end
   end
 end

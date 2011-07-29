@@ -160,6 +160,10 @@ module PageObject
   def attach_to_window(identifier)
     platform.attach_to_window(identifier)
   end
+  
+  def refresh
+    platform.refresh
+  end
 
   private
 

@@ -84,6 +84,14 @@ module PageObject
       win_id = {identifier.keys.first => /#{Regexp.escape(identifier.values.first)}/}
       @browser.window(win_id).use
     end
+    
+    #
+    # platform method to refresh the page
+    # See PageObject#refresh
+    #
+    def refresh
+      @browser.refresh
+    end
 
     #
     # platform method to get the value stored in a text field

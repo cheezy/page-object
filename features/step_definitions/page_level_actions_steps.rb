@@ -67,3 +67,8 @@ Then /^I should be able to attach to a page object using url$/ do
   @second_page.attach_to_window(:url => "success.html")
 end
 
+Then /^I should be able to refresh the page$/ do
+  @page.refresh
+end
+
+

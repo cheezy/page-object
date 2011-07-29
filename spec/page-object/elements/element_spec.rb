@@ -152,6 +152,11 @@ describe PageObject::Elements::Element do
       Watir::Wait.should_receive(:until).with(10, "Element blah")
       watir_element.wait_until(10, "Element blah") {}
     end
+    
+    it "should send keys to the element" do
+      watir_driver.should_receive(:send_keys).with([:control, 'a'])
+      watir_element.send_keys([:control, 'a'])
+    end
   end
   
   context "when using Selenium" do
@@ -230,6 +235,11 @@ describe PageObject::Elements::Element do
       Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
       wait.should_receive(:until)
       selenium_element.wait_until(10, "Element blah") {}
+    end
+
+    it "should send keys to the element" do
+      selenium_driver.should_receive(:send_keys).with([:control, 'a'])
+      selenium_element.send_keys([:control, 'a'])
     end
   end
 end
