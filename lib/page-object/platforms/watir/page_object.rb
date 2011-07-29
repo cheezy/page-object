@@ -88,6 +88,14 @@ module PageObject
     end
     
     #
+    # platform method to handle switching to a frame
+    # See PageObject#switch_to_frame
+    #
+    def switch_to_frame(identifier)
+      @browser.wd.switch_to.frame(identifier)
+    end
+
+    #
     # platform method to refresh the page
     # See PageObject#refresh
     #

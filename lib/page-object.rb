@@ -163,6 +163,16 @@ module PageObject
   end
   
   #
+  # Switch to a frame within the current context.
+  #
+  # @param [String or Fixnum] you can pass the index (zero based) or id for the frame
+  # you wish to switch to.
+  #
+  def switch_to_frame(identifier)
+    platform.switch_to_frame identifier
+  end
+  
+  #
   # Refresh to current page
   #
   def refresh

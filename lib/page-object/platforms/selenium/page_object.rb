@@ -87,6 +87,7 @@ module PageObject
           result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k) }
           result
         end
+        
         #
         # platform method to handle attaching to a running window
         # See PageObject#attach_to_window
@@ -101,6 +102,14 @@ module PageObject
               return if @browser.current_url == identifier.values.first
             end
           end
+        end
+        
+        #
+        # platform method to handle switching to a frame
+        # See PageObject#switch_to_frame
+        #
+        def switch_to_frame(identifier)
+          @browser.switch_to.frame(identifier)
         end
     
         #

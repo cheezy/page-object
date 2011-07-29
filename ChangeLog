@@ -2,8 +2,10 @@
 * Enhancements
   * Added ability to locate div by the contained text
   * Added #attach_to_window so a page object and operate on another window
+  * Added #switch_to_frame to allow one to switch to a frame
   * Added #send_keys to PageObject::Elements::Element
   * Added #refresh to page object
+  * Work toward making drivers pluggable
   * Updated to use selenium-webdriver 2.2.0
   * Updated to use watir-webdriver 0.2.8
 

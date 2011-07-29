@@ -12,5 +12,9 @@ module UrlHelper
     def static_elements
       "#{files}/static_elements.html"
     end
+    
+    def frame_elements
+      "#{files}/frames.html"      
+    end
   end
 end
