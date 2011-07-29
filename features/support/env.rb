@@ -6,13 +6,27 @@ require 'selenium-webdriver'
 
 require 'page-object'
 
+
+
 Before do
-  @browser = Watir::Browser.new :firefox if ENV['DRIVER'] == 'WATIR'
-  @browser = Selenium::WebDriver.for :firefox if ENV['DRIVER'] == 'SELENIUM'
+  @browser = PageObject::PersistantBrowser.get_browser
+end
+at_exit do
+  PageObject::PersistantBrowser.quit
 end
 
-After do |s|
-  @browser.close
+module PageObject
+  module PersistantBrowser
+    @@browser = false
+    def self.get_browser 
+      if !@@browser 
+         @@browser =  Watir::Browser.new :firefox if ENV['DRIVER'] == 'WATIR' 
+         @@browser =  Selenium::WebDriver.for :firefox if ENV['DRIVER'] == 'SELENIUM'
+      end
+      return @@browser
+    end
+    def self.quit
+      @@browser.quit
+    end
+  end  
 end
-
-

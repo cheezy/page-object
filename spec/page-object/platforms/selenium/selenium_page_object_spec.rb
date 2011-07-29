@@ -24,5 +24,12 @@ describe PageObject::Platforms::Selenium::PageObject do
       selenium_browser.should_receive(:find_element)
       selenium_page_object.platform.link_for(:href => 'foo')
     end
+    
+    it "should add tag_name when identifying by text for div" do
+      expected_identifier = {:text => 'foo', :tag_name => 'div'}
+      PageObject::Elements::Div.should_receive(:selenium_identifier_for).with(expected_identifier)
+      selenium_browser.should_receive(:find_element)
+      selenium_page_object.platform.div_for(:text => 'foo')
+    end
   end
 end

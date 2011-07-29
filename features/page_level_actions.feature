@@ -29,3 +29,14 @@ Feature: Page level actions
   Scenario: Handling prompt popups
     When I handle the prompt
     Then I should be able to get the message and default value
+    
+  Scenario: Attach to window using title
+    When I open a second window
+    Then I should be able to attach to a page object using title
+    
+  Scenario: Attach to window using url
+    When I open a second window
+    Then I should be able to attach to a page object using url
+    
+  Scenario: Refreshing the page
+    Then I should be able to refresh the page

@@ -26,6 +26,7 @@ Feature: Div
     | xpath     |
     | index     |
     | name      |
+    | text      |
 
   Scenario Outline: Locating divs using multiple parameters
     When I search for the div by "<param1>" and "<param2>"

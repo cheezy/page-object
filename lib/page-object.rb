@@ -147,6 +147,27 @@ module PageObject
   def prompt(answer, &block)
     platform.prompt(answer, &block)
   end
+  
+  #
+  # Attach to a running window.  You can locate the window using either
+  # the window's title or url.
+  #
+  # @example
+  #     page.attach_to_window(:title => "other window's title")
+  #
+  # @param [Hash] either :title or :url of the other window.  The url does not need to
+  # be the entire url - it can just be the page name like index.html
+  #
+  def attach_to_window(identifier)
+    platform.attach_to_window(identifier)
+  end
+  
+  #
+  # Refresh to current page
+  #
+  def refresh
+    platform.refresh
+  end
 
   private
 

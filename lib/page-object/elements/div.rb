@@ -5,8 +5,13 @@ module PageObject
       protected
 
       def self.watir_finders
-        [:class, :id, :index, :xpath]
+        [:class, :id, :text, :index, :xpath]
       end
+      
+      def self.selenium_finders
+        [:class, :id, :name, :text, :xpath, :index]
+      end
+      
     end
   end
 end

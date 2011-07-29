@@ -77,6 +77,23 @@ module PageObject
     def prompt(answer, &block)
       @browser.prompt(answer, &block)
     end
+    
+    #
+    # platform method to handle attaching to a running window
+    # See PageObject#attach_to_window
+    #
+    def attach_to_window(identifier)
+      win_id = {identifier.keys.first => /#{Regexp.escape(identifier.values.first)}/}
+      @browser.window(win_id).use
+    end
+    
+    #
+    # platform method to refresh the page
+    # See PageObject#refresh
+    #
+    def refresh
+      @browser.refresh
+    end
 
     #
     # platform method to get the value stored in a text field
