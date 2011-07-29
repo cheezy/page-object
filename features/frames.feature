@@ -10,3 +10,7 @@ Feature: Handling frames
   Scenario: Switching to a frame by index
     When I switch to a frame using index "1"
     Then I should see "Frame 2" in the frame
+    
+  Scenario: Switching to a frame by name
+    When I switch to a frame using name "frame2"
+    Then I should see "Frame 2" in the frame

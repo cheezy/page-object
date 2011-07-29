@@ -19,3 +19,8 @@ When /^I switch to a frame using index "([^"]*)"$/ do |index|
   @page.switch_to_frame(index.to_i)
 end
 
+When /^I switch to a frame using name "([^"]*)"$/ do |name|
+  @page.switch_to_frame(name)
+end
+
+
