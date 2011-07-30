@@ -137,31 +137,42 @@ module PageObject
           wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
           wait.until &block
         end
-         #
-      # Waits until the block returns true
-      #
-      # @param [Integer] (defaults to: 5) seconds to wait before timing out
-      # @param [String] the message to display if the event timeouts
-      # @param the block to execute when the event occurrs
-      #
-      def wait_until(timeout=5, message=nil, &block)
-        wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
-        wait.until &block
-      end
+        
+        #
+        # Waits until the block returns true
+        #
+        # @param [Integer] (defaults to: 5) seconds to wait before timing out
+        # @param [String] the message to display if the event timeouts
+        # @param the block to execute when the event occurrs
+        #
+        def wait_until(timeout=5, message=nil, &block)
+          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
+          wait.until &block
+        end
       
-      #
-      # Send keystrokes to this element
-      #
-      # @param [String, Symbol, Array]
-      #
-      # Examples:
-      #
-      #     element.send_keys "foo"                     #=> value: 'foo'
-      #     element.send_keys "tet", :arrow_left, "s"   #=> value: 'test'
-      #     element.send_keys [:control, 'a'], :space   #=> value: ' '
-      #
-      # @see Selenium::WebDriver::Keys::KEYS
-      #
+        #
+        # Send keystrokes to this element
+        #
+        # @param [String, Symbol, Array]
+        #
+        # Examples:
+        #
+        #     element.send_keys "foo"                     #=> value: 'foo'
+        #     element.send_keys "tet", :arrow_left, "s"   #=> value: 'test'
+        #     element.send_keys [:control, 'a'], :space   #=> value: ' '
+        #
+        # @see Selenium::WebDriver::Keys::KEYS
+        #
+        def send_keys(*args)
+          @element.send_keys(*args)
+        end
+         
+        #
+        # clear the contents of the element
+        #
+        def clear
+          @element.clear
+        end
       end
     end
   end

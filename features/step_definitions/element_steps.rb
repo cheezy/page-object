@@ -104,3 +104,7 @@ end
 When /^I retrieve an ordered list element$/ do
   @element = @page.ol_id_ordered_list
 end
+
+When /^I clear the text field$/ do
+  @page.text_field_id_text_field.clear
+end

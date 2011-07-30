@@ -157,6 +157,12 @@ describe PageObject::Elements::Element do
       watir_driver.should_receive(:send_keys).with([:control, 'a'])
       watir_element.send_keys([:control, 'a'])
     end
+    
+    it "should clear its' contents" do
+      watir_driver.should_receive(:clear)
+      watir_element.clear
+    end
+    
   end
 
   context "when using Selenium" do
@@ -240,6 +246,11 @@ describe PageObject::Elements::Element do
     it "should send keys to the element" do
       selenium_driver.should_receive(:send_keys).with([:control, 'a'])
       selenium_element.send_keys([:control, 'a'])
+    end
+    
+    it "should clear its' contents" do
+      selenium_driver.should_receive(:clear)
+      selenium_element.clear
     end
   end
 end

@@ -148,6 +148,13 @@ module PageObject
         def send_keys(*args)
           @element.send_keys(*args)
         end
+
+        #
+        # clear the contents of the element
+        #
+        def clear
+          @element.clear
+        end
       end
     end
   end

@@ -1,6 +1,7 @@
 === Version 0.2.2
 * Enhancements
   * Can find frame by name
+  * Added #clear method to Element
 
 === Version 0.2.1 / 2011-07-29
 * Enhancements

@@ -14,3 +14,4 @@ Feature: Handling frames
   Scenario: Switching to a frame by name
     When I switch to a frame using name "frame2"
     Then I should see "Frame 2" in the frame
+    
