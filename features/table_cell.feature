@@ -18,6 +18,7 @@ Feature: Table Cell
     | class     |
     | xpath     |
     | name      |
+    | text      |
 
   @watir_only
   Scenario Outline: Locating table cells on the Page with watir
