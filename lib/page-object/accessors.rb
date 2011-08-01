@@ -51,7 +51,7 @@ module PageObject
     #
     # @example  
     #   text_field(:first_name, :id => "first_name") 
-    #   # will generate 'first_name', 'first_name=' and 'first_name_text_field' methods
+    #   # will generate 'first_name', 'first_name=' and 'first_name_element' methods
     #
     # @param  [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
@@ -74,9 +74,10 @@ module PageObject
       define_method("#{name}=") do |value|
         platform.text_field_value_set(identifier.clone, value)
       end
-      define_method("#{name}_text_field") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.text_field_for(identifier.clone)
       end
+      alias_method "#{name}_text_field".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -85,7 +86,7 @@ module PageObject
     #
     # @example
     #   hidden_field(:user_id, :id => "user_identity")
-    #   # will generate 'user_id' and 'user_id_hidden_field' methods
+    #   # will generate 'user_id' and 'user_id_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
@@ -104,9 +105,10 @@ module PageObject
       define_method(name) do
         platform.hidden_field_value_for identifier.clone
       end
-      define_method("#{name}_hidden_field") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.hidden_field_for(identifier.clone)
       end
+      alias_method "#{name}_hidden_field".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -116,7 +118,7 @@ module PageObject
     #
     # @example
     #   text_area(:address, :id => "address")
-    #   # will generate 'address', 'address=' and 'address_text_area methods
+    #   # will generate 'address', 'address=' and 'address_element methods
     #
     # @param  [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
@@ -137,9 +139,10 @@ module PageObject
       define_method("#{name}=") do |value|
         platform.text_area_value_set(identifier.clone, value)
       end
-      define_method("#{name}_text_area") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.text_area_for(identifier.clone)
       end
+      alias_method "#{name}_text_area".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -149,7 +152,7 @@ module PageObject
     #
     # @example
     #   select_list(:state, :id => "state")
-    #   # will generate 'state', 'state=' and 'state_select_list' methods
+    #   # will generate 'state', 'state=' and 'state_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
@@ -170,9 +173,10 @@ module PageObject
       define_method("#{name}=") do |value|
         platform.select_list_value_set(identifier.clone, value)
       end
-      define_method("#{name}_select_list") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.select_list_for(identifier.clone)
       end
+      alias_method "#{name}_select_list".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -182,7 +186,7 @@ module PageObject
     #
     # @example
     #   link(:add_to_cart, :text => "Add to Cart")
-    #   # will generate 'add_to_cart' and 'add_to_cart_link' methods
+    #   # will generate 'add_to_cart' and 'add_to_cart_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
@@ -202,9 +206,10 @@ module PageObject
       define_method(name) do
         platform.click_link_for identifier.clone
       end
-      define_method("#{name}_link") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.link_for(identifier.clone)
       end
+      alias_method "#{name}_link".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -214,7 +219,7 @@ module PageObject
     #
     # @example
     #   checkbox(:active, :name => "is_active")
-    #   # will generate 'check_active', 'uncheck_active', 'active_checked?' and 'active_checkbox' methods
+    #   # will generate 'check_active', 'uncheck_active', 'active_checked?' and 'active_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters
@@ -236,9 +241,10 @@ module PageObject
       define_method("#{name}_checked?") do
         platform.checkbox_checked?(identifier.clone)
       end
-      define_method("#{name}_checkbox") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.checkbox_for(identifier.clone)
       end
+      alias_method "#{name}_checkbox".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -249,7 +255,7 @@ module PageObject
     #
     # @example
     #   radio_button(:north, :id => "north")
-    #   # will generate 'select_north', 'clear_north', 'north_selected?' and 'north_radio_button' methods
+    #   # will generate 'select_north', 'clear_north', 'north_selected?' and 'north_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
@@ -271,9 +277,10 @@ module PageObject
       define_method("#{name}_selected?") do
         platform.radio_selected?(identifier.clone)
       end
-      define_method("#{name}_radio_button") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.radio_button_for(identifier.clone)
       end
+      alias_method "#{name}_radio_button".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -282,7 +289,7 @@ module PageObject
     #
     # @example
     #   button(:purchase, :id => 'purchase')
-    #   # will generate 'purchase' and 'purchase_button' methods
+    #   # will generate 'purchase' and 'purchase_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
@@ -299,9 +306,10 @@ module PageObject
       define_method(name) do
         platform.click_button_for identifier.clone
       end
-      define_method("#{name}_button") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.button_for(identifier.clone)
       end
+      alias_method "#{name}_button".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -310,7 +318,7 @@ module PageObject
     #
     # @example
     #   div(:message, :id => 'message')
-    #   # will generate 'message' and 'message_div' methods
+    #   # will generate 'message' and 'message_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
@@ -327,9 +335,10 @@ module PageObject
       define_method(name) do
         platform.div_text_for identifier.clone
       end
-      define_method("#{name}_div") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.div_for(identifier.clone)
       end
+      alias_method "#{name}_div".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -338,7 +347,7 @@ module PageObject
     #
     # @example
     #   span(:alert, :id => 'alert')
-    #   # will generate 'alert' and 'alert_span' methods
+    #   # will generate 'alert' and 'alert_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
@@ -354,9 +363,10 @@ module PageObject
       define_method(name) do
         platform.span_text_for identifier.clone
       end
-      define_method("#{name}_span") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.span_for(identifier.clone)
       end
+      alias_method "#{name}_span".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -364,7 +374,7 @@ module PageObject
     #
     # @example
     #   table(:cart, :id => 'shopping_cart')
-    #   # will generate a 'cart_table' method
+    #   # will generate a 'cart_element' method
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
@@ -377,9 +387,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def table(name, identifier=nil, &block)
-      define_method("#{name}_table") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.table_for(identifier.clone)
       end
+      alias_method "#{name}_table".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -388,7 +399,7 @@ module PageObject
     #
     # @example
     #   cell(:total, :id => 'total_cell')
-    #   # will generate 'total' and 'total_cell' methods
+    #   # will generate 'total' and 'total_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
@@ -405,9 +416,10 @@ module PageObject
       define_method("#{name}") do
         platform.cell_text_for identifier.clone
       end
-      define_method("#{name}_cell") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.cell_for(identifier.clone)
       end
+      alias_method "#{name}_cell".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -415,7 +427,7 @@ module PageObject
     #
     # @example
     #   image(:logo, :id => 'logo')
-    #   # will generate a 'logo_image' method
+    #   # will generate a 'logo_element' method
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
@@ -428,9 +440,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def image(name, identifier=nil, &block)
-      define_method("#{name}_image") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.image_for(identifier.clone)
       end
+      alias_method "#{name}_image".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -438,7 +451,7 @@ module PageObject
     #
     # @example
     #   form(:login, :id => 'login')
-    #   # will generate a 'login_form' method
+    #   # will generate a 'login_element' method
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
@@ -450,9 +463,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def form(name, identifier=nil, &block)
-      define_method("#{name}_form") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.form_for(identifier.clone)
       end
+      alias_method "#{name}_form".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -461,7 +475,7 @@ module PageObject
     #
     # @example
     #   list_item(:item_one, :id => 'one')
-    #   # will generate 'item_one' and 'item_one_list_item' methods
+    #   # will generate 'item_one' and 'item_one_element' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
@@ -477,9 +491,10 @@ module PageObject
       define_method(name) do
         platform.list_item_text_for identifier.clone
       end
-      define_method("#{name}_list_item") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.list_item_for(identifier.clone)
       end
+      alias_method "#{name}_list_item".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -487,7 +502,7 @@ module PageObject
     #
     # @example
     #   unordered_list(:menu, :id => 'main_menu')
-    #   # will generate a 'menu_unordered_list' method
+    #   # will generate a 'menu_element' method
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
@@ -500,9 +515,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def unordered_list(name, identifier=nil, &block)
-      define_method("#{name}_unordered_list") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.unordered_list_for(identifier.clone)
       end
+      alias_method "#{name}_unordered_list".to_sym, "#{name}_element".to_sym
     end
 
     #
@@ -510,7 +526,7 @@ module PageObject
     #
     # @example
     #   ordered_list(:top_five, :id => 'top')
-    #   # will generate a 'top_five_ordered_list' method
+    #   # will generate a 'top_five_element' method
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
@@ -523,9 +539,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def ordered_list(name, identifier=nil, &block)
-      define_method("#{name}_ordered_list") do
+      define_method("#{name}_element") do
         block ? block.call(browser) : platform.ordered_list_for(identifier.clone)
       end
+      alias_method "#{name}_ordered_list".to_sym, "#{name}_element".to_sym
     end
   end
 end

@@ -181,11 +181,11 @@ When /^I retrieve a table cell element by "([^"]*)" and "([^"]*)"$/ do |param1, 
 end
 
 When /^I retrieve a table element by "([^\"]*)"$/ do |how|
-  @element = @page.send "table_#{how}_table"
+  @element = @page.send "table_#{how}_element"
 end
 
 When /^I retrieve a table element by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @element = @page.send "table_#{param1}_#{param2}_table"
+  @element = @page.send "table_#{param1}_#{param2}_element"
 end
 
 When /^I get the image element$/ do
@@ -201,15 +201,15 @@ Then /^the image should be "([^\"]*)" pixels tall$/ do |height|
 end
 
 When /^I get the image element by "([^\"]*)"$/ do |how|
-  @element = @page.send "image_#{how}_image"
+  @element = @page.send "image_#{how}_element"
 end
 
 When /^I get the image element by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @element = @page.send "image_#{param1}_#{param2}_image"
+  @element = @page.send "image_#{param1}_#{param2}_element"
 end
 
 When /^I retrieve the hidden field element$/ do
-  @element = @page.hidden_field_id_hidden_field
+  @element = @page.hidden_field_id_element
 end
 
 Then /^I should see the hidden field contains "([^\"]*)"$/ do |text|
@@ -217,7 +217,7 @@ Then /^I should see the hidden field contains "([^\"]*)"$/ do |text|
 end
 
 When /^I search for the hidden field by "([^\"]*)"$/ do |how|
-  @element = @page.send "hidden_field_#{how}_hidden_field"
+  @element = @page.send "hidden_field_#{how}_element"
 end
 
 Then /^hidden field element should contains "([^\"]*)"$/ do |text|
@@ -225,7 +225,7 @@ Then /^hidden field element should contains "([^\"]*)"$/ do |text|
 end
 
 When /^I search for the hidden field by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @element = @page.send "hidden_field_#{param1}_#{param2}_hidden_field"
+  @element = @page.send "hidden_field_#{param1}_#{param2}_element"
 end
 
 Then /^I should be able to submit the form$/ do
@@ -233,11 +233,11 @@ Then /^I should be able to submit the form$/ do
 end
 
 When /^I locate the form by "([^\"]*)"$/ do |how|
-  @element = @page.send "form_#{how}_form"
+  @element = @page.send "form_#{how}_element"
 end
 
 When /^I locate the form using "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @element = @page.send "form_#{param1}_#{param2}_form"
+  @element = @page.send "form_#{param1}_#{param2}_element"
 end
 
 When /^I get the text from the list item$/ do
@@ -253,7 +253,7 @@ When /^I search for the list item by "([^"]*)" and "([^"]*)"$/ do |param1, param
 end
 
 When /^I get the first item from the unordered list$/ do
-  @element = @page.ul_id_unordered_list[0]
+  @element = @page.ul_id_element[0]
 end
 
 Then /^the list items text should be "([^\"]*)"$/ do |expected_text|
@@ -261,11 +261,11 @@ Then /^the list items text should be "([^\"]*)"$/ do |expected_text|
 end
 
 When /^I search for the unordered list by "([^\"]*)"$/ do |how|
-  @list = @page.send "ul_#{how}_unordered_list"
+  @list = @page.send "ul_#{how}_element"
 end
 
 When /^I search for the unordered list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @list = @page.send "ul_#{param1}_#{param2}_unordered_list"
+  @list = @page.send "ul_#{param1}_#{param2}_element"
 end
 
 
@@ -274,15 +274,15 @@ When /^I get the first item from the list$/ do
 end
 
 When /^I get the first item from the ordered list$/ do
-  @element = @page.ol_id_ordered_list[0]
+  @element = @page.ol_id_element[0]
 end
 
 When /^I search for the ordered list by "([^\"]*)"$/ do |how|
-  @list = @page.send "ol_#{how}_ordered_list"
+  @list = @page.send "ol_#{how}_element"
 end
 
 When /^I search for the ordered list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @list = @page.send "ol_#{param1}_#{param2}_ordered_list"
+  @list = @page.send "ol_#{param1}_#{param2}_element"
 end
 
 Then /^the table should have "([^\"]*)" rows$/ do |rows|
@@ -315,7 +315,7 @@ Then /^each item should contain "([^\"]*)"$/ do |text|
 end
 
 Then /^option "([^\"]*)" should contain "([^\"]*)"$/ do |opt_num, text|
-  @element = @page.send "sel_list_#{@how}_select_list".to_sym
+  @element = @page.send "sel_list_#{@how}_element".to_sym
   @element[opt_num.to_i - 1].text.should == text
 end
 

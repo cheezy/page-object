@@ -114,11 +114,12 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:google_search)
+        watir_page_object.should respond_to(:google_search_element)
         watir_page_object.should respond_to(:google_search_link)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.continue_link.should == "link"
+        block_page_object.continue_element.should == "link"
       end
     end
 
@@ -130,7 +131,7 @@ describe PageObject::Accessors do
 
       it "should return a link element" do
         watir_browser.should_receive(:link).and_return(watir_browser)
-        element = watir_page_object.google_search_link
+        element = watir_page_object.google_search_element
         element.should be_instance_of PageObject::Elements::Link
       end
     end
@@ -143,7 +144,7 @@ describe PageObject::Accessors do
 
       it "should return a link element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.google_search_link
+        element = selenium_page_object.google_search_element
         element.should be_instance_of PageObject::Elements::Link
       end
     end
@@ -155,11 +156,12 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:first_name)
         watir_page_object.should respond_to(:first_name=)
+        watir_page_object.should respond_to(:first_name_element)
         watir_page_object.should respond_to(:first_name_text_field)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.first_name_text_field.should == "text_field"
+        block_page_object.first_name_element.should == "text_field"
       end
     end
 
@@ -178,7 +180,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a text field element" do
         watir_browser.should_receive(:text_field).and_return(watir_browser)
-        element = watir_page_object.first_name_text_field
+        element = watir_page_object.first_name_element
         element.should be_instance_of PageObject::Elements::TextField
       end
     end
@@ -199,7 +201,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a text field element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.first_name_text_field
+        element = selenium_page_object.first_name_element
         element.should be_instance_of PageObject::Elements::TextField
       end
     end
@@ -210,11 +212,12 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:social_security_number)
+        watir_page_object.should respond_to(:social_security_number_element)
         watir_page_object.should respond_to(:social_security_number_hidden_field)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.secret_hidden_field.should == "hidden_field"
+        block_page_object.secret_element.should == "hidden_field"
       end
     end
 
@@ -227,7 +230,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a hidden field element" do
         watir_browser.should_receive(:hidden).and_return(watir_browser)
-        element = watir_page_object.social_security_number_hidden_field
+        element = watir_page_object.social_security_number_element
         element.should be_instance_of(PageObject::Elements::HiddenField)
       end
     end
@@ -241,7 +244,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a hidden field element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.social_security_number_hidden_field
+        element = selenium_page_object.social_security_number_element
         element.should be_instance_of PageObject::Elements::HiddenField
       end
     end
@@ -252,11 +255,12 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:address)
         watir_page_object.should respond_to(:address=)
+        watir_page_object.should respond_to(:address_element)
         watir_page_object.should respond_to(:address_text_area)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.address_text_area.should == "text_area"
+        block_page_object.address_element.should == "text_area"
       end
     end
 
@@ -275,7 +279,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a text area element" do
         watir_browser.should_receive(:textarea).and_return(watir_browser)
-        element = watir_page_object.address_text_area
+        element = watir_page_object.address_element
         element.should be_instance_of PageObject::Elements::TextArea
       end
     end
@@ -295,7 +299,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a text area element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.address_text_area
+        element = selenium_page_object.address_element
         element.should be_instance_of PageObject::Elements::TextArea
       end
     end
@@ -306,11 +310,12 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :state
         watir_page_object.should respond_to :state=
+        watir_page_object.should respond_to(:state_element)
         watir_page_object.should respond_to(:state_select_list)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.state_select_list.should == "select_list"
+        block_page_object.state_element.should == "select_list"
       end
     end
 
@@ -329,7 +334,7 @@ describe PageObject::Accessors do
 
       it "should retreive the select list element" do
         watir_browser.should_receive(:select_list).and_return(watir_browser)
-        element = watir_page_object.state_select_list
+        element = watir_page_object.state_element
         element.should be_instance_of PageObject::Elements::SelectList
       end
     end
@@ -349,7 +354,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the select list element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.state_select_list
+        element = selenium_page_object.state_element
         element.should be_instance_of PageObject::Elements::SelectList
       end
     end
@@ -362,11 +367,12 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to :check_active
         watir_page_object.should respond_to :uncheck_active
         watir_page_object.should respond_to :active_checked?
-        watir_page_object.should respond_to(:active_checkbox)
+        watir_page_object.should respond_to :active_element
+        watir_page_object.should respond_to :active_checkbox
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.active_checkbox.should == "checkbox"
+        block_page_object.active_element.should == "checkbox"
       end
     end
 
@@ -391,7 +397,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a checkbox element" do
         watir_browser.should_receive(:checkbox).and_return(watir_browser)
-        element = watir_page_object.active_checkbox
+        element = watir_page_object.active_element
         element.should be_instance_of PageObject::Elements::CheckBox
       end
     end
@@ -419,7 +425,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a checkbox element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.active_checkbox
+        element = selenium_page_object.active_element
         element.should be_instance_of PageObject::Elements::CheckBox
       end
     end
@@ -432,11 +438,12 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to :select_first
         watir_page_object.should respond_to :clear_first
         watir_page_object.should respond_to :first_selected?
+        watir_page_object.should respond_to(:first_element)
         watir_page_object.should respond_to(:first_radio_button)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.first_radio_button.should == "radio_button"
+        block_page_object.first_element.should == "radio_button"
       end
     end
 
@@ -461,7 +468,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a radio button element" do
         watir_browser.should_receive(:radio).and_return(watir_browser)
-        element = watir_page_object.first_radio_button
+        element = watir_page_object.first_element
         element.should be_instance_of PageObject::Elements::RadioButton
       end
     end
@@ -489,7 +496,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a radio button element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.first_radio_button
+        element = selenium_page_object.first_element
         element.should be_instance_of PageObject::Elements::RadioButton
       end
     end
@@ -499,11 +506,12 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :click_me
+        watir_page_object.should respond_to :click_me_element
         watir_page_object.should respond_to :click_me_button
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.click_me_button.should == "button"
+        block_page_object.click_me_element.should == "button"
       end
     end
 
@@ -516,7 +524,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a button element" do
         watir_browser.should_receive(:button).and_return(watir_browser)
-        element = watir_page_object.click_me_button
+        element = watir_page_object.click_me_element
         element.should be_instance_of PageObject::Elements::Button
       end
     end
@@ -530,7 +538,7 @@ describe PageObject::Accessors do
 
       it "should retrieve a button element" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.click_me_button
+        element = selenium_page_object.click_me_element
         element.should be_instance_of PageObject::Elements::Button
 
       end
@@ -541,11 +549,12 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:message)
+        watir_page_object.should respond_to(:message_element)
         watir_page_object.should respond_to(:message_div)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.footer_div.should == "div"
+        block_page_object.footer_element.should == "div"
       end
     end
 
@@ -558,7 +567,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the div element from the page" do
         watir_browser.should_receive(:div).and_return(watir_browser)
-        element = watir_page_object.message_div
+        element = watir_page_object.message_element
         element.should be_instance_of PageObject::Elements::Div
       end
     end
@@ -573,7 +582,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the div element from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.message_div
+        element = selenium_page_object.message_element
         element.should be_instance_of PageObject::Elements::Div
 
       end
@@ -584,11 +593,12 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:alert)
+        watir_page_object.should respond_to(:alert_element)
         watir_page_object.should respond_to(:alert_span)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.alert_span.should == "span"
+        block_page_object.alert_element.should == "span"
       end
     end
 
@@ -601,7 +611,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the span element from the page" do
         watir_browser.should_receive(:span).and_return(watir_browser)
-        element = watir_page_object.alert_span
+        element = watir_page_object.alert_element
         element.should be_instance_of PageObject::Elements::Span
       end
     end
@@ -615,7 +625,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the span element from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.alert_span
+        element = selenium_page_object.alert_element
         element.should be_instance_of PageObject::Elements::Span
 
       end
@@ -625,18 +635,19 @@ describe PageObject::Accessors do
   describe "table accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
+        watir_page_object.should respond_to(:cart_element)
         watir_page_object.should respond_to(:cart_table)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.cart_table.should == "table"
+        block_page_object.cart_element.should == "table"
       end
     end
 
     context "watir implementation" do
       it "should retrieve the table element from the page" do
         watir_browser.should_receive(:table).and_return(watir_browser)
-        element = watir_page_object.cart_table
+        element = watir_page_object.cart_element
         element.should be_instance_of PageObject::Elements::Table
       end
     end
@@ -644,7 +655,7 @@ describe PageObject::Accessors do
     context "selenium implementation" do
       it "should retrieve the table element from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.cart_table
+        element = selenium_page_object.cart_element
         element.should be_instance_of(PageObject::Elements::Table)
       end
     end
@@ -654,11 +665,12 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:total)
+        watir_page_object.should respond_to(:total_element)
         watir_page_object.should respond_to(:total_cell)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.total_cell.should == "cell"
+        block_page_object.total_element.should == "cell"
       end
     end
 
@@ -671,7 +683,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the cell element from the page" do
         watir_browser.should_receive(:td).and_return(watir_browser)
-        element = watir_page_object.total_cell
+        element = watir_page_object.total_element
         element.should be_instance_of PageObject::Elements::TableCell
       end
     end
@@ -682,24 +694,31 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:text).and_return('celldata')
         selenium_page_object.total.should == 'celldata'
       end
+
+      it "should retrieve the cell element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.total_element
+        element.should be_instance_of PageObject::Elements::TableCell
+      end
     end
   end
 
   describe "image accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
+        watir_page_object.should respond_to(:logo_element)
         watir_page_object.should respond_to(:logo_image)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.logo_image.should == "image"
+        block_page_object.logo_element.should == "image"
       end
     end
 
     context "watir implementation" do
       it "should retrieve the image element from the page" do
         watir_browser.should_receive(:image).and_return(watir_browser)
-        element = watir_page_object.logo_image
+        element = watir_page_object.logo_element
         element.should be_instance_of PageObject::Elements::Image
       end
     end
@@ -707,7 +726,7 @@ describe PageObject::Accessors do
     context "selenium implementation" do
       it "should retrieve the image element from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.logo_image
+        element = selenium_page_object.logo_element
         element.should be_instance_of PageObject::Elements::Image
       end
     end
@@ -716,18 +735,19 @@ describe PageObject::Accessors do
   describe "form accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
+        watir_page_object.should respond_to(:login_element)
         watir_page_object.should respond_to(:login_form)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.login_form.should == "form"
+        block_page_object.login_element.should == "form"
       end
     end
 
     context "watir implementation" do
       it "should retrieve the form element from the page" do
         watir_browser.should_receive(:form).and_return(watir_browser)
-        element = watir_page_object.login_form
+        element = watir_page_object.login_element
         element.should be_instance_of PageObject::Elements::Form
       end
     end
@@ -735,7 +755,7 @@ describe PageObject::Accessors do
     context "selenium implementation" do
       it "should retrieve the form element from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.login_form
+        element = selenium_page_object.login_element
         element.should be_instance_of PageObject::Elements::Form
       end
     end
@@ -745,11 +765,12 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:item_one)
+        watir_page_object.should respond_to(:item_one_element)
         watir_page_object.should respond_to(:item_one_list_item)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.item_one_list_item.should == "list_item"
+        block_page_object.item_one_element.should == "list_item"
       end
     end
 
@@ -762,7 +783,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the list item element from the page" do
         watir_browser.should_receive(:li).and_return(watir_browser)
-        element = watir_page_object.item_one_list_item
+        element = watir_page_object.item_one_element
         element.should be_instance_of PageObject::Elements::ListItem
       end
     end
@@ -776,7 +797,7 @@ describe PageObject::Accessors do
 
       it "should retrieve the list item from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.item_one_list_item
+        element = selenium_page_object.item_one_element
         element.should be_instance_of PageObject::Elements::ListItem
       end
     end
@@ -785,18 +806,19 @@ describe PageObject::Accessors do
   describe "unordered list accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
+        watir_page_object.should respond_to(:menu_element)
         watir_page_object.should respond_to(:menu_unordered_list)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.menu_unordered_list.should == "unordered_list"
+        block_page_object.menu_element.should == "unordered_list"
       end
     end
 
     context "watir implementation" do
       it "should retrieve the element from the page" do
         watir_browser.should_receive(:ul).and_return(watir_browser)
-        element = watir_page_object.menu_unordered_list
+        element = watir_page_object.menu_element
         element.should be_instance_of PageObject::Elements::UnorderedList
       end
     end
@@ -804,7 +826,7 @@ describe PageObject::Accessors do
     context "selenium implementation" do
       it "should retrieve the element from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.menu_unordered_list
+        element = selenium_page_object.menu_element
         element.should be_instance_of PageObject::Elements::UnorderedList
       end
     end
@@ -813,18 +835,19 @@ describe PageObject::Accessors do
   describe "ordered list accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
+        watir_page_object.should respond_to(:top_five_element)
         watir_page_object.should respond_to(:top_five_ordered_list)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.top_five_ordered_list.should == "ordered_list"
+        block_page_object.top_five_element.should == "ordered_list"
       end
     end
 
     context "watir implementation" do
       it "should retrieve the element from the page" do
         watir_browser.should_receive(:ol).and_return(watir_browser)
-        element = watir_page_object.top_five_ordered_list
+        element = watir_page_object.top_five_element
         element.should be_instance_of PageObject::Elements::OrderedList
       end
     end
@@ -832,7 +855,7 @@ describe PageObject::Accessors do
     context "selenium implementation" do
       it "should retrieve the element from the page" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        element = selenium_page_object.top_five_ordered_list
+        element = selenium_page_object.top_five_element
         element.should be_instance_of PageObject::Elements::OrderedList
       end
     end
