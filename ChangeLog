@@ -1,3 +1,7 @@
+=== Version 0.2.3
+* Enhancements
+  * Can now find a TableCell by its' text
+
 === Version 0.2.2 / 2011-07-31
 * Enhancements
   * Can find frame by name
