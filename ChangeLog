@@ -2,7 +2,7 @@
 * Enhancements
   * Can now find a TableCell by its' text
   * If we receive an error calling #attach_to_window, wait one second and try again
-  * 
+  * Will call callback method #initialize_page method if it exists on a page object
 
 === Version 0.2.2 / 2011-07-31
 * Enhancements

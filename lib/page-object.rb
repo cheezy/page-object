@@ -38,7 +38,8 @@ module PageObject
   attr_reader :platform
 
   #
-  # Construct a new page object.
+  # Construct a new page object.  Upon initialization of the page it will call a method named
+  # initialize_page if it exists.
   #
   # @param [Watir::Browser or Selenium::WebDriver::Driver] the platform browser to use
   # @param [bool] open the page if page_url is set
@@ -46,6 +47,7 @@ module PageObject
   def initialize(browser, visit=false)
     @browser = browser
     include_platform_driver(browser)
+    initialize_page if respond_to?(:initialize_page)
     goto if visit && respond_to?(:goto)
   end
 

@@ -6,6 +6,7 @@ end
 
 class CustomPlatform
 end
+
 describe PageObject do
   let(:watir_browser) { mock_watir_browser }
   let(:selenium_browser) { mock_selenium_browser }
@@ -47,6 +48,20 @@ describe PageObject do
         watir_page_object.platform.should_receive(:attach_to_window).once.and_throw "error"
         watir_page_object.platform.should_receive(:attach_to_window)
         watir_page_object.attach_to_window("blah")
+      end
+      
+      it "should call initialize_page if it exists" do
+        class CallbackPage
+          include PageObject
+          attr_reader :initialize_page
+        
+          def initialize_page
+            @initialize_page = true
+          end
+        end
+        
+        @page = CallbackPage.new(watir_browser)
+        @page.initialize_page.should be_true
       end
     end
     
