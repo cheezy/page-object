@@ -4,6 +4,7 @@
   * If we receive an error calling #attach_to_window, wait one second and try again
   * Will call callback method #initialize_page method if it exists on a page object
   * Renamed all *_<element_type> methods to *_element.  Created alias for backward compatability
+  * Updated to use selenium-webdriver 2.3.2
 
 === Version 0.2.2 / 2011-07-31
 * Enhancements
