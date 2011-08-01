@@ -11,6 +11,7 @@ describe PageObject do
   let(:selenium_browser) { mock_selenium_browser }
   let(:watir_page_object) { PageObjectTestPageObject.new(watir_browser) }
   let(:selenium_page_object) { PageObjectTestPageObject.new(selenium_browser) }
+  
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
       watir_page_object.platform.should be_kind_of PageObject::WatirPageObject
@@ -22,6 +23,7 @@ describe PageObject do
       selenium_page_object.platform.should be_kind_of Object::PageObject::Platforms::Selenium::PageObject
     end
   end
+  
   context "when created with a non_bundled adapter" do
     let(:custom_adapter) { mock_adapter(:custom_browser, CustomPlatform) }
     it "should be an instance of whatever that objects adapter is" do
@@ -30,6 +32,7 @@ describe PageObject do
       custom_page_object.platform.should be custom_adapter.create_page_object
     end
   end
+  
   context "when created with an object we do not understand" do
     it "should throw an error" do
       expect {
@@ -39,6 +42,14 @@ describe PageObject do
   end
 
   describe "page level functionality" do
+    context "for all drivers" do
+      it "should try a second time after sleeping when attach to window fails" do
+        watir_page_object.platform.should_receive(:attach_to_window).once.and_throw "error"
+        watir_page_object.platform.should_receive(:attach_to_window)
+        watir_page_object.attach_to_window("blah")
+      end
+    end
+    
     context "when using WatirPageObject" do
       it "should display the page text" do
         watir_browser.should_receive(:text).and_return("browser text")

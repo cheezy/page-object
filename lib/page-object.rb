@@ -150,7 +150,8 @@ module PageObject
   
   #
   # Attach to a running window.  You can locate the window using either
-  # the window's title or url.
+  # the window's title or url.  If it failes to connect to a window it will
+  # pause for 1 second and try again.
   #
   # @example
   #     page.attach_to_window(:title => "other window's title")
@@ -159,7 +160,12 @@ module PageObject
   # be the entire url - it can just be the page name like index.html
   #
   def attach_to_window(identifier)
-    platform.attach_to_window(identifier)
+    begin
+      platform.attach_to_window(identifier)
+    rescue
+      sleep 1
+      platform.attach_to_window(identifier)
+    end
   end
   
   #

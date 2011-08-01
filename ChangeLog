@@ -1,6 +1,8 @@
 === Version 0.2.3
 * Enhancements
   * Can now find a TableCell by its' text
+  * If we receive an error calling #attach_to_window, wait one second and try again
+  * 
 
 === Version 0.2.2 / 2011-07-31
 * Enhancements
