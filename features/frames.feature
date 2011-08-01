@@ -1,17 +1,37 @@
 Feature: Handling frames
 
-  Background:
+  Scenario: Accessing elements within the frame
     Given I am on the frame elements page
+    When I type "page-object" into the text field for frame 2 using "id"
+    Then I should verify "page-object" is in the text field for frame 2 using "id"
+    When I type "page-object" into the text field for frame 2 using "name"
+    Then I should verify "page-object" is in the text field for frame 2 using "name"
+    When I type "page-object" into the text field for frame 2 using "index"
+    Then I should verify "page-object" is in the text field for frame 2 using "index"
 
-  Scenario: Switching to a frame by id
-    When I switch to a frame using id "frame_2"
-    Then I should see "Frame 2" in the frame
+  Scenario: Switching between frames
+    Given I am on the frame elements page
+    When I type "page-object" into the text field for frame 2 using "id"
+    And I type "page-object" into the text field from frame 1 using "id"
+    Then I should verify "page-object" is in the text field for frame 2 using "id"
+    And I should verify "page-object" is in the text field for frame 1 using "id"
 
-  Scenario: Switching to a frame by index
-    When I switch to a frame using index "1"
-    Then I should see "Frame 2" in the frame
+  Scenario: Accessing elements within the frame
+    Given I am on the iframe elements page
+    When I type "page-object" into the text field for frame 2 using "id"
+    Then I should verify "page-object" is in the text field for frame 2 using "id"
+    When I type "page-object" into the text field for frame 2 using "name"
+    Then I should verify "page-object" is in the text field for frame 2 using "name"
+    When I type "page-object" into the text field for frame 2 using "index"
+    Then I should verify "page-object" is in the text field for frame 2 using "index"
+
+  Scenario: Switching between frames
+    Given I am on the iframe elements page
+    When I type "page-object" into the text field for frame 2 using "id"
+    And I type "page-object" into the text field from frame 1 using "id"
+    Then I should verify "page-object" is in the text field for frame 2 using "id"
+    And I should verify "page-object" is in the text field for frame 1 using "id"
     
-  Scenario: Switching to a frame by name
-    When I switch to a frame using name "frame2"
-    Then I should see "Frame 2" in the frame
-    
+  Scenario: Nested frames
+    Given I am on the nested frame elements page
+    Then I should be able to click the nested link

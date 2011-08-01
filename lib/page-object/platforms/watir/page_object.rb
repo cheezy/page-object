@@ -1,5 +1,6 @@
 require 'watir-webdriver/extensions/alerts'
 require 'page-object/elements'
+require 'page-object/core_ext/string'
 
 
 module PageObject
@@ -88,14 +89,6 @@ module PageObject
     end
     
     #
-    # platform method to handle switching to a frame
-    # See PageObject#switch_to_frame
-    #
-    def switch_to_frame(identifier)
-      @browser.wd.switch_to.frame(identifier)
-    end
-
-    #
     # platform method to refresh the page
     # See PageObject#refresh
     #
@@ -108,8 +101,9 @@ module PageObject
     # See PageObject::Accessors#text_field
     #
     def text_field_value_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::TextField.watir_identifier_for identifier
-      @browser.text_field(identifier).value
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}text_field(identifier).value"
     end
 
     #
@@ -117,17 +111,19 @@ module PageObject
     # See PageObject::Accessors#text_field
     #
     def text_field_value_set(identifier, value)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::TextField.watir_identifier_for identifier
-      @browser.text_field(identifier).set(value)
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}text_field(identifier).set(value)"
     end
-
+    
     #
     # platform method to retrieve a text field element
     # See PageObject::Accessors#text_field
     #
     def text_field_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::TextField.watir_identifier_for identifier
-      element = @browser.text_field(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}text_field(identifier)"
       Elements::TextField.new(element, :platform => :watir)
     end
 
@@ -136,8 +132,9 @@ module PageObject
     # See PageObject::Accessors#hidden_field
     #
     def hidden_field_value_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::HiddenField.watir_identifier_for identifier
-      @browser.hidden(identifier).value
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}hidden(identifier).value"
     end
 
     #
@@ -145,8 +142,9 @@ module PageObject
     # See PageObject::Accessors#hidden_field
     #
     def hidden_field_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::HiddenField.watir_identifier_for identifier
-      element = @browser.hidden(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}hidden(identifier)"
       Elements::HiddenField.new(element, :platform => :watir)
     end
 
@@ -155,8 +153,9 @@ module PageObject
     # See PageObject::Accessors#text_area
     #
     def text_area_value_set(identifier, value)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::TextArea.watir_identifier_for identifier
-      @browser.textarea(identifier).send_keys(value)
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}textarea(identifier).send_keys(value)"
     end
 
     #
@@ -164,8 +163,9 @@ module PageObject
     # See PageObject::Accessors#text_area
     #
     def text_area_value_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::TextArea.watir_identifier_for identifier
-      @browser.textarea(identifier).value
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}textarea(identifier).value"
     end
 
     #
@@ -173,8 +173,9 @@ module PageObject
     # See PageObject::Accessors#text_area
     #
     def text_area_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::TextArea.watir_identifier_for identifier
-      element = @browser.textarea(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}textarea(identifier)"
       Elements::TextArea.new(element, :platform => :watir)
     end
 
@@ -183,8 +184,9 @@ module PageObject
     # See PageObject::Accessors#select_list
     #
     def select_list_value_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::SelectList.watir_identifier_for identifier
-      @browser.select_list(identifier).value
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}select_list(identifier).value"
     end
 
     #
@@ -192,8 +194,9 @@ module PageObject
     # See PageObject::Accessors#select_list
     #
     def select_list_value_set(identifier, value)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::SelectList.watir_identifier_for identifier
-      @browser.select_list(identifier).select(value)
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}select_list(identifier).select(value)"
     end
 
     #
@@ -201,8 +204,9 @@ module PageObject
     # See PageObject::Accessors#select_list
     #
     def select_list_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::SelectList.watir_identifier_for identifier
-      element = @browser.select_list(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}select_list(identifier)"
       Elements::SelectList.new(element, :platform => :watir)
     end
 
@@ -211,8 +215,9 @@ module PageObject
     # See PageObject::Accessors#link
     #
     def click_link_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::Link.watir_identifier_for identifier
-      @browser.link(identifier).click if identifier
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}link(identifier).click if identifier"
     end
 
     #
@@ -220,8 +225,9 @@ module PageObject
     # see PageObject::Accessors#link
     #
     def link_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::Link.watir_identifier_for identifier
-      element = @browser.link(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}link(identifier)"
       Elements::Link.new(element, :platform => :watir)
     end
 
@@ -230,8 +236,9 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def check_checkbox(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::CheckBox.watir_identifier_for identifier
-      @browser.checkbox(identifier).set
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}checkbox(identifier).set"
     end
 
     #
@@ -239,8 +246,9 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def uncheck_checkbox(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::CheckBox.watir_identifier_for identifier
-      @browser.checkbox(identifier).clear
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}checkbox(identifier).clear"
     end
 
     #
@@ -248,8 +256,9 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def checkbox_checked?(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::CheckBox.watir_identifier_for identifier
-      @browser.checkbox(identifier).set?
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}checkbox(identifier).set?"
     end
 
     #
@@ -257,8 +266,9 @@ module PageObject
     # See PageObject::Accessors#checkbox
     #
     def checkbox_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::CheckBox.watir_identifier_for identifier
-      element = @browser.checkbox(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}checkbox(identifier)"
       Elements::CheckBox.new(element, :platform => :watir)
     end
 
@@ -267,8 +277,9 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def select_radio(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::RadioButton.watir_identifier_for identifier
-      @browser.radio(identifier).set
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}radio(identifier).set"
     end
 
     #
@@ -276,8 +287,9 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def clear_radio(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::RadioButton.watir_identifier_for identifier
-      @browser.radio(identifier).clear
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}radio(identifier).clear"
     end
 
     #
@@ -285,8 +297,9 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def radio_selected?(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::RadioButton.watir_identifier_for identifier
-      @browser.radio(identifier).set?
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}radio(identifier).set?"
     end
 
     #
@@ -294,8 +307,9 @@ module PageObject
     # See PageObject::Accessors#radio_button
     #
     def radio_button_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::RadioButton.watir_identifier_for identifier
-      element = @browser.radio(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}radio(identifier)"
       PageObject::Elements::RadioButton.new(element, :platform => :watir)
     end
 
@@ -304,9 +318,10 @@ module PageObject
     # See PageObject::Accessors#div
     #
     def div_text_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "div"
       identifier = Elements::Div.watir_identifier_for identifier
-      @browser.div(identifier).text
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}div(identifier).text"
     end
 
     #
@@ -314,9 +329,10 @@ module PageObject
     # See PageObject::Accessors#div
     #
     def div_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "div"
       identifier = Elements::Div.watir_identifier_for identifier
-      element = @browser.div(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}div(identifier)"
       PageObject::Elements::Div.new(element, :platform => :watir)
     end
 
@@ -325,9 +341,10 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_text_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "span"
       identifier = Elements::Span.watir_identifier_for identifier
-      @browser.span(identifier).text
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}span(identifier).text"
     end
 
     #
@@ -335,9 +352,10 @@ module PageObject
     # See PageObject::Accessors#span
     #
     def span_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "span"
       identifier = Elements::Span.watir_identifier_for identifier
-      element = @browser.span(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}span(identifier)"
       PageObject::Elements::Span.new(element, :platform => :watir)
     end
 
@@ -346,8 +364,9 @@ module PageObject
     # See PageObject::Accessors#button
     #
     def click_button_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::Button.watir_identifier_for identifier
-      @browser.button(identifier).click
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}button(identifier).click"
     end
 
     #
@@ -355,8 +374,9 @@ module PageObject
     # See PageObject::Accessors#button
     #
     def button_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::Button.watir_identifier_for identifier
-      element = @browser.button(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}button(identifier)"
       PageObject::Elements::Button.new(element, :platform => :watir)
     end
 
@@ -365,9 +385,10 @@ module PageObject
     # See PageObject::Accessors#table
     #
     def table_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "table"
       identifier = Elements::Table.watir_identifier_for identifier.clone
-      element = @browser.table(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}table(identifier)"
       PageObject::Elements::Table.new(element, :platform => :watir)
     end
 
@@ -376,9 +397,10 @@ module PageObject
     # See PageObject::Accessors#cell
     #
     def cell_text_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "td"
       identifier = Elements::TableCell.watir_identifier_for identifier
-      @browser.td(identifier).text
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}td(identifier).text"
     end
 
     #
@@ -386,9 +408,10 @@ module PageObject
     # See PageObject::Accessors#cell
     #
     def cell_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "td"
       identifier = Elements::TableCell.watir_identifier_for identifier
-      element = @browser.td(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}td(identifier)"
       PageObject::Elements::TableCell.new(element, :platform => :watir)
     end
 
@@ -397,8 +420,9 @@ module PageObject
     # See PageObject::Accessors#image
     #
     def image_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::Image.watir_identifier_for identifier
-      element = @browser.image(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}image(identifier)"
       PageObject::Elements::Image.new(element, :platform => :watir)
     end
 
@@ -407,8 +431,9 @@ module PageObject
     # See PageObject::Accessors#form
     #
     def form_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = Elements::Form.watir_identifier_for identifier
-      element = @browser.form(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}form(identifier)"
       PageObject::Elements::Form.new(element, :platform => :watir)
     end
 
@@ -417,9 +442,10 @@ module PageObject
     # See PageObject::Accessors#list_item
     #
     def list_item_text_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "li"
       identifier = Elements::ListItem.watir_identifier_for identifier
-      @browser.li(identifier).text
+      @browser.instance_eval "#{nested_frames(frame_identifiers)}li(identifier).text"
     end
 
     #
@@ -427,9 +453,10 @@ module PageObject
     # See PageObject::Accessors#list_item
     #
     def list_item_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "li"
       identifier = Elements::ListItem.watir_identifier_for identifier
-      element = @browser.li(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}li(identifier)"
       PageObject::Elements::ListItem.new(element, :platform => :watir)
     end
 
@@ -438,9 +465,10 @@ module PageObject
     # See PageObject::Accessors#unordered_list
     #
     def unordered_list_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "ul"
       identifier = Elements::UnorderedList.watir_identifier_for identifier
-      element = @browser.ul(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}ul(identifier)"
       PageObject::Elements::UnorderedList.new(element, :platform => :watir)
     end
 
@@ -449,9 +477,10 @@ module PageObject
     # See PageObject::Accessors#ordered_list
     #
     def ordered_list_for(identifier)
+      frame_identifiers = identifier.delete(:frame)
       identifier = add_tagname_if_needed identifier, "ol"
       identifier = Elements::OrderedList.watir_identifier_for identifier
-      element = @browser.ol(identifier)
+      element = @browser.instance_eval "#{nested_frames(frame_identifiers)}ol(identifier)"
       PageObject::Elements::OrderedList.new(element, :platform => :watir)
     end
 
@@ -461,6 +490,17 @@ module PageObject
       return identifier if identifier.length < 2 and not identifier[:name]
       identifier[:tag_name] = tag if identifier[:name]
       identifier
+    end
+    
+    def nested_frames(frame_identifiers)
+      return if frame_identifiers.nil?
+      frame_str = ''
+      frame_identifiers.each do |id|
+        value = id.values.first
+        frame_str += "frame(:#{id.keys.first} => #{value})." if value.to_s.is_integer
+        frame_str += "frame(:#{id.keys.first} => '#{value}')." unless value.to_s.is_integer
+      end
+      frame_str
     end
   end
 end

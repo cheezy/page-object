@@ -87,6 +87,11 @@ describe PageObject::Accessors do
   let(:watir_page_object) { AccessorsTestPageObject.new(watir_browser) }
   let(:selenium_page_object) { AccessorsTestPageObject.new(selenium_browser) }
   let(:block_page_object) { BlockPageObject.new(watir_browser) }
+  
+  before(:each) do
+    selenium_browser.stub(:switch_to).and_return(selenium_browser)
+    selenium_browser.stub(:default_content)
+  end
 
   describe "goto a page" do
     it "should navigate to a page when requested" do
@@ -186,7 +191,8 @@ describe PageObject::Accessors do
       end
 
       it "should set some text on a text field element" do
-        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:find_element).twice.and_return(selenium_browser)
+        selenium_browser.should_receive(:clear)
         selenium_browser.should_receive(:send_keys).with('Katie')
         selenium_page_object.first_name = 'Katie'
       end

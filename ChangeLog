@@ -2,6 +2,9 @@
 * Enhancements
   * Can find frame by name
   * Added #clear method to Element
+  * Removed #switch_to_from from PageObject
+  * Added #in_frame to Accessors to handle frame and iframe access
+  * Clearing value from text_field before setting value on Selenium
 
 === Version 0.2.1 / 2011-07-29
 * Enhancements

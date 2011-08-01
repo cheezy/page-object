@@ -1,4 +1,5 @@
 require 'page-object/elements'
+require 'page-object/core_ext/string'
 
 module PageObject
   module Platforms
@@ -105,14 +106,6 @@ module PageObject
         end
         
         #
-        # platform method to handle switching to a frame
-        # See PageObject#switch_to_frame
-        #
-        def switch_to_frame(identifier)
-          @browser.switch_to.frame(identifier)
-        end
-    
-        #
         # platform method to refresh the page
         # See PageObject#refresh
         #
@@ -125,9 +118,13 @@ module PageObject
         # See PageObject::Accessors#text_field
         #
         def text_field_value_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'text'
           how, what = Elements::TextField.selenium_identifier_for identifier
-          @browser.find_element(how, what).attribute('value')
+          switch_to_frame(frame_identifiers)
+          text = @browser.find_element(how, what).attribute('value')
+          @browser.switch_to.default_content
+          text
         end
 
         #
@@ -135,9 +132,13 @@ module PageObject
         # See PageObject::Accessors#text_field
         #
         def text_field_value_set(identifier, value)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'text'
           how, what = Elements::TextField.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
+          @browser.find_element(how, what).clear
           @browser.find_element(how, what).send_keys(value)
+          @browser.switch_to.default_content
         end
 
         #
@@ -145,9 +146,12 @@ module PageObject
         # See PageObject::Accessors#text_field
         #
         def text_field_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'text'
           how, what = Elements::TextField.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::TextField.new(element, :platform => :selenium)
         end
 
@@ -156,9 +160,13 @@ module PageObject
         # See PageObject::Accessors#hidden_field
         #
         def hidden_field_value_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'hidden'
           how, what = Elements::HiddenField.selenium_identifier_for identifier
-          @browser.find_element(how, what).attribute('value')
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).attribute('value')
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -166,9 +174,12 @@ module PageObject
         # See PageObject::Accessors#hidden_field
         #
         def hidden_field_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'hidden'
           how, what = Elements::HiddenField.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Elements::HiddenField.new(element, :platform => :selenium)
         end
 
@@ -177,9 +188,12 @@ module PageObject
         # See PageObject::Accessors#text_area
         #
         def text_area_value_set(identifier, value)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'textarea'
           how, what = Elements::TextArea.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).send_keys(value)
+          @browser.switch_to.default_content
         end
 
         #
@@ -187,9 +201,13 @@ module PageObject
         # See PageObject::Accessors#text_area
         #
         def text_area_value_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'textarea'
           how, what = Elements::TextArea.selenium_identifier_for identifier
-          @browser.find_element(how, what).attribute('value')
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).attribute('value')
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -197,9 +215,12 @@ module PageObject
         # See PageObject::Accessors#text_area
         #
         def text_area_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'textarea'
           how, what = Elements::TextArea.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Elements::TextArea.new(element, :platform => :selenium)
         end
 
@@ -208,9 +229,13 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_value_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'select'
           how, what = Elements::SelectList.selenium_identifier_for identifier
-          @browser.find_element(how, what).attribute('value')
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).attribute('value')
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -218,9 +243,12 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_value_set(identifier, value)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'select'
           how, what = Elements::SelectList.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).send_keys(value)
+          @browser.switch_to.default_content
         end
 
         #
@@ -228,9 +256,12 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'select'
           how, what = Elements::SelectList.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Elements::SelectList.new(element, :platform => :selenium)
         end
 
@@ -239,9 +270,12 @@ module PageObject
         # See PageObject::Accessors#link
         #
         def click_link_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, "a"
           how, what = Elements::Link.selenium_identifier_for identifier
+          switch_to_frame frame_identifiers
           @browser.find_element(how, what).click
+          @browser.switch_to.default_content
         end
 
         #
@@ -249,9 +283,12 @@ module PageObject
         # see PageObject::Accessors#link
         #
         def link_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, "a"
           how, what = Elements::Link.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Elements::Link.new(element, :platform => :selenium)
         end
 
@@ -260,9 +297,12 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def check_checkbox(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
           how, what = Elements::CheckBox.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
+          @browser.switch_to.default_content
         end
 
         #
@@ -270,9 +310,12 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def uncheck_checkbox(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
           how, what = Elements::CheckBox.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
+          @browser.switch_to.default_content
         end
 
         #
@@ -280,9 +323,13 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def checkbox_checked?(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
           how, what = Elements::CheckBox.selenium_identifier_for identifier
-          @browser.find_element(how, what).selected?
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).selected?
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -290,9 +337,12 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def checkbox_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'checkbox'
           how, what = Elements::CheckBox.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Elements::CheckBox.new(element, :platform => :selenium)
         end
 
@@ -301,9 +351,12 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def select_radio(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
           how, what = Elements::RadioButton.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
+          @browser.switch_to.default_content
         end
 
         #
@@ -311,9 +364,12 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def clear_radio(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
           how, what = Elements::RadioButton.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
+          @browser.switch_to.default_content
         end
 
         #
@@ -321,9 +377,13 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def radio_selected?(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
           how, what = Elements::RadioButton.selenium_identifier_for identifier
-          @browser.find_element(how, what).selected?
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).selected?
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -331,9 +391,12 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def radio_button_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'radio'
           how, what = Elements::RadioButton.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::RadioButton.new(element, :platform => :selenium)
         end
 
@@ -342,9 +405,13 @@ module PageObject
         # See PageObject::Accessors#div
         #
         def div_text_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'div'
           how, what = Elements::Div.selenium_identifier_for identifier
-          @browser.find_element(how, what).text
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).text
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -352,9 +419,12 @@ module PageObject
         # See PageObject::Accessors#div
         #
         def div_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'div'
           how, what = Elements::Div.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::Div.new(element, :platform => :selenium)
         end
 
@@ -363,9 +433,13 @@ module PageObject
         # See PageObject::Accessors#span
         #
         def span_text_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'span'
           how, what = Elements::Span.selenium_identifier_for identifier
-          @browser.find_element(how, what).text
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).text
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -373,9 +447,12 @@ module PageObject
         # See PageObject::Accessors#span
         #
         def span_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'span'
           how, what = Elements::Span.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::Span.new(element, :platform => :selenium)
         end
 
@@ -384,9 +461,12 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def click_button_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'submit'
           how, what = Elements::Button.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click
+          @browser.switch_to.default_content
         end
 
         #
@@ -394,9 +474,12 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def button_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'input', :type => 'submit'
           how, what = Elements::Button.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::Button.new(element, :platform => :selenium)
         end
 
@@ -405,9 +488,12 @@ module PageObject
         # See PageObject::Accessors#table
         #
         def table_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'table'
           how, what = Elements::Table.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::Table.new(element, :platform => :selenium)
         end
 
@@ -416,9 +502,13 @@ module PageObject
         # See PageObject::Accessors#cell
         #
         def cell_text_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'td'
           how, what = Elements::TableCell.selenium_identifier_for identifier
-          @browser.find_element(how, what).text
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).text
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -426,9 +516,12 @@ module PageObject
         # See PageObject::Accessors#cell
         #
         def cell_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'td'
           how, what = Elements::TableCell.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::TableCell.new(element, :platform => :selenium)
         end
 
@@ -437,9 +530,12 @@ module PageObject
         # See PageObject::Accessors#image
         #
         def image_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'img'
           how, what = Elements::Image.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::Image.new(element, :platform => :selenium)
         end
 
@@ -448,9 +544,12 @@ module PageObject
         # See PageObject::Accessors#form
         #
         def form_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'form'
           how, what = Elements::Form.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::Form.new(element, :platform => :selenium)
         end
 
@@ -459,9 +558,13 @@ module PageObject
         # See PageObject::Accessors#list_item
         #
         def list_item_text_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'li'
           how, what = Elements::ListItem.selenium_identifier_for identifier
-          @browser.find_element(how, what).text
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).text
+          @browser.switch_to.default_content
+          value
         end
 
         #
@@ -469,9 +572,12 @@ module PageObject
         # See PageObject::Accessors#list_item
         #
         def list_item_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'li'
           how, what = Elements::ListItem.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::ListItem.new(element, :platform => :selenium)
         end
 
@@ -480,9 +586,12 @@ module PageObject
         # See PageObject::Accessors#unordered_list
         #
         def unordered_list_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'ul'
           how, what = Elements::UnorderedList.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::UnorderedList.new(element, :platform => :selenium)
         end
 
@@ -491,9 +600,12 @@ module PageObject
         # See PageObject::Accessors#ordered_list
         #
         def ordered_list_for(identifier)
+          frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, 'ol'
           how, what = Elements::OrderedList.selenium_identifier_for identifier
+          switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
+          @browser.switch_to.default_content
           Object::PageObject::Elements::OrderedList.new(element, :platform => :selenium)
         end
 
@@ -518,6 +630,14 @@ module PageObject
           true
         end
 
+        def switch_to_frame(frame_identifiers)
+          if not frame_identifiers.nil?
+            frame_identifiers.each do |frame_id|
+              value = frame_id.values.first
+              @browser.switch_to.frame(value)
+            end
+          end          
+        end
       end
     end
   end

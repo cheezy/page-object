@@ -95,13 +95,6 @@ describe PageObject do
         watir_page_object.attach_to_window(:url => "success.html")
       end
       
-      it "should switch to a new frame by index" do
-        watir_browser.should_receive(:wd).and_return(watir_browser)
-        watir_browser.should_receive(:switch_to).and_return(watir_browser)
-        watir_browser.should_receive(:frame).with(0)
-        watir_page_object.switch_to_frame(0)
-      end
-      
       it "should refresh the page contents" do
         watir_browser.should_receive(:refresh)
         watir_page_object.refresh
@@ -169,12 +162,6 @@ describe PageObject do
         selenium_page_object.attach_to_window(:url => "page.html")
       end
       
-      it "should switch to a new frame by index" do
-        selenium_browser.should_receive(:switch_to).and_return(selenium_browser)
-        selenium_browser.should_receive(:frame).with(0)
-        selenium_page_object.switch_to_frame(0)
-      end
-
       it "should refresh the page contents" do
         selenium_browser.should_receive(:navigate).and_return(selenium_browser)
         selenium_browser.should_receive(:refresh)

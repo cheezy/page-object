@@ -9,6 +9,11 @@ end
 describe PageObject::Platforms::Selenium::PageObject do
   let(:selenium_browser) { mock_selenium_browser }
   let(:selenium_page_object) { SeleniumTestPageObject.new(selenium_browser) }
+  
+  before(:each) do
+    selenium_browser.stub(:switch_to).and_return(selenium_browser)
+    selenium_browser.stub(:default_content)
+  end
 
   context "when building identifiers hash" do
     it "should add tag_name when identifying by text for hidden_field" do
