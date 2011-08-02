@@ -3,7 +3,7 @@
   * Can now find a TableCell by its' text
   * If we receive an error calling #attach_to_window, wait one second and try again
   * Will call callback method #initialize_page method if it exists on a page object
-  * Renamed all *_<element_type> methods to *_element.  Created alias for backward compatability
+  * Renamed all *_<element_type> methods to *_element.  Created alias for backward compatibility
   * Delegating unknown method calls on Element to the driver element object
   * Improved block handling when passed to element creation method
   * Updated to use selenium-webdriver 2.3.2
