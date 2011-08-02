@@ -182,4 +182,8 @@ module PageObject
   def include_platform_driver(browser)
     @platform = load_platform(browser, PageObject::Platforms.get)
   end
+  
+  def call_block(&block)
+      block.arity == 1 ? block.call(self) : self.instance_eval(&block)      
+  end
 end

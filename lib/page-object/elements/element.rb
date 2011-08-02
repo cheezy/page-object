@@ -41,6 +41,17 @@ module PageObject
           return how, what
         end
       end
+      
+      # @private
+      # delegate calls to driver element
+      def method_missing(*args, &block)
+        m = args.shift
+        begin
+          element.send m, *args, &block
+        rescue Exception => e
+          raise
+        end
+      end
 
       protected
 

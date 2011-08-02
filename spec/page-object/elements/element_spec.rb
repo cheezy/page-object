@@ -9,6 +9,13 @@ describe PageObject::Elements::Element do
   let(:selenium_element) { PageObject::Elements::Element.new(selenium_driver, :platform => :selenium) }
   let(:element) { PageObject::Elements::Element }
 
+  context "when handling unknown requests" do
+    it "should delegate to the driver element" do
+      watir_driver.should_receive(:do_this)
+      watir_element.do_this
+    end
+  end
+
   context "when building the identifiers for Watir" do
     it "should build xpath when finding elements by name where not supported" do
       ['table', 'span', 'div', 'td', 'li', 'ol', 'ul'].each do |tag|

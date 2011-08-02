@@ -75,11 +75,12 @@ module PageObject
         platform.text_field_value_set(identifier.clone, value)
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.text_field_for(identifier.clone)
+        return call_block(&block) if block
+        platform.text_field_for(identifier.clone)
       end
       alias_method "#{name}_text_field".to_sym, "#{name}_element".to_sym
     end
-
+    
     #
     # adds two methods to the page object - one to get the text from a hidden field
     # and another to retrieve the hidden field element.
@@ -106,7 +107,8 @@ module PageObject
         platform.hidden_field_value_for identifier.clone
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.hidden_field_for(identifier.clone)
+        return call_block(&block) if block
+        platform.hidden_field_for(identifier.clone)
       end
       alias_method "#{name}_hidden_field".to_sym, "#{name}_element".to_sym
     end
@@ -140,7 +142,8 @@ module PageObject
         platform.text_area_value_set(identifier.clone, value)
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.text_area_for(identifier.clone)
+        return call_block(&block) if block
+        platform.text_area_for(identifier.clone)
       end
       alias_method "#{name}_text_area".to_sym, "#{name}_element".to_sym
     end
@@ -174,7 +177,8 @@ module PageObject
         platform.select_list_value_set(identifier.clone, value)
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.select_list_for(identifier.clone)
+        return call_block(&block) if block
+        platform.select_list_for(identifier.clone)
       end
       alias_method "#{name}_select_list".to_sym, "#{name}_element".to_sym
     end
@@ -207,7 +211,8 @@ module PageObject
         platform.click_link_for identifier.clone
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.link_for(identifier.clone)
+        return call_block(&block) if block
+        platform.link_for(identifier.clone)
       end
       alias_method "#{name}_link".to_sym, "#{name}_element".to_sym
     end
@@ -242,7 +247,8 @@ module PageObject
         platform.checkbox_checked?(identifier.clone)
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.checkbox_for(identifier.clone)
+        return call_block(&block) if block
+        platform.checkbox_for(identifier.clone)
       end
       alias_method "#{name}_checkbox".to_sym, "#{name}_element".to_sym
     end
@@ -278,7 +284,8 @@ module PageObject
         platform.radio_selected?(identifier.clone)
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.radio_button_for(identifier.clone)
+        return call_block(&block) if block
+        platform.radio_button_for(identifier.clone)
       end
       alias_method "#{name}_radio_button".to_sym, "#{name}_element".to_sym
     end
@@ -307,7 +314,8 @@ module PageObject
         platform.click_button_for identifier.clone
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.button_for(identifier.clone)
+        return call_block(&block) if block
+        platform.button_for(identifier.clone)
       end
       alias_method "#{name}_button".to_sym, "#{name}_element".to_sym
     end
@@ -336,7 +344,8 @@ module PageObject
         platform.div_text_for identifier.clone
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.div_for(identifier.clone)
+        return call_block(&block) if block
+        platform.div_for(identifier.clone)
       end
       alias_method "#{name}_div".to_sym, "#{name}_element".to_sym
     end
@@ -364,7 +373,8 @@ module PageObject
         platform.span_text_for identifier.clone
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.span_for(identifier.clone)
+        return call_block(&block) if block
+        platform.span_for(identifier.clone)
       end
       alias_method "#{name}_span".to_sym, "#{name}_element".to_sym
     end
@@ -388,7 +398,8 @@ module PageObject
     #
     def table(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.table_for(identifier.clone)
+        return call_block(&block) if block
+        platform.table_for(identifier.clone)
       end
       alias_method "#{name}_table".to_sym, "#{name}_element".to_sym
     end
@@ -417,7 +428,8 @@ module PageObject
         platform.cell_text_for identifier.clone
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.cell_for(identifier.clone)
+        return call_block(&block) if block
+        platform.cell_for(identifier.clone)
       end
       alias_method "#{name}_cell".to_sym, "#{name}_element".to_sym
     end
@@ -441,7 +453,8 @@ module PageObject
     #
     def image(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.image_for(identifier.clone)
+        return call_block(&block) if block
+        platform.image_for(identifier.clone)
       end
       alias_method "#{name}_image".to_sym, "#{name}_element".to_sym
     end
@@ -464,7 +477,8 @@ module PageObject
     #
     def form(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.form_for(identifier.clone)
+        return call_block(&block) if block
+        platform.form_for(identifier.clone)
       end
       alias_method "#{name}_form".to_sym, "#{name}_element".to_sym
     end
@@ -492,7 +506,8 @@ module PageObject
         platform.list_item_text_for identifier.clone
       end
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.list_item_for(identifier.clone)
+        return call_block(&block) if block
+        platform.list_item_for(identifier.clone)
       end
       alias_method "#{name}_list_item".to_sym, "#{name}_element".to_sym
     end
@@ -516,7 +531,8 @@ module PageObject
     #
     def unordered_list(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.unordered_list_for(identifier.clone)
+        return call_block(&block) if block
+        platform.unordered_list_for(identifier.clone)
       end
       alias_method "#{name}_unordered_list".to_sym, "#{name}_element".to_sym
     end
@@ -540,7 +556,8 @@ module PageObject
     #
     def ordered_list(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        block ? block.call(browser) : platform.ordered_list_for(identifier.clone)
+        return call_block(&block) if block
+        platform.ordered_list_for(identifier.clone)
       end
       alias_method "#{name}_ordered_list".to_sym, "#{name}_element".to_sym
     end

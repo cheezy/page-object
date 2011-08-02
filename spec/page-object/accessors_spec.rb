@@ -28,55 +28,55 @@ class BlockPageObject
 
   attr_reader :value
 
-  text_field :first_name do |browser|
+  text_field :first_name do |element|
     "text_field"
   end
-  hidden_field :secret do |browser|
+  hidden_field :secret do |element|
     "hidden_field"
   end
-  text_area :address do |browser|
+  text_area :address do |element|
     "text_area"
   end
-  select_list :state do |browser|
+  select_list :state do |element|
     "select_list"
   end
-  link :continue do |browser|
+  link :continue do |element|
     "link"
   end
-  checkbox :active do |browser|
+  checkbox :active do |element|
     "checkbox"
   end
-  radio_button :first do |browser|
+  radio_button :first do |element|
     "radio_button"
   end
-  button :click_me do |browser|
+  button :click_me do |element|
     "button"
   end
-  div :footer do |browser|
+  div :footer do |element|
     "div"
   end
-  span :alert do |browser|
+  span :alert do |element|
     "span"
   end
-  table :cart do |browser|
+  table :cart do |element|
     "table"
   end
-  cell :total do |browser|
+  cell :total do |element|
     "cell"
   end
-  image :logo do |browser|
+  image :logo do |element|
     "image"
   end
-  form :login do |browser|
+  form :login do |element|
     "form"
   end
-  list_item :item_one do |browser|
+  list_item :item_one do |element|
     "list_item"
   end
-  unordered_list :menu do |browser|
+  unordered_list :menu do |element|
     "unordered_list"
   end
-  ordered_list :top_five do |browser|
+  ordered_list :top_five do |element|
     "ordered_list"
   end
 end
