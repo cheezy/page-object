@@ -561,8 +561,7 @@ module PageObject
           return false if identifier[:index]
           return false if identifier[:text] and tag == 'input' and additional[:type] == 'hidden'
           return false if identifier[:href] and tag == 'a'
-          return false if identifier[:text] and tag == 'div'
-          return false if identifier[:text] and tag == 'td'
+          return false if identifier[:text] and ['div', 'span', 'td'].include? tag
           true
         end
 

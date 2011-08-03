@@ -18,6 +18,7 @@ Feature: Span
     | xpath     |
     | index     |
     | name      |
+    | text      |
 
   Scenario Outline: Locating span using multiple parameters
     When I search for the span by "<param1>" and "<param2>"
