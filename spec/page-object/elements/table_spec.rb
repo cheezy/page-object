@@ -27,14 +27,14 @@ describe PageObject::Elements::Table do
     end
 
     context "for watir" do
+      let(:watir_table) { PageObject::Elements::Table.new(table_element, :platform => :watir) }
+      
       it "should return a table row when indexed" do
-        watir_table = PageObject::Elements::Table.new(table_element, :platform => :watir)
         table_element.stub(:[]).with(1).and_return(table_element)
         watir_table[1].should be_instance_of PageObject::Elements::TableRow
       end
 
       it "should return the number of rows" do
-        watir_table = PageObject::Elements::Table.new(table_element, :platform => :watir)
         table_element.stub(:wd).and_return(table_element)
         table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
         table_element.should_receive(:size).and_return(2)
@@ -42,7 +42,6 @@ describe PageObject::Elements::Table do
       end
 
       it "should iterate over the table rows" do
-        watir_table = PageObject::Elements::Table.new(table_element, :platform => :watir)
         watir_table.should_receive(:rows).and_return(2)
         count = 0
         watir_table.each { |e| count += 1 }
@@ -51,21 +50,20 @@ describe PageObject::Elements::Table do
     end
 
     context "for selenium" do
+      let(:selenium_table) { PageObject::Elements::Table.new(table_element, :platform => :selenium) }
+      
       it "should return a table row when indexed" do
-        selenium_table = PageObject::Elements::Table.new(table_element, :platform => :selenium)
         table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
         selenium_table[1].should be_instance_of PageObject::Elements::TableRow
       end
 
       it "should return the number of rows" do
-        selenium_table = PageObject::Elements::Table.new(table_element, :platform => :selenium)
         table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
         table_element.should_receive(:size).and_return(2)
         selenium_table.rows.should == 2
       end
 
       it "should iterate over the table rows" do
-        selenium_table = PageObject::Elements::Table.new(table_element, :platform => :selenium)
         selenium_table.should_receive(:rows).and_return(2)
         count = 0
         selenium_table.each { |e| count += 1 }

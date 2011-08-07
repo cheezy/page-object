@@ -69,10 +69,14 @@ module PageObject
     #
     def text_field(name, identifier=nil, &block)
       define_method(name) do
-        platform.text_field_value_for identifier.clone
+        return platform.text_field_value_for identifier.clone unless block
+        element = self.send "#{name}_element"
+        element.value
       end
       define_method("#{name}=") do |value|
-        platform.text_field_value_set(identifier.clone, value)
+        return platform.text_field_value_set(identifier.clone, value) unless block
+        element = self.send "#{name}_element"
+        element.value = value
       end
       define_method("#{name}_element") do
         return call_block(&block) if block

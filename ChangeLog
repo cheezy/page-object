@@ -4,6 +4,7 @@
   * Can now find button by :value
   * Added #forward and #back methods to PageObject
   * Added #right_click and #double_click methods to Element
+  * Added #value= to TextField
   * Updated to use watir-webdriver 0.3.0
 
 === Version 0.2.3 / 2011-08-01
