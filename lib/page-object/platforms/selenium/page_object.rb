@@ -562,6 +562,7 @@ module PageObject
           return false if identifier[:text] and tag == 'input' and additional[:type] == 'hidden'
           return false if identifier[:href] and tag == 'a'
           return false if identifier[:text] and ['div', 'span', 'td'].include? tag
+          return false if identifier[:value] and tag == 'input' and additional[:type] == 'submit'
           true
         end
 
