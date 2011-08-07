@@ -6,14 +6,14 @@ describe PageObject::Elements::Button do
 
   context "when mapping how to find an element" do
     it "should map watir types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
+      [:class, :id, :index, :name, :value, :xpath].each do |t|
         identifier = button.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end
     end
 
     it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
+      [:class, :id, :index, :name, :value, :xpath].each do |t|
         key, value = button.selenium_identifier_for t => 'value'
         key.should == t
       end

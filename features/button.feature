@@ -26,6 +26,7 @@ Feature: Button
     | name      |
     | xpath     |
     | index     |
+    | value     |
 
   @watir_only
   Scenario Outline: Locating buttons on Watir only

@@ -306,6 +306,7 @@ module PageObject
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :text => Watir only
+    #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #

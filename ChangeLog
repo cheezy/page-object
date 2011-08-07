@@ -1,6 +1,7 @@
 === Version 0.2.4
 * Ehnancements
   * Can now find span by :text
+  * Can now find button by :value
   * Updated to use watir-webdriver 0.3.0
 
 === Version 0.2.3 / 2011-08-01
