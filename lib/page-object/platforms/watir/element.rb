@@ -84,13 +84,6 @@ module PageObject
         end
 
         #
-        # Click this element
-        #
-        def click
-          @element.click
-        end
-
-        #
         # Waits until the element is present
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out

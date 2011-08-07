@@ -86,8 +86,8 @@ module PageObject
         #
         # Click this element
         #
-        def click
-          @element.click
+        def right_click
+          @element.context_click
         end
 
         #

@@ -139,6 +139,16 @@ describe PageObject::Elements::Element do
       watir_driver.should_receive(:click)
       watir_element.click
     end
+    
+    it "should be double clickable" do
+      watir_driver.should_receive(:double_click)
+      watir_element.double_click
+    end
+    
+    it "should be right clickable" do
+      watir_driver.should_receive(:right_click)
+      watir_element.right_click
+    end
 
     it "should be able to block until it is present" do
       watir_driver.should_receive(:wait_until_present).with(10)
@@ -220,6 +230,16 @@ describe PageObject::Elements::Element do
     it "should be clickable" do
       selenium_driver.should_receive(:click)
       selenium_element.click
+    end
+
+    it "should be double clickable" do
+      selenium_driver.should_receive(:double_click)
+      selenium_element.double_click
+    end
+    
+    it "should be right clickable" do
+      selenium_driver.should_receive(:context_click)
+      selenium_element.right_click
     end
 
     it "should be able to block until it is present" do
