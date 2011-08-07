@@ -95,6 +95,22 @@ module PageObject
     def refresh
       @browser.refresh
     end
+    
+    #
+    # platform method to go back to the previous page
+    # See PageObject#back
+    #
+    def back
+      @browser.back
+    end
+    
+    #
+    # platform method to go forward to the next page
+    # See PageObject#forward
+    #
+    def forward
+      @browser.forward
+    end
 
     #
     # platform method to get the value stored in a text field

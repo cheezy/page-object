@@ -114,6 +114,22 @@ module PageObject
         end
 
         #
+        # platform method to go back to the previous page
+        # See PageObject#back
+        #
+        def back
+          @browser.navigate.back
+        end
+
+        #
+        # platform method to go forward to the next page
+        # See PageObject#forward
+        #
+        def forward
+          @browser.navigate.forward
+        end
+
+        #
         # platform method to get the value stored in a text field
         # See PageObject::Accessors#text_field
         #

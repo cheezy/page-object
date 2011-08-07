@@ -176,6 +176,20 @@ module PageObject
   def refresh
     platform.refresh
   end
+  
+  #
+  # Go back to the previous page
+  #
+  def back
+    platform.back
+  end
+  
+  #
+  # Go forward to the next page
+  #
+  def forward
+    platform.forward
+  end
 
   private
 

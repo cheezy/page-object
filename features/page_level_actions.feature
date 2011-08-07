@@ -40,3 +40,12 @@ Feature: Page level actions
     
   Scenario: Refreshing the page
     Then I should be able to refresh the page
+    
+  Scenario: Going back and forward
+    When I select the link labeled "Google Search"
+    Then the page should contain the text "Success"
+    When I press the back button
+    Then the page should contain the text "Static Elements Page"
+    When I press the forward button
+    Then the page should contain the text "Success"
+    

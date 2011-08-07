@@ -125,6 +125,16 @@ describe PageObject do
         watir_browser.should_receive(:refresh)
         watir_page_object.refresh
       end
+
+      it "should know how to go back" do
+        watir_browser.should_receive(:back)
+        watir_page_object.back
+      end
+
+      it "should know how to go forward" do
+        watir_browser.should_receive(:forward)
+        watir_page_object.forward
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -192,6 +202,18 @@ describe PageObject do
         selenium_browser.should_receive(:navigate).and_return(selenium_browser)
         selenium_browser.should_receive(:refresh)
         selenium_page_object.refresh
+      end
+      
+      it "should know how to go back" do
+        selenium_browser.should_receive(:navigate).and_return(selenium_browser)
+        selenium_browser.should_receive(:back)
+        selenium_page_object.back
+      end
+      
+      it "should know how to go forward" do
+        selenium_browser.should_receive(:navigate).and_return(selenium_browser)
+        selenium_browser.should_receive(:forward)
+        selenium_page_object.forward
       end
     end
   end
