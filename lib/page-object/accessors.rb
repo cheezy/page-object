@@ -326,7 +326,8 @@ module PageObject
     #
     def button(name, identifier=nil, &block)
       define_method(name) do
-        platform.click_button_for identifier.clone
+        return platform.click_button_for identifier.clone unless block
+        self.send("#{name}_element").click
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -356,7 +357,8 @@ module PageObject
     #
     def div(name, identifier=nil, &block)
       define_method(name) do
-        platform.div_text_for identifier.clone
+        return platform.div_text_for identifier.clone unless block
+        self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -385,7 +387,8 @@ module PageObject
     #
     def span(name, identifier=nil, &block)
       define_method(name) do
-        platform.span_text_for identifier.clone
+        return platform.span_text_for identifier.clone unless block
+        self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -440,7 +443,8 @@ module PageObject
     #
     def cell(name, identifier=nil, &block)
       define_method("#{name}") do
-        platform.cell_text_for identifier.clone
+        return platform.cell_text_for identifier.clone unless block
+        self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -518,7 +522,8 @@ module PageObject
     #
     def list_item(name, identifier=nil, &block)
       define_method(name) do
-        platform.list_item_text_for identifier.clone
+        return platform.list_item_text_for identifier.clone unless block
+        self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
