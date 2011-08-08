@@ -12,6 +12,13 @@ module PageObject
         def [](idx)
           options[idx]
         end
+        
+        #
+        # Select a value from the list
+        #
+        def select(value)
+          @element.send_keys(value)
+        end
 
         #
         # Return an array of Options contained in the select lit.

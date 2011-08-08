@@ -43,7 +43,6 @@ describe PageObject::Elements::SelectList do
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         watir_sel_list.options.size.should == 2
       end
-
     end
 
     context "for selenium" do
@@ -57,6 +56,12 @@ describe PageObject::Elements::SelectList do
         selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         selenium_sel_list.options.size.should == 2
+      end
+
+      it "should select an element" do
+        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
+        sel_list.should_receive(:send_keys).with('something')
+        selenium_sel_list.select 'something'
       end
     end
   end

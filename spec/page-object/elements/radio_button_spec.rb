@@ -18,4 +18,28 @@ describe PageObject::Elements::RadioButton do
       end
     end
   end
+
+  describe "interface" do
+    context "for selenium" do
+      let(:selenium_rb) { double('radio_button') }
+      let(:radio_button) { PageObject::Elements::RadioButton.new(selenium_rb, :platform => :selenium) }
+
+      it "should select" do
+        selenium_rb.should_receive(:click)
+        selenium_rb.should_receive(:selected?).and_return(false)
+        radio_button.select
+      end
+      
+      it "should clear" do
+        selenium_rb.should_receive(:click)
+        selenium_rb.should_receive(:selected?).and_return(true)
+        radio_button.clear
+      end
+      
+      it "should know if it is selected" do
+        selenium_rb.should_receive(:selected?).and_return(true)
+        radio_button.should be_selected
+      end
+    end
+  end
 end

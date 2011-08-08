@@ -31,7 +31,7 @@ describe PageObject::Elements::TextField do
     end
   end
   
-  describe "interface" do    
+  describe "interface" do
     context "for selenium" do
       it "should set its' value" do
         text_field_element = double('selenium_text_field')

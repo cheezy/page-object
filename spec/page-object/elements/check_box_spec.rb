@@ -18,4 +18,29 @@ describe PageObject::Elements::CheckBox do
       end
     end
   end
+  
+  describe "interface" do
+    let(:check_box) { double('check_box') }
+    let(:selenium_cb) { PageObject::Elements::CheckBox.new(check_box, :platform => :selenium) }
+
+    
+    context "for selenium" do
+      it "should check" do
+        check_box.should_receive(:click)
+        check_box.should_receive(:selected?).and_return(false)
+        selenium_cb.check
+      end
+
+      it "should uncheck" do
+        check_box.should_receive(:click)
+        check_box.should_receive(:selected?).and_return(true)
+        selenium_cb.uncheck
+      end
+      
+      it "should know if it is checked" do
+        check_box.should_receive(:selected?).and_return(true)
+        selenium_cb.should be_checked
+      end
+    end
+  end
 end

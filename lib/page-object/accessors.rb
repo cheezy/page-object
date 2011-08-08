@@ -70,13 +70,11 @@ module PageObject
     def text_field(name, identifier=nil, &block)
       define_method(name) do
         return platform.text_field_value_for identifier.clone unless block
-        element = self.send "#{name}_element"
-        element.value
+        self.send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
         return platform.text_field_value_set(identifier.clone, value) unless block
-        element = self.send "#{name}_element"
-        element.value = value
+        self.send("#{name}_element").value = value
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -108,7 +106,8 @@ module PageObject
     #
     def hidden_field(name, identifier=nil, &block)
       define_method(name) do
-        platform.hidden_field_value_for identifier.clone
+        return platform.hidden_field_value_for identifier.clone unless block
+        self.send("#{name}_element").value
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -140,10 +139,12 @@ module PageObject
     #
     def text_area(name, identifier=nil, &block)
       define_method(name) do
-        platform.text_area_value_for identifier.clone
+        return platform.text_area_value_for identifier.clone unless block
+        self.send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
-        platform.text_area_value_set(identifier.clone, value)
+        return platform.text_area_value_set(identifier.clone, value) unless block
+        self.send("#{name}_element").value = value
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -175,10 +176,12 @@ module PageObject
     #
     def select_list(name, identifier=nil, &block)
       define_method(name) do
-        platform.select_list_value_for identifier.clone
+        return platform.select_list_value_for identifier.clone unless block
+        self.send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
-        platform.select_list_value_set(identifier.clone, value)
+        return platform.select_list_value_set(identifier.clone, value) unless block
+        self.send("#{name}_element").select(value)
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -212,7 +215,8 @@ module PageObject
     #
     def link(name, identifier=nil, &block)
       define_method(name) do
-        platform.click_link_for identifier.clone
+        return platform.click_link_for identifier.clone unless block
+        self.send("#{name}_element").click
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -242,13 +246,16 @@ module PageObject
     #
     def checkbox(name, identifier=nil, &block)
       define_method("check_#{name}") do
-        platform.check_checkbox(identifier.clone)
+        return platform.check_checkbox(identifier.clone) unless block
+        self.send("#{name}_element").check
       end
       define_method("uncheck_#{name}") do
-        platform.uncheck_checkbox(identifier.clone)
+        return platform.uncheck_checkbox(identifier.clone) unless block
+        self.send("#{name}_element").uncheck
       end
       define_method("#{name}_checked?") do
-        platform.checkbox_checked?(identifier.clone)
+        return platform.checkbox_checked?(identifier.clone) unless block
+        self.send("#{name}_element").checked?
       end
       define_method("#{name}_element") do
         return call_block(&block) if block
@@ -279,13 +286,16 @@ module PageObject
     #
     def radio_button(name, identifier=nil, &block)
       define_method("select_#{name}") do
-        platform.select_radio(identifier.clone)
+        return platform.select_radio(identifier.clone) unless block
+        self.send("#{name}_element").select
       end
       define_method("clear_#{name}") do
-        platform.clear_radio(identifier.clone)
+        return platform.clear_radio(identifier.clone) unless block
+        self.send("#{name}_element").clear
       end
       define_method("#{name}_selected?") do
-        platform.radio_selected?(identifier.clone)
+        return platform.radio_selected?(identifier.clone) unless block
+        self.send("#{name}_element").selected?
       end
       define_method("#{name}_element") do
         return call_block(&block) if block

@@ -14,6 +14,13 @@ module PageObject
         end
 
         #
+        # Select a value from the list
+        #
+        def select(value)
+          @element.select(value)
+        end
+
+        #
         # Return an array of Options contained in the select lit.
         #
         # @return [array of PageObject::Elements::Option]
