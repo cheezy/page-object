@@ -1,5 +1,5 @@
 === Version 0.2.4 / 2011-08-80
-* Ehnancements
+* Enhancements
   * Can now find span by :text
   * Can now find button by :value
   * Added #forward and #back methods to PageObject
