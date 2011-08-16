@@ -184,16 +184,16 @@ describe PageObject do
       
       it "should switch to a new window with a given title" do
         selenium_browser.should_receive(:window_handles).and_return(["win1"])
-        selenium_browser.should_receive(:switch_to).and_return(selenium_browser)
-        selenium_browser.should_receive(:window).with("win1").and_return(selenium_browser)
+        selenium_browser.should_receive(:switch_to).twice.and_return(selenium_browser)
+        selenium_browser.should_receive(:window).twice.with("win1").and_return(selenium_browser)
         selenium_browser.should_receive(:title).and_return("My Title")
         selenium_page_object.attach_to_window(:title => "My Title")
       end
       
       it "should switch to a new window with a given url" do
         selenium_browser.should_receive(:window_handles).and_return(["win1"])
-        selenium_browser.should_receive(:switch_to).and_return(selenium_browser)
-        selenium_browser.should_receive(:window).with("win1").and_return(selenium_browser)
+        selenium_browser.should_receive(:switch_to).twice.and_return(selenium_browser)
+        selenium_browser.should_receive(:window).twice.with("win1").and_return(selenium_browser)
         selenium_browser.should_receive(:current_url).and_return("page.html")
         selenium_page_object.attach_to_window(:url => "page.html")
       end

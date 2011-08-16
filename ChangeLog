@@ -1,5 +1,6 @@
 === Version 0.2.5
 * Enhancements
+  * #attach_to_window takes an optional block - will return to calling window after block executes
   * Updated to use selenium-webdriver 2.4.0
   * Updated to use watir-webdriver 0.3.1
 

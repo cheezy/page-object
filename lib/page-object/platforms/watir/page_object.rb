@@ -83,9 +83,9 @@ module PageObject
     # platform method to handle attaching to a running window
     # See PageObject#attach_to_window
     #
-    def attach_to_window(identifier)
+    def attach_to_window(identifier, &block)
       win_id = {identifier.keys.first => /#{Regexp.escape(identifier.values.first)}/}
-      @browser.window(win_id).use
+      @browser.window(win_id, &block).use
     end
     
     #

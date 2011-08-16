@@ -93,14 +93,15 @@ module PageObject
         # platform method to handle attaching to a running window
         # See PageObject#attach_to_window
         #
-        def attach_to_window(identifier)
+        def attach_to_window(identifier, &block)
+          match = identifier.values.first
           handles = @browser.window_handles
           handles.each do |handle|
             @browser.switch_to.window handle
-            if identifier.keys.first == :title
-              return if @browser.title == identifier.values.first
-            elsif identifier.keys.first == :url
-              return if @browser.current_url == identifier.values.first
+            if identifier.keys.first == :title and @browser.title == match
+              return @browser.switch_to.window handle, &block
+            elsif identifier.keys.first == :url and @browser.current_url == match
+              return @browser.switch_to.window handle, &block
             end
           end
         end

@@ -160,13 +160,15 @@ module PageObject
   #
   # @param [Hash] either :title or :url of the other window.  The url does not need to
   # be the entire url - it can just be the page name like index.html
+  # @param block if present the block is executed and then execution is returned to the
+  # calling window
   #
-  def attach_to_window(identifier)
+  def attach_to_window(identifier, &block)
     begin
-      platform.attach_to_window(identifier)
+      platform.attach_to_window(identifier, &block)
     rescue
       sleep 1
-      platform.attach_to_window(identifier)
+      platform.attach_to_window(identifier, &block)
     end
   end
   
