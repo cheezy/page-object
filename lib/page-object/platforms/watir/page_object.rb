@@ -85,7 +85,7 @@ module PageObject
     #
     def attach_to_window(identifier, &block)
       win_id = {identifier.keys.first => /#{Regexp.escape(identifier.values.first)}/}
-      @browser.window(win_id, &block).use
+      @browser.window(win_id).use &block
     end
     
     #
