@@ -1,6 +1,7 @@
 require 'page-object/version'
 require 'page-object/accessors'
 require 'page-object/platforms'
+require 'page-object/element_locators'
 
 #
 # Module that when included adds functionality to a page object.  This module
@@ -32,6 +33,8 @@ require 'page-object/platforms'
 #
 module PageObject
   include LoadsPlatform
+  include ElementLocators
+  
   # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
   attr_reader :browser
   # @return [PageObject::WatirPageObject or PageObject::SeleniumPageObject] the platform page object

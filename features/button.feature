@@ -45,3 +45,8 @@ Feature: Button
     | param1 | param2 |
     | class  | index  |
     | name   | index  |
+    
+  Scenario: Finding a button dynamically
+    When I find a button while the script is executing
+    Then I should be able to click the button element
+  

@@ -151,25 +151,9 @@ When /^I search for the span by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
   @text = @page.send "span_#{param1}_#{param2}".to_sym
 end
 
-When /^I click the button$/ do
-  @page.button_id
-end
-
 Then /^I should be on the success page$/ do
   @page.text.should include 'Success'
   @page.title.should == 'Success'
-end
-
-When /^I search for the button by "([^\"]*)"$/ do |how|
-  @how = how
-end
-
-When /^I search for the button by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @how = "#{param1}_#{param2}"
-end
-
-Then /^I should be able to click the button$/ do
-  @page.send "button_#{@how}"
 end
 
 When /^I search for the table cell by "([^\"]*)"$/ do |how|
