@@ -16,4 +16,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.button(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Button
   end
+  
+  it "should find a text field element" do
+    watir_browser.should_receive(:text_field).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.text_field(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::TextField
+  end
 end

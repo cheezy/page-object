@@ -37,3 +37,7 @@ Feature: Text Fields
     When I retrieve a text field
     Then I should know it exists
     And I should know it is visible
+
+  Scenario: Finding a text field dynamically
+    When I find a text field while the script is executing
+    Then I should be able to type "I found it" into the field element
