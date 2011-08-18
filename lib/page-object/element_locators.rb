@@ -37,5 +37,23 @@ module PageObject
       platform.text_field_for(identifier.clone)
     end
     
+    #
+    # Finds a hidden field
+    #
+    # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :tag_name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def hidden_field(identifier)
+      platform.hidden_field_for(identifier.clone)
+    end
+    
   end
 end

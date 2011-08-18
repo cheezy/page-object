@@ -22,4 +22,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.text_field(:id => 'blah')
     element.should be_instance_of PageObject::Elements::TextField
   end
+  
+  it "should find a hidden field element" do
+    watir_browser.should_receive(:hidden).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.hidden_field(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::HiddenField
+  end
 end

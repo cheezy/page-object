@@ -30,3 +30,7 @@ Feature: Hidden Fields
     | param1 | param2 |
     | class  | index  |
     | name   | index  |
+
+  Scenario: Finding a hidden field dynamically
+    When I find a hidden field while the script is executing
+    Then hidden field element should contains "12345"
