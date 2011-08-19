@@ -23,7 +23,7 @@ Feature: Select List
     | xpath     |
     | index     |
 
-  Scenario Outline: Locating a hidden field using multiple parameters
+  Scenario Outline: Locating a select list using multiple parameters
     When I search for the select list by "<param1>" and "<param2>"
     Then I should be able to select "Test 2"
     And the value for the selected item should be "option2"
@@ -38,3 +38,7 @@ Feature: Select List
     Then option "1" should contain "Test 1"
     And option "2" should contain "Test 2"
     And each option should contain "Test"
+
+  Scenario: Finding a select list dynamically
+    When I find a select list while the script is executing
+    Then I should be able to select "Test 2" from the list

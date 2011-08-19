@@ -72,5 +72,21 @@ module PageObject
       platform.text_area_for(identifier.clone)
     end
     
+    #
+    # Finds a select list
+    #
+    # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir only
+    #   * :value => Watir only
+    #   * :xpath => Watir and Selenium
+    #
+    def select_list_element(identifier)
+      platform.select_list_for(identifier.clone)
+    end
   end
 end

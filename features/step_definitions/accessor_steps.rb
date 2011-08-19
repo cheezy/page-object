@@ -10,29 +10,8 @@ Then /^I should be able to select the link$/ do
   @page.send "google_search_#{@how}".to_sym
 end
 
-When /^I select "([^\"]*)" from the select list$/ do |text|
-  @page.sel_list_id = text
-end
-
 Then /^the current item should be "([^\"]*)"$/ do |expected_text|
   @page.sel_list_id.should == expected_text
-end
-
-When /^I search for the select list by "([^\"]*)"$/ do |how|
-  @how = how
-end
-
-When /^I search for the select list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @how = "#{param1}_#{param2}"
-end
-
-Then /^I should be able to select "([^\"]*)"$/ do |value|
-  @page.send "sel_list_#{@how}=".to_sym, value
-end
-
-Then /^the value for the selected item should be "([^\"]*)"$/ do |value|
-  result = @page.send "sel_list_#{@how}".to_sym
-  result.should == value
 end
 
 When /^I select the First check box$/ do

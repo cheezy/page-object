@@ -32,4 +32,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.text_area_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::TextArea
   end
+  
+  it "should find a select list element" do
+    watir_browser.should_receive(:select_list).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.select_list_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::SelectList
+  end
 end
