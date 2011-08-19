@@ -80,4 +80,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.cell_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::TableCell
   end
+  
+  it "should find an image" do
+    watir_browser.should_receive(:image).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.image_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Image
+  end
 end

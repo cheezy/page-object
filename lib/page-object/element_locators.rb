@@ -199,5 +199,20 @@ module PageObject
     def cell_element(identifier)
       platform.cell_for(identifier.clone)
     end
+    
+    #
+    # Finds an image
+    #
+    # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def image_element(identifier)
+      platform.image_for(identifier.clone)
+    end
   end
 end

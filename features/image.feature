@@ -30,3 +30,8 @@ Feature: Image
     | param1 | param2 |
     | class  | index  |
     | name   | index  |
+
+  Scenario: Finding an image dynamically
+    When I get the image element while the script is executing
+    Then the image should be "106" pixels wide
+    And the image should be "106" pixels tall

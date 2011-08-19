@@ -14,6 +14,7 @@
     * #span_element
     * #table_element
     * #cell_element
+    * #image_element
   * Updated to use selenium-webdriver 2.4.0
   * Updated to use watir-webdriver 0.3.2
 

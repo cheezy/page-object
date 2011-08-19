@@ -11,26 +11,6 @@ Then /^I should be on the success page$/ do
   @page.title.should == 'Success'
 end
 
-When /^I get the image element$/ do
-  @element = @page.image_id_image
-end
-
-Then /^the image should be "([^\"]*)" pixels wide$/ do |width|
-  @element.width.should == width.to_i
-end
-
-Then /^the image should be "([^\"]*)" pixels tall$/ do |height|
-  @element.height.should == height.to_i
-end
-
-When /^I get the image element by "([^\"]*)"$/ do |how|
-  @element = @page.send "image_#{how}_element"
-end
-
-When /^I get the image element by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @element = @page.send "image_#{param1}_#{param2}_element"
-end
-
 Then /^I should be able to submit the form$/ do
   @element.submit
 end
