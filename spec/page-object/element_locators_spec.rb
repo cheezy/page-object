@@ -74,4 +74,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.table_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Table
   end
+  
+  it "should find a table cell" do
+    watir_browser.should_receive(:td).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.cell_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::TableCell
+  end
 end

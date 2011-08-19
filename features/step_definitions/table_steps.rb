@@ -13,14 +13,6 @@ Then /^the cell data should be '([^"]*)'$/ do |expected|
   @cell_data.should == expected
 end
 
-When /^I search for the table cell by "([^\"]*)"$/ do |how|
-  @cell_data = @page.send "cell_#{how}"
-end
-
-When /^I retrieve a table cell element by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @cell_data = @page.send "cell_#{param1}_#{param2}"
-end
-
 When /^I retrieve a table element by "([^\"]*)"$/ do |how|
   @element = @page.send "table_#{how}_element"
 end
