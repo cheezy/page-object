@@ -1,4 +1,4 @@
-=== Version 0.2.5
+=== Version 0.2.5 / 2011-08-19
 * Enhancements
   * #attach_to_window takes an optional block - will return to calling window after block executes
   * Added the following instance methods to PageObject via ElementLocators
