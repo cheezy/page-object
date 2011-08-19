@@ -153,5 +153,20 @@ module PageObject
     def div_element(identifier)
       platform.div_for(identifier.clone)
     end
+
+    #
+    # Finds a span
+    #
+    # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def span_element(identifier)
+      platform.span_for(identifier.clone)
+    end
   end
 end
