@@ -17,6 +17,8 @@
     * #image_element
     * #form_element
     * #list_item_element
+    * #unordered_list_element
+    * #ordered_list_element
   * Updated to use selenium-webdriver 2.4.0
   * Updated to use watir-webdriver 0.3.2
 

@@ -98,4 +98,16 @@ describe PageObject::ElementLocators do
     element = watir_page_object.list_item_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::ListItem
   end
+  
+  it "should find an unordered list" do
+    watir_browser.should_receive(:ul).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.unordered_list_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::UnorderedList
+  end
+  
+  it "should find an ordered list" do
+    watir_browser.should_receive(:ol).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.ordered_list_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::OrderedList
+  end
 end

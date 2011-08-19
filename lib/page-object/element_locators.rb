@@ -243,5 +243,35 @@ module PageObject
     def list_item_element(identifier)
       platform.list_item_for(identifier.clone)
     end
+
+    #
+    # Finds an unordered list
+    #
+    # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def unordered_list_element(identifier)
+      platform.unordered_list_for(identifier.clone)
+    end
+
+    #
+    #  Finds an ordered list
+    #
+    # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def ordered_list_element(identifier)
+      platform.ordered_list_for(identifier.clone)
+    end
   end
 end

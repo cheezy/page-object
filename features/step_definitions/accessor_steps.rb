@@ -11,37 +11,12 @@ Then /^I should be on the success page$/ do
   @page.title.should == 'Success'
 end
 
-When /^I get the first item from the unordered list$/ do
-  @element = @page.ul_id_element[0]
-end
-
 Then /^the list items text should be "([^\"]*)"$/ do |expected_text|
   @element.text.should == expected_text
 end
 
-When /^I search for the unordered list by "([^\"]*)"$/ do |how|
-  @list = @page.send "ul_#{how}_element"
-end
-
-When /^I search for the unordered list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @list = @page.send "ul_#{param1}_#{param2}_element"
-end
-
-
 When /^I get the first item from the list$/ do
   @element = @list[0]
-end
-
-When /^I get the first item from the ordered list$/ do
-  @element = @page.ol_id_element[0]
-end
-
-When /^I search for the ordered list by "([^\"]*)"$/ do |how|
-  @list = @page.send "ol_#{how}_element"
-end
-
-When /^I search for the ordered list by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @list = @page.send "ol_#{param1}_#{param2}_element"
 end
 
 Then /^the table should have "([^\"]*)" rows$/ do |rows|
