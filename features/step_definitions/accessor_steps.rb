@@ -1,15 +1,3 @@
-When /^I select the link labeled "([^\"]*)"$/ do |text|
-  @page.google_search_id
-end
-
-When /^I search for the link by "([^\"]*)"$/ do |how|
-  @how = how
-end
-
-Then /^I should be able to select the link$/ do
-  @page.send "google_search_#{@how}".to_sym
-end
-
 Then /^the current item should be "([^\"]*)"$/ do |expected_text|
   @page.sel_list_id.should == expected_text
 end

@@ -88,5 +88,24 @@ module PageObject
     def select_list_element(identifier)
       platform.select_list_for(identifier.clone)
     end
+    
+    #
+    # Finds a link
+    #
+    # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :href => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :link => Watir and Selenium
+    #   * :link_text => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def link_element(identifier)
+      platform.link_for(identifier.clone)
+    end
   end
 end

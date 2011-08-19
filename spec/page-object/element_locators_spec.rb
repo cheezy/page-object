@@ -38,4 +38,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.select_list_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::SelectList
   end
+  
+  it "should find a link element" do
+    watir_browser.should_receive(:link).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.link_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Link
+  end
 end
