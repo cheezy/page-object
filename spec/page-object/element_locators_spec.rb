@@ -13,19 +13,19 @@ describe PageObject::ElementLocators do
   
   it "should find a button element" do
     watir_browser.should_receive(:button).with(:id => 'blah').and_return(watir_browser)
-    element = watir_page_object.button(:id => 'blah')
+    element = watir_page_object.button_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Button
   end
   
   it "should find a text field element" do
     watir_browser.should_receive(:text_field).with(:id => 'blah').and_return(watir_browser)
-    element = watir_page_object.text_field(:id => 'blah')
+    element = watir_page_object.text_field_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::TextField
   end
   
   it "should find a hidden field element" do
     watir_browser.should_receive(:hidden).with(:id => 'blah').and_return(watir_browser)
-    element = watir_page_object.hidden_field(:id => 'blah')
+    element = watir_page_object.hidden_field_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::HiddenField
   end
 end

@@ -2,9 +2,9 @@
 * Enhancements
   * #attach_to_window takes an optional block - will return to calling window after block executes
   * Added the following instance methods to PageObject
-    * #button
-    * #text_field
-    * #hidden_field
+    * #button_element
+    * #text_field_element
+    * #hidden_field_element
   * Updated to use selenium-webdriver 2.4.0
   * Updated to use watir-webdriver 0.3.2
 

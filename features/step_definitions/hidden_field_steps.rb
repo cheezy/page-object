@@ -19,5 +19,5 @@ When /^I search for the hidden field by "([^"]*)" and "([^"]*)"$/ do |param1, pa
 end
 
 When /^I find a hidden field while the script is executing$/ do
-  @element = @page.hidden_field(:id => 'hidden_field_id')
+  @element = @page.hidden_field_element(:id => 'hidden_field_id')
 end

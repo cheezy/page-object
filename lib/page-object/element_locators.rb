@@ -14,7 +14,7 @@ module PageObject
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def button(identifier)
+    def button_element(identifier)
       platform.button_for(identifier.clone)
     end
     
@@ -33,7 +33,7 @@ module PageObject
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #
-    def text_field(identifier)
+    def text_field_element(identifier)
       platform.text_field_for(identifier.clone)
     end
     
@@ -51,7 +51,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def hidden_field(identifier)
+    def hidden_field_element(identifier)
       platform.hidden_field_for(identifier.clone)
     end
     
