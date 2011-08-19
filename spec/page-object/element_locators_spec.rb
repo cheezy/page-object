@@ -44,4 +44,16 @@ describe PageObject::ElementLocators do
     element = watir_page_object.link_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Link
   end
+  
+  it "should find a check box" do
+    watir_browser.should_receive(:checkbox).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.checkbox_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::CheckBox
+  end
+  
+  it "should find a radio button" do
+    watir_browser.should_receive(:radio).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.radio_button_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::RadioButton
+  end
 end

@@ -39,3 +39,7 @@ Feature: Radio Buttons
     When I retrieve a radio button
     Then I should know it exists
     And I should know it is visible
+
+  Scenario: Finding a radio button dynamically
+    When I select the radio button while the script is executing
+    Then the "Milk" radio button should be selected

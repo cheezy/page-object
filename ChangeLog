@@ -8,6 +8,8 @@
     * #text_area_element
     * #select_list_element
     * #link_element
+    * #checkbox_element
+    * #radio_button_element
   * Updated to use selenium-webdriver 2.4.0
   * Updated to use watir-webdriver 0.3.2
 

@@ -6,7 +6,7 @@ Feature: Check Box
   Background:
     Given I am on the static elements page
 
-  Scenario: Selecting an element on the select list
+  Scenario: Selecting a check box
     When I select the First check box
     Then the First check box should be selected
     When I unselect the First check box
@@ -33,9 +33,11 @@ Feature: Check Box
     | class  | index  |
     | name   | index  |
 
-
   Scenario: Retrieve a CheckBox
     When I retrieve a check box element
     Then I should know it exists
     And I should know it is visible
       
+  Scenario: Finding a check box dynamically
+    When I select the first check box while the script is executing
+    Then the First check box should be selected

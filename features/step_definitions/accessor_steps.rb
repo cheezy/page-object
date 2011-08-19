@@ -2,54 +2,6 @@ Then /^the current item should be "([^\"]*)"$/ do |expected_text|
   @page.sel_list_id.should == expected_text
 end
 
-When /^I select the First check box$/ do
-  @page.check_cb_id
-end
-
-Then /^the First check box should be selected$/ do
-  @page.cb_id_checked?.should be_true
-end
-
-When /^I unselect the First check box$/ do
-  @page.uncheck_cb_id
-end
-
-Then /^the First check box should not be selected$/ do
-  @page.cb_id_checked?.should be_false
-end
-
-When /^I search for the check box by "([^\"]*)"$/ do |how|
-  @how = how
-end
-
-When /^I search for the check box by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @how = "#{param1}_#{param2}"
-end
-
-Then /^I should be able to check the check box$/ do
-  @page.send "check_cb_#{@how}".to_sym
-end
-
-When /^I select the "([^\"]*)" radio button$/ do |how|
-  @page.send "select_#{how.downcase}_id".to_sym
-end
-
-Then /^the "([^\"]*)" radio button should be selected$/ do |how|
-  @page.send "#{how.downcase}_id_selected?".to_sym
-end
-
-When /^I search for the radio button by "([^\"]*)"$/ do |how|
-  @how = how
-end
-
-When /^I search for the radio button by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @how = "#{param1}_#{param2}"
-end
-
-When /^I select the radio button$/ do
-  @page.send "select_milk_#{@how}".to_sym
-end
-
 When /^I get the text from the div$/ do
   @text = @page.div_id
 end
