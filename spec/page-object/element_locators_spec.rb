@@ -56,4 +56,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.radio_button_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::RadioButton
   end
+  
+  it "should find a div" do
+    watir_browser.should_receive(:div).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.div_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Div
+  end
 end

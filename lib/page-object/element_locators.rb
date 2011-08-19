@@ -137,5 +137,21 @@ module PageObject
     def radio_button_element(identifier)
       platform.radio_button_for(identifier.clone)
     end
+
+    #
+    # Finds a div
+    #
+    # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def div_element(identifier)
+      platform.div_for(identifier.clone)
+    end
   end
 end

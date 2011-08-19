@@ -10,10 +10,11 @@
     * #link_element
     * #checkbox_element
     * #radio_button_element
+    * #div_element
   * Updated to use selenium-webdriver 2.4.0
   * Updated to use watir-webdriver 0.3.2
 
-=== Version 0.2.4 / 2011-08-80
+=== Version 0.2.4 / 2011-08-08
 * Enhancements
   * Can now find span by :text
   * Can now find button by :value

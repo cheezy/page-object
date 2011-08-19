@@ -2,20 +2,8 @@ Then /^the current item should be "([^\"]*)"$/ do |expected_text|
   @page.sel_list_id.should == expected_text
 end
 
-When /^I get the text from the div$/ do
-  @text = @page.div_id
-end
-
 Then /^the text should be "([^\"]*)"$/ do |expected_text|
   @text.should == expected_text
-end
-
-When /^I search for the div by "([^\"]*)"$/ do |how|
-  @text = @page.send "div_#{how}".to_sym
-end
-
-When /^I search for the div by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
-  @text = @page.send "div_#{param1}_#{param2}".to_sym
 end
 
 When /^I get the text from the span$/ do
