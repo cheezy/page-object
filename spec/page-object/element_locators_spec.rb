@@ -68,4 +68,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.span_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Span
   end
+  
+  it "should find a table" do
+    watir_browser.should_receive(:table).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.table_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Table
+  end
 end

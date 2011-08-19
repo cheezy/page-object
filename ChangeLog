@@ -12,6 +12,7 @@
     * #radio_button_element
     * #div_element
     * #span_element
+    * #table_element
   * Updated to use selenium-webdriver 2.4.0
   * Updated to use watir-webdriver 0.3.2
 
