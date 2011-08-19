@@ -55,5 +55,22 @@ module PageObject
       platform.hidden_field_for(identifier.clone)
     end
     
+    #
+    # Finds a text area
+    #
+    # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :tag_name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def text_area_element(identifier)
+      platform.text_area_for(identifier.clone)
+    end
+    
   end
 end
