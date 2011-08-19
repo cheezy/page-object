@@ -27,3 +27,6 @@ Feature: Form
     | class  | index  |
     | name   | index  |
 
+  Scenario: Finding a form dynamically
+    When I locate a form while the script is executing
+    Then I should be able to submit the form

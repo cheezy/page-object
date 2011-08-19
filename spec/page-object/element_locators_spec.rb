@@ -86,4 +86,16 @@ describe PageObject::ElementLocators do
     element = watir_page_object.image_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Image
   end
+  
+  it "should find a form" do
+    watir_browser.should_receive(:form).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.form_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Form
+  end
+  
+  it "should find a list item" do
+    watir_browser.should_receive(:li).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.list_item_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::ListItem
+  end
 end

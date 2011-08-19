@@ -214,5 +214,34 @@ module PageObject
     def image_element(identifier)
       platform.image_for(identifier.clone)
     end
+    
+    #
+    # Finds a form
+    #
+    # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def form_element(identifier)
+      platform.form_for(identifier.clone)
+    end
+
+    #
+    # Finds a list item
+    #
+    # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def list_item_element(identifier)
+      platform.list_item_for(identifier.clone)
+    end
   end
 end
