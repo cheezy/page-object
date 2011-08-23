@@ -175,6 +175,10 @@ module PageObject
     end
   end
   
+  def attach_to_modal
+    platform.attach_to_modal
+  end
+  
   #
   # Refresh to current page
   #

@@ -167,6 +167,14 @@ class Page
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')
   button(:prompt_button, :id => 'prompt_button')
+  button(:launch_modal_button, :id => 'launch_modal_button')
   
   link(:open_window, :text => 'New Window')
+end
+
+class SecondPage
+  include PageObject
+  button(:close_modal_button, :id => "close_window")
+  button(:delayed_close, :id => "delayed_close")
+  button(:launch_modal_button, :id => "launch_modal_button")
 end

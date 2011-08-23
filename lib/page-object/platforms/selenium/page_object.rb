@@ -106,6 +106,10 @@ module PageObject
           end
         end
         
+        def attach_to_modal
+          @browser.switch_to.window(@browser.window_handle)
+        end
+        
         #
         # platform method to refresh the page
         # See PageObject#refresh
