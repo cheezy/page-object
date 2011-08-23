@@ -15,13 +15,13 @@ describe PageObject do
   
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
-      watir_page_object.platform.should be_kind_of PageObject::WatirPageObject
+      watir_page_object.platform.should be_kind_of PageObject::Platforms::WatirWebDriver::PageObject
     end
   end
 
   context "when created with a selenium browser" do
     it "should include the SeleniumPageObject module" do
-      selenium_page_object.platform.should be_kind_of Object::PageObject::Platforms::Selenium::PageObject
+      selenium_page_object.platform.should be_kind_of PageObject::Platforms::SeleniumWebDriver::PageObject
     end
   end
   

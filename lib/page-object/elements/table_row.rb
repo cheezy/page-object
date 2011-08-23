@@ -28,11 +28,11 @@ module PageObject
       def include_platform_for platform
         super
         if platform[:platform] == :watir
-          require 'page-object/platforms/watir/table_row'
-          self.class.send :include, PageObject::Platforms::Watir::TableRow
+          require 'page-object/platforms/watir_webdriver/table_row'
+          self.class.send :include, PageObject::Platforms::WatirWebDriver::TableRow
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium/table_row'
-          self.class.send :include, PageObject::Platforms::Selenium::TableRow
+          require 'page-object/platforms/selenium_webdriver/table_row'
+          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::TableRow
         else
           raise ArgumentError, "expect platform to be :watir or :selenium"
         end

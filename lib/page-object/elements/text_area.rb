@@ -28,11 +28,11 @@ module PageObject
       def include_platform_for platform
         super
         if platform[:platform] == :watir
-          require 'page-object/platforms/watir/text_area'
-          self.class.send :include, PageObject::Platforms::Watir::TextArea
+          require 'page-object/platforms/watir_webdriver/text_area'
+          self.class.send :include, PageObject::Platforms::WatirWebDriver::TextArea
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium/text_area'
-          self.class.send :include, PageObject::Platforms::Selenium::TextArea
+          require 'page-object/platforms/selenium_webdriver/text_area'
+          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::TextArea
         else
           raise ArgumentError, "expect platform to be :watir or :selenium"
         end

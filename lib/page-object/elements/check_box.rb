@@ -12,11 +12,11 @@ module PageObject
       def include_platform_for platform
         super
         if platform[:platform] == :watir
-          require 'page-object/platforms/watir/check_box'
-          self.class.send :include, PageObject::Platforms::Watir::CheckBox
+          require 'page-object/platforms/watir_webdriver/check_box'
+          self.class.send :include, PageObject::Platforms::WatirWebDriver::CheckBox
         elsif platform[:platform] == :selenium
-          require 'page-object/platforms/selenium/check_box'
-          self.class.send :include, PageObject::Platforms::Selenium::CheckBox
+          require 'page-object/platforms/selenium_webdriver/check_box'
+          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::CheckBox
         else
           raise ArgumentError, "expect platform to be :watir or :selenium"
         end
