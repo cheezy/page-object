@@ -29,13 +29,13 @@ describe PageObject::Elements::Image do
 
     context "for watir" do
       it "should know the images width" do
-        image = PageObject::Elements::Image.new(image_element, :platform => :watir)
+        image = PageObject::Elements::Image.new(image_element, :platform => :watir_webdriver)
         image_element.should_receive(:width).and_return(100)
         image.width.should == 100
       end
 
       it "should know the images height" do
-        image = PageObject::Elements::Image.new(image_element, :platform => :watir)
+        image = PageObject::Elements::Image.new(image_element, :platform => :watir_webdriver)
         image_element.should_receive(:height).and_return(120)
         image.height.should == 120
       end
@@ -44,7 +44,7 @@ describe PageObject::Elements::Image do
     context "for selenium" do
       it "should know the images width" do
         dim = double('dimension')
-        image = PageObject::Elements::Image.new(image_element, :platform => :selenium)
+        image = PageObject::Elements::Image.new(image_element, :platform => :selenium_webdriver)
         image_element.should_receive(:size).and_return(dim)
         dim.should_receive(:width).and_return(100)
         image.width.should == 100
@@ -52,7 +52,7 @@ describe PageObject::Elements::Image do
 
       it "should know the images height" do
         dim = double('dimension')
-        image = PageObject::Elements::Image.new(image_element, :platform => :selenium)
+        image = PageObject::Elements::Image.new(image_element, :platform => :selenium_webdriver)
         image_element.should_receive(:size).and_return(dim)
         dim.should_receive(:height).and_return(120)
         image.height.should == 120

@@ -5,8 +5,8 @@ require 'page-object/elements'
 describe PageObject::Elements::Element do
   let(:watir_driver) { double('watir') }
   let(:selenium_driver) { double('selenium') }
-  let(:watir_element) { PageObject::Elements::Element.new(watir_driver, :platform => :watir) }
-  let(:selenium_element) { PageObject::Elements::Element.new(selenium_driver, :platform => :selenium) }
+  let(:watir_element) { PageObject::Elements::Element.new(watir_driver, :platform => :watir_webdriver) }
+  let(:selenium_element) { PageObject::Elements::Element.new(selenium_driver, :platform => :selenium_webdriver) }
   let(:element) { PageObject::Elements::Element }
 
   context "when handling unknown requests" do
@@ -198,7 +198,7 @@ describe PageObject::Elements::Element do
     end
 
     it "should know when it does not exist" do
-      selenium_element = PageObject::Elements::Element.new(nil, :platform => :selenium)
+      selenium_element = PageObject::Elements::Element.new(nil, :platform => :selenium_webdriver)
       selenium_element.exists?.should == false
     end
 

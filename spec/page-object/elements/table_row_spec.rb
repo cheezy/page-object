@@ -8,21 +8,21 @@ describe PageObject::Elements::TableRow do
   describe "interface" do
     context "for selenium" do
       it "should return a table cell when indexed" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_cell)
         table_cell.should_receive(:[]).and_return(table_cell)
         table_row[0].should be_instance_of PageObject::Elements::TableCell
       end
 
       it "should retrun the number of columns" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
         table_row_driver.should_receive(:size).and_return(3)
         table_row.columns.should == 3
       end
 
       it "should iterate over the table columns" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
         table_row.should_receive(:columns).and_return(2)
         table_row.stub(:[]).and_return(table_row_driver)
         count = 0
@@ -37,13 +37,13 @@ describe PageObject::Elements::TableRow do
       end
 
       it "should return a table cell when indexed" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
         table_row_driver.should_receive(:[]).with(1).and_return(table_cell)
         table_row[1].should be_instance_of PageObject::Elements::TableCell
       end
 
       it "should return the number of columns" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
         table_row_driver.stub(:wd).and_return(table_row_driver)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
         table_row_driver.should_receive(:size).and_return(3)
@@ -51,7 +51,7 @@ describe PageObject::Elements::TableRow do
       end
 
       it "should iterate over the table columns" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
         table_row.should_receive(:columns).and_return(2)
         table_row.stub(:[])
         count = 0

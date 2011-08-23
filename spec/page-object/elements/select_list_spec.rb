@@ -31,14 +31,14 @@ describe PageObject::Elements::SelectList do
 
     context "for watir" do
       it "should return an option when indexed" do
-        watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir)
+        watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir_webdriver)
         sel_list.stub(:wd).and_return(sel_list)
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         watir_sel_list[0].should be_instance_of PageObject::Elements::Option
       end
 
       it "should return an array of options" do
-        watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir)
+        watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir_webdriver)
         sel_list.stub(:wd).and_return(sel_list)
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         watir_sel_list.options.size.should == 2
@@ -47,19 +47,19 @@ describe PageObject::Elements::SelectList do
 
     context "for selenium" do
       it "should return an option when indexed" do
-        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
+        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium_webdriver)
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         selenium_sel_list[1].should be_instance_of PageObject::Elements::Option
       end
 
       it "should return an array of options" do
-        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
+        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium_webdriver)
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         selenium_sel_list.options.size.should == 2
       end
 
       it "should select an element" do
-        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium)
+        selenium_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :selenium_webdriver)
         sel_list.should_receive(:send_keys).with('something')
         selenium_sel_list.select 'something'
       end

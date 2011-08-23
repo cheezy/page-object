@@ -35,7 +35,7 @@ describe PageObject::Elements::TextField do
     context "for selenium" do
       it "should set its' value" do
         text_field_element = double('selenium_text_field')
-        selenium_text_field = PageObject::Elements::TextField.new(text_field_element, :platform => :selenium)
+        selenium_text_field = PageObject::Elements::TextField.new(text_field_element, :platform => :selenium_webdriver)
         text_field_element.should_receive(:clear)
         text_field_element.should_receive(:send_keys).with('Joseph')
         selenium_text_field.value = 'Joseph'

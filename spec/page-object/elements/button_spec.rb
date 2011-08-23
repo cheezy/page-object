@@ -25,7 +25,7 @@ describe PageObject::Elements::Button do
 
     context "for selenium" do
       it "should return error when asked for its' text" do
-        button = PageObject::Elements::Button.new(button_element, :platform => :selenium)
+        button = PageObject::Elements::Button.new(button_element, :platform => :selenium_webdriver)
         lambda { button.text }.should raise_error
       end
     end

@@ -8,7 +8,7 @@ module PageObject
         # is zero based.
         #
         def [](idx)
-          Object::PageObject::Elements::TableCell.new(element[idx], :platform => :watir)
+          Object::PageObject::Elements::TableCell.new(element[idx], :platform => :watir_webdriver)
         end
 
         #

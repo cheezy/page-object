@@ -11,7 +11,7 @@ module PageObject
         #
         def [](idx)
           eles = list_items
-          Object::PageObject::Elements::ListItem.new(eles[idx], :platform => :watir)
+          Object::PageObject::Elements::ListItem.new(eles[idx], :platform => :watir_webdriver)
         end
 
         #

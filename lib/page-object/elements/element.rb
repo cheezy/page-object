@@ -132,14 +132,14 @@ module PageObject
       end
 
       def include_platform_for platform
-        if platform[:platform] == :watir
+        if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/element'
           self.class.send :include, PageObject::Platforms::WatirWebDriver::Element
-        elsif platform[:platform] == :selenium
+        elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/element'
           self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Element
         else
-          raise ArgumentError, "expect platform to be :watir or :selenium"
+          raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end
       end
     end

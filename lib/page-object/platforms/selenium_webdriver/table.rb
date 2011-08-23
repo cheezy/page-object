@@ -11,7 +11,7 @@ module PageObject
         #
         def [](idx)
           eles = table_rows
-          Object::PageObject::Elements::TableRow.new(eles[idx], :platform => :selenium)
+          Object::PageObject::Elements::TableRow.new(eles[idx], :platform => :selenium_webdriver)
         end
 
         #

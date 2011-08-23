@@ -25,7 +25,7 @@ describe PageObject::Elements::OrderedList do
 
     context "for watir" do
       it "should return a list item when indexed" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir)
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
         ol_element.stub(:wd).and_return(ol_element)
         ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
         ol_element.stub(:[]).and_return(ol_element)
@@ -33,7 +33,7 @@ describe PageObject::Elements::OrderedList do
       end
 
       it "should know how many list items it contains" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir)
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
         ol_element.stub(:wd).and_return(ol_element)
         ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
         ol_element.stub(:[]).and_return(ol_element)
@@ -42,7 +42,7 @@ describe PageObject::Elements::OrderedList do
       end
 
       it "should iterate over the list items" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir)
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
         ol.should_receive(:items).and_return(5)
         ol.stub(:[])
         count = 0
@@ -53,21 +53,21 @@ describe PageObject::Elements::OrderedList do
 
     context "for selenium" do
       it "should return a list item when indexed" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium)
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
         ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
         ol_element.should_receive(:[]).and_return(ol_element)
         ol[1].should be_instance_of PageObject::Elements::ListItem
       end
 
       it "should know how many list items it contains" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium)
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
         ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
         ol_element.should_receive(:size).and_return(5)
         ol.items.should == 5
       end
 
       it "should iterate over the list items" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium)
+        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
         ol.should_receive(:items).and_return(5)
         ol.stub(:[])
         count = 0

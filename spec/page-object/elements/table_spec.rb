@@ -27,7 +27,7 @@ describe PageObject::Elements::Table do
     end
 
     context "for watir" do
-      let(:watir_table) { PageObject::Elements::Table.new(table_element, :platform => :watir) }
+      let(:watir_table) { PageObject::Elements::Table.new(table_element, :platform => :watir_webdriver) }
       
       it "should return a table row when indexed" do
         table_element.stub(:[]).with(1).and_return(table_element)
@@ -50,7 +50,7 @@ describe PageObject::Elements::Table do
     end
 
     context "for selenium" do
-      let(:selenium_table) { PageObject::Elements::Table.new(table_element, :platform => :selenium) }
+      let(:selenium_table) { PageObject::Elements::Table.new(table_element, :platform => :selenium_webdriver) }
       
       it "should return a table row when indexed" do
         table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)

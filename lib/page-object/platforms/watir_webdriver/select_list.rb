@@ -10,7 +10,7 @@ module PageObject
         # @return [PageObject::Elements::Option]
         #
         def [](idx)
-          Object::PageObject::Elements::Option.new(options[idx], :platform => :watir)
+          Object::PageObject::Elements::Option.new(options[idx], :platform => :watir_webdriver)
         end
 
         #
@@ -29,7 +29,7 @@ module PageObject
           elements = []
           options = @element.wd.find_elements(:xpath, child_xpath)
           options.each do |opt|
-            elements << Object::PageObject::Elements::Option.new(opt, :platform => :watir)
+            elements << Object::PageObject::Elements::Option.new(opt, :platform => :watir_webdriver)
           end
           elements
         end

@@ -21,7 +21,7 @@ describe PageObject::Elements::CheckBox do
   
   describe "interface" do
     let(:check_box) { double('check_box') }
-    let(:selenium_cb) { PageObject::Elements::CheckBox.new(check_box, :platform => :selenium) }
+    let(:selenium_cb) { PageObject::Elements::CheckBox.new(check_box, :platform => :selenium_webdriver) }
 
     
     context "for selenium" do

@@ -27,7 +27,7 @@ module PageObject
 
       def include_platform_for platform
         super
-        if platform[:platform] == :selenium
+        if platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/link'
           self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Link
         end

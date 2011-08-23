@@ -22,7 +22,7 @@ describe PageObject::Elements::RadioButton do
   describe "interface" do
     context "for selenium" do
       let(:selenium_rb) { double('radio_button') }
-      let(:radio_button) { PageObject::Elements::RadioButton.new(selenium_rb, :platform => :selenium) }
+      let(:radio_button) { PageObject::Elements::RadioButton.new(selenium_rb, :platform => :selenium_webdriver) }
 
       it "should select" do
         selenium_rb.should_receive(:click)

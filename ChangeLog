@@ -1,6 +1,7 @@
 === Version 0.2.6
 * Enhancements
   * Changed namespace for selenium and watir to include webdriver
+  * Changed element keys to include _webdriver
 
 === Version 0.2.5 / 2011-08-19
 * Enhancements

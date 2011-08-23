@@ -163,7 +163,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::TextField.new(element, :platform => :selenium)
+          Object::PageObject::Elements::TextField.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -187,7 +187,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Elements::HiddenField.new(element, :platform => :selenium)
+          Elements::HiddenField.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -222,7 +222,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Elements::TextArea.new(element, :platform => :selenium)
+          Elements::TextArea.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -257,7 +257,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Elements::SelectList.new(element, :platform => :selenium)
+          Elements::SelectList.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -280,7 +280,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Elements::Link.new(element, :platform => :selenium)
+          Elements::Link.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -326,7 +326,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Elements::CheckBox.new(element, :platform => :selenium)
+          Elements::CheckBox.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -372,7 +372,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::RadioButton.new(element, :platform => :selenium)
+          Object::PageObject::Elements::RadioButton.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -396,7 +396,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::Div.new(element, :platform => :selenium)
+          Object::PageObject::Elements::Div.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -420,7 +420,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::Span.new(element, :platform => :selenium)
+          Object::PageObject::Elements::Span.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -443,7 +443,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::Button.new(element, :platform => :selenium)
+          Object::PageObject::Elements::Button.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -455,7 +455,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::Table.new(element, :platform => :selenium)
+          Object::PageObject::Elements::Table.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -479,7 +479,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::TableCell.new(element, :platform => :selenium)
+          Object::PageObject::Elements::TableCell.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -491,7 +491,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::Image.new(element, :platform => :selenium)
+          Object::PageObject::Elements::Image.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -503,7 +503,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::Form.new(element, :platform => :selenium)
+          Object::PageObject::Elements::Form.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -527,7 +527,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::ListItem.new(element, :platform => :selenium)
+          Object::PageObject::Elements::ListItem.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -539,7 +539,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::UnorderedList.new(element, :platform => :selenium)
+          Object::PageObject::Elements::UnorderedList.new(element, :platform => :selenium_webdriver)
         end
 
         #
@@ -551,7 +551,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content
-          Object::PageObject::Elements::OrderedList.new(element, :platform => :selenium)
+          Object::PageObject::Elements::OrderedList.new(element, :platform => :selenium_webdriver)
         end
 
         private

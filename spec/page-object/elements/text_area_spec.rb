@@ -34,7 +34,7 @@ describe PageObject::Elements::TextArea do
     context "for Selenium" do
       it "should set its' value" do
         text_area_element = double('text_area')
-        text_area = PageObject::Elements::TextArea.new(text_area_element, :platform => :selenium)
+        text_area = PageObject::Elements::TextArea.new(text_area_element, :platform => :selenium_webdriver)
         text_area_element.should_receive(:clear)
         text_area_element.should_receive(:send_keys).with('Joseph')
         text_area.value = 'Joseph'

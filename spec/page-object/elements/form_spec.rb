@@ -7,7 +7,7 @@ describe PageObject::Elements::Form do
 
     context "for watir" do
       it "should submit a form" do
-        form = PageObject::Elements::Form.new(form_element, :platform => :watir)
+        form = PageObject::Elements::Form.new(form_element, :platform => :watir_webdriver)
         form_element.should_receive(:submit)
         form.submit
       end
@@ -15,7 +15,7 @@ describe PageObject::Elements::Form do
 
     context "for selenium" do
       it "should submit a form" do
-        form = PageObject::Elements::Form.new(form_element, :platform => :selenium)
+        form = PageObject::Elements::Form.new(form_element, :platform => :selenium_webdriver)
         form_element.should_receive(:submit)
         form.submit
       end

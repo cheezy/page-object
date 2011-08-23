@@ -37,7 +37,7 @@ describe PageObject::Elements::Link do
 
     context "for selenium" do
       it "should return error when asked for its' value" do
-        link = PageObject::Elements::Link.new(link_element, :platform => :selenium)
+        link = PageObject::Elements::Link.new(link_element, :platform => :selenium_webdriver)
         lambda { link.value }.should raise_error
       end
     end
