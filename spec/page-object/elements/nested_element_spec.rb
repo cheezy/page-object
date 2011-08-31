@@ -17,11 +17,6 @@ describe "Element with nested elements" do
   end
   
   context "in Selenium" do
-    before(:each) do
-      selenium_driver.stub(:switch_to).and_return(selenium_driver)
-      selenium_driver.stub(:default_content)
-    end
-    
     it "should find nested links" do
       selenium_driver.should_receive(:find_element).with(:id, 'blah').and_return(selenium_driver)
       selenium_element.link_element(:id => 'blah')
