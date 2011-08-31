@@ -3,14 +3,12 @@ require 'page-object/elements'
 
 
 describe PageObject::Elements::Element do
-  let(:watir_driver) { double('watir') }
-  let(:selenium_driver) { double('selenium') }
-  let(:watir_element) { PageObject::Elements::Element.new(watir_driver, :platform => :watir_webdriver) }
-  let(:selenium_element) { PageObject::Elements::Element.new(selenium_driver, :platform => :selenium_webdriver) }
   let(:element) { PageObject::Elements::Element }
 
   context "when handling unknown requests" do
     it "should delegate to the driver element" do
+      watir_driver = double('watir')
+      watir_element = PageObject::Elements::Element.new(watir_driver, :platform => :watir_webdriver)
       watir_driver.should_receive(:do_this)
       watir_element.do_this
     end
@@ -90,6 +88,9 @@ describe PageObject::Elements::Element do
   end
 
   context "when using Watir" do
+    let(:watir_driver) { double('watir') }
+    let(:watir_element) { PageObject::Elements::Element.new(watir_driver, :platform => :watir_webdriver) }
+
     it "should know when it is visible" do
       watir_driver.should_receive(:present?).and_return(true)
       watir_element.visible?.should == true
@@ -183,6 +184,9 @@ describe PageObject::Elements::Element do
   end
 
   context "when using Selenium" do
+    let(:selenium_driver) { double('selenium') }
+    let(:selenium_element) { PageObject::Elements::Element.new(selenium_driver, :platform => :selenium_webdriver) }
+
     it "should know when it is visible" do
       selenium_driver.should_receive(:displayed?).and_return(true)
       selenium_element.visible?.should == true
