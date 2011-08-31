@@ -3,10 +3,12 @@ module PageObject
     #
     # Contains functionality that is common across all elements.
     #
-    # @see PageObject::Platforms::WatirElement for the Watir version of all common methods
-    # @see PageObject::Platforms::SeleniumElement for the Selenium version of all common methods
+    # @see PageObject::Platforms::WatirWebDriver::Element for the Watir version of all common methods
+    # @see PageObject::Platforms::SeleniumWebDriver::Element for the Selenium version of all common methods
     #
     class Element
+      include Object::PageObject::NestedElements
+      
       attr_reader :element
 
       def initialize(element, platform)
@@ -124,7 +126,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        [:class, :id, :name, :xpath, :index]
+        [:class, :id, :index, :name, :xpath]
       end
 
       def self.selenium_mapping
@@ -134,10 +136,14 @@ module PageObject
       def include_platform_for platform
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/element'
+          require 'page-object/platforms/watir_webdriver/page_object'
           self.class.send :include, PageObject::Platforms::WatirWebDriver::Element
+          @platform = PageObject::Platforms::WatirWebDriver::PageObject.new(@element)
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/element'
+          require 'page-object/platforms/selenium_webdriver/page_object'
           self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Element
+          @platform = PageObject::Platforms::SeleniumWebDriver::PageObject.new(@element)
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

@@ -2,6 +2,7 @@ require 'page-object/version'
 require 'page-object/accessors'
 require 'page-object/platforms'
 require 'page-object/element_locators'
+require 'page-object/nested_elements'
 
 #
 # Module that when included adds functionality to a page object.  This module

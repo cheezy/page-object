@@ -279,7 +279,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Link, 'a')
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
           Elements::Link.new(element, :platform => :selenium_webdriver)
         end
 
@@ -584,7 +584,7 @@ module PageObject
         end
 
         def switch_to_frame(frame_identifiers)
-          if not frame_identifiers.nil?
+          unless frame_identifiers.nil?
             frame_identifiers.each do |frame_id|
               value = frame_id.values.first
               @browser.switch_to.frame(value)

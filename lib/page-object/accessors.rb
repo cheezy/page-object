@@ -69,15 +69,15 @@ module PageObject
     #
     def text_field(name, identifier=nil, &block)
       define_method(name) do
-        return platform.text_field_value_for identifier.clone unless block
+        return platform.text_field_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
-        return platform.text_field_value_set(identifier.clone, value) unless block
+        return platform.text_field_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.text_field_for(identifier.clone)
       end
       alias_method "#{name}_text_field".to_sym, "#{name}_element".to_sym
@@ -106,11 +106,11 @@ module PageObject
     #
     def hidden_field(name, identifier=nil, &block)
       define_method(name) do
-        return platform.hidden_field_value_for identifier.clone unless block
+        return platform.hidden_field_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.hidden_field_for(identifier.clone)
       end
       alias_method "#{name}_hidden_field".to_sym, "#{name}_element".to_sym
@@ -139,15 +139,15 @@ module PageObject
     #
     def text_area(name, identifier=nil, &block)
       define_method(name) do
-        return platform.text_area_value_for identifier.clone unless block
+        return platform.text_area_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
-        return platform.text_area_value_set(identifier.clone, value) unless block
+        return platform.text_area_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.text_area_for(identifier.clone)
       end
       alias_method "#{name}_text_area".to_sym, "#{name}_element".to_sym
@@ -176,15 +176,15 @@ module PageObject
     #
     def select_list(name, identifier=nil, &block)
       define_method(name) do
-        return platform.select_list_value_for identifier.clone unless block
+        return platform.select_list_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
-        return platform.select_list_value_set(identifier.clone, value) unless block
+        return platform.select_list_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").select(value)
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.select_list_for(identifier.clone)
       end
       alias_method "#{name}_select_list".to_sym, "#{name}_element".to_sym
@@ -215,11 +215,11 @@ module PageObject
     #
     def link(name, identifier=nil, &block)
       define_method(name) do
-        return platform.click_link_for identifier.clone unless block
+        return platform.click_link_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.link_for(identifier.clone)
       end
       alias_method "#{name}_link".to_sym, "#{name}_element".to_sym
@@ -246,19 +246,19 @@ module PageObject
     #
     def checkbox(name, identifier=nil, &block)
       define_method("check_#{name}") do
-        return platform.check_checkbox(identifier.clone) unless block
+        return platform.check_checkbox(identifier.clone) unless block_given?
         self.send("#{name}_element").check
       end
       define_method("uncheck_#{name}") do
-        return platform.uncheck_checkbox(identifier.clone) unless block
+        return platform.uncheck_checkbox(identifier.clone) unless block_given?
         self.send("#{name}_element").uncheck
       end
       define_method("#{name}_checked?") do
-        return platform.checkbox_checked?(identifier.clone) unless block
+        return platform.checkbox_checked?(identifier.clone) unless block_given?
         self.send("#{name}_element").checked?
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.checkbox_for(identifier.clone)
       end
       alias_method "#{name}_checkbox".to_sym, "#{name}_element".to_sym
@@ -286,19 +286,19 @@ module PageObject
     #
     def radio_button(name, identifier=nil, &block)
       define_method("select_#{name}") do
-        return platform.select_radio(identifier.clone) unless block
+        return platform.select_radio(identifier.clone) unless block_given?
         self.send("#{name}_element").select
       end
       define_method("clear_#{name}") do
-        return platform.clear_radio(identifier.clone) unless block
+        return platform.clear_radio(identifier.clone) unless block_given?
         self.send("#{name}_element").clear
       end
       define_method("#{name}_selected?") do
-        return platform.radio_selected?(identifier.clone) unless block
+        return platform.radio_selected?(identifier.clone) unless block_given?
         self.send("#{name}_element").selected?
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.radio_button_for(identifier.clone)
       end
       alias_method "#{name}_radio_button".to_sym, "#{name}_element".to_sym
@@ -326,11 +326,11 @@ module PageObject
     #
     def button(name, identifier=nil, &block)
       define_method(name) do
-        return platform.click_button_for identifier.clone unless block
+        return platform.click_button_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.button_for(identifier.clone)
       end
       alias_method "#{name}_button".to_sym, "#{name}_element".to_sym
@@ -357,11 +357,11 @@ module PageObject
     #
     def div(name, identifier=nil, &block)
       define_method(name) do
-        return platform.div_text_for identifier.clone unless block
+        return platform.div_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.div_for(identifier.clone)
       end
       alias_method "#{name}_div".to_sym, "#{name}_element".to_sym
@@ -387,11 +387,11 @@ module PageObject
     #
     def span(name, identifier=nil, &block)
       define_method(name) do
-        return platform.span_text_for identifier.clone unless block
+        return platform.span_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.span_for(identifier.clone)
       end
       alias_method "#{name}_span".to_sym, "#{name}_element".to_sym
@@ -416,7 +416,7 @@ module PageObject
     #
     def table(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.table_for(identifier.clone)
       end
       alias_method "#{name}_table".to_sym, "#{name}_element".to_sym
@@ -443,11 +443,11 @@ module PageObject
     #
     def cell(name, identifier=nil, &block)
       define_method("#{name}") do
-        return platform.cell_text_for identifier.clone unless block
+        return platform.cell_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.cell_for(identifier.clone)
       end
       alias_method "#{name}_cell".to_sym, "#{name}_element".to_sym
@@ -472,7 +472,7 @@ module PageObject
     #
     def image(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.image_for(identifier.clone)
       end
       alias_method "#{name}_image".to_sym, "#{name}_element".to_sym
@@ -496,7 +496,7 @@ module PageObject
     #
     def form(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.form_for(identifier.clone)
       end
       alias_method "#{name}_form".to_sym, "#{name}_element".to_sym
@@ -522,11 +522,11 @@ module PageObject
     #
     def list_item(name, identifier=nil, &block)
       define_method(name) do
-        return platform.list_item_text_for identifier.clone unless block
+        return platform.list_item_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.list_item_for(identifier.clone)
       end
       alias_method "#{name}_list_item".to_sym, "#{name}_element".to_sym
@@ -551,7 +551,7 @@ module PageObject
     #
     def unordered_list(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.unordered_list_for(identifier.clone)
       end
       alias_method "#{name}_unordered_list".to_sym, "#{name}_element".to_sym
@@ -576,7 +576,7 @@ module PageObject
     #
     def ordered_list(name, identifier=nil, &block)
       define_method("#{name}_element") do
-        return call_block(&block) if block
+        return call_block(&block) if block_given?
         platform.ordered_list_for(identifier.clone)
       end
       alias_method "#{name}_ordered_list".to_sym, "#{name}_element".to_sym

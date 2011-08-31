@@ -1,6 +1,8 @@
 === Version 0.3.0
 * Enhancements
   * Changed namespace for selenium and watir to include webdriver
+  * Support for locating the following elements when nested
+    * Link
   * Changed element keys to include _webdriver
   * Updated to use selenium-webdriver 2.5.0
 

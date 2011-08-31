@@ -24,5 +24,9 @@ module UrlHelper
     def nested_frame_elements
       "#{files}/nested_frames.html"
     end
+    
+    def nested_elements
+      "#{files}/nested_elements.html"
+    end
   end
 end
