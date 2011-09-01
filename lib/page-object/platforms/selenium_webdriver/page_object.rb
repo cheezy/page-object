@@ -94,13 +94,13 @@ module PageObject
         # See PageObject#attach_to_window
         #
         def attach_to_window(identifier, &block)
-          match = identifier.values.first
+          value = identifier.values.first
+          key = identifier.keys.first
           handles = @browser.window_handles
           handles.each do |handle|
             @browser.switch_to.window handle
-            if identifier.keys.first == :title and @browser.title == match
-              return @browser.switch_to.window handle, &block
-            elsif identifier.keys.first == :url and @browser.current_url == match
+            if (key == :title and value == @browser.title) or
+              (key == :url and value == @browser.current_url)
               return @browser.switch_to.window handle, &block
             end
           end

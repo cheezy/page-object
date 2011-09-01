@@ -176,7 +176,7 @@ module PageObject
       }
     }
     browser.execute_script script
-    yield
+    yield if block_given?
   end
   
   #
