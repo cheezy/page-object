@@ -92,8 +92,10 @@ describe PageObject::Elements::Element do
     let(:watir_element) { PageObject::Elements::Element.new(watir_driver, :platform => :watir_webdriver) }
 
     it "should know when it is visible" do
-      watir_driver.should_receive(:present?).and_return(true)
-      watir_element.visible?.should == true
+      wdriver = double('watir')
+      element = ::PageObject::Elements::Element.new(wdriver, :platform => :watir_webdriver)
+      wdriver.should_receive(:present?).and_return(true)
+      element.visible?.should == true
     end
 
     it "should know when it is not visible" do
