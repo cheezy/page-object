@@ -154,6 +154,18 @@ module PageObject
     platform.prompt(answer, &block)
   end
   
+  #
+  # Override the normal showModalDialog call is it opens a window instead
+  # of a dialog.  You will need to attach to the new window in order to
+  # continue.
+  #
+  # @example
+  #   @page.modal_dialog do
+  #     @page.action_that_spawns_the_modal
+  #   end
+  #
+  # @param block a block that contains the call that will cause the modal dialog.
+  #
   def modal_dialog(&block)
     script =
     %Q{

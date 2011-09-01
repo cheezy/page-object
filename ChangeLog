@@ -3,6 +3,7 @@
   * Changed namespace for selenium and watir to include webdriver
   * Support for locating the following elements when nested
     * Link
+  * Added #modal_dialog to PageObject to override the default modal dialog behavior
   * Changed element keys to include _webdriver
   * Updated to use selenium-webdriver 2.5.0
 
