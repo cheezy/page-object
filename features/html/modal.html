@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>modal dialog test page</title>
+  </head>
+  <body>
+    
+    <script type="text/javascript">
+      function modal() {
+        var retValue = window.showModalDialog(
+          "modal_1.html", self,
+          "status:no;resizable:Yes;help:no;maximize:no;minimize:no;scrollbars:no;");
+      }
+    </script>
+    
+    <input id=launch_modal_button type=button onclick='return modal();' value="Launch a modal" />
+  </body>
+</html>

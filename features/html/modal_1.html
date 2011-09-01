@@ -1,0 +1,34 @@
+<html>
+
+<head>
+<title>Modal 1</title>
+    <script>
+function delay_action(other_function) {
+  setTimeout(other_function, 3000);
+}
+
+function close_window() {
+  window.returnValue = 22
+  window.close()
+}
+    </script>
+</head>
+
+<body>
+
+<h2>Modal 1</h2>
+
+<h3>Close buttons</h3>
+<input id=close_window type=button onclick="close_window()" value="Close window"/>
+<input id=delayed_close type=button onclick="delay_action('close_window()')" value="Close window with delay" />
+
+<h3>Nested modal</h3>
+<input id=launch_modal_button type=button
+       onclick='window.showModalDialog(
+        "modal_2.html",
+        self,
+        "status:no;resizable:Yes;help:no;maximize:no;minimize:no;scrollbars:no;"); return false;'
+       value="Launch another modal"/>
+
+</body>
+</html>

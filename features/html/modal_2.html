@@ -1,0 +1,27 @@
+<html>
+
+<head>
+<title>Modal 2</title>
+    <script>
+function delay_action(other_function)
+{
+    setTimeout(other_function, 3000);
+}
+
+function close_window()
+{
+    self.close()
+}
+    </script>
+</head>
+
+<body>
+
+<h2>Modal 2</h2>
+
+<h3>Close buttons</h3>
+<input id=close_window type="button" onclick="close_window()" value="Close window"/>
+<input id=delayed_close type=button onclick="delay_action('close_window()')" value="Close window with delay" />
+
+</body>
+</html>

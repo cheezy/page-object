@@ -109,6 +109,11 @@ describe PageObject do
         end
       end
       
+      it "should convert a modal popup to a window" do
+        watir_browser.should_receive(:execute_script)
+        watir_page_object.modal_dialog {}
+      end
+      
       it "should switch to a new window with a given title" do
         watir_browser.should_receive(:window).with(:title => /My\ Title/).and_return(watir_browser)
         watir_browser.should_receive(:use)
@@ -180,6 +185,11 @@ describe PageObject do
         selenium_browser.should_receive(:execute_script).twice
         selenium_page_object.prompt("blah") do
         end
+      end
+      
+      it "should convert a modal popup to a window" do
+        selenium_browser.should_receive(:execute_script)
+        selenium_page_object.modal_dialog {}
       end
       
       it "should switch to a new window with a given title" do

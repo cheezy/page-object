@@ -28,5 +28,9 @@ module UrlHelper
     def nested_elements
       "#{files}/nested_elements.html"
     end
+    
+    def modal
+      "#{files}/modal.html"
+    end
   end
 end

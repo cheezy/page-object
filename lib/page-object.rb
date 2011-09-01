@@ -154,6 +154,19 @@ module PageObject
     platform.prompt(answer, &block)
   end
   
+  def modal_dialog(&block)
+    script =
+    %Q{
+      window.showModalDialog = function(sURL, vArguments, sFeatures) {
+        window.dialogArguments = vArguments;
+        modalWin = window.open(sURL, 'modal', sFeatures);
+        return modalWin;
+      }
+    }
+    browser.execute_script script
+    yield
+  end
+  
   #
   # Attach to a running window.  You can locate the window using either
   # the window's title or url.  If it failes to connect to a window it will
