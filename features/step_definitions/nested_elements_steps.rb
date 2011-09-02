@@ -2,9 +2,9 @@ class NestedElementsPage
   include PageObject
   
   div(:outer_div, :id => 'div_id')
-  link(:nested_link) { |page| page.outer_div_element.link_element(:index => 0) }
-  button(:nested_button) { |page| page.outer_div_element.button_element(:index => 0) }
-  text_field(:nested_text_field) { |page| page.outer_div_element.text_field_element(:index => 0) }
+  link(:nested_link) { |page| page.outer_div_element.link_element }
+  button(:nested_button) { |page| page.outer_div_element.button_element }
+  text_field(:nested_text_field) { |page| page.outer_div_element.text_field_element }
   
 end
 
