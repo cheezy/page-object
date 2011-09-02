@@ -198,7 +198,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextArea, 'textarea')
           switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).send_keys(value)
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
         end
 
         #
@@ -209,7 +209,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextArea, 'textarea')
           switch_to_frame(frame_identifiers)
           value = @browser.find_element(how, what).attribute('value')
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
           value
         end
 
@@ -221,7 +221,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextArea, 'textarea')
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
           Elements::TextArea.new(element, :platform => :selenium_webdriver)
         end
 
