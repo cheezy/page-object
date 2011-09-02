@@ -66,7 +66,7 @@ Given /^I am on the nested frame elements page$/ do
   @page.navigate_to(UrlHelper.nested_frame_elements)
 end
 
-Then /^I should be able to click the nested link$/ do
+Then /^I should be able to click the link in the frame$/ do
   @page.nested_link
   @page.text.should include "Success"
 end

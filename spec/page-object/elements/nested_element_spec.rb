@@ -14,6 +14,12 @@ describe "Element with nested elements" do
       watir_driver.should_receive(:link).with(:id => 'blah').and_return(watir_driver)
       watir_element.link_element(:id => 'blah')
     end
+
+    it "should find nested buttons" do
+      watir_driver.should_receive(:button).with(:id => 'blah').and_return(watir_driver)
+      watir_element.button_element(:id => 'blah')
+    end
+
   end
   
   context "in Selenium" do
@@ -21,5 +27,11 @@ describe "Element with nested elements" do
       selenium_driver.should_receive(:find_element).with(:id, 'blah').and_return(selenium_driver)
       selenium_element.link_element(:id => 'blah')
     end
+
+    it "should find nested buttons" do
+      selenium_driver.should_receive(:find_element).with(:id, 'blah').and_return(selenium_driver)
+      selenium_element.button_element(:id => 'blah')
+    end
+
   end
 end

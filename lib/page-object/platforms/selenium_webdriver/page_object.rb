@@ -268,7 +268,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Link, 'a')
           switch_to_frame frame_identifiers
           @browser.find_element(how, what).click
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
         end
 
         #
@@ -431,7 +431,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button, 'input', :type => 'submit')
           switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
         end
 
         #
@@ -442,7 +442,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button, 'input', :type => 'submit')
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
           Object::PageObject::Elements::Button.new(element, :platform => :selenium_webdriver)
         end
 

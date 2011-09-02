@@ -34,4 +34,4 @@ Feature: Handling frames
     
   Scenario: Nested frames
     Given I am on the nested frame elements page
-    Then I should be able to click the nested link
+    Then I should be able to click the link in the frame
