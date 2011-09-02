@@ -12,5 +12,9 @@ module PageObject
     def text_field_element(identifier={:index => 0})
       @platform.text_field_for(identifier)
     end
+
+    def hidden_field_element(identifier={:index => 0})
+      @platform.hidden_field_for(identifier)
+    end
   end
 end

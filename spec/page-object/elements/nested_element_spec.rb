@@ -25,6 +25,12 @@ describe "Element with nested elements" do
       watir_element.text_field_element(:id => 'blah')
     end
 
+    it "should find nested hidden fields" do
+      watir_driver.should_receive(:hidden).and_return(watir_driver)
+      watir_element.hidden_field_element
+    end
+
+
   end
   
   context "in Selenium" do
