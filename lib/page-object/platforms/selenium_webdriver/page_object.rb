@@ -52,7 +52,7 @@ module PageObject
         # See PageObject#wait_until
         #
         def wait_until(timeout, message = nil, &block)
-          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
+          wait = ::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
           wait.until &block
         end
 
@@ -138,7 +138,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextField, 'input', :type => 'text')
           switch_to_frame(frame_identifiers)
           text = @browser.find_element(how, what).attribute('value')
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
           text
         end
 
@@ -151,7 +151,7 @@ module PageObject
           switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).clear
           @browser.find_element(how, what).send_keys(value)
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
         end
 
         #
@@ -162,8 +162,8 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextField, 'input', :type => 'text')
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
-          @browser.switch_to.default_content
-          Object::PageObject::Elements::TextField.new(element, :platform => :selenium_webdriver)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          ::PageObject::Elements::TextField.new(element, :platform => :selenium_webdriver)
         end
 
         #
