@@ -40,5 +40,9 @@ module PageObject
     def span_element(identifier={:index => 0})
       @platform.span_for(identifier)
     end
+
+    def table_element(identifier={:index => 0})
+      @platform.table_for(identifier)
+    end
   end
 end

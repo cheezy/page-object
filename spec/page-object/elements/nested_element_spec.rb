@@ -59,6 +59,11 @@ describe "Element with nested elements" do
       watir_driver.should_receive(:span).and_return(watir_driver)
       watir_element.span_element
     end
+    
+    it "should find a nested table" do
+      watir_driver.should_receive(:table).and_return(watir_driver)
+      watir_element.table_element
+    end
 
   end
   
@@ -111,6 +116,11 @@ describe "Element with nested elements" do
     it "should find a nested span" do
       selenium_driver.should_receive(:find_element).and_return(selenium_driver)
       selenium_element.span_element
+    end
+    
+    it "should find a nested table" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.table_element
     end
 
   end
