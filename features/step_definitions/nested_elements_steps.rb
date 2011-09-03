@@ -8,6 +8,8 @@ class NestedElementsPage
   hidden_field(:nested_hidden_field) { |page| page.outer_div_element.hidden_field_element }
   text_area(:nested_text_area) { |page| page.outer_div_element.text_area_element }
   select_list(:nested_select_list) { |page| page.outer_div_element.select_list_element }
+  checkbox(:nested_checkbox) { |page| page.outer_div_element.checkbox_element }
+  radio_button(:nested_radio_button) { |page| page.outer_div_element.radio_button_element }
   
 end
 
@@ -60,6 +62,22 @@ When /^I search for a select list located in a div$/ do
   @select_list = @page.nested_select_list_element
 end
 
-Then /^I shoudl be able to select "([^\"]*)"$/ do |value|
+Then /^I should be able to select "([^\"]*)" in the nested select list$/ do |value|
   @select_list.select value
+end
+
+When /^I search for a checkbox located in a div$/ do
+  @checkbox = @page.nested_checkbox_element
+end
+
+Then /^I should be able to check the nested checkbox$/ do
+  @checkbox.check
+end
+
+When /^I search for a radio button located in a div$/ do
+  @radio = @page.nested_radio_button_element
+end
+
+Then /^I should be able to select the nested radio button$/ do
+  @radio.select
 end

@@ -39,6 +39,17 @@ describe "Element with nested elements" do
       watir_driver.should_receive(:select_list).and_return(watir_driver)
       watir_element.select_list_element
     end
+
+    it "should find a nested checkbox" do
+      watir_driver.should_receive(:checkbox).and_return(watir_driver)
+      watir_element.checkbox_element
+    end
+    
+    it "should find a nested radio button" do
+      watir_driver.should_receive(:radio).and_return(watir_driver)
+      watir_element.radio_button_element
+    end
+
   end
   
   context "in Selenium" do
@@ -70,6 +81,16 @@ describe "Element with nested elements" do
     it "should find a nested select list" do
       selenium_driver.should_receive(:find_element).and_return(selenium_driver)
       selenium_element.select_list_element
+    end
+    
+    it "should find a nested checkbox" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.checkbox_element
+    end
+    
+    it "should find a nested radio button" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.radio_button_element
     end
 
   end
