@@ -39,3 +39,7 @@ Feature: Attributes on Elements
     When I search for a div located in a div
     Then I should see the text "page-object rocks!" in the nested div
 
+  Scenario: Finding a span withing a div
+    When I search for a span located in a div
+    Then I should see the text "My alert" in the nested span
+

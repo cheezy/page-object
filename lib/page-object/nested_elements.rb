@@ -36,5 +36,9 @@ module PageObject
     def div_element(identifier={:index => 0})
       @platform.div_for(identifier)
     end
+
+    def span_element(identifier={:index => 0})
+      @platform.span_for(identifier)
+    end
   end
 end
