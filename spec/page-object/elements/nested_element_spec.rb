@@ -49,6 +49,11 @@ describe "Element with nested elements" do
       watir_driver.should_receive(:radio).and_return(watir_driver)
       watir_element.radio_button_element
     end
+    
+    it "should find a nested div" do
+      watir_driver.should_receive(:div).and_return(watir_driver)
+      watir_element.div_element
+    end
 
   end
   
@@ -91,6 +96,11 @@ describe "Element with nested elements" do
     it "should find a nested radio button" do
       selenium_driver.should_receive(:find_element).and_return(selenium_driver)
       selenium_element.radio_button_element
+    end
+    
+    it "find a nested div" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.div_element
     end
 
   end
