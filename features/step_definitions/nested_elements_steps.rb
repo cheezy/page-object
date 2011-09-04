@@ -16,7 +16,8 @@ class NestedElementsPage
   cell(:nested_cell) { |page| page.nested_table_element.cell_element(:index => 1) }
   image(:nested_image) { |page| page.outer_div_element.image_element }
   form(:nested_form) { |page| page.outer_div_element.form_element }
-  
+  ordered_list(:nested_ordered_list) { |page| page.outer_div_element.ordered_list_element }
+  unordered_list(:nested_unordered_list) { |page| page.outer_div_element.unordered_list_element }
 end
 
 Given /^I am on the nested elements page$/ do
@@ -141,3 +142,16 @@ end
 Then /^I should be able to submit the nested form$/ do
   @form.submit
 end
+
+When /^I search for an ordered list located in a div$/ do
+  @list = @page.nested_ordered_list_element
+end
+
+Then /^the first nested list items text should be "([^"]*)"$/ do |value|
+  @list[0].text.should == value
+end
+
+When /^I search for an unordered list located in a div$/ do
+  @list = @page.nested_unordered_list_element
+end
+

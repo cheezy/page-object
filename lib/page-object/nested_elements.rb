@@ -56,5 +56,13 @@ module PageObject
     def form_element(identifier={:index => 0})
       @platform.form_for(identifier)
     end
+    
+    def ordered_list_element(identifier={:index => 0})
+      @platform.ordered_list_for(identifier)
+    end
+    
+    def unordered_list_element(identifier={:index => 0})
+      @platform.unordered_list_for(identifier)
+    end
   end
 end
