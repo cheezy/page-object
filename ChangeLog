@@ -1,4 +1,4 @@
-=== Version 0.3.0
+=== Version 0.3.0 / 2011-09-04
 * Enhancements
   * Changed namespace for selenium and watir to include webdriver
   * Support for locating the following elements when nested
