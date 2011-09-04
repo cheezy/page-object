@@ -48,5 +48,9 @@ module PageObject
     def cell_element(identifier={:index => 0})
       @platform.cell_for(identifier)
     end
+    
+    def image_element(identifier={:index => 0})
+      @platform.image_for(identifier)
+    end
   end
 end

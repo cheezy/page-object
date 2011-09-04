@@ -490,7 +490,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Image, 'img')
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
           ::PageObject::Elements::Image.new(element, :platform => :selenium_webdriver)
         end
 

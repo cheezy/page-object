@@ -14,6 +14,7 @@
     * Span
     * Table
     * TableCell
+    * Image
   * Added #modal_dialog to PageObject to override the default modal dialog behavior
   * Changed element keys to include _webdriver
   * Updated to use selenium-webdriver 2.5.0

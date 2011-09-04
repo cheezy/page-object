@@ -51,6 +51,9 @@ Feature: Attributes on Elements
     When I search the second table cell located in a table in a div
     Then the nested table cell should contain "Data2"
 
-  
+  Scenario: Finding an image within a div
+    When I search for an image located in a div
+    Then the nested image should be "106" pixels wide
+    And the nested image should be "106" pixels tall
   
   

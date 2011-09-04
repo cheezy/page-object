@@ -14,6 +14,7 @@ class NestedElementsPage
   span(:nested_span) { |page| page.outer_div_element.span_element }
   table(:nested_table) { |page| page.outer_div_element.table_element }
   cell(:nested_cell) { |page| page.nested_table_element.cell_element(:index => 1) }
+  image(:nested_image) { |page| page.outer_div_element.image_element }
   
 end
 
@@ -118,4 +119,16 @@ end
 
 Then /^the nested table cell should contain "([^"]*)"$/ do |value|
   @cell.text.should == value
+end
+
+When /^I search for an image located in a div$/ do
+  @image = @page.nested_image_element
+end
+
+Then /^the nested image should be "([^"]*)" pixels wide$/ do |width|
+  @image.width.should == width.to_i  
+end
+
+Then /^the nested image should be "([^"]*)" pixels tall$/ do |height|
+  @image.height.should == height.to_i
 end

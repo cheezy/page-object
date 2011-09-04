@@ -69,6 +69,11 @@ describe "Element with nested elements" do
       watir_driver.should_receive(:td).and_return(watir_driver)
       watir_element.cell_element
     end
+    
+    it "should find a nested image" do
+      watir_driver.should_receive(:image).and_return(watir_driver)
+      watir_element.image_element
+    end
   end
   
   context "in Selenium" do
@@ -130,6 +135,11 @@ describe "Element with nested elements" do
     it "should find a nested cell" do
       selenium_driver.should_receive(:find_element).and_return(selenium_driver)
       selenium_element.cell_element
+    end
+    
+    it "should find a nested image" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.image_element
     end
   end
 end
