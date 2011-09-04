@@ -64,5 +64,9 @@ module PageObject
     def unordered_list_element(identifier={:index => 0})
       @platform.unordered_list_for(identifier)
     end
+    
+    def list_item_element(identifier={:index => 0})
+      @platform.list_item_for(identifier)
+    end
   end
 end

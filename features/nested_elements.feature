@@ -68,4 +68,6 @@ Feature: Attributes on Elements
     When I search for an unordered list located in a div
     Then the first nested list items text should be "Item One"
   
-  
+  Scenario: Finding a list item nested in an ordered list within a div
+    When I search for a list item nested in an ordered list in a div
+    Then I should see the nested list items text should be "Number One"

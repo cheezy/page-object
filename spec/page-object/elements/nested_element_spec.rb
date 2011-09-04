@@ -89,6 +89,11 @@ describe "Element with nested elements" do
       watir_driver.should_receive(:ul).and_return(watir_driver)
       watir_element.unordered_list_element
     end
+    
+    it "should find a list item" do
+      watir_driver.should_receive(:li).and_return(watir_driver)
+      watir_element.list_item_element
+    end
   end
   
   context "in Selenium" do
@@ -170,6 +175,11 @@ describe "Element with nested elements" do
     it "should find an unordered list" do
       selenium_driver.should_receive(:find_element).and_return(selenium_driver)
       selenium_element.unordered_list_element
+    end
+    
+    it "should find a nested list item" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.list_item_element
     end
   end
 end

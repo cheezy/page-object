@@ -18,6 +18,7 @@ class NestedElementsPage
   form(:nested_form) { |page| page.outer_div_element.form_element }
   ordered_list(:nested_ordered_list) { |page| page.outer_div_element.ordered_list_element }
   unordered_list(:nested_unordered_list) { |page| page.outer_div_element.unordered_list_element }
+  list_item(:nested_list_item) { |page| page.nested_ordered_list_element.list_item_element }
 end
 
 Given /^I am on the nested elements page$/ do
@@ -155,3 +156,10 @@ When /^I search for an unordered list located in a div$/ do
   @list = @page.nested_unordered_list_element
 end
 
+When /^I search for a list item nested in an ordered list in a div$/ do
+  @li = @page.nested_list_item_element
+end
+
+Then /^I should see the nested list items text should be "([^"]*)"$/ do |value|
+  @li.text.should == value
+end
