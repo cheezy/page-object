@@ -52,5 +52,9 @@ module PageObject
     def image_element(identifier={:index => 0})
       @platform.image_for(identifier)
     end
+    
+    def form_element(identifier={:index => 0})
+      @platform.form_for(identifier)
+    end
   end
 end

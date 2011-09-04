@@ -56,4 +56,7 @@ Feature: Attributes on Elements
     Then the nested image should be "106" pixels wide
     And the nested image should be "106" pixels tall
   
-  
+  Scenario: Finding a form within a div
+    When I search for a form located in a div
+    Then I should be able to submit the nested form
+    
