@@ -44,5 +44,9 @@ module PageObject
     def table_element(identifier={:index => 0})
       @platform.table_for(identifier)
     end
+    
+    def cell_element(identifier={:index => 0})
+      @platform.cell_for(identifier)
+    end
   end
 end

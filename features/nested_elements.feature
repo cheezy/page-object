@@ -47,4 +47,10 @@ Feature: Attributes on Elements
     When I search for a table located in a div
     Then the data for row "1" of the nested table should be "Data1" and "Data2"
 
+  Scenario: Finding a table cell within a div
+    When I search the second table cell located in a table in a div
+    Then the nested table cell should contain "Data2"
 
+  
+  
+  

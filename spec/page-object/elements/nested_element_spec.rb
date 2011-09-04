@@ -65,6 +65,10 @@ describe "Element with nested elements" do
       watir_element.table_element
     end
 
+    it "should find a nested cell" do
+      watir_driver.should_receive(:td).and_return(watir_driver)
+      watir_element.cell_element
+    end
   end
   
   context "in Selenium" do
@@ -123,5 +127,9 @@ describe "Element with nested elements" do
       selenium_element.table_element
     end
 
+    it "should find a nested cell" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.cell_element
+    end
   end
 end
