@@ -1,5 +1,6 @@
-=== Version -.4.0
+=== Version -0.3.1
 * Enhancements
+  * Updated to use watir-webdriver 0.3.3
 
 === Version 0.3.0 / 2011-09-04
 * Enhancements
