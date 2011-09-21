@@ -163,6 +163,14 @@ class Page
   ordered_list(:ol_xpath, :xpath => '//ol')
   ordered_list(:ol_class_index, :class => "ol_class", :index => 0)
   ordered_list(:ol_name_index, :name => "ol_name", :index => 0)
+  
+  h1(:h1_id, :id => 'h1_id')
+  h1(:h1_class, :class => 'h1_class')
+  h1(:h1_name, :name => 'h1_name')
+  h1(:h1_index, :index => 0)
+  h1(:h1_xpath, :xpath => '//h1')
+  h1(:h1_class_index, :class => 'h1_class', :index => 0)
+  h1(:h1_name_index, :name => 'h1_name', :index => 0)
 
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')

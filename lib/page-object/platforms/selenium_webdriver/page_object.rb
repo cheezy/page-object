@@ -553,6 +553,30 @@ module PageObject
           @browser.switch_to.default_content unless frame_identifiers.nil?
           ::PageObject::Elements::OrderedList.new(element, :platform => :selenium_webdriver)
         end
+        
+        #
+        # platform method to retrieve the text from a h1
+        # See PageObject::Accessors#h1
+        #
+        def h1_text_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h1')
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).text
+          @browser.switch_to.default_content
+          value          
+        end
+        
+        #
+        # platform method to retrieve the h1 element
+        # See PageObject::Accessors#h1
+        #
+        def h1_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h1')
+          switch_to_frame(frame_identifiers)
+          element = @browser.find_element(how, what)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+        end
 
         private
         

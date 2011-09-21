@@ -454,6 +454,25 @@ module PageObject
           element = @browser.instance_eval "#{nested_frames(frame_identifiers)}ol(identifier)"
           Object::PageObject::Elements::OrderedList.new(element, :platform => :watir_webdriver)
         end
+        
+        #
+        # platform method to retrieve the text for a h1
+        # See PageObject::Accessors#h1
+        #
+        def h1_text_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h1')
+          @browser.instance_eval "#{nested_frames(frame_identifiers)}h1(identifier).text"          
+        end
+        
+        #
+        # platform method to retrieve the h1 element
+        # See PageObject::Accessors#h1
+        #
+        def h1_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h1')
+          element = @browser.instance_eval "#{nested_frames(frame_identifiers)}h1(identifier)"
+          Object::PageObject::Elements::Heading.new(element, :platform => :watir_webdriver)
+        end  
 
         private
     

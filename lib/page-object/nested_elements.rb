@@ -68,5 +68,9 @@ module PageObject
     def list_item_element(identifier={:index => 0})
       @platform.list_item_for(identifier)
     end
+    
+    def h1_element(identifier={:index => 0})
+      @platform.h1_for(identifier)
+    end
   end
 end

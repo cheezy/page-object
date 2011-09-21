@@ -1,4 +1,4 @@
-Feature: Attributes on Elements
+Feature: Nested Elements
 
   Background:
     Given I am on the nested elements page
@@ -71,3 +71,7 @@ Feature: Attributes on Elements
   Scenario: Finding a list item nested in an ordered list within a div
     When I search for a list item nested in an ordered list in a div
     Then I should see the nested list items text should be "Number One"
+
+  Scenario: Finding a h1 within a div
+    When I search for a h1 located list in a div
+    Then I should see the nested h1s text should be "h1's are cool"

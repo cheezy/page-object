@@ -38,6 +38,10 @@ When /^I retrieve table cell$/ do
   @element = @page.cell_id_element
 end
 
+When /^I retrieve a heading element$/ do
+  @element = @page.h1_id_element
+end
+
 When /^I locate the form$/ do
   @element = @page.form_id_element
 end

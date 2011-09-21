@@ -237,3 +237,13 @@ Feature: Elements
     And I should know its' tag name is "ol"
     And I should know the attribute "readonly" is false
     And I should be able to click it
+
+  Scenario: Heading element methods
+    When I retrieve a heading element
+    Then I should know it exists
+    And I should know it is visible
+    And I should know its' text is "h1's are cool"
+    And I should know it is equal to itself
+    And I should know its' tag name is "h1"
+    And I should know the attribute "readonly" is false
+    And I should be able to click it
