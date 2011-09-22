@@ -1,5 +1,8 @@
 === Version 0.3.2
 * Enhancements
+  * Element#when_present now returns the element object
+  * Element#when_visible now returns the element object
+  * Element#when_not_visible now returns the element object
   * Added #clear method for TextArea
   * Added support for Heading element
   * Added all of the h1 locators

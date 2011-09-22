@@ -100,6 +100,7 @@ module PageObject
           wait.until do
             self.exists?
           end
+          self
         end
 
         #
@@ -112,6 +113,7 @@ module PageObject
           wait.until do
             self.visible?
           end
+          self
         end
 
         #
@@ -124,6 +126,7 @@ module PageObject
           wait.until do
             not self.visible?
           end
+          self
         end
 
         #

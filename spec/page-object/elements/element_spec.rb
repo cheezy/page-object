@@ -155,15 +155,33 @@ describe PageObject::Elements::Element do
       watir_driver.should_receive(:wait_until_present).with(10)
       watir_element.when_present(10)
     end
+    
+    it "should return the element when it is present" do
+      watir_driver.should_receive(:wait_until_present).with(10)
+      element = watir_element.when_present(10)
+      element.should === watir_element
+    end
 
     it "should be able to block until it is visible" do
       Watir::Wait.should_receive(:until).with(10, "Element was not visible in 10 seconds")
       watir_element.when_visible(10)
     end
+    
+    it "should return the element when it is visible" do
+      Watir::Wait.should_receive(:until).with(10, "Element was not visible in 10 seconds")
+      element = watir_element.when_visible(10)
+      element.should === watir_element
+    end
 
     it "should be able to block until it is not visible" do
       Watir::Wait.should_receive(:while).with(10, "Element still visible after 10 seconds")
       watir_element.when_not_visible(10)
+    end
+    
+    it "should return the element when it is not visible" do
+      Watir::Wait.should_receive(:while).with(10, "Element still visible after 10 seconds")
+      element = watir_element.when_not_visible(10)
+      element.should === watir_element
     end
 
     it "should be able to block until a user define event fires true" do
@@ -252,6 +270,14 @@ describe PageObject::Elements::Element do
       wait.should_receive(:until)
       selenium_element.when_present(10)
     end
+    
+    it "should return the element when it is present" do
+      wait = double('wait')
+      Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      wait.should_receive(:until)
+      element = selenium_element.when_present(10)
+      element.should === selenium_element
+    end
 
     it "should be able to block until it is visible" do
       wait = double('wait')
@@ -259,12 +285,28 @@ describe PageObject::Elements::Element do
       wait.should_receive(:until)
       selenium_element.when_visible(10)
     end
+    
+    it "should return the element when it is visible" do
+      wait = double('wait')
+      Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      wait.should_receive(:until)
+      element = selenium_element.when_visible(10)
+      element.should === selenium_element
+    end
 
     it "should be able to block until it is not visible" do
       wait = double('wait')
       Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
       wait.should_receive(:until)
       selenium_element.when_not_visible(10)
+    end
+
+    it "should return the element when it is not visible" do
+      wait = double('wait')
+      Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+      wait.should_receive(:until)
+      element = selenium_element.when_not_visible(10)
+      element.should === selenium_element
     end
 
     it "should be able to block until a user define event fires true" do
