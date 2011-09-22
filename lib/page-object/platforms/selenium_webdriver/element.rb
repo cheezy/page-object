@@ -142,18 +142,6 @@ module PageObject
         end
         
         #
-        # Waits until the block returns true
-        #
-        # @param [Integer] (defaults to: 5) seconds to wait before timing out
-        # @param [String] the message to display if the event timeouts
-        # @param the block to execute when the event occurrs
-        #
-        def wait_until(timeout=5, message=nil, &block)
-          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
-          wait.until &block
-        end
-      
-        #
         # Send keystrokes to this element
         #
         # @param [String, Symbol, Array]
