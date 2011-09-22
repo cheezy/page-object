@@ -172,6 +172,14 @@ class Page
   h1(:h1_class_index, :class => 'h1_class', :index => 0)
   h1(:h1_name_index, :name => 'h1_name', :index => 0)
 
+  h2(:h2_id, :id => 'h2_id')
+  h2(:h2_class, :class => 'h2_class')
+  h2(:h2_name, :name => 'h2_name')
+  h2(:h2_index, :index => 0)
+  h2(:h2_xpath, :xpath => '//h2')
+  h2(:h2_class_index, :class => 'h2_class', :index => 0)
+  h2(:h2_name_index, :name => 'h2_name', :index => 0)
+
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')
   button(:prompt_button, :id => 'prompt_button')

@@ -116,4 +116,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.h1_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Heading
   end
+
+  it "should find a h2 element" do
+    watir_browser.should_receive(:h2).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.h2_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Heading
+  end
 end

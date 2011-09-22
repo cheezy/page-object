@@ -288,5 +288,20 @@ module PageObject
     def h1_element(identifier)
       platform.h1_for(identifier.clone)
     end
+
+    #
+    # Finds a h2
+    #
+    # @param [Hash] identifier how we find a H2.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def h2_element(identifier)
+      platform.h2_for(identifier.clone)
+    end
   end
 end

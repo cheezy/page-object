@@ -6,6 +6,7 @@ Then /^I should see "([^\"]*)"$/ do |text|
   @heading.should == text
 end
 
-When /^I search for the heading1 by "([^"]*)"$/ do |type|
-  @heading = @page.send "h1_#{type}"
+When /^I search for the heading(\d+) by "([^"]*)"$/ do |head_type, type|
+  @heading = @page.send "h#{head_type}_#{type}"
 end
+
