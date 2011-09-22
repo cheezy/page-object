@@ -10,6 +10,13 @@ module PageObject
         def value=(new_value)
           element.send_keys(new_value)
         end
+        
+        #
+        # Clear the TextArea
+        #
+        def clear
+          element.wd.clear
+        end
       end
     end
   end

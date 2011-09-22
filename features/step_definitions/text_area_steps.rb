@@ -25,3 +25,7 @@ end
 Then /^I should be able to type "([^"]*)" into the area element$/ do |value|
   @text_area.value = value
 end
+
+When /^I clear the text area$/ do
+  @page.text_area_id_element.clear
+end

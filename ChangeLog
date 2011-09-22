@@ -1,5 +1,6 @@
 === Version 0.3.2
 * Enhancements
+  * Added #clear method for TextArea
   * Added support for Heading element
   * Added all of the h1 locators
   * Updated to use selenium-webdriver 2.6.0
