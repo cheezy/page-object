@@ -1,4 +1,4 @@
-=== Version 0.3.2
+=== Version 0.3.2 / 2011-09-22
 * Enhancements
   * Element#when_present now returns the element object
   * Element#when_visible now returns the element object
