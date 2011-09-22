@@ -104,6 +104,11 @@ describe "Element with nested elements" do
       watir_driver.should_receive(:h2).and_return(watir_driver)
       watir_element.h2_element
     end
+
+    it "should find a nested h3" do
+      watir_driver.should_receive(:h3).and_return(watir_driver)
+      watir_element.h3_element
+    end
   end
   
   context "in Selenium" do
@@ -200,6 +205,11 @@ describe "Element with nested elements" do
     it "should find a nested h2" do
       selenium_driver.should_receive(:find_element).and_return(selenium_driver)
       selenium_element.h2_element
+    end
+
+    it "should find a nested h3" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.h3_element
     end
   end
 end

@@ -180,6 +180,14 @@ class Page
   h2(:h2_class_index, :class => 'h2_class', :index => 0)
   h2(:h2_name_index, :name => 'h2_name', :index => 0)
 
+  h3(:h3_id, :id => 'h3_id')
+  h3(:h3_class, :class => 'h3_class')
+  h3(:h3_name, :name => 'h3_name')
+  h3(:h3_index, :index => 0)
+  h3(:h3_xpath, :xpath => '//h3')
+  h3(:h3_class_index, :class => 'h3_class', :index => 0)
+  h3(:h3_name_index, :name => 'h3_name', :index => 0)
+
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')
   button(:prompt_button, :id => 'prompt_button')

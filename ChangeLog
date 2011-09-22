@@ -7,6 +7,7 @@
   * Added support for Heading element
   * Added all of the h1 locators
   * Added all of the h2 locators
+  * Added all of the h3 locators
   * Updated to use selenium-webdriver 2.6.0
 
 === Version 0.3.1 / 2011-09-08

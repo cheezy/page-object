@@ -602,6 +602,30 @@ module PageObject
           ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
         end
 
+        #
+        # platform method to retrieve the text from a h3
+        # See PageObject::Accessors#h3
+        #
+        def h3_text_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h3')
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).text
+          @browser.switch_to.default_content
+          value          
+        end
+        
+        #
+        # platform method to retrieve the h3 element
+        # See PageObject::Accessors#h3
+        #
+        def h3_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h3')
+          switch_to_frame(frame_identifiers)
+          element = @browser.find_element(how, what)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+        end
+
         private
         
         def parse_identifiers(identifier, element, tag_name=nil, additional=nil)

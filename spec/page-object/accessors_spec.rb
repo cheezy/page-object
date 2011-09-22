@@ -23,6 +23,7 @@ class AccessorsTestPageObject
   ordered_list(:top_five, :id => 'top')
   h1(:heading1, :id => 'main_heading')
   h2(:heading2, :id => 'main_heading')
+  h3(:heading3, :id => 'main_heading')
 end
 
 class BlockPageObject
@@ -86,6 +87,9 @@ class BlockPageObject
   end
   h2 :heading2 do |element|
     "h2"
+  end
+  h3 :heading3 do |element|
+    "h3"
   end
 end
 
@@ -947,6 +951,47 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.heading2_element
         element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+
+    describe "h3 accessors" do
+      context "when called on a page object" do
+        it "should generate accessor methods" do
+          watir_page_object.should respond_to(:heading3)
+          watir_page_object.should respond_to(:heading3_element)
+        end
+
+        it "should call a block on the element method when present" do
+          block_page_object.heading3_element.should == "h3"
+        end
+      end
+
+      context "watir implementation" do
+        it "should retrieve the text from the h3" do
+          watir_browser.should_receive(:h3).and_return(watir_browser)
+          watir_browser.should_receive(:text).and_return("value")
+          watir_page_object.heading3.should == "value"        
+        end
+
+        it "should retrieve the element from the page" do
+          watir_browser.should_receive(:h3).and_return(watir_browser)
+          element = watir_page_object.heading3_element
+          element.should be_instance_of PageObject::Elements::Heading
+        end
+      end
+
+      context "selenium implementation" do
+        it "should retrieve the text from the h3" do
+          selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+          selenium_browser.should_receive(:text).and_return("value")
+          selenium_page_object.heading3.should == "value"
+        end
+
+        it "should retrieve the element from the page" do
+          selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+          element = selenium_page_object.heading3_element
+          element.should be_instance_of PageObject::Elements::Heading
+        end
       end
     end
   end
