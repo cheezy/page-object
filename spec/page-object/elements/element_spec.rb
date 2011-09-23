@@ -2,8 +2,7 @@ require 'spec_helper'
 require 'page-object/elements'
 
 
-describe PageObject::Elements::Element do
-  let(:element) { PageObject::Elements::Element }
+describe "Element class methods" do
 
   context "when handling unknown requests" do
     it "should delegate to the driver element" do
@@ -18,7 +17,7 @@ describe PageObject::Elements::Element do
     it "should build xpath when finding elements by name where not supported" do
       ['table', 'span', 'div', 'td', 'li', 'ol', 'ul'].each do |tag|
         how = {:tag_name => tag, :name => 'blah'}
-        result = element.watir_identifier_for how
+        result = PageObject::Elements::Element.watir_identifier_for how
         result[:xpath].should == ".//#{tag}[@name='blah']"
       end
     end
@@ -36,7 +35,7 @@ describe PageObject::Elements::Element do
     it "should build xpath when index is provided for basic elements" do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :index => 1}
-        how, what = element.selenium_identifier_for identifier
+        how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
         what.should == ".//#{tag}[2]"
       end
@@ -45,7 +44,7 @@ describe PageObject::Elements::Element do
     it "should should build xpath when index is provided for input elements" do
       all_input_elements.each do |tag|
         identifier = {:tag_name => 'input', :type => tag, :index => 1}
-        how, what = element.selenium_identifier_for identifier
+        how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
         what.should == ".//input[@type='#{tag}'][2]"
       end
@@ -54,7 +53,7 @@ describe PageObject::Elements::Element do
     it "should build xpath when locating basic elements by name and index" do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :name => 'blah', :index => 0}
-        how, what = element.selenium_identifier_for identifier
+        how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
         what.should == ".//#{tag}[@name='blah'][1]"
       end
@@ -63,7 +62,7 @@ describe PageObject::Elements::Element do
     it "should build xpath when locating input elements by name and index" do
       all_input_elements.each do |type|
         identifier = {:tag_name => 'input', :type => "#{type}", :name => 'blah', :index => 0}
-        how, what = element.selenium_identifier_for identifier
+        how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
         what.should == ".//input[@type='#{type}' and @name='blah'][1]"
       end
@@ -72,7 +71,7 @@ describe PageObject::Elements::Element do
     it "should build xpath when locating basic elements by name and class" do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :name => 'foo', :class => 'bar'}
-        how, what = element.selenium_identifier_for identifier
+        how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
         what.should == ".//#{tag}[@name='foo' and @class='bar']"
       end
@@ -81,7 +80,7 @@ describe PageObject::Elements::Element do
     it "should build xpath when locating input elements by name and class" do
       all_input_elements.each do |type|
         identifier = {:tag_name => 'input', :type => "#{type}", :name => 'foo', :class => 'bar'}
-        how, what = element.selenium_identifier_for identifier
+        how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         what.should == ".//input[@type='#{type}' and @name='foo' and @class='bar']"
       end
     end

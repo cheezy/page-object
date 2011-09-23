@@ -32,7 +32,7 @@ describe "Element for Watir" do
 
   it "should know when it is equal to another" do
     @watir_driver.should_receive(:==).and_return(true)
-    @watir_element.should == watir_element
+    @watir_element.should == @watir_element
   end
 
   it "should return its tag name" do
