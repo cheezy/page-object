@@ -626,6 +626,30 @@ module PageObject
           ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
         end
 
+        #
+        # platform method to retrieve the text from a h4
+        # See PageObject::Accessors#h4
+        #
+        def h4_text_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h4')
+          switch_to_frame(frame_identifiers)
+          value = @browser.find_element(how, what).text
+          @browser.switch_to.default_content
+          value          
+        end
+        
+        #
+        # platform method to retrieve the h4 element
+        # See PageObject::Accessors#h4
+        #
+        def h4_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h4')
+          switch_to_frame(frame_identifiers)
+          element = @browser.find_element(how, what)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+        end
+
         private
         
         def parse_identifiers(identifier, element, tag_name=nil, additional=nil)

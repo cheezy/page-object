@@ -512,6 +512,25 @@ module PageObject
           Object::PageObject::Elements::Heading.new(element, :platform => :watir_webdriver)
         end  
 
+        #
+        # platform method to retrieve the text for a h4
+        # See PageObject::Accessors#h4
+        #
+        def h4_text_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h4')
+          @browser.instance_eval "#{nested_frames(frame_identifiers)}h4(identifier).text"          
+        end
+        
+        #
+        # platform method to retrieve the h4 element
+        # See PageObject::Accessors#h4
+        #
+        def h4_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h4')
+          element = @browser.instance_eval "#{nested_frames(frame_identifiers)}h4(identifier)"
+          Object::PageObject::Elements::Heading.new(element, :platform => :watir_webdriver)
+        end  
+
         private
     
         def parse_identifiers(identifier, element, tag_name=nil)

@@ -80,5 +80,9 @@ module PageObject
     def h3_element(identifier={:index => 0})
       @platform.h3_for(identifier)
     end
+    
+    def h4_element(identifier={:index => 0})
+      @platform.h4_for(identifier)
+    end
   end
 end

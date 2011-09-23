@@ -73,14 +73,18 @@ Feature: Nested Elements
     Then I should see the nested list items text should be "Number One"
 
   Scenario: Finding a h1 within a div
-    When I search for a h1 located list in a div
+    When I search for a h1 located in a div
     Then I should see the nested h1s text should be "h1's are cool"
     
   Scenario: Finding a h2 within a div
-    When I search for a h2 located list in a div
+    When I search for a h2 located in a div
     Then I should see the nested h2s text should be "h2's are cool"
     
   Scenario: Finding a h3 within a div
-    When I search for a h3 located list in a div
+    When I search for a h3 located in a div
     Then I should see the nested h3s text should be "h3's are cool"
+
+  Scenario: Finding a h4 within a div
+    When I search for a h4 located in a div
+    Then I should see the nested h3s text should be "h4's are cool"
 

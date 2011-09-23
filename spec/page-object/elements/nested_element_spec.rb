@@ -211,5 +211,10 @@ describe "Element with nested elements" do
       selenium_driver.should_receive(:find_element).and_return(selenium_driver)
       selenium_element.h3_element
     end
+
+    it "should find a nested h4" do
+      selenium_driver.should_receive(:find_element).and_return(selenium_driver)
+      selenium_element.h4_element
+    end
   end
 end

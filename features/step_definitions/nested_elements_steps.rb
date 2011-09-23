@@ -22,6 +22,7 @@ class NestedElementsPage
   h1(:nested_h1) { |page| page.outer_div_element.h1_element}
   h2(:nested_h2) { |page| page.outer_div_element.h2_element }
   h3(:nested_h3) { |page| page.outer_div_element.h3_element }
+  h4(:nested_h4) { |page| page.outer_div_element.h4_element }
 end
 
 Given /^I am on the nested elements page$/ do
@@ -167,26 +168,11 @@ Then /^I should see the nested list items text should be "([^"]*)"$/ do |value|
   @li.text.should == value
 end
 
-When /^I search for a h1 located list in a div$/ do
-  @h1 = @page.nested_h1_element
+When /^I search for a h(\d+) located in a div$/ do |num|
+  @header = @page.send "nested_h#{num}_element"
 end
 
-Then /^I should see the nested h1s text should be "([^"]*)"$/ do |value|
-  @h1.text.should == value
+Then /^I should see the nested h(\d+)s text should be "([^"]*)"$/ do |num, value|
+  @header.text.should == value
 end
 
-When /^I search for a h2 located list in a div$/ do
-  @h2 = @page.nested_h2_element
-end
-
-Then /^I should see the nested h2s text should be "([^"]*)"$/ do |value|
-  @h2.text.should == value
-end
-
-When /^I search for a h3 located list in a div$/ do
-  @h3 = @page.nested_h3_element
-end
-
-Then /^I should see the nested h3s text should be "([^"]*)"$/ do |value|
-  @h3.text.should == value
-end
