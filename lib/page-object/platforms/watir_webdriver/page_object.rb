@@ -131,6 +131,14 @@ module PageObject
         end
 
         #
+        # platform method to save the current screenshot to a file
+        # See PageObject#save_screenshot
+        #
+        def save_screenshot(file_name)
+          @browser.wd.save_screenshot(file_name)
+        end
+
+        #
         # platform method to get the value stored in a text field
         # See PageObject::Accessors#text_field
         #

@@ -235,6 +235,14 @@ module PageObject
   def clear_cookies
     platform.clear_cookies
   end
+  
+  #
+  # Save the current screenshot to the provided url.  File
+  # is saved as a png file.
+  #
+  def save_screenshot(file_name)
+    platform.save_screenshot file_name
+  end
 
   private
 

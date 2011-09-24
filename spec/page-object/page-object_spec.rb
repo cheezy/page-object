@@ -150,6 +150,12 @@ describe PageObject do
         watir_browser.should_receive(:clear_cookies)
         watir_page_object.clear_cookies
       end
+      
+      it "should be able to save a screenshot" do
+        watir_browser.should_receive(:wd).and_return(watir_browser)
+        watir_browser.should_receive(:save_screenshot)
+        watir_page_object.save_screenshot("test.png")
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -245,6 +251,11 @@ describe PageObject do
         selenium_browser.should_receive(:manage).and_return(selenium_browser)
         selenium_browser.should_receive(:delete_all_cookies)
         selenium_page_object.clear_cookies
+      end
+      
+      it "should be able to save a screenshot" do
+        selenium_browser.should_receive(:save_screenshot)
+        selenium_page_object.save_screenshot("test.png")
       end
     end
   end

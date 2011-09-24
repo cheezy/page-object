@@ -10,6 +10,7 @@
   * Added #inspect to Element
   * Added #current_url to PageObject
   * Added #clear_cookies to PageObject
+  * Added #save_screenshot to PageObject
   * Updated to use selenium-webdriver 2.7.0
   * Updated to use watir-webdriver 0.3.4
 
