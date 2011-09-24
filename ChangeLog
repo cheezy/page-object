@@ -1,6 +1,8 @@
 === Version 0.4
 * Enhancements
   * Added all of the h4 locators
+  * Added all of the h5 locators
+  * Added all of the h6 locators
   * Updated to use selenium-webdriver 2.7.0
   * Updated to use watir-webdriver 0.3.4
 

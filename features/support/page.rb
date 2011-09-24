@@ -196,6 +196,22 @@ class Page
   h4(:h4_class_index, :class => 'h4_class', :index => 0)
   h4(:h4_name_index, :name => 'h4_name', :index => 0)
 
+  h5(:h5_id, :id => 'h5_id')
+  h5(:h5_class, :class => 'h5_class')
+  h5(:h5_name, :name => 'h5_name')
+  h5(:h5_index, :index => 0)
+  h5(:h5_xpath, :xpath => '//h5')
+  h5(:h5_class_index, :class => 'h5_class', :index => 0)
+  h5(:h5_name_index, :name => 'h5_name', :index => 0)
+
+  h6(:h6_id, :id => 'h6_id')
+  h6(:h6_class, :class => 'h6_class')
+  h6(:h6_name, :name => 'h6_name')
+  h6(:h6_index, :index => 0)
+  h6(:h6_xpath, :xpath => '//h6')
+  h6(:h6_class_index, :class => 'h6_class', :index => 0)
+  h6(:h6_name_index, :name => 'h6_name', :index => 0)
+
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')
   button(:prompt_button, :id => 'prompt_button')

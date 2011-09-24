@@ -134,4 +134,16 @@ describe PageObject::ElementLocators do
     element = watir_page_object.h4_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Heading
   end
+
+  it "should find a h5 element" do
+    watir_browser.should_receive(:h5).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.h5_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Heading
+  end
+
+  it "should find a h6 element" do
+    watir_browser.should_receive(:h6).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.h6_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::Heading
+  end
 end

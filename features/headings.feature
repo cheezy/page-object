@@ -12,10 +12,10 @@ Feature: Headings
     Then I should see "h3's are cool"
     When I get the text for the "h4" element
     Then I should see "h4's are cool"
-#    When I get the text for the "h5" element
-#    Then I should see "h5's are cool"
-#    When I get the text for the "h6" element
-#    Then I should see "h6's are cool"
+    When I get the text for the "h5" element
+    Then I should see "h5's are cool"
+    When I get the text for the "h6" element
+    Then I should see "h6's are cool"
 
   Scenario Outline: Locating h1s on the Page
     When I search for the heading1 by "<search_by>"
@@ -56,6 +56,30 @@ Feature: Headings
   Scenario Outline: Locating h4s on the Page
     When I search for the heading4 by "<search_by>"
     Then I should see "h4's are cool"
+
+  Scenarios:
+    | search_by |
+    | id        |
+    | class     |
+    | name      |
+    | xpath     |
+    | index     |
+
+  Scenario Outline: Locating h5s on the Page
+    When I search for the heading5 by "<search_by>"
+    Then I should see "h5's are cool"
+
+  Scenarios:
+    | search_by |
+    | id        |
+    | class     |
+    | name      |
+    | xpath     |
+    | index     |
+
+  Scenario Outline: Locating h6s on the Page
+    When I search for the heading6 by "<search_by>"
+    Then I should see "h6's are cool"
 
   Scenarios:
     | search_by |

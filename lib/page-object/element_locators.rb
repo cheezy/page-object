@@ -333,5 +333,35 @@ module PageObject
     def h4_element(identifier)
       platform.h4_for(identifier.clone)
     end
+
+    #
+    # Finds a h5
+    #
+    # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def h5_element(identifier)
+      platform.h5_for(identifier.clone)
+    end
+
+    #
+    # Finds a h6
+    #
+    # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def h6_element(identifier)
+      platform.h6_for(identifier.clone)
+    end
   end
 end

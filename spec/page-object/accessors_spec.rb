@@ -25,6 +25,8 @@ class AccessorsTestPageObject
   h2(:heading2, :id => 'main_heading')
   h3(:heading3, :id => 'main_heading')
   h4(:heading4, :id => 'main_heading')
+  h5(:heading5, :id => 'main_heading')
+  h6(:heading6, :id => 'main_heading')
 end
 
 class BlockPageObject
@@ -94,6 +96,12 @@ class BlockPageObject
   end
   h4 :heading4 do |element|
     "h4"
+  end
+  h5 :heading5 do |element|
+    "h5"
+  end
+  h6 :heading6 do |element|
+    "h6"
   end
 end
 
@@ -957,86 +965,168 @@ describe PageObject::Accessors do
         element.should be_instance_of PageObject::Elements::Heading
       end
     end
+  end
 
-    describe "h3 accessors" do
-      context "when called on a page object" do
-        it "should generate accessor methods" do
-          watir_page_object.should respond_to(:heading3)
-          watir_page_object.should respond_to(:heading3_element)
-        end
-
-        it "should call a block on the element method when present" do
-          block_page_object.heading3_element.should == "h3"
-        end
+  describe "h3 accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:heading3)
+        watir_page_object.should respond_to(:heading3_element)
       end
 
-      context "watir implementation" do
-        it "should retrieve the text from the h3" do
-          watir_browser.should_receive(:h3).and_return(watir_browser)
-          watir_browser.should_receive(:text).and_return("value")
-          watir_page_object.heading3.should == "value"        
-        end
-
-        it "should retrieve the element from the page" do
-          watir_browser.should_receive(:h3).and_return(watir_browser)
-          element = watir_page_object.heading3_element
-          element.should be_instance_of PageObject::Elements::Heading
-        end
-      end
-
-      context "selenium implementation" do
-        it "should retrieve the text from the h3" do
-          selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-          selenium_browser.should_receive(:text).and_return("value")
-          selenium_page_object.heading3.should == "value"
-        end
-
-        it "should retrieve the element from the page" do
-          selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-          element = selenium_page_object.heading3_element
-          element.should be_instance_of PageObject::Elements::Heading
-        end
+      it "should call a block on the element method when present" do
+        block_page_object.heading3_element.should == "h3"
       end
     end
 
-    describe "h4 accessors" do
-      context "when called on a page object" do
-        it "should generate accessor methods" do
-          watir_page_object.should respond_to(:heading4)
-          watir_page_object.should respond_to(:heading4_element)
-        end
-
-        it "should call a block on the element method when present" do
-          block_page_object.heading4_element.should == "h4"
-        end
+    context "watir implementation" do
+      it "should retrieve the text from the h3" do
+        watir_browser.should_receive(:h3).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("value")
+        watir_page_object.heading3.should == "value"        
       end
 
-      context "watir implementation" do
-        it "should retrieve the text from the h4" do
-          watir_browser.should_receive(:h4).and_return(watir_browser)
-          watir_browser.should_receive(:text).and_return("value")
-          watir_page_object.heading4.should == "value"        
-        end
+      it "should retrieve the element from the page" do
+        watir_browser.should_receive(:h3).and_return(watir_browser)
+        element = watir_page_object.heading3_element
+        element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
 
-        it "should retrieve the element from the page" do
-          watir_browser.should_receive(:h4).and_return(watir_browser)
-          element = watir_page_object.heading4_element
-          element.should be_instance_of PageObject::Elements::Heading
-        end
+    context "selenium implementation" do
+      it "should retrieve the text from the h3" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("value")
+        selenium_page_object.heading3.should == "value"
       end
 
-      context "selenium implementation" do
-        it "should retrieve the text from the h4" do
-          selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-          selenium_browser.should_receive(:text).and_return("value")
-          selenium_page_object.heading4.should == "value"
-        end
+      it "should retrieve the element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.heading3_element
+        element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+  end
 
-        it "should retrieve the element from the page" do
-          selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-          element = selenium_page_object.heading4_element
-          element.should be_instance_of PageObject::Elements::Heading
-        end
+  describe "h4 accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:heading4)
+        watir_page_object.should respond_to(:heading4_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.heading4_element.should == "h4"
+      end
+    end
+
+    context "watir implementation" do
+      it "should retrieve the text from the h4" do
+        watir_browser.should_receive(:h4).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("value")
+        watir_page_object.heading4.should == "value"        
+      end
+
+      it "should retrieve the element from the page" do
+        watir_browser.should_receive(:h4).and_return(watir_browser)
+        element = watir_page_object.heading4_element
+        element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+
+    context "selenium implementation" do
+      it "should retrieve the text from the h4" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("value")
+        selenium_page_object.heading4.should == "value"
+      end
+
+      it "should retrieve the element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.heading4_element
+        element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+  end
+
+  describe "h5 accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:heading5)
+        watir_page_object.should respond_to(:heading5_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.heading5_element.should == "h5"
+      end
+    end
+
+    context "watir implementation" do
+      it "should retrieve the text from the h5" do
+        watir_browser.should_receive(:h5).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("value")
+        watir_page_object.heading5.should == "value"        
+      end
+
+      it "should retrieve the element from the page" do
+        watir_browser.should_receive(:h5).and_return(watir_browser)
+        element = watir_page_object.heading5_element
+        element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+
+    context "selenium implementation" do
+      it "should retrieve the text from the h5" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("value")
+        selenium_page_object.heading5.should == "value"
+      end
+
+      it "should retrieve the element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.heading5_element
+        element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+  end
+
+  describe "h6 accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:heading6)
+        watir_page_object.should respond_to(:heading6_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.heading6_element.should == "h6"
+      end
+    end
+
+    context "watir implementation" do
+      it "should retrieve the text from the h6" do
+        watir_browser.should_receive(:h6).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("value")
+        watir_page_object.heading6.should == "value"        
+      end
+
+      it "should retrieve the element from the page" do
+        watir_browser.should_receive(:h6).and_return(watir_browser)
+        element = watir_page_object.heading6_element
+        element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+
+    context "selenium implementation" do
+      it "should retrieve the text from the h6" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("value")
+        selenium_page_object.heading6.should == "value"
+      end
+
+      it "should retrieve the element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.heading6_element
+        element.should be_instance_of PageObject::Elements::Heading
       end
     end
   end

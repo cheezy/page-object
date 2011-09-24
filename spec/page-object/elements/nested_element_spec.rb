@@ -108,6 +108,21 @@ describe "Element with nested elements" do
       @watir_driver.should_receive(:h3).and_return(@watir_driver)
       @watir_element.h3_element
     end
+
+    it "should find a nested h4" do
+      @watir_driver.should_receive(:h4).and_return(@watir_driver)
+      @watir_element.h4_element
+    end
+
+    it "should find a nested h5" do
+      @watir_driver.should_receive(:h5).and_return(@watir_driver)
+      @watir_element.h5_element
+    end
+
+    it "should find a nested h6" do
+      @watir_driver.should_receive(:h6).and_return(@watir_driver)
+      @watir_element.h6_element
+    end
   end
   
   context "in Selenium" do
@@ -219,6 +234,16 @@ describe "Element with nested elements" do
     it "should find a nested h4" do
       @selenium_driver.should_receive(:find_element).and_return(@selenium_driver)
       @selenium_element.h4_element
+    end
+
+    it "should find a nested h5" do
+      @selenium_driver.should_receive(:find_element).and_return(@selenium_driver)
+      @selenium_element.h5_element
+    end
+
+    it "should find a nested h6" do
+      @selenium_driver.should_receive(:find_element).and_return(@selenium_driver)
+      @selenium_element.h6_element
     end
   end
 end

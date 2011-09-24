@@ -23,6 +23,8 @@ class NestedElementsPage
   h2(:nested_h2) { |page| page.outer_div_element.h2_element }
   h3(:nested_h3) { |page| page.outer_div_element.h3_element }
   h4(:nested_h4) { |page| page.outer_div_element.h4_element }
+  h5(:nested_h5) { |page| page.outer_div_element.h5_element }
+  h6(:nested_h6) { |page| page.outer_div_element.h6_element }
 end
 
 Given /^I am on the nested elements page$/ do

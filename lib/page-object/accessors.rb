@@ -697,5 +697,63 @@ module PageObject
       end
       alias_method "#{name}_h4".to_sym, "#{name}_element".to_sym
     end
+
+    #
+    # adds a method to retrieve the text of a h5 and a h5 element
+    #
+    # @example
+    #   h5(:title, :id => 'title')
+    #   # will generate a 'title' and 'title_element' method
+    #
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def h5(name, identifier=nil, &block)
+      define_method(name) do
+        return platform.h5_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
+      define_method("#{name}_element") do
+        return call_block(&block) if block_given?
+        platform.h5_for(identifier.clone)
+      end
+      alias_method "#{name}_h5".to_sym, "#{name}_element".to_sym
+    end
+
+    #
+    # adds a method to retrieve the text of a h6 and a h6 element
+    #
+    # @example
+    #   h6(:title, :id => 'title')
+    #   # will generate a 'title' and 'title_element' method
+    #
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def h6(name, identifier=nil, &block)
+      define_method(name) do
+        return platform.h6_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
+      define_method("#{name}_element") do
+        return call_block(&block) if block_given?
+        platform.h6_for(identifier.clone)
+      end
+      alias_method "#{name}_h6".to_sym, "#{name}_element".to_sym
+    end
   end
 end
