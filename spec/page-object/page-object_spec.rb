@@ -145,6 +145,11 @@ describe PageObject do
         watir_browser.should_receive(:url).and_return("cheezyworld.com")
         watir_page_object.current_url.should == "cheezyworld.com"
       end
+      
+      it "should know how to clear all of the cookies from the browser" do
+        watir_browser.should_receive(:clear_cookies)
+        watir_page_object.clear_cookies
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -234,6 +239,12 @@ describe PageObject do
       it "should know its' current url" do
         selenium_browser.should_receive(:current_url).and_return("cheezyworld.com")
         selenium_page_object.current_url.should == "cheezyworld.com"
+      end
+      
+      it "should clear all of the cookies from the browser" do
+        selenium_browser.should_receive(:manage).and_return(selenium_browser)
+        selenium_browser.should_receive(:delete_all_cookies)
+        selenium_page_object.clear_cookies
       end
     end
   end

@@ -228,6 +228,13 @@ module PageObject
   def forward
     platform.forward
   end
+  
+  #
+  # Clear the cookies from the browser
+  #
+  def clear_cookies
+    platform.clear_cookies
+  end
 
   private
 

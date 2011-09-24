@@ -121,6 +121,14 @@ module PageObject
         def forward
           @browser.forward
         end
+        
+        #
+        # platform method to clear the cookies from the browser
+        # See PageObject#clear_cookies
+        #
+        def clear_cookies
+          @browser.clear_cookies
+        end
 
         #
         # platform method to get the value stored in a text field
