@@ -1,3 +1,5 @@
+require 'mixology'
+
 module PageObject
   module Elements
     class Button < Element
@@ -21,7 +23,7 @@ module PageObject
         super
         if platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/button'
-          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Button
+          self.mixin PageObject::Platforms::SeleniumWebDriver::Button
         end
       end
     end

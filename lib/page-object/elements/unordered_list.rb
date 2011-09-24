@@ -1,3 +1,5 @@
+require 'mixology'
+
 module PageObject
   module Elements
     class UnorderedList < Element
@@ -34,10 +36,10 @@ module PageObject
         super
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/unordered_list'
-          self.class.send :include, PageObject::Platforms::WatirWebDriver::UnorderedList
+          self.mixin PageObject::Platforms::WatirWebDriver::UnorderedList
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/unordered_list'
-          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::UnorderedList
+          self.mixin PageObject::Platforms::SeleniumWebDriver::UnorderedList
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

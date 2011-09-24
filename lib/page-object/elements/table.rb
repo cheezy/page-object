@@ -1,3 +1,5 @@
+require 'mixology'
+
 module PageObject
   module Elements
     class Table < Element
@@ -29,10 +31,10 @@ module PageObject
         super
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/table'
-          self.class.send :include, PageObject::Platforms::WatirWebDriver::Table
+          self.mixin PageObject::Platforms::WatirWebDriver::Table
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/table'
-          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Table
+          self.mixin PageObject::Platforms::SeleniumWebDriver::Table
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

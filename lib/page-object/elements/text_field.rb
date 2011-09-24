@@ -1,3 +1,5 @@
+require 'mixology'
+
 module PageObject
   module Elements
     class TextField < Element
@@ -29,10 +31,10 @@ module PageObject
         super
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/text_field'
-          self.class.send :include, PageObject::Platforms::WatirWebDriver::TextField
+          self.mixin PageObject::Platforms::WatirWebDriver::TextField
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/text_field'
-          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::TextField
+          self.mixin PageObject::Platforms::SeleniumWebDriver::TextField
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

@@ -1,8 +1,9 @@
+require 'spec_helper'
 
 describe "Element for Watir" do
   before(:each) do
-    @watir_driver = Watir::Element.new(nil, {})
-    @watir_element = PageObject::Elements::Element.new(@watir_driver, :platform => :watir_webdriver)
+    @watir_driver = ::Watir::Element.new(nil, {})
+    @watir_element = ::PageObject::Elements::Element.new(@watir_driver, :platform => :watir_webdriver)
   end
   
   it "should know when it is visible" do
@@ -77,29 +78,29 @@ describe "Element for Watir" do
   end
 
   it "should be able to block until it is visible" do
-    Watir::Wait.should_receive(:until).with(10, "Element was not visible in 10 seconds")
+    ::Watir::Wait.should_receive(:until).with(10, "Element was not visible in 10 seconds")
     @watir_element.when_visible(10)
   end
   
   it "should return the element when it is visible" do
-    Watir::Wait.should_receive(:until).with(10, "Element was not visible in 10 seconds")
+    ::Watir::Wait.should_receive(:until).with(10, "Element was not visible in 10 seconds")
     element = @watir_element.when_visible(10)
     element.should === @watir_element
   end
 
   it "should be able to block until it is not visible" do
-    Watir::Wait.should_receive(:while).with(10, "Element still visible after 10 seconds")
+    ::Watir::Wait.should_receive(:while).with(10, "Element still visible after 10 seconds")
     @watir_element.when_not_visible(10)
   end
   
   it "should return the element when it is not visible" do
-    Watir::Wait.should_receive(:while).with(10, "Element still visible after 10 seconds")
+    ::Watir::Wait.should_receive(:while).with(10, "Element still visible after 10 seconds")
     element = @watir_element.when_not_visible(10)
     element.should === @watir_element
   end
 
   it "should be able to block until a user define event fires true" do
-    Watir::Wait.should_receive(:until).with(10, "Element blah")
+    ::Watir::Wait.should_receive(:until).with(10, "Element blah")
     @watir_element.wait_until(10, "Element blah") {}
   end
   

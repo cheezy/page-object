@@ -1,3 +1,5 @@
+require 'mixology'
+
 module PageObject
   module Elements
     class CheckBox < Element
@@ -13,10 +15,10 @@ module PageObject
         super
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/check_box'
-          self.class.send :include, PageObject::Platforms::WatirWebDriver::CheckBox
+          self.mixin PageObject::Platforms::WatirWebDriver::CheckBox
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/check_box'
-          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::CheckBox
+          self.mixin PageObject::Platforms::SeleniumWebDriver::CheckBox
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

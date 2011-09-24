@@ -2,7 +2,7 @@
 describe "Element for Selenium" do
   before(:each) do
     @selenium_driver = double('selenium')
-    @selenium_element = PageObject::Elements::Element.new(@selenium_driver, :platform => :selenium_webdriver)
+    @selenium_element = ::PageObject::Elements::Element.new(@selenium_driver, :platform => :selenium_webdriver)
   end
 
   it "should know when it is visible" do
@@ -20,7 +20,7 @@ describe "Element for Selenium" do
   end
 
   it "should know when it does not exist" do
-    @selenium_element = PageObject::Elements::Element.new(nil, :platform => :selenium_webdriver)
+    @selenium_element = ::PageObject::Elements::Element.new(nil, :platform => :selenium_webdriver)
     @selenium_element.exists?.should == false
   end
 
@@ -66,14 +66,14 @@ describe "Element for Selenium" do
 
   it "should be able to block until it is present" do
     wait = double('wait')
-    Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     @selenium_element.when_present(10)
   end
   
   it "should return the element when it is present" do
     wait = double('wait')
-    Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     element = @selenium_element.when_present(10)
     element.should === @selenium_element
@@ -81,14 +81,14 @@ describe "Element for Selenium" do
 
   it "should be able to block until it is visible" do
     wait = double('wait')
-    Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     @selenium_element.when_visible(10)
   end
   
   it "should return the element when it is visible" do
     wait = double('wait')
-    Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     element = @selenium_element.when_visible(10)
     element.should === @selenium_element
@@ -96,14 +96,14 @@ describe "Element for Selenium" do
 
   it "should be able to block until it is not visible" do
     wait = double('wait')
-    Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     @selenium_element.when_not_visible(10)
   end
 
   it "should return the element when it is not visible" do
     wait = double('wait')
-    Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     element = @selenium_element.when_not_visible(10)
     element.should === @selenium_element
@@ -111,7 +111,7 @@ describe "Element for Selenium" do
 
   it "should be able to block until a user define event fires true" do
     wait = double('wait')
-    Object::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     @selenium_element.wait_until(10, "Element blah") {}
   end
