@@ -18,6 +18,24 @@ module PageObject
         include_platform_for platform
       end
 
+      #
+      # click the element
+      #
+      def click
+        @element.click
+      end
+      
+      #
+      # get the value of the given CSS property
+      #
+      def style(property)
+        @element.style property
+      end
+      
+      def inspect
+        @element.inspect
+      end
+
       # @private
       def self.watir_identifier_for identifier
         if should_build_watir_xpath(identifier)

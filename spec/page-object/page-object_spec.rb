@@ -140,6 +140,11 @@ describe PageObject do
         watir_browser.should_receive(:forward)
         watir_page_object.forward
       end
+      
+      it "should know its' current url" do
+        watir_browser.should_receive(:url).and_return("cheezyworld.com")
+        watir_page_object.current_url.should == "cheezyworld.com"
+      end
     end
 
     context "when using SeleniumPageObject" do
@@ -224,6 +229,11 @@ describe PageObject do
         selenium_browser.should_receive(:navigate).and_return(selenium_browser)
         selenium_browser.should_receive(:forward)
         selenium_page_object.forward
+      end
+      
+      it "should know its' current url" do
+        selenium_browser.should_receive(:current_url).and_return("cheezyworld.com")
+        selenium_page_object.current_url.should == "cheezyworld.com"
       end
     end
   end

@@ -25,6 +25,14 @@ module PageObject
         def navigate_to(url)
           @browser.goto url
         end
+        
+        #
+        # platform method to get the current url
+        # See PageObject#current_url
+        #
+        def current_url
+          @browser.url
+        end
 
         #
         # platform method to retrieve the text from the current page

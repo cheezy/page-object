@@ -5,6 +5,10 @@
   * Added all of the h6 locators
   * Added all of the paragraph locators
   * Added the Paragraph class
+  * Added #click to Element
+  * Added #style to Element
+  * Added #inspect to Element
+  * Added #current_url to PageObject
   * Updated to use selenium-webdriver 2.7.0
   * Updated to use watir-webdriver 0.3.4
 

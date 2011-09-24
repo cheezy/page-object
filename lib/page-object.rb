@@ -61,6 +61,13 @@ module PageObject
   end
 
   #
+  # get the current page url
+  #
+  def current_url
+    platform.current_url
+  end
+
+  #
   # navigate to the provided url
   #
   # @param [String] the full url to navigate to

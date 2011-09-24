@@ -24,6 +24,14 @@ module PageObject
         end
 
         #
+        # platform method to get the current url
+        # See PageObject#current_url
+        #
+        def current_url
+          @browser.current_url
+        end
+
+        #
         # platform method to retrieve the text from the current page
         # See PageObject#text
         #
