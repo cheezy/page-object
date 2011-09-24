@@ -27,6 +27,7 @@ class AccessorsTestPageObject
   h4(:heading4, :id => 'main_heading')
   h5(:heading5, :id => 'main_heading')
   h6(:heading6, :id => 'main_heading')
+  paragraph(:first_para, :id => 'first')
 end
 
 class BlockPageObject
@@ -102,6 +103,9 @@ class BlockPageObject
   end
   h6 :heading6 do |element|
     "h6"
+  end
+  paragraph :first_para do |element|
+    "p"
   end
 end
 
@@ -1127,6 +1131,48 @@ describe PageObject::Accessors do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
         element = selenium_page_object.heading6_element
         element.should be_instance_of PageObject::Elements::Heading
+      end
+    end
+  end
+
+
+  describe "p accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:first_para)
+        watir_page_object.should respond_to(:first_para_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.first_para_element.should == "p"
+      end
+    end
+
+    context "watir implementation" do
+      it "should retrieve the text from the p" do
+        watir_browser.should_receive(:p).and_return(watir_browser)
+        watir_browser.should_receive(:text).and_return("value")
+        watir_page_object.first_para.should == "value"        
+      end
+
+      it "should retrieve the element from the page" do
+        watir_browser.should_receive(:p).and_return(watir_browser)
+        element = watir_page_object.first_para_element
+        element.should be_instance_of PageObject::Elements::Paragraph
+      end
+    end
+
+    context "selenium implementation" do
+      it "should retrieve the text from the p" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:text).and_return("value")
+        selenium_page_object.first_para.should == "value"
+      end
+
+      it "should retrieve the element from the page" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.first_para_element
+        element.should be_instance_of PageObject::Elements::Paragraph
       end
     end
   end

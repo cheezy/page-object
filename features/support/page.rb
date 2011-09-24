@@ -211,6 +211,14 @@ class Page
   h6(:h6_xpath, :xpath => '//h6')
   h6(:h6_class_index, :class => 'h6_class', :index => 0)
   h6(:h6_name_index, :name => 'h6_name', :index => 0)
+  
+  paragraph(:p_id, :id => 'p_id')
+  paragraph(:p_class, :class => 'p_class')
+  paragraph(:p_name, :name => 'p_name')
+  paragraph(:p_index, :index => 0)
+  paragraph(:p_xpath, :xpath => '//p')
+  paragraph(:p_class_index, :class => 'p_class', :index => 0)
+  paragraph(:p_name_index, :name => 'p_name', :index => 0)
 
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')

@@ -92,5 +92,9 @@ module PageObject
     def h6_element(identifier={:index => 0})
       @platform.h6_for(identifier)
     end
+
+    def paragraph_element(identifier={:index => 0})
+      @platform.paragraph_for(identifier)
+    end
   end
 end

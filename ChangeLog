@@ -3,6 +3,8 @@
   * Added all of the h4 locators
   * Added all of the h5 locators
   * Added all of the h6 locators
+  * Added all of the paragraph locators
+  * Added the Paragraph class
   * Updated to use selenium-webdriver 2.7.0
   * Updated to use watir-webdriver 0.3.4
 

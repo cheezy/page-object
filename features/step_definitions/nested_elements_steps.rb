@@ -25,6 +25,7 @@ class NestedElementsPage
   h4(:nested_h4) { |page| page.outer_div_element.h4_element }
   h5(:nested_h5) { |page| page.outer_div_element.h5_element }
   h6(:nested_h6) { |page| page.outer_div_element.h6_element }
+  paragraph(:nested_paragraph) { |page| page.outer_div_element.paragraph_element }
 end
 
 Given /^I am on the nested elements page$/ do
@@ -178,3 +179,10 @@ Then /^I should see the nested h(\d+)s text should be "([^"]*)"$/ do |num, value
   @header.text.should == value
 end
 
+When /^I search for a paragraph located in a div$/ do
+  @para = @page.nested_paragraph_element
+end
+
+Then /^I should see the nested paragraphs text should be "([^"]*)"$/ do |value|
+  @para.text.should == value
+end

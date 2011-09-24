@@ -245,5 +245,10 @@ describe "Element with nested elements" do
       @selenium_driver.should_receive(:find_element).and_return(@selenium_driver)
       @selenium_element.h6_element
     end
+
+    it "should find a nested paragraph" do
+      @selenium_driver.should_receive(:find_element).and_return(@selenium_driver)
+      @selenium_element.paragraph_element
+    end
   end
 end

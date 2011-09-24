@@ -569,6 +569,25 @@ module PageObject
           Object::PageObject::Elements::Heading.new(element, :platform => :watir_webdriver)
         end  
 
+        #
+        # platform method to retrieve the text for a paragraph
+        # See PageObject::Accessors#paragraph
+        #
+        def paragraph_text_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'p')
+          @browser.instance_eval "#{nested_frames(frame_identifiers)}p(identifier).text"          
+        end
+        
+        #
+        # platform method to retrieve the paragraph element
+        # See PageObject::Accessors#paragraph
+        #
+        def paragraph_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'p')
+          element = @browser.instance_eval "#{nested_frames(frame_identifiers)}p(identifier)"
+          Object::PageObject::Elements::Paragraph.new(element, :platform => :watir_webdriver)
+        end  
+
         private
     
         def parse_identifiers(identifier, element, tag_name=nil)
