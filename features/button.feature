@@ -28,6 +28,18 @@ Feature: Button
     | index     |
     | value     |
 
+  Scenario Outline: Locating real buttons on the page
+    When I search for the button by "<search_by>"
+    Then I should be able to click the real button
+
+  Scenarios:
+    | search_by |
+    | id        |
+    | class     |
+    | name      |
+    | index     |
+    | value     |
+
   @watir_only
   Scenario Outline: Locating buttons on Watir only
     When I search for the button by "<search_by>"
@@ -46,6 +58,16 @@ Feature: Button
     | class  | index  |
     | name   | index  |
     
+  Scenario Outline: Locating real button using multiple parameters
+    When I search for the button by "<param1>" and "<param2>"
+    Then I should be able to click the real button
+
+  Scenarios:
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |
+
+
   Scenario: Finding a button dynamically
     When I find a button while the script is executing
     Then I should be able to click the button element

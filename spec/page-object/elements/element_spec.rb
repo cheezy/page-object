@@ -29,7 +29,7 @@ describe "Element class methods" do
     end
 
     def all_input_elements
-      ['text', 'hidden', 'checkbox', 'radio', 'submit']
+      ['text', 'hidden', 'checkbox', 'radio']
     end
 
     it "should build xpath when index is provided for basic elements" do
@@ -46,7 +46,7 @@ describe "Element class methods" do
         identifier = {:tag_name => 'input', :type => tag, :index => 1}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
-        what.should == ".//input[@type='#{tag}'][2]"
+        what.should include ".//input[@type='#{tag}'][2]"
       end
     end
 
@@ -64,7 +64,7 @@ describe "Element class methods" do
         identifier = {:tag_name => 'input', :type => "#{type}", :name => 'blah', :index => 0}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
-        what.should == ".//input[@type='#{type}' and @name='blah'][1]"
+        what.should include ".//input[@type='#{type}' and @name='blah'][1]"
       end
     end
 
@@ -81,7 +81,7 @@ describe "Element class methods" do
       all_input_elements.each do |type|
         identifier = {:tag_name => 'input', :type => "#{type}", :name => 'foo', :class => 'bar'}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        what.should == ".//input[@type='#{type}' and @name='foo' and @class='bar']"
+        what.should include ".//input[@type='#{type}' and @name='foo' and @class='bar']"
       end
     end
   end  

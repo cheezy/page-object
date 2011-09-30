@@ -14,6 +14,10 @@ Then /^I should be able to click the button$/ do
   @page.send "button_#{@how}"
 end
 
+Then /^I should be able to click the real button$/ do
+  @page.send "btn_#{@how}"
+end
+
 When /^I find a button while the script is executing$/ do
   @button = @page.button_element(:id => 'button_id')
 end

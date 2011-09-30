@@ -84,8 +84,21 @@ module PageObject
       def self.build_xpath_for identifier
         tag_locator = identifier.delete(:tag_name)
         idx = identifier.delete(:index)
-        identifier.delete(:tag_name)
-        xpath = ".//#{tag_locator}"
+        if tag_locator == 'input' and identifier[:type] == 'submit'
+          identifier.delete(:type)
+          btn_ident = identifier.clone
+          if btn_ident[:value]
+            btn_ident[:text] = btn_ident[:value]
+            btn_ident.delete(:value)
+          end
+          xpath = ".//button"
+          xpath << "[#{attribute_expression(btn_ident)}]" unless btn_ident.empty?
+          xpath << "[#{idx+1}]" if idx
+          identifier[:type] = %w[button reset submit image]
+          xpath << " | .//input"
+        else
+          xpath = ".//#{tag_locator}"
+        end
         xpath << "[#{attribute_expression(identifier)}]" unless identifier.empty?
         xpath << "[#{idx+1}]" if idx
         xpath
