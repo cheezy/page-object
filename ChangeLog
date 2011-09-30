@@ -1,3 +1,7 @@
+=== Version 0.4.1 / 2011-09-30
+* Fixes
+  * Fixed error when loading plugins using Selenium
+
 === Version 0.4 / 2011-09-24
 * Enhancements
   * Added all of the h4 locators
