@@ -8,7 +8,8 @@ module PageObject
       end
 
       def self.is_for?(browser)
-        browser.is_a? Object::Selenium::WebDriver::Driver
+        require 'selenium-webdriver'
+        browser.is_a? ::Selenium::WebDriver::Driver
       end
     end
   end
