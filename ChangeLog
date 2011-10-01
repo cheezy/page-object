@@ -1,4 +1,4 @@
-=== Version 0.4.2
+=== Version 0.4.2 / 2011-10-01
 * Enhancements
   * Proper handling of <button> elements
   * Changed PageFactory so it also sets and instance variable @current_page to the newly created page
