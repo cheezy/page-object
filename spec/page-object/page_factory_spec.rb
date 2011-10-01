@@ -31,4 +31,10 @@ describe PageObject::PageFactory do
       page.should be_instance_of FactoryTestPageObject
     end
   end
+  
+  it "should set an instance variable that can be used outside of the block" do
+    page = @world.on_page FactoryTestPageObject
+    current_page = @world.instance_variable_get "@current_page"
+    current_page.should === page
+  end
 end

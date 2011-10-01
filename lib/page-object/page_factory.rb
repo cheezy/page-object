@@ -41,9 +41,9 @@ module PageObject
     # @return [PageObject] the newly created page object
     #
     def on_page(page_class, visit=false, &block)
-      page = page_class.new(@browser, visit)
-      block.call page if block
-      page
+      @current_page = page_class.new(@browser, visit)
+      block.call @current_page if block
+      @current_page
     end
 
   end

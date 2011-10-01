@@ -1,3 +1,8 @@
+=== Version 0.4.2
+* Enhancements
+  * Proper handling of <button> elements
+  * Changed PageFactory so it also sets and instance variable @current_page to the newly created page
+
 === Version 0.4.1 / 2011-09-30
 * Fixes
   * Fixed error when loading plugins using Selenium
