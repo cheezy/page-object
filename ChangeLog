@@ -1,5 +1,6 @@
 === Version 0.4.3
 * Enhancements
+* Updated to use selenium-webdriver 2.8.0
   * Updated to use watir-webdriver 0.3.5
 
 === Version 0.4.2 / 2011-10-01
