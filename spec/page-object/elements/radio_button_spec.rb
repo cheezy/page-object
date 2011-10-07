@@ -6,13 +6,13 @@ describe PageObject::Elements::RadioButton do
 
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
+      [:class, :id, :index, :name, :value, :xpath].each do |t|
         identifier = radiobutton.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end
     end
     it "should map selenium types to same" do
-      [:class, :id, :name, :xpath, :index].each do |t|
+      [:class, :id, :name, :xpath, :value, :index].each do |t|
         key, value = radiobutton.selenium_identifier_for t => 'value'
         key.should == t
       end

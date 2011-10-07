@@ -23,6 +23,7 @@ Feature: Radio Buttons
     | class     |
     | name      |
     | xpath     |
+    | value     |
     | index     |
 
   Scenario Outline: Locating radio buttons using multiple parameters
