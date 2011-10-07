@@ -1,6 +1,7 @@
-=== Version 0.4.3
+=== Version 0.4.3 / 2011-10-07
 * Enhancements
-* Updated to use selenium-webdriver 2.8.0
+  * The new watir and selenium fix a fairly serious problem when working with modals and attaching to windows
+  * Updated to use selenium-webdriver 2.8.0
   * Updated to use watir-webdriver 0.3.5
 
 === Version 0.4.2 / 2011-10-01
