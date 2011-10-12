@@ -1,3 +1,7 @@
+=== Version 0.4.4
+* Enhancements
+  * Can now find Radio buttons by value
+
 === Version 0.4.3 / 2011-10-07
 * Enhancements
   * The new watir and selenium fix a fairly serious problem when working with modals and attaching to windows
