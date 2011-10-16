@@ -3,3 +3,4 @@ Gemfile.lock
 *.swp
 .idea/
 pkg
+TAGS
