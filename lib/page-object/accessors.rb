@@ -761,7 +761,7 @@ module PageObject
     # adds a method to retrieve the text of a paragraph and a paragraph element
     #
     # @example
-    #   h6(:title, :id => 'title')
+    #   paragraph(:title, :id => 'title')
     #   # will generate a 'title' and 'title_element' method
     #
     # @param [String] the name used for the generated methods
