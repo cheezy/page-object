@@ -128,7 +128,7 @@ module PageObject
           Object::Watir::Wait.until(timeout, message, &block)
         end
         
-              #
+        #
         # Send keystrokes to this element
         #
         # @param [String, Symbol, Array]
