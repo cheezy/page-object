@@ -1,7 +1,9 @@
 === Version 0.4.4
 * Enhancements
   * Can now find Radio buttons by value
-  * Updated to use selenium-webdriver 2.9.0
+  * Updated to use selenium-webdriver 2.9.1
+* Fixes
+  * Properly change context back to top level after interaction inside a frame with Watir
 
 === Version 0.4.3 / 2011-10-07
 * Enhancements
