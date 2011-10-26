@@ -23,7 +23,7 @@ module PageObject
          @@browser =  Watir::Browser.new :firefox if ENV['DRIVER'] == 'WATIR' 
          @@browser =  Selenium::WebDriver.for :firefox if ENV['DRIVER'] == 'SELENIUM'
       end
-      return @@browser
+      @@browser
     end
     def self.quit
       @@browser.quit
