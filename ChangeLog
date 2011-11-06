@@ -1,3 +1,7 @@
+=== Version 0.5
+* Enhancements
+  * Removed dependency on Mixology
+
 === Version 0.4.4 / 2011-10-26
 * Enhancements
   * Can now find Radio buttons by value
