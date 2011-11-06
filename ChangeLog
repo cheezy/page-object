@@ -1,5 +1,6 @@
-=== Version 0.5
+=== Version 0.5 / 2011-11-06
 * Enhancements
+  * Validated support for JRuby
   * Removed dependency on Mixology
   * Updated to use selenium-webdriver 2.10.0
   * Updated to use watir-webdriver 0.3.8
