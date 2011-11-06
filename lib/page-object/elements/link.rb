@@ -1,4 +1,3 @@
-require 'mixology'
 
 module PageObject
   module Elements
@@ -31,7 +30,7 @@ module PageObject
         super
         if platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/link'
-          self.mixin PageObject::Platforms::SeleniumWebDriver::Link
+          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Link
         end
       end
     end

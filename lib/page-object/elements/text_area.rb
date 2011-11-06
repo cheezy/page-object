@@ -1,4 +1,3 @@
-require 'mixology'
 
 module PageObject
   module Elements
@@ -31,10 +30,10 @@ module PageObject
         super
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/text_area'
-          self.mixin PageObject::Platforms::WatirWebDriver::TextArea
+          self.class.send :include, PageObject::Platforms::WatirWebDriver::TextArea
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/text_area'
-          self.mixin PageObject::Platforms::SeleniumWebDriver::TextArea
+          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::TextArea
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

@@ -1,4 +1,3 @@
-require 'mixology'
 
 module PageObject
   module Elements
@@ -23,10 +22,10 @@ module PageObject
         super
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/radio_button'
-          self.mixin PageObject::Platforms::WatirWebDriver::RadioButton
+          self.class.send :include, PageObject::Platforms::WatirWebDriver::RadioButton
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/radio_button'
-          self.mixin PageObject::Platforms::SeleniumWebDriver::RadioButton
+          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::RadioButton
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

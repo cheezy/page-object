@@ -1,4 +1,3 @@
-require 'mixology'
 
 module PageObject
   module Elements
@@ -23,10 +22,10 @@ module PageObject
         super
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/select_list'
-          self.mixin PageObject::Platforms::WatirWebDriver::SelectList
+          self.class.send :include, PageObject::Platforms::WatirWebDriver::SelectList
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/select_list'
-          self.mixin PageObject::Platforms::SeleniumWebDriver::SelectList
+          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::SelectList
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

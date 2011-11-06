@@ -1,4 +1,3 @@
-require 'mixology'
 
 module PageObject
   module Elements
@@ -170,13 +169,13 @@ module PageObject
         if platform[:platform] == :watir_webdriver
           require 'page-object/platforms/watir_webdriver/element'
           require 'page-object/platforms/watir_webdriver/page_object'
-          self.mixin PageObject::Platforms::WatirWebDriver::Element
-          @platform = PageObject::Platforms::WatirWebDriver::PageObject.new(@element)
+          self.class.send :include,  ::PageObject::Platforms::WatirWebDriver::Element
+          @platform = ::PageObject::Platforms::WatirWebDriver::PageObject.new(@element)
         elsif platform[:platform] == :selenium_webdriver
           require 'page-object/platforms/selenium_webdriver/element'
           require 'page-object/platforms/selenium_webdriver/page_object'
-          self.mixin PageObject::Platforms::SeleniumWebDriver::Element
-          @platform = PageObject::Platforms::SeleniumWebDriver::PageObject.new(@element)
+          self.class.send :include, ::PageObject::Platforms::SeleniumWebDriver::Element
+          @platform = ::PageObject::Platforms::SeleniumWebDriver::PageObject.new(@element)
         else
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end

@@ -17,7 +17,7 @@ module PageObject
         # return true if an element exists
         #
         def exists?
-          nil != @element
+          not @element.nil?
         end
 
         #
