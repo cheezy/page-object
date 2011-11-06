@@ -2,6 +2,7 @@
 * Enhancements
   * Removed dependency on Mixology
   * Updated to use selenium-webdriver 2.10.0
+  * Updated to use watir-webdriver 0.3.8
 
 === Version 0.4.4 / 2011-10-26
 * Enhancements
