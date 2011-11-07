@@ -162,6 +162,29 @@ module PageObject
   end
   
   #
+  # Identify an element as existing within a frame or iframe.  A frame parameter
+  # is passed to the block and must be passed to the other calls to PageObject.
+  # You can nest calls to in_frame by passing the frame to the next level.
+  #
+  # @example
+  #   in_frame(:id => 'frame_id') do |frame|
+  #     text_field_element(:id => 'fname', :frame => frame)
+  #   end
+  #
+  # @param [Hash] identifier how we find the frame.  The valid keys are:
+  #   * :id => Watir and Selenium
+  #   * :index => Watir and Selenium
+  #   * :name => Watir and Selenium
+  # @param frame passed from a previous call to in_frame.  Used to nest calls
+  # @param block that contains the calls to elements that exist inside the frame.
+  #
+  def in_frame(identifier, frame=nil, &block)
+    frame = [] if frame.nil?
+    frame << identifier
+    block.call(frame)
+  end
+
+  #
   # Override the normal showModalDialog call is it opens a window instead
   # of a dialog.  You will need to attach to the new window in order to
   # continue.

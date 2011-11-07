@@ -33,20 +33,20 @@ Given /^I am on the iframe elements page$/ do
   @page.navigate_to(UrlHelper.iframe_elements)
 end
 
-When /^I type "([^"]*)" into the text field for frame 2 using "([^"]*)"$/ do |text, arg_type|
+When /^I type "([^\"]*)" into the text field for frame 2 using "([^\"]*)"$/ do |text, arg_type|
   @page.send "text_field_2_#{arg_type}=".to_sym, text
 end
 
-Then /^I should verify "([^"]*)" is in the text field for frame 2 using "([^"]*)"$/ do |text, arg_type|
+Then /^I should verify "([^\"]*)" is in the text field for frame 2 using "([^\"]*)"$/ do |text, arg_type|
   result = @page.send "text_field_2_#{arg_type}".to_sym
   result.should == text
 end
 
-When /^I type "([^"]*)" into the text field from frame 1 using "([^"]*)"$/ do |text, arg_type|
+When /^I type "([^\"]*)" into the text field from frame 1 using "([^\"]*)"$/ do |text, arg_type|
   @page.send "text_field_1_#{arg_type}=".to_sym, text
 end
 
-Then /^I should verify "([^"]*)" is in the text field for frame 1 using "([^"]*)"$/ do |text, arg_type|
+Then /^I should verify "([^\"]*)" is in the text field for frame 1 using "([^\"]*)"$/ do |text, arg_type|
   result = @page.send "text_field_1_#{arg_type}".to_sym
   result.should == text
 end
@@ -71,3 +71,14 @@ Then /^I should be able to click the link in the frame$/ do
   @page.text.should include "Success"
 end
 
+When /^I type "([^\"]*)" into the text field from frame 1 identified dynamically$/ do |value|
+  @page.in_frame(:id => 'frame_1') do |frame|
+    @page.text_field_element(:name => 'senderElement', :frame => frame).set(value)
+  end
+end
+
+Then /^I should verify "([^\"]*)" in the text field for frame 1 identified dynamically$/ do |value|
+  @page.in_frame(:id => 'frame_1') do |frame|
+    @page.text_field_element(:name => 'senderElement', :frame => frame).value.should == value
+  end
+end
