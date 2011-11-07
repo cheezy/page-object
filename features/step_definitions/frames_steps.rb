@@ -90,3 +90,19 @@ When /^I trigger an alert within a frame$/ do
     end
   end
 end
+
+When /^I trigger a confirm within a frame$/ do
+  @page.in_frame(:id => 'frame_3') do |frame|
+    @msg = @page.confirm(true, frame) do
+      @page.button_element(:id => 'confirm_button', :frame => frame).click
+    end
+  end
+end
+
+When /^I trigger a prompt within a frame$/ do
+  @page.in_frame(:id => 'frame_3') do |frame|
+    @msg = @page.prompt("Cheezy", frame) do
+      @page.button_element(:id => 'prompt_button', :frame => frame).click
+    end
+  end
+end

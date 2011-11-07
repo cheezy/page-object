@@ -2,6 +2,9 @@
 * Enhancements
   * Added instance level in_frame method
   * Support for nesting all *_element instance methods inside in_frame call
+  * Support for nesting alerts inside an in_frame call
+  * Support for nesting confirms inside an in_frame call
+  * Support for nesting prompts inside an in_frame call
 
 === Version 0.5 / 2011-11-06
 * Enhancements

@@ -82,16 +82,27 @@ module PageObject
         # platform method to handle a confirm popup
         # See PageObject#confirm
         #
-        def confirm(response, &block)
-          @browser.confirm(response, &block)
+        def confirm(response, frame=nil, &block)
+          switch_to_frame(frame)
+          @browser.wd.execute_script "window.confirm = function(msg) { window.__lastWatirConfirm = msg; return #{!!response} }"
+          yield
+          value = @browser.wd.execute_script "return window.__lastWatirConfirm"
+          switch_to_default_content(frame)
+          value
         end
 
         #
         # platform method to handle a prompt popup
         # See PageObject#prompt
         #
-        def prompt(answer, &block)
-          @browser.prompt(answer, &block)
+        def prompt(answer, frame=nil, &block)
+          switch_to_frame(frame)
+          @browser.wd.execute_script "window.prompt = function(text, value) { window.__lastWatirPrompt = { message: text, default_value: value }; return #{answer.to_json}; }"
+          yield
+          result = @browser.wd.execute_script "return window.__lastWatirPrompt"
+          switch_to_default_content(frame)
+          result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k) }
+          result
         end
     
         #

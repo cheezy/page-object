@@ -121,6 +121,7 @@ module PageObject
   #     @page.button_that_causes_alert
   #   end
   #
+  # @param frame optional parameter used when alert is nested within a frame
   # @param block a block that has the call that will cause the alert to display
   # @return [String] the message that was contained in the alert
   #
@@ -137,11 +138,12 @@ module PageObject
   #   end
   #
   # @param [bool] what response you want to return back from the confirm popup
+  # @param frame optional parameter used when the confirm is nested within a frame
   # @param block a block that has the call that will cause the confirm to display
   # @return [String] the message that was prompted in the confirm
   #
-  def confirm(response, &block)
-    platform.confirm(response, &block)
+  def confirm(response, frame=nil, &block)
+    platform.confirm(response, frame, &block)
   end
 
   #
@@ -153,12 +155,13 @@ module PageObject
   #   end
   #
   # @param [string] the value returned to the caller of the prompt
+  # @param frame optional parameter used with the prompt is nested within a frame
   # @param block a block that has the call that will cause the prompt to display
   # @return [Hash] A has containing two keys - :message contains the prompt message and
   # :default_value contains the default value for the prompt if provided
   #
-  def prompt(answer, &block)
-    platform.prompt(answer, &block)
+  def prompt(answer, frame=nil, &block)
+    platform.prompt(answer, frame, &block)
   end
   
   #

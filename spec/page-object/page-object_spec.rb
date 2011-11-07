@@ -92,20 +92,22 @@ describe PageObject do
       end
 
       it "should override alert popup behavior" do
-        watir_browser.should_receive(:wd).exactly(2).times.and_return(watir_browser)
-        watir_browser.should_receive(:execute_script).exactly(2).times
+        watir_browser.should_receive(:wd).twice.and_return(watir_browser)
+        watir_browser.should_receive(:execute_script).twice
         watir_page_object.alert do
         end
       end
 
       it "should override confirm popup behavior" do
-        watir_browser.should_receive(:confirm)
+        watir_browser.should_receive(:wd).twice.and_return(watir_browser)
+        watir_browser.should_receive(:execute_script).twice
         watir_page_object.confirm(true) do
         end
       end
 
       it "should override prompt popup behavior" do
-        watir_browser.should_receive(:prompt)
+        watir_browser.should_receive(:wd).twice.and_return(watir_browser)
+        watir_browser.should_receive(:execute_script).twice
         watir_page_object.prompt("blah") do
         end
       end

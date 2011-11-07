@@ -45,3 +45,13 @@ Feature: Handling frames
     Given I am on the frame elements page
     When I trigger an alert within a frame
     Then I should be able to get the alert's message
+
+  Scenario: Handling confirms inside frames
+    Given I am on the frame elements page
+    When I trigger a confirm within a frame
+    Then I should be able to get the confirm message
+
+  Scenario: Handling prompts inside frames
+    Given I am on the frame elements page
+    When I trigger a prompt within a frame
+    Then I should be able to get the message and default value
