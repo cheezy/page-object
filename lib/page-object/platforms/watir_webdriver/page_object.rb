@@ -69,8 +69,13 @@ module PageObject
         # platform method to handle an alert popup
         # See PageObject#alert
         #
-        def alert(&block)
-          @browser.alert(&block)
+        def alert(frame=nil, &block)
+          switch_to_frame(frame)
+          @browser.wd.execute_script "window.alert = function(msg) { window.__lastWatirAlert = msg; }"
+          yield
+          value = @browser.wd.execute_script "return window.__lastWatirAlert"
+          switch_to_default_content(frame)
+          value
         end
 
         #
@@ -707,6 +712,15 @@ module PageObject
         
         def switch_to_default_content(frame_identifiers)
           @browser.wd.switch_to.default_content unless frame_identifiers.nil?          
+        end
+
+        def switch_to_frame(frame_identifiers)
+          unless frame_identifiers.nil?
+            frame_identifiers.each do |frame_id|
+              value = frame_id.values.first
+              @browser.wd.switch_to.frame(value)
+            end
+          end          
         end
       end
     end

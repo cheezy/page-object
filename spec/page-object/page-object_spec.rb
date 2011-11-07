@@ -92,7 +92,8 @@ describe PageObject do
       end
 
       it "should override alert popup behavior" do
-        watir_browser.should_receive(:alert)
+        watir_browser.should_receive(:wd).exactly(2).times.and_return(watir_browser)
+        watir_browser.should_receive(:execute_script).exactly(2).times
         watir_page_object.alert do
         end
       end

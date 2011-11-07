@@ -124,8 +124,8 @@ module PageObject
   # @param block a block that has the call that will cause the alert to display
   # @return [String] the message that was contained in the alert
   #
-  def alert(&block)
-    platform.alert(&block)
+  def alert(frame=nil, &block)
+    platform.alert(frame, &block)
   end
 
   #

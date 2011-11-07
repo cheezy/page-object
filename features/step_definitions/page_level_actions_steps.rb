@@ -23,7 +23,7 @@ When /^I handle the alert$/ do
   end
 end
 
-Then /^I should be able to get the alert's message$/ do
+Then /^I should be able to get the alert\'s message$/ do
   @msg.should == "I am an alert"
 end
 

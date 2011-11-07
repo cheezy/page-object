@@ -82,3 +82,11 @@ Then /^I should verify "([^\"]*)" in the text field for frame 1 identified dynam
     @page.text_field_element(:name => 'senderElement', :frame => frame).value.should == value
   end
 end
+
+When /^I trigger an alert within a frame$/ do
+  @page.in_frame(:id => 'frame_3') do |frame|
+    @msg = @page.alert(frame) do
+      @page.button_element(:id => 'alert_button', :frame => frame).click
+    end
+  end
+end
