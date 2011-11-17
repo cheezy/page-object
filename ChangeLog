@@ -1,4 +1,4 @@
-=== Version 0.5.1
+=== Version 0.5.1 / 2011-11-16
 * Enhancements
   * Added instance level in_frame method
   * Support for nesting all *_element instance methods inside in_frame call
