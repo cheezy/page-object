@@ -69,12 +69,9 @@ module PageObject
         # See PageObject#alert
         #
         def alert(frame=nil, &block)
-          switch_to_frame(frame)
           @browser.execute_script "window.alert = function(msg) { window.__lastWatirAlert = msg; }"
           yield
-          value = @browser.execute_script "return window.__lastWatirAlert"
-          @browser.switch_to.default_content unless frame.nil?
-          value
+          @browser.execute_script "return window.__lastWatirAlert"
         end
 
         #
@@ -82,12 +79,9 @@ module PageObject
         # See PageObject#confirm
         #
         def confirm(response, frame=nil, &block)
-          switch_to_frame(frame)
           @browser.execute_script "window.confirm = function(msg) { window.__lastWatirConfirm = msg; return #{!!response} }"
           yield
-          value = @browser.execute_script "return window.__lastWatirConfirm"
-          @browser.switch_to.default_content unless frame.nil?
-          value
+          @browser.execute_script "return window.__lastWatirConfirm"
         end
 
         #
@@ -95,11 +89,9 @@ module PageObject
         # See PageObject#prompt
         #
         def prompt(answer, frame=nil, &block)
-          switch_to_frame(frame)
           @browser.execute_script "window.prompt = function(text, value) { window.__lastWatirPrompt = { message: text, default_value: value }; return #{answer.to_json}; }"
           yield
           result = @browser.execute_script "return window.__lastWatirPrompt"
-          @browser.switch_to.default_content unless frame.nil?
           result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k) }
           result
         end
@@ -119,6 +111,16 @@ module PageObject
               return @browser.switch_to.window handle, &block
             end
           end
+        end
+
+        #
+        # platform method to switch to a frame and execute a block
+        # See PageObject#in_frame
+        #
+        def in_frame(identifier, frame=nil, &block)
+          switch_to_frame([identifier])
+          block.call(nil)
+          @browser.switch_to.default_content
         end
         
         #

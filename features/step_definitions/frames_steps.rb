@@ -73,7 +73,7 @@ end
 
 When /^I type "([^\"]*)" into the text field from frame 1 identified dynamically$/ do |value|
   @page.in_frame(:id => 'frame_1') do |frame|
-    @page.text_field_element(:name => 'senderElement', :frame => frame).set(value)
+    @page.text_field_element(:name => 'senderElement', :frame => frame).value = value
   end
 end
 

@@ -113,6 +113,17 @@ module PageObject
           win_id = {identifier.keys.first => /#{Regexp.escape(identifier.values.first)}/}
           @browser.window(win_id).use &block
         end
+
+        #
+        # platform method to switch to a frame and execute a block
+        # See PageObject#in_frame
+        #
+        def in_frame(identifier, frame=nil, &block)
+          frame = [] if frame.nil?
+          frame << identifier
+          block.call(frame)
+
+        end
     
         #
         # platform method to refresh the page

@@ -182,9 +182,7 @@ module PageObject
   # @param block that contains the calls to elements that exist inside the frame.
   #
   def in_frame(identifier, frame=nil, &block)
-    frame = [] if frame.nil?
-    frame << identifier
-    block.call(frame)
+    platform.in_frame(identifier, frame, &block)
   end
 
   #
