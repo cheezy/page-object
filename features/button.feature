@@ -14,8 +14,14 @@ Feature: Button
     When I click the button with type image
     Then I should be on the success page
     
+  @watir_only
   Scenario: Clicking an image button by src
     When I click the image button using src
+    Then I should be on the success page
+
+  @watir_only
+  Scenario: Clicking an image button by alt
+    When I click the image button using alt
     Then I should be on the success page
 
   Scenario: Retrieve a button element

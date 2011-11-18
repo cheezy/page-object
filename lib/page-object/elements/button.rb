@@ -11,11 +11,11 @@ module PageObject
       protected
 
       def self.watir_finders
-        super + [:text, :value, :src]
+        super + [:text, :value, :src, :alt]
       end
 
       def self.selenium_finders
-        super + [:value, :src]
+        super + [:value]
       end
 
       def include_platform_for platform

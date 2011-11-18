@@ -323,6 +323,8 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    #   * :src => Watir only (input type=image only)
+    #   * :alt => Watir only (input type=image only)
     # @param optional block to be invoked when element method is called
     #
     def button(name, identifier=nil, &block)

@@ -10,6 +10,10 @@ When /^I click the image button using src$/ do
   @page.button_image_src
 end
 
+When /^I click the image button using alt$/ do
+  @page.button_image_alt
+end
+
 When /^I search for the button by "([^\"]*)"$/ do |how|
   @how = how
 end
