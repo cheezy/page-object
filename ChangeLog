@@ -1,4 +1,8 @@
-=== Version 0.5.1 / 2011-11-16
+=== Version 0.5.2
+* Enhancements
+  * Added ability to find image buttons by src
+
+=== Version 0.5.1 / 2011-11-18
 * Enhancements
   * Added instance level in_frame method
   * Support for nesting all *_element instance methods inside in_frame call
