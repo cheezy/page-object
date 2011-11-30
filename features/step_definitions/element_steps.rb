@@ -107,3 +107,19 @@ end
 When /^I clear the text field$/ do
   @page.text_field_id_element.clear
 end
+
+When /^I check an enabled button$/ do
+  @element = @page.button_id_element
+end
+
+Then /^it should know it is enabled$/ do
+  @element.should be_enabled
+end
+
+When /^I check a disabled button$/ do
+  @element = @page.disabled_button_element
+end
+
+Then /^it should know it is not enabled$/ do
+  @element.should_not be_enabled
+end

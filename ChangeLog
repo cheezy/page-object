@@ -4,6 +4,7 @@
   * Added ability to find image button by alt when using watir-webdriver
   * Added first_row and last_row methods to Table
   * Updated to use selenium-webdriver 2.14.0
+  * Updated to use watir-webdriver 0.3.9
 
 === Version 0.5.1 / 2011-11-18
 * Enhancements

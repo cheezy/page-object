@@ -9,6 +9,12 @@ Feature: Elements
     When I clear the text field
     Then the text field should contain ""
 
+  Scenario: Elements enabled?
+    When I check an enabled button
+    Then it should know it is enabled
+    When I check a disabled button
+    Then it should know it is not enabled
+
   Scenario: Link element methods
     When I retrieve a link element
     Then I should know it exists

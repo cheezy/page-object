@@ -138,6 +138,8 @@ class Page
   button(:btn_class_index, :class => "btn_class", :index => 0)
   button(:btn_name_index, :name => "btn_name", :index => 0)
 
+  button(:disabled_button, :value => 'Disabled')
+
   image(:image_id, :id => 'image_id')
   image(:image_name, :name => 'image_name')
   image(:image_class, :class => 'image_class')
