@@ -34,6 +34,16 @@ describe PageObject::Elements::Table do
         watir_table[1].should be_instance_of PageObject::Elements::TableRow
       end
 
+      it "should return the first row" do
+        table_element.stub(:[]).with(0).and_return(table_element)
+        watir_table.first_row.should be_instance_of PageObject::Elements::TableRow
+      end
+
+      it "shoudl return the last row" do
+        table_element.stub(:[]).with(-1).and_return(table_element)
+        watir_table.last_row.should be_instance_of PageObject::Elements::TableRow
+      end
+
       it "should return the number of rows" do
         table_element.stub(:wd).and_return(table_element)
         table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
@@ -55,6 +65,16 @@ describe PageObject::Elements::Table do
       it "should return a table row when indexed" do
         table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
         selenium_table[1].should be_instance_of PageObject::Elements::TableRow
+      end
+
+      it "should return the first row" do
+        table_element.stub(:[]).with(0).and_return(table_element)
+        selenium_table.first_row.should be_instance_of PageObject::Elements::TableRow
+      end
+
+      it "shoudl return the last row" do
+        table_element.stub(:[]).with(-1).and_return(table_element)
+        selenium_table.last_row.should be_instance_of PageObject::Elements::TableRow
       end
 
       it "should return the number of rows" do

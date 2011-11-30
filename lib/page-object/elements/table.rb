@@ -20,6 +20,24 @@ module PageObject
         end
       end
 
+      #
+      # return the first row
+      #
+      # @return PageObject::Elements::TableRow
+      #
+      def first_row
+        self[0]
+      end
+
+      #
+      # return the last row
+      #
+      # @return PageObject::Elements::TableRow
+      #
+      def last_row
+        self[-1]
+      end
+
       protected
 
       def child_xpath

@@ -23,6 +23,8 @@ Feature: Table
     And each row should contain "Data"
     And row "1" should have "2" columns
     And each column should contain "Data"
+    And the data for the first row should be "Data1" and "Data2"
+    And the data for the last row should be "Data3" and "Data4"
 
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"
