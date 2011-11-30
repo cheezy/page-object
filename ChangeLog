@@ -1,4 +1,4 @@
-=== Version 0.5.2
+=== Version 0.5.2 / 2011-11-30
 * Enhancements
   * Added ability to find image buttons by src when using watir-webdriver
   * Added ability to find image button by alt when using watir-webdriver
