@@ -13,7 +13,7 @@ describe PageObject::Elements::Button do
     end
 
     it "should map selenium types to same" do
-      [:class, :id, :index, :name, :value, :xpath].each do |t|
+      [:class, :id, :index, :name, :value, :xpath, :src, :alt].each do |t|
         key, value = button.selenium_identifier_for t => 'value'
         key.should == t
       end

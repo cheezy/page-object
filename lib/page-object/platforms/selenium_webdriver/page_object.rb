@@ -462,6 +462,7 @@ module PageObject
         #
         def click_button_for(identifier)
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button, 'input', :type => 'submit')
+          puts "how=#{how}, what=#{what}"
           switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click
           @browser.switch_to.default_content unless frame_identifiers.nil?
@@ -781,6 +782,8 @@ module PageObject
           return false if identifier[:href] and tag == 'a'
           return false if identifier[:text] and ['div', 'span', 'td'].include? tag
           return false if identifier[:value] and tag == 'input' and additional[:type] == 'submit'
+          return false if identifier[:src] and tag == 'input' and additional[:type] == 'submit'
+          return false if identifier[:alt] and tag == 'input' and additional[:type] == 'submit'
           return false if identifier[:value] and tag == 'input' and additional[:type] == 'radio'
           true
         end
