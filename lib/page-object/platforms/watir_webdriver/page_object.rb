@@ -97,7 +97,7 @@ module PageObject
         #
         def prompt(answer, frame=nil, &block)
           switch_to_frame(frame)
-          @browser.wd.execute_script "window.prompt = function(text, value) { window.__lastWatirPrompt = { message: text, default_value: value }; return #{answer.to_json}; }"
+          @browser.wd.execute_script "window.prompt = function(text, value) { window.__lastWatirPrompt = { message: text, default_value: value }; return #{answer}; }"
           yield
           result = @browser.wd.execute_script "return window.__lastWatirPrompt"
           switch_to_default_content(frame)

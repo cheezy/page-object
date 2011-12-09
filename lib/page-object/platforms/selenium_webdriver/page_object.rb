@@ -89,7 +89,7 @@ module PageObject
         # See PageObject#prompt
         #
         def prompt(answer, frame=nil, &block)
-          @browser.execute_script "window.prompt = function(text, value) { window.__lastWatirPrompt = { message: text, default_value: value }; return #{answer.to_json}; }"
+          @browser.execute_script "window.prompt = function(text, value) { window.__lastWatirPrompt = { message: text, default_value: value }; return #{answer}; }"
           yield
           result = @browser.execute_script "return window.__lastWatirPrompt"
           result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k) }
@@ -462,7 +462,6 @@ module PageObject
         #
         def click_button_for(identifier)
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button, 'input', :type => 'submit')
-          puts "how=#{how}, what=#{what}"
           switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).click
           @browser.switch_to.default_content unless frame_identifiers.nil?

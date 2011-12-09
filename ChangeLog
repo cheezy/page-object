@@ -1,3 +1,10 @@
+=== Version 0.5.3
+* Enhancements
+  * Updated to use selenium-webdriver 2.15.0
+  * Updated to use watir-webdriver 0.4.0
+* Fixes
+  * Updated prompt method to make it compatible with latest dependencies
+
 === Version 0.5.2 / 2011-11-30
 * Enhancements
   * Added ability to find image buttons by src
