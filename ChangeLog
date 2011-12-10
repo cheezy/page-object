@@ -1,7 +1,7 @@
 === Version 0.5.3
 * Enhancements
   * Updated to use selenium-webdriver 2.15.0
-  * Updated to use watir-webdriver 0.4.0
+  * Updated to use watir-webdriver 0.4.1
 * Fixes
   * Updated prompt method to make it compatible with latest dependencies
 
