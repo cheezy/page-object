@@ -1,5 +1,6 @@
 === Version 0.5.3
 * Enhancements
+  * Added new module PagePopulator with single method populate_page_with
   * Updated to use selenium-webdriver 2.15.0
   * Updated to use watir-webdriver 0.4.1
 * Fixes
