@@ -3,6 +3,7 @@ require 'page-object/accessors'
 require 'page-object/platforms'
 require 'page-object/element_locators'
 require 'page-object/nested_elements'
+require 'page-object/page_populator'
 
 #
 # Module that when included adds functionality to a page object.  This module
@@ -35,6 +36,7 @@ require 'page-object/nested_elements'
 module PageObject
   include LoadsPlatform
   include ElementLocators
+  include PagePopulator
   
   # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
   attr_reader :browser
