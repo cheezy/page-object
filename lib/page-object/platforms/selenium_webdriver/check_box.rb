@@ -7,14 +7,14 @@ module PageObject
         # check the checkbox
         #
         def check
-          element.click unless selected?
+          element.click unless element.selected?
         end
 
         #
         # uncheck the checkbox
         #
         def uncheck
-          element.click if selected?
+          element.click if element.selected?
         end
 
         #

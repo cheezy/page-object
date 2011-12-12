@@ -1,3 +1,7 @@
+=== Version 0.5.4
+* Enhancements
+  * Added deprecation warning to the method_missing method on Element.  Will be removed in 0.6
+
 === Version 0.5.3
 * Enhancements
   * Added new module PagePopulator with single method populate_page_with

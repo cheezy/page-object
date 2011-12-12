@@ -23,6 +23,20 @@ module PageObject
       def click
         @element.click
       end
+
+      #
+      # double click the element
+      #
+      def double_click
+        @element.double_click
+      end
+
+      #
+      # return true if the element is enabled
+      #
+      def enabled?
+        @element.enabled?
+      end
       
       #
       # get the value of the given CSS property
@@ -67,6 +81,12 @@ module PageObject
       # delegate calls to driver element
       def method_missing(*args, &block)
         m = args.shift
+        puts "*** DEPRECATION WARNING"
+        puts "*** You are calling a method named #{m}."
+        puts "*** This method does not exist in page-object so it is being passed to the driver."
+        puts "*** This feature will be removed in the near future."
+        puts "*** Please change your code to call the correct page-object method."
+        puts "*** If you are using functionality that does not exist in page-object please request it be added."
         begin
           element.send m, *args, &block
         rescue Exception => e
