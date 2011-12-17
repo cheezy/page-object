@@ -23,6 +23,7 @@ Feature: Text Fields
     | css       |
     | tag_name  |
     | index     |
+    | title     |
 
   Scenario Outline: Locating a text field using multiple parameters
     When I search for the text field by "<param1>" and "<param2>"

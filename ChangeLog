@@ -2,6 +2,7 @@
 * Enhancements
   * Added deprecation warning to the method_missing method on Element.  Will be removed in 0.6
   * Added full support for file_field element
+  * Added ability to find TextField by :title
 
 === Version 0.5.3
 * Enhancements

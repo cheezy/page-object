@@ -806,6 +806,7 @@ module PageObject
           return false if identifier[:value] and tag == 'input' and additional[:type] == 'submit'
           return false if identifier[:src] and tag == 'input' and additional[:type] == 'submit'
           return false if identifier[:alt] and tag == 'input' and additional[:type] == 'submit'
+          return false if identifier[:title] and tag == 'input' and additional[:type] == 'text'
           return false if identifier[:value] and tag == 'input' and additional[:type] == 'radio'
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
           true

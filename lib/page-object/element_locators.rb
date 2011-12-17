@@ -13,6 +13,8 @@ module PageObject
     #   * :text => Watir only
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    #   * :src => Watir and Selenium (image button only)
+    #   * :alt => Watir and Selenium (image button only)
     #
     def button_element(identifier)
       platform.button_for(identifier.clone)
@@ -30,6 +32,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :tag_name => Watir and Selenium
     #   * :text => Watir only
+    #   * :title => Watir and Selenium
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #

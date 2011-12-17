@@ -7,7 +7,7 @@ describe PageObject::Elements::TextField do
     let(:textfield) { PageObject::Elements::TextField }
 
     it "should map watir types to same" do
-      [:class, :id, :index, :name, :tag_name, :xpath].each do |t|
+      [:class, :id, :index, :name, :tag_name, :title, :xpath].each do |t|
         identifier = textfield.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end
@@ -19,7 +19,7 @@ describe PageObject::Elements::TextField do
     end
 
     it "should map selenium types to same" do
-      [:class, :css, :id, :name, :xpath, :index].each do |t|
+      [:class, :css, :id, :name, :title, :xpath, :index].each do |t|
         key, value = textfield.selenium_identifier_for t => 'value'
         key.should == t
       end
