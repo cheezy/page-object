@@ -28,6 +28,7 @@ class AccessorsTestPageObject
   h5(:heading5, :id => 'main_heading')
   h6(:heading6, :id => 'main_heading')
   paragraph(:first_para, :id => 'first')
+  file_field(:upload_me, :id => 'the_file')
 end
 
 class BlockPageObject
@@ -106,6 +107,9 @@ class BlockPageObject
   end
   paragraph :first_para do |element|
     "p"
+  end
+  file_field :a_file do |element|
+    "file_field"
   end
 end
 
@@ -1174,6 +1178,34 @@ describe PageObject::Accessors do
         element = selenium_page_object.first_para_element
         element.should be_instance_of PageObject::Elements::Paragraph
       end
+    end
+  end
+
+  describe "file_field accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:upload_me=)
+        watir_page_object.should respond_to(:upload_me_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.a_file_element.should == "file_field"
+      end
+    end
+
+    context "watir implementation" do
+      it "should set the file name" do
+        watir_browser.should_receive(:file_field).and_return(watir_browser)
+        watir_browser.should_receive(:set).with('some_file')
+        watir_page_object.upload_me = 'some_file'
+      end
+
+      it "should retrieve a text field element" do
+        watir_browser.should_receive(:file_field).and_return(watir_browser)
+        element = watir_page_object.upload_me_element
+        element.should be_instance_of PageObject::Elements::FileField
+      end
+
     end
   end
 end

@@ -239,6 +239,14 @@ class Page
   button(:alert_button, :id => 'alert_button')
   button(:confirm_button, :id => 'confirm_button')
   button(:prompt_button, :id => 'prompt_button')
+
+  file_field(:file_field_id, :id => 'file_field_id')
+  file_field(:file_field_name, :name => 'file_field_name')
+  file_field(:file_field_class, :class => 'file_field_class')
+  file_field(:file_field_index, :index => 0)
+  file_field(:file_field_title, :title => 'file_field_title')
+  file_field(:file_field_class_index, :class => 'file_field_class', :index => 0)
+  file_field(:file_field_name_index, :name => 'file_field_name', :index => 0)
   
   link(:open_window, :text => 'New Window')
 end

@@ -704,7 +704,28 @@ module PageObject
           element = @browser.instance_eval "#{nested_frames(frame_identifiers)}p(identifier)"
           switch_to_default_content(frame_identifiers)
           ::PageObject::Elements::Paragraph.new(element, :platform => :watir_webdriver)
-        end  
+        end
+
+        #
+        # platform method to set the file on a file_field element
+        # See PageObject::Accessors#file_field
+        #
+        def file_field_value_set(identifier, value)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::FileField)
+          @browser.instance_eval "#{nested_frames(frame_identifiers)}file_field(identifier).set(value)"
+          switch_to_default_content(frame_identifiers)
+        end
+
+        #
+        # platform method to retrieve a file_field element
+        # See PageObject::Accessors#file_field
+        #
+        def file_field_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::FileField)
+          element = @browser.instance_eval "#{nested_frames(frame_identifiers)}file_field(identifier)"
+          switch_to_default_content(frame_identifiers)
+          ::PageObject::Elements::FileField.new(element, :platform => :watir_webdriver)
+        end
 
         private
     
