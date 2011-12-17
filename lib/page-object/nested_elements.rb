@@ -96,5 +96,9 @@ module PageObject
     def paragraph_element(identifier={:index => 0})
       @platform.paragraph_for(identifier)
     end
+
+    def file_field_element(identifier={:index => 0})
+      @platform.file_field_for(identifier)
+    end
   end
 end

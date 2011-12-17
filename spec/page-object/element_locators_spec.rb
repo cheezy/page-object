@@ -152,4 +152,10 @@ describe PageObject::ElementLocators do
     element = watir_page_object.paragraph_element(:id => 'blah')
     element.should be_instance_of PageObject::Elements::Paragraph
   end
+
+  it "should find a file field element" do
+    watir_browser.should_receive(:file_field).with(:id => 'blah').and_return(watir_browser)
+    element = watir_page_object.file_field_element(:id => 'blah')
+    element.should be_instance_of PageObject::Elements::FileField
+  end
 end

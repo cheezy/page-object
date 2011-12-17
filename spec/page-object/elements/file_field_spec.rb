@@ -20,4 +20,16 @@ describe PageObject::Elements::FileField do
       end
     end
   end
+
+  describe "interface" do
+    let(:filefield) { double('file_field') }
+    
+    context "for selenium" do
+      it "should set its' value" do
+        selenium_file_field = PageObject::Elements::FileField.new(filefield, :platform => :selenium_webdriver)
+        filefield.should_receive(:send_keys).with('a file')
+        selenium_file_field.value = 'a file'
+      end
+    end
+  end
 end

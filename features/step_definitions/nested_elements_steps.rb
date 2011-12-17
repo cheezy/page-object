@@ -26,6 +26,7 @@ class NestedElementsPage
   h5(:nested_h5) { |page| page.outer_div_element.h5_element }
   h6(:nested_h6) { |page| page.outer_div_element.h6_element }
   paragraph(:nested_paragraph) { |page| page.outer_div_element.paragraph_element }
+  file_field(:nested_file_field) { |page| page.outer_div_element.file_field_element }
 end
 
 Given /^I am on the nested elements page$/ do
@@ -127,7 +128,7 @@ When /^I search the second table cell located in a table in a div$/ do
   @cell = @page.nested_cell_element
 end
 
-Then /^the nested table cell should contain "([^"]*)"$/ do |value|
+Then /^the nested table cell should contain "([^\"]*)"$/ do |value|
   @cell.text.should == value
 end
 
@@ -135,11 +136,11 @@ When /^I search for an image located in a div$/ do
   @image = @page.nested_image_element
 end
 
-Then /^the nested image should be "([^"]*)" pixels wide$/ do |width|
+Then /^the nested image should be "([^\"]*)" pixels wide$/ do |width|
   @image.width.should == width.to_i  
 end
 
-Then /^the nested image should be "([^"]*)" pixels tall$/ do |height|
+Then /^the nested image should be "([^\"]*)" pixels tall$/ do |height|
   @image.height.should == height.to_i
 end
 
@@ -155,7 +156,7 @@ When /^I search for an ordered list located in a div$/ do
   @list = @page.nested_ordered_list_element
 end
 
-Then /^the first nested list items text should be "([^"]*)"$/ do |value|
+Then /^the first nested list items text should be "([^\"]*)"$/ do |value|
   @list[0].text.should == value
 end
 
@@ -167,7 +168,7 @@ When /^I search for a list item nested in an ordered list in a div$/ do
   @li = @page.nested_list_item_element
 end
 
-Then /^I should see the nested list items text should be "([^"]*)"$/ do |value|
+Then /^I should see the nested list items text should be "([^\"]*)"$/ do |value|
   @li.text.should == value
 end
 
@@ -175,7 +176,7 @@ When /^I search for a h(\d+) located in a div$/ do |num|
   @header = @page.send "nested_h#{num}_element"
 end
 
-Then /^I should see the nested h(\d+)s text should be "([^"]*)"$/ do |num, value|
+Then /^I should see the nested h(\d+)s text should be "([^\"]*)"$/ do |num, value|
   @header.text.should == value
 end
 
@@ -183,6 +184,14 @@ When /^I search for a paragraph located in a div$/ do
   @para = @page.nested_paragraph_element
 end
 
-Then /^I should see the nested paragraphs text should be "([^"]*)"$/ do |value|
+Then /^I should see the nested paragraphs text should be "([^\"]*)"$/ do |value|
   @para.text.should == value
+end
+
+When /^I search for a file field located in a div$/ do
+  @ff = @page.nested_file_field_element
+end
+
+Then /^I should be able to set the nested file field$/ do
+  @ff.value = __FILE__
 end

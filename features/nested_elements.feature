@@ -26,6 +26,10 @@ Feature: Nested Elements
   Scenario: Finding a select list within a div
     When I search for a select list located in a div
     Then I should be able to select "Test 2" in the nested select list
+    
+  Scenario: Finding a file field within a div
+    When I search for a file field located in a div
+    Then I should be able to set the nested file field
 
   Scenario: Finding a checkbox within a div
     When I search for a checkbox located in a div
