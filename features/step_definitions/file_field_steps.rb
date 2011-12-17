@@ -5,3 +5,15 @@ end
 Then /^its\' value should equal that file$/ do
   @page.file_field_id_element.value.should == __FILE__
 end
+
+When /^I search for the file field by "([^\"]*)"$/ do |how|
+  @how = how
+end
+
+When /^I search for the file field by "([^\"]*)" and "([^\"]*)"$/ do |param1, param2|
+  @how = "#{param1}_#{param2}"
+end
+
+Then /^I should be able to set the file field$/ do
+  @page.send "file_field_#{@how}=", __FILE__
+end

@@ -6,6 +6,7 @@ class PageObjectTestPageObject
   text_field(:tf, :id => 'id')
   text_area(:ta, :id => 'id')
   select_list(:sl, :id => 'id')
+  file_field(:ff, :id => 'id')
   checkbox(:cb, :id => 'id')
   radio_button(:rb, :id => 'id')
 end
@@ -32,6 +33,11 @@ describe PageObject::PagePopulator  do
   it "should set a value in a select list" do
     page_object.should_receive(:sa=).with('value')
     page_object.populate_page_with('sa' => 'value')
+  end
+
+  it "should set a value in a file field" do
+    page_object.should_receive(:ff=).with('value')
+    page_object.populate_page_with('ff' => 'value')
   end
 
   it "should check a checkbox to true is specified" do

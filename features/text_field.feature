@@ -14,7 +14,7 @@ Feature: Text Fields
     When I search for the text field by "<search_by>"
     Then I should be able to type "I found it" into the field
 
-  Scenarios:
+  Examples:
     | search_by |
     | id        |
     | class     |
@@ -28,7 +28,7 @@ Feature: Text Fields
     When I search for the text field by "<param1>" and "<param2>"
     Then I should be able to type "I found it" into the field
 
-  Scenarios:
+  Examples:
     | param1 | param2 |
     | class  | index  |
     | name   | index  |

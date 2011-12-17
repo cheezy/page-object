@@ -247,6 +247,7 @@ class Page
   file_field(:file_field_title, :title => 'file_field_title')
   file_field(:file_field_class_index, :class => 'file_field_class', :index => 0)
   file_field(:file_field_name_index, :name => 'file_field_name', :index => 0)
+  file_field(:file_field_xpath, :xpath => "//input[@type='file']")
   
   link(:open_window, :text => 'New Window')
 end

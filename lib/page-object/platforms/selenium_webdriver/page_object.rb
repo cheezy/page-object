@@ -760,7 +760,7 @@ module PageObject
         # See PageObject::Accessors#file_field
         #
         def file_field_value_set(identifier, value)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField, 'input', :type => 'file')
           switch_to_frame(frame_identifiers)
           @browser.find_element(how, what).send_keys(value)
           @browser.switch_to.default_content unless frame_identifiers.nil?
@@ -771,7 +771,7 @@ module PageObject
         # See PageObject::Accessors#file_field
         #
         def file_field_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField, 'input', :type => 'file')
           switch_to_frame(frame_identifiers)
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content unless frame_identifiers.nil?
@@ -807,6 +807,7 @@ module PageObject
           return false if identifier[:src] and tag == 'input' and additional[:type] == 'submit'
           return false if identifier[:alt] and tag == 'input' and additional[:type] == 'submit'
           return false if identifier[:value] and tag == 'input' and additional[:type] == 'radio'
+          return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
           true
         end
 
