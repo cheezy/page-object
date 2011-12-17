@@ -8,6 +8,10 @@ module PageObject
       def self.watir_finders
         super + [:title]
       end
+
+      def self.selenium_finders
+        super + [:title]
+      end
     end
   end
 end

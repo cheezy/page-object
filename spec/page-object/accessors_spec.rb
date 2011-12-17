@@ -1205,7 +1205,20 @@ describe PageObject::Accessors do
         element = watir_page_object.upload_me_element
         element.should be_instance_of PageObject::Elements::FileField
       end
+    end
 
+    context "selenium implementation" do
+      it "should set the file name" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:send_keys).with('some_file')
+        selenium_page_object.upload_me = 'some_file'
+      end
+
+      it "should retrieve a file_field element" do
+        selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        element = selenium_page_object.upload_me_element
+        element.should be_instance_of PageObject::Elements::FileField
+      end
     end
   end
 end

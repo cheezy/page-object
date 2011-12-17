@@ -739,7 +739,7 @@ module PageObject
           how, what, frame_identifiers = parse_identifiers(identifier, Elements::Paragraph, 'p')
           switch_to_frame(frame_identifiers)
           value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
+          @browser.switch_to.default_content unless frame_identifiers.nil?
           value          
         end
         
@@ -753,7 +753,30 @@ module PageObject
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content unless frame_identifiers.nil?
           ::PageObject::Elements::Paragraph.new(element, :platform => :selenium_webdriver)
-        end  
+        end
+
+        #
+        # platform method to set the file on a file_field element
+        # See PageObject::Accessors#file_field
+        #
+        def file_field_value_set(identifier, value)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField)
+          switch_to_frame(frame_identifiers)
+          @browser.find_element(how, what).send_keys(value)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+        end
+
+        #
+        # platform method to retrieve a file_field element
+        # See PageObject::Accessors#file_field
+        #
+        def file_field_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField)
+          switch_to_frame(frame_identifiers)
+          element = @browser.find_element(how, what)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          ::PageObject::Elements::FileField.new(element, :platform => :selenium_webdriver)
+        end
 
         private
         
