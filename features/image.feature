@@ -21,6 +21,7 @@ Feature: Image
     | xpath     |
     | index     |
     | alt       |
+    | src       |
 
   Scenario Outline: Locating an image using multiple parameters
     When I get the image element by "<param1>" and "<param2>"

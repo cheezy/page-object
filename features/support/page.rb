@@ -147,6 +147,7 @@ class Page
   image(:image_index, :index => 0)
   image(:image_xpath, :xpath => '//img')
   image(:image_alt, :alt => 'image_alt')
+  image(:image_src, :src => 'images/circle.png')
   image(:image_class_index, :class => "image_class", :index => 0)
   image(:image_name_index, :name => "image_name", :index => 0)
 

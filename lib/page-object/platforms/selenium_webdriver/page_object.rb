@@ -811,6 +811,7 @@ module PageObject
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
           return false if identifier[:action] and tag == 'form'
           return false if identifier[:alt] and tag == 'img'
+          return false if identifier[:src] and tag == 'img'
           true
         end
 

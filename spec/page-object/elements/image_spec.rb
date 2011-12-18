@@ -6,14 +6,14 @@ describe PageObject::Elements::Image do
 
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
-      [:class, :id, :index, :name, :xpath, :alt].each do |t|
+      [:class, :id, :index, :name, :xpath, :alt, :src].each do |t|
         identifier = image.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end
     end
 
     it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath, :alt].each do |t|
+      [:class, :id, :index, :name, :xpath, :alt, :src].each do |t|
         key, value = image.selenium_identifier_for t => 'value'
         key.should == t
       end
