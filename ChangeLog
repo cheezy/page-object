@@ -4,6 +4,7 @@
   * Added full support for file_field element
   * Added ability to find TextField by :title
   * Added ability to find Form by :action
+  * Added ability to find Image by :alt
 
 === Version 0.5.3
 * Enhancements

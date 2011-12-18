@@ -810,6 +810,7 @@ module PageObject
           return false if identifier[:value] and tag == 'input' and additional[:type] == 'radio'
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
           return false if identifier[:action] and tag == 'form'
+          return false if identifier[:alt] and tag == 'img'
           true
         end
 

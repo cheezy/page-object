@@ -467,6 +467,7 @@ module PageObject
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :alt => Watir and Selenium
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -492,6 +493,7 @@ module PageObject
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :action => Watir and Selenium
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium

@@ -17,7 +17,6 @@ module PageObject
         super + [:action]
       end
 
-
       def include_platform_for platform
         super
         if platform[:platform] == :watir_webdriver
