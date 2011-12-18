@@ -1,4 +1,4 @@
-=== Version 0.5.4
+=== Version 0.5.4 / 2011-12-18
 * Enhancements
   * Added deprecation warning to the method_missing method on Element.  This ability will be removed in 0.6
   * Added full support for file_field element
@@ -7,7 +7,7 @@
   * Added ability to find Image by :alt
   * Added ability to find Image by :src
 
-=== Version 0.5.3
+=== Version 0.5.3 / 2011-12-11
 * Enhancements
   * Added new module PagePopulator with single method populate_page_with
   * Updated to use selenium-webdriver 2.15.0
