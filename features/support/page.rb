@@ -154,6 +154,7 @@ class Page
   form(:form_class, :class => 'form_class')
   form(:form_index, :index => 0)
   form(:form_xpath, :xpath => '//form')
+  form(:form_action, :action => "success.html")
   form(:form_class_index, :class => "form_class", :index => 0)
   form(:form_name_index, :name => "form_name", :index => 0)
 

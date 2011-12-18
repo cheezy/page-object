@@ -9,6 +9,15 @@ module PageObject
 
       protected
 
+      def self.watir_finders
+        super + [:action]
+      end
+
+      def self.selenium_finders
+        super + [:action]
+      end
+
+
       def include_platform_for platform
         super
         if platform[:platform] == :watir_webdriver

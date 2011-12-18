@@ -17,6 +17,7 @@ Feature: Form
     | class     |
     | xpath     |
     | index     |
+    | action    |
 
   Scenario Outline: Locating table using multiple parameters
     When I locate the form using "<param1>" and "<param2>"
