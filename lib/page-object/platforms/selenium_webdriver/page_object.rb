@@ -810,9 +810,7 @@ module PageObject
           return false if identifier[:text] and ['div', 'span', 'td'].include? tag
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'text'
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
-          return false if identifier[:value] and tag == 'input' and additional[:type] == 'radio'
-          return false if identifier[:value] and tag == 'input' and additional[:type] == 'submit'
-          return false if identifier[:value] and tag == 'input' and additional[:type] == 'checkbox'
+          return false if identifier[:value] and tag == 'input' and ['radio', 'submit', 'checkbox', 'hidden'].include? additional[:type]
           true
         end
 

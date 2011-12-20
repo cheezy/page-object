@@ -21,6 +21,7 @@ Feature: Hidden Fields
     | tag_name  |
     | index     |
     | text      |
+    | value     |
 
   Scenario Outline: Locating a hidden field using multiple parameters
     When I search for the hidden field by "<param1>" and "<param2>"

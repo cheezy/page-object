@@ -6,7 +6,7 @@ describe PageObject::Elements::HiddenField do
 
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
-      [:class, :id, :index, :name, :tag_name, :text, :xpath].each do |t|
+      [:class, :id, :index, :name, :tag_name, :text, :xpath, :value].each do |t|
         identifier = hiddenfield.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end
@@ -18,7 +18,7 @@ describe PageObject::Elements::HiddenField do
     end
 
     it "should map selenium types to same" do
-      [:class, :css, :id, :name, :xpath, :index].each do |t|
+      [:class, :css, :id, :name, :xpath, :index, :value].each do |t|
         key, value = hiddenfield.selenium_identifier_for t => 'value'
         key.should == t
       end

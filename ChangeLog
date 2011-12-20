@@ -1,6 +1,7 @@
 === Version 0.5.5
 * Enhancements
   * Added ability to find Checkbox by :value
+  * Added ability to find HiddenField by :value
 
 === Version 0.5.4 / 2011-12-18
 * Enhancements
