@@ -23,6 +23,7 @@ Feature: Check Box
     | name      |
     | xpath     |
     | index     |
+    | value     |
 
   Scenario Outline: Locating check boxes using multiple parameters
     When I search for the check box by "<param1>" and "<param2>"

@@ -9,6 +9,14 @@ module PageObject
       end
 
       protected
+
+      def self.watir_finders
+        super + [:value]
+      end
+
+      def self.selenium_finders
+        super + [:value]
+      end
       
       def include_platform_for platform
         super

@@ -1,3 +1,7 @@
+=== Version 0.5.5
+* Enhancements
+  * Added ability to find Checkbox by :value
+
 === Version 0.5.4 / 2011-12-18
 * Enhancements
   * Added deprecation warning to the method_missing method on Element.  This ability will be removed in 0.6
