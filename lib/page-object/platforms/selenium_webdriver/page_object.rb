@@ -802,15 +802,18 @@ module PageObject
           return false if identifier[:index]
           return false if identifier[:action] and tag == 'form'
           return false if identifier[:alt] and tag == 'img'
-          return false if identifier[:alt] and tag == 'input' and additional[:type] == 'submit'
+          return false if identifier[:alt] and tag == 'input' and
+            ['submit', 'image', 'button', 'reset'].include? additional[:type]
           return false if identifier[:href] and tag == 'a'
-          return false if identifier[:src] and tag == 'input' and additional[:type] == 'submit'
+          return false if identifier[:src] and tag == 'input' and
+            ['submit', 'image', 'button', 'reset'].include? additional[:type]
           return false if identifier[:src] and tag == 'img'
           return false if identifier[:text] and tag == 'input' and additional[:type] == 'hidden'
           return false if identifier[:text] and ['div', 'span', 'td'].include? tag
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'text'
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
-          return false if identifier[:value] and tag == 'input' and ['radio', 'submit', 'checkbox', 'hidden'].include? additional[:type]
+          return false if identifier[:value] and tag == 'input' and
+            ['radio', 'submit', 'image', 'button', 'reset', 'checkbox', 'hidden'].include? additional[:type]
           true
         end
 
