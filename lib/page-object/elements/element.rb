@@ -1,3 +1,4 @@
+require 'page-object/nested_elements'
 
 module PageObject
   module Elements
@@ -8,7 +9,7 @@ module PageObject
     # @see PageObject::Platforms::SeleniumWebDriver::Element for the Selenium version of all common methods
     #
     class Element
-      include Object::PageObject::NestedElements
+      include ::PageObject::NestedElements
       
       attr_reader :element
 

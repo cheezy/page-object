@@ -1,3 +1,5 @@
+require 'watir-webdriver/atoms'
+
 module PageObject
   module Platforms
     #
@@ -5,6 +7,7 @@ module PageObject
     #
     module SeleniumWebDriver
       module Element
+        include Watir::Atoms
 
         #
         # return true if an element is visible
@@ -86,6 +89,16 @@ module PageObject
         #
         def attribute(attribute_name)
           @element.attribute attribute_name
+        end
+
+        #
+        # Fire the provided event on the current element
+        #
+        def fire_event(event_name)
+          event_name = event_name.to_s.sub(/^on/, '').downcase
+          script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:fireEvent)
+          bridge = @element.instance_variable_get(:@bridge)
+          bridge.executeScript(script, @element, event_name)
         end
 
         #

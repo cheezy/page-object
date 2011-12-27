@@ -1,3 +1,6 @@
+require 'page-object/elements'
+require 'selenium-webdriver'
+
 
 describe "Element for Selenium" do
   before(:each) do
@@ -16,6 +19,7 @@ describe "Element for Selenium" do
   end
 
   it "should know when it exists" do
+    @selenium_driver.should_receive(:nil?).and_return(false)
     @selenium_element.exists?.should == true
   end
 
@@ -124,5 +128,11 @@ describe "Element for Selenium" do
   it "should clear its' contents" do
     @selenium_driver.should_receive(:clear)
     @selenium_element.clear
+  end
+
+  it "should fine an event" do
+    @selenium_driver.should_receive(:instance_variable_get).with(:@bridge).and_return(@selenium_driver)
+    @selenium_driver.should_receive(:executeScript)
+    @selenium_element.fire_event('onfocus')
   end
 end

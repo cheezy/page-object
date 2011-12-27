@@ -253,3 +253,7 @@ Feature: Elements
     And I should know its' tag name is "h1"
     And I should know the attribute "readonly" is false
     And I should be able to click it
+
+  Scenario: Firing an event
+    When I set the focus to the test text_field using the onfocus event
+    Then I should see the onfocus text "changed by onfocus event"
