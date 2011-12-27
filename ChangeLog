@@ -3,6 +3,8 @@
   * Added ability to find Checkbox by :value
   * Added ability to find HiddenField by :value
   * Added #fire_event method to Element
+* Fixes
+  * Updated #populate_page_with to no longer attempt to set a value in a field that is disabled
 
 === Version 0.5.4 / 2011-12-18
 * Enhancements

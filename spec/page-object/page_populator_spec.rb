@@ -17,6 +17,7 @@ describe PageObject::PagePopulator  do
 
   it "should set a value in a text field" do
     page_object.should_receive(:tf=).with('value')
+    page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('tf' => 'value')
   end
 
@@ -27,36 +28,64 @@ describe PageObject::PagePopulator  do
 
   it "should set a value in a text area" do
     page_object.should_receive(:ta=).with('value')
+    page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('ta' => 'value')
   end
 
   it "should set a value in a select list" do
-    page_object.should_receive(:sa=).with('value')
-    page_object.populate_page_with('sa' => 'value')
+    page_object.should_receive(:sl=).with('value')
+    page_object.stub(:is_enabled?).and_return(true)
+    page_object.populate_page_with('sl' => 'value')
   end
 
   it "should set a value in a file field" do
     page_object.should_receive(:ff=).with('value')
+    page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('ff' => 'value')
   end
 
   it "should check a checkbox to true is specified" do
     page_object.should_receive(:check_cb)
+    page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('cb' => true)
   end
 
   it "should uncheck a checkbox to false is specified" do
     page_object.should_receive(:uncheck_cb)
+    page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('cb' => false)
   end
 
   it "should select a radio button when true is specified" do
     page_object.should_receive(:select_rb)
+    page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('rb' => true)
   end
 
   it "should clear a radio button when false is specified" do
     page_object.should_receive(:clear_rb)
+    page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('rb' => false)
+  end
+
+  it "should not populate a checkbox if it is disabled" do
+    page_object.should_not_receive(:check_cb)
+    page_object.should_receive(:cb_element).and_return(browser)
+    browser.should_receive(:enabled?).and_return(false)
+    page_object.populate_page_with('cb' => true)
+  end
+
+  it "should not populate a radio button when it is disabled" do
+    page_object.should_not_receive(:select_rb)
+    page_object.should_receive(:rb_element).and_return(browser)
+    browser.should_receive(:enabled?).and_return(false)
+    page_object.populate_page_with('rb' => true)
+  end
+
+  it "should not populate a text field when it is disabled" do
+    page_object.should_not_receive(:tf=)
+    page_object.should_receive(:tf_element).and_return(browser)
+    browser.should_receive(:enabled?).and_return(false)
+    page_object.populate_page_with('tf' => true)
   end
 end
