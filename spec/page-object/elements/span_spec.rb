@@ -19,4 +19,8 @@ describe PageObject::Elements::Span do
       end
     end
   end
+
+  it "should register with tag_name :span" do
+    ::PageObject::Elements.element_class_for(:span).should == ::PageObject::Elements::Span
+  end
 end

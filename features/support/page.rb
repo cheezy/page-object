@@ -255,5 +255,6 @@ class Page
   file_field(:file_field_xpath, :xpath => "//input[@type='file']")
   
   link(:open_window, :text => 'New Window')
+  link(:child, :id => 'child')
 end
 

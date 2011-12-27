@@ -32,5 +32,7 @@ module PageObject
       end
 
     end
+
+    ::PageObject::Elements.tag_to_class[:select] = ::PageObject::Elements::SelectList
   end
 end

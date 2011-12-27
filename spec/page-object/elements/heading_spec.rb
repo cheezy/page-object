@@ -19,4 +19,30 @@ describe PageObject::Elements::Heading do
       end
     end
   end
+
+  describe "interface" do
+    it "should register with tag :h1" do
+      ::PageObject::Elements.element_class_for(:h1).should == ::PageObject::Elements::Heading
+    end
+
+    it "should register with tag :h2" do
+      ::PageObject::Elements.element_class_for(:h2).should == ::PageObject::Elements::Heading
+    end
+
+    it "should register with tag :h3" do
+      ::PageObject::Elements.element_class_for(:h3).should == ::PageObject::Elements::Heading
+    end
+
+    it "should register with tag :h4" do
+      ::PageObject::Elements.element_class_for(:h4).should == ::PageObject::Elements::Heading
+    end
+
+    it "should register with tag :h5" do
+      ::PageObject::Elements.element_class_for(:h5).should == ::PageObject::Elements::Heading
+    end
+
+    it "should register with tag :h6" do
+      ::PageObject::Elements.element_class_for(:h6).should == ::PageObject::Elements::Heading
+    end
+  end
 end

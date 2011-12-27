@@ -26,6 +26,10 @@ describe PageObject::Elements::Table do
       table_element.stub(:find_elements).and_return(table_element)
     end
 
+    it "should register with tag_name :table" do
+      ::PageObject::Elements.element_class_for(:table).should == ::PageObject::Elements::Table
+    end
+
     context "for watir" do
       let(:watir_table) { PageObject::Elements::Table.new(table_element, :platform => :watir_webdriver) }
       

@@ -31,5 +31,7 @@ module PageObject
         end
       end
     end
+
+    ::PageObject::Elements.type_to_class[:radio] = ::PageObject::Elements::RadioButton
   end
 end

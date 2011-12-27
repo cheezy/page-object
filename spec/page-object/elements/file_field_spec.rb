@@ -23,6 +23,10 @@ describe PageObject::Elements::FileField do
 
   describe "interface" do
     let(:filefield) { double('file_field') }
+
+    it "should register as type :file" do
+      ::PageObject::Elements.element_class_for(:input, :file).should == ::PageObject::Elements::FileField
+    end
     
     context "for selenium" do
       it "should set its' value" do

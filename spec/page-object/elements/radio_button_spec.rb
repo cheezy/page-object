@@ -20,6 +20,11 @@ describe PageObject::Elements::RadioButton do
   end
 
   describe "interface" do
+
+    it "should register as type :radio" do
+      ::PageObject::Elements.element_class_for(:input, :radio).should == ::PageObject::Elements::RadioButton
+    end
+    
     context "for selenium" do
       let(:selenium_rb) { double('radio_button') }
       let(:radio_button) { PageObject::Elements::RadioButton.new(selenium_rb, :platform => :selenium_webdriver) }

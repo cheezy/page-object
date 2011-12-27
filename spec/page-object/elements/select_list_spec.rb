@@ -29,6 +29,10 @@ describe PageObject::Elements::SelectList do
       sel_list.stub(:each)
     end
 
+    it "should register with tag_name :select" do
+      ::PageObject::Elements.element_class_for(:select).should == ::PageObject::Elements::SelectList
+    end
+
     context "for watir" do
       it "should return an option when indexed" do
         watir_sel_list = PageObject::Elements::SelectList.new(sel_list, :platform => :watir_webdriver)

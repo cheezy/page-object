@@ -28,7 +28,9 @@ module PageObject
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end
       end
-
     end
+
+    ::PageObject::Elements.tag_to_class[:img] = ::PageObject::Elements::Image
+    
   end
 end

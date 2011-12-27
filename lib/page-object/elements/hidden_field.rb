@@ -24,5 +24,7 @@ module PageObject
         super.merge({:tag_name => :css})
       end
     end
+
+    ::PageObject::Elements.type_to_class[:hidden] = ::PageObject::Elements::HiddenField
   end
 end

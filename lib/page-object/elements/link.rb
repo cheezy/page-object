@@ -34,5 +34,8 @@ module PageObject
         end
       end
     end
+    
+    ::PageObject::Elements.tag_to_class[:a] = ::PageObject::Elements::Link
+
   end
 end

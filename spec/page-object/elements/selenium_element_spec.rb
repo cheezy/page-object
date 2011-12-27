@@ -135,4 +135,11 @@ describe "Element for Selenium" do
     @selenium_driver.should_receive(:executeScript)
     @selenium_element.fire_event('onfocus')
   end
+
+  it "should find the parent element" do
+    @selenium_driver.should_receive(:instance_variable_get).with(:@bridge).and_return(@selenium_driver)
+    @selenium_driver.should_receive(:executeScript).and_return(@selenium_driver)
+    @selenium_driver.should_receive(:tag_name).twice.and_return(:div)
+    @selenium_element.parent
+  end
 end

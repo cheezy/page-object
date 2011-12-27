@@ -18,5 +18,11 @@ describe PageObject::Elements::Div do
         key.should == t
       end
     end
+
+    describe "interface" do
+      it "should register with tag :div" do
+        ::PageObject::Elements.element_class_for(:div).should == ::PageObject::Elements::Div
+      end
+    end
   end
 end

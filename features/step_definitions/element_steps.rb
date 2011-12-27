@@ -131,3 +131,15 @@ end
 Then /^I should see the onfocus text "([^\"]*)"$/ do |text|
   @page.div_element(:id => 'onfocus_test').text.should == text
 end
+
+When /^I find the child link element$/ do
+  @element = @page.child_element
+end
+
+When /^ask for the parent element$/ do
+  @parent = @element.parent
+end
+
+Then /^I should have a div parent$/ do
+  @parent.should be_instance_of ::PageObject::Elements::Div
+end

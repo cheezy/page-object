@@ -23,6 +23,10 @@ describe PageObject::Elements::UnorderedList do
   describe "interface" do
     let(:ul_element) { double('ul_element') }
 
+    it "should register with tag_name :ul" do
+      ::PageObject::Elements.element_class_for(:ul).should == ::PageObject::Elements::UnorderedList
+    end
+
     context "for watir" do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)

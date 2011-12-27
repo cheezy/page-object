@@ -35,6 +35,10 @@ describe PageObject::Elements::Link do
   describe "interface" do
     let(:link_element) { double('link_element') }
 
+    it "should register with tag :a" do
+      ::PageObject::Elements.element_class_for(:a).should == ::PageObject::Elements::Link
+    end
+
     context "for selenium" do
       it "should return error when asked for its' value" do
         link = PageObject::Elements::Link.new(link_element, :platform => :selenium_webdriver)

@@ -29,4 +29,10 @@ describe PageObject::Elements::HiddenField do
       key.should == :css
     end
   end
+
+  describe "interface" do
+    it "should register with type :hidden" do
+      ::PageObject::Elements.element_class_for(:input, :hidden).should == ::PageObject::Elements::HiddenField
+    end
+  end
 end

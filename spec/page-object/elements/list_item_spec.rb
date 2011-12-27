@@ -18,5 +18,11 @@ describe PageObject::Elements::ListItem do
         key.should == t
       end
     end
+
+    describe "interface" do
+      it "should register as tag_name :li" do
+        ::PageObject::Elements.element_class_for(:li).should == ::PageObject::Elements::ListItem
+      end
+    end
   end
 end

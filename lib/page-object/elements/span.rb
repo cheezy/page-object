@@ -12,5 +12,8 @@ module PageObject
         [:class, :id, :name, :text, :xpath, :index]
       end
     end
+
+    ::PageObject::Elements.tag_to_class[:span] = ::PageObject::Elements::Span
+    
   end
 end

@@ -31,5 +31,8 @@ module PageObject
         end
       end
     end
+
+    ::PageObject::Elements.type_to_class[:file] = ::PageObject::Elements::FileField
+    
   end
 end

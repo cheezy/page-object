@@ -44,5 +44,7 @@ module PageObject
       end
 
     end
+
+    ::PageObject::Elements.tag_to_class[:ol] = ::PageObject::Elements::OrderedList
   end
 end

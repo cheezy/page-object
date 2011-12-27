@@ -6,6 +6,11 @@ describe PageObject::Elements::TableRow do
   let(:table_row_driver) { double('table_row_driver') }
 
   describe "interface" do
+
+    it "should register with tag_name :tr" do
+      ::PageObject::Elements.element_class_for(:tr).should == ::PageObject::Elements::TableRow
+    end
+    
     context "for selenium" do
       it "should return a table cell when indexed" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)

@@ -96,6 +96,16 @@ module PageObject
         end
 
         #
+        # find the parent element
+        #
+        def parent
+          parent = @element.parent
+          type = @element.type if parent.tag_name.to_sym == :input
+          cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
+          cls.new(parent, :platform => :watir_webdriver)
+        end
+
+        #
         # Waits until the element is present
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out

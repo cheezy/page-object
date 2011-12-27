@@ -23,6 +23,22 @@ describe PageObject::Elements::Button do
   describe "interface" do
     let(:button_element) { double('button_element') }
 
+    it "should register with type :submit" do
+      ::PageObject::Elements.element_class_for(:input, :submit).should == ::PageObject::Elements::Button
+    end
+
+    it "should register with type :image" do
+      ::PageObject::Elements.element_class_for(:input, :image).should == ::PageObject::Elements::Button
+    end
+
+    it "should register with type :button" do
+      ::PageObject::Elements.element_class_for(:input, :button).should == ::PageObject::Elements::Button
+    end
+
+    it "should retisger with type :reset" do
+      ::PageObject::Elements.element_class_for(:input, :reset).should == ::PageObject::Elements::Button
+    end
+
     context "for selenium" do
       it "should return error when asked for its' text" do
         button = PageObject::Elements::Button.new(button_element, :platform => :selenium_webdriver)

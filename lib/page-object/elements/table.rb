@@ -57,5 +57,7 @@ module PageObject
         end
       end
     end
+
+    ::PageObject::Elements.tag_to_class[:table] = ::PageObject::Elements::Table
   end
 end

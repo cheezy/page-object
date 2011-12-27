@@ -23,6 +23,10 @@ describe PageObject::Elements::OrderedList do
   describe "interface" do
     let(:ol_element) { double('ol_element') }
 
+    it "should register as tag_name :ol" do
+      ::PageObject::Elements.element_class_for(:ol).should == ::PageObject::Elements::OrderedList
+    end
+
     context "for watir" do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)

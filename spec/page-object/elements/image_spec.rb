@@ -27,6 +27,10 @@ describe PageObject::Elements::Image do
       image_element.stub(:size).and_return(image_element)
     end
 
+    it "should register with tag_name :img" do
+      ::PageObject::Elements.element_class_for(:img).should == ::PageObject::Elements::Image
+    end
+
     context "for watir" do
       it "should know the images width" do
         image = PageObject::Elements::Image.new(image_element, :platform => :watir_webdriver)

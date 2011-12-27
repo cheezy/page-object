@@ -23,6 +23,9 @@ describe PageObject::Elements::CheckBox do
     let(:check_box) { double('check_box') }
     let(:selenium_cb) { PageObject::Elements::CheckBox.new(check_box, :platform => :selenium_webdriver) }
 
+    it "should register with type :checkbox" do
+      ::PageObject::Elements.element_class_for(:input, :checkbox).should == ::PageObject::Elements::CheckBox
+    end
     
     context "for selenium" do
       it "should check" do

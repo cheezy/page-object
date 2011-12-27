@@ -102,6 +102,18 @@ module PageObject
         end
 
         #
+        # find the parent element
+        #
+        def parent
+          script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:getParentElement)
+          bridge = @element.instance_variable_get(:@bridge)
+          parent = bridge.executeScript(script, @element)
+          type = @element.type if parent.tag_name.to_sym == :input
+          cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
+          cls.new(parent, :platform => :selenium_webdriver)
+        end
+
+        #
         # Click this element
         #
         def right_click

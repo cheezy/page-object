@@ -31,6 +31,11 @@ describe PageObject::Elements::TextArea do
   end
   
   describe "interface" do
+
+    it "should register with tag_name :textarea" do
+      ::PageObject::Elements.element_class_for(:textarea).should == ::PageObject::Elements::TextArea
+    end
+    
     context "for Selenium" do
       it "should set its' value" do
         text_area_element = double('text_area')
