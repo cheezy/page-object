@@ -130,7 +130,7 @@ describe "Element for Selenium" do
     @selenium_element.clear
   end
 
-  it "should fine an event" do
+  it "should fire an event" do
     @selenium_driver.should_receive(:instance_variable_get).with(:@bridge).and_return(@selenium_driver)
     @selenium_driver.should_receive(:executeScript)
     @selenium_element.fire_event('onfocus')
