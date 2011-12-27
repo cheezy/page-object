@@ -142,4 +142,10 @@ describe "Element for Selenium" do
     @selenium_driver.should_receive(:tag_name).twice.and_return(:div)
     @selenium_element.parent
   end
+
+  it "should set the focus" do
+    @selenium_driver.should_receive(:instance_variable_get).and_return(@selenium_driver)
+    @selenium_driver.should_receive(:executeScript)
+    @selenium_element.focus
+  end
 end

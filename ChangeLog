@@ -2,8 +2,9 @@
 * Enhancements
   * Added ability to find Checkbox by :value
   * Added ability to find HiddenField by :value
-  * Added #fire_event method to Element
   * Added ability to find a parent of an Element
+  * Added #fire_event method to Element
+  * Added #focus method to Element
 * Fixes
   * Updated #populate_page_with to no longer attempt to set a value in a field that is disabled
 

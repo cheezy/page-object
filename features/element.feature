@@ -257,6 +257,10 @@ Feature: Elements
   Scenario: Firing an event
     When I set the focus to the test text_field using the onfocus event
     Then I should see the onfocus text "changed by onfocus event"
+    
+  Scenario: Setting focus on an element
+    When I set the focus on the test text_field
+    Then I should see the onfocus text "changed by onfocus event"
 
   Scenario: Finding a parent element
     When I find the child link element

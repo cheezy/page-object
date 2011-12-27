@@ -106,6 +106,13 @@ module PageObject
         end
 
         #
+        # Set the focus to the current element
+        #
+        def focus
+          @element.focus
+        end
+        
+        #
         # Waits until the element is present
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out

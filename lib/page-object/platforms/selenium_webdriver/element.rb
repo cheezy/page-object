@@ -114,6 +114,14 @@ module PageObject
         end
 
         #
+        # Set the focus to the current element
+        #
+        def focus
+          bridge = @element.instance_variable_get(:@bridge)
+          bridge.executeScript("return arguments[0].focus()", @element)
+        end
+
+        #
         # Click this element
         #
         def right_click

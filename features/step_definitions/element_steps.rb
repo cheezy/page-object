@@ -132,6 +132,10 @@ Then /^I should see the onfocus text "([^\"]*)"$/ do |text|
   @page.div_element(:id => 'onfocus_test').text.should == text
 end
 
+When /^I set the focus on the test text_field$/ do
+  @page.text_field_element(:id => 'onfocus_text_field').focus
+end
+
 When /^I find the child link element$/ do
   @element = @page.child_element
 end
