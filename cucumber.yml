@@ -2,8 +2,7 @@
 std_opts = "--no-source --color --format Cucumber::Formatter::Fuubar"
 %>
 
-default: DRIVER=WATIR <%= std_opts %>
+default: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only
 watir: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only
 selenium: DRIVER=SELENIUM <%= std_opts %> --tags ~@watir_only
-autotest: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only
 
