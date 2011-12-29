@@ -168,23 +168,21 @@ module PageObject
         # See PageObject::Accessors#text_field
         #
         def text_field_value_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextField, 'input', :type => 'text')
-          switch_to_frame(frame_identifiers)
-          text = @browser.find_element(how, what).attribute('value')
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          text
+          process_selenium_call(identifier, Elements::TextField, 'input', :type => 'text') do |how, what|
+            @browser.find_element(how, what).attribute('value')
+          end
         end
+
 
         #
         # platform method to set the value for a text field
         # See PageObject::Accessors#text_field
         #
         def text_field_value_set(identifier, value)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextField, 'input', :type => 'text')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).clear
-          @browser.find_element(how, what).send_keys(value)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::TextField, 'input', :type => 'text') do |how, what|
+            @browser.find_element(how, what).clear
+            @browser.find_element(how, what).send_keys(value)
+          end
         end
 
         #
@@ -192,11 +190,7 @@ module PageObject
         # See PageObject::Accessors#text_field
         #
         def text_field_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextField, 'input', :type => 'text')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::TextField.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::TextField, 'input', :type => 'text')
         end
 
         #
@@ -204,11 +198,9 @@ module PageObject
         # See PageObject::Accessors#hidden_field
         #
         def hidden_field_value_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::HiddenField, 'input', :type => 'hidden')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).attribute('value')
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::HiddenField, 'input', :type => 'hidden') do |how, what|
+            @browser.find_element(how, what).attribute('value')
+          end
         end
 
         #
@@ -216,11 +208,7 @@ module PageObject
         # See PageObject::Accessors#hidden_field
         #
         def hidden_field_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::HiddenField, 'input', :type => 'hidden')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          Elements::HiddenField.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::HiddenField, 'input', :type => 'hidden')
         end
 
         #
@@ -228,10 +216,9 @@ module PageObject
         # See PageObject::Accessors#text_area
         #
         def text_area_value_set(identifier, value)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextArea, 'textarea')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).send_keys(value)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::TextArea, 'textarea') do |how, what|
+            @browser.find_element(how, what).send_keys(value)
+          end
         end
 
         #
@@ -239,11 +226,9 @@ module PageObject
         # See PageObject::Accessors#text_area
         #
         def text_area_value_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextArea, 'textarea')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).attribute('value')
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::TextArea, 'textarea') do |how, what|
+            @browser.find_element(how, what).attribute('value')
+          end
         end
 
         #
@@ -251,11 +236,7 @@ module PageObject
         # See PageObject::Accessors#text_area
         #
         def text_area_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TextArea, 'textarea')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          Elements::TextArea.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::TextArea, 'textarea')
         end
 
         #
@@ -263,11 +244,9 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_value_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::SelectList, 'select')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).attribute('value')
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::SelectList, 'select') do |how, what|
+            @browser.find_element(how, what).attribute('value')
+          end
         end
 
         #
@@ -275,10 +254,9 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_value_set(identifier, value)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::SelectList, 'select')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).send_keys(value)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::SelectList, 'select') do |how, what|
+            @browser.find_element(how, what).send_keys(value)
+          end
         end
 
         #
@@ -286,11 +264,7 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::SelectList, 'select')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          Elements::SelectList.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::SelectList, 'select')
         end
 
         #
@@ -298,10 +272,9 @@ module PageObject
         # See PageObject::Accessors#link
         #
         def click_link_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Link, 'a')
-          switch_to_frame frame_identifiers
-          @browser.find_element(how, what).click
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::Link, 'a') do |how, what|
+            @browser.find_element(how, what).click
+          end
         end
 
         #
@@ -309,11 +282,7 @@ module PageObject
         # see PageObject::Accessors#link
         #
         def link_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Link, 'a')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          Elements::Link.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Link, 'a')
         end
 
         #
@@ -321,10 +290,9 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def check_checkbox(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::CheckBox, 'input', :type => 'checkbox')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::CheckBox, 'input', :type => 'checkbox') do |how, what|
+            @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
+          end
         end
 
         #
@@ -332,10 +300,9 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def uncheck_checkbox(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::CheckBox, 'input', :type => 'checkbox')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::CheckBox, 'input', :type => 'checkbox') do |how, what|
+            @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
+          end
         end
 
         #
@@ -343,11 +310,9 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def checkbox_checked?(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::CheckBox, 'input', :type => 'checkbox')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).selected?
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::CheckBox, 'input', :type => 'checkbox') do |how, what|
+            @browser.find_element(how, what).selected?
+          end
         end
 
         #
@@ -355,11 +320,7 @@ module PageObject
         # See PageObject::Accessors#checkbox
         #
         def checkbox_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::CheckBox, 'input', :type => 'checkbox')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          Elements::CheckBox.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::CheckBox, 'input', :type => 'checkbox')
         end
 
         #
@@ -367,10 +328,9 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def select_radio(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::RadioButton, 'input', :type => 'radio')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::RadioButton, 'input', :type => 'radio') do |how, what|
+            @browser.find_element(how, what).click unless @browser.find_element(how, what).selected?
+          end
         end
 
         #
@@ -378,10 +338,9 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def clear_radio(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::RadioButton, 'input', :type => 'radio')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::RadioButton, 'input', :type => 'radio') do |how, what|
+            @browser.find_element(how, what).click if @browser.find_element(how, what).selected?
+          end
         end
 
         #
@@ -389,11 +348,9 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def radio_selected?(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::RadioButton, 'input', :type => 'radio')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).selected?
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::RadioButton, 'input', :type => 'radio') do |how, what|
+            @browser.find_element(how, what).selected?
+          end
         end
 
         #
@@ -401,11 +358,7 @@ module PageObject
         # See PageObject::Accessors#radio_button
         #
         def radio_button_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::RadioButton, 'input', :type => 'radio')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::RadioButton.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::RadioButton, 'input', :type => 'radio')
         end
 
         #
@@ -413,11 +366,9 @@ module PageObject
         # See PageObject::Accessors#div
         #
         def div_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Div, 'div')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::Div, 'div') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
 
         #
@@ -425,11 +376,7 @@ module PageObject
         # See PageObject::Accessors#div
         #
         def div_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Div, 'div')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Div.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Div, 'div')
         end
 
         #
@@ -437,11 +384,9 @@ module PageObject
         # See PageObject::Accessors#span
         #
         def span_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Span, 'span')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::Span, 'span') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
 
         #
@@ -449,11 +394,7 @@ module PageObject
         # See PageObject::Accessors#span
         #
         def span_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Span, 'span')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Span.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Span, 'span')
         end
 
         #
@@ -461,10 +402,9 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def click_button_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button, 'input', :type => 'submit')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).click
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::Button, 'input', :type => 'submit') do |how, what|
+            @browser.find_element(how, what).click
+          end
         end
 
         #
@@ -472,11 +412,7 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def button_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button, 'input', :type => 'submit')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Button.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Button, 'input', :type => 'submit')
         end
 
         #
@@ -484,11 +420,7 @@ module PageObject
         # See PageObject::Accessors#table
         #
         def table_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Table, 'table')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Table.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Table, 'table')
         end
 
         #
@@ -496,11 +428,9 @@ module PageObject
         # See PageObject::Accessors#cell
         #
         def cell_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TableCell, 'td')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value
+          process_selenium_call(identifier, Elements::TableCell, 'td') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
 
         #
@@ -508,11 +438,7 @@ module PageObject
         # See PageObject::Accessors#cell
         #
         def cell_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::TableCell, 'td')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::TableCell.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::TableCell, 'td')
         end
 
         #
@@ -520,11 +446,7 @@ module PageObject
         # See PageObject::Accessors#image
         #
         def image_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Image, 'img')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Image.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Image, 'img')
         end
 
         #
@@ -532,11 +454,7 @@ module PageObject
         # See PageObject::Accessors#form
         #
         def form_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Form, 'form')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Form.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Form, 'form')
         end
 
         #
@@ -544,11 +462,9 @@ module PageObject
         # See PageObject::Accessors#list_item
         #
         def list_item_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::ListItem, 'li')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
-          value
+          process_selenium_call(identifier, Elements::ListItem, 'li') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
 
         #
@@ -556,11 +472,7 @@ module PageObject
         # See PageObject::Accessors#list_item
         #
         def list_item_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::ListItem, 'li')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::ListItem.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::ListItem, 'li')
         end
 
         #
@@ -568,11 +480,7 @@ module PageObject
         # See PageObject::Accessors#unordered_list
         #
         def unordered_list_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::UnorderedList, 'ul')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::UnorderedList.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::UnorderedList, 'ul')
         end
 
         #
@@ -580,11 +488,7 @@ module PageObject
         # See PageObject::Accessors#ordered_list
         #
         def ordered_list_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::OrderedList, 'ol')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::OrderedList.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::OrderedList, 'ol')
         end
         
         #
@@ -592,11 +496,9 @@ module PageObject
         # See PageObject::Accessors#h1
         #
         def h1_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h1')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
-          value          
+          process_selenium_call(identifier, Elements::Heading, 'h1') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
         
         #
@@ -604,11 +506,7 @@ module PageObject
         # See PageObject::Accessors#h1
         #
         def h1_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h1')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Heading, 'h1')
         end
 
         #
@@ -616,11 +514,9 @@ module PageObject
         # See PageObject::Accessors#h2
         #
         def h2_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h2')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
-          value          
+          process_selenium_call(identifier, Elements::Heading, 'h2') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
         
         #
@@ -628,11 +524,7 @@ module PageObject
         # See PageObject::Accessors#h2
         #
         def h2_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h2')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Heading, 'h2')
         end
 
         #
@@ -640,11 +532,9 @@ module PageObject
         # See PageObject::Accessors#h3
         #
         def h3_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h3')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
-          value          
+          process_selenium_call(identifier, Elements::Heading, 'h3') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
         
         #
@@ -652,11 +542,7 @@ module PageObject
         # See PageObject::Accessors#h3
         #
         def h3_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h3')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Heading, 'h3')
         end
 
         #
@@ -664,11 +550,9 @@ module PageObject
         # See PageObject::Accessors#h4
         #
         def h4_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h4')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
-          value          
+          process_selenium_call(identifier, Elements::Heading, 'h4') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
         
         #
@@ -676,11 +560,7 @@ module PageObject
         # See PageObject::Accessors#h4
         #
         def h4_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h4')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Heading, 'h4')
         end
 
         #
@@ -688,11 +568,9 @@ module PageObject
         # See PageObject::Accessors#h5
         #
         def h5_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h5')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
-          value          
+          process_selenium_call(identifier, Elements::Heading, 'h5') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
         
         #
@@ -700,11 +578,7 @@ module PageObject
         # See PageObject::Accessors#h5
         #
         def h5_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h5')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Heading, 'h5')
         end
 
         #
@@ -712,11 +586,9 @@ module PageObject
         # See PageObject::Accessors#h6
         #
         def h6_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h6')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content
-          value          
+          process_selenium_call(identifier, Elements::Heading, 'h6') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
         
         #
@@ -724,11 +596,7 @@ module PageObject
         # See PageObject::Accessors#h6
         #
         def h6_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'h6')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Heading.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Heading, 'h6')
         end
 
         #
@@ -736,11 +604,9 @@ module PageObject
         # See PageObject::Accessors#paragraph
         #
         def paragraph_text_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Paragraph, 'p')
-          switch_to_frame(frame_identifiers)
-          value = @browser.find_element(how, what).text
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          value          
+          process_selenium_call(identifier, Elements::Paragraph, 'p') do |how, what|
+            @browser.find_element(how, what).text
+          end
         end
         
         #
@@ -748,11 +614,7 @@ module PageObject
         # See PageObject::Accessors#paragraph
         #
         def paragraph_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Heading, 'p')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::Paragraph.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::Paragraph, 'p')
         end
 
         #
@@ -760,10 +622,9 @@ module PageObject
         # See PageObject::Accessors#file_field
         #
         def file_field_value_set(identifier, value)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField, 'input', :type => 'file')
-          switch_to_frame(frame_identifiers)
-          @browser.find_element(how, what).send_keys(value)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
+          process_selenium_call(identifier, Elements::FileField, 'input', :type => 'file') do |how, what|
+            @browser.find_element(how, what).send_keys(value)
+          end
         end
 
         #
@@ -771,15 +632,27 @@ module PageObject
         # See PageObject::Accessors#file_field
         #
         def file_field_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::FileField, 'input', :type => 'file')
-          switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          ::PageObject::Elements::FileField.new(element, :platform => :selenium_webdriver)
+          find_selenium_element(identifier, Elements::FileField, 'input', :type => 'file')
         end
 
         private
         
+        def process_selenium_call(identifier, type, tag, other=nil)
+          how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
+          switch_to_frame(frame_identifiers)
+          value = yield how, what
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          value
+        end
+
+        def find_selenium_element(identifier, type, tag, other=nil)
+          how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
+          switch_to_frame(frame_identifiers)
+          element = @browser.find_element(how, what)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          type.new(element, :platform => :selenium_webdriver)
+        end
+
         def parse_identifiers(identifier, element, tag_name=nil, additional=nil)
           frame_identifiers = identifier.delete(:frame)
           identifier = add_tagname_if_needed identifier, tag_name, additional if tag_name
