@@ -89,4 +89,4 @@ See [http://github.com/cheezy/page-object/issues](http://github.com/cheezy/page-
 
 ## Copyright
 
-Copyright (c) 2011 Jeffrey S. Morgan. See LICENSE for details.
+Copyright (c) 2011-2012 Jeffrey S. Morgan. See LICENSE for details.
