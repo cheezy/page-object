@@ -20,6 +20,19 @@ module PageObject
         platform.navigate_to url
       end
     end
+
+    attr_reader :page_object_navigation_method
+
+    #
+    # specify the method to use when navigating to another page via
+    # this class.
+    #
+    # @param [Symbol] a method name that takes no parameters and will
+    # complete this page and navigate to the next.
+    #
+    def navigation_method(method)
+      @page_object_navigation_method = method
+    end
     
     #
     # Identify an element as existing within a frame or iframe.  A frame parameter
