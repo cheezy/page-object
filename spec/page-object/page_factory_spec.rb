@@ -87,7 +87,8 @@ describe PageObject::PageFactory do
     AnotherPage.should_receive(:new).and_return(fake_page)
     fake_page.should_receive(:respond_to?).with(:b_method).and_return(true)
     fake_page.should_receive(:b_method)
-    @world.instance_variable_set :@current_page, FactoryTestPage
+    fake_page.should_receive(:class).and_return(FactoryTestPage)
+    @world.instance_variable_set :@current_page, fake_page
     @world.continue_navigation_to(YetAnotherPage).class.should == YetAnotherPage
   end
 end
