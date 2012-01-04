@@ -1,3 +1,7 @@
+=== Version 0.5.6
+* Enhancements
+  * Added #button_elements to find all buttons on a page that match locators
+
 === Version 0.5.5 / 2011-12-27
 * Enhancements
   * Added ability to find Checkbox by :value

@@ -408,6 +408,19 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of button elements
+        #
+        def buttons_for(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button,
+                                                           'input', :type => 'submit')
+          switch_to_frame(frame_identifiers)
+          elements = @browser.find_elements(how, what)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          elements.map { |element| Elements::Button.new(element,
+                                                        :platform => :selenium_webdriver) }
+        end
+        
+        #
         # platform method to retrieve a button element
         # See PageObject::Accessors#button
         #

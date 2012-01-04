@@ -386,6 +386,16 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of button elements
+        #
+        def buttons_for(identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Button)
+          elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}buttons(identifier)"
+          switch_to_default_content(frame_identifiers)
+          elements.map { |element| Elements::Button.new(element, :platform => :watir_webdriver) }
+        end
+
+        #
         # platform method to retrieve a table element
         # See PageObject::Accessors#table
         #

@@ -19,6 +19,25 @@ module PageObject
     def button_element(identifier)
       platform.button_for(identifier.clone)
     end
+
+    #
+    # Finds all buttons that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir only
+    #   * :value => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #   * :src => Watir and Selenium (image button only)
+    #   * :alt => Watir and Selenium (image button only)
+    #
+    def button_elements(identifier)
+      platform.buttons_for(identifier.clone)
+    end
     
     #
     # Finds a text field
