@@ -79,4 +79,15 @@ describe PageObject::PageFactory do
     fake_page.should_receive(:respond_to?).with(:a_method).and_return(false)
     expect { @world.navigate_to(AnotherPage) }.to raise_error
   end
+
+  it "should know how to continue routng from a location" do
+    PageObject::PageFactory.routes = {:default => [FactoryTestPage, AnotherPage, YetAnotherPage]}
+    fake_page = double('a_page')
+    FactoryTestPage.should_not_receive(:new)
+    AnotherPage.should_receive(:new).and_return(fake_page)
+    fake_page.should_receive(:respond_to?).with(:b_method).and_return(true)
+    fake_page.should_receive(:b_method)
+    @world.instance_variable_set :@current_page, FactoryTestPage
+    @world.continue_navigation_to(YetAnotherPage).class.should == YetAnotherPage
+  end
 end

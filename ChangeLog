@@ -3,6 +3,7 @@
   * Added #button_elements to find all buttons on a page that match locators
   * Added #navigation_method to Accessors to gahter method name to use with navigation
   * Added #navigate_to method to PageFactory to navigate to a page through previous pages
+  * Added #continue_navigation_to method to PageFactory which begins at @current_page
   * Added routes to PageFactory to collect routes through the site
 
 === Version 0.5.5 / 2011-12-27
