@@ -40,8 +40,8 @@ module PageObject
     # @param an optional block to be called
     # @return [PageObject] the newly created page object
     #
-    def visit_page(page_class)
-      on_page page_class, true
+    def visit_page(page_class, &block)
+      on_page page_class, true, &block
     end
 
     #
@@ -52,9 +52,9 @@ module PageObject
     # @param [block]  an optional block to be called
     # @return [PageObject] the newly created page object
     #
-    def on_page(page_class, visit=false)
+    def on_page(page_class, visit=false, &block)
       @current_page = page_class.new(@browser, visit)
-      yield @current_page if block_given?
+      block.call @current_page if block
       @current_page
     end
 
@@ -80,7 +80,7 @@ module PageObject
     # @param [block]  an optional block to be called
     # @return [PageObject] the page you are navigating to
     #
-    def navigate_to(page_cls, how = {:using => :default})
+    def navigate_to(page_cls, how = {:using => :default}, &block)
       path = PageObject::PageFactory.page_object_routes[how[:using]]
       fail("PageFactory route :#{how[:using].to_s} not found") unless path
       path[0..path.index(page_cls)-1].each do |cls|
@@ -89,7 +89,7 @@ module PageObject
         fail("Navigation method not specified on #{cls}.  Please call the ") unless page.respond_to? method
         page.send method
       end
-      on_page(page_cls)
+      on_page(page_cls, &block)
     end
 
 
