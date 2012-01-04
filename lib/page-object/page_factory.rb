@@ -100,7 +100,7 @@ module PageObject
     #
     def continue_navigation_to(page_cls, how = {:using => :default}, &block)
       path = path_for how
-      navigate_through_pages(path[path.index(@current_page)+1..path.index(page_cls)-1])
+      navigate_through_pages(path[path.index(@current_page.class)+1..path.index(page_cls)-1])
       on_page(page_cls, &block)
     end
 
