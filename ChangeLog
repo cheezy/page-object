@@ -5,6 +5,7 @@
   * Added #navigate_to method to PageFactory to navigate to a page through previous pages
   * Added #continue_navigation_to method to PageFactory which begins at @current_page
   * Added routes to PageFactory to collect routes through the site
+  * Updated to use selenium-webdriver 2.16.0
 
 === Version 0.5.5 / 2011-12-27
 * Enhancements
