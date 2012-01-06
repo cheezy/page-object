@@ -4,7 +4,6 @@ class AccessorsTestPageObject
   include PageObject
 
   page_url "http://apple.com"
-  navigation_method :a_method
   link(:google_search, :link => 'Google Search')
   text_field(:first_name, :id => 'first_name')
   hidden_field(:social_security_number, :id => 'ssn')
@@ -140,12 +139,6 @@ describe PageObject::Accessors do
     it "should not navigate to a page when 'page_url' not specified" do
       watir_browser.should_not_receive(:goto)
       page = BlockPageObject.new(watir_browser, true)
-    end
-  end
-
-  describe "navigation method" do
-    it "should save the navigation method" do
-      AccessorsTestPageObject.page_object_navigation_method.should == :a_method
     end
   end
 

@@ -408,6 +408,14 @@ module PageObject
         end
 
         #
+        # platform method to retrieve a button element
+        # See PageObject::Accessors#button
+        #
+        def button_for(identifier)
+          find_selenium_element(identifier, Elements::Button, 'input', :type => 'submit')
+        end
+
+        #
         # platform method to retrieve an array of button elements
         #
         def buttons_for(identifier)
@@ -420,14 +428,6 @@ module PageObject
                                                         :platform => :selenium_webdriver) }
         end
         
-        #
-        # platform method to retrieve a button element
-        # See PageObject::Accessors#button
-        #
-        def button_for(identifier)
-          find_selenium_element(identifier, Elements::Button, 'input', :type => 'submit')
-        end
-
         #
         # platform method to retrieve a table element
         # See PageObject::Accessors#table

@@ -21,14 +21,13 @@ module PageObject
   # If you plan to use the navigate_to method you will need to ensure
   # you setup the possible routes ahead of time.  You must always have
   # a default route in order for this to work.  Here is an example of
-  # how you can setup routes:
+  # how you define routes:
   #
   # @example Example routes defined in env.rb
   #   PageObject::PageFactory.routes = {
-  #     :default => [PageOne, PageTwoA, PageThree, PageFour],
-  #     :another_route => [PageOne, PageTwoB, PageThree, PageFour]
+  #     :default => [[PageOne,:method1], [PageTwoA,:method2], [PageThree,:method3]],
+  #     :another_route => [[PageOne,:method1], [PageTwoB,:method2b], [PageThree,:method3]]
   #   }
-  # You must also call the navigation_method method on each page.
   # 
   module PageFactory
 
@@ -64,7 +63,7 @@ module PageObject
     # This method requires a lot of setup.  See the documentation for
     # this class.  Once the setup is complete you can navigate to a
     # page traversing through all other pages along the way.  It will
-    # call the method you specified in the navigation_method for each
+    # call the method you specified in the routes for each
     # page as it navigates.  Using the example setup defined in the
     # documentation above you can call the method two ways:
     #
@@ -82,7 +81,8 @@ module PageObject
     #
     def navigate_to(page_cls, how = {:using => :default}, &block)
       path = path_for how
-      navigate_through_pages(path[0..path.index(page_cls)-1])
+      to_index = find_index_for(path, page_cls)-1
+      navigate_through_pages(path[0..to_index])
       on_page(page_cls, &block)
     end
 
@@ -100,7 +100,9 @@ module PageObject
     #
     def continue_navigation_to(page_cls, how = {:using => :default}, &block)
       path = path_for how
-      navigate_through_pages(path[path.index(@current_page.class)+1..path.index(page_cls)-1])
+      from_index = find_index_for(path, @current_page.class)+1
+      to_index = find_index_for(path, page_cls)-1
+      navigate_through_pages(path[from_index..to_index])
       on_page(page_cls, &block)
     end
 
@@ -113,12 +115,15 @@ module PageObject
     end
     
     def navigate_through_pages(pages)
-      pages.each do |cls|
+      pages.each do |cls, method|
         page = on_page(cls)
-        method = cls.page_object_navigation_method
         fail("Navigation method not specified on #{cls}.  Please call the ") unless page.respond_to? method
         page.send method
       end
+    end
+
+    def find_index_for(path, item)
+      path.each_with_index { |each, index| return index if each[0] == item}
     end
 
     class << self
@@ -129,6 +134,5 @@ module PageObject
         @page_object_routes = routes
       end
     end
-
   end
 end

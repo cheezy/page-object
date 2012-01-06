@@ -4,22 +4,20 @@ require 'page-object/page_factory'
 class FactoryTestPage
   include PageObject
   page_url "http://google.com"
-  navigation_method :a_method
 end
 
 class AnotherPage
   include PageObject
-  navigation_method :b_method
 end
 
 class YetAnotherPage
   include PageObject
-  navigation_method :c_method
 end
 
 class TestWorld
   include PageObject::PageFactory
   attr_accessor :browser
+  attr_accessor :current_page
 end
 
 describe PageObject::PageFactory do
@@ -59,7 +57,7 @@ describe PageObject::PageFactory do
   end
 
   it "should navigate to a page calling the default methods" do
-    pages = [FactoryTestPage, AnotherPage]
+    pages = [[FactoryTestPage, :a_method], [AnotherPage, :b_method]]
     PageObject::PageFactory.routes = {:default => pages}
     fake_page = double('a_page')
     FactoryTestPage.should_receive(:new).and_return(fake_page)
@@ -73,7 +71,9 @@ describe PageObject::PageFactory do
   end
 
   it "should fail when no default method specified" do
-    PageObject::PageFactory.routes = {:default => [FactoryTestPage, AnotherPage]}
+    PageObject::PageFactory.routes = {
+      :default => [[FactoryTestPage, :a_method], [AnotherPage, :b_method]]
+    }
     fake_page = double('a_page')
     FactoryTestPage.should_receive(:new).and_return(fake_page)
     fake_page.should_receive(:respond_to?).with(:a_method).and_return(false)
@@ -81,14 +81,15 @@ describe PageObject::PageFactory do
   end
 
   it "should know how to continue routng from a location" do
-    PageObject::PageFactory.routes = {:default => [FactoryTestPage, AnotherPage, YetAnotherPage]}
+    PageObject::PageFactory.routes = {
+      :default => [[FactoryTestPage, :a_method], [AnotherPage, :b_method], [YetAnotherPage, :c_method]]
+    }
     fake_page = double('a_page')
-    FactoryTestPage.should_not_receive(:new)
     AnotherPage.should_receive(:new).and_return(fake_page)
     fake_page.should_receive(:respond_to?).with(:b_method).and_return(true)
     fake_page.should_receive(:b_method)
-    fake_page.should_receive(:class).and_return(FactoryTestPage)
-    @world.instance_variable_set :@current_page, fake_page
+    @world.current_page = FactoryTestPage.new(@world.browser)
+    FactoryTestPage.should_not_receive(:new)
     @world.continue_navigation_to(YetAnotherPage).class.should == YetAnotherPage
   end
 end
