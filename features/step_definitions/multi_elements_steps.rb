@@ -31,3 +31,15 @@ end
 Then /^the value of text field (\d+) should be "([^\"]*)"$/ do |text_field_num, value|
   @elements[text_field_num.to_i - 1].value.should == value
 end
+
+When /^I select the hidden fields with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.hidden_field_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) hidden fields$/ do |num_hidden_fields|
+  @elements.size.should == num_hidden_fields.to_i
+end
+
+Then /^the value of hidden field (\d+) should be "([^\"]*)"$/ do |hidden_field_num, value|
+  @elements[hidden_field_num.to_i - 1].value.should == value
+end

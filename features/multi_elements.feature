@@ -17,4 +17,11 @@ Feature: Multi Elements
     And the value of text field 2 should be "text 2"
     And the value of text field 3 should be "text 3"
 
+  Scenario: Selecting hidden_fields
+    When I select the hidden fields with class "hiddenfield"
+    Then I should have 3 hidden fields
+    And the value of hidden field 1 should be "hidden 1"
+    And the value of hidden field 2 should be "hidden 2"
+    And the value of hidden field 3 should be "hidden 3"
 
+    

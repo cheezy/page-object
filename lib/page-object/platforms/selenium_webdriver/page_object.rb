@@ -219,6 +219,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all hidden field elements
+        #
+        def hidden_fields_for(identifier)
+          find_selenium_elements(identifier, Elements::HiddenField, 'input', :type => 'hidden')
+        end
+
+        #
         # platform method to set text in a textarea
         # See PageObject::Accessors#text_area
         #

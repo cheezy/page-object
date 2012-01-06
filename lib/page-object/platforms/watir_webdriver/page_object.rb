@@ -213,6 +213,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of hidden field elements
+        #
+        def hidden_fields_for(identifier)
+          find_watir_elements("hiddens(identifier)", Elements::HiddenField, identifier)
+        end
+
+        #
         # platform method to set text in a textarea
         # See PageObject::Accessors#text_area
         #
