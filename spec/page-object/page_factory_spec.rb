@@ -82,7 +82,9 @@ describe PageObject::PageFactory do
 
   it "should know how to continue routng from a location" do
     PageObject::PageFactory.routes = {
-      :default => [[FactoryTestPage, :a_method], [AnotherPage, :b_method], [YetAnotherPage, :c_method]]
+      :default => [[FactoryTestPage, :a_method],
+                   [AnotherPage, :b_method],
+                   [YetAnotherPage, :c_method]]
     }
     fake_page = double('a_page')
     AnotherPage.should_receive(:new).and_return(fake_page)

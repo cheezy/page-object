@@ -28,6 +28,12 @@ describe PageObject::ElementLocators do
       element = watir_page_object.text_field_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TextField
     end
+
+    it "should find all text field elements" do
+      watir_browser.should_receive(:text_fields).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.text_field_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::TextField
+    end
     
     it "should find a hidden field element" do
       watir_browser.should_receive(:hidden).with(:id => 'blah').and_return(watir_browser)
@@ -182,6 +188,156 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
       elements = selenium_page_object.button_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Button
+    end
+
+    it "should find a text field element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.text_field_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::TextField
+    end
+
+    it "should find all text field elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.text_field_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::TextField
+    end
+
+    it "should find a hidden field element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.hidden_field_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::HiddenField
+    end
+    
+    it "should find a text area element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.text_area_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::TextArea
+    end
+    
+    it "should find a select list element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.select_list_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::SelectList
+    end
+    
+    it "should find a link element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.link_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Link
+    end
+    
+    it "should find a check box" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.checkbox_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::CheckBox
+    end
+    
+    it "should find a radio button" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.radio_button_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::RadioButton
+    end
+    
+    it "should find a div" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.div_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Div
+    end
+    
+    it "should find a span" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.span_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Span
+    end
+    
+    it "should find a table" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.table_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Table
+    end
+    
+    it "should find a table cell" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.cell_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::TableCell
+    end
+    
+    it "should find an image" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.image_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Image
+    end
+    
+    it "should find a form" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.form_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Form
+    end
+    
+    it "should find a list item" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.list_item_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::ListItem
+    end
+    
+    it "should find an unordered list" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.unordered_list_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::UnorderedList
+    end
+    
+    it "should find an ordered list" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.ordered_list_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::OrderedList
+    end
+    
+    it "should find a h1 element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.h1_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h2 element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.h2_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h3 element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.h3_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h4 element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.h4_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h5 element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.h5_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h6 element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.h6_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a paragraph element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.paragraph_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Paragraph
+    end
+
+    it "should find a file field element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.file_field_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::FileField
     end
   end
 end

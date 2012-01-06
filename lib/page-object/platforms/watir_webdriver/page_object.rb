@@ -190,6 +190,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of text field elements
+        #
+        def text_fields_for(identifier)
+          find_watir_elements("text_fields(identifier)", Elements::TextField, identifier)
+        end
+
+        #
         # platform method to get the value stored in a hidden field
         # See PageObject::Accessors#hidden_field
         #
@@ -389,10 +396,7 @@ module PageObject
         # platform method to retrieve an array of button elements
         #
         def buttons_for(identifier)
-          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Button)
-          elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}buttons(identifier)"
-          switch_to_default_content(frame_identifiers)
-          elements.map { |element| Elements::Button.new(element, :platform => :watir_webdriver) }
+          find_watir_elements("buttons(identifier)", Elements::Button, identifier)
         end
 
         #
@@ -599,6 +603,13 @@ module PageObject
 
         private
     
+        def find_watir_elements(the_call, type, identifier)
+          identifier, frame_identifiers = parse_identifiers(identifier, type)
+          elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
+          switch_to_default_content(frame_identifiers)
+          elements.map { |element| type.new(element, :platform => :watir_webdriver) }
+        end
+
         def find_watir_element(the_call, type, identifier, tag_name=nil)
           identifier, frame_identifiers = parse_identifiers(identifier, type, tag_name)
           element = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"

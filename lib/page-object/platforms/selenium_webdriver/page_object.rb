@@ -194,6 +194,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all text field elements
+        #
+        def text_fields_for(identifier)
+          find_selenium_elements(identifier, Elements::TextField, 'input', :type => 'text')
+        end
+
+        #
         # platform method to get the value stored in a hidden field
         # See PageObject::Accessors#hidden_field
         #
@@ -419,13 +426,7 @@ module PageObject
         # platform method to retrieve an array of button elements
         #
         def buttons_for(identifier)
-          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Button,
-                                                           'input', :type => 'submit')
-          switch_to_frame(frame_identifiers)
-          elements = @browser.find_elements(how, what)
-          @browser.switch_to.default_content unless frame_identifiers.nil?
-          elements.map { |element| Elements::Button.new(element,
-                                                        :platform => :selenium_webdriver) }
+          find_selenium_elements(identifier, Elements::Button, 'input', :type => 'submit')
         end
         
         #
@@ -664,6 +665,14 @@ module PageObject
           element = @browser.find_element(how, what)
           @browser.switch_to.default_content unless frame_identifiers.nil?
           type.new(element, :platform => :selenium_webdriver)
+        end
+
+        def find_selenium_elements(identifier, type, tag, other=nil)
+          how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
+          switch_to_frame(frame_identifiers)
+          elements = @browser.find_elements(how, what)
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          elements.map { |element| type.new(element, :platform => :selenium_webdriver) }
         end
 
         def parse_identifiers(identifier, element, tag_name=nil, additional=nil)
