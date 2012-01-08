@@ -45,13 +45,14 @@ module PageObject
     end
 
     #
-    # adds three methods to the page object - one to set text in a text field,
-    # another to retrieve text from a text field and another to return the text
-    # field element.
+    # adds four methods to the page object - one to set text in a text field,
+    # another to retrieve text from a text field, another to return the text
+    # field element, another to check the text field's existence.
     #
     # @example  
     #   text_field(:first_name, :id => "first_name") 
-    #   # will generate 'first_name', 'first_name=' and 'first_name_element' methods
+    #   # will generate 'first_name', 'first_name=', 'first_name_element',
+    #   # 'first_name?' methods
     #
     # @param  [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
@@ -88,12 +89,13 @@ module PageObject
     end
     
     #
-    # adds two methods to the page object - one to get the text from a hidden field
-    # and another to retrieve the hidden field element.
+    # adds three methods to the page object - one to get the text from a hidden field,
+    # another to retrieve the hidden field element, and another to check the hidden
+    # field's existence.
     #
     # @example
     #   hidden_field(:user_id, :id => "user_identity")
-    #   # will generate 'user_id' and 'user_id_element' methods
+    #   # will generate 'user_id', 'user_id_element' and 'user_id?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
@@ -125,13 +127,14 @@ module PageObject
     end
 
     #
-    # adds three methods to the page object - one to set text in a text area,
-    # another to retrieve text from a text area and another to return the text
-    # area element.
+    # adds four methods to the page object - one to set text in a text area,
+    # another to retrieve text from a text area, another to return the text
+    # area element, and another to check the text area's existence.
     #
     # @example
     #   text_area(:address, :id => "address")
-    #   # will generate 'address', 'address=' and 'address_element methods
+    #   # will generate 'address', 'address=', 'address_element',
+    #   # 'address?' methods
     #
     # @param  [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
@@ -165,13 +168,14 @@ module PageObject
     end
 
     #
-    # adds three methods - one to select an item in a drop-down,
-    # another to fetch the currently selected item and another
-    # to retrieve the select list element.
+    # adds four methods - one to select an item in a drop-down,
+    # another to fetch the currently selected item, another
+    # to retrieve the select list element, and another to check the 
+    # drop down's existence.
     #
     # @example
     #   select_list(:state, :id => "state")
-    #   # will generate 'state', 'state=' and 'state_element' methods
+    #   # will generate 'state', 'state=', 'state_element', 'state?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
@@ -205,13 +209,13 @@ module PageObject
     end
 
     #
-    # adds two methods - one to select a link and another
+    # adds three methods - one to select a link, another
     # to return a PageObject::Elements::Link object representing
-    # the link.
+    # the link, and another that checks the link's existence.
     #
     # @example
     #   link(:add_to_cart, :text => "Add to Cart")
-    #   # will generate 'add_to_cart' and 'add_to_cart_element' methods
+    #   # will generate 'add_to_cart', 'add_to_cart_element', and 'add_to_cart?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
@@ -243,13 +247,15 @@ module PageObject
     end
 
     #
-    # adds four methods - one to check, another to uncheck, another
-    # to return the state of a checkbox, and a final method to return
-    # a PageObject::Elements::CheckBox object representing the checkbox.
+    # adds five methods - one to check, another to uncheck, another
+    # to return the state of a checkbox, another to return
+    # a PageObject::Elements::CheckBox object representing the checkbox, and
+    # a final method to check the checkbox's existence.
     #
     # @example
     #   checkbox(:active, :name => "is_active")
-    #   # will generate 'check_active', 'uncheck_active', 'active_checked?' and 'active_element' methods
+    #   # will generate 'check_active', 'uncheck_active', 'active_checked?', 
+    #   # 'active_element', and 'active?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters
@@ -286,14 +292,16 @@ module PageObject
     end
 
     #
-    # adds four methods - one to select, another to clear,
-    # another to return if a radio button is selected, and
+    # adds five methods - one to select, another to clear,
+    # another to return if a radio button is selected, 
     # another method to return a PageObject::Elements::RadioButton
-    # object representing the radio button element
+    # object representing the radio button element, and another to check
+    # the radio button's existence.
     #
     # @example
     #   radio_button(:north, :id => "north")
-    #   # will generate 'select_north', 'clear_north', 'north_selected?' and 'north_element' methods
+    #   # will generate 'select_north', 'clear_north', 'north_selected?', 
+    #   # 'north_element', and 'north?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
@@ -330,12 +338,12 @@ module PageObject
     end
 
     #
-    # adds two methods - one to click a button and another to
-    # return the button element.
+    # adds three methods - one to click a button, another to
+    # return the button element, and another to check the button's existence.
     #
     # @example
     #   button(:purchase, :id => 'purchase')
-    #   # will generate 'purchase' and 'purchase_element' methods
+    #   # will generate 'purchase', 'purchase_element', and 'purchase?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
@@ -367,12 +375,12 @@ module PageObject
     end
 
     #
-    # adds two methods - one to retrieve the text from a div
-    # and another to return the div element
+    # adds three methods - one to retrieve the text from a div,
+    # another to return the div element, and another to check the div's existence.
     #
     # @example
     #   div(:message, :id => 'message')
-    #   # will generate 'message' and 'message_element' methods
+    #   # will generate 'message', 'message_element', and 'message?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
@@ -401,12 +409,12 @@ module PageObject
     end
 
     #
-    # adds two methods - one to retrieve the text from a span
-    # and another to return the span element
+    # adds three methods - one to retrieve the text from a span,
+    # another to return the span element, and another to check the span's existence.
     #
     # @example
     #   span(:alert, :id => 'alert')
-    #   # will generate 'alert' and 'alert_element' methods
+    #   # will generate 'alert', 'alert_element', and 'alert?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
@@ -434,11 +442,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the table element
+    # adds two methods - one to retrieve the table element, and another to
+    # check the table's existence.
     #
     # @example
     #   table(:cart, :id => 'shopping_cart')
-    #   # will generate a 'cart_element' method
+    #   # will generate a 'cart_element' and 'cart?' method
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
@@ -462,12 +471,13 @@ module PageObject
     end
 
     #
-    # adds two methods  one to retrieve the text from a table cell
-    # and another to return the table cell element
+    # adds three methods - one to retrieve the text from a table cell,
+    # another to return the table cell element, and another to check the cell's
+    # existence.
     #
     # @example
     #   cell(:total, :id => 'total_cell')
-    #   # will generate 'total' and 'total_element' methods
+    #   # will generate 'total', 'total_element', and 'total?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
@@ -496,11 +506,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the image element
+    # adds two methods - one to retrieve the image element, and another to
+    # check the image's existence.
     #
     # @example
     #   image(:logo, :id => 'logo')
-    #   # will generate a 'logo_element' method
+    #   # will generate 'logo_element' and 'logo?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
@@ -526,11 +537,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the form element
+    # adds two methods - one to retrieve the form element, and another to
+    # check the form's existence.
     #
     # @example
     #   form(:login, :id => 'login')
-    #   # will generate a 'login_element' method
+    #   # will generate 'login_element' and 'login?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
@@ -554,12 +566,13 @@ module PageObject
     end
 
     #
-    # adds two methods - one to retrieve the text from a list item
-    # and another to return the list item element
+    # adds three methods - one to retrieve the text from a list item,
+    # another to return the list item element, and another to check the list item's
+    # existence.
     #
     # @example
     #   list_item(:item_one, :id => 'one')
-    #   # will generate 'item_one' and 'item_one_element' methods
+    #   # will generate 'item_one', 'item_one_element', and 'item_one?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
@@ -587,11 +600,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the unordered list element
+    # adds two methods - one to retrieve the unordered list element, and another to
+    # check it's existence.
     #
     # @example
     #   unordered_list(:menu, :id => 'main_menu')
-    #   # will generate a 'menu_element' method
+    #   # will generate 'menu_element' and 'menu?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
@@ -615,11 +629,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the ordered list element
+    # adds two methods - one to retrieve the ordered list element, and another to
+    # test it's existence.
     #
     # @example
     #   ordered_list(:top_five, :id => 'top')
-    #   # will generate a 'top_five_element' method
+    #   # will generate 'top_five_element' and 'top_five?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
@@ -643,11 +658,12 @@ module PageObject
     end
     
     #
-    # adds a method to retrieve the text of a h1 and a h1 element
+    # adds three methods - one to retrieve the text of a h1 element, another to 
+    # retrieve a h1 element, and another to check for it's existence.
     #
     # @example
     #   h1(:title, :id => 'title')
-    #   # will generate a 'title' and 'title_element' method
+    #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a H1.  You can use a multiple paramaters
@@ -675,11 +691,12 @@ module PageObject
     end
     
     #
-    # adds a method to retrieve the text of a h2 and a h2 element
+    # adds three methods - one to retrieve the text of a h2 element, another
+    # to retrieve a h2 element, and another to check for it's existence.
     #
     # @example
     #   h2(:title, :id => 'title')
-    #   # will generate a 'title' and 'title_element' method
+    #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a H2.  You can use a multiple paramaters
@@ -707,11 +724,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the text of a h3 and a h3 element
+    # adds three methods - one to retrieve the text of a h3 element,
+    # another to return a h3 element, and another to check for it's existence.
     #
     # @example
     #   h3(:title, :id => 'title')
-    #   # will generate a 'title' and 'title_element' method
+    #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a H3.  You can use a multiple paramaters
@@ -739,11 +757,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the text of a h4 and a h4 element
+    # adds three methods - one to retrieve the text of a h4 element,
+    # another to return a h4 element, and another to check for it's existence.
     #
     # @example
     #   h4(:title, :id => 'title')
-    #   # will generate a 'title' and 'title_element' method
+    #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a H4.  You can use a multiple paramaters
@@ -771,11 +790,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the text of a h5 and a h5 element
+    # adds three methods - one to retrieve the text of a h5 element,
+    # another to return a h5 element, and another to check for it's existence.
     #
     # @example
     #   h5(:title, :id => 'title')
-    #   # will generate a 'title' and 'title_element' method
+    #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
@@ -803,11 +823,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the text of a h6 and a h6 element
+    # adds three methods - one to retrieve the text of a h6 element,
+    # another to return a h6 element, and another to check for it's existence.
     #
     # @example
     #   h6(:title, :id => 'title')
-    #   # will generate a 'title' and 'title_element' method
+    #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
@@ -835,11 +856,12 @@ module PageObject
     end
 
     #
-    # adds a method to retrieve the text of a paragraph and a paragraph element
+    # adds three methods - one to retrieve the text of a paragraph, another
+    # to retrieve a paragraph element, and another to check the paragraph's existence.
     #
     # @example
     #   paragraph(:title, :id => 'title')
-    #   # will generate a 'title' and 'title_element' method
+    #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a paragraph.  You can use a multiple paramaters
@@ -867,12 +889,12 @@ module PageObject
     end
 
     #
-    # adds a method to set the file for a file field and to retrieve
-    # the file field element
+    # adds three methods - one to set the file for a file field, another to retrieve
+    # the file field element, and another to check it's existence.
     #
     # @example
     #   file_field(:the_file, :id => 'file_to_upload')
-    #   # will generate a 'the_file=' and 'the_file_element' method
+    #   # will generate 'the_file=', 'the_file_element', and 'the_file?' methods
     #
     # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a file_field.  You can use a multiple paramaters
