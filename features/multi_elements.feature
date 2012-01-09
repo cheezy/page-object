@@ -73,4 +73,17 @@ Feature: Multi Elements
     And the text of span 2 should be "Span 2"
     And the text of span 3 should be "Span 3"
 
+  Scenario: Selecting tables
+    When I select the tables with class "table"
+    Then I should have 3 tables
+    And the first row first column for table 1 should have "Data 1"
+    And the first row first column for table 2 should have "Data 4"
+    And the first row first column for table 3 should have "Data 7"
+
+  Scenario: Selecting cells
+    When I select the cells with class "td"
+    Then I should have 3 cells
+    And the text for cell 1 should be "Data 1"
+    And the text for cell 2 should be "Data 2"
+    And the text for cell 3 should be "Data 3"
 

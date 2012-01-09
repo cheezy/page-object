@@ -359,6 +359,21 @@ module PageObject
     end
 
     #
+    # Finds all tables that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def table_elements(identifier)
+      platform.tables_for(identifier.clone)
+    end
+
+    #
     # Finds a table cell
     #
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
@@ -372,6 +387,22 @@ module PageObject
     #
     def cell_element(identifier)
       platform.cell_for(identifier.clone)
+    end
+    
+    #
+    # Finds all table cell elements that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir only
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def cell_elements(identifier)
+      platform.cells_for(identifier.clone)
     end
     
     #

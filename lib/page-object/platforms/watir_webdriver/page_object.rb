@@ -464,6 +464,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of table elements
+        #
+        def tables_for(identifier)
+          find_watir_elements("tables(identifier)", Elements::Table, identifier, 'table')
+        end
+
+        #
         # platform method to retrieve the text from a table cell
         # See PageObject::Accessors#cell
         #
@@ -478,6 +485,13 @@ module PageObject
         #
         def cell_for(identifier)
           find_watir_element("td(identifier)", Elements::TableCell, identifier, 'td')
+        end
+
+        #
+        # platform method to retrieve an array of table cell elements
+        #
+        def cells_for(identifier)
+          find_watir_elements("tds(identifier)", Elements::TableCell, identifier, 'td')
         end
 
         #

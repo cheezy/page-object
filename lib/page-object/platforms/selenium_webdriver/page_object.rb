@@ -494,6 +494,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all table elements
+        #
+        def tables_for(identifier)
+          find_selenium_elements(identifier, Elements::Table, 'table')
+        end
+
+        #
         # platform method to retrieve the text from a table cell
         # See PageObject::Accessors#cell
         #
@@ -509,6 +516,13 @@ module PageObject
         #
         def cell_for(identifier)
           find_selenium_element(identifier, Elements::TableCell, 'td')
+        end
+
+        #
+        # platform method to retrieve all table cell elements
+        #
+        def cells_for(identifier)
+          find_selenium_elements(identifier, Elements::TableCell, 'td')
         end
 
         #

@@ -127,3 +127,27 @@ end
 Then /^the text of span (\d+) should be "([^\"]*)"$/ do |span_num, text|
   @elements[span_num.to_i - 1].text.should == text
 end
+
+When /^I select the tables with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.table_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) tables$/ do |num_tables|
+  @elements.size.should == num_tables.to_i
+end
+
+Then /^the first row first column for table (\d+) should have "([^\"]*)"$/ do |table_num, text|
+  @elements[table_num.to_i - 1][0][0].text.should == text
+end
+
+When /^I select the cells with class "([^\"]*)"$/ do |cell_class|
+  @elements = @page.cell_elements(:class => cell_class)
+end
+
+Then /^I should have (\d+) cells$/ do |num_cells|
+  @elements.size.should == num_cells.to_i
+end
+
+Then /^the text for cell (\d+) should be "([^\"]*)"$/ do |cell_num, text|
+  @elements[cell_num.to_i - 1].text.should == text
+end

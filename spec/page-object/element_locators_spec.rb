@@ -136,11 +136,23 @@ describe PageObject::ElementLocators do
       element = watir_page_object.table_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Table
     end
+
+    it "should find all table elements" do
+      watir_browser.should_receive(:tables).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.table_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Table 
+    end
     
     it "should find a table cell" do
       watir_browser.should_receive(:td).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.cell_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TableCell
+    end
+
+    it "should find all table cells" do
+      watir_browser.should_receive(:tds).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.cell_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::TableCell 
     end
     
     it "should find an image" do
@@ -353,12 +365,24 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Table
     end
     
+    it "should find all table elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.table_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Table 
+    end
+    
     it "should find a table cell" do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.cell_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TableCell
     end
-    
+
+    it "should find all table cell elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.cell_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::TableCell 
+    end
+
     it "should find an image" do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.image_element(:id => 'blah')
