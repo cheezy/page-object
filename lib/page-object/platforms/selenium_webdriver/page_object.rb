@@ -314,6 +314,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all link elements
+        #
+        def links_for(identifier)
+          find_selenium_elements(identifier, Elements::Link, 'a')
+        end
+
+        #
         # platform method to check a checkbox
         # See PageObject::Accessors#checkbox
         #

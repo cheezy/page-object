@@ -203,6 +203,25 @@ module PageObject
     end
     
     #
+    # Find all links for the provided identifier
+    #
+    # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :href => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :link => Watir and Selenium
+    #   * :link_text => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def link_elements(identifier)
+      platform.links_for(identifier.clone)
+    end
+    
+    #
     # Finds a checkbox
     #
     # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters

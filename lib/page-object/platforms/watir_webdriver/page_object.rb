@@ -302,6 +302,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of link elements
+        #
+        def links_for(identifier)
+          find_watir_elements("links(identifier)", Elements::Link, identifier)
+        end
+
+        #
         # platform method to check a checkbox
         # See PageObject::Accessors#checkbox
         #
