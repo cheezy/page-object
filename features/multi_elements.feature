@@ -66,5 +66,11 @@ Feature: Multi Elements
     And the text of div 2 should be "Div 2"
     And the text of div 3 should be "Div 3"
 
+  Scenario: Selecting spans
+    When I select the spans with class "span"
+    Then I should have 3 spans
+    And the text of span 1 should be "Span 1"
+    And the text of span 2 should be "Span 2"
+    And the text of span 3 should be "Span 3"
 
 

@@ -329,6 +329,21 @@ module PageObject
     end
     
     #
+    # Finds all span elements that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def span_elements(identifier)
+      platform.spans_for(identifier.clone)
+    end
+    
+    #
     # Finds a table
     #
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters

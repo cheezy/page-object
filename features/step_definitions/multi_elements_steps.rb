@@ -116,4 +116,14 @@ Then /^the text of div (\d+) should be "([^\"]*)"$/ do |div_num, text|
   @elements[div_num.to_i - 1].text.should == text
 end
 
+When /^I select the spans with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.span_elements(:class => class_name)
+end
 
+Then /^I should have (\d+) spans$/ do |num_spans|
+  @elements.size.should == num_spans.to_i
+end
+
+Then /^the text of span (\d+) should be "([^\"]*)"$/ do |span_num, text|
+  @elements[span_num.to_i - 1].text.should == text
+end

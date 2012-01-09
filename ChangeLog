@@ -9,6 +9,7 @@
   * Added #checkbox_elements to ElementLocators
   * Added #radio_button_elements to ElementLocators
   * Added #div_elements to ElementLocators
+  * Added #span_elements to ElementLocators
   * Added #navigate_to to PageFactory to navigate to a page through previous pages
   * Added #continue_navigation_to to PageFactory which begins at @current_page
   * Added routes to PageFactory to collect routes through the site

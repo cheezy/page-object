@@ -426,6 +426,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of span elements
+        #
+        def spans_for(identifier)
+          find_watir_elements("spans(identifier)", Elements::Span, identifier, 'span')
+        end
+
+        #
         # platform method to click a button
         # See PageObject::Accessors#button
         #

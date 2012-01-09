@@ -124,6 +124,12 @@ describe PageObject::ElementLocators do
       element = watir_page_object.span_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Span
     end
+
+    it "should find all span elements" do
+      watir_browser.should_receive(:spans).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.span_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Span 
+    end
     
     it "should find a table" do
       watir_browser.should_receive(:table).with(:id => 'blah').and_return(watir_browser)
@@ -333,6 +339,12 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.span_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Span
+    end
+
+    it "should find all span elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.span_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Span 
     end
     
     it "should find a table" do

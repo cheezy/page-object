@@ -454,6 +454,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all span elements
+        #
+        def spans_for(identifier)
+          find_selenium_elements(identifier, Elements::Span, 'span')
+        end
+
+        #
         # platform method to click a button
         # See PageObject::Accessors#button
         #
