@@ -13,6 +13,7 @@
   * Added #table_elements to ElementLocators
   * Added #cell_elements to ElementLocators
   * Added #image_elements to ElementLocators
+  * Added *form_elements to ElementLocators
   * Added #navigate_to to PageFactory to navigate to a page through previous pages
   * Added #continue_navigation_to to PageFactory which begins at @current_page
   * Added routes to PageFactory to collect routes through the site

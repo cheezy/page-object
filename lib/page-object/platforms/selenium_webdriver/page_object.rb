@@ -549,6 +549,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all forms
+        #
+        def forms_for(identifier)
+          find_selenium_elements(identifier, Elements::Form, 'form')
+        end
+
+        #
         # platform method to retrieve the text from a list item
         # See PageObject::Accessors#list_item
         #

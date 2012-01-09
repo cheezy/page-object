@@ -163,3 +163,15 @@ end
 Then /^the alt for image (\d+) should be "([^\"]*)"$/ do |image_num, alt|
   @elements[image_num.to_i - 1].attribute(:alt).should == alt
 end
+
+When /^I select the forms with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.form_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) forms$/ do |number|
+  @elements.size.should == number.to_i
+end
+
+Then /^the action for form (\d+) should be "([^\"]*)"$/ do |form_number, action|
+  @elements[form_number.to_i-1].attribute(:action).should match action
+end

@@ -518,6 +518,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of forms
+        #
+        def forms_for(identifier)
+          find_watir_elements("forms(identifier)", Elements::Form, identifier)
+        end
+
+        #
         # platform method to retrieve the text from a list item
         # See PageObject::Accessors#list_item
         #

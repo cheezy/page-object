@@ -94,3 +94,10 @@ Feature: Multi Elements
     And the alt for image 2 should be "image 2"
     And the alt for image 3 should be "image 3"
 
+  Scenario: Selecting forms
+    When I select the forms with class "form"
+    Then I should have 3 forms
+    And the action for form 1 should be "form1"
+    And the action for form 2 should be "form2"
+    And the action for form 3 should be "form3"
+

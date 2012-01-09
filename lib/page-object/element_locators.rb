@@ -450,6 +450,20 @@ module PageObject
     end
 
     #
+    # Finds all forms that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def form_elements(identifier)
+      platform.forms_for(identifier.clone)
+    end
+    
+    #
     # Finds a list item
     #
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
