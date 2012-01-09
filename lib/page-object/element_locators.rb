@@ -298,6 +298,22 @@ module PageObject
     end
 
     #
+    # Finds all divs that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def div_elements(identifier)
+      platform.divs_for(identifier.clone)
+    end
+
+    #
     # Finds a span
     #
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters

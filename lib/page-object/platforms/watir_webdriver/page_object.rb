@@ -380,7 +380,7 @@ module PageObject
         end
 
         #
-        # platform method to retrieve an array of checkbox elements
+        # platform method to retrieve an array of radio button elements
         #
         def radio_buttons_for(identifier)
           find_watir_elements("radios(identifier)", Elements::RadioButton, identifier)
@@ -400,6 +400,13 @@ module PageObject
         #
         def div_for(identifier)
           find_watir_element("div(identifier)", Elements::Div, identifier, 'div')
+        end
+
+        #
+        # platform method to retrieve an array of div elements
+        #
+        def divs_for(identifier)
+          find_watir_elements("divs(identifier)", Elements::Div, identifier, 'div')
         end
 
         #
@@ -645,8 +652,8 @@ module PageObject
 
         private
     
-        def find_watir_elements(the_call, type, identifier)
-          identifier, frame_identifiers = parse_identifiers(identifier, type)
+        def find_watir_elements(the_call, type, identifier, tag_name=nil)
+          identifier, frame_identifiers = parse_identifiers(identifier, type, tag_name)
           elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
           switch_to_default_content(frame_identifiers)
           elements.map { |element| type.new(element, :platform => :watir_webdriver) }

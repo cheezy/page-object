@@ -105,13 +105,18 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:radios).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.radio_button_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::RadioButton 
-
     end
     
     it "should find a div" do
       watir_browser.should_receive(:div).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.div_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Div
+    end
+
+    it "should find all div elements" do
+      watir_browser.should_receive(:divs).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.div_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Div 
     end
     
     it "should find a span" do
@@ -316,6 +321,12 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.div_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Div
+    end
+
+    it "should find all div elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.div_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Div 
     end
     
     it "should find a span" do
