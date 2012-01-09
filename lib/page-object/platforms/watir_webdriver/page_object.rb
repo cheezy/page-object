@@ -278,6 +278,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of select_list elements
+        #
+        def select_lists_for(identifier)
+          find_watir_elements("select_lists(identifier)", Elements::SelectList, identifier)
+        end
+
+        #
         # platform method to click a link
         # See PageObject::Accessors#link
         #

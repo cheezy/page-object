@@ -289,6 +289,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all select list elements
+        #
+        def select_lists_for(identifier)
+          find_selenium_elements(identifier, Elements::SelectList, 'select')
+        end
+
+        #
         # platform method to click a link
         # See PageObject::Accessors#link
         #

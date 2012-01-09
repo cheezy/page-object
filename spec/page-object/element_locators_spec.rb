@@ -64,6 +64,12 @@ describe PageObject::ElementLocators do
       element = watir_page_object.select_list_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::SelectList
     end
+
+    it "should find all select list elements" do
+      watir_browser.should_receive(:select_lists).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.select_list_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::SelectList 
+    end
     
     it "should find a link element" do
       watir_browser.should_receive(:link).with(:id => 'blah').and_return(watir_browser)
@@ -243,6 +249,12 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.select_list_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::SelectList
+    end
+
+    it "should find all select list elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.select_list_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::SelectList 
     end
     
     it "should find a link element" do

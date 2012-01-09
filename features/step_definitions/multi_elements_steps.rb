@@ -44,7 +44,7 @@ Then /^the value of hidden field (\d+) should be "([^\"]*)"$/ do |hidden_field_n
   @elements[hidden_field_num.to_i - 1].value.should == value
 end
 
-When /^I select the text area with class "([^\"]*)"$/ do |class_name|
+When /^I select the text areas with class "([^\"]*)"$/ do |class_name|
   @elements = @page.text_area_elements(:class => class_name)
 end
 
@@ -54,4 +54,16 @@ end
 
 Then /^the value of text area (\d+) should be "([^\"]*)"$/ do |text_area_num, value|
   @elements[text_area_num.to_i - 1].value.should == value
+end
+
+When /^I select the select lists with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.select_list_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) select lists$/ do |num_select_lists|
+  @elements.size.should == num_select_lists.to_i
+end
+
+Then /^the value of select list (\d+) should be "([^\"]*)"$/ do |select_list_num, value|
+  @elements[select_list_num.to_i - 1].value.should == value
 end

@@ -167,6 +167,23 @@ module PageObject
     end
     
     #
+    # Finds all select lists for the provided identifier
+    #
+    # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir only
+    #   * :value => Watir only
+    #   * :xpath => Watir and Selenium
+    #
+    def select_list_elements(identifier)
+      platform.select_lists_for(identifier.clone)
+    end
+    
+    #
     # Finds a link
     #
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters

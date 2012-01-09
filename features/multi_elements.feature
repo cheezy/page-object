@@ -25,11 +25,17 @@ Feature: Multi Elements
     And the value of hidden field 3 should be "hidden 3"
 
   Scenario: Selecting text_areas
-    When I select the text area with class "textarea"
+    When I select the text areas with class "textarea"
     Then I should have 3 text areas
     And the value of text area 1 should be "textarea 1"
     And the value of text area 2 should be "textarea 2"
     And the value of text area 3 should be "textarea 3"
 
+  Scenario: Selecting select_lists
+    When I select the select lists with class "selectlist"
+    Then I should have 3 select lists
+    And the value of select list 1 should be "selectlist 1"
+    And the value of select list 2 should be "selectlist 2"
+    And the value of select list 3 should be "selectlist 3"
 
     
