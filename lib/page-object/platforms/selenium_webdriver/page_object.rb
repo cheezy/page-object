@@ -404,6 +404,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all radio button elements
+        #
+        def radio_buttons_for(identifier)
+          find_selenium_elements(identifier, Elements::RadioButton, 'input', :type => 'radio')
+        end
+
+        #
         # platform method to return the text for a div
         # See PageObject::Accessors#div
         #

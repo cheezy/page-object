@@ -91,3 +91,16 @@ end
 Then /^the value of checkbox (\d+) should be "([^\"]*)"$/ do |checkbox_num, value|
   @elements[checkbox_num.to_i - 1].value.should == value
 end
+
+When /^I select the radio button with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.radio_button_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) radio buttons$/ do |num_radio_buttons|
+  @elements.size.should == num_radio_buttons.to_i
+end
+
+Then /^the value of radio button (\d+) should be "([^\"]*)"$/ do |radio_button_num, value|
+  @elements[radio_button_num.to_i - 1].value.should == value
+end
+

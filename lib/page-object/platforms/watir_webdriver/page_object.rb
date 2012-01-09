@@ -380,6 +380,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of checkbox elements
+        #
+        def radio_buttons_for(identifier)
+          find_watir_elements("radios(identifier)", Elements::RadioButton, identifier)
+        end
+
+        #
         # platform method to return the text for a div
         # See PageObject::Accessors#div
         #
