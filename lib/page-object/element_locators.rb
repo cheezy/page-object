@@ -237,6 +237,21 @@ module PageObject
     end
 
     #
+    # Finds all checkbox elements for the provided identifier
+    #
+    # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def checkbox_elements(identifier)
+      platform.checkboxes_for(identifier.clone)
+    end
+
+    #
     # Finds a radio button
     #
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters

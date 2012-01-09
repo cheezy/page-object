@@ -359,6 +359,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all checkbox elements
+        #
+        def checkboxes_for(identifier)
+          find_selenium_elements(identifier, Elements::CheckBox, 'input', :type => 'checkbox')
+        end
+
+        #
         # platform method to select a radio button
         # See PageObject::Accessors#radio_button
         #

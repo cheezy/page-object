@@ -80,3 +80,14 @@ Then /^the text of link (\d+) should be "([^\"]*)"$/ do |link_num, text|
   @elements[link_num.to_i - 1].text.should == text
 end
 
+When /^I select the check boxes with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.checkbox_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) checkboxes$/ do |num_checkboxes|
+  @elements.size.should == num_checkboxes.to_i
+end
+
+Then /^the value of checkbox (\d+) should be "([^\"]*)"$/ do |checkbox_num, value|
+  @elements[checkbox_num.to_i - 1].value.should == value
+end

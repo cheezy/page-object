@@ -341,6 +341,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of checkbox elements
+        #
+        def checkboxes_for(identifier)
+          find_watir_elements("checkboxes(identifier)", Elements::CheckBox, identifier)
+        end
+
+        #
         # platform method to select a radio button
         # See PageObject::Accessors#radio_button
         #

@@ -45,4 +45,12 @@ Feature: Multi Elements
     And the text of link 2 should be "link 2"
     And the text of link 3 should be "link 3"
 
+  Scenario: Selecting checkboxes
+    When I select the check boxes with class "checkbox"
+    Then I should have 3 checkboxes
+    And the value of checkbox 1 should be "checkbox 1"
+    And the value of checkbox 2 should be "checkbox 2"
+    And the value of checkbox 3 should be "checkbox 3"
+    
+
 
