@@ -503,6 +503,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of image elements
+        #
+        def images_for(identifier)
+          find_watir_elements("images(identifier)", Elements::Image, identifier)
+        end
+
+        #
         # platform method to retrieve a form element
         # See PageObject::Accessors#form
         #

@@ -151,3 +151,15 @@ end
 Then /^the text for cell (\d+) should be "([^\"]*)"$/ do |cell_num, text|
   @elements[cell_num.to_i - 1].text.should == text
 end
+
+When /^I select the images with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.image_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) images$/ do |num_images|
+  @elements.size.should == num_images.to_i
+end
+
+Then /^the alt for image (\d+) should be "([^\"]*)"$/ do |image_num, alt|
+  @elements[image_num.to_i - 1].attribute(:alt).should == alt
+end

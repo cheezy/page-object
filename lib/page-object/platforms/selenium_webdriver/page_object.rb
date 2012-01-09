@@ -534,6 +534,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all image elements
+        #
+        def images_for(identifier)
+          find_selenium_elements(identifier, Elements::Image, 'img')
+        end
+
+        #
         # platform method to retrieve a form element
         # See PageObject::Accessors#form
         #

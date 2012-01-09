@@ -160,6 +160,12 @@ describe PageObject::ElementLocators do
       element = watir_page_object.image_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Image
     end
+
+    it "should find all images" do
+      watir_browser.should_receive(:images).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.image_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Image
+    end
     
     it "should find a form" do
       watir_browser.should_receive(:form).with(:id => 'blah').and_return(watir_browser)
@@ -387,6 +393,12 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.image_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Image
+    end
+
+    it "should find all image elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.image_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Image
     end
     
     it "should find a form" do
