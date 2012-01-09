@@ -24,4 +24,12 @@ Feature: Multi Elements
     And the value of hidden field 2 should be "hidden 2"
     And the value of hidden field 3 should be "hidden 3"
 
+  Scenario: Selecting text_areas
+    When I select the text area with class "textarea"
+    Then I should have 3 text areas
+    And the value of text area 1 should be "textarea 1"
+    And the value of text area 2 should be "textarea 2"
+    And the value of text area 3 should be "textarea 3"
+
+
     

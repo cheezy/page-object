@@ -43,3 +43,15 @@ end
 Then /^the value of hidden field (\d+) should be "([^\"]*)"$/ do |hidden_field_num, value|
   @elements[hidden_field_num.to_i - 1].value.should == value
 end
+
+When /^I select the text area with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.text_area_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) text areas$/ do |num_text_areas|
+  @elements.size.should == num_text_areas.to_i
+end
+
+Then /^the value of text area (\d+) should be "([^\"]*)"$/ do |text_area_num, value|
+  @elements[text_area_num.to_i - 1].value.should == value
+end

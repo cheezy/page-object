@@ -133,6 +133,23 @@ module PageObject
     end
     
     #
+    # Finds all text areas for the provided identifier
+    #
+    # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :tag_name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def text_area_elements(identifier)
+      platform.text_areas_for(identifier.clone)
+    end
+    
+    #
     # Finds a select list
     #
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters

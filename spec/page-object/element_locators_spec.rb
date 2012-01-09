@@ -52,6 +52,12 @@ describe PageObject::ElementLocators do
       element = watir_page_object.text_area_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TextArea
     end
+
+    it "should find all text area elements" do
+      watir_browser.should_receive(:textareas).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.text_area_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::TextArea 
+    end
     
     it "should find a select list element" do
       watir_browser.should_receive(:select_list).with(:id => 'blah').and_return(watir_browser)
@@ -225,6 +231,12 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.text_area_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TextArea
+    end
+
+    it "should find all text area elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.text_area_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::TextArea 
     end
     
     it "should find a select list element" do

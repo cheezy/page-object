@@ -254,6 +254,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all text area elements
+        #
+        def text_areas_for(identifier)
+          find_selenium_elements(identifier, Elements::TextArea, 'textarea')
+        end
+
+        #
         # platform method to get the currently selected value from a select list
         # See PageObject::Accessors#select_list
         #
