@@ -594,7 +594,7 @@ module PageObject
         end  
 
         #
-        # platform method to retrieve an array of ordered lists
+        # platform method to retrieve an array of h1s
         #
         def h1s_for(identifier)
           find_watir_elements("h1s(identifier)", Elements::Heading, identifier, 'h1')
@@ -615,6 +615,13 @@ module PageObject
         def h2_for(identifier)
           find_watir_element("h2(identifier)", Elements::Heading, identifier, 'h2')
         end  
+
+        #
+        # platform method to retrieve an array of h2s
+        #
+        def h2s_for(identifier)
+          find_watir_elements("h2s(identifier)", Elements::Heading, identifier, 'h2')
+        end
 
         #
         # platform method to retrieve the text for a h3

@@ -18,6 +18,7 @@
   * Added #unordered_list_elements to ElementLocators
   * Added #ordered_list_elements to ElementLocators
   * Added #h1_elements to ElementLocators
+  * Added #h2_elements to ElementLocators
   * Added #navigate_to to PageFactory to navigate to a page through previous pages
   * Added #continue_navigation_to to PageFactory which begins at @current_page
   * Added routes to PageFactory to collect routes through the site
