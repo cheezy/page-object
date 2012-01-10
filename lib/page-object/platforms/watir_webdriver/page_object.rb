@@ -571,6 +571,13 @@ module PageObject
         end
         
         #
+        # platform method to retrieve an array of ordered lists
+        #
+        def ordered_lists_for(identifier)
+          find_watir_elements("ols(identifier)", Elements::OrderedList, identifier, 'ol')
+        end
+
+        #
         # platform method to retrieve the text for a h1
         # See PageObject::Accessors#h1
         #

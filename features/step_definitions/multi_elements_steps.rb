@@ -199,3 +199,15 @@ end
 Then /^the text for the first item in unordered list (\d+) should be "([^\"]*)"$/ do |ul_num, text|
   @elements[ul_num.to_i - 1][0].text.should == text
 end
+
+When /^I select the ordered lists with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.ordered_list_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) ordered lists$/ do |num_ol|
+  @elements.size.should == num_ol.to_i
+end
+
+Then /^the text for the first item in ordered list (\d+) should be "([^\"]*)"$/ do |ol_num, text|
+  @elements[ol_num.to_i - 1][0].text.should == text
+end

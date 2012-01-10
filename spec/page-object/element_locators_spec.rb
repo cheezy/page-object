@@ -208,6 +208,12 @@ describe PageObject::ElementLocators do
       element = watir_page_object.ordered_list_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::OrderedList
     end
+
+    it "should find all ordered lists" do
+      watir_browser.should_receive(:ols).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.ordered_list_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::OrderedList 
+    end
     
     it "should find a h1 element" do
       watir_browser.should_receive(:h1).with(:id => 'blah').and_return(watir_browser)
@@ -459,6 +465,12 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.ordered_list_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::OrderedList
+    end
+
+    it "should find all orderd list elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.ordered_list_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::OrderedList 
     end
     
     it "should find a h1 element" do

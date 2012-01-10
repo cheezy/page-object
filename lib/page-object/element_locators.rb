@@ -539,6 +539,21 @@ module PageObject
     end
     
     #
+    #  Finds all ordered lists that match the identifier
+    #
+    # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def ordered_list_elements(identifier)
+      platform.ordered_lists_for(identifier.clone)
+    end
+    
+    #
     # Finds a h1
     #
     # @param [Hash] identifier how we find a H1.  You can use a multiple paramaters

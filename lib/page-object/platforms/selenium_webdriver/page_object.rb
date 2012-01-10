@@ -604,6 +604,13 @@ module PageObject
         end
         
         #
+        # platform method to retrieve all ordered lists
+        #
+        def ordered_lists_for(identifier)
+          find_selenium_elements(identifier, Elements::OrderedList, 'ol')
+        end
+
+        #
         # platform method to retrieve the text from a h1
         # See PageObject::Accessors#h1
         #
