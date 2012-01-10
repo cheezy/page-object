@@ -211,3 +211,15 @@ end
 Then /^the text for the first item in ordered list (\d+) should be "([^\"]*)"$/ do |ol_num, text|
   @elements[ol_num.to_i - 1][0].text.should == text
 end
+
+When /^I select the h1s with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.h1_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) h1s$/ do |num_h1s|
+  @elements.size.should == num_h1s.to_i
+end
+
+Then /^the text for h1 (\d+) should be "([^\"]*)"$/ do |h1_num, text|
+  @elements[h1_num.to_i - 1].text.should == text
+end

@@ -122,4 +122,12 @@ Feature: Multi Elements
     And the text for the first item in ordered list 2 should be "Number Two"
     And the text for the first item in ordered list 3 should be "Number Three"
 
+  Scenario: Selecting h1s
+    When I select the h1s with class "h1"
+    Then I should have 3 h1s
+    And the text for h1 1 should be "H1 One"
+    And the text for h1 2 should be "H1 Two"
+    And the text for h1 3 should be "H1 Three"
+
+
 

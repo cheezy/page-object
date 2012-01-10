@@ -629,6 +629,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all h1 elements
+        #
+        def h1s_for(identifier)
+          find_selenium_elements(identifier, Elements::Heading, 'h1')
+        end
+
+        #
         # platform method to retrieve the text from a h2
         # See PageObject::Accessors#h2
         #
