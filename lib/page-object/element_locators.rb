@@ -629,6 +629,21 @@ module PageObject
     end
 
     #
+    # Finds all h3 elements for the identifier
+    #
+    # @param [Hash] identifier how we find a H3.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def h3_elements(identifier)
+      platform.h3s_for(identifier.clone)
+    end
+
+    #
     # Finds a h4
     #
     # @param [Hash] identifier how we find a H4.  You can use a multiple paramaters

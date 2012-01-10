@@ -640,6 +640,13 @@ module PageObject
         end  
 
         #
+        # platform method to retrieve an array of h3s
+        #
+        def h3s_for(identifier)
+          find_watir_elements("h3s(identifier)", Elements::Heading, identifier, 'h3')
+        end
+
+        #
         # platform method to retrieve the text for a h4
         # See PageObject::Accessors#h4
         #

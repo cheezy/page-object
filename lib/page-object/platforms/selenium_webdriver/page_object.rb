@@ -679,6 +679,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all h3 elements
+        #
+        def h3s_for(identifier)
+          find_selenium_elements(identifier, Elements::Heading, 'h3')
+        end
+
+        #
         # platform method to retrieve the text from a h4
         # See PageObject::Accessors#h4
         #
