@@ -556,6 +556,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of unordered lists
+        #
+        def unordered_lists_for(identifier)
+          find_watir_elements("uls(identifier)", Elements::UnorderedList, identifier, 'ul')
+        end
+
+        #
         # platform method to retrieve an ordered list element
         # See PageObject::Accessors#ordered_list
         #

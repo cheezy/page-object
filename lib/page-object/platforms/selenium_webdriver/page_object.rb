@@ -589,6 +589,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all unordered lists
+        #
+        def unordered_lists_for(identifier)
+          find_selenium_elements(identifier, Elements::UnorderedList, 'ul')
+        end
+
+        #
         # platform method to retrieve an ordered list element
         # See PageObject::Accessors#ordered_list
         #

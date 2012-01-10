@@ -107,3 +107,10 @@ Feature: Multi Elements
     And the text for list item 1 should be "Item One"
     And the text for list item 2 should be "Item Two"
     And the text for list item 3 should be "Item Three"
+
+  Scenario: Selecting unordered lists
+    When I select the unordered list with class "ul"
+    Then I should have 3 unordered lists
+    And the text for the first item in unordered list 1 should be "Item One"
+    And the text for the first item in unordered list 2 should be "Item Four"
+    And the text for the first item in unordered list 3 should be "Item Five"
