@@ -101,3 +101,9 @@ Feature: Multi Elements
     And the action for form 2 should be "form2"
     And the action for form 3 should be "form3"
 
+  Scenario: Selecting list items
+    When I select the list items with class "li"
+    Then I should have 3 list items
+    And the text for list item 1 should be "Item One"
+    And the text for list item 2 should be "Item Two"
+    And the text for list item 3 should be "Item Three"

@@ -479,6 +479,21 @@ module PageObject
     end
 
     #
+    # Finds all list items that match the identifier
+    #
+    # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def list_item_elements(identifier)
+      platform.list_items_for(identifier.clone)
+    end
+
+    #
     # Finds an unordered list
     #
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters

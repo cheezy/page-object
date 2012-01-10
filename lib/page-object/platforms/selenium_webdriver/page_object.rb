@@ -574,6 +574,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all list items
+        #
+        def list_items_for(identifier)
+          find_selenium_elements(identifier, Elements::ListItem, 'li')
+        end
+
+        #
         # platform method to retrieve an unordered list element
         # See PageObject::Accessors#unordered_list
         #

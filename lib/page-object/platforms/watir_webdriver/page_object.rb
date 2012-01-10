@@ -541,6 +541,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of list items
+        #
+        def list_items_for(identifier)
+          find_watir_elements("lis(identifier)", Elements::ListItem, identifier, 'li')
+        end
+
+        #
         # platform method to retrieve an unordered list element
         # See PageObject::Accessors#unordered_list
         #
