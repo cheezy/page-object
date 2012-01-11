@@ -754,6 +754,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all h6 elements
+        #
+        def h6s_for(identifier)
+          find_selenium_elements(identifier, Elements::Heading, 'h6')
+        end
+
+        #
         # platform method to retrieve the text for a paragraph
         # See PageObject::Accessors#paragraph
         #

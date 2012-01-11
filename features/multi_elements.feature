@@ -157,4 +157,12 @@ Feature: Multi Elements
     And the text for H5 2 should be "H5 Two"
     And the text for H5 3 should be "H5 Three"
 
+  Scenario: Selecting h6s
+    When I select the h6s with the class "h6"
+    Then I should have 3 h6s
+    And the text for H6 1 should be "H6 One"
+    And the text for H6 2 should be "H6 Two"
+    And the text for H6 3 should be "H6 Three"
+
+
 

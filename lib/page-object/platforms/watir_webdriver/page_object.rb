@@ -709,6 +709,13 @@ module PageObject
         end  
 
         #
+        # platform method to retrieve an array of h6s
+        #
+        def h6s_for(identifier)
+          find_watir_elements("h6s(identifier)", Elements::Heading, identifier, 'h6')
+        end
+
+        #
         # platform method to retrieve the text for a paragraph
         # See PageObject::Accessors#paragraph
         #

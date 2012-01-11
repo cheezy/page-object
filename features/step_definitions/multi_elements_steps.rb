@@ -271,3 +271,15 @@ end
 Then /^the text for H5 (\d+) should be "([^\"]*)"$/ do |h5_num, text|
   @elements[h5_num.to_i - 1].text.should == text
 end
+
+When /^I select the h6s with the class "([^\"]*)"$/ do |class_name|
+  @elements = @page.h6_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) h6s$/ do |num_h6s|
+  @elements.size.should == num_h6s.to_i
+end
+
+Then /^the text for H6 (\d+) should be "([^\"]*)"$/ do |h6_num, text|
+  @elements[h6_num.to_i - 1].text.should == text
+end
