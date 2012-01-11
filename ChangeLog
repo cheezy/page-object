@@ -1,29 +1,7 @@
 === Version 0.5.6
 * Enhancements
-  * Added #button_elements to ElementLocators
-  * Added #text_field_elements to ElementLocators
-  * Added #hidden_field_elements to ElementLocators
-  * Added #text_area_elements to ElementLocators
-  * Added #select_list_elements to ElementLocators
-  * Added #link_elements to ElementLocators
-  * Added #checkbox_elements to ElementLocators
-  * Added #radio_button_elements to ElementLocators
-  * Added #div_elements to ElementLocators
-  * Added #span_elements to ElementLocators
-  * Added #table_elements to ElementLocators
-  * Added #cell_elements to ElementLocators
-  * Added #image_elements to ElementLocators
-  * Added #form_elements to ElementLocators
-  * Added #list_item_elements to ElementLocators
-  * Added #unordered_list_elements to ElementLocators
-  * Added #ordered_list_elements to ElementLocators
-  * Added #h1_elements to ElementLocators
-  * Added #h2_elements to ElementLocators
-  * Added #h3_elements to ElementLocators
-  * Added #h4_elements to ElementLocators
-  * Added #h5_elements to ElementLocators
-  * Added #h6_elements to ElementLocators
-  * Added #paragraph_elements to ElementLocators
+  * Added ?_elements methods to ElementLocator so you can find all elements that match an identifier
+  * Added ?_elements methods to NestedElements so you can find all elements nested within others
   * Added #navigate_to to PageFactory to navigate to a page through previous pages
   * Added #continue_navigation_to to PageFactory which begins at @current_page
   * Added routes to PageFactory to collect routes through the site
