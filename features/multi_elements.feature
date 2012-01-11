@@ -143,4 +143,12 @@ Feature: Multi Elements
     And the text for h3 2 should be "H3 Two"
     And the text for h3 3 should be "H3 Three"
 
+  Scenario: Selecting h4s
+    When I select the h4s with the class "h4"
+    Then I should have 3 h4s
+    And the text for H4 1 should be "H4 One"
+    And the text for H4 2 should be "H4 Two"
+    And the text for H4 3 should be "H4 Three"
+    
+
 

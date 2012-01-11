@@ -257,6 +257,12 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Heading
     end
 
+    it "should find all h4 elements" do
+      watir_browser.should_receive(:h4s).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.h4_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Heading 
+    end
+
     it "should find a h5 element" do
       watir_browser.should_receive(:h5).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.h5_element(:id => 'blah')
@@ -531,6 +537,12 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.h4_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find all h4 elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.h4_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Heading
     end
 
     it "should find a h5 element" do

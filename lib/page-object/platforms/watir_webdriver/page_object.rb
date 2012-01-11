@@ -663,6 +663,13 @@ module PageObject
         end  
 
         #
+        # platform method to retrieve an array of h4s
+        #
+        def h4s_for(identifier)
+          find_watir_elements("h4s(identifier)", Elements::Heading, identifier, 'h4')
+        end
+
+        #
         # platform method to retrieve the text for a h5
         # See PageObject::Accessors#h5
         #
