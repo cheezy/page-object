@@ -689,6 +689,21 @@ module PageObject
     end
 
     #
+    # Finds all h5 elements for the identifier
+    #
+    # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def h5_elements(identifier)
+      platform.h5s_for(identifier.clone)
+    end
+
+    #
     # Finds a h6
     #
     # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
