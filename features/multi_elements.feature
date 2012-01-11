@@ -164,5 +164,12 @@ Feature: Multi Elements
     And the text for H6 2 should be "H6 Two"
     And the text for H6 3 should be "H6 Three"
 
+  Scenario: Selecting paragraphs
+    When I select the paragraph with class "p"
+    Then I should have 3 paragraphs
+    And the text for paragraph 1 should be "Paragraph One"
+    And the text for paragraph 2 should be "Paragraph Two"
+    And the text for paragraph 3 should be "Paragraph Three"
+
 
 

@@ -283,3 +283,15 @@ end
 Then /^the text for H6 (\d+) should be "([^\"]*)"$/ do |h6_num, text|
   @elements[h6_num.to_i - 1].text.should == text
 end
+
+When /^I select the paragraph with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.paragraph_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) paragraphs$/ do |num_paragraphs|
+  @elements.size.should == num_paragraphs.to_i
+end
+
+Then /^the text for paragraph (\d+) should be "([^\"]*)"$/ do |para_num, text|
+  @elements[para_num.to_i - 1].text.should == text
+end

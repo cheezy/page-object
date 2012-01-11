@@ -732,6 +732,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of paragraph elements
+        #
+        def paragraphs_for(identifier)
+          find_watir_elements("ps(identifier)", Elements::Paragraph, identifier, 'p')
+        end
+
+        #
         # platform method to set the file on a file_field element
         # See PageObject::Accessors#file_field
         #

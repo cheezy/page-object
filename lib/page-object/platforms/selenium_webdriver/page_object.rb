@@ -779,6 +779,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve all paragraph elements
+        #
+        def paragraphs_for(identifier)
+          find_selenium_elements(identifier, Elements::Paragraph, 'p')
+        end
+
+        #
         # platform method to set the file on a file_field element
         # See PageObject::Accessors#file_field
         #

@@ -23,6 +23,7 @@
   * Added #h4_elements to ElementLocators
   * Added #h5_elements to ElementLocators
   * Added #h6_elements to ElementLocators
+  * Added #paragraph_elements to ElementLocators
   * Added #navigate_to to PageFactory to navigate to a page through previous pages
   * Added #continue_navigation_to to PageFactory which begins at @current_page
   * Added routes to PageFactory to collect routes through the site
