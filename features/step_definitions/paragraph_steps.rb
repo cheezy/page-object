@@ -14,3 +14,7 @@ end
 When /^I get the text from a paragraph while the script is executing$/ do
   @text = @page.paragraph_element(:id => 'p_id').text
 end
+
+Then /^I should see that the paragraph exists$/ do
+  @page.p_id?.should == true
+end

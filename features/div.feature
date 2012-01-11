@@ -39,4 +39,5 @@ Feature: Div
 
   Scenario: Finding a div dynamically
     When I get the text from a div while the script is executing
-    Then the text should be "page-object rocks!"
+    Then I should see that the div exists
+    And the text should be "page-object rocks!"

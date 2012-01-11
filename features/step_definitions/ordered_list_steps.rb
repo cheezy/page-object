@@ -13,3 +13,7 @@ end
 When /^I search for the ordered list while the script is executing$/ do
   @list = @page.ordered_list_element(:id => 'ol_id')
 end
+
+Then /^I should see that the ordered list exists$/ do
+  @page.ol_id?.should == true
+end

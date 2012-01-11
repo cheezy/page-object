@@ -9,7 +9,7 @@ Feature: Hidden Fields
 
   Scenario Outline: Locating hidden fields on the Page
     When I search for the hidden field by "<search_by>"
-    Then hidden field element should contains "12345"
+    Then the hidden field element should contain "12345"
 
   Scenarios:
     | search_by |
@@ -25,7 +25,7 @@ Feature: Hidden Fields
 
   Scenario Outline: Locating a hidden field using multiple parameters
     When I search for the hidden field by "<param1>" and "<param2>"
-    Then hidden field element should contains "12345"
+    Then the hidden field element should contain "12345"
 
   Scenarios:
     | param1 | param2 |
@@ -34,4 +34,5 @@ Feature: Hidden Fields
 
   Scenario: Finding a hidden field dynamically
     When I find a hidden field while the script is executing
-    Then hidden field element should contains "12345"
+    Then I should see that the hidden field exists
+    And the hidden field element should contain "12345"

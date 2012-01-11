@@ -41,4 +41,5 @@ Feature: Text Fields
 
   Scenario: Finding a text field dynamically
     When I find a text field while the script is executing
-    Then I should be able to type "I found it" into the field element
+    Then I should see that the text field exists
+    And I should be able to type "I found it" into the field element

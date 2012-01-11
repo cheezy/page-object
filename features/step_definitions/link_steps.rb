@@ -18,3 +18,9 @@ When /^I select a link while the script is executing$/ do
   link = @page.link_element(:id => 'link_id')
   link.click
 end
+
+Then /^I should see that the link exists$/ do
+  require 'ruby-debug'
+  debugger
+  @page.link_id?.should == true
+end

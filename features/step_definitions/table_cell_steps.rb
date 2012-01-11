@@ -9,3 +9,7 @@ end
 When /^I retrieve a table cell element while the script is executing$/ do
   @cell_data = @page.cell_element(:id => 'cell_id').text
 end
+
+Then /^I should see that the cell exists$/ do
+  @page.cell_id?.should == true
+end
