@@ -34,7 +34,8 @@ Feature: Text Area
 
   Scenario: Finding a text area dynamically
     When I find a text area while the script is executing
-    Then I should be able to type "I found it" into the area element
+    Then I should see that the text area exists
+    And I should be able to type "I found it" into the area element
     
   Scenario: Clearing the text area
     When I type "abcdefghijklmnop" into the text area

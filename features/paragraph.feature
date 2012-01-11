@@ -30,4 +30,5 @@ Feature: Paragraph
 
   Scenario: Finding a paragraph dynamically
     When I get the text from a paragraph while the script is executing
-    Then the text should be "Static Elements Page"
+    Then I should see that the paragraph exists
+    And the text should be "Static Elements Page"

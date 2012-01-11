@@ -34,3 +34,7 @@ Then /^the data for the last row should be "([^\"]*)" and "([^\"]*)"$/ do |col1,
   @element.last_row[0].text.should == col1
   @element.last_row[1].text.should == col2
 end
+
+Then /^I should see that the table exists$/ do
+  @page.table_id?.should == true
+end

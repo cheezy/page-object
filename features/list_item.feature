@@ -30,4 +30,5 @@ Feature: List item
 
   Scenario: Finding a list item dynamically
     When I search for the list item while the script is executing
-    Then the text should be "Item One"
+    Then I should see that the list item exists
+    And the text should be "Item One"

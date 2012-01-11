@@ -29,3 +29,7 @@ end
 When /^I clear the text area$/ do
   @page.text_area_id_element.clear
 end
+
+Then /^I should see that the text area exists$/ do
+  @page.text_area_id?.should == true
+end

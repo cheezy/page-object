@@ -29,3 +29,7 @@ end
 When /^I select the first check box while the script is executing$/ do
   @page.checkbox_element(:id => 'cb_id').check
 end
+
+Then /^I should see that the checkbox exists$/ do
+  @page.button_id?.should == true
+end
