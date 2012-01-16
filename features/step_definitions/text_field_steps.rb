@@ -25,3 +25,7 @@ end
 Then /^I should be able to type "([^"]*)" into the field element$/ do |value|
   @text_field.value = value
 end
+
+Then /^I should see that the text field exists$/ do
+  @page.text_field_id?.should == true
+end

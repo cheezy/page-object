@@ -21,3 +21,7 @@ end
 When /^I get the image element while the script is executing$/ do
   @element = @page.image_element(:id => 'image_id')
 end
+
+Then /^I should see that the image exists$/ do
+  @page.image_id?.should == true
+end

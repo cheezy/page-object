@@ -21,3 +21,7 @@ end
 When /^I select the radio button while the script is executing$/ do
   @page.radio_button_element(:id => 'milk_id').select
 end
+
+Then /^I should see that the radio button exists$/ do
+  @page.milk_id?.should == true
+end

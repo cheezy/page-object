@@ -37,3 +37,7 @@ end
 Then /^I should be able to click the button element$/ do
   @button.click
 end
+
+Then /^I should see that the button exists$/ do
+  @page.button_id?.should == true
+end

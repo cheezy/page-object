@@ -26,3 +26,7 @@ end
 Then /^I should be able to select "([^"]*)" from the list$/ do |value|
   @select_list.select(value)
 end
+
+Then /^I should see that the select list exists$/ do
+  @page.sel_list_id?.should == true
+end

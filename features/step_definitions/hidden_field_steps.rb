@@ -10,7 +10,7 @@ When /^I search for the hidden field by "([^\"]*)"$/ do |how|
   @element = @page.send "hidden_field_#{how}_element"
 end
 
-Then /^hidden field element should contains "([^\"]*)"$/ do |text|
+Then /^the hidden field element should contain "([^\"]*)"$/ do |text|
   @element.value.should == text
 end
 
@@ -20,4 +20,8 @@ end
 
 When /^I find a hidden field while the script is executing$/ do
   @element = @page.hidden_field_element(:id => 'hidden_field_id')
+end
+
+Then /^I should see that the hidden field exists$/ do
+  @page.hidden_field_id?.should == true
 end

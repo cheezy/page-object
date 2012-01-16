@@ -82,5 +82,6 @@ Feature: Button
 
   Scenario: Finding a button dynamically
     When I find a button while the script is executing
-    Then I should be able to click the button element
+    Then I should see that the button exists
+    And I should be able to click the button element
   

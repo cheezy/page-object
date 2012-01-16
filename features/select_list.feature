@@ -41,4 +41,5 @@ Feature: Select List
 
   Scenario: Finding a select list dynamically
     When I find a select list while the script is executing
-    Then I should be able to select "Test 2" from the list
+    Then I should see that the select list exists
+    And I should be able to select "Test 2" from the list

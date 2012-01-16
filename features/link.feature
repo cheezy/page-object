@@ -39,4 +39,4 @@ Feature: Links
 
   Scenario: Finding a link dynamically
     When I select a link while the script is executing
-    Then the page should contain the text "Success"
+    And the page should contain the text "Success"

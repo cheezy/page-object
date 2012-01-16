@@ -13,3 +13,7 @@ end
 When /^I get the text from a div while the script is executing$/ do
   @text = @page.div_element(:id => 'div_id').text
 end
+
+Then /^I should see that the div exists$/ do
+  @page.div_id?.should == true
+end

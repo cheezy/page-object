@@ -31,4 +31,5 @@ Feature: Span
 
   Scenario: Finding a span dynamically
     When I get the text from a span while the script is executing
-    Then the text should be "My alert"
+    Then I should see that the span exists
+    And the text should be "My alert"
