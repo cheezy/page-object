@@ -49,5 +49,8 @@ Feature: Table
 
   Scenario: Finding a table dynamically
     When I retrieve a table element while the script is executing
-    Then I should see that the table exists
     And the data for row "1" should be "Data1" and "Data2"
+
+  @watir_only
+  Scenario: Finding an existing table
+    Then I should see that the table exists

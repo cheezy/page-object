@@ -1,3 +1,7 @@
+=== Version 0.6.1
+* Enhancements
+  * generates a method to determine if an element exists (Thanks Nicholas Munson)
+
 === Version 0.6 / 2012-1-10
 * Enhancements
   * Added ?_elements methods to ElementLocator so you can find all elements that match an identifier
