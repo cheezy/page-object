@@ -38,6 +38,13 @@ module PageObject
       def enabled?
         @element.enabled?
       end
+
+      #
+      # return true if the element is not enabled
+      #
+      def disabled?
+        not enabled?
+      end
       
       #
       # get the value of the given CSS property

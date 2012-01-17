@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'page-object/elements'
 
 
-describe "Element class methods" do
+describe "Element" do
 
   context "when building the identifiers for Watir" do
     it "should build xpath when finding elements by name where not supported" do
@@ -75,5 +75,40 @@ describe "Element class methods" do
         what.should include ".//input[@type='#{type}' and @name='foo' and @class='bar']"
       end
     end
-  end  
+  end
+
+  context "interaction with native element" do
+    let(:native) { double('') }
+    let(:element) { PageObject::Elements::Element.new(native, :platform => :watir_webdriver) }
+
+    it "should check if native is enabled" do
+      native.should_receive(:enabled?).and_return(true)
+      element.should be_enabled
+    end
+
+    it "should click the native" do
+      native.should_receive(:click)
+      element.click
+    end
+
+    it "should double click the native" do
+      native.should_receive(:double_click)
+      element.double_click
+    end
+
+    it "should inspect the native" do
+      native.should_receive(:inspect)
+      element.inspect
+    end
+
+    it "should retrieve the native's style" do
+      native.should_receive(:style).with('foo').and_return("cheezy_style")
+      element.style('foo').should == 'cheezy_style'
+    end
+
+    it "should know if a native is disabled" do
+      native.should_receive(:enabled?).and_return(false)
+      element.should be_disabled
+    end
+  end
 end

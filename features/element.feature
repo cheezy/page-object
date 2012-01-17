@@ -12,8 +12,10 @@ Feature: Elements
   Scenario: Elements enabled?
     When I check an enabled button
     Then it should know it is enabled
+    And it should know that is it not disabled
     When I check a disabled button
     Then it should know it is not enabled
+    And it should know that it is disabled
 
   Scenario: Link element methods
     When I retrieve a link element

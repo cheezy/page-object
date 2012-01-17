@@ -124,6 +124,14 @@ Then /^it should know it is not enabled$/ do
   @element.should_not be_enabled
 end
 
+Then /^it should know that is it not disabled$/ do
+  @element.should_not be_disabled
+end
+
+Then /^it should know that it is disabled$/ do
+  @element.should be_disabled
+end
+
 When /^I set the focus to the test text_field using the onfocus event$/ do
   @page.text_field_element(:id => 'onfocus_text_field').fire_event('onfocus')
 end
