@@ -33,6 +33,14 @@ module PageObject
           end
           elements
         end
+
+        #
+        # @return [Array<String>] An array of strings representing the text value of the currently selected options.
+        #
+        def selected_options
+          @element.selected_options
+        end
+
       end
     end
   end

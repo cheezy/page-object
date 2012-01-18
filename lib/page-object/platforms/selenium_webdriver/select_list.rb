@@ -25,12 +25,20 @@ module PageObject
         #
         # @return [array of PageObject::Elements::Option]
         def options
-          options = @element.find_elements(:xpath, child_xpath)
-          elements = []
-          options.each do |opt|
-            elements << Object::PageObject::Elements::Option.new(opt, :platform => :selenium_webdriver)
-          end
-          elements
+          find_options.map { |e| ::PageObject::Elements::Option.new(e, :platform => :selenium_webdriver) }
+        end
+
+        #
+        # @return [Array<String>] An array of strings representing the text value of the currently selected options.
+        #
+        def selected_options
+          find_options.map { |e| e.text if e.selected? }.compact
+        end
+
+        private
+
+        def find_options
+          @element.find_elements(:xpath, child_xpath)
         end
       end
     end

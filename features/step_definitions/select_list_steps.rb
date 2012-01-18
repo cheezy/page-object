@@ -23,10 +23,15 @@ When /^I find a select list while the script is executing$/ do
   @select_list = @page.select_list_element(:id => 'sel_list_id')
 end
 
-Then /^I should be able to select "([^"]*)" from the list$/ do |value|
+Then /^I should be able to select "([^\"]*)" from the list$/ do |value|
   @select_list.select(value)
 end
 
 Then /^I should see that the select list exists$/ do
   @page.sel_list_id?.should == true
 end
+
+Then /^the selected option should be "([^\"]*)"$/ do |text|
+  @page.select_list_element(:id => 'sel_list_id').selected_options[0].should == text
+end
+

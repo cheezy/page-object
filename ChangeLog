@@ -1,6 +1,7 @@
 === Version 0.6.1
 * Enhancements
   * Added #disabled? method to Element
+  * Added #selected_options method to SelectList
   * generates a method to determine if an element exists (Thanks Nicholas Munson)
   * better message when calling platform method via method_missing (Thanks Alex Rodionov)
   * Updated to use selenium-webdriver 2.17.0
