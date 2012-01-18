@@ -1,4 +1,4 @@
-=== Version 0.6.1
+=== Version 0.6.1 / 2012-1-18
 * Enhancements
   * Added #disabled? method to Element
   * Added #selected_options method to SelectList
