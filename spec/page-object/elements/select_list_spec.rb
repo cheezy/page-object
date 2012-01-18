@@ -29,6 +29,10 @@ describe PageObject::Elements::SelectList do
       sel_list.stub(:each)
       sel_list.stub(:wd).and_return(sel_list)
       sel_list.stub(:map).and_return(opts)
+      sel_list.stub(:any?)
+      sel_list.stub(:include?)
+      sel_list.stub(:select).and_return(opts)
+      sel_list.stub(:text).and_return('blah')
     end
 
     it "should register with tag_name :select" do
@@ -51,6 +55,16 @@ describe PageObject::Elements::SelectList do
       it "should return an array of selected options" do
         sel_list.stub(:selected_options).and_return(opts)
         watir_sel_list.selected_options.should == opts
+      end
+
+      it "should know if it includes some value" do
+        sel_list.stub(:include?).with('blah').and_return(true)
+        watir_sel_list.include?('blah')
+      end
+
+      it "should know if an option is selected" do
+        sel_list.stub(:selected?).with('blah').and_return(true)
+        watir_sel_list.selected?('blah')
       end
     end
 
@@ -80,6 +94,19 @@ describe PageObject::Elements::SelectList do
         selected = selenium_sel_list.selected_options
         selected.size.should == 1
         selected[0].should == 'test1'
+      end
+
+      it "should know if it includes some value" do
+        sel_list.should_receive(:find_elements).and_return(opts)
+        opts[0].should_receive(:text).and_return('blah')
+        selenium_sel_list.should include 'blah'
+      end
+      
+      it "should know if an option is selected" do
+        sel_list.should_receive(:find_elements).and_return(opts)
+        opts[0].should_receive(:selected?).twice.and_return(true)
+        opts[0].should_receive(:text).and_return('blah')
+        selenium_sel_list.selected?('blah').should be_true
       end
     end
   end

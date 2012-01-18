@@ -35,3 +35,11 @@ Then /^the selected option should be "([^\"]*)"$/ do |text|
   @page.select_list_element(:id => 'sel_list_id').selected_options[0].should == text
 end
 
+Then /^the select list should include "([^\"]*)"$/ do |text|
+  @page.sel_list_id_element.should include text
+end
+
+Then /^the select list should know that "([^\"]*)" is selected$/ do |text|
+  @page.sel_list_id_element.selected?(text).should be_true
+end
+
