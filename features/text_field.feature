@@ -43,3 +43,9 @@ Feature: Text Fields
     When I find a text field while the script is executing
     Then I should see that the text field exists
     And I should be able to type "I found it" into the field element
+
+  Scenario: Appending text to a text field
+    When I type "abcd" into the text field
+    And I append "efg" to the text field
+    Then the text field should contain "abcdefg"
+

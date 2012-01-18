@@ -3,6 +3,7 @@
   * Added #disabled? method to Element
   * Added #selected_options method to SelectList
   * Added #include? and #selected? to SelectList
+  * Added #append to TextField
   * generates a method to determine if an element exists (Thanks Nicholas Munson)
   * better message when calling platform method via method_missing (Thanks Alex Rodionov)
   * Updated to use selenium-webdriver 2.17.0

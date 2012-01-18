@@ -8,6 +8,10 @@ module PageObject
         include_platform_for platform
       end
 
+      def append(text)
+        @element.send_keys text
+      end
+
       protected
 
       def self.watir_finders

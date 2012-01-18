@@ -32,6 +32,9 @@ describe PageObject::Elements::TextField do
   end
   
   describe "interface" do
+    let(:text_field_element) { double('text_field') }
+    let(:selenium_text_field) { PageObject::Elements::TextField.new(text_field_element, :platform => :selenium_webdriver) }
+
     it "should register with type :text" do
       ::PageObject::Elements.element_class_for(:input, :text).should == ::PageObject::Elements::TextField
     end
@@ -39,11 +42,14 @@ describe PageObject::Elements::TextField do
     it "should register with type :password" do
       ::PageObject::Elements.element_class_for(:input, :password).should == ::PageObject::Elements::TextField
     end
+
+    it "should append text" do
+      text_field_element.should_receive(:send_keys).with('abc')
+      selenium_text_field.append('abc')
+    end
     
     context "for selenium" do
       it "should set its' value" do
-        text_field_element = double('selenium_text_field')
-        selenium_text_field = PageObject::Elements::TextField.new(text_field_element, :platform => :selenium_webdriver)
         text_field_element.should_receive(:clear)
         text_field_element.should_receive(:send_keys).with('Joseph')
         selenium_text_field.value = 'Joseph'

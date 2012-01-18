@@ -22,10 +22,14 @@ When /^I find a text field while the script is executing$/ do
   @text_field = @page.text_field_element(:id => 'text_field_id')
 end
 
-Then /^I should be able to type "([^"]*)" into the field element$/ do |value|
+Then /^I should be able to type "([^\"]*)" into the field element$/ do |value|
   @text_field.value = value
 end
 
 Then /^I should see that the text field exists$/ do
   @page.text_field_id?.should == true
+end
+
+When /^I append "([^\"]*)" to the text field$/ do |text|
+  @page.text_field_id_element.append text
 end
