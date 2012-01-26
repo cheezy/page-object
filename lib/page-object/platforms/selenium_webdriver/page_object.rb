@@ -266,7 +266,9 @@ module PageObject
         #
         def select_list_value_for(identifier)
           process_selenium_call(identifier, Elements::SelectList, 'select') do |how, what|
-            @browser.find_element(how, what).attribute('value')
+            @browser.find_element(how, what).find_elements(:tag_name => 'option').each do |o|
+              return o.text if o.selected?
+            end
           end
         end
 
