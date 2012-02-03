@@ -54,6 +54,7 @@ describe PageObject::Elements::SelectList do
 
       it "should return an array of selected options" do
         sel_list.stub(:selected_options).and_return(opts)
+        sel_list.stub(:text).and_return(sel_list)
         watir_sel_list.selected_options.should == opts
       end
 
