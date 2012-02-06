@@ -150,7 +150,8 @@ describe PageObject do
       end
       
       it "should know how to clear all of the cookies from the browser" do
-        watir_browser.should_receive(:clear_cookies)
+        watir_browser.should_receive(:cookies).and_return(watir_browser)
+        watir_browser.should_receive(:clear)
         watir_page_object.clear_cookies
       end
       
