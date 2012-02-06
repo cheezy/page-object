@@ -104,3 +104,14 @@ Feature: Nested Elements
     When I search for a paragraph located in a div
     Then I should see the nested paragraphs text should be "This is a paragraph."
     
+  Scenario: Unordered List nested in another Unordered List
+    When I get the outter unordered list
+    Then I should see "One" for list item 1
+    And I should see "Two" for list item 2
+    And I should see "Three" for list item 3
+
+  Scenario: Ordered List nested in another Ordered List
+    When I get the outter ordered list
+    Then I should see "One" for list item 1
+    And I should see "Two" for list item 2
+    And I should see "Three" for list item 3

@@ -10,8 +10,11 @@ module PageObject
         # @return [PageObject::Elements::ListItem]
         #
         def [](idx)
-          eles = list_items
-          Object::PageObject::Elements::ListItem.new(eles[idx], :platform => :selenium_webdriver)
+          items = list_items.map do |item|
+            ::PageObject::Elements::ListItem.new(item, :platform => :selenium_webdriver)
+          end
+          children = items.find_all { |item| item.parent.element == element }
+          children[idx]
         end
 
         #

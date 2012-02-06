@@ -30,10 +30,12 @@ describe PageObject::Elements::OrderedList do
     context "for watir" do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
-        ol_element.stub(:wd).and_return(ol_element)
-        ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
-        ol_element.stub(:[]).and_return(ol_element)
-        ol[1].should be_instance_of PageObject::Elements::ListItem
+        ol_element.stub(:find_elements).and_return(ol_element)
+        ol_element.stub(:map).and_return([ol_element])
+        ol_element.stub(:parent).and_return(ol_element)
+        ol_element.stub(:element).and_return(ol_element)
+        ol_element.stub(:==).and_return(true)
+        ol[1]
       end
 
       it "should know how many list items it contains" do
@@ -58,9 +60,12 @@ describe PageObject::Elements::OrderedList do
     context "for selenium" do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
-        ol_element.should_receive(:find_elements).with(:xpath, ".//child::li").and_return(ol_element)
-        ol_element.should_receive(:[]).and_return(ol_element)
-        ol[1].should be_instance_of PageObject::Elements::ListItem
+        ol_element.should_receive(:find_elements).and_return(ol_element)
+        ol_element.should_receive(:map).and_return([ol_element])
+        ol_element.should_receive(:parent).and_return(ol_element)
+        ol_element.should_receive(:element).and_return(ol_element)
+        ol_element.should_receive(:==).and_return(true)
+        ol[1]
       end
 
       it "should know how many list items it contains" do

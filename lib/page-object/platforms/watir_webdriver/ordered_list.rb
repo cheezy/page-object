@@ -10,8 +10,8 @@ module PageObject
         # @return [PageObject::Elements::ListItem]
         #
         def [](idx)
-          eles = list_items
-          Object::PageObject::Elements::ListItem.new(eles[idx], :platform => :watir_webdriver)
+          items = list_items.find_all { |item| item.parent == element }
+          Object::PageObject::Elements::ListItem.new(items[idx], :platform => :watir_webdriver)
         end
 
         #
@@ -24,7 +24,7 @@ module PageObject
         private
 
         def list_items
-          element.wd.find_elements(:xpath, child_xpath)
+          element.ols(:xpath => child_xpath)
         end
       end
     end

@@ -30,10 +30,12 @@ describe PageObject::Elements::UnorderedList do
     context "for watir" do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)
-        ul_element.stub(:wd).and_return(ul_element)
         ul_element.stub(:find_elements).and_return(ul_element)
-        ul_element.stub(:[])
-        ul[1].should be_instance_of PageObject::Elements::ListItem
+        ul_element.stub(:map).and_return([ul_element])
+        ul_element.stub(:parent).and_return(ul_element)
+        ul_element.stub(:element).and_return(ul_element)
+        ul_element.stub(:==).and_return(true)
+        ul[1]
       end
 
       it "should know how many items it contains" do
@@ -58,8 +60,11 @@ describe PageObject::Elements::UnorderedList do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
         ul_element.should_receive(:find_elements).and_return(ul_element)
-        ul_element.stub(:[])
-        ul[1].should be_instance_of PageObject::Elements::ListItem
+        ul_element.should_receive(:map).and_return([ul_element])
+        ul_element.should_receive(:parent).and_return(ul_element)
+        ul_element.should_receive(:element).and_return(ul_element)
+        ul_element.should_receive(:==).and_return(true)
+        ul[1]
       end
 
       it "should know how many items it contains" do
