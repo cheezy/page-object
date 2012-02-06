@@ -154,7 +154,7 @@ module PageObject
         # See PageObject#clear_cookies
         #
         def clear_cookies
-          @browser.clear_cookies
+          @browser.cookies.clear
         end
 
         #
