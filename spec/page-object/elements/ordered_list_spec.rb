@@ -30,7 +30,7 @@ describe PageObject::Elements::OrderedList do
     context "for watir" do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
-        ol_element.stub(:ols).and_return(ol_element)
+        ol_element.stub(:ols).and_return([ol_element])
         ol_element.stub(:find_elements).and_return(ol_element)
         ol_element.stub(:map).and_return([ol_element])
         ol_element.stub(:parent).and_return(ol_element)
@@ -41,7 +41,7 @@ describe PageObject::Elements::OrderedList do
 
       it "should know how many list items it contains" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
-        ol_element.stub(:ols).and_return(ol_element)
+        ol_element.stub(:ols).and_return([ol_element])
         ol_element.stub(:find_elements).and_return(ol_element)
         ol_element.stub(:map).and_return([ol_element])
         ol_element.stub(:parent).and_return(ol_element)
