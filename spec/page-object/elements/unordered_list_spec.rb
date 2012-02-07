@@ -40,10 +40,12 @@ describe PageObject::Elements::UnorderedList do
 
       it "should know how many items it contains" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)
-        ul_element.stub(:wd).and_return(ul_element)
         ul_element.stub(:find_elements).and_return(ul_element)
-        ul_element.stub(:size).and_return(5)
-        ul.items.should == 5
+        ul_element.stub(:map).and_return([ul_element])
+        ul_element.stub(:parent).and_return(ul_element)
+        ul_element.stub(:element).and_return(ul_element)
+        ul_element.stub(:==).and_return(true)
+        ul.items.should == 1
       end
 
       it "should know how to iterate over the items" do
@@ -70,8 +72,11 @@ describe PageObject::Elements::UnorderedList do
       it "should know how many items it contains" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
         ul_element.should_receive(:find_elements).and_return(ul_element)
-        ul_element.should_receive(:size).and_return(5)
-        ul.items.should == 5
+        ul_element.should_receive(:map).and_return([ul_element])
+        ul_element.should_receive(:parent).and_return(ul_element)
+        ul_element.should_receive(:element).and_return(ul_element)
+        ul_element.should_receive(:==).and_return(true)
+        ul.items.should == 1
       end
 
       it "should know how to iterate over the items" do

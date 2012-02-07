@@ -3,7 +3,8 @@
   * Updated to use selenium-webdriver 2.18.0
   * Updated to use watir-webdriver 0.5.0
 * Fixes
-  * Fixed [] methods for OrderedList and UnorderedList so it only gets direct children
+  * Fixed [] methods on OrderedList and UnorderedList so it only gets direct children
+  * Fixed items methods on OrderedList and UnorderedList so it returns count of direct children
 
 === Version 0.6.1 / 2012-1-18
 * Enhancements

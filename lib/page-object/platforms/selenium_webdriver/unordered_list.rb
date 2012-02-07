@@ -10,10 +10,6 @@ module PageObject
         # @return [PageObject::Elements::ListItem]
         #
         def [](idx)
-          items = list_items.map do |item|
-            ::PageObject::Elements::ListItem.new(item, :platform => :selenium_webdriver)
-          end
-          children = items.find_all { |item| item.parent.element == element }
           children[idx]
         end
 
@@ -21,10 +17,17 @@ module PageObject
         # Return the number of items contained in the unordered list
         #
         def items
-          list_items.size
+          children.size
         end
 
         private
+
+        def children
+          items = list_items.map do |item|
+            ::PageObject::Elements::ListItem.new(item, :platform => :selenium_webdriver)
+          end
+          items.find_all { |item| item.parent.element == element }
+        end
 
         def list_items
           element.find_elements(:xpath, child_xpath)
