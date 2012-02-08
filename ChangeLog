@@ -1,6 +1,6 @@
 === Version 0.6.2
 * Enhancements
-  * Updated to use selenium-webdriver 2.18.0
+  * Updated to use selenium-webdriver 2.19.0
   * Updated to use watir-webdriver 0.5.0
 * Fixes
   * Fixed [] methods on OrderedList and UnorderedList so it only gets direct children
