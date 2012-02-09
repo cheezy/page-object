@@ -1,7 +1,7 @@
 === Version 0.6.2
 * Enhancements
   * Updated to use selenium-webdriver 2.19.0
-  * Updated to use watir-webdriver 0.5.0
+  * Updated to use watir-webdriver 0.5.3
 * Fixes
   * Fixed [] methods on OrderedList and UnorderedList so it only gets direct children
   * Fixed items methods on OrderedList and UnorderedList so it returns count of direct children
