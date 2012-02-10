@@ -1,0 +1,36 @@
+<htmL>
+<head>
+  <title>Prototype -  Client Sample App</title>
+  <script type="application/x-javascript" src="/prototype-1.6.0.3.js"></script>
+</head>
+<body>
+  <h1 id="title">Prototype -  Client Sample App</h1>
+
+  <div id="ajax-demo">
+    <h2>AJAX Calculator</h2>
+    <form id="calculator-form" action="#" method="post" onSubmit="return false;">
+      <input id="calculator-expression" name="calculator-expression"/>
+      <input type="submit" id="calculator-button" value="Compute" />
+      <br/><br/>
+      <div>Result: <input id="calculator-result" disabled /></div>
+    </form>
+
+    <script type="text/javascript" language="javascript">  
+      Event.observe(window, 'load', function() {
+
+        Event.observe('calculator-button', 'click', function (event) {
+          new Ajax.Request('/compute', { 
+              method: 'post', 
+              parameters: $('calculator-form').serialize(true),
+              onSuccess: function(transport) {
+                $('calculator-result').value = transport.responseText;
+              },
+          });
+          return false;
+        });
+
+      });
+    </script>
+  </div>
+
+</body>
