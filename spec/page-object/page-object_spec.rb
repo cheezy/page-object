@@ -91,6 +91,12 @@ describe PageObject do
         watir_page_object.wait_until(5, "too long")
       end
 
+      it "should wait until there are no pending ajax requests" do
+        PageObject::JavascriptFrameworkFacade.should_receive(:pending_requests).and_return('pending requests')
+        watir_browser.should_receive(:execute_script).with('pending requests').and_return(0)
+        watir_page_object.wait_for_ajax
+      end
+
       it "should override alert popup behavior" do
         watir_browser.should_receive(:wd).twice.and_return(watir_browser)
         watir_browser.should_receive(:execute_script).twice
@@ -188,6 +194,12 @@ describe PageObject do
         Selenium::WebDriver::Wait.should_receive(:new).with({:timeout => 5, :message => 'too long'}).and_return(wait)
         wait.should_receive(:until)
         selenium_page_object.wait_until(5, 'too long')
+      end
+
+      it "should wait until there are no pending ajax requests" do
+        PageObject::JavascriptFrameworkFacade.should_receive(:pending_requests).and_return('pending requests')
+        selenium_browser.should_receive(:execute_script).with('pending requests').and_return(0)
+        selenium_page_object.wait_for_ajax
       end
 
       it "should override alert popup behavior" do
