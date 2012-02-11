@@ -24,5 +24,15 @@ describe PageObject::JavascriptFrameworkFacade do
     facade.framework = :jquery
     facade.pending_requests.should == 'return jQuery.active'
   end
+
+  it "should register the Prototype script builder" do
+    facade.framework = :prototype
+    facade.script_builder.should == ::PageObject::Javascript::Prototype
+  end
+
+  it "should return script for pending requests in Prototype" do
+    facade.framework = :prototype
+    facade.pending_requests.should == 'return Ajax.activeRequestCount'
+  end
 end
 

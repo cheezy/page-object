@@ -1,6 +1,7 @@
 === Version 0.6.2
 * Enhancements
   * Added #wait_for_ajax support for the jQuery framework
+  * Added #wait_for_ajax support for the Prototype framework
   * Updated to use selenium-webdriver 2.19.0
   * Updated to use watir-webdriver 0.5.3
 * Fixes

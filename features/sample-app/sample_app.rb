@@ -6,7 +6,11 @@ require 'webrick'
 class SampleApp
 
   def self.start(host, port)
-    Rack::Handler::WEBrick.run(new, :Host => host, :Port => port)
+    Rack::Handler::WEBrick.run(new,
+                               :Host => host,
+                               :Port => port,
+                               :Logger => ::WEBrick::Log.new('/dev/null'),
+                               :AccessLog => [nil, nil],)
   end
 
   def initialize
@@ -20,7 +24,7 @@ class SampleApp
     when "/"
       [200, {}, ["Sample Application"]]
     when "/compute"
-      sleep 5
+      sleep 3
       resp = eval(req.params['calculator-expression']).to_s
       [200, {}, [resp]]
     else
