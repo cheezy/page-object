@@ -1,5 +1,7 @@
 require 'page-object/javascript/jquery'
 require 'page-object/javascript/prototype'
+require 'page-object/javascript/dojo'
+
 
 module PageObject
   module JavascriptFrameworkFacade
@@ -27,7 +29,8 @@ module PageObject
       def initialize_script_builder
         @builder = {
           :jquery => ::PageObject::Javascript::JQuery,
-          :prototype => ::PageObject::Javascript::Prototype
+          :prototype => ::PageObject::Javascript::Prototype,
+          :dojo => ::PageObject::Javascript::Dojo
         }
       end
     end

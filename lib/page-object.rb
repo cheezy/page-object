@@ -6,6 +6,7 @@ require 'page-object/nested_elements'
 require 'page-object/page_populator'
 require 'page-object/javascript_framework_facade'
 
+require 'selenium/webdriver/common/error'
 #
 # Module that when included adds functionality to a page object.  This module
 # will add numerous class and instance methods that you use to define and
@@ -138,7 +139,7 @@ module PageObject
     end_time = ::Time.now + timeout
     until ::Time.now > end_time
       return if browser.execute_script(::PageObject::JavascriptFrameworkFacade.pending_requests) == 0
-      sleep 1
+      sleep 0.5
     end
     message = "Timed out waiting for ajax requests to complete" unless message
     raise message

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'page-object/javascript/jquery'
 
 class TestClass
   include PageObject::JavascriptFrameworkFacade
@@ -8,7 +7,6 @@ end
 
 describe PageObject::JavascriptFrameworkFacade do
   let(:facade) { PageObject::JavascriptFrameworkFacade }
-
   
   it "should allow the selection of a javascript framework" do
     facade.framework = :jquery
@@ -33,6 +31,16 @@ describe PageObject::JavascriptFrameworkFacade do
   it "should return script for pending requests in Prototype" do
     facade.framework = :prototype
     facade.pending_requests.should == 'return Ajax.activeRequestCount'
+  end
+
+  it "should register the Dojo script builder" do
+    facade.framework = :dojo
+    facade.script_builder.should == ::PageObject::Javascript::Dojo
+  end
+
+  it "should return script for pending requests in Dojo" do
+    facade.framework = :dojo
+    facade.pending_requests.should == 'return dojo.io.XMLHTTPTransport.inFlight.length'
   end
 end
 
