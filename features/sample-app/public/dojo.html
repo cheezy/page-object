@@ -21,7 +21,8 @@
                   url: "/compute",
                   form: dom.byId("calculator-form"),
                   load: function(response) {
-                      dom.byId('calculator-result').value = response.responseText;
+                      alert(response)
+                      dom.byId('calculator-result').value = response;
                   }
               });
           });
