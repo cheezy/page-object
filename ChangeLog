@@ -2,6 +2,7 @@
 * Enhancements
   * Added #wait_for_ajax support for the jQuery framework
   * Added #wait_for_ajax support for the Prototype framework
+  * Added the ability to add new Javascript Frameworks to PageObject via the #add_framework method
   * Updated to use selenium-webdriver 2.19.0
   * Updated to use watir-webdriver 0.5.3
 * Fixes

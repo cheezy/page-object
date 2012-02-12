@@ -12,6 +12,18 @@ describe PageObject do
   let(:selenium_browser) { mock_selenium_browser }
   let(:watir_page_object) { PageObjectTestPageObject.new(watir_browser) }
   let(:selenium_page_object) { PageObjectTestPageObject.new(selenium_browser) }
+
+  context "setting values for the Javascript Framework" do
+    it "should set the javascript framework" do
+      PageObject::JavascriptFrameworkFacade.should_receive(:framework=)
+      PageObject.javascript_framework = :foo
+    end
+
+    it "should add a new Javascript Framework" do
+      PageObject::JavascriptFrameworkFacade.should_receive(:add_framework)
+      PageObject.add_framework(:foo, :bar)
+    end
+  end
   
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do

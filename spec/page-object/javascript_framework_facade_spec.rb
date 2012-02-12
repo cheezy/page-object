@@ -32,5 +32,30 @@ describe PageObject::JavascriptFrameworkFacade do
     facade.framework = :prototype
     facade.pending_requests.should == 'return Ajax.activeRequestCount'
   end
+
+  it "should not allow you to set the framework to one it does not know about" do
+    expect{ facade.framework = :blah }.to raise_error
+  end
+
+  it "should allow you to add a new javascript framework" do
+    module GoodFake
+      def self.pending_requests
+        "fake"
+      end
+    end
+    
+    facade.add_framework(:blah, GoodFake)
+    facade.framework = :blah
+    facade.pending_requests.should == "fake"
+  end
+
+  it "should not allow you to add a new javascript framework that is invalid" do
+    module BadFake
+      def self.blah
+      end
+    end
+
+    expect{ facade.add_framework(:blah, BadFake) }.to raise_error
+  end
 end
 
