@@ -8,12 +8,12 @@ Feature: Select List
 
   Scenario: Selecting an element on the select list
     When I select "Test 2" from the select list
-    Then the current item should be "option2"
+    Then the current item should be "Test 2"
 
   Scenario Outline: Locating select lists on the Page
     When I search for the select list by "<search_by>"
     Then I should be able to select "Test 2"
-    And the value for the selected item should be "option2"
+    And the value for the selected item should be "Test 2"
 
   Scenarios:
     | search_by |
@@ -26,7 +26,7 @@ Feature: Select List
   Scenario Outline: Locating a select list using multiple parameters
     When I search for the select list by "<param1>" and "<param2>"
     Then I should be able to select "Test 2"
-    And the value for the selected item should be "option2"
+    And the value for the selected item should be "Test 2"
 
   Scenarios:
     | param1 | param2 |

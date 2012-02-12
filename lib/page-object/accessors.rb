@@ -172,7 +172,7 @@ module PageObject
 
     #
     # adds four methods - one to select an item in a drop-down,
-    # another to fetch the currently selected item, another
+    # another to fetch the currently selected item text, another
     # to retrieve the select list element, and another to check the 
     # drop down's existence.
     #
