@@ -1,6 +1,5 @@
 require 'page-object/javascript/jquery'
 require 'page-object/javascript/prototype'
-require 'page-object/javascript/dojo'
 
 
 module PageObject
@@ -30,7 +29,6 @@ module PageObject
         @builder = {
           :jquery => ::PageObject::Javascript::JQuery,
           :prototype => ::PageObject::Javascript::Prototype,
-          :dojo => ::PageObject::Javascript::Dojo
         }
       end
     end

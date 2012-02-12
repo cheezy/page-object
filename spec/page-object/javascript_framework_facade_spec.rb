@@ -32,15 +32,5 @@ describe PageObject::JavascriptFrameworkFacade do
     facade.framework = :prototype
     facade.pending_requests.should == 'return Ajax.activeRequestCount'
   end
-
-  it "should register the Dojo script builder" do
-    facade.framework = :dojo
-    facade.script_builder.should == ::PageObject::Javascript::Dojo
-  end
-
-  it "should return script for pending requests in Dojo" do
-    facade.framework = :dojo
-    facade.pending_requests.should == 'return dojo.io.XMLHTTPTransport.inFlight.length'
-  end
 end
 
