@@ -353,8 +353,11 @@ describe PageObject::Accessors do
 
     context "Watir implementation" do
       it "should get the current item from a select list" do
+        selected = "OH"
+        selected.should_receive(:selected?).and_return(selected)
+        selected.should_receive(:text).and_return("OH")
         watir_browser.should_receive(:select_list).and_return watir_browser
-        watir_browser.should_receive(:value).and_return("OH")
+        watir_browser.should_receive(:options).and_return([selected])
         watir_page_object.state.should == "OH"
       end
 
@@ -373,8 +376,11 @@ describe PageObject::Accessors do
 
     context "Selenium implementation" do
       it "should should get the current item from a select list" do
+        selected = "OH"
+        selected.should_receive(:selected?).and_return(selected)
+        selected.should_receive(:text).and_return("OH")
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        selenium_browser.should_receive(:attribute).and_return("OH")
+        selenium_browser.should_receive(:find_elements).and_return([selected])
         selenium_page_object.state.should == "OH"
       end
 

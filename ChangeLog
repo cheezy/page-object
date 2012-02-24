@@ -1,3 +1,8 @@
+=== Version 0.6.3
+* Fixes
+  WARNING:  This change breaks existing code
+  * Changed the generated getter for select_list to return the text instead of the value
+
 === Version 0.6.2 / 2012-2-12
 * Enhancements
   * Added #wait_for_ajax support for the jQuery framework
