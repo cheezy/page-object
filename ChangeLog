@@ -1,5 +1,6 @@
 === Version 0.6.3
 * Fixes
+  * Udates to the README - Thanks to p0deje and ivaravko
   WARNING:  This change breaks existing code
   * Changed the generated getter for select_list to return the text instead of the value
 
