@@ -3,7 +3,7 @@
 [![Build Status](http://travis-ci.org/cheezy/page-object.png)](http://travis-ci.org/cheezy/page-object)
 
 
-A simple gem that assists in creating flexible page objects for testing browser based appications.  The goal is to facilitate creating abstraction layers in your tests to decouple the tests from the item they are testing and to provide a simple interface to the elements on a page.  It works with both watir-webdriver and selenium-webdriver.
+A simple gem that assists in creating flexible page objects for testing browser based applications.  The goal is to facilitate creating abstraction layers in your tests to decouple the tests from the item they are testing and to provide a simple interface to the elements on a page.  It works with both watir-webdriver and selenium-webdriver.
 
 ## Documentation
 
