@@ -1,6 +1,9 @@
 class Page
   include PageObject
 
+  expected_title "Static Elements Page"
+
+  
   link(:hello0, {:text => "Hello", :index => 0})
   link(:hello1, {:text => "Hello", :index => 1})
   link(:hello2, {:text => "Hello", :index => 2})

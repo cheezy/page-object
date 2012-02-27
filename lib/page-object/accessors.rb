@@ -22,6 +22,25 @@ module PageObject
     end
 
     #
+    # Creates a method that compares the expected_title of a page against the actual.
+    # @param [String] expected_title the literal expected title for the page
+    # @param [Regexp] expected_title the expected title pattern for the page
+    # @return [Nil]
+    # @raise An exception if expected_title does not match actual title
+    #
+    # @example Specify 'Google' as the expected title of a page
+    #   expected_title "Google"
+    #   page.has_expected_title?
+    # 
+    def expected_title(expected_title)
+      define_method("has_expected_title?") do
+        has_expected_title = expected_title.kind_of?(Regexp) ? expected_title =~ title : expected_title == title
+        raise "Expected title '#{expected_title}' instead of '#{title}'" unless has_expected_title
+        has_expected_title
+      end
+    end
+    
+    #
     # Identify an element as existing within a frame or iframe.  A frame parameter
     # is passed to the block and must be passed to the other calls to PageObject.
     # You can nest calls to in_frame by passing the frame to the next level.

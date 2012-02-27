@@ -4,6 +4,7 @@ class AccessorsTestPageObject
   include PageObject
 
   page_url "http://apple.com"
+  expected_title "Expected Title"
   link(:google_search, :link => 'Google Search')
   text_field(:first_name, :id => 'first_name')
   hidden_field(:social_security_number, :id => 'ssn')
@@ -139,6 +140,18 @@ describe PageObject::Accessors do
     it "should not navigate to a page when 'page_url' not specified" do
       watir_browser.should_not_receive(:goto)
       page = BlockPageObject.new(watir_browser, true)
+    end
+  end
+
+  describe "validating the page title" do
+    it "should validate the title" do
+      watir_browser.should_receive(:title).and_return("Expected Title")
+      watir_page_object.should have_expected_title
+    end
+
+    it "should raise error when it does not have expected title" do
+      watir_browser.should_receive(:title).twice.and_return("Not Expected")
+      expect { watir_page_object.has_expected_title? }.to raise_error
     end
   end
 

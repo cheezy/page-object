@@ -78,3 +78,6 @@ When /^I press the forward button$/ do
   @page.forward
 end
 
+Then /^the page should have the expected title$/ do
+  @page.should have_expected_title
+end

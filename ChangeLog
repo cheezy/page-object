@@ -1,4 +1,6 @@
 === Version 0.6.3
+* Enhancements
+  * Added #expected_title method to PageObject
 * Fixes
   * Udates to the README - Thanks to p0deje and ivaravko
   WARNING:  This change breaks existing code

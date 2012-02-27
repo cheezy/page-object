@@ -14,6 +14,9 @@ Feature: Page level actions
 
   Scenario: Getting the title from a web page
     Then the page should have the title "Static Elements Page"
+    
+  Scenario: Validating the page title
+    Then the page should have the expected title
 
   Scenario: Waiting for something
     Then I should be able to wait for a block to return true
