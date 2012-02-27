@@ -61,18 +61,18 @@ describe "Element" do
 
     it "should build xpath when locating basic elements by name and class" do
       all_basic_elements.each do |tag|
-        identifier = {:tag_name => tag, :name => 'foo', :class => 'bar'}
+        identifier = {:tag_name => tag, :class => 'bar', :name => 'foo'}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
-        what.should == ".//#{tag}[@name='foo' and @class='bar']"
+        what.should == ".//#{tag}[@class='bar' and @name='foo']"
       end
     end
 
     it "should build xpath when locating input elements by name and class" do
       all_input_elements.each do |type|
-        identifier = {:tag_name => 'input', :type => "#{type}", :name => 'foo', :class => 'bar'}
+        identifier = {:tag_name => 'input', :type => "#{type}", :class => 'bar', :name => 'foo'}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        what.should include ".//input[@type='#{type}' and @name='foo' and @class='bar']"
+        what.should include ".//input[@type='#{type}' and @class='bar' and @name='foo']"
       end
     end
   end
