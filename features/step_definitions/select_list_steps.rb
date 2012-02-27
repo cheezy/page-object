@@ -43,3 +43,7 @@ Then /^the select list should know that "([^\"]*)" is selected$/ do |text|
   @page.sel_list_id_element.selected?(text).should be_true
 end
 
+Then /^the value for the option should be "([^\"]*)"$/ do |value|
+  element = @page.send "sel_list_#{@how}_element".to_sym
+  element.value.should == value
+end
