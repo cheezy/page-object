@@ -18,6 +18,12 @@ Feature: Page level actions
   Scenario: Validating the page title
     Then the page should have the expected title
 
+  Scenario: Validating the expected element
+    Then the page should have the expected element
+    
+  Scenario: Validating that an expected element does not exist
+    Then the page should not have the expected element
+
   Scenario: Waiting for something
     Then I should be able to wait for a block to return true
 

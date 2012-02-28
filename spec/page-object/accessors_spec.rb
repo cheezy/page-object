@@ -5,6 +5,7 @@ class AccessorsTestPageObject
 
   page_url "http://apple.com"
   expected_title "Expected Title"
+  expected_element :google_search
   link(:google_search, :link => 'Google Search')
   text_field(:first_name, :id => 'first_name')
   hidden_field(:social_security_number, :id => 'ssn')
@@ -152,6 +153,21 @@ describe PageObject::Accessors do
     it "should raise error when it does not have expected title" do
       watir_browser.should_receive(:title).twice.and_return("Not Expected")
       expect { watir_page_object.has_expected_title? }.to raise_error
+    end
+  end
+
+  describe "validating the existence of an element" do
+    it "should validate an element exists" do
+      watir_page_object.should_receive(:google_search?).and_return(watir_browser)
+      watir_page_object.has_expected_element?
+    end
+
+    it "should handle non-existent elements gracefully" do
+      class FakePage
+        include PageObject
+        expected_element :foo
+      end
+      FakePage.new(watir_browser).should_not have_expected_element
     end
   end
 

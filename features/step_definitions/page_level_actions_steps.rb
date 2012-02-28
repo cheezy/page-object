@@ -81,3 +81,15 @@ end
 Then /^the page should have the expected title$/ do
   @page.should have_expected_title
 end
+
+Then /^the page should have the expected element$/ do
+  @page.should have_expected_element
+end
+
+Then /^the page should not have the expected element$/ do
+  class FakePage
+    include PageObject
+    expected_element :blah
+  end
+  FakePage.new(@browser).should_not have_expected_element
+end

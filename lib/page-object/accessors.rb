@@ -39,6 +39,12 @@ module PageObject
         has_expected_title
       end
     end
+
+    def expected_element(element_name)
+      define_method("has_expected_element?") do
+        self.respond_to? "#{element_name}?" and  self.send "#{element_name}?" 
+      end
+    end
     
     #
     # Identify an element as existing within a frame or iframe.  A frame parameter
