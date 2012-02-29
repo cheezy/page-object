@@ -25,7 +25,7 @@ module PageObject
     # Creates a method that compares the expected_title of a page against the actual.
     # @param [String] expected_title the literal expected title for the page
     # @param [Regexp] expected_title the expected title pattern for the page
-    # @return [Nil]
+    # @return [boolean]
     # @raise An exception if expected_title does not match actual title
     #
     # @example Specify 'Google' as the expected title of a page
@@ -40,9 +40,20 @@ module PageObject
       end
     end
 
-    def expected_element(element_name)
+    #
+    # Creates a method that provides a way to initialize a page based upon an expected element.
+    # This is useful for pages that load dynamic content.
+    # @param [Symbol] the name given to the element in the declaration
+    # @param [optional, Integer] timeout default value is 5 seconds
+    # @return [boolean]
+    #
+    # @example Specify a text box named :address expected on the page within 10 seconds
+    #   expected_element(:address, 10)
+    #   page.has_expected_element?
+    #
+    def expected_element(element_name, timeout=5)
       define_method("has_expected_element?") do
-        self.respond_to? "#{element_name}?" and  self.send "#{element_name}?" 
+        self.respond_to? "#{element_name}_element" and self.send("#{element_name}_element").when_present timeout
       end
     end
     

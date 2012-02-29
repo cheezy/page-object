@@ -158,7 +158,8 @@ describe PageObject::Accessors do
 
   describe "validating the existence of an element" do
     it "should validate an element exists" do
-      watir_page_object.should_receive(:google_search?).and_return(watir_browser)
+      watir_page_object.should_receive(:google_search_element).and_return(watir_browser)
+      watir_browser.should_receive(:when_present).and_return(true)
       watir_page_object.has_expected_element?
     end
 
