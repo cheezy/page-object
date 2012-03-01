@@ -1,4 +1,4 @@
-=== Version 0.6.3
+=== Version 0.6.3 / 2012-3-1
 * Enhancements
   * Added #expected_title method to PageObject
   * Added #expected_element method to PageObject
