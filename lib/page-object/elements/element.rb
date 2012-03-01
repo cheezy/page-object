@@ -22,21 +22,21 @@ module PageObject
       # click the element
       #
       def click
-        @element.click
+        element.click
       end
 
       #
       # double click the element
       #
       def double_click
-        @element.double_click
+        element.double_click
       end
 
       #
       # return true if the element is enabled
       #
       def enabled?
-        @element.enabled?
+        element.enabled?
       end
 
       #
@@ -50,11 +50,11 @@ module PageObject
       # get the value of the given CSS property
       #
       def style(property)
-        @element.style property
+        element.style property
       end
       
       def inspect
-        @element.inspect
+        element.inspect
       end
 
       # @private

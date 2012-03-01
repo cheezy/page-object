@@ -17,7 +17,7 @@ module PageObject
         # Select a value from the list
         #
         def select(value)
-          @element.send_keys(value)
+          element.send_keys(value)
         end
 
         #
@@ -57,7 +57,7 @@ module PageObject
         private
 
         def find_options
-          @element.find_elements(:xpath, child_xpath)
+          element.find_elements(:xpath, child_xpath)
         end
       end
     end

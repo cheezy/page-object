@@ -130,7 +130,6 @@ module PageObject
           frame = [] if frame.nil?
           frame << identifier
           block.call(frame)
-
         end
     
         #

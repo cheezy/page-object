@@ -20,7 +20,7 @@ module PageObject
         private
 
         def dimension
-          @element.size
+          element.size
         end
       end
     end

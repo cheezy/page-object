@@ -13,14 +13,14 @@ module PageObject
         # return true if an element is visible
         #
         def visible?
-          @element.displayed?
+          element.displayed?
         end
 
         #
         # return true if an element exists
         #
         def exists?
-          not @element.nil?
+          not element.nil?
         end
 
         #
@@ -29,7 +29,7 @@ module PageObject
         # @return [String]
         #
         def text
-          @element.text
+          element.text
         end
 
         #
@@ -38,14 +38,14 @@ module PageObject
         # @return [String]
         #
         def value
-          @element.attribute('value')
+          element.attribute('value')
         end
 
         #
         # compare this element to another to determine if they are equal
         #
         def ==(other)
-          @element == other.element
+          element == other.element
         end
 
         #
@@ -54,7 +54,7 @@ module PageObject
         # @return [String]
         #
         def tag_name
-          @element.tag_name
+          element.tag_name
         end
 
         #
@@ -88,7 +88,7 @@ module PageObject
         #   attribute value
         #
         def attribute(attribute_name)
-          @element.attribute attribute_name
+          element.attribute attribute_name
         end
 
         #
@@ -97,8 +97,8 @@ module PageObject
         def fire_event(event_name)
           event_name = event_name.to_s.sub(/^on/, '').downcase
           script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:fireEvent)
-          bridge = @element.instance_variable_get(:@bridge)
-          bridge.executeScript(script, @element, event_name)
+          bridge = element.instance_variable_get(:@bridge)
+          bridge.executeScript(script, element, event_name)
         end
 
         #
@@ -106,9 +106,9 @@ module PageObject
         #
         def parent
           script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:getParentElement)
-          bridge = @element.instance_variable_get(:@bridge)
-          parent = bridge.executeScript(script, @element)
-          type = @element.type if parent.tag_name.to_sym == :input
+          bridge = element.instance_variable_get(:@bridge)
+          parent = bridge.executeScript(script, element)
+          type = element.type if parent.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
           cls.new(parent, :platform => :selenium_webdriver)
         end
@@ -117,15 +117,15 @@ module PageObject
         # Set the focus to the current element
         #
         def focus
-          bridge = @element.instance_variable_get(:@bridge)
-          bridge.executeScript("return arguments[0].focus()", @element)
+          bridge = element.instance_variable_get(:@bridge)
+          bridge.executeScript("return arguments[0].focus()", element)
         end
 
         #
         # Click this element
         #
         def right_click
-          @element.context_click
+          element.context_click
         end
 
         #
@@ -193,14 +193,14 @@ module PageObject
         # @see Selenium::WebDriver::Keys::KEYS
         #
         def send_keys(*args)
-          @element.send_keys(*args)
+          element.send_keys(*args)
         end
          
         #
         # clear the contents of the element
         #
         def clear
-          @element.clear
+          element.clear
         end
       end
     end

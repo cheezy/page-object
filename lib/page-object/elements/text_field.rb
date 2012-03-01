@@ -9,7 +9,7 @@ module PageObject
       end
 
       def append(text)
-        @element.send_keys text
+        element.send_keys text
       end
 
       protected

@@ -7,7 +7,7 @@ module PageObject
         # Submit the form.
         #
         def submit
-          @element.submit
+          element.submit
         end
 
       end

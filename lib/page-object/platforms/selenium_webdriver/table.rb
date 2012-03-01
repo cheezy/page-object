@@ -32,7 +32,7 @@ module PageObject
         private
 
         def table_rows
-          @element.find_elements(:xpath, child_xpath)
+          element.find_elements(:xpath, child_xpath)
         end
       end
     end
