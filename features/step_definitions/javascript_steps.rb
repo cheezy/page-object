@@ -28,3 +28,11 @@ Then /^I should be able to wait for the answer "([^\"]*)"$/ do |answer|
   @page.wait_for_ajax
   @page.results.should == answer
 end
+
+Given /^I execute the javascript "([^\"]*)"$/ do |script|
+  @answer = @page.execute_script script
+end
+
+Then /^I should get the answer "([^\"]*)"$/ do |answer|
+  @answer.should == answer.to_i
+end

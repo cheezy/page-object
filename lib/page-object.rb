@@ -208,6 +208,13 @@ module PageObject
   def prompt(answer, frame=nil, &block)
     platform.prompt(answer, frame, &block)
   end
+
+  #
+  # Execute javascript on the browser
+  #
+  def execute_script(script)
+    platform.execute_script(script)
+  end
   
   #
   # Identify an element as existing within a frame or iframe.  A frame parameter

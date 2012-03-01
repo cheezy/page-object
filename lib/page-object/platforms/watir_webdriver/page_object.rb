@@ -104,6 +104,14 @@ module PageObject
           result && result.dup.each_key { |k| result[k.to_sym] = result.delete(k) }
           result
         end
+
+        #
+        # platform method to execute javascript on the browser
+        # See PageObject#execute_script
+        #
+        def execute_script(script)
+          @browser.wd.execute_script(script)
+        end
     
         #
         # platform method to handle attaching to a running window
