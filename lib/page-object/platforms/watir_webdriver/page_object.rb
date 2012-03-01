@@ -765,6 +765,18 @@ module PageObject
           find_watir_element("file_field(identifier)", Elements::FileField, identifier)
         end
 
+        #
+        # platform method to return a PageObject::Elements::Element element
+        # See PageObject::Accessors#elem
+        #
+        def element_for(tag, identifier)
+          find_watir_element("#{tag.to_s}(identifier)", Elements::Element, identifier, tag.to_s)
+        end
+
+        def elements_for(tag, identifier)
+          find_watir_elements("#{tag.to_s}s(identifier)", Elements::Element, identifier, tag.to_s)
+        end
+
         private
     
         def find_watir_elements(the_call, type, identifier, tag_name=nil)

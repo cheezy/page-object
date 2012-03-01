@@ -983,5 +983,19 @@ module PageObject
         platform.file_field_for(identifier.clone).exists?
       end
     end
+
+    def elem(name, tag, identifier=nil, &block)
+      define_method("#{name}") do
+        self.send("#{name}_element").text
+      end
+      define_method("#{name}_element") do
+        return call_block(&block) if block_given?
+        platform.element_for(tag, identifier.clone)
+      end
+      define_method("#{name}?") do
+        self.send("#{name}_element").exists?
+      end      
+    end
+
   end
 end
