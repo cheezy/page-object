@@ -444,8 +444,7 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def click_button_for(identifier)
-          call = "button(identifier).click" unless identifier[:css]
-          call = "element(identifier).click" if identifier[:css]
+          call = identifier[:css] ? "#{css_element}.click" : "button(identifier).click"
           process_watir_call(call, Elements::Button, identifier)
         end
 
@@ -454,8 +453,7 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def button_for(identifier)
-          call = "button(identifier)" unless identifier[:css]
-          call = "element(identifier)" if identifier[:css]
+          call = identifier[:css] ? css_element : "button(identifier)"
           find_watir_element(call, Elements::Button, identifier)
         end
 
@@ -463,8 +461,7 @@ module PageObject
         # platform method to retrieve an array of button elements
         #
         def buttons_for(identifier)
-          call = "buttons(identifier)" unless identifier[:css]
-          call = "elements(identifier)" if identifier[:css]
+          call = identifier[:css] ? css_elements : "buttons(identifier)"
           find_watir_elements(call, Elements::Button, identifier)
         end
 
@@ -817,6 +814,14 @@ module PageObject
         
         def switch_to_default_content(frame_identifiers)
           @browser.wd.switch_to.default_content unless frame_identifiers.nil?          
+        end
+
+        def css_element
+          "element(identifier)"
+        end
+
+        def css_elements
+          "elements(identifier)"
         end
 
         def switch_to_frame(frame_identifiers)
