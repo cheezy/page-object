@@ -11,7 +11,7 @@ module PageObject
       protected
 
       def self.watir_finders
-        super + [:href, :text]
+        super + [:href, :text, :css]
       end
 
       def self.watir_mapping
@@ -19,7 +19,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        super + [:link, :link_text]
+        super + [:link, :link_text, :css]
       end
 
       def self.selenium_mapping

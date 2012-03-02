@@ -296,8 +296,8 @@ module PageObject
         # See PageObject::Accessors#link
         #
         def click_link_for(identifier)
-          process_watir_call("link(identifier).click if identifier", Elements::Link,
-                             identifier)
+          call = identifier[:css] ? "#{css_element}.click if identifier" : "link(identifier).click if identifier"
+          process_watir_call(call, Elements::Link, identifier)
         end
 
         #
@@ -305,14 +305,16 @@ module PageObject
         # see PageObject::Accessors#link
         #
         def link_for(identifier)
-          find_watir_element("link(identifier)", Elements::Link, identifier)
+          call = identifier[:css] ? css_element : "link(identifier)"
+          find_watir_element(call, Elements::Link, identifier)
         end
 
         #
         # platform method to retrieve an array of link elements
         #
         def links_for(identifier)
-          find_watir_elements("links(identifier)", Elements::Link, identifier)
+          call = identifier[:css] ? css_elements : "links(identifier)"
+          find_watir_elements(call, Elements::Link, identifier)
         end
 
         #

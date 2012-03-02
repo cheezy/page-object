@@ -7,6 +7,7 @@ module PageObject
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -26,6 +27,7 @@ module PageObject
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -189,6 +191,7 @@ module PageObject
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
     #   * :href => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -208,6 +211,7 @@ module PageObject
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
     #   * :href => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium

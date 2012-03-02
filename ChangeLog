@@ -1,6 +1,8 @@
 === Version 0.6.4
 * Enhancements
-  * Added support for finding buttons using :css
+  * Added support for finding the following elements by :css
+	Button
+	Link
 
 === Version 0.6.3 / 2012-3-1
 * Enhancements

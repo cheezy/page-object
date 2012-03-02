@@ -54,6 +54,7 @@ class Page
   link(:google_search_href, :href => "success.html")
   link(:google_search_text, :text => "Google Search")
   link(:google_search_index, :index => 0)
+  link(:google_search_css, :css => "a.link_class")
 
   select_list(:sel_list_id, :id => "sel_list_id")
   select_list(:sel_list_class, :class => "sel_list_class")
