@@ -1,3 +1,7 @@
+=== Version 0.6.4
+* Enhancements
+  * Added support for finding buttons using :css
+
 === Version 0.6.3 / 2012-3-1
 * Enhancements
   * Added #expected_title method to PageObject

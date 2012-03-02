@@ -39,6 +39,7 @@ Feature: Button
     | xpath     |
     | index     |
     | value     |
+    | css       |
 
   Scenario Outline: Locating real buttons on the page
     When I search for the button by "<search_by>"
