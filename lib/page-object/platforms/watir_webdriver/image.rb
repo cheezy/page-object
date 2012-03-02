@@ -7,14 +7,14 @@ module PageObject
         # Return the width of the image.
         #
         def width
-          @element.width
+          element.width
         end
 
         #
         # Return the height of the image
         #
         def height
-          @element.height
+          element.height
         end
       end
     end

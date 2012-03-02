@@ -10,14 +10,14 @@ module PageObject
         # return true if an element is visible
         #
         def visible?
-          @element.present?
+          element.present?
         end
 
         #
         # return true if an element exists
         #
         def exists?
-          @element.exists?
+          element.exists?
         end
 
         #
@@ -26,7 +26,7 @@ module PageObject
         # @return [String]
         #
         def text
-          @element.text
+          element.text
         end
 
         #
@@ -35,14 +35,14 @@ module PageObject
         # @return [String]
         #
         def value
-          @element.value
+          element.value
         end
 
         #
         # compare this element to another to determine if they are equal
         #
         def ==(other)
-          @element == other.element
+          element == other.element
         end
 
         #
@@ -51,7 +51,7 @@ module PageObject
         # @return [String]
         #
         def tag_name
-          @element.tag_name
+          element.tag_name
         end
 
         #
@@ -85,22 +85,22 @@ module PageObject
         #   attribute value
         #
         def attribute(attribute_name)
-          @element.attribute_value attribute_name
+          element.attribute_value attribute_name
         end
 
         #
         # Fire the provided event on the current element
         #
         def fire_event(event_name)
-          @element.fire_event(event_name)
+          element.fire_event(event_name)
         end
 
         #
         # find the parent element
         #
         def parent
-          parent = @element.parent
-          type = @element.type if parent.tag_name.to_sym == :input
+          parent = element.parent
+          type = element.type if parent.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
           cls.new(parent, :platform => :watir_webdriver)
         end
@@ -109,7 +109,7 @@ module PageObject
         # Set the focus to the current element
         #
         def focus
-          @element.focus
+          element.focus
         end
         
         #
@@ -118,7 +118,7 @@ module PageObject
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
         def when_present(timeout=5)
-          @element.wait_until_present(timeout)
+          element.wait_until_present(timeout)
           self
         end
 
@@ -171,14 +171,14 @@ module PageObject
         # @see Selenium::WebDriver::Keys::KEYS
         #
         def send_keys(*args)
-          @element.send_keys(*args)
+          element.send_keys(*args)
         end
 
         #
         # clear the contents of the element
         #
         def clear
-          @element.clear
+          element.clear
         end
       end
     end

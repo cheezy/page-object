@@ -11,7 +11,7 @@ module PageObject
         # @return [PageObject::Elements::TableRow]
         #
         def [](idx)
-          Object::PageObject::Elements::TableRow.new(@element[idx], :platform => :watir_webdriver)
+          Object::PageObject::Elements::TableRow.new(element[idx], :platform => :watir_webdriver)
         end
 
         #

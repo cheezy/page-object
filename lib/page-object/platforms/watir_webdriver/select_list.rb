@@ -17,7 +17,7 @@ module PageObject
         # Select a value from the list
         #
         def select(value)
-          @element.select(value)
+          element.select(value)
         end
 
         #
@@ -27,7 +27,7 @@ module PageObject
         #
         def options
           elements = []
-          options = @element.wd.find_elements(:xpath, child_xpath)
+          options = element.wd.find_elements(:xpath, child_xpath)
           options.each do |opt|
             elements << Object::PageObject::Elements::Option.new(opt, :platform => :watir_webdriver)
           end
@@ -38,7 +38,7 @@ module PageObject
         # @return [Array<String>] An array of strings representing the text value of the currently selected options.
         #
         def selected_options
-          @element.selected_options.map { |e| e.text }.compact
+          element.selected_options.map { |e| e.text }.compact
         end
 
         #
@@ -47,7 +47,7 @@ module PageObject
         # @param [String, Regexp] value A value.
         # @return [Boolean]
         def include?(value)
-          @element.include? value
+          element.include? value
         end
         
         #
@@ -56,7 +56,7 @@ module PageObject
         # @param [String, Regexp] value A value.
         # @return [Boolean]
         def selected?(value)
-          @element.selected? value
+          element.selected? value
         end
       end
     end
