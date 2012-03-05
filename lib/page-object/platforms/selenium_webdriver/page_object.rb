@@ -813,6 +813,14 @@ module PageObject
           find_selenium_element(identifier, Elements::FileField, 'input', :type => 'file')
         end
 
+        def element_for(tag, identifier)
+          find_selenium_element(identifier, Elements::FileField, tag.to_s)
+        end
+
+        def elements_for(tag, identifier)
+          find_selenium_elements(identifier, Elements::FileField, tag.to_s)
+        end
+
         private
         
         def process_selenium_call(identifier, type, tag, other=nil)
