@@ -18,6 +18,7 @@ describe PageObject::Platforms::WatirWebDriver do
       subject.browser.should be browser
     end
   end
+  
   describe "is for?" do
     it "should be true when the browser is Watir::Browser" do
       browser = mock_watir_browser()
