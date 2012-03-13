@@ -985,7 +985,7 @@ module PageObject
       end
     end
 
-    def elem(name, tag, identifier=nil, &block)
+    def element(name, tag, identifier=nil, &block)
       define_method("#{name}") do
         self.send("#{name}_element").text
       end

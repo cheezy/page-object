@@ -262,10 +262,10 @@ class Page
   link(:open_window, :text => 'New Window')
   link(:child, :id => 'child')
 
-  elem(:article_id, :article, :id => 'article_id')
-  elem(:header_id, :header, :id => 'header_id')
-  elem(:footer_id, :footer, :id => 'footer_id')
-  elem(:summary_id, :summary, :id => 'summary_id')
-  elem(:details_id, :details, :id => 'details_id')
+  element(:article_id, :article, :id => 'article_id')
+  element(:header_id, :header, :id => 'header_id')
+  element(:footer_id, :footer, :id => 'footer_id')
+  element(:summary_id, :summary, :id => 'summary_id')
+  element(:details_id, :details, :id => 'details_id')
 end
 
