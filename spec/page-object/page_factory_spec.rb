@@ -6,6 +6,11 @@ class FactoryTestPage
   page_url "http://google.com"
 end
 
+class TestPageWithDirectUrl
+  include PageObject
+  direct_url "http//google.com"
+end
+
 class AnotherPage
   include PageObject
 end
@@ -33,10 +38,31 @@ describe PageObject::PageFactory do
     end
   end
 
+  it "should create a new page object and execute a block using 'on'" do
+    @world.browser.should_not_receive(:goto)
+    @world.on FactoryTestPage do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+  end
+
   it "should create and visit a new page" do
     @world.browser.should_receive(:goto)
     @world.visit_page FactoryTestPage do |page|
       page.should be_instance_of FactoryTestPage
+    end
+  end
+
+  it "should create and visit a new page using 'visit'" do
+    @world.browser.should_receive(:goto)
+    @world.visit FactoryTestPage do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+  end
+
+  it "should create and visit a new page when url is defined as 'direct_url'" do
+    @world.browser.should_receive(:goto)
+    @world.visit TestPageWithDirectUrl do |page|
+      page.should be_instance_of TestPageWithDirectUrl
     end
   end
   
