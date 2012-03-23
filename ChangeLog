@@ -4,6 +4,7 @@
 	Button
 	Link
   * Added method to fetch generic element (Thanks Jim Holmes)
+  * Changed Elements.element_class_for so parameters can be strings or symbols
 
 === Version 0.6.3 / 2012-3-1
 * Enhancements

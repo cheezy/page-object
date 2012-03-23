@@ -17,7 +17,7 @@ module PageObject
       # method to return the element for a tag_name
       #
       def element_class_for(tag_name, type=nil)
-        return type_to_class[type] if type
+        return type_to_class[type.to_sym] if type
         tag_to_class[tag_name.to_sym] || ::PageObject::Elements::Element
       end
       
