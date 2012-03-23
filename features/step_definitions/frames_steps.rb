@@ -42,6 +42,10 @@ Then /^I should verify "([^\"]*)" is in the text field for frame 2 using "([^\"]
   result.should == text
 end
 
+#Then /^I should be able to get the text fields text from frame 2 using "([^\"]*)"$/ do |arg_type|
+#  @page.send("text_field_2_#{arg_type}_element").text
+#end
+
 When /^I type "([^\"]*)" into the text field from frame 1 using "([^\"]*)"$/ do |text, arg_type|
   @page.send "text_field_1_#{arg_type}=".to_sym, text
 end
