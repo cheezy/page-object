@@ -20,6 +20,7 @@ module PageObject
         platform.navigate_to url
       end
     end
+    alias_method :direct_url, :page_url
 
     #
     # Creates a method that compares the expected_title of a page against the actual.
