@@ -110,7 +110,7 @@ module PageObject
         # See PageObject#execute_script
         #
         def execute_script(script)
-          @browser.wd.execute_script(script)
+          @browser.execute_script(script)
         end
     
         #
@@ -120,6 +120,13 @@ module PageObject
         def attach_to_window(identifier, &block)
           win_id = {identifier.keys.first => /#{Regexp.escape(identifier.values.first)}/}
           @browser.window(win_id).use &block
+        end
+
+        def element_with_focus
+          element = browser.execute_script("return document.activeElement")
+          type = element.type.to_sym if element.tag_name.to_sym == :input
+          cls = ::PageObject::Elements.element_class_for(element.tag_name, type)
+          cls.new(element, :platform => :watir_webdriver)    
         end
 
         #

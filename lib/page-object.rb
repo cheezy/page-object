@@ -283,6 +283,13 @@ module PageObject
       platform.attach_to_window(identifier, &block)
     end
   end
+
+  #
+  # Find the element that has focus on the page
+  #
+  def element_with_focus
+    platform.element_with_focus
+  end
   
   #
   # Refresh to current page

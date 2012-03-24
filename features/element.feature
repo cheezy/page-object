@@ -16,46 +16,50 @@ Feature: Elements
     When I check a disabled button
     Then it should know it is not enabled
     And it should know that it is disabled
+    
+  Scenario: Setting focus and finding the element with focus
+    When I set the focus to the test text_field
+    Then I should know that the text_field has the focus
 
   Scenario: Link element methods
     When I retrieve a link element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text is "Google Search"
+    And I should know the text is "Google Search"
     And I should know it is equal to itself
-    And I should know its' tag name is "a"
+    And I should know the tag name is "a"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
   @watir_only
   Scenario: Link element methods for watir
     When I retrieve a link element
-    Then I should know its' value is ""
+    Then I should know the value is ""
 
 
   Scenario: Button element methods
     When I retrieve a button element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' value is "Click Me"
+    And I should know the value is "Click Me"
     And I should know it is equal to itself
-    And I should know its' tag name is "input"
+    And I should know the tag name is "input"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
   @watir_only
   Scenario: Button element methods for watir
     When I retrieve a button element
-    Then I should know its' text is "Click Me"
+    Then I should know the text is "Click Me"
 
   Scenario: Check Box element methods
     When I retrieve a check box element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text is ""
-    And I should know its' value is "1"
+    And I should know the text is ""
+    And I should know the value is "1"
     And I should know it is equal to itself
-    And I should know its' tag name is "input"
+    And I should know the tag name is "input"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -63,30 +67,30 @@ Feature: Elements
     When I retrieve the div element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text is "page-object rocks!"
+    And I should know the text is "page-object rocks!"
     And I should know it is equal to itself
-    And I should know its' tag name is "div"
+    And I should know the tag name is "div"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
   @watir_only
   Scenario: Div element methods for watir
     When I retrieve the div element
-    Then I should know its' value is ""
+    Then I should know the value is ""
 
   @selenium_only
   Scenario: Div element methods for selenium
     When I retrieve the div element
-    Then I should know its' value is nil
+    Then I should know the value is nil
 
   Scenario: Radio Button element methods
     When I retrieve a radio button
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text is ""
-    And I should know its' value is "Milk"
+    And I should know the text is ""
+    And I should know the value is "Milk"
     And I should know it is equal to itself
-    And I should know its' tag name is "input"
+    And I should know the tag name is "input"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -94,19 +98,19 @@ Feature: Elements
     When I retrieve a select list
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes "Test 1"
-    And I should know its' value is "option1"
+    And I should know the text includes "Test 1"
+    And I should know the value is "option1"
     And I should know it is equal to itself
-    And I should know its' tag name is "select"
+    And I should know the tag name is "select"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
   Scenario: Table element methods
     When I retrieve a table element
     Then I should know it is visible
-    And I should know its' text includes "Data1"
+    And I should know the text includes "Data1"
     And I should know it is equal to itself
-    And I should know its' tag name is "table"
+    And I should know the tag name is "table"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -114,41 +118,41 @@ Feature: Elements
   Scenario: Table element methods in watir
     When I retrieve a table element
     Then I should know it exists
-    And I should know its' value is ""
+    And I should know the value is ""
 
   @selenium_only
   Scenario: Table element methods in selenium
     When I retrieve a table element
-    Then I should know its' value is nil
+    Then I should know the value is nil
 
   Scenario: Table Cell element methods
     When I retrieve table cell
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes "Data4"
+    And I should know the text includes "Data4"
     And I should know it is equal to itself
-    And I should know its' tag name is "td"
+    And I should know the tag name is "td"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
   @watir_only
   Scenario: Table Cell element methods in watir
     When I retrieve table cell
-    Then I should know its' value is ""
+    Then I should know the value is ""
 
   @selenium_only
   Scenario: Table Cell element methods in selenium
     When I retrieve table cell
-    Then I should know its' value is nil
+    Then I should know the value is nil
 
   Scenario: Text Field element methods
     When I retrieve a text field
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes ""
-    And I should know its' value is ""
+    And I should know the text includes ""
+    And I should know the value is ""
     And I should know it is equal to itself
-    And I should know its' tag name is "input"
+    And I should know the tag name is "input"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -156,10 +160,10 @@ Feature: Elements
     When I retrieve the text area
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes ""
-    And I should know its' value is ""
+    And I should know the text includes ""
+    And I should know the value is ""
     And I should know it is equal to itself
-    And I should know its' tag name is "textarea"
+    And I should know the tag name is "textarea"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -167,58 +171,58 @@ Feature: Elements
     When I get the image element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes ""
+    And I should know the text includes ""
     And I should know it is equal to itself
-    And I should know its' tag name is "img"
+    And I should know the tag name is "img"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
   @watir_only
   Scenario: Image element methods in watir
     When I get the image element
-    Then I should know its' value is ""
+    Then I should know the value is ""
 
   @selenium_only
   Scenario: Image element methods in selenium
     When I get the image element
-    Then I should know its' value is nil
+    Then I should know the value is nil
 
   Scenario: Hidden Field element methods
     When I retrieve the hidden field element
     Then I should know it exists
     And I should know it is not visible
-    And I should know its' text includes ""
-    And I should know its' value is "12345"
+    And I should know the text includes ""
+    And I should know the value is "12345"
     And I should know it is equal to itself
-    And I should know its' tag name is "input"
+    And I should know the tag name is "input"
     And I should know the attribute "readonly" is false
 
   Scenario: Form element methods
     When I locate the form
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes ""
+    And I should know the text includes ""
     And I should know it is equal to itself
-    And I should know its' tag name is "form"
+    And I should know the tag name is "form"
     And I should know the attribute "readonly" is false
 
   @watir_only
   Scenario: Form element methods in watir
     When I locate the form
-    Then I should know its' value is ""
+    Then I should know the value is ""
 
   @selenium_only
   Scenario: Form element methods in selenium
     When I locate the form
-    Then I should know its' value is nil
+    Then I should know the value is nil
 
   Scenario: List item element methods
     When I retrieve a list item element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text is "Item One"
+    And I should know the text is "Item One"
     And I should know it is equal to itself
-    And I should know its' tag name is "li"
+    And I should know the tag name is "li"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -226,11 +230,11 @@ Feature: Elements
     When I retrieve an unordered list element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes "Item One"
-    And I should know its' text includes "Item Two"
-    And I should know its' text includes "Item Three"
+    And I should know the text includes "Item One"
+    And I should know the text includes "Item Two"
+    And I should know the text includes "Item Three"
     And I should know it is equal to itself
-    And I should know its' tag name is "ul"
+    And I should know the tag name is "ul"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -238,11 +242,11 @@ Feature: Elements
     When I retrieve an ordered list element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text includes "Number One"
-    And I should know its' text includes "Number Two"
-    And I should know its' text includes "Number Three"
+    And I should know the text includes "Number One"
+    And I should know the text includes "Number Two"
+    And I should know the text includes "Number Three"
     And I should know it is equal to itself
-    And I should know its' tag name is "ol"
+    And I should know the tag name is "ol"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
@@ -250,9 +254,9 @@ Feature: Elements
     When I retrieve a heading element
     Then I should know it exists
     And I should know it is visible
-    And I should know its' text is "h1's are cool"
+    And I should know the text is "h1's are cool"
     And I should know it is equal to itself
-    And I should know its' tag name is "h1"
+    And I should know the tag name is "h1"
     And I should know the attribute "readonly" is false
     And I should be able to click it
 

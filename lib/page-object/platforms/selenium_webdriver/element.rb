@@ -108,7 +108,7 @@ module PageObject
           script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:getParentElement)
           bridge = element.instance_variable_get(:@bridge)
           parent = bridge.executeScript(script, element)
-          type = element.type if parent.tag_name.to_sym == :input
+          type = element.attribute(:type).to_s.downcase if parent.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
           cls.new(parent, :platform => :selenium_webdriver)
         end

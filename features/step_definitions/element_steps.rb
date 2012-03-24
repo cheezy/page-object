@@ -58,19 +58,19 @@ Then /^I should know it is not visible$/ do
   @element.should_not be_visible
 end
 
-Then /^I should know its' text is "([^"]*)"$/ do |text|
+Then /^I should know the text is "(.*)"$/ do |text|
   @element.text.should == text
 end
 
-Then /^I should know its' text includes "([^"]*)"$/ do |text|
+Then /^I should know the text includes "(.*)"$/ do |text|
   @element.text.should include text
 end
 
-Then /^I should know its' value is "([^"]*)"$/ do |value|
+Then /^I should know the value is "(.*)"$/ do |value|
   @element.value.should == value
 end
 
-Then /^I should know its' value is nil$/ do
+Then /^I should know the value is nil$/ do
   @element.value.should be_nil
 end
 
@@ -78,11 +78,11 @@ Then /^I should know it is equal to itself$/ do
   @element.should == @element
 end
 
-Then /^I should know its' tag name is "([^"]*)"$/ do |tagname|
+Then /^I should know the tag name is "(.+)"$/ do |tagname|
   @element.tag_name.should == tagname
 end
 
-Then /^I should know the attribute "([^"]*)" is false$/ do |attr_name|
+Then /^I should know the attribute "(.+)" is false$/ do |attr_name|
   @attr = @element.attribute(attr_name)
   @attr.should be_false if @attr.is_a? FalseClass
   @attr.should == "false" if @attr.is_a? String
@@ -155,3 +155,15 @@ end
 Then /^I should have a div parent$/ do
   @parent.should be_instance_of ::PageObject::Elements::Div
 end
+
+Then /^I should know that the text_field has the focus$/ do
+  element = @page.element_with_focus
+  element.should_not be_nil
+  element.class.should == PageObject::Elements::TextField
+end
+
+When /^I set the focus to the test text_field$/ do
+  @page.text_field_element(:id => 'onfocus_text_field').focus
+end
+
+

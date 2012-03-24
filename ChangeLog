@@ -4,7 +4,12 @@
 	Button
 	Link
   * Added method to fetch generic element (Thanks Jim Holmes)
+  * Added direct_url alias for page_url
+  * Added visit alias for visit_page
+  * Added on alias for on_page
+  * Added element_with_focus method to return the element that has focus
   * Changed Elements.element_class_for so parameters can be strings or symbols
+  * Updated to use watir-webdriver 0.5.4
 
 === Version 0.6.3 / 2012-3-1
 * Enhancements

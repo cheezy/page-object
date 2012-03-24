@@ -75,6 +75,13 @@ describe PageObject do
         @page = CallbackPage.new(watir_browser)
         @page.initialize_page.should be_true
       end
+
+      it "should know which element has focus" do
+        watir_browser.should_receive(:execute_script).and_return(watir_browser)
+        watir_browser.should_receive(:tag_name).twice.and_return(:input)
+        watir_browser.should_receive(:type).and_return(:submit)
+        watir_page_object.element_with_focus.class.should == PageObject::Elements::Button
+      end
     end
     
     context "when using WatirPageObject" do
@@ -131,7 +138,6 @@ describe PageObject do
       end
 
       it "should execute javascript on the browser" do
-        watir_browser.should_receive(:wd).and_return(watir_browser)
         watir_browser.should_receive(:execute_script).and_return("abc")
         watir_page_object.execute_script("333").should == "abc"
       end

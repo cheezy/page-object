@@ -122,6 +122,16 @@ module PageObject
         end
 
         #
+        # find the element that has focus
+        #
+        def element_with_focus
+          element = @browser.execute_script("return document.activeElement")
+          type = element.attribute(:type).to_s.downcase if element.tag_name.to_sym == :input
+          cls = ::PageObject::Elements.element_class_for(element.tag_name, type)
+          cls.new(element, :platform => :selenium_webdriver)
+        end
+
+        #
         # platform method to switch to a frame and execute a block
         # See PageObject#in_frame
         #
@@ -813,10 +823,18 @@ module PageObject
           find_selenium_element(identifier, Elements::FileField, 'input', :type => 'file')
         end
 
+        #
+        # platform method to retrieve a generic element
+        # See PageObject::Accessors#element
+        #
         def element_for(tag, identifier)
           find_selenium_element(identifier, Elements::FileField, tag.to_s)
         end
 
+        #
+        # platform method to retrieve a collection of generic elements
+        # See PageObject::Accessors#elements
+        #
         def elements_for(tag, identifier)
           find_selenium_elements(identifier, Elements::FileField, tag.to_s)
         end
