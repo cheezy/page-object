@@ -806,6 +806,33 @@ module PageObject
         end
 
         #
+        # platform method to return the text for a label
+        # See PageObject::Accessors#label
+        #
+        def label_text_for(identifier)
+          process_selenium_call(identifier, Elements::Label, 'label') do |how, what|
+            @browser.find_element(how, what).text
+          end
+        end
+
+
+        #
+        # platform method to return a PageObject::Elements::Label element
+        # See PageObject::Accessors#label
+        #
+        def label_for(identifier)
+          find_selenium_element(identifier, Elements::Label, 'label')
+        end
+
+
+        #
+        # platform method to retrieve all label elements
+        #
+        def labels_for(identifier)
+          find_selenium_elements(identifier, Elements::Label, 'label')
+        end
+
+        #
         # platform method to set the file on a file_field element
         # See PageObject::Accessors#file_field
         #
@@ -894,7 +921,7 @@ module PageObject
             ['submit', 'image', 'button', 'reset'].include? additional[:type]
           return false if identifier[:src] and tag == 'img'
           return false if identifier[:text] and tag == 'input' and additional[:type] == 'hidden'
-          return false if identifier[:text] and ['div', 'span', 'td'].include? tag
+          return false if identifier[:text] and ['div', 'span', 'td', 'label'].include? tag
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'text'
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
           return false if identifier[:value] and tag == 'input' and

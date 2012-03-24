@@ -258,6 +258,15 @@ class Page
   file_field(:file_field_class_index, :class => 'file_field_class', :index => 0)
   file_field(:file_field_name_index, :name => 'file_field_name', :index => 0)
   file_field(:file_field_xpath, :xpath => "//input[@type='file']")
+
+  label(:label_id, :id => 'label_id')
+  label(:label_name, :name => 'label_name')
+  label(:label_class, :class => 'label_class')
+  label(:label_text, :text => 'page-object is the best!')
+  label(:label_index, :index => 0)
+  label(:label_xpath, :xpath => '//label')
+  label(:label_class_index, :class => "label_class", :index => 0)
+  label(:label_name_index, :name => "label_name", :index => 0)
   
   link(:open_window, :text => 'New Window')
   link(:child, :id => 'child')

@@ -48,5 +48,6 @@ require 'page-object/elements/ordered_list'
 require 'page-object/elements/option'
 require 'page-object/elements/heading'
 require 'page-object/elements/paragraph'
+require 'page-object/elements/label'
 require 'page-object/elements/file_field'
 

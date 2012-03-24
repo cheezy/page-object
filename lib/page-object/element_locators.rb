@@ -768,6 +768,38 @@ module PageObject
     end
 
     #
+    # Finds a label
+    #
+    # @param [Hash] identifier how we find a label.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def label_element(identifier)
+      platform.label_for(identifier.clone)
+    end
+
+    #
+    # Finds all labels that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a label.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def label_elements(identifier)
+      platform.labels_for(identifier.clone)
+    end
+
+    #
     # Finds a paragraph
     #
     # @param [Hash] identifier how we find a paragraph.  You can use a multiple paramaters

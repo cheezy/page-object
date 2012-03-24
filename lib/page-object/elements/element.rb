@@ -105,7 +105,7 @@ module PageObject
       protected
 
       def self.should_build_watir_xpath identifier
-        ['table', 'span', 'div', 'td', 'li', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'].include? identifier[:tag_name] and identifier[:name]
+        ['table', 'span', 'div', 'td', 'li', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label'].include? identifier[:tag_name] and identifier[:name]
       end
 
       def self.build_xpath_for identifier

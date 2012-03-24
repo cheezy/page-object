@@ -166,4 +166,8 @@ When /^I set the focus to the test text_field$/ do
   @page.text_field_element(:id => 'onfocus_text_field').focus
 end
 
+When /^I retrieve the label element$/ do
+  @element = @page.label_id_element
+end
+
 

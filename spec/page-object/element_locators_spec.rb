@@ -299,6 +299,18 @@ describe PageObject::ElementLocators do
       elements[0].should be_instance_of PageObject::Elements::Paragraph 
     end
 
+    it "should find a label" do
+      watir_browser.should_receive(:label).with(:id => 'blah').and_return(watir_browser)
+      element = watir_page_object.label_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Label
+    end
+
+    it "should find all label elements" do
+      watir_browser.should_receive(:labels).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.label_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Label
+    end    
+
     it "should find a file field element" do
       watir_browser.should_receive(:file_field).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.file_field_element(:id => 'blah')
@@ -598,6 +610,18 @@ describe PageObject::ElementLocators do
       elements = selenium_page_object.paragraph_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Paragraph 
     end
+
+    it "should find a label" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.label_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Label
+    end
+
+    it "should find all label elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.label_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Label
+    end    
 
     it "should find a file field element" do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)

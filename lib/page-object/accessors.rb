@@ -112,7 +112,7 @@ module PageObject
         self.send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
-         return platform.text_field_value_set(identifier.clone, value) unless block_given?
+        return platform.text_field_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
       define_method("#{name}_element") do
@@ -986,6 +986,59 @@ module PageObject
       end
     end
 
+    #
+    # adds three methods - one to retrieve the text from a label,
+    # another to return the label element, and another to check the label's existence.
+    #
+    # @example
+    #   label(:message, :id => 'message')
+    #   # will generate 'message', 'message_element', and 'message?' methods
+    #
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a label.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :text => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def label(name, identifier=nil, &block)
+      define_method(name) do
+        return platform.label_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
+      define_method("#{name}_element") do
+        return call_block(&block) if block_given?
+        platform.label_for(identifier.clone)
+      end
+      define_method("#{name}?") do
+        return call_block(&block).exists? if block_given?
+        platform.label_for(identifier.clone).exists?
+      end
+      alias_method "#{name}_label".to_sym, "#{name}_element".to_sym
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an element, another
+    # to retrieve an element, and another to check the element's existence.
+    #
+    # @example
+    #   element(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find an element.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
     def element(name, tag, identifier=nil, &block)
       define_method("#{name}") do
         self.send("#{name}_element").text

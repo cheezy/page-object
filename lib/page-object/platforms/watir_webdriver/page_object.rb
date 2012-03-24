@@ -758,6 +758,30 @@ module PageObject
         end
 
         #
+        # platform method to return the text for a label
+        # See PageObject::Accessors#label
+        #
+        def label_text_for(identifier)
+          process_watir_call("label(identifier).text", Elements::Label, identifier, nil, 'label')
+        end
+
+        #
+        # platform method to return a PageObject::Elements::Label element
+        # See PageObject::Accessors#label
+        #
+        def label_for(identifier)
+          find_watir_element("label(identifier)", Elements::Label, identifier, 'label')
+        end
+
+        #
+        #
+        # platform method to retrieve an array of label elements
+        #
+        def labels_for(identifier)
+          find_watir_elements("labels(identifier)", Elements::Label, identifier, 'label')
+        end
+
+        #
         # platform method to set the file on a file_field element
         # See PageObject::Accessors#file_field
         #

@@ -3,6 +3,7 @@
   * Added support for finding the following elements by :css
 	Button
 	Link
+  * Added support for the label element (Thanks Paul Clewell)
   * Added method to fetch generic element (Thanks Jim Holmes)
   * Added direct_url alias for page_url
   * Added visit alias for visit_page

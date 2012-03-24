@@ -193,6 +193,14 @@ module PageObject
       @platform.paragraphs_for(identifier)
     end
 
+    def label_element(identifier={:index => 0})
+      @platform.label_for(identifier)
+    end
+
+    def label_elements(identifier={:index => 0})
+      @platform.labels_for(identifier)
+    end
+
     def file_field_element(identifier={:index => 0})
       @platform.file_field_for(identifier)
     end
