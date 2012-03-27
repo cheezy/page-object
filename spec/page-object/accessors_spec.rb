@@ -130,17 +130,29 @@ describe PageObject::Accessors do
   describe "goto a page" do
     it "should navigate to a page when requested" do
       watir_browser.should_receive(:goto)
-      page = AccessorsTestPageObject.new(watir_browser, true)
+      AccessorsTestPageObject.new(watir_browser, true)
+    end
+
+    it "should call a method when page_url called with a symbol" do
+      class SymbolPageUrl
+        include PageObject
+        page_url :custom_url
+        def custom_url
+          "custom"
+        end
+      end
+      watir_browser.should_receive(:goto).with('custom')
+      SymbolPageUrl.new(watir_browser, true)
     end
 
     it "should not navigate to a page when not requested" do
       watir_browser.should_not_receive(:goto)
-      page = AccessorsTestPageObject.new(watir_browser)
+      AccessorsTestPageObject.new(watir_browser)
     end
 
     it "should not navigate to a page when 'page_url' not specified" do
       watir_browser.should_not_receive(:goto)
-      page = BlockPageObject.new(watir_browser, true)
+      BlockPageObject.new(watir_browser, true)
     end
   end
 

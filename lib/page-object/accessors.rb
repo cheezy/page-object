@@ -14,9 +14,11 @@ module PageObject
     # 'goto' method to take you to the page.
     #
     # @param [String] the url for the page.
+    # @param [Symbol] a method name to call to get the url
     #
     def page_url(url)
       define_method("goto") do
+        url = url.kind_of?(Symbol) ? self.send(url) : url
         platform.navigate_to url
       end
     end

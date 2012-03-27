@@ -10,6 +10,7 @@
   * Added on alias for on_page
   * Added element_with_focus method to return the element that has focus
   * Changed Elements.element_class_for so parameters can be strings or symbols
+  * Changed page_url to accept a symbol that will cause it to call a corresponding method
   * Updated to use watir-webdriver 0.5.4
 
 === Version 0.6.3 / 2012-3-1
