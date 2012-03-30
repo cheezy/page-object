@@ -1,3 +1,7 @@
+=== Version 0.6.5
+* Enhancements
+  * Updated all accessor methods to take a default identifier of {:index => 0}
+
 === Version 0.6.4 / 2012-3-27
 * Enhancements
   * Added support for finding the following elements by :css

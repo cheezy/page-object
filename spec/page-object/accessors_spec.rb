@@ -184,6 +184,185 @@ describe PageObject::Accessors do
     end
   end
 
+  describe "using default identifiers" do
+    class DefaultIdentifier
+      include PageObject
+      text_field(:default_tf)
+      hidden_field(:default_hf)
+      text_area(:default_ta)
+      select_list(:default_sl)
+      link(:default_link)
+      checkbox(:default_cb)
+      radio_button(:default_rb)
+      button(:default_but)
+      div(:default_div)
+      span(:default_span)
+      table(:default_tab)
+      cell(:default_cell)
+      image(:default_im)
+      form(:default_form)
+      list_item(:default_li)
+      unordered_list(:default_ul)
+      ordered_list(:default_ol)
+      h1(:default_h1)
+      h2(:default_h2)
+      h3(:default_h3)
+      h4(:default_h4)
+      h5(:default_h5)
+      h6(:default_h6)
+      paragraph(:default_p)
+      file_field(:default_ff)
+      label(:default_lab)
+      element(:default_el, :audio)
+    end
+
+    let(:default_identifier) { DefaultIdentifier.new(watir_browser) }
+
+    before(:each) do
+      watir_browser.should_receive(:exists?).and_return(true)
+    end
+
+    def mock_driver_for(tag)
+      watir_browser.should_receive(tag).with(:index => 0).and_return(watir_browser)
+    end
+
+    it "should work with a text_field" do
+      mock_driver_for :text_field
+      default_identifier.default_tf?
+    end
+
+    it "should work with a hidden field" do
+      mock_driver_for :hidden
+      default_identifier.default_hf?
+    end
+
+    it "should work with a text area" do
+      mock_driver_for :textarea
+      default_identifier.default_ta?
+    end
+
+    it "should work with a select list" do
+      mock_driver_for :select_list
+      default_identifier.default_sl?
+    end
+
+    it "should work with a link" do
+      mock_driver_for :link
+      default_identifier.default_link?
+    end
+
+    it "should work with a checkbox" do
+      mock_driver_for :checkbox
+      default_identifier.default_cb?
+    end
+
+    it "should work with a radio button" do
+      mock_driver_for :radio
+      default_identifier.default_rb?
+    end
+
+    it "should work with a button" do
+      mock_driver_for :button
+      default_identifier.default_but?
+    end
+
+    it "should work with a div" do
+      mock_driver_for :div
+      default_identifier.default_div?
+    end
+
+    it "should work with a span" do
+      mock_driver_for :span
+      default_identifier.default_span?
+    end
+
+    it "should work for a table" do
+      mock_driver_for :table
+      default_identifier.default_tab?
+    end
+
+    it "should work for a cell" do
+      mock_driver_for :td
+      default_identifier.default_cell?
+    end
+
+    it "should work for an image" do
+      mock_driver_for :image
+      default_identifier.default_im?
+    end
+
+    it "should work for a form" do
+      mock_driver_for :form
+      default_identifier.default_form?
+    end
+
+    it "should work for a list item" do
+      mock_driver_for :li
+      default_identifier.default_li?
+    end
+
+    it "should work for unordered lists" do
+      mock_driver_for :ul
+      default_identifier.default_ul?
+    end
+
+    it "should work for ordered lists" do
+      mock_driver_for :ol
+      default_identifier.default_ol?
+    end
+
+    it "should work for h1" do
+      mock_driver_for :h1
+      default_identifier.default_h1?
+    end
+
+    it "should work for h2" do
+      mock_driver_for :h2
+      default_identifier.default_h2?
+    end
+
+    it "should work for h3" do
+      mock_driver_for :h3
+      default_identifier.default_h3?
+    end
+
+    it "should work for a h4" do
+      mock_driver_for :h4
+      default_identifier.default_h4?
+    end
+
+    it "should work for a h5" do
+      mock_driver_for :h5
+      default_identifier.default_h5?
+    end
+
+    it "should work for a h6" do
+      mock_driver_for :h6
+      default_identifier.default_h6?
+    end
+
+    it "should work with a paragraph" do
+      mock_driver_for :p
+      default_identifier.default_p?
+    end
+
+    it "should work with a file_field" do
+      mock_driver_for :file_field
+      default_identifier.default_ff?
+    end
+
+    it "should work with a label" do
+      mock_driver_for :label
+      default_identifier.default_lab?
+    end
+
+    it "should work with an element" do
+      mock_driver_for :audio
+      default_identifier.default_el?
+    end
+    
+  end
+
   describe "link accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
@@ -232,6 +411,7 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to(:first_name=)
         watir_page_object.should respond_to(:first_name_element)
         watir_page_object.should respond_to(:first_name_text_field)
+        watir_page_object.should respond_to(:first_name?)
       end
 
       it "should call a block on the element method when present" do
