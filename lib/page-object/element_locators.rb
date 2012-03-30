@@ -17,7 +17,7 @@ module PageObject
     #   * :src => Watir and Selenium (image button only)
     #   * :alt => Watir and Selenium (image button only)
     #
-    def button_element(identifier)
+    def button_element(identifier={:index => 0})
       platform.button_for(identifier.clone)
     end
 
@@ -57,7 +57,7 @@ module PageObject
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #
-    def text_field_element(identifier)
+    def text_field_element(identifier={:index => 0})
       platform.text_field_for(identifier.clone)
     end
     
@@ -95,7 +95,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def hidden_field_element(identifier)
+    def hidden_field_element(identifier={:index => 0})
       platform.hidden_field_for(identifier.clone)
     end
     
@@ -130,7 +130,7 @@ module PageObject
     #   * :tag_name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def text_area_element(identifier)
+    def text_area_element(identifier={:index => 0})
       platform.text_area_for(identifier.clone)
     end
     
@@ -164,7 +164,7 @@ module PageObject
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #
-    def select_list_element(identifier)
+    def select_list_element(identifier={:index => 0})
       platform.select_list_for(identifier.clone)
     end
     
@@ -201,7 +201,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def link_element(identifier)
+    def link_element(identifier={:index => 0})
       platform.link_for(identifier.clone)
     end
     
@@ -236,7 +236,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def checkbox_element(identifier)
+    def checkbox_element(identifier={:index => 0})
       platform.checkbox_for(identifier.clone)
     end
 
@@ -266,7 +266,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def radio_button_element(identifier)
+    def radio_button_element(identifier={:index => 0})
       platform.radio_button_for(identifier.clone)
     end
 
@@ -297,7 +297,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def div_element(identifier)
+    def div_element(identifier={:index => 0})
       platform.div_for(identifier.clone)
     end
 
@@ -328,7 +328,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def span_element(identifier)
+    def span_element(identifier={:index => 0})
       platform.span_for(identifier.clone)
     end
     
@@ -358,7 +358,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def table_element(identifier)
+    def table_element(identifier={:index => 0})
       platform.table_for(identifier.clone)
     end
 
@@ -389,7 +389,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def cell_element(identifier)
+    def cell_element(identifier={:index => 0})
       platform.cell_for(identifier.clone)
     end
     
@@ -420,7 +420,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def image_element(identifier)
+    def image_element(identifier={:index => 0})
       platform.image_for(identifier.clone)
     end
     
@@ -449,7 +449,7 @@ module PageObject
     #   * :index => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def form_element(identifier)
+    def form_element(identifier={:index => 0})
       platform.form_for(identifier.clone)
     end
 
@@ -478,7 +478,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def list_item_element(identifier)
+    def list_item_element(identifier={:index => 0})
       platform.list_item_for(identifier.clone)
     end
 
@@ -508,7 +508,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def unordered_list_element(identifier)
+    def unordered_list_element(identifier={:index => 0})
       platform.unordered_list_for(identifier.clone)
     end
 
@@ -538,7 +538,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def ordered_list_element(identifier)
+    def ordered_list_element(identifier={:index => 0})
       platform.ordered_list_for(identifier.clone)
     end
     
@@ -568,7 +568,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h1_element(identifier)
+    def h1_element(identifier={:index => 0})
       platform.h1_for(identifier.clone)
     end
 
@@ -598,7 +598,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h2_element(identifier)
+    def h2_element(identifier={:index => 0})
       platform.h2_for(identifier.clone)
     end
 
@@ -628,7 +628,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h3_element(identifier)
+    def h3_element(identifier={:index => 0})
       platform.h3_for(identifier.clone)
     end
 
@@ -658,7 +658,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h4_element(identifier)
+    def h4_element(identifier={:index => 0})
       platform.h4_for(identifier.clone)
     end
 
@@ -688,7 +688,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h5_element(identifier)
+    def h5_element(identifier={:index => 0})
       platform.h5_for(identifier.clone)
     end
 
@@ -718,7 +718,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h6_element(identifier)
+    def h6_element(identifier={:index => 0})
       platform.h6_for(identifier.clone)
     end
 
@@ -748,7 +748,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def paragraph_element(identifier)
+    def paragraph_element(identifier={:index => 0})
       platform.paragraph_for(identifier.clone)
     end
 
@@ -779,7 +779,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def label_element(identifier)
+    def label_element(identifier={:index => 0})
       platform.label_for(identifier.clone)
     end
 
@@ -810,8 +810,24 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :title => Watir and Selenium
     #   * :xpath => Watir and Selenium
-    def file_field_element(identifier)
+    def file_field_element(identifier={:index => 0})
       platform.file_field_for(identifier.clone)
+    end
+
+    #
+    # Finds an element
+    #
+    # @param [Symbol] the name of the tag for the element
+    # @param [Hash] identifier how we find an element.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def element(tag, identifier={:index => 0})
+      platform.element_for(tag, identifier.clone)
     end
   end
 end

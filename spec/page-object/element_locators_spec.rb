@@ -17,6 +17,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Button
     end
 
+    it "should find a button element using a default identifier" do
+      watir_browser.should_receive(:button).with(:index => 0).and_return(watir_browser)
+      watir_page_object.button_element
+    end
+
     it "should find all button elements" do
       watir_browser.should_receive(:buttons).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.button_elements(:id => 'blah')
@@ -27,6 +32,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:text_field).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.text_field_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TextField
+    end
+
+    it "should find a text field element using a default identifier" do
+      watir_browser.should_receive(:text_field).with(:index => 0).and_return(watir_browser)
+      watir_page_object.text_field_element
     end
 
     it "should find all text field elements" do
@@ -41,6 +51,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::HiddenField
     end
 
+    it "should find a hidden field using a default identifier" do
+      watir_browser.should_receive(:hidden).with(:index => 0).and_return(watir_browser)
+      watir_page_object.hidden_field_element
+    end
+
     it "should find all hidden field elements" do
       watir_browser.should_receive(:hiddens).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.hidden_field_elements(:id => 'blah')
@@ -51,6 +66,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:textarea).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.text_area_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TextArea
+    end
+
+    it "should find a text area using a default identifier" do
+      watir_browser.should_receive(:textarea).with(:index => 0).and_return(watir_browser)
+      watir_page_object.text_area_element
     end
 
     it "should find all text area elements" do
@@ -65,6 +85,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::SelectList
     end
 
+    it "should find a select list using a default identifier" do
+      watir_browser.should_receive(:select_list).with(:index => 0).and_return(watir_browser)
+      watir_page_object.select_list_element
+    end
+
     it "should find all select list elements" do
       watir_browser.should_receive(:select_lists).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.select_list_elements(:id => 'blah')
@@ -75,6 +100,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:link).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.link_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Link
+    end
+
+    it "should find a link element using a default identifier" do
+      watir_browser.should_receive(:link).with(:index => 0).and_return(watir_browser)
+      watir_page_object.link_element
     end
 
     it "should find all link elements" do
@@ -89,6 +119,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::CheckBox
     end
 
+    it "should find a check box using a default identifier" do
+      watir_browser.should_receive(:checkbox).with(:index => 0).and_return(watir_browser)
+      watir_page_object.checkbox_element
+    end
+
     it "should find all check box elements" do
       watir_browser.should_receive(:checkboxes).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.checkbox_elements(:id => 'blah')
@@ -99,6 +134,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:radio).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.radio_button_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::RadioButton
+    end
+
+    it "should find a radio button using a default identifier" do
+      watir_browser.should_receive(:radio).with(:index => 0).and_return(watir_browser)
+      watir_page_object.radio_button_element
     end
 
     it "should find all radio buttons" do
@@ -113,6 +153,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Div
     end
 
+    it "should find a div using a default identifier" do
+      watir_browser.should_receive(:div).with(:index => 0).and_return(watir_browser)
+      watir_page_object.div_element
+    end
+
     it "should find all div elements" do
       watir_browser.should_receive(:divs).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.div_elements(:id => 'blah')
@@ -123,6 +168,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:span).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.span_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Span
+    end
+
+    it "should find a span using a default identifier" do
+      watir_browser.should_receive(:span).with(:index => 0).and_return(watir_browser)
+      watir_page_object.span_element
     end
 
     it "should find all span elements" do
@@ -137,6 +187,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Table
     end
 
+    it "should find a table using a default identifier" do
+      watir_browser.should_receive(:table).with(:index => 0).and_return(watir_browser)
+      watir_page_object.table_element
+    end
+
     it "should find all table elements" do
       watir_browser.should_receive(:tables).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.table_elements(:id => 'blah')
@@ -147,6 +202,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:td).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.cell_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::TableCell
+    end
+
+    it "should find a table cell using a default identifier" do
+      watir_browser.should_receive(:td).with(:index => 0).and_return(watir_browser)
+      watir_page_object.cell_element
     end
 
     it "should find all table cells" do
@@ -161,6 +221,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Image
     end
 
+    it "should find an image using a default identifier" do
+      watir_browser.should_receive(:image).with(:index => 0).and_return(watir_browser)
+      watir_page_object.image_element
+    end
+
     it "should find all images" do
       watir_browser.should_receive(:images).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.image_elements(:id => 'blah')
@@ -171,6 +236,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:form).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.form_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Form
+    end
+
+    it "should find a form using a default identifier" do
+      watir_browser.should_receive(:form).with(:index => 0).and_return(watir_browser)
+      watir_page_object.form_element
     end
 
     it "should find all forms" do
@@ -185,6 +255,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::ListItem
     end
 
+    it "should find a list item using a default identifier" do
+      watir_browser.should_receive(:li).with(:index => 0).and_return(watir_browser)
+      watir_page_object.list_item_element
+    end
+
     it "should find all list items" do
       watir_browser.should_receive(:lis).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.list_item_elements(:id => 'blah')
@@ -195,6 +270,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:ul).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.unordered_list_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::UnorderedList
+    end
+
+    it "should find an unordered list using a default identifier" do
+      watir_browser.should_receive(:ul).with(:index => 0).and_return(watir_browser)
+      watir_page_object.unordered_list_element
     end
 
     it "should find all unordered lists" do
@@ -209,6 +289,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::OrderedList
     end
 
+    it "should find an orderd list using a default identifier" do
+      watir_browser.should_receive(:ol).with(:index => 0).and_return(watir_browser)
+      watir_page_object.ordered_list_element
+    end
+
     it "should find all ordered lists" do
       watir_browser.should_receive(:ols).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.ordered_list_elements(:id => 'blah')
@@ -219,6 +304,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:h1).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.h1_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h1 element using a default identifier" do
+      watir_browser.should_receive(:h1).with(:index => 0).and_return(watir_browser)
+      watir_page_object.h1_element
     end
 
     it "shoudl find all h1 elements" do
@@ -233,6 +323,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Heading
     end
 
+    it "should find a h2 element using default identifier" do
+      watir_browser.should_receive(:h2).with(:index => 0).and_return(watir_browser)
+      watir_page_object.h2_element
+    end
+
     it "should find all h2 elements" do
       watir_browser.should_receive(:h2s).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.h2_elements(:id => 'blah')
@@ -243,6 +338,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:h3).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.h3_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h3 element using a default identifier" do
+      watir_browser.should_receive(:h3).with(:index => 0).and_return(watir_browser)
+      watir_page_object.h3_element
     end
 
     it "should find all h3 elements" do
@@ -257,6 +357,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Heading
     end
 
+    it "should find a h4 element using a default identifier" do
+      watir_browser.should_receive(:h4).with(:index => 0).and_return(watir_browser)
+      watir_page_object.h4_element
+    end
+
     it "should find all h4 elements" do
       watir_browser.should_receive(:h4s).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.h4_elements(:id => 'blah')
@@ -267,6 +372,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:h5).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.h5_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Heading
+    end
+
+    it "should find a h5 element using a default identifier" do
+      watir_browser.should_receive(:h5).with(:index => 0).and_return(watir_browser)
+      watir_page_object.h5_element
     end
 
     it "should find all h5 elements" do
@@ -281,6 +391,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Heading
     end
 
+    it "should find a h6 element using a default identifier" do
+      watir_browser.should_receive(:h6).with(:index => 0).and_return(watir_browser)
+      watir_page_object.h6_element
+    end
+
     it "should find all h6 elements" do
       watir_browser.should_receive(:h6s).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.h6_elements(:id => 'blah')
@@ -291,6 +406,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:p).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.paragraph_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::Paragraph
+    end
+
+    it "should find a paragraph element using a default identifier" do
+      watir_browser.should_receive(:p).with(:index => 0).and_return(watir_browser)
+      watir_page_object.paragraph_element
     end
 
     it "should find all paragraph elements" do
@@ -305,6 +425,11 @@ describe PageObject::ElementLocators do
       element.should be_instance_of PageObject::Elements::Label
     end
 
+    it "should find a label element using default parameters" do
+      watir_browser.should_receive(:label).with(:index => 0).and_return(watir_browser)
+      watir_page_object.label_element
+    end
+
     it "should find all label elements" do
       watir_browser.should_receive(:labels).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.label_elements(:id => 'blah')
@@ -315,6 +440,22 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:file_field).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.file_field_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::FileField
+    end
+
+    it "should find a file field element using a default identifier" do
+      watir_browser.should_receive(:file_field).with(:index => 0).and_return(watir_browser)
+      watir_page_object.file_field_element
+    end
+
+    it "should find an element" do
+      watir_browser.should_receive(:audio).with(:id => 'blah').and_return(watir_browser)
+      element = watir_page_object.element(:audio, :id => 'blah')
+      element.should be_instance_of PageObject::Elements::Element
+    end
+
+    it "should find an element using a default identifier" do
+      watir_browser.should_receive(:audio).with(:index => 0).and_return(watir_browser)
+      watir_page_object.element(:audio)
     end
   end
 
