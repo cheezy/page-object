@@ -9,6 +9,7 @@ Feature: Multi Elements
     And the value of button 1 should be "Button 1"
     And the value of button 2 should be "Button 2"
     And the value of button 3 should be "Button 3"
+    And I should be able to find 3 buttons using no identifier
 
   Scenario: Selecting text_fields
     When I select the text fields with class "textfield"

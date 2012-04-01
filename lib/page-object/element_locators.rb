@@ -37,7 +37,7 @@ module PageObject
     #   * :src => Watir and Selenium (image button only)
     #   * :alt => Watir and Selenium (image button only)
     #
-    def button_elements(identifier)
+    def button_elements(identifier={})
       platform.buttons_for(identifier.clone)
     end
     

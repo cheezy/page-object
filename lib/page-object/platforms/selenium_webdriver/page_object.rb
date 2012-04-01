@@ -911,6 +911,7 @@ module PageObject
         end
 
         def supported_identifier(identifier, tag, additional)
+          return false if identifier.size == 0
           return false if identifier[:index]
           return false if identifier[:action] and tag == 'form'
           return false if identifier[:alt] and tag == 'img'

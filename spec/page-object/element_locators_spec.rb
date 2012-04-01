@@ -27,6 +27,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.button_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Button
     end
+
+    it "should find all buttons with no identifier" do
+      watir_browser.should_receive(:buttons).with({}).and_return([watir_browser])
+      watir_page_object.button_elements
+    end
     
     it "should find a text field element" do
       watir_browser.should_receive(:text_field).with(:id => 'blah').and_return(watir_browser)

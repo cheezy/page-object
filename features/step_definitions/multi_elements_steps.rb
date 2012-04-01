@@ -295,3 +295,7 @@ end
 Then /^the text for paragraph (\d+) should be "([^\"]*)"$/ do |para_num, text|
   @elements[para_num.to_i - 1].text.should == text
 end
+
+Then /^I should be able to find (\d+) buttons using no identifier$/ do |num_buttons|
+  @page.button_elements.size.should == num_buttons.to_i
+end
