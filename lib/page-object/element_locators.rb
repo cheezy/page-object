@@ -5,7 +5,8 @@ module PageObject
     # Finds a button
     #
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0} 
+    #   which will find the first button.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -25,7 +26,8 @@ module PageObject
     # Finds all buttons that match the provided identifier
     #
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty 
+    #   hash which will find all button elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -45,7 +47,8 @@ module PageObject
     # Finds a text field
     #
     # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index=> 0} 
+    #   which will find the first text field.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -65,7 +68,8 @@ module PageObject
     # Finds all text fields that match the provided identifier
     #
     # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash 
+    #   which will find all text field elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -77,7 +81,7 @@ module PageObject
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #
-    def text_field_elements(identifier)
+    def text_field_elements(identifier={})
       platform.text_fields_for(identifier.clone)
     end
     

@@ -299,3 +299,7 @@ end
 Then /^I should be able to find (\d+) buttons using no identifier$/ do |num_buttons|
   @page.button_elements.size.should == num_buttons.to_i
 end
+
+Then /^I should be able to find (\d+) text fields using no identifier$/ do |num_text_fields|
+  @page.text_field_elements.size.should == num_text_fields.to_i
+end

@@ -49,6 +49,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.text_field_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::TextField
     end
+
+    it "should find all text fields with no identifier" do
+      watir_browser.should_receive(:text_fields).with({}).and_return([watir_browser])
+      watir_page_object.text_field_elements
+    end
     
     it "should find a hidden field element" do
       watir_browser.should_receive(:hidden).with(:id => 'blah').and_return(watir_browser)

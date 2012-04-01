@@ -17,6 +17,7 @@ Feature: Multi Elements
     And the value of text field 1 should be "text 1"
     And the value of text field 2 should be "text 2"
     And the value of text field 3 should be "text 3"
+    And I should be able to find 3 text fields using no identifier
 
   Scenario: Selecting hidden_fields
     When I select the hidden fields with class "hiddenfield"
