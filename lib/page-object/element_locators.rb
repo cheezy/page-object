@@ -273,7 +273,8 @@ module PageObject
     # Finds a radio button
     #
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first radio button.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -288,14 +289,15 @@ module PageObject
     # Finds all radio button elements that match the provided identifier
     #
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all radio buttons.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def radio_button_elements(identifier)
+    def radio_button_elements(identifier={})
       platform.radio_buttons_for(identifier.clone)
     end
 

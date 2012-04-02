@@ -65,6 +65,7 @@ Feature: Multi Elements
     And the value of radio button 1 should be "radio 1"
     And the value of radio button 2 should be "radio 2"
     And the value of radio button 3 should be "radio 3"
+    And I should be able to find all 3 radio buttons using no identifier
 
   Scenario: Selecting divs
     When I select the div with class "div"

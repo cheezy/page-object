@@ -183,6 +183,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.radio_button_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::RadioButton 
     end
+
+    it "should find all radio buttons using no identifier" do
+      watir_browser.should_receive(:radios).with({}).and_return([watir_browser])
+      watir_page_object.radio_button_elements
+    end
     
     it "should find a div" do
       watir_browser.should_receive(:div).with(:id => 'blah').and_return(watir_browser)

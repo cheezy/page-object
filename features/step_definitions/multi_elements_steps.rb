@@ -323,3 +323,7 @@ end
 Then /^I should be able to find all (\d+) checkboxes using no identifier$/ do |num_checkboxes|
   @page.checkbox_elements.size.should == num_checkboxes.to_i
 end
+
+Then /^I should be able to find all (\d+) radio buttons using no identifier$/ do |num_radios|
+  @page.radio_button_elements.size.should == num_radios.to_i
+end
