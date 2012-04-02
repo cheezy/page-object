@@ -97,11 +97,9 @@ module PageObject
     # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
-    #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
-    #   * :tag_name => Watir and Selenium
     #   * :text => Watir only
     #   * :title => Watir and Selenium
     #   * :value => Watir only
@@ -141,11 +139,9 @@ module PageObject
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
-    #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
-    #   * :tag_name => Watir and Selenium
     #   * :text => Watir and Selenium
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
@@ -181,11 +177,9 @@ module PageObject
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
-    #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
-    #   * :tag_name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #

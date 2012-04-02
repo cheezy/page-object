@@ -303,3 +303,15 @@ end
 Then /^I should be able to find (\d+) text fields using no identifier$/ do |num_text_fields|
   @page.text_field_elements.size.should == num_text_fields.to_i
 end
+
+Then /^I should be able to find (\d+) hidden fields using no identifier$/ do |num_hidden_fields|
+  @page.hidden_field_elements.size.should == num_hidden_fields.to_i
+end
+
+Then /^I should be able to find (\d+) text areas using no identifier$/ do |num_text_areas|
+  @page.text_area_elements.size.should == num_text_areas.to_i
+end
+
+Then /^I should be able to find (\d+) select lists using no identifier$/ do |num_select_lists|
+  @page.select_list_elements.size.should == num_select_lists.to_i
+end

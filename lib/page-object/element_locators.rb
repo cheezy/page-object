@@ -89,7 +89,8 @@ module PageObject
     # Finds a hidden field
     #
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will find the first hidden field.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -107,7 +108,8 @@ module PageObject
     # Finds all hidden fields that match the identifier
     #
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty hash
+    #   which will return all hidden fields.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -117,7 +119,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def hidden_field_elements(identifier)
+    def hidden_field_elements(identifier={})
       platform.hidden_fields_for(identifier.clone)
     end
     
@@ -125,7 +127,8 @@ module PageObject
     # Finds a text area
     #
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first text area.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -142,7 +145,8 @@ module PageObject
     # Finds all text areas for the provided identifier
     #
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty hash
+    #   which will return all text areas.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -151,7 +155,7 @@ module PageObject
     #   * :tag_name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def text_area_elements(identifier)
+    def text_area_elements(identifier={})
       platform.text_areas_for(identifier.clone)
     end
     
@@ -159,7 +163,8 @@ module PageObject
     # Finds a select list
     #
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will select the first select list.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -176,7 +181,8 @@ module PageObject
     # Finds all select lists for the provided identifier
     #
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all select lists.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -185,7 +191,7 @@ module PageObject
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #
-    def select_list_elements(identifier)
+    def select_list_elements(identifier={})
       platform.select_lists_for(identifier.clone)
     end
     

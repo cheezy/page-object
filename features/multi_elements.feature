@@ -25,6 +25,7 @@ Feature: Multi Elements
     And the value of hidden field 1 should be "hidden 1"
     And the value of hidden field 2 should be "hidden 2"
     And the value of hidden field 3 should be "hidden 3"
+    And I should be able to find 3 hidden fields using no identifier
 
   Scenario: Selecting text_areas
     When I select the text areas with class "textarea"
@@ -32,6 +33,7 @@ Feature: Multi Elements
     And the value of text area 1 should be "textarea 1"
     And the value of text area 2 should be "textarea 2"
     And the value of text area 3 should be "textarea 3"
+    And I should be able to find 3 text areas using no identifier
 
   Scenario: Selecting select_lists
     When I select the select lists with class "selectlist"
@@ -39,6 +41,7 @@ Feature: Multi Elements
     And the value of select list 1 should be "selectlist 1"
     And the value of select list 2 should be "selectlist 2"
     And the value of select list 3 should be "selectlist 3"
+    And I should be able to find 3 select lists using no identifier
 
   Scenario: Selecting links
     When I select the link with class "link"

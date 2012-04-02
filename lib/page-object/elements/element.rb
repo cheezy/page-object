@@ -172,7 +172,7 @@ module PageObject
 
       def self.identifier_for identifier, find_by, find_by_mapping
         how, what = identifier.keys.first, identifier.values.first
-        return how => what if find_by.include? how
+        return how => what if find_by.include? how or how == :tag_name
         return find_by_mapping[how] => what if find_by_mapping[how]
         return nil => what
       end

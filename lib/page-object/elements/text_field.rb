@@ -15,19 +15,11 @@ module PageObject
       protected
 
       def self.watir_finders
-        super + [:tag_name, :title]
-      end
-
-      def self.watir_mapping
-        super.merge({:css => :tag_name})
+        super + [:title]
       end
 
       def self.selenium_finders
-        super + [:css, :title]
-      end
-
-      def self.selenium_mapping
-        super.merge({:tag_name => :css})
+        super + [:title]
       end
 
       def include_platform_for platform

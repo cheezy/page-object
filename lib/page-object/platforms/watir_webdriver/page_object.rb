@@ -207,7 +207,8 @@ module PageObject
         # platform method to retrieve an array of text field elements
         #
         def text_fields_for(identifier)
-          find_watir_elements("text_fields(identifier)", Elements::TextField, identifier)
+          elements = find_watir_elements("text_fields(identifier)", Elements::TextField, identifier)
+          elements.select {|e| e.element.tag_name == 'input'}
         end
 
         #

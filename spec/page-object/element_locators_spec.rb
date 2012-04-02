@@ -46,12 +46,14 @@ describe PageObject::ElementLocators do
 
     it "should find all text field elements" do
       watir_browser.should_receive(:text_fields).with(:id => 'blah').and_return([watir_browser])
+      watir_browser.should_receive(:tag_name).and_return('input')
       elements = watir_page_object.text_field_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::TextField
     end
 
     it "should find all text fields with no identifier" do
       watir_browser.should_receive(:text_fields).with({}).and_return([watir_browser])
+      watir_browser.should_receive(:tag_name).and_return('input')
       watir_page_object.text_field_elements
     end
     
@@ -71,6 +73,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.hidden_field_elements(:id => 'blah')
       elements[0].should be_instance_of(PageObject::Elements::HiddenField)
     end
+
+    it "should find all hidden field elements using no identifier" do
+      watir_browser.should_receive(:hiddens).with({}).and_return([watir_browser])
+      watir_page_object.hidden_field_elements
+    end
     
     it "should find a text area element" do
       watir_browser.should_receive(:textarea).with(:id => 'blah').and_return(watir_browser)
@@ -88,6 +95,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.text_area_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::TextArea 
     end
+
+    it "should find all text area elements using no identifier" do
+      watir_browser.should_receive(:textareas).with({}).and_return([watir_browser])
+      watir_page_object.text_area_elements
+    end
     
     it "should find a select list element" do
       watir_browser.should_receive(:select_list).with(:id => 'blah').and_return(watir_browser)
@@ -104,6 +116,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:select_lists).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.select_list_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::SelectList 
+    end
+
+    it "should find all select list elements using no identifier" do
+      watir_browser.should_receive(:select_lists).with({}).and_return([watir_browser])
+      watir_page_object.select_list_elements
     end
     
     it "should find a link element" do

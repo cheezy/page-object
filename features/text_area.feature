@@ -18,8 +18,6 @@ Feature: Text Area
     | class     |
     | name      |
     | xpath     |
-    | css       |
-    | tag_name  |
     | index     |
 
 

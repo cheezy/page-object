@@ -9,19 +9,11 @@ module PageObject
       protected
 
       def self.watir_finders
-        super + [:tag_name, :text, :value]
-      end
-
-      def self.watir_mapping
-        super.merge({:css => :tag_name})
+        super + [:text, :value]
       end
 
       def self.selenium_finders
-        super + [:css, :value]
-      end
-
-      def self.selenium_mapping
-        super.merge({:tag_name => :css})
+        super + [:value]
       end
     end
 
