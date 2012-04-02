@@ -81,6 +81,7 @@ Feature: Multi Elements
     And the text of span 1 should be "Span 1"
     And the text of span 2 should be "Span 2"
     And the text of span 3 should be "Span 3"
+    And I should be able to find all 3 spans using no identifier
 
   Scenario: Selecting tables
     When I select the tables with class "table"

@@ -339,7 +339,8 @@ module PageObject
     # Finds a span
     #
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first span element.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -354,14 +355,15 @@ module PageObject
     # Finds all span elements that match the provided identifier
     #
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all of the spans.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def span_elements(identifier)
+    def span_elements(identifier={})
       platform.spans_for(identifier.clone)
     end
     
