@@ -161,6 +161,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.checkbox_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::CheckBox 
     end
+
+    it "should find all check box elements using no identifier" do
+      watir_browser.should_receive(:checkboxes).with({}).and_return([watir_browser])
+      watir_page_object.checkbox_elements
+    end
     
     it "should find a radio button" do
       watir_browser.should_receive(:radio).with(:id => 'blah').and_return(watir_browser)
