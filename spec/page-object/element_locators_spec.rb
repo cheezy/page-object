@@ -249,6 +249,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.table_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Table 
     end
+
+    it "should find all table elements using no identifier" do
+      watir_browser.should_receive(:tables).with({}).and_return([watir_browser])
+      watir_page_object.table_elements
+    end
     
     it "should find a table cell" do
       watir_browser.should_receive(:td).with(:id => 'blah').and_return(watir_browser)

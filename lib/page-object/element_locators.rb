@@ -371,7 +371,8 @@ module PageObject
     # Finds a table
     #
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first table.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -386,14 +387,15 @@ module PageObject
     # Finds all tables that match the provided identifier
     #
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all tables.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def table_elements(identifier)
+    def table_elements(identifier={})
       platform.tables_for(identifier.clone)
     end
 

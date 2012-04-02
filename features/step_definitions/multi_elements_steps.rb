@@ -335,3 +335,8 @@ end
 Then /^I should be able to find all (\d+) spans using no identifier$/ do |num_spans|
   @page.span_elements.size.should == num_spans.to_i
 end
+
+Then /^I should be able to find all (\d+) tables using no identifier$/ do |num_tables|
+  @page.table_elements.size.should == num_tables.to_i
+end
+
