@@ -49,6 +49,7 @@ Feature: Multi Elements
     And the text of link 1 should be "link 1"
     And the text of link 2 should be "link 2"
     And the text of link 3 should be "link 3"
+    And I should be able to find all 3 links using no identifier
 
   Scenario: Selecting checkboxes
     When I select the check boxes with class "checkbox"

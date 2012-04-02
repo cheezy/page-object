@@ -199,7 +199,8 @@ module PageObject
     # Finds a link
     #
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will select the first link.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :href => Watir and Selenium
@@ -219,7 +220,8 @@ module PageObject
     # Find all links for the provided identifier
     #
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all links.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :href => Watir and Selenium
@@ -231,7 +233,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def link_elements(identifier)
+    def link_elements(identifier={})
       platform.links_for(identifier.clone)
     end
     

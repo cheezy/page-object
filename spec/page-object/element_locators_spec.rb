@@ -139,6 +139,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.link_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Link 
     end
+
+    it "should find all links using no identifier" do
+      watir_browser.should_receive(:links).with({}).and_return([watir_browser])
+      watir_page_object.link_elements
+    end
     
     it "should find a check box" do
       watir_browser.should_receive(:checkbox).with(:id => 'blah').and_return(watir_browser)

@@ -315,3 +315,7 @@ end
 Then /^I should be able to find (\d+) select lists using no identifier$/ do |num_select_lists|
   @page.select_list_elements.size.should == num_select_lists.to_i
 end
+
+Then /^I should be able to find all (\d+) links using no identifier$/ do |num_links|
+  @page.link_elements.size.should == num_links.to_i
+end
