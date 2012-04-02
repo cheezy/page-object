@@ -73,6 +73,7 @@ Feature: Multi Elements
     And the text of div 1 should be "Div 1"
     And the text of div 2 should be "Div 2"
     And the text of div 3 should be "Div 3"
+    And I should be able to find all 3 divs using no identifier
 
   Scenario: Selecting spans
     When I select the spans with class "span"

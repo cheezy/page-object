@@ -327,3 +327,7 @@ end
 Then /^I should be able to find all (\d+) radio buttons using no identifier$/ do |num_radios|
   @page.radio_button_elements.size.should == num_radios.to_i
 end
+
+Then /^I should be able to find all (\d+) divs using no identifier$/ do |num_divs|
+  @page.div_elements.size.should == num_divs.to_i
+end

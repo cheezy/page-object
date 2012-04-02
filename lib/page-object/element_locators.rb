@@ -305,7 +305,8 @@ module PageObject
     # Finds a div
     #
     # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first div.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -321,7 +322,8 @@ module PageObject
     # Finds all divs that match the provided identifier
     #
     # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all divs.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -329,7 +331,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def div_elements(identifier)
+    def div_elements(identifier={})
       platform.divs_for(identifier.clone)
     end
 

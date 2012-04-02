@@ -205,6 +205,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.div_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Div 
     end
+
+    it "should find all div elements using no identifier" do
+      watir_browser.should_receive(:divs).with({}).and_return([watir_browser])
+      watir_page_object.div_elements
+    end
     
     it "should find a span" do
       watir_browser.should_receive(:span).with(:id => 'blah').and_return(watir_browser)
