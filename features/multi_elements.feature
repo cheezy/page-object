@@ -175,12 +175,20 @@ Feature: Multi Elements
     And the text for the first item in unordered list 2 should be "Item Four"
     And the text for the first item in unordered list 3 should be "Item Five"
     
-  Scenario: Selecting ordered lists
+  Scenario: Selecting unordered lists using no identifier
+    When I select the unordered list using no parameter
+    Then I should have 3 unordered lists
+    
+  Scenario: Selecting ordered lists using an identifier
     When I select the ordered lists with class "ol"
     Then I should have 3 ordered lists
     And the text for the first item in ordered list 1 should be "Number One"
     And the text for the first item in ordered list 2 should be "Number Two"
     And the text for the first item in ordered list 3 should be "Number Three"
+    
+  Scenario: Selecting ordered lists using no identifier
+    When I select the ordered lists using no identifier
+    Then I should have 3 ordered lists
 
   Scenario: Selecting h1s
     When I select the h1s with class "h1"

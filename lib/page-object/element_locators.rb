@@ -531,7 +531,8 @@ module PageObject
     # Finds an unordered list
     #
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first unordered list.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -546,14 +547,15 @@ module PageObject
     # Finds all unordered lists that match the identifier
     #
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all unordered lists.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def unordered_list_elements(identifier)
+    def unordered_list_elements(identifier={})
       platform.unordered_lists_for(identifier.clone)
     end
 
@@ -561,7 +563,8 @@ module PageObject
     #  Finds an ordered list
     #
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   whcih will return the first ordered list.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -576,14 +579,15 @@ module PageObject
     #  Finds all ordered lists that match the identifier
     #
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which returns all ordered lists.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def ordered_list_elements(identifier)
+    def ordered_list_elements(identifier={})
       platform.ordered_lists_for(identifier.clone)
     end
     

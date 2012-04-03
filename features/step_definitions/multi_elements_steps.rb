@@ -355,3 +355,11 @@ end
 When /^I select the list items using no identifier$/ do
   @elements = @page.list_item_elements
 end
+
+When /^I select the unordered list using no parameter$/ do
+  @elements = @page.unordered_list_elements
+end
+
+When /^I select the ordered lists using no identifier$/ do
+  @elements = @page.ordered_list_elements
+end

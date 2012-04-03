@@ -359,6 +359,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.unordered_list_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::UnorderedList 
     end
+
+    it "should find all unordered lists using no parameters" do
+      watir_browser.should_receive(:uls).with({}).and_return([watir_browser])
+      watir_page_object.unordered_list_elements
+    end
     
     it "should find an ordered list" do
       watir_browser.should_receive(:ol).with(:id => 'blah').and_return(watir_browser)
@@ -375,6 +380,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:ols).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.ordered_list_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::OrderedList 
+    end
+
+    it "should find all orderd lists using no parameters" do
+      watir_browser.should_receive(:ols).with({}).and_return([watir_browser])
+      watir_page_object.ordered_list_elements
     end
     
     it "should find a h1 element" do
