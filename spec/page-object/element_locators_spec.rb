@@ -398,10 +398,15 @@ describe PageObject::ElementLocators do
       watir_page_object.h1_element
     end
 
-    it "shoudl find all h1 elements" do
+    it "should find all h1 elements" do
       watir_browser.should_receive(:h1s).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.h1_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Heading 
+    end
+
+    it "should find all h1 elements using no parameters" do
+      watir_browser.should_receive(:h1s).with({}).and_return([watir_browser])
+      watir_page_object.h1_elements
     end
 
     it "should find a h2 element" do

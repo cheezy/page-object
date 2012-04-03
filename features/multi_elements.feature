@@ -190,12 +190,16 @@ Feature: Multi Elements
     When I select the ordered lists using no identifier
     Then I should have 3 ordered lists
 
-  Scenario: Selecting h1s
+  Scenario: Selecting h1s using an identifier
     When I select the h1s with class "h1"
     Then I should have 3 h1s
     And the text for h1 1 should be "H1 One"
     And the text for h1 2 should be "H1 Two"
     And the text for h1 3 should be "H1 Three"
+    
+  Scenario: Selecting h1s using no identifier
+    When I select h1s using no identifier
+    Then I should have 3 h1s
 
   Scenario: Selecting h2s
     When I select the h2s with the class "h2"
