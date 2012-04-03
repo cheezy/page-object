@@ -403,7 +403,8 @@ module PageObject
     # Finds a table cell
     #
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first cell.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir only
@@ -419,7 +420,8 @@ module PageObject
     # Finds all table cell elements that match the provided identifier
     #
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all table cells.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir only
@@ -427,7 +429,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def cell_elements(identifier)
+    def cell_elements(identifier={})
       platform.cells_for(identifier.clone)
     end
     

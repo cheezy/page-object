@@ -124,12 +124,16 @@ Feature: Multi Elements
     When I select tables using no identifier
     Then I should have 3 tables
 
-  Scenario: Selecting cells
+  Scenario: Selecting cells using an identifier
     When I select the cells with class "td"
     Then I should have 3 cells
     And the text for cell 1 should be "Data 1"
     And the text for cell 2 should be "Data 2"
     And the text for cell 3 should be "Data 3"
+
+  Scenario: Selecting cells using no identifier
+    When I select the cells using no identifier
+    Then I should have 9 cells
 
   Scenario: Selecting images
     When I select the images with class "image"

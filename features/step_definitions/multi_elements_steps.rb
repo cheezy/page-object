@@ -340,3 +340,6 @@ When /^I select tables using no identifier$/ do
   @elements = @page.table_elements
 end
 
+When /^I select the cells using no identifier$/ do
+  @elements = @page.cell_elements
+end
