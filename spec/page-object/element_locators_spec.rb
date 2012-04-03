@@ -556,7 +556,12 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:labels).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.label_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Label
-    end    
+    end
+
+    it "should find all label elements using no parameters" do
+      watir_browser.should_receive(:labels).with({}).and_return([watir_browser])
+      watir_page_object.label_elements
+    end
 
     it "should find a file field element" do
       watir_browser.should_receive(:file_field).with(:id => 'blah').and_return(watir_browser)

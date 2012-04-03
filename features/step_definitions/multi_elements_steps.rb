@@ -371,3 +371,20 @@ end
 When /^I select paragraphs using no identifier$/ do
   @elements = @page.paragraph_elements
 end
+
+When /^I select the labels with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.label_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) labels$/ do |num_labels|
+  @elements.size.should == num_labels.to_i
+end
+
+Then /^the text for label (\d+) should be "([^\"]*)"$/ do |label_num, text|
+  @elements[label_num.to_i - 1].text.should == text
+end
+
+When /^I select labels using no identifier$/ do
+  @elements = @page.label_elements
+end
+

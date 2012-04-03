@@ -267,3 +267,14 @@ Feature: Multi Elements
     When I select paragraphs using no identifier
     Then I should have 3 paragraphs
 
+  Scenario: Selecting labels with an identifier
+    When I select the labels with class "label"
+    Then I should have 3 labels
+    And the text for label 1 should be "Label 1"
+    And the text for label 2 should be "Label 2"
+    And the text for label 3 should be "Label 3"
+
+  Scenario: Selecting labels using no identifier
+    When I select labels using no identifier
+    Then I should have 3 labels
+
