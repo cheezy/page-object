@@ -368,3 +368,6 @@ When /^I select h(\d+)s using no identifier$/ do |num|
   @elements = @page.send "h#{num}_elements"
 end
 
+When /^I select paragraphs using no identifier$/ do
+  @elements = @page.paragraph_elements
+end

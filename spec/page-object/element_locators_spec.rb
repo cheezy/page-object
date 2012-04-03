@@ -536,6 +536,11 @@ describe PageObject::ElementLocators do
       elements[0].should be_instance_of PageObject::Elements::Paragraph 
     end
 
+    it "should find all paragraph elements using no identifier" do
+      watir_browser.should_receive(:ps).with({}).and_return([watir_browser])
+      watir_page_object.paragraph_elements
+    end
+
     it "should find a label" do
       watir_browser.should_receive(:label).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.label_element(:id => 'blah')
