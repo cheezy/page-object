@@ -659,7 +659,8 @@ module PageObject
     # Finds a h3
     #
     # @param [Hash] identifier how we find a H3.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h3.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -674,14 +675,15 @@ module PageObject
     # Finds all h3 elements for the identifier
     #
     # @param [Hash] identifier how we find a H3.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all h3s.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h3_elements(identifier)
+    def h3_elements(identifier={})
       platform.h3s_for(identifier.clone)
     end
 

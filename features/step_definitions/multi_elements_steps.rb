@@ -367,3 +367,4 @@ end
 When /^I select h(\d+)s using no identifier$/ do |num|
   @elements = @page.send "h#{num}_elements"
 end
+
