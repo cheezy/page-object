@@ -146,21 +146,29 @@ Feature: Multi Elements
     When I select the images using no identifier
     Then I should have 3 images
 
-  Scenario: Selecting forms
+  Scenario: Selecting forms using an identifier
     When I select the forms with class "form"
     Then I should have 3 forms
     And the action for form 1 should be "form1"
     And the action for form 2 should be "form2"
     And the action for form 3 should be "form3"
+    
+  Scenario: Selecting forms using no identifier
+    When I select the forms using no identifier
+    Then I should have 3 forms
 
-  Scenario: Selecting list items
+  Scenario: Selecting list items using an identifier
     When I select the list items with class "li"
     Then I should have 3 list items
     And the text for list item 1 should be "Item One"
     And the text for list item 2 should be "Item Two"
     And the text for list item 3 should be "Item Three"
+    
+  Scenario: Selecting list items using no identifier
+    When I select the list items using no identifier
+    Then I should have 8 list items
 
-  Scenario: Selecting unordered lists
+  Scenario: Selecting unordered lists using an identifier
     When I select the unordered list with class "ul"
     Then I should have 3 unordered lists
     And the text for the first item in unordered list 1 should be "Item One"

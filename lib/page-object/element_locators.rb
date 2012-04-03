@@ -469,7 +469,8 @@ module PageObject
     # Finds a form
     #
     # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first form.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -483,13 +484,14 @@ module PageObject
     # Finds all forms that match the provided identifier
     #
     # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all forms.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def form_elements(identifier)
+    def form_elements(identifier={})
       platform.forms_for(identifier.clone)
     end
     
@@ -497,7 +499,8 @@ module PageObject
     # Finds a list item
     #
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   whcih will return the first list item.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -512,14 +515,15 @@ module PageObject
     # Finds all list items that match the identifier
     #
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all list items.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def list_item_elements(identifier)
+    def list_item_elements(identifier={})
       platform.list_items_for(identifier.clone)
     end
 

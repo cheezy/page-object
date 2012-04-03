@@ -315,6 +315,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.form_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Form
     end
+
+    it "should find all forms using no identifier" do
+      watir_browser.should_receive(:forms).with({}).and_return([watir_browser])
+      watir_page_object.form_elements
+    end
     
     it "should find a list item" do
       watir_browser.should_receive(:li).with(:id => 'blah').and_return(watir_browser)
@@ -331,6 +336,11 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:lis).with(:id => 'blah').and_return([watir_browser])
       elements = watir_page_object.list_item_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::ListItem 
+    end
+
+    it "should find all list items using no parameter" do
+      watir_browser.should_receive(:lis).with({}).and_return([watir_browser])
+      watir_page_object.list_item_elements
     end
     
     it "should find an unordered list" do
