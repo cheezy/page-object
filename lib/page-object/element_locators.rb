@@ -723,7 +723,8 @@ module PageObject
     # Finds a h5
     #
     # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h5 element.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -738,14 +739,15 @@ module PageObject
     # Finds all h5 elements for the identifier
     #
     # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to using an empty Hash
+    #   which will return all h5 elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h5_elements(identifier)
+    def h5_elements(identifier={})
       platform.h5s_for(identifier.clone)
     end
 
@@ -753,7 +755,8 @@ module PageObject
     # Finds a h6
     #
     # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h6 element.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -768,14 +771,15 @@ module PageObject
     # Finds all h6 elements matching the identifier
     #
     # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all h6 elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h6_elements(identifier)
+    def h6_elements(identifier={})
       platform.h6s_for(identifier.clone)
     end
 

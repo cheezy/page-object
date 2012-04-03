@@ -234,19 +234,27 @@ Feature: Multi Elements
     When I select h4s using no identifier
     Then I should have 3 h4s
     
-  Scenario: Selecting h5s
+  Scenario: Selecting h5s using an identifier
     When I select the h5s with the class "h5"
     Then I should have 3 h5s
     And the text for H5 1 should be "H5 One"
     And the text for H5 2 should be "H5 Two"
     And the text for H5 3 should be "H5 Three"
+    
+  Scenario: Selecting h5s using no identifier
+    When I select h5s using no identifier
+    Then I should have 3 h5s
 
-  Scenario: Selecting h6s
+  Scenario: Selecting h6s using an identifier
     When I select the h6s with the class "h6"
     Then I should have 3 h6s
     And the text for H6 1 should be "H6 One"
     And the text for H6 2 should be "H6 Two"
     And the text for H6 3 should be "H6 Three"
+    
+  Scenario: Selecting h6s using no identifier
+    When I select h6s using no identifier
+    Then I should have 3 h6s
 
   Scenario: Selecting paragraphs
     When I select the paragraph with class "p"
