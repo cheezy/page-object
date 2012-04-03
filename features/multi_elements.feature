@@ -3,93 +3,126 @@ Feature: Multi Elements
   Background:
     Given I am on the multi elements page
 
-  Scenario: Selecting buttons
+  Scenario: Selecting buttons using an identifier
     When I select the buttons with class "button"
     Then I should have 3 buttons
     And the value of button 1 should be "Button 1"
     And the value of button 2 should be "Button 2"
     And the value of button 3 should be "Button 3"
-    And I should be able to find 3 buttons using no identifier
+    
+  Scenario: Selecting buttons using no identifier
+    When I select all buttons using no identifier
+    Then I should have 3 buttons
 
-  Scenario: Selecting text_fields
+  Scenario: Selecting text fields using an identifier
     When I select the text fields with class "textfield"
     Then I should have 3 text fields
     And the value of text field 1 should be "text 1"
     And the value of text field 2 should be "text 2"
     And the value of text field 3 should be "text 3"
-    And I should be able to find 3 text fields using no identifier
+    
+  Scenario: Selecting text fields using no identifier
+    When I select all text fields using no identifier
+    Then I should have 3 text fields
 
-  Scenario: Selecting hidden_fields
+  Scenario: Selecting hidden fields using an identifier
     When I select the hidden fields with class "hiddenfield"
     Then I should have 3 hidden fields
     And the value of hidden field 1 should be "hidden 1"
     And the value of hidden field 2 should be "hidden 2"
     And the value of hidden field 3 should be "hidden 3"
-    And I should be able to find 3 hidden fields using no identifier
 
-  Scenario: Selecting text_areas
+  Scenario: Selecting hidden fields using no identifier
+    When I select all hidden fields using no identifier
+    Then I should have 3 hidden fields
+
+  Scenario: Selecting text areas using an identifier
     When I select the text areas with class "textarea"
     Then I should have 3 text areas
     And the value of text area 1 should be "textarea 1"
     And the value of text area 2 should be "textarea 2"
     And the value of text area 3 should be "textarea 3"
-    And I should be able to find 3 text areas using no identifier
 
-  Scenario: Selecting select_lists
+  Scenario: Selecting text areas using no identifier
+    When I select text areas using no identifier
+    Then I should have 3 text areas
+
+  Scenario: Selecting select lists using an identifier
     When I select the select lists with class "selectlist"
     Then I should have 3 select lists
     And the value of select list 1 should be "selectlist 1"
     And the value of select list 2 should be "selectlist 2"
     And the value of select list 3 should be "selectlist 3"
-    And I should be able to find 3 select lists using no identifier
 
-  Scenario: Selecting links
+  Scenario: Selecting select lists using no identifier
+    When I select select lists using no identifier
+    Then I should have 3 select lists
+
+  Scenario: Selecting links using an identifier
     When I select the link with class "link"
     Then I should have 3 links
     And the text of link 1 should be "link 1"
     And the text of link 2 should be "link 2"
     And the text of link 3 should be "link 3"
-    And I should be able to find all 3 links using no identifier
 
-  Scenario: Selecting checkboxes
+  Scenario: Selecting links using no identifier
+    When I select links using no identifier
+    Then I should have 3 links
+
+  Scenario: Selecting checkboxes using an identifier
     When I select the check boxes with class "checkbox"
     Then I should have 3 checkboxes
     And the value of checkbox 1 should be "checkbox 1"
     And the value of checkbox 2 should be "checkbox 2"
     And the value of checkbox 3 should be "checkbox 3"
-    And I should be able to find all 3 checkboxes using no identifier
+
+  Scenario: Selecting checkboxes using no identifier
+    When I select checboxes using no identifier
+    Then I should have 3 checkboxes
     
-  Scenario: Selecting radio buttons
+  Scenario: Selecting radio buttons using an identifier
     When I select the radio button with class "radio"
     Then I should have 3 radio buttons
     And the value of radio button 1 should be "radio 1"
     And the value of radio button 2 should be "radio 2"
     And the value of radio button 3 should be "radio 3"
-    And I should be able to find all 3 radio buttons using no identifier
 
-  Scenario: Selecting divs
+  Scenario: Selecting radio buttons using no identifier
+    When I select radio buttons using no identifier
+    Then I should have 3 radio buttons
+
+  Scenario: Selecting divs using an identifier
     When I select the div with class "div"
     Then I should have 3 divs
     And the text of div 1 should be "Div 1"
     And the text of div 2 should be "Div 2"
     And the text of div 3 should be "Div 3"
-    And I should be able to find all 3 divs using no identifier
 
-  Scenario: Selecting spans
+  Scenario: Selecting divs using no identifier
+    When I select divs using no identifier
+    Then I should have 3 divs
+
+  Scenario: Selecting spans using an identifier
     When I select the spans with class "span"
     Then I should have 3 spans
     And the text of span 1 should be "Span 1"
     And the text of span 2 should be "Span 2"
     And the text of span 3 should be "Span 3"
-    And I should be able to find all 3 spans using no identifier
 
-  Scenario: Selecting tables
+  Scenario: Selecting spans using no identifier
+    When I select spans using no identifier
+    Then I should have 3 spans
+
+  Scenario: Selecting tables using an identifier
     When I select the tables with class "table"
     Then I should have 3 tables
     And the first row first column for table 1 should have "Data 1"
     And the first row first column for table 2 should have "Data 4"
     And the first row first column for table 3 should have "Data 7"
-    And I should be able to find all 3 tables using no identifier
+
+  Scenario: Selecting tables using no identifier
+    When I select tables using no identifier
+    Then I should have 3 tables
 
   Scenario: Selecting cells
     When I select the cells with class "td"

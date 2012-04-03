@@ -296,47 +296,47 @@ Then /^the text for paragraph (\d+) should be "([^\"]*)"$/ do |para_num, text|
   @elements[para_num.to_i - 1].text.should == text
 end
 
-Then /^I should be able to find (\d+) buttons using no identifier$/ do |num_buttons|
-  @page.button_elements.size.should == num_buttons.to_i
+When /^I select all buttons using no identifier$/ do
+  @elements = @page.button_elements
 end
 
-Then /^I should be able to find (\d+) text fields using no identifier$/ do |num_text_fields|
-  @page.text_field_elements.size.should == num_text_fields.to_i
+When /^I select all text fields using no identifier$/ do
+  @elements = @page.text_field_elements
 end
 
-Then /^I should be able to find (\d+) hidden fields using no identifier$/ do |num_hidden_fields|
-  @page.hidden_field_elements.size.should == num_hidden_fields.to_i
+When /^I select all hidden fields using no identifier$/ do
+  @elements = @page.hidden_field_elements
 end
 
-Then /^I should be able to find (\d+) text areas using no identifier$/ do |num_text_areas|
-  @page.text_area_elements.size.should == num_text_areas.to_i
+When /^I select text areas using no identifier$/ do
+  @elements = @page.text_area_elements
 end
 
-Then /^I should be able to find (\d+) select lists using no identifier$/ do |num_select_lists|
-  @page.select_list_elements.size.should == num_select_lists.to_i
+When /^I select select lists using no identifier$/ do
+  @elements = @page.select_list_elements
 end
 
-Then /^I should be able to find all (\d+) links using no identifier$/ do |num_links|
-  @page.link_elements.size.should == num_links.to_i
+When /^I select links using no identifier$/ do
+  @elements = @page.link_elements
 end
 
-Then /^I should be able to find all (\d+) checkboxes using no identifier$/ do |num_checkboxes|
-  @page.checkbox_elements.size.should == num_checkboxes.to_i
+When /^I select checboxes using no identifier$/ do
+  @elements = @page.checkbox_elements
 end
 
-Then /^I should be able to find all (\d+) radio buttons using no identifier$/ do |num_radios|
-  @page.radio_button_elements.size.should == num_radios.to_i
+When /^I select radio buttons using no identifier$/ do
+  @elements = @page.radio_button_elements
 end
 
-Then /^I should be able to find all (\d+) divs using no identifier$/ do |num_divs|
-  @page.div_elements.size.should == num_divs.to_i
+When /^I select divs using no identifier$/ do
+  @elements = @page.div_elements
 end
 
-Then /^I should be able to find all (\d+) spans using no identifier$/ do |num_spans|
-  @page.span_elements.size.should == num_spans.to_i
+When /^I select spans using no identifier$/ do
+  @elements = @page.span_elements
 end
 
-Then /^I should be able to find all (\d+) tables using no identifier$/ do |num_tables|
-  @page.table_elements.size.should == num_tables.to_i
+When /^I select tables using no identifier$/ do
+  @elements = @page.table_elements
 end
 
