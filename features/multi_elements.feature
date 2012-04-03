@@ -135,12 +135,16 @@ Feature: Multi Elements
     When I select the cells using no identifier
     Then I should have 9 cells
 
-  Scenario: Selecting images
+  Scenario: Selecting images using an identifier
     When I select the images with class "image"
     Then I should have 3 images
     And the alt for image 1 should be "image 1"
     And the alt for image 2 should be "image 2"
     And the alt for image 3 should be "image 3"
+    
+  Scenario: Selecting images using no identifier
+    When I select the images using no identifier
+    Then I should have 3 images
 
   Scenario: Selecting forms
     When I select the forms with class "form"

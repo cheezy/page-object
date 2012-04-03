@@ -293,6 +293,11 @@ describe PageObject::ElementLocators do
       elements = watir_page_object.image_elements(:id => 'blah')
       elements[0].should be_instance_of PageObject::Elements::Image
     end
+
+    it "should find all images using no identifier" do
+      watir_browser.should_receive(:images).with({}).and_return([watir_browser])
+      watir_page_object.image_elements
+    end
     
     it "should find a form" do
       watir_browser.should_receive(:form).with(:id => 'blah').and_return(watir_browser)

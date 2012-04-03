@@ -437,7 +437,8 @@ module PageObject
     # Finds an image
     #
     # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first image.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -452,14 +453,15 @@ module PageObject
     # Finds all images that match the provided identifier
     #
     # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empth Hash
+    #   which will return all images.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def image_elements(identifier)
+    def image_elements(identifier={})
       platform.images_for(identifier.clone)
     end
     
