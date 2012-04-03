@@ -364,6 +364,6 @@ When /^I select the ordered lists using no identifier$/ do
   @elements = @page.ordered_list_elements
 end
 
-When /^I select h(\d+)s using no identifier$/ do |arg1|
-  @elements = @page.h1_elements
+When /^I select h(\d+)s using no identifier$/ do |num|
+  @elements = @page.send "h#{num}_elements"
 end

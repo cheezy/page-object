@@ -627,7 +627,8 @@ module PageObject
     # Finds a h2
     #
     # @param [Hash] identifier how we find a H2.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h2.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -642,14 +643,15 @@ module PageObject
     # Finds all h2 elements matching the identifier
     #
     # @param [Hash] identifier how we find a H2.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all h2s.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h2_elements(identifier)
+    def h2_elements(identifier={})
       platform.h2s_for(identifier.clone)
     end
 

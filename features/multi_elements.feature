@@ -201,12 +201,16 @@ Feature: Multi Elements
     When I select h1s using no identifier
     Then I should have 3 h1s
 
-  Scenario: Selecting h2s
+  Scenario: Selecting h2s using an identifier
     When I select the h2s with the class "h2"
     Then I should have 3 h2s
     And the text for h2 1 should be "H2 One"
     And the text for h2 2 should be "H2 Two"
     And the text for h2 3 should be "H2 Three"
+    
+  Scenario: Selecting h2s using no identifier
+    When I select h2s using no identifier
+    Then I should have 3 h2s
 
   Scenario: Selecting h3s
     When I select the h3s with the class "h3"
