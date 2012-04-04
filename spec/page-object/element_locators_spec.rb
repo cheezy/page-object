@@ -574,6 +574,17 @@ describe PageObject::ElementLocators do
       watir_page_object.file_field_element
     end
 
+    it "should find all file field elements" do
+      watir_browser.should_receive(:file_fields).with(:id => 'blah').and_return([watir_browser])
+      element = watir_page_object.file_field_elements(:id => 'blah')
+      element[0].should be_instance_of PageObject::Elements::FileField
+    end
+
+    it "should find all file fields using no identifier" do
+      watir_browser.should_receive(:file_fields).with({}).and_return([watir_browser])
+      watir_page_object.file_field_elements
+    end
+
     it "should find an element" do
       watir_browser.should_receive(:audio).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.element(:audio, :id => 'blah')

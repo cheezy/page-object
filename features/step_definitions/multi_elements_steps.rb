@@ -388,3 +388,18 @@ When /^I select labels using no identifier$/ do
   @elements = @page.label_elements
 end
 
+When /^I select the file fields with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.file_field_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) file fields$/ do |num_file_fields|
+  @elements.size.should == num_file_fields.to_i
+end
+
+Then /^the title for file field (\d+) should be "([^\"]*)"$/ do |file_field_num, title|
+  @elements[file_field_num.to_i - 1].attribute('title').should == title
+end
+
+When /^I select the file fields using no identifier$/ do
+  @elements = @page.file_field_elements
+end

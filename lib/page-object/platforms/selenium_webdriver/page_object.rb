@@ -851,6 +851,13 @@ module PageObject
         end
 
         #
+        # platform method to return an array of file field elements
+        #
+        def file_fields_for(identifier)
+          find_selenium_elements(identifier, Elements::FileField, 'input', :type => 'file')
+        end
+
+        #
         # platform method to retrieve a generic element
         # See PageObject::Accessors#element
         #

@@ -278,3 +278,13 @@ Feature: Multi Elements
     When I select labels using no identifier
     Then I should have 3 labels
 
+  Scenario: Selecting file fields with an identifier
+    When I select the file fields with class "file_field_class"
+    Then I should have 3 file fields
+    And the title for file field 1 should be "File Field 1"
+    And the title for file field 2 should be "File Field 2"
+    And the title for file field 3 should be "File Field 3"
+
+  Scenario: Selecting file fields using no identifier
+    When I select the file fields using no identifier
+    Then I should have 3 file fields

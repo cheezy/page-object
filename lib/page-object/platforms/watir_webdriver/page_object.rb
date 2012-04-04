@@ -800,6 +800,14 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of file field elements
+        #
+        def file_fields_for(identifier)
+          find_watir_elements("file_fields(identifier)", Elements::FileField, identifier)
+          
+        end
+
+        #
         # platform method to return a PageObject::Elements::Element element
         # See PageObject::Accessors#elem
         #
