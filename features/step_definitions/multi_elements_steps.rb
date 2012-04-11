@@ -295,3 +295,111 @@ end
 Then /^the text for paragraph (\d+) should be "([^\"]*)"$/ do |para_num, text|
   @elements[para_num.to_i - 1].text.should == text
 end
+
+When /^I select all buttons using no identifier$/ do
+  @elements = @page.button_elements
+end
+
+When /^I select all text fields using no identifier$/ do
+  @elements = @page.text_field_elements
+end
+
+When /^I select all hidden fields using no identifier$/ do
+  @elements = @page.hidden_field_elements
+end
+
+When /^I select text areas using no identifier$/ do
+  @elements = @page.text_area_elements
+end
+
+When /^I select select lists using no identifier$/ do
+  @elements = @page.select_list_elements
+end
+
+When /^I select links using no identifier$/ do
+  @elements = @page.link_elements
+end
+
+When /^I select checboxes using no identifier$/ do
+  @elements = @page.checkbox_elements
+end
+
+When /^I select radio buttons using no identifier$/ do
+  @elements = @page.radio_button_elements
+end
+
+When /^I select divs using no identifier$/ do
+  @elements = @page.div_elements
+end
+
+When /^I select spans using no identifier$/ do
+  @elements = @page.span_elements
+end
+
+When /^I select tables using no identifier$/ do
+  @elements = @page.table_elements
+end
+
+When /^I select the cells using no identifier$/ do
+  @elements = @page.cell_elements
+end
+
+When /^I select the images using no identifier$/ do
+  @elements = @page.image_elements
+end
+
+When /^I select the forms using no identifier$/ do
+  @elements = @page.form_elements
+end
+
+When /^I select the list items using no identifier$/ do
+  @elements = @page.list_item_elements
+end
+
+When /^I select the unordered list using no parameter$/ do
+  @elements = @page.unordered_list_elements
+end
+
+When /^I select the ordered lists using no identifier$/ do
+  @elements = @page.ordered_list_elements
+end
+
+When /^I select h(\d+)s using no identifier$/ do |num|
+  @elements = @page.send "h#{num}_elements"
+end
+
+When /^I select paragraphs using no identifier$/ do
+  @elements = @page.paragraph_elements
+end
+
+When /^I select the labels with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.label_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) labels$/ do |num_labels|
+  @elements.size.should == num_labels.to_i
+end
+
+Then /^the text for label (\d+) should be "([^\"]*)"$/ do |label_num, text|
+  @elements[label_num.to_i - 1].text.should == text
+end
+
+When /^I select labels using no identifier$/ do
+  @elements = @page.label_elements
+end
+
+When /^I select the file fields with class "([^\"]*)"$/ do |class_name|
+  @elements = @page.file_field_elements(:class => class_name)
+end
+
+Then /^I should have (\d+) file fields$/ do |num_file_fields|
+  @elements.size.should == num_file_fields.to_i
+end
+
+Then /^the title for file field (\d+) should be "([^\"]*)"$/ do |file_field_num, title|
+  @elements[file_field_num.to_i - 1].attribute('title').should == title
+end
+
+When /^I select the file fields using no identifier$/ do
+  @elements = @page.file_field_elements
+end

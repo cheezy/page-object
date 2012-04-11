@@ -5,7 +5,8 @@ module PageObject
     # Finds a button
     #
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0} 
+    #   which will find the first button.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -25,7 +26,8 @@ module PageObject
     # Finds all buttons that match the provided identifier
     #
     # @param [Hash] identifier how we find a button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty 
+    #   hash which will find all button elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -37,7 +39,7 @@ module PageObject
     #   * :src => Watir and Selenium (image button only)
     #   * :alt => Watir and Selenium (image button only)
     #
-    def button_elements(identifier)
+    def button_elements(identifier={})
       platform.buttons_for(identifier.clone)
     end
     
@@ -45,7 +47,8 @@ module PageObject
     # Finds a text field
     #
     # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index=> 0} 
+    #   which will find the first text field.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -65,7 +68,8 @@ module PageObject
     # Finds all text fields that match the provided identifier
     #
     # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash 
+    #   which will find all text field elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -77,7 +81,7 @@ module PageObject
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #
-    def text_field_elements(identifier)
+    def text_field_elements(identifier={})
       platform.text_fields_for(identifier.clone)
     end
     
@@ -85,7 +89,8 @@ module PageObject
     # Finds a hidden field
     #
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will find the first hidden field.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -103,7 +108,8 @@ module PageObject
     # Finds all hidden fields that match the identifier
     #
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty hash
+    #   which will return all hidden fields.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -113,7 +119,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def hidden_field_elements(identifier)
+    def hidden_field_elements(identifier={})
       platform.hidden_fields_for(identifier.clone)
     end
     
@@ -121,7 +127,8 @@ module PageObject
     # Finds a text area
     #
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first text area.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -138,7 +145,8 @@ module PageObject
     # Finds all text areas for the provided identifier
     #
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty hash
+    #   which will return all text areas.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
@@ -147,7 +155,7 @@ module PageObject
     #   * :tag_name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def text_area_elements(identifier)
+    def text_area_elements(identifier={})
       platform.text_areas_for(identifier.clone)
     end
     
@@ -155,7 +163,8 @@ module PageObject
     # Finds a select list
     #
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will select the first select list.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -172,7 +181,8 @@ module PageObject
     # Finds all select lists for the provided identifier
     #
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all select lists.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -181,7 +191,7 @@ module PageObject
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
     #
-    def select_list_elements(identifier)
+    def select_list_elements(identifier={})
       platform.select_lists_for(identifier.clone)
     end
     
@@ -189,7 +199,8 @@ module PageObject
     # Finds a link
     #
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will select the first link.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :href => Watir and Selenium
@@ -209,7 +220,8 @@ module PageObject
     # Find all links for the provided identifier
     #
     # @param [Hash] identifier how we find a link.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all links.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Watir and Selenium
     #   * :href => Watir and Selenium
@@ -221,7 +233,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def link_elements(identifier)
+    def link_elements(identifier={})
       platform.links_for(identifier.clone)
     end
     
@@ -229,7 +241,8 @@ module PageObject
     # Finds a checkbox
     #
     # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first checkbox.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -244,14 +257,15 @@ module PageObject
     # Finds all checkbox elements for the provided identifier
     #
     # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all checkboxes.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def checkbox_elements(identifier)
+    def checkbox_elements(identifier={})
       platform.checkboxes_for(identifier.clone)
     end
 
@@ -259,7 +273,8 @@ module PageObject
     # Finds a radio button
     #
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first radio button.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -274,14 +289,15 @@ module PageObject
     # Finds all radio button elements that match the provided identifier
     #
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all radio buttons.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def radio_button_elements(identifier)
+    def radio_button_elements(identifier={})
       platform.radio_buttons_for(identifier.clone)
     end
 
@@ -289,7 +305,8 @@ module PageObject
     # Finds a div
     #
     # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first div.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -305,7 +322,8 @@ module PageObject
     # Finds all divs that match the provided identifier
     #
     # @param [Hash] identifier how we find a div.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all divs.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -313,7 +331,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def div_elements(identifier)
+    def div_elements(identifier={})
       platform.divs_for(identifier.clone)
     end
 
@@ -321,7 +339,8 @@ module PageObject
     # Finds a span
     #
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first span element.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -336,14 +355,15 @@ module PageObject
     # Finds all span elements that match the provided identifier
     #
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all of the spans.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def span_elements(identifier)
+    def span_elements(identifier={})
       platform.spans_for(identifier.clone)
     end
     
@@ -351,7 +371,8 @@ module PageObject
     # Finds a table
     #
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first table.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -366,14 +387,15 @@ module PageObject
     # Finds all tables that match the provided identifier
     #
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all tables.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def table_elements(identifier)
+    def table_elements(identifier={})
       platform.tables_for(identifier.clone)
     end
 
@@ -381,7 +403,8 @@ module PageObject
     # Finds a table cell
     #
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first cell.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir only
@@ -397,7 +420,8 @@ module PageObject
     # Finds all table cell elements that match the provided identifier
     #
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all table cells.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir only
@@ -405,7 +429,7 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def cell_elements(identifier)
+    def cell_elements(identifier={})
       platform.cells_for(identifier.clone)
     end
     
@@ -413,7 +437,8 @@ module PageObject
     # Finds an image
     #
     # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first image.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -428,14 +453,15 @@ module PageObject
     # Finds all images that match the provided identifier
     #
     # @param [Hash] identifier how we find an image.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empth Hash
+    #   which will return all images.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def image_elements(identifier)
+    def image_elements(identifier={})
       platform.images_for(identifier.clone)
     end
     
@@ -443,7 +469,8 @@ module PageObject
     # Finds a form
     #
     # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first form.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -457,13 +484,14 @@ module PageObject
     # Finds all forms that match the provided identifier
     #
     # @param [Hash] identifier how we find a form.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all forms.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def form_elements(identifier)
+    def form_elements(identifier={})
       platform.forms_for(identifier.clone)
     end
     
@@ -471,7 +499,8 @@ module PageObject
     # Finds a list item
     #
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   whcih will return the first list item.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -486,14 +515,15 @@ module PageObject
     # Finds all list items that match the identifier
     #
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all list items.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def list_item_elements(identifier)
+    def list_item_elements(identifier={})
       platform.list_items_for(identifier.clone)
     end
 
@@ -501,7 +531,8 @@ module PageObject
     # Finds an unordered list
     #
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first unordered list.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -516,14 +547,15 @@ module PageObject
     # Finds all unordered lists that match the identifier
     #
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all unordered lists.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def unordered_list_elements(identifier)
+    def unordered_list_elements(identifier={})
       platform.unordered_lists_for(identifier.clone)
     end
 
@@ -531,7 +563,8 @@ module PageObject
     #  Finds an ordered list
     #
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   whcih will return the first ordered list.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -546,14 +579,15 @@ module PageObject
     #  Finds all ordered lists that match the identifier
     #
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which returns all ordered lists.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def ordered_list_elements(identifier)
+    def ordered_list_elements(identifier={})
       platform.ordered_lists_for(identifier.clone)
     end
     
@@ -561,7 +595,8 @@ module PageObject
     # Finds a h1
     #
     # @param [Hash] identifier how we find a H1.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h1.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -576,14 +611,15 @@ module PageObject
     # Finds all h1 elements matching the identifier
     #
     # @param [Hash] identifier how we find a H1.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all h1s.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h1_elements(identifier)
+    def h1_elements(identifier={})
       platform.h1s_for(identifier.clone)
     end
 
@@ -591,7 +627,8 @@ module PageObject
     # Finds a h2
     #
     # @param [Hash] identifier how we find a H2.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h2.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -606,14 +643,15 @@ module PageObject
     # Finds all h2 elements matching the identifier
     #
     # @param [Hash] identifier how we find a H2.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all h2s.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h2_elements(identifier)
+    def h2_elements(identifier={})
       platform.h2s_for(identifier.clone)
     end
 
@@ -621,7 +659,8 @@ module PageObject
     # Finds a h3
     #
     # @param [Hash] identifier how we find a H3.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h3.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -636,14 +675,15 @@ module PageObject
     # Finds all h3 elements for the identifier
     #
     # @param [Hash] identifier how we find a H3.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all h3s.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h3_elements(identifier)
+    def h3_elements(identifier={})
       platform.h3s_for(identifier.clone)
     end
 
@@ -651,7 +691,8 @@ module PageObject
     # Finds a h4
     #
     # @param [Hash] identifier how we find a H4.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will select the first h4.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -666,14 +707,15 @@ module PageObject
     # Finds all h4 elements matching the identifier
     #
     # @param [Hash] identifier how we find a H4.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will select all h4s.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h4_elements(identifier)
+    def h4_elements(identifier={})
       platform.h4s_for(identifier.clone)
     end
 
@@ -681,7 +723,8 @@ module PageObject
     # Finds a h5
     #
     # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h5 element.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -696,14 +739,15 @@ module PageObject
     # Finds all h5 elements for the identifier
     #
     # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to using an empty Hash
+    #   which will return all h5 elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h5_elements(identifier)
+    def h5_elements(identifier={})
       platform.h5s_for(identifier.clone)
     end
 
@@ -711,7 +755,8 @@ module PageObject
     # Finds a h6
     #
     # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first h6 element.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -726,14 +771,15 @@ module PageObject
     # Finds all h6 elements matching the identifier
     #
     # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all h6 elements.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def h6_elements(identifier)
+    def h6_elements(identifier={})
       platform.h6s_for(identifier.clone)
     end
 
@@ -741,7 +787,8 @@ module PageObject
     # Finds a paragraph
     #
     # @param [Hash] identifier how we find a paragraph.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first paragraph.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -756,14 +803,15 @@ module PageObject
     # Finds all paragraph elements
     #
     # @param [Hash] identifier how we find a paragraph.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty Hash
+    #   which will return all paragraphs.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def paragraph_elements(identifier)
+    def paragraph_elements(identifier={})
       platform.paragraphs_for(identifier.clone)
     end
 
@@ -771,7 +819,8 @@ module PageObject
     # Finds a label
     #
     # @param [Hash] identifier how we find a label.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   whcih will return the first label.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -787,7 +836,8 @@ module PageObject
     # Finds all labels that match the provided identifier
     #
     # @param [Hash] identifier how we find a label.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    #   by combining of any of the following except xpath.  It defaults to an empty hash
+    #   which returns all labels.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -795,15 +845,16 @@ module PageObject
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #
-    def label_elements(identifier)
+    def label_elements(identifier={})
       platform.labels_for(identifier.clone)
     end
 
     #
-    # Finds a paragraph
+    # Finds a file field
     #
-    # @param [Hash] identifier how we find a paragraph.  You can use a multiple paramaters
-    #   by combining of any of the following except xpath.  The valid keys are:
+    # @param [Hash] identifier how we find a file field.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first file field.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
@@ -812,6 +863,22 @@ module PageObject
     #   * :xpath => Watir and Selenium
     def file_field_element(identifier={:index => 0})
       platform.file_field_for(identifier.clone)
+    end
+
+    #
+    # Finds all file fields that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a file field.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  It defaults to and empty Hash
+    #   which will return all file fields.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :title => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    def file_field_elements(identifier={})
+      platform.file_fields_for(identifier.clone)
     end
 
     #

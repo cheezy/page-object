@@ -20,8 +20,6 @@ Feature: Text Fields
     | class     |
     | name      |
     | xpath     |
-    | css       |
-    | tag_name  |
     | index     |
     | title     |
 

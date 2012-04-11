@@ -851,6 +851,13 @@ module PageObject
         end
 
         #
+        # platform method to return an array of file field elements
+        #
+        def file_fields_for(identifier)
+          find_selenium_elements(identifier, Elements::FileField, 'input', :type => 'file')
+        end
+
+        #
         # platform method to retrieve a generic element
         # See PageObject::Accessors#element
         #
@@ -911,6 +918,7 @@ module PageObject
         end
 
         def supported_identifier(identifier, tag, additional)
+          return false if identifier.size == 0
           return false if identifier[:index]
           return false if identifier[:action] and tag == 'form'
           return false if identifier[:alt] and tag == 'img'

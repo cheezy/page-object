@@ -89,12 +89,12 @@ module PageObject
       # delegate calls to driver element
       def method_missing(*args, &block)
         m = args.shift
-        puts "*** DEPRECATION WARNING"
-        puts "*** You are calling a method named #{m} at #{caller[0]}."
-        puts "*** This method does not exist in page-object so it is being passed to the driver."
-        puts "*** This feature will be removed in the near future."
-        puts "*** Please change your code to call the correct page-object method."
-        puts "*** If you are using functionality that does not exist in page-object please request it be added."
+        $stderr.puts "*** DEPRECATION WARNING"
+        $stderr.puts "*** You are calling a method named #{m} at #{caller[0]}."
+        $stderr.puts "*** This method does not exist in page-object so it is being passed to the driver."
+        $stderr.puts "*** This feature will be removed in the near future."
+        $stderr.puts "*** Please change your code to call the correct page-object method."
+        $stderr.puts "*** If you are using functionality that does not exist in page-object please request it be added."
         begin
           element.send m, *args, &block
         rescue Exception => e
@@ -172,7 +172,7 @@ module PageObject
 
       def self.identifier_for identifier, find_by, find_by_mapping
         how, what = identifier.keys.first, identifier.values.first
-        return how => what if find_by.include? how
+        return how => what if find_by.include? how or how == :tag_name
         return find_by_mapping[how] => what if find_by_mapping[how]
         return nil => what
       end

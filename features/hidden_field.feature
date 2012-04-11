@@ -17,8 +17,6 @@ Feature: Hidden Fields
     | class     |
     | name      |
     | xpath     |
-    | css       |
-    | tag_name  |
     | index     |
     | text      |
     | value     |
