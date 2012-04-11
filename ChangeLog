@@ -3,6 +3,7 @@
   * Added a page level element method to return a generic Element object
   * Updated all accessor methods to take a default identifier of {:index => 0}
   * Updated all page level element locators to take a default identifier of {:index => 0}
+  * Updated to use selenium-webdriver 2.21.0
 
 === Version 0.6.4 / 2012-3-27
 * Enhancements
