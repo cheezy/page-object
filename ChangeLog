@@ -1,4 +1,4 @@
-=== Version 0.6.5
+=== Version 0.6.5 / 2012-4-12
 * Enhancements
   * Added a page level element method to return a generic Element object
   * Added a method to retrieve all file fields on a page
