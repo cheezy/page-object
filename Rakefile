@@ -32,4 +32,4 @@ task :lib do
   $LOAD_PATH.unshift(File.expand_path("lib", File.dirname(__FILE__)))
 end
 
-task :default => :spec
+task :default => :test
