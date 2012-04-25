@@ -1,5 +1,6 @@
 === Version 0.6.6
 * Enhancements
+  * Added ability to find span's by title
   * Updated to use watir-webdriver 0.5.5
   * Updated to use selenium-webdriver 2.21.2
 * Fixes
