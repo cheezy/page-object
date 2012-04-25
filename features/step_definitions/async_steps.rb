@@ -35,6 +35,8 @@ class AsyncPage
   button(:target, :value => 'Target')
   button(:hide, :value => 'Hide Button')
   button(:unhide, :value => 'Unhide Button')
+  button(:create_button, :value => 'Create Button')
+  button(:created_button, :value => 'New Button')
 end
 
 Given /^I am on the async elements page$/ do
@@ -59,4 +61,12 @@ Then /^I should be able to wait until the button becomes invisible$/ do
   @page.target_element.when_not_visible do
     @page.target_element.attribute("block").should == "none"
   end
+end
+
+When /^I add a button a few seconds from now$/ do
+  @page.create_button
+end
+
+Then /^I should be able to click it when it gets added$/ do
+  @page.created_button_element.when_present.click
 end

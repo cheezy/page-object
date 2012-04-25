@@ -37,4 +37,32 @@ describe PageObject::Platforms::SeleniumWebDriver::PageObject do
       selenium_page_object.platform.div_for(:text => 'foo')
     end
   end
+
+  context "when trying to find an element that does not exist" do
+    it "should return a surogate selenium object" do
+      selenium_browser.should_receive(:find_element).and_raise(Selenium::WebDriver::Error::NoSuchElementError)
+      page = SeleniumTestPageObject.new(selenium_browser)
+      element = page.link_element(:text => 'blah')
+      element.element.should be_instance_of PageObject::Platforms::SeleniumWebDriver::SurrogateSeleniumElement
+    end
+
+    it "should know it is not exist" do
+      selenium_browser.should_receive(:find_element).twice.and_raise(Selenium::WebDriver::Error::NoSuchElementError)
+      page = SeleniumTestPageObject.new(selenium_browser)
+      page.link_element(:text => 'blah').element.exists?.should be_false
+    end
+
+    it "should know it is not visible" do
+      selenium_browser.should_receive(:find_element).twice.and_raise(Selenium::WebDriver::Error::NoSuchElementError)
+      page = SeleniumTestPageObject.new(selenium_browser)
+      page.link_element(:text => 'blah').element.should_not be_visible
+    end
+
+    it "should raise an error when actions are requested" do
+      selenium_browser.should_receive(:find_element).and_raise(Selenium::WebDriver::Error::NoSuchElementError)
+      page = SeleniumTestPageObject.new(selenium_browser)
+      element = page.link_element(:text => 'blah')
+      expect { element.text }.to raise_error
+    end
+  end
 end

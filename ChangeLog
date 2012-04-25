@@ -1,3 +1,7 @@
+=== Version 0.6.6
+* Fixes
+  * Fixed the problem with determining the existance of an Selenium element
+
 === Version 0.6.5 / 2012-4-12
 * Enhancements
   * Added a page level element method to return a generic Element object

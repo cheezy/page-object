@@ -1,5 +1,6 @@
 require 'page-object/elements'
 require 'page-object/core_ext/string'
+require 'page-object/platforms/selenium_webdriver/surrogate_selenium_element'
 
 module PageObject
   module Platforms
@@ -886,7 +887,12 @@ module PageObject
         def find_selenium_element(identifier, type, tag, other=nil)
           how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
           switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
+          begin
+            element = @browser.find_element(how, what)
+          rescue Selenium::WebDriver::Error::NoSuchElementError
+            @browser.switch_to.default_content unless frame_identifiers.nil?
+            return build_null_object(identifier, type, tag, other)
+          end
           @browser.switch_to.default_content unless frame_identifiers.nil?
           type.new(element, :platform => :selenium_webdriver)
         end
@@ -897,6 +903,16 @@ module PageObject
           elements = @browser.find_elements(how, what)
           @browser.switch_to.default_content unless frame_identifiers.nil?
           elements.map { |element| type.new(element, :platform => :selenium_webdriver) }
+        end
+
+        def build_null_object(identifier, type, tag, other)
+          null_element = SurrogateSeleniumElement.new
+          null_element.identifier = identifier
+          null_element.type = type
+          null_element.tag = tag
+          null_element.other = other
+          null_element.platform = self
+          Elements::Element.new(null_element, :platform => :selenium_webdriver)
         end
 
         def parse_identifiers(identifier, element, tag_name=nil, additional=nil)
