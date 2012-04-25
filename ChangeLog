@@ -1,4 +1,7 @@
 === Version 0.6.6
+* Enhancements
+  * Updated to use watir-webdriver 0.5.5
+  * Updated to use selenium-webdriver 2.21.2
 * Fixes
   * Fixed the problem with determining the existance of an Selenium element
 
