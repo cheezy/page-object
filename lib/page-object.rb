@@ -55,8 +55,8 @@ module PageObject
   def initialize(browser, visit=false)
     @browser = browser
     include_platform_driver(browser)
-    initialize_page if respond_to?(:initialize_page)
     goto if visit && respond_to?(:goto)
+    initialize_page if respond_to?(:initialize_page)
   end
 
   # @private
