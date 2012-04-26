@@ -1,4 +1,4 @@
-=== Version 0.6.6
+=== Version 0.6.6 / 2012-4-26
 * Enhancements
   * Added ability to find span's by title
   * Changed order of initialization so initialize_page is called after goto
