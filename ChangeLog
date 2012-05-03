@@ -1,3 +1,7 @@
+=== Version 0.6.7
+* Enhancements
+  * Updated to use watir-webdriver 0.5.6
+
 === Version 0.6.6 / 2012-4-26
 * Enhancements
   * Added ability to find span's by title
