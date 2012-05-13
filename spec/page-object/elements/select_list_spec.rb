@@ -83,7 +83,10 @@ describe PageObject::Elements::SelectList do
       end
 
       it "should select an element" do
-        sel_list.should_receive(:send_keys).with('something')
+        option = double('option')
+        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return([option])
+        option.should_receive(:text).and_return('something')
+        option.should_receive(:click)
         selenium_sel_list.select 'something'
       end
       

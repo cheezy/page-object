@@ -17,7 +17,9 @@ module PageObject
         # Select a value from the list
         #
         def select(value)
-          element.send_keys(value)
+          find_options.find do |option|
+            option.text == value
+          end.click
         end
 
         #

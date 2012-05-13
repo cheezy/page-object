@@ -297,7 +297,10 @@ module PageObject
         #
         def select_list_value_set(identifier, value)
           process_selenium_call(identifier, Elements::SelectList, 'select') do |how, what|
-            @browser.find_element(how, what).send_keys(value)
+            select_list = @browser.find_element(how, what)
+            select_list.find_elements(:tag_name => 'option').find do |option|
+              option.text == value
+            end.click
           end
         end
 

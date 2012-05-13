@@ -607,8 +607,11 @@ describe PageObject::Accessors do
       end
 
       it "should set the current item of a select list" do
+        option = double('option')
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-        selenium_browser.should_receive(:send_keys).with("OH")
+        selenium_browser.should_receive(:find_elements).and_return([option])
+        option.should_receive(:text).and_return('OH')
+        option.should_receive(:click)
         selenium_page_object.state = "OH"
       end
 
