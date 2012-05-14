@@ -130,6 +130,16 @@ module PageObject
         end
 
         #
+        # Waits until the element is not present
+        #
+        # @param [Integer] (defaults to: 5) seconds to wait before
+        # timing out
+        #
+        def when_not_present(timeout=5)
+          element.wait_while_present(timeout)
+        end
+
+        #
         # Waits until the element is visible
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out

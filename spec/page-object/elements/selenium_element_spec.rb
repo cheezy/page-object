@@ -91,6 +91,13 @@ describe "Element for Selenium" do
     element.should === @selenium_element
   end
 
+  it "should return when an element is not present" do
+    wait = double('wait')
+    ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
+    wait.should_receive(:until)
+    @selenium_element.when_not_present
+  end
+
   it "should be able to block until it is visible" do
     wait = double('wait')
     ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)

@@ -36,6 +36,7 @@ class AsyncPage
   button(:hide, :value => 'Hide Button')
   button(:unhide, :value => 'Unhide Button')
   button(:create_button, :value => 'Create Button')
+  button(:remove_button, :value => 'Remove Button')
   button(:created_button, :value => 'New Button')
 end
 
@@ -69,4 +70,14 @@ end
 
 Then /^I should be able to click it when it gets added$/ do
   @page.created_button_element.when_present.click
+end
+
+When /^I remove a button a few seconds from now$/ do
+  @page.created_button_element.when_present
+  @page.remove_button
+end
+
+Then /^I should not be able to find the button$/ do
+  @page.created_button_element.when_not_present
+  @page.created_button_element.exists?.should be_false
 end

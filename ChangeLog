@@ -1,6 +1,7 @@
 === Version 0.6.7
 * Enhancements
   * Added flash method to Element to temporarily change the background color
+  * Added when_not_present method to Element
   * Updated to use watir-webdriver 0.5.7
 * Fixes
   * Improved logic around selecting options from select lists

@@ -21,3 +21,10 @@ Feature: Handling Asynch calls
     Given I am on the async elements page
     When I add a button a few seconds from now
     Then I should be able to click it when it gets added
+
+  Scenario: Wait for an element to disappear from the page
+    Given I am on the async elements page
+    When I add a button a few seconds from now
+    And I remove a button a few seconds from now
+    Then I should not be able to find the button
+   

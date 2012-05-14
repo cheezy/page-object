@@ -153,13 +153,32 @@ module PageObject
           self
         end
 
+                #
+        # Waits until the element is not present
+        #
+        # @param [Integer] (defaults to: 5) seconds to wait before
+        # timing out
+        #
+        def when_not_present(timeout=5)
+          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element still present in #{timeout} seconds"})
+          wait.until do
+            not_present = false
+            begin
+              not_present = false if element and element.displayed?
+            rescue Selenium::WebDriver::Error::ObsoleteElementError
+              not_present = true
+            end
+            not_present
+          end
+        end
+
         #
         # Waits until the element is visible
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
         def when_visible(timeout=5)
-          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element not present in #{timeout} seconds"})
+          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element not visible in #{timeout} seconds"})
           wait.until do
             self.visible?
           end
@@ -172,7 +191,7 @@ module PageObject
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
         def when_not_visible(timeout=5)
-          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element not present in #{timeout} seconds"})
+          wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element still visible in #{timeout} seconds"})
           wait.until do
             not self.visible?
           end
