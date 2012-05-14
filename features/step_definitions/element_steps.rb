@@ -170,4 +170,8 @@ When /^I retrieve the label element$/ do
   @element = @page.label_id_element
 end
 
+Then /^I should be able to flash it$/ do
+  @element.flash
+end
+
 

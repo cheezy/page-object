@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'page-object/elements/element'
 
 describe "Element for Watir" do
   let(:watir_driver) { double('watir_driver') }

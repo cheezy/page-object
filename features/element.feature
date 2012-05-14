@@ -272,3 +272,7 @@ Feature: Elements
     When I find the child link element
     And ask for the parent element
     Then I should have a div parent
+
+  Scenario: Flashing an element
+    When I retrieve a button element
+    Then I should be able to flash it

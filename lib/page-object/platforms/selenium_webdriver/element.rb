@@ -24,6 +24,18 @@ module PageObject
         end
 
         #
+        # flash the element by temporarily changing the background color
+        #
+        def flash
+          original_color = attribute('backgroundColor')
+          bridge = element.instance_variable_get(:@bridge)
+          10.times do |n|
+            color = (n % 2 == 0) ? 'red' : original_color
+            bridge.executeScript("arguments[0].style.backgroundColor = '#{color}'", element)
+          end
+        end
+        
+        #
         # Get the text for the element
         #
         # @return [String]

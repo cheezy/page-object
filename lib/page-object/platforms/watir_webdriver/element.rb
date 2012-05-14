@@ -21,6 +21,13 @@ module PageObject
         end
 
         #
+        # flash the element by temporarily changing the background color
+        #
+        def flash
+          element.flash
+        end
+        
+        #
         # Get the text for the element
         #
         # @return [String]

@@ -28,6 +28,14 @@ describe "Element for Selenium" do
     @selenium_element.exists?.should == false
   end
 
+  it "should flash an element" do
+    bridge = double('bridge')
+    @selenium_driver.should_receive(:attribute).and_return('blue')
+    @selenium_driver.should_receive(:instance_variable_get).and_return(bridge)
+    bridge.should_receive(:executeScript).exactly(10).times
+    @selenium_element.flash
+  end
+
   it "should be able to return the text contained in the element" do
     @selenium_driver.should_receive(:text).and_return("my text")
     @selenium_element.text.should == "my text"
