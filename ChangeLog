@@ -4,7 +4,7 @@
   * Added when_not_present method to Element
   * Added default override for page level waits - PageObject.default_page_wait
   * Added default override for element level waits - PageObject.default_element_wait
-  * Updated to use watir-webdriver 0.5.7
+  * Updated to use watir-webdriver 0.5.8
 * Fixes
   * Improved logic around selecting options from select lists
 
