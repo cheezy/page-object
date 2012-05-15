@@ -153,7 +153,7 @@ module PageObject
           self
         end
 
-                #
+        #
         # Waits until the element is not present
         #
         # @param [Integer] (defaults to: 5) seconds to wait before
