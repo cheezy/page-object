@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'page-object/elements/element'
 
 describe "Element for Watir" do
   let(:watir_driver) { double('watir_driver') }
@@ -79,6 +80,12 @@ describe "Element for Watir" do
     watir_driver.stub(:wait_until_present).with(10)
     element = watir_element.when_present(10)
     element.should === watir_element
+  end
+
+  it "should use the overriden wait when set" do
+    PageObject.default_element_wait = 20
+    watir_driver.stub(:wait_until_present).with(20)
+    watir_element.when_present
   end
 
   it "should be able to block until it is visible" do

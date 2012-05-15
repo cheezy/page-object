@@ -1,5 +1,6 @@
 require 'page-object/elements'
 require 'page-object/core_ext/string'
+require 'page-object/platforms/selenium_webdriver/surrogate_selenium_element'
 
 module PageObject
   module Platforms
@@ -296,7 +297,10 @@ module PageObject
         #
         def select_list_value_set(identifier, value)
           process_selenium_call(identifier, Elements::SelectList, 'select') do |how, what|
-            @browser.find_element(how, what).send_keys(value)
+            select_list = @browser.find_element(how, what)
+            select_list.find_elements(:tag_name => 'option').find do |option|
+              option.text == value
+            end.click
           end
         end
 
@@ -886,7 +890,12 @@ module PageObject
         def find_selenium_element(identifier, type, tag, other=nil)
           how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
           switch_to_frame(frame_identifiers)
-          element = @browser.find_element(how, what)
+          begin
+            element = @browser.find_element(how, what)
+          rescue Selenium::WebDriver::Error::NoSuchElementError
+            @browser.switch_to.default_content unless frame_identifiers.nil?
+            return build_null_object(identifier, type, tag, other)
+          end
           @browser.switch_to.default_content unless frame_identifiers.nil?
           type.new(element, :platform => :selenium_webdriver)
         end
@@ -897,6 +906,16 @@ module PageObject
           elements = @browser.find_elements(how, what)
           @browser.switch_to.default_content unless frame_identifiers.nil?
           elements.map { |element| type.new(element, :platform => :selenium_webdriver) }
+        end
+
+        def build_null_object(identifier, type, tag, other)
+          null_element = SurrogateSeleniumElement.new
+          null_element.identifier = identifier
+          null_element.type = type
+          null_element.tag = tag
+          null_element.other = other
+          null_element.platform = self
+          Elements::Element.new(null_element, :platform => :selenium_webdriver)
         end
 
         def parse_identifiers(identifier, element, tag_name=nil, additional=nil)
@@ -932,6 +951,7 @@ module PageObject
           return false if identifier[:text] and ['div', 'span', 'td', 'label'].include? tag
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'text'
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
+          return false if identifier[:title] and tag == 'span'
           return false if identifier[:value] and tag == 'input' and
             ['radio', 'submit', 'image', 'button', 'reset', 'checkbox', 'hidden'].include? additional[:type]
           true

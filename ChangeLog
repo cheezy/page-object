@@ -1,3 +1,22 @@
+=== Version 0.6.7
+* Enhancements
+  * Added flash method to Element to temporarily change the background color
+  * Added when_not_present method to Element
+  * Added default override for page level waits - PageObject.default_page_wait
+  * Added default override for element level waits - PageObject.default_element_wait
+  * Updated to use watir-webdriver 0.5.8
+* Fixes
+  * Improved logic around selecting options from select lists
+
+=== Version 0.6.6 / 2012-4-26
+* Enhancements
+  * Added ability to find span's by title
+  * Changed order of initialization so initialize_page is called after goto
+  * Updated to use watir-webdriver 0.5.5
+  * Updated to use selenium-webdriver 2.21.2
+* Fixes
+  * Fixed the problem with determining the existance of an Selenium element
+
 === Version 0.6.5 / 2012-4-12
 * Enhancements
   * Added a page level element method to return a generic Element object

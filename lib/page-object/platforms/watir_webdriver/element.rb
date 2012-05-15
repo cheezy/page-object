@@ -21,6 +21,13 @@ module PageObject
         end
 
         #
+        # flash the element by temporarily changing the background color
+        #
+        def flash
+          element.flash
+        end
+        
+        #
         # Get the text for the element
         #
         # @return [String]
@@ -117,9 +124,19 @@ module PageObject
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
-        def when_present(timeout=5)
+        def when_present(timeout=::PageObject.default_element_wait)
           element.wait_until_present(timeout)
           self
+        end
+
+        #
+        # Waits until the element is not present
+        #
+        # @param [Integer] (defaults to: 5) seconds to wait before
+        # timing out
+        #
+        def when_not_present(timeout=::PageObject.default_element_wait)
+          element.wait_while_present(timeout)
         end
 
         #
@@ -127,7 +144,7 @@ module PageObject
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
-        def when_visible(timeout=5)
+        def when_visible(timeout=::PageObject.default_element_wait)
           Object::Watir::Wait.until(timeout, "Element was not visible in #{timeout} seconds") do
             visible?
           end
@@ -139,7 +156,7 @@ module PageObject
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
-        def when_not_visible(timeout=5)
+        def when_not_visible(timeout=::PageObject.default_element_wait)
           Object::Watir::Wait.while(timeout, "Element still visible after #{timeout} seconds") do
             visible?
           end
@@ -153,7 +170,7 @@ module PageObject
         # @param [String] the message to display if the event timeouts
         # @param the block to execute when the event occurrs
         #
-        def wait_until(timeout=5, message=nil, &block)
+        def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
           Object::Watir::Wait.until(timeout, message, &block)
         end
         

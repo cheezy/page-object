@@ -9,12 +9,27 @@
       function hide() {
         document.getElementById("target").style.display="none";
       }
-    </script>
+      
+      function addDiv() {
+        var button = document.createElement("input");
+        button.setAttribute("type", "button");
+        button.setAttribute("value", "New Button");
+        button.setAttribute("id", "new_button");
+        document.body.appendChild(button);
+      }
+
+      function removeDiv() {
+        var button = document.getElementById("new_button");
+        document.body.removeChild(button);
+      }
+     </script>
   </head>
   <body>
     <input type="button" id="target" value="Target"/>
     <input type="button" onclick="setTimeout(function() {hide();}, 2000);" value="Hide Button"/>
     <input type="button" onclick="setTimeout(function() {unhide();}, 2000);" value="Unhide Button"/>
+    <input type="button" onclick="setTimeout(function() {addDiv();}, 2000);" value="Create Button"/>
+    <input type="button" onclick="setTimeout(function() {removeDiv();}, 2000);" value="Remove Button"/>
   </body>
 </html>
 

@@ -19,6 +19,7 @@ Feature: Span
     | index     |
     | name      |
     | text      |
+    | title     |
 
   Scenario Outline: Locating span using multiple parameters
     When I search for the span by "<param1>" and "<param2>"

@@ -55,13 +55,41 @@ module PageObject
   def initialize(browser, visit=false)
     @browser = browser
     include_platform_driver(browser)
-    initialize_page if respond_to?(:initialize_page)
     goto if visit && respond_to?(:goto)
+    initialize_page if respond_to?(:initialize_page)
   end
 
   # @private
   def self.included(cls)
     cls.extend PageObject::Accessors
+  end
+
+  #
+  # Set the default timeout for page level waits
+  #
+  def self.default_page_wait=(timeout)
+    @page_wait = timeout
+  end
+
+  #
+  # Returns the default timeout for page lavel waits
+  #
+  def self.default_page_wait
+    @page_wait ||= 30
+  end
+
+  #
+  # Sets the default timeout for element level waits
+  #
+  def self.default_element_wait=(timeout)
+    @element_wait = timeout
+  end
+
+  #
+  # Returns the default timeout for element level waits
+  #
+  def self.default_element_wait
+    @element_wait ||= 5
   end
 
   #
@@ -135,7 +163,7 @@ module PageObject
   # @param [String] the message to include with the error if we exceed the timeout duration.
   # @param block the block to execute.  It should return true when successful.
   #
-  def wait_until(timeout = 30, message = nil, &block)
+  def wait_until(timeout = PageObject.default_page_wait, message = nil, &block)
     platform.wait_until(timeout, message, &block)
   end
 
