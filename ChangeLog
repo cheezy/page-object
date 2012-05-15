@@ -2,6 +2,7 @@
 * Enhancements
   * Added flash method to Element to temporarily change the background color
   * Added when_not_present method to Element
+  * Added default override for page level waits - PageObject.default_page_wait
   * Updated to use watir-webdriver 0.5.7
 * Fixes
   * Improved logic around selecting options from select lists

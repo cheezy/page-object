@@ -65,6 +65,20 @@ module PageObject
   end
 
   #
+  # Set the default timeout for page level waits
+  #
+  def self.default_page_wait=(timeout)
+    @page_wait = timeout
+  end
+
+  #
+  # Returns the default timeout for page lavel waits
+  #
+  def self.default_page_wait
+    @page_wait ||= 30
+  end
+
+  #
   # Set the javascript framework to use when determining number of
   # ajax requests.  Valid frameworks are :jquery and :prototype
   #
@@ -135,7 +149,7 @@ module PageObject
   # @param [String] the message to include with the error if we exceed the timeout duration.
   # @param block the block to execute.  It should return true when successful.
   #
-  def wait_until(timeout = 30, message = nil, &block)
+  def wait_until(timeout = PageObject.default_page_wait, message = nil, &block)
     platform.wait_until(timeout, message, &block)
   end
 

@@ -110,6 +110,12 @@ describe PageObject do
         watir_page_object.wait_until(5, "too long")
       end
 
+      it "should use the overriden timeout value when set" do
+        PageObject.default_page_wait = 10
+        watir_browser.should_receive(:wait_until).with(10, nil)
+        watir_page_object.wait_until
+      end
+
       it "should wait until there are no pending ajax requests" do
         PageObject::JavascriptFrameworkFacade.should_receive(:pending_requests).and_return('pending requests')
         watir_browser.should_receive(:execute_script).with('pending requests').and_return(0)
