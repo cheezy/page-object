@@ -145,7 +145,7 @@ module PageObject
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
-        def when_present(timeout=5)
+        def when_present(timeout=::PageObject.default_element_wait)
           wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element not present in #{timeout} seconds"})
           wait.until do
             self.exists?
@@ -159,7 +159,7 @@ module PageObject
         # @param [Integer] (defaults to: 5) seconds to wait before
         # timing out
         #
-        def when_not_present(timeout=5)
+        def when_not_present(timeout=::PageObject.default_element_wait)
           wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element still present in #{timeout} seconds"})
           wait.until do
             not_present = false
@@ -177,7 +177,7 @@ module PageObject
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
-        def when_visible(timeout=5)
+        def when_visible(timeout=::PageObject.default_element_wait)
           wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element not visible in #{timeout} seconds"})
           wait.until do
             self.visible?
@@ -190,7 +190,7 @@ module PageObject
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
-        def when_not_visible(timeout=5)
+        def when_not_visible(timeout=::PageObject.default_element_wait)
           wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => "Element still visible in #{timeout} seconds"})
           wait.until do
             not self.visible?
@@ -205,7 +205,7 @@ module PageObject
         # @param [String] the message to display if the event timeouts
         # @param the block to execute when the event occurrs
         #
-        def wait_until(timeout=5, message=nil, &block)
+        def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
           wait = Object::Selenium::WebDriver::Wait.new({:timeout => timeout, :message => message})
           wait.until &block
         end

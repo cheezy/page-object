@@ -82,6 +82,12 @@ describe "Element for Watir" do
     element.should === watir_element
   end
 
+  it "should use the overriden wait when set" do
+    PageObject.default_element_wait = 20
+    watir_driver.stub(:wait_until_present).with(20)
+    watir_element.when_present
+  end
+
   it "should be able to block until it is visible" do
     ::Watir::Wait.stub(:until).with(10, "Element was not visible in 10 seconds")
     watir_driver.stub(:displayed?).and_return(true)

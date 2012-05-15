@@ -79,6 +79,20 @@ module PageObject
   end
 
   #
+  # Sets the default timeout for element level waits
+  #
+  def self.default_element_wait=(timeout)
+    @element_wait = timeout
+  end
+
+  #
+  # Returns the default timeout for element level waits
+  #
+  def self.default_element_wait
+    @element_wait ||= 5
+  end
+
+  #
   # Set the javascript framework to use when determining number of
   # ajax requests.  Valid frameworks are :jquery and :prototype
   #
