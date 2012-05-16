@@ -6,11 +6,11 @@ require 'webrick'
 class SampleApp
 
   def self.start(host, port)
-    Rack::Handler::WEBrick.run(new,
+    Rack::Handler::WEBrick.run new,
                                :Host => host,
                                :Port => port,
                                :Logger => ::WEBrick::Log.new('/dev/null'),
-                               :AccessLog => [nil, nil],)
+                               :AccessLog => [nil, nil]
   end
 
   def initialize
@@ -33,4 +33,3 @@ class SampleApp
   end
 
 end
-
