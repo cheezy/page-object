@@ -3,6 +3,8 @@ rvm:
   - 1.8.7
   - 1.9.2
   - 1.9.3
+  - rbx-19mode
+  - ree
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
