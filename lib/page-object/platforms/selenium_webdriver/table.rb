@@ -5,12 +5,14 @@ module PageObject
 
         #
         # Return the PageObject::Elements::TableRow for the index provided.  Index
-        # is zero based.
+        # is zero based.  If the index provided is a String then it
+        # will be matched with the text from the first column.
         #
         # @return [PageObject::Elements::TableRow]
         #
         def [](idx)
           eles = table_rows
+          idx = find_index_by_title(idx, eles) if idx.kind_of?(String)
           Object::PageObject::Elements::TableRow.new(eles[idx], :platform => :selenium_webdriver)
         end
 
@@ -30,6 +32,13 @@ module PageObject
         end
 
         private
+
+        def find_index_by_title(row_title, eles)
+          eles.find_index do |row|
+            columns = row.find_elements(:xpath, ".//child::td|th")
+            columns.first.text == row_title
+          end
+        end
 
         def table_rows
           element.find_elements(:xpath, child_xpath)

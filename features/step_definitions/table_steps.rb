@@ -1,5 +1,6 @@
 Then /^the data for row "([^\"]*)" should be "([^\"]*)" and "([^\"]*)"$/ do |row, col1, col2|
-  table_row = @element[row.to_i - 1]
+  row = (row.to_i - 1) if row.to_i > 0
+  table_row = @element[row]
   table_row[0].text.should == col1
   table_row[1].text.should == col2
 end
