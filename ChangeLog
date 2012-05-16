@@ -7,6 +7,7 @@
   * Updated to use watir-webdriver 0.5.8
 * Fixes
   * Improved logic around selecting options from select lists
+  * TableCell now handles enabled? call gracefully
 
 === Version 0.6.6 / 2012-4-26
 * Enhancements

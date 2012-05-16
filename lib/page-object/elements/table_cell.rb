@@ -2,6 +2,13 @@ module PageObject
   module Elements
     class TableCell < Element
 
+      #
+      # return true if the element is enabled
+      #
+      def enabled?
+        true
+      end
+
       protected
 
       def self.watir_finders
