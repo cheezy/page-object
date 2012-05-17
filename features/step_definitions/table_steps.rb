@@ -39,3 +39,11 @@ end
 Then /^I should see that the table exists$/ do
   @page.table_id?.should == true
 end
+
+Then /^the data for column "([^\"]*)" and row "([^\"]*)" should be "([^\"]*)"$/ do |column, row, value|
+  @element[row.to_i - 1][column].text.should == value
+end
+
+Then /^the data for row "([^\"]*)" and column "([^\"]*)" should be "([^\"]*)"$/ do |row, column, value|
+  @element[row][column].text.should == value
+end
