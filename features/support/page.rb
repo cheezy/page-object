@@ -3,7 +3,7 @@ class Page
 
   expected_title "Static Elements Page"
   expected_element :hello0
-  
+
   link(:hello0, {:text => "Hello", :index => 0})
   link(:hello1, {:text => "Hello", :index => 1})
   link(:hello2, {:text => "Hello", :index => 2})
@@ -65,6 +65,7 @@ class Page
   select_list(:sel_list_text, :text => "Test 1")
   select_list(:sel_list_class_index, :class => "sel_list_class", :index => 0)
   select_list(:sel_list_name_index, :name => "sel_list_name", :index => 0)
+  select_list(:sel_list_multiple, :id => "sel_list_multiple")
 
   checkbox(:cb_id, :id => 'cb_id')
   checkbox(:cb_name, :name => 'cb_name')
@@ -190,7 +191,7 @@ class Page
   ordered_list(:ol_xpath, :xpath => '//ol')
   ordered_list(:ol_class_index, :class => "ol_class", :index => 0)
   ordered_list(:ol_name_index, :name => "ol_name", :index => 0)
-  
+
   h1(:h1_id, :id => 'h1_id')
   h1(:h1_class, :class => 'h1_class')
   h1(:h1_name, :name => 'h1_name')
@@ -238,7 +239,7 @@ class Page
   h6(:h6_xpath, :xpath => '//h6')
   h6(:h6_class_index, :class => 'h6_class', :index => 0)
   h6(:h6_name_index, :name => 'h6_name', :index => 0)
-  
+
   paragraph(:p_id, :id => 'p_id')
   paragraph(:p_class, :class => 'p_class')
   paragraph(:p_name, :name => 'p_name')
@@ -268,7 +269,7 @@ class Page
   label(:label_xpath, :xpath => '//label')
   label(:label_class_index, :class => "label_class", :index => 0)
   label(:label_name_index, :name => "label_name", :index => 0)
-  
+
   link(:open_window, :text => 'New Window')
   link(:child, :id => 'child')
 
