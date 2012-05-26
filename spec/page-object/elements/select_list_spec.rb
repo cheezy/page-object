@@ -71,7 +71,7 @@ describe PageObject::Elements::SelectList do
 
     context "for selenium"  do
       let(:selenium_sel_list) { PageObject::Elements::SelectList.new(sel_list, :platform => :selenium_webdriver) }
-      
+
       it "should return an option when indexed" do
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         selenium_sel_list[1].should be_instance_of PageObject::Elements::Option
@@ -89,7 +89,7 @@ describe PageObject::Elements::SelectList do
         option.should_receive(:click)
         selenium_sel_list.select 'something'
       end
-      
+
       it "should return an array of selected options" do
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
         opts[0].should_receive(:selected?).and_return(true)
@@ -105,12 +105,21 @@ describe PageObject::Elements::SelectList do
         opts[0].should_receive(:text).and_return('blah')
         selenium_sel_list.should include 'blah'
       end
-      
+
       it "should know if an option is selected" do
         sel_list.should_receive(:find_elements).and_return(opts)
         opts[0].should_receive(:selected?).twice.and_return(true)
         opts[0].should_receive(:text).and_return('blah')
         selenium_sel_list.selected?('blah').should be_true
+      end
+
+      it "should be able to clear selected options" do
+        sel_list.should_receive(:find_elements).and_return(opts)
+        opts.each do |opt|
+          opt.should_receive(:selected?).and_return(true)
+          opt.should_receive(:click)
+        end
+        selenium_sel_list.clear
       end
     end
   end

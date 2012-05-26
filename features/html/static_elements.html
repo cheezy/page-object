@@ -14,10 +14,15 @@
     <textarea rows="2" cols="20" id="text_area_id" class="text_area_class" name="text_area_name"></textarea>
 
     <select name="sel_list_name" id="sel_list_id" class="sel_list_class">
-    <option value="option1">Test 1</option>
-    <option value="option2">Test 2</option>
+      <option value="option1">Test 1</option>
+      <option value="option2">Test 2</option>
     </select>
 
+    <select multiple="multiple" id="sel_list_multiple">
+      <option value="option1" selected="true">Test 1</option>
+      <option value="option2">Test 2</option>
+      <option value="option3" selected="true">Test 3</option>
+    </select>
 
     <a href="success.html" id="link_id" name="link_name" class="link_class">Google Search</a>
 
@@ -33,7 +38,7 @@
     <span id="span_id" name="span_name" class="span_class" title="span_title">
       My alert
     </span>
-    
+
     <label id="label_id" name="label_name" class="label_class">
       page-object is the best!
     </label>
@@ -91,7 +96,7 @@
     <h6 id="h6_id" class="h6_class" name="h6_name">h6's are cool</h6>
 
     <a href="success.html" target="_blank">New Window</a>
-    
+
     <input type="text" id="onfocus_text_field" onfocus="document.getElementById('onfocus_test').innerHTML = 'changed by onfocus event'"/>
     <div id="onfocus_test"></div>
 

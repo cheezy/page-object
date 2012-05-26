@@ -12,7 +12,7 @@ module PageObject
         def [](idx)
           options[idx]
         end
-        
+
         #
         # Select a value from the list
         #
@@ -54,6 +54,13 @@ module PageObject
         def selected?(value)
           selected = find_options.select { |e| e if e.selected? }
           selected.any? { |e| e.text == value }
+        end
+
+        #
+        # Deselect all selected options.
+        #
+        def clear
+          find_options.select { |e| e.selected? }.each { |o| o.click }
         end
 
         private
