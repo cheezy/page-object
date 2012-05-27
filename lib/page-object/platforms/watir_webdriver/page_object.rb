@@ -239,7 +239,7 @@ module PageObject
         # See PageObject::Accessors#text_area
         #
         def text_area_value_set(identifier, value)
-          process_watir_call("textarea(identifier).send_keys(value)", Elements::TextArea,
+          process_watir_call("textarea(identifier).set(value)", Elements::TextArea,
                              identifier, value)
         end
 

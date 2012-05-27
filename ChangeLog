@@ -1,4 +1,7 @@
 === Version 0.6.8
+* Fixes
+  Modified text area methods so it clears before setting new text
+  Fixed clear method on SelectList when using Selenium to clear multi selects
 
 === Version 0.6.7 / 2012-5-16
 * Enhancements

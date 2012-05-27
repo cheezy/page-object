@@ -250,7 +250,9 @@ module PageObject
         #
         def text_area_value_set(identifier, value)
           process_selenium_call(identifier, Elements::TextArea, 'textarea') do |how, what|
-            @browser.find_element(how, what).send_keys(value)
+            text_area = @browser.find_element(how, what)
+            text_area.clear
+            text_area.send_keys(value)
           end
         end
 

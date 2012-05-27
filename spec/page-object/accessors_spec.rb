@@ -521,7 +521,7 @@ describe PageObject::Accessors do
     context "watir implementation" do
       it "should set some text on the text area" do
         watir_browser.should_receive(:textarea).and_return(watir_browser)
-        watir_browser.should_receive(:send_keys).with("123 main street")
+        watir_browser.should_receive(:set).with("123 main street")
         watir_page_object.address = "123 main street"
       end
 
@@ -541,6 +541,7 @@ describe PageObject::Accessors do
     context "selenium implementation" do
       it "should set some text on the text area" do
         selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+        selenium_browser.should_receive(:clear)
         selenium_browser.should_receive(:send_keys).with("123 main street")
         selenium_page_object.address = "123 main street"
       end
