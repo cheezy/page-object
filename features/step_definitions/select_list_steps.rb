@@ -47,3 +47,11 @@ Then /^the value for the option should be "([^\"]*)"$/ do |value|
   element = @page.send "sel_list_#{@how}_element".to_sym
   element.value.should == value
 end
+
+When /^I clear multiple select list$/ do
+  @page.sel_list_multiple_element.clear
+end
+
+Then /^multiple select list should have no selected options$/ do
+  @page.sel_list_multiple_element.selected_options.should be_empty
+end

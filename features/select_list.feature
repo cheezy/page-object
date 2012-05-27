@@ -57,3 +57,6 @@ Feature: Select List
     When I select "Test 2" from the select list
     Then the select list should know that "Test 2" is selected
 
+  Scenario: Clearing multiple select list
+    When I clear multiple select list
+    Then multiple select list should have no selected options
