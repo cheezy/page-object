@@ -1,7 +1,7 @@
 === Version 0.6.8
 * Enhancements
   * Updated to use watir-webdriver 0.6.1
-  * Updated to use selenium-webdriver 2.22.0
+  * Updated to use selenium-webdriver 2.22.1
 * Fixes
   Modified text area methods so it clears before setting new text
   Fixed clear method on SelectList when using Selenium to clear multi selects
