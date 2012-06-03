@@ -1,4 +1,4 @@
-=== Version 0.6.8
+=== Version 0.6.8 / 2012-6-3
 * Enhancements
   * Updated [] method on Table to return nil when bad row header is provided
   * Updated [] method on TableRow to return nil when bad column header is provided
