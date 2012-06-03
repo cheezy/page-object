@@ -13,6 +13,7 @@ module PageObject
         def [](idx)
           eles = table_rows
           idx = find_index_by_title(idx, eles) if idx.kind_of?(String)
+          return nil unless idx
           Object::PageObject::Elements::TableRow.new(eles[idx], :platform => :selenium_webdriver)
         end
 

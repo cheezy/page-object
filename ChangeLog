@@ -1,5 +1,7 @@
 === Version 0.6.8
 * Enhancements
+  * Updated [] method on Table to return nil when bad row header is provided
+  * Updated [] method on TableRow to return nil when bad column header is provided
   * Updated to use watir-webdriver 0.6.1
   * Updated to use selenium-webdriver 2.22.1
 * Fixes

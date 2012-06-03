@@ -13,6 +13,7 @@ module PageObject
         #
         def [](idx)
           idx = find_index_by_title(idx) if idx.kind_of?(String)
+          return nil unless idx
           Object::PageObject::Elements::TableRow.new(element[idx], :platform => :watir_webdriver)
         end
 

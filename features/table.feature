@@ -37,6 +37,14 @@ Feature: Table
   Scenario: Retrieve data from a table using both headers
     When I retrieve a table element
     Then the data for row "Data3" and column "Data2" should be "Data4"
+    
+  Scenario: Retrieve data from a table with an incorrect row header
+    When I retrieve a table element
+    Then the data for row "Data20" should be nil
+
+  Scenario: Retrieve data from a table with an incorrect column header
+    When I retrieve a table element
+    Then the data for row "Data3" and column "Data20" should be nil
 
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"
