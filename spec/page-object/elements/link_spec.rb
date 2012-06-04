@@ -6,7 +6,7 @@ describe PageObject::Elements::Link do
 
   describe "when mapping how to find an element" do
     it "should map watir types to same" do
-      [:class, :href, :id, :index, :name, :text, :xpath, :css].each do |t|
+      [:class, :href, :id, :index, :name, :text, :xpath, :css, :title].each do |t|
         identifier = link.watir_identifier_for t => 'value'
         identifier.keys.first.should == t
       end
@@ -20,7 +20,7 @@ describe PageObject::Elements::Link do
     end
 
     it "should map selenium types to same" do
-      [:class, :id, :link, :link_text, :name, :xpath, :index, :css].each do |t|
+      [:class, :id, :link, :link_text, :name, :xpath, :index, :css, :title].each do |t|
         key, value = link.selenium_identifier_for t => 'value'
         key.should == t
       end

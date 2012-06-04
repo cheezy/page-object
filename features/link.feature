@@ -25,6 +25,7 @@ Feature: Links
     | index     |
     | href      |
     | css       |
+    | title     |
 
   Scenario: Support for multiple parameters
     When I select a link labeled "Hello" and index "0"
