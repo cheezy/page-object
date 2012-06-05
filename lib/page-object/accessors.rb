@@ -99,8 +99,9 @@ module PageObject
     #   * :class => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
+    #   * :label => Watir and Selenium
     #   * :name => Watir and Selenium
-    #   * :text => Watir only
+    #   * :text => Watir and Selenium
     #   * :title => Watir and Selenium
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
@@ -266,6 +267,7 @@ module PageObject
     #   * :link_text => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :text => Watir and Selenium
+    #   * :title => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
@@ -433,6 +435,7 @@ module PageObject
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :text => Watir and Selenium
+    #   * :title => Watir and Selenium
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #

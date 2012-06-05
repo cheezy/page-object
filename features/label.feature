@@ -42,3 +42,4 @@ Feature: Handling labels with page object
     When I get the text from a label while the script is executing
     Then I should see that the label exists
     And the text should be "page-object is the best!"
+

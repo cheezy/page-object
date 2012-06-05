@@ -22,6 +22,8 @@ Feature: Text Fields
     | xpath     |
     | index     |
     | title     |
+    | text      |
+    | label     |
 
   Scenario Outline: Locating a text field using multiple parameters
     When I search for the text field by "<param1>" and "<param2>"

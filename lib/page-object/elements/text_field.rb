@@ -15,11 +15,11 @@ module PageObject
       protected
 
       def self.watir_finders
-        super + [:title]
+        super + [:title, :value, :text, :label]
       end
 
       def self.selenium_finders
-        super + [:title]
+        super + [:title, :value, :text, :label]
       end
 
       def include_platform_for platform

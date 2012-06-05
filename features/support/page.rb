@@ -17,6 +17,7 @@ class Page
   text_field(:text_field_index, :index => 0)
   text_field(:text_field_text, :text => "")
   text_field(:text_field_value, :value => "")
+  text_field(:text_field_label, :label => "Text Field")
   text_field(:text_field_title, :title => 'text_field_title')
   text_field(:text_field_class_index, :class => "text_field_class", :index => 0)
   text_field(:text_field_name_index, :name => "text_field_name", :index => 0)
@@ -267,8 +268,8 @@ class Page
   label(:label_name, :name => 'label_name')
   label(:label_class, :class => 'label_class')
   label(:label_text, :text => 'page-object is the best!')
-  label(:label_index, :index => 0)
-  label(:label_xpath, :xpath => '//label')
+  label(:label_index, :index => 1)
+  label(:label_xpath, :xpath => '//label[2]')
   label(:label_class_index, :class => "label_class", :index => 0)
   label(:label_name_index, :name => "label_name", :index => 0)
 
