@@ -27,6 +27,7 @@ Feature: Div
     | index     |
     | name      |
     | text      |
+    | title     |
 
   Scenario Outline: Locating divs using multiple parameters
     When I search for the div by "<param1>" and "<param2>"
