@@ -61,6 +61,7 @@ module PageObject
         @builder = {
           :jquery => ::PageObject::Javascript::JQuery,
           :prototype => ::PageObject::Javascript::Prototype,
+          :yui => ::PageObject::Javascript::YUI,
         }
       end
 
