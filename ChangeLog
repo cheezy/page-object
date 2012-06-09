@@ -3,6 +3,7 @@
   * Updated link to be able to identify by title
   * Updated div to be able to identify by title
   * Updated text_field to be able to identify by text and label
+  * Updated to use selenium-webdriver 2.22.2
 
 === Version 0.6.8 / 2012-6-3
 * Enhancements
