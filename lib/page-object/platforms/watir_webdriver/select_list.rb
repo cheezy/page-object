@@ -21,6 +21,14 @@ module PageObject
         end
 
         #
+        # Select the option(s) whose value attribute matches the given
+        # string
+        #
+        def select_value(value)
+          element.select_value(value)
+        end
+
+        #
         # Return an array of Options contained in the select lit.
         #
         # @return [array of PageObject::Elements::Option]

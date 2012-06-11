@@ -60,3 +60,7 @@ Feature: Select List
   Scenario: Clearing multiple select list
     When I clear multiple select list
     Then multiple select list should have no selected options
+
+  Scenario: Selecting an option by its value
+    When I select an option using the value "option2"
+    Then the selected option should be "Test 2"

@@ -55,3 +55,7 @@ end
 Then /^multiple select list should have no selected options$/ do
   @page.sel_list_multiple_element.selected_options.should be_empty
 end
+
+When /^I select an option using the value "([^\"]*)"$/ do |value|
+  @page.sel_list_id_element.select_value(value)
+end

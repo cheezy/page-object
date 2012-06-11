@@ -23,6 +23,16 @@ module PageObject
         end
 
         #
+        # Select the option(s) whose value attribute matches the given
+        # string
+        #
+        def select_value(value)
+          find_options.find do |option|
+            option.attribute('value') == value
+          end.click
+        end
+
+        #
         # Return an array of Options contained in the select lit.
         #
         # @return [array of PageObject::Elements::Option]
