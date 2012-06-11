@@ -27,9 +27,10 @@ module PageObject
         # string
         #
         def select_value(value)
-          find_options.find do |option|
+          options = find_options.find_all do |option|
             option.attribute('value') == value
-          end.click
+          end
+          options.each {|opt| opt.click}
         end
 
         #
