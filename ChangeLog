@@ -1,5 +1,6 @@
 === Version 0.6.9
 * Enhancements
+  * Added select_value method to SelectList
   * Updated link to be able to identify by title
   * Updated div to be able to identify by title
   * Updated text_field to be able to identify by text and label
