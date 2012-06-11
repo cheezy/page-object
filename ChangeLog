@@ -4,6 +4,8 @@
   * Updated div to be able to identify by title
   * Updated text_field to be able to identify by text and label
   * Updated to use selenium-webdriver 2.22.2
+* Fixes
+  * Fixed populate_page_with to work with text areas (Thanks ramyav85)
 
 === Version 0.6.8 / 2012-6-3
 * Enhancements

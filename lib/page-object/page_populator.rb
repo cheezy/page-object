@@ -66,6 +66,7 @@ module PageObject
     end
 
     def is_enabled?(key)
+      return true if (self.send "#{key}_element").tag_name == "textarea"
       self.send("#{key}_element").enabled?
     end
   end
