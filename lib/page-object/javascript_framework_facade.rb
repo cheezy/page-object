@@ -1,5 +1,6 @@
 require 'page-object/javascript/jquery'
 require 'page-object/javascript/prototype'
+require 'page-object/javascript/yui'
 
 
 module PageObject
