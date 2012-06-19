@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Indexed Property Page</title>
+</head>
+<body>
+    <form method="get" action="success.html">
+        <table id="table_id" name align="table_name" class="table_class" border="1">
+            <tr>
+                <td><input type="text" id="table[123].text" name="tableName[123].text" size="20"/></td>
+                <td><input type="radio" id="table[123].radio" value="123"/></td>
+                <td><input type="checkbox" id="table[123].check" value="1"/></td>
+                <td><textarea id="table[123].area" rows="2" cols="20"></textarea></td>
+                <td><input id="table[123].button" type="submit" value="Click 123"/></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="table[foo].text" name="tableName[foo].text" size="20"/></td>
+                <td><input type="radio" id="table[foo].radio" value="foo"/></td>
+                <td><input type="checkbox" id="table[foo].check" value="2"/></td>
+                <td><textarea id="table[foo].area" rows="2" cols="20"></textarea></td>
+                <td><input id="table[foo].button" type="submit" value="Click foo"/></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="table[12test].text" name="tableName[12test].text" size="20"/></td>
+                <td><input type="radio" id="table[12test].radio" value="12test"/></td>
+                <td><input type="checkbox" id="table[12test].check" value="3"/></td>
+                <td><textarea id="table[12test].area" rows="2" cols="20"></textarea></td>
+                <td><input id="table[12test].button" type="submit" value="Click 12test"/></td>
+            </tr>
+        </table>
+
+        <div>
+            <input type="text" id="nottable[123].text" size="20"/><br/>
+            <input type="text" id="nottable[foo].text" size="20"/><br/>
+            <input type="text" id="nottable[12test].text" size="20"/>
+        </div>
+    </form>
+</body>
+</html>

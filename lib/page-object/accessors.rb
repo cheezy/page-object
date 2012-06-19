@@ -1052,5 +1052,34 @@ module PageObject
       end      
     end
 
+    #
+    # adds a method that will return an indexed property.  The property will respond to
+    # the [] method with an object that has a set of normal page_object properties that
+    # correspond to the definitions included in the identifier_list parameter, with the
+    # "what" of the "how and what" substituted based on the index provided to the []
+    # method.
+    #
+    # @example
+    #   indexed_property(:title, [
+    #     [:text_field,  :field_1,   :id => 'table[%s].field_1'],
+    #     [:button,      :button_1,  :id => 'table[%s].button_1'],
+    #     [:text_field,  :field_2,   :name => 'table[%s].field_2']
+    #   ])
+    #   # will generate a title method that responds to [].  title['foo'] will return an object
+    #   # that responds to the normal methods expected for two text_fields and a button with the
+    #   # given names, using the given how and what with 'foo' substituted for the %s.  title[123]
+    #   # will do the same, using the integer 123 instead.
+    #
+    # @param [Symbol] the name used for the generated method
+    # @param [Array] definitions an array of definitions to define on the indexed property.  Each
+    #   entry in the array should contain two symbols and a hash, corresponding to one of the standard
+    #   page_object properties with a single substitution marker in each value in the hash,
+    #   e.g. [:text_field, :field_1, :id => 'table[%s].field_1']
+    #
+    def indexed_property (name, identifier_list)
+      define_method("#{name}") do
+        return IndexedProperties::TableOfElements.new(@browser, identifier_list)
+      end
+    end
   end
 end
