@@ -1078,7 +1078,7 @@ module PageObject
     #
     def indexed_property (name, identifier_list)
       define_method("#{name}") do
-        return IndexedProperties::TableOfElements.new(@browser, identifier_list)
+        IndexedProperties::TableOfElements.new(@browser, identifier_list)
       end
     end
   end
