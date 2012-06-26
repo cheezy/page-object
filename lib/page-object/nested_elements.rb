@@ -54,7 +54,7 @@ module PageObject
     end
 
     def checkbox_elements(identifier={:index => 0})
-      @platform.checkboxs_for(identifier)
+      @platform.checkboxes_for(identifier)
     end
 
     def radio_button_element(identifier={:index => 0})
