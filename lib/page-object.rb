@@ -5,6 +5,7 @@ require 'page-object/element_locators'
 require 'page-object/nested_elements'
 require 'page-object/page_populator'
 require 'page-object/javascript_framework_facade'
+require 'page-object/indexed_properties'
 
 require 'selenium/webdriver/common/error'
 #
@@ -53,10 +54,14 @@ module PageObject
   # @param [bool] open the page if page_url is set
   #
   def initialize(browser, visit=false)
-    @browser = browser
-    include_platform_driver(browser)
+    initialize_browser(browser)
     goto if visit && respond_to?(:goto)
     initialize_page if respond_to?(:initialize_page)
+  end
+
+  def initialize_browser(browser)
+    @browser = browser
+    include_platform_driver(browser)
   end
 
   # @private

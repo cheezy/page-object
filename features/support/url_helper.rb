@@ -40,5 +40,9 @@ module UrlHelper
     def multi
       "#{files}/multi_elements.html"
     end
+
+    def indexed
+      "#{files}/indexed_property.html"
+    end
   end
 end
