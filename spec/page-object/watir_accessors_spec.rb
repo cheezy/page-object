@@ -119,7 +119,7 @@ describe PageObject::Accessors do
   let(:watir_browser) { mock_watir_browser }
   let(:watir_page_object) { WatirAccessorsTestPageObject.new(watir_browser) }
   let(:block_page_object) { WatirBlockPageObject.new(watir_browser) }
-  
+
   context "goto a page" do
 
     it "should navigate to a page when requested" do
@@ -151,10 +151,18 @@ describe PageObject::Accessors do
   end
 
   context "validating the page title" do
-  
     it "should validate the title" do
       watir_browser.should_receive(:title).and_return("Expected Title")
       watir_page_object.should have_expected_title
+    end
+
+    it "should validate the by regexp" do
+      class RegexpExpectedTitle
+        include PageObject
+        expected_title /\w+ \w+/
+      end
+      watir_browser.should_receive(:title).and_return("Expected Title")
+      RegexpExpectedTitle.new(watir_browser).should have_expected_title
     end
 
     it "should raise error when it does not have expected title" do
@@ -351,7 +359,7 @@ describe PageObject::Accessors do
       mock_driver_for :audio
       default_identifier.default_el?
     end
-    
+
   end
 
   context "link accessors" do
@@ -366,7 +374,7 @@ describe PageObject::Accessors do
         block_page_object.continue_element.should == "link"
       end
     end
-         
+
     it "should select a link" do
       watir_browser.stub_chain(:link, :click)
       watir_page_object.google_search
@@ -531,7 +539,7 @@ describe PageObject::Accessors do
       watir_browser.should_receive(:set)
       watir_page_object.check_active
     end
-    
+
     it "should clear a check box element" do
       watir_browser.should_receive(:checkbox).and_return(watir_browser)
       watir_browser.should_receive(:clear)
@@ -816,50 +824,50 @@ describe PageObject::Accessors do
       element.should be_instance_of PageObject::Elements::OrderedList
     end
   end
-  
+
   describe "h1 accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:heading1)
         watir_page_object.should respond_to(:heading1_element)
       end
-      
+
       it "should call a block on the element method when present" do
         block_page_object.heading1_element.should == "h1"
       end
     end
-    
+
     it "should retrieve the text from the h1" do
       watir_browser.should_receive(:h1).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("value")
-      watir_page_object.heading1.should == "value"        
+      watir_page_object.heading1.should == "value"
     end
-      
+
     it "should retrieve the element from the page" do
       watir_browser.should_receive(:h1).and_return(watir_browser)
       element = watir_page_object.heading1_element
       element.should be_instance_of PageObject::Elements::Heading
     end
   end
-  
+
   describe "h2 accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:heading2)
         watir_page_object.should respond_to(:heading2_element)
       end
-      
+
       it "should call a block on the element method when present" do
         block_page_object.heading2_element.should == "h2"
       end
     end
-    
+
     it "should retrieve the text from the h2" do
       watir_browser.should_receive(:h2).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("value")
-      watir_page_object.heading2.should == "value"        
+      watir_page_object.heading2.should == "value"
     end
-  
+
     it "should retrieve the element from the page" do
       watir_browser.should_receive(:h2).and_return(watir_browser)
       element = watir_page_object.heading2_element
@@ -882,7 +890,7 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h3" do
       watir_browser.should_receive(:h3).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("value")
-      watir_page_object.heading3.should == "value"        
+      watir_page_object.heading3.should == "value"
     end
 
     it "should retrieve the element from the page" do
@@ -907,7 +915,7 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h4" do
       watir_browser.should_receive(:h4).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("value")
-      watir_page_object.heading4.should == "value"        
+      watir_page_object.heading4.should == "value"
     end
 
     it "should retrieve the element from the page" do
@@ -932,7 +940,7 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h5" do
       watir_browser.should_receive(:h5).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("value")
-      watir_page_object.heading5.should == "value"        
+      watir_page_object.heading5.should == "value"
     end
 
     it "should retrieve the element from the page" do
@@ -957,7 +965,7 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h6" do
       watir_browser.should_receive(:h6).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("value")
-      watir_page_object.heading6.should == "value"        
+      watir_page_object.heading6.should == "value"
     end
 
     it "should retrieve the element from the page" do
@@ -983,7 +991,7 @@ describe PageObject::Accessors do
     it "should retrieve the text from the p" do
       watir_browser.should_receive(:p).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("value")
-      watir_page_object.first_para.should == "value"        
+      watir_page_object.first_para.should == "value"
     end
 
     it "should retrieve the element from the page" do

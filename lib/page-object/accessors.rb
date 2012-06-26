@@ -34,10 +34,10 @@ module PageObject
     # @example Specify 'Google' as the expected title of a page
     #   expected_title "Google"
     #   page.has_expected_title?
-    # 
+    #
     def expected_title(expected_title)
       define_method("has_expected_title?") do
-        has_expected_title = expected_title.kind_of?(Regexp) ? expected_title =~ title : expected_title == title
+        has_expected_title = expected_title === title
         raise "Expected title '#{expected_title}' instead of '#{title}'" unless has_expected_title
         has_expected_title
       end
@@ -59,7 +59,7 @@ module PageObject
         self.respond_to? "#{element_name}_element" and self.send("#{element_name}_element").when_present timeout
       end
     end
-    
+
     #
     # Identify an element as existing within a frame or iframe.  A frame parameter
     # is passed to the block and must be passed to the other calls to PageObject.
@@ -88,8 +88,8 @@ module PageObject
     # another to retrieve text from a text field, another to return the text
     # field element, another to check the text field's existence.
     #
-    # @example  
-    #   text_field(:first_name, :id => "first_name") 
+    # @example
+    #   text_field(:first_name, :id => "first_name")
     #   # will generate 'first_name', 'first_name=', 'first_name_element',
     #   # 'first_name?' methods
     #
@@ -126,7 +126,7 @@ module PageObject
       end
       alias_method "#{name}_text_field".to_sym, "#{name}_element".to_sym
     end
-    
+
     #
     # adds three methods to the page object - one to get the text from a hidden field,
     # another to retrieve the hidden field element, and another to check the hidden
@@ -207,7 +207,7 @@ module PageObject
     #
     # adds four methods - one to select an item in a drop-down,
     # another to fetch the currently selected item text, another
-    # to retrieve the select list element, and another to check the 
+    # to retrieve the select list element, and another to check the
     # drop down's existence.
     #
     # @example
@@ -295,7 +295,7 @@ module PageObject
     #
     # @example
     #   checkbox(:active, :name => "is_active")
-    #   # will generate 'check_active', 'uncheck_active', 'active_checked?', 
+    #   # will generate 'check_active', 'uncheck_active', 'active_checked?',
     #   # 'active_element', and 'active?' methods
     #
     # @param [Symbol] the name used for the generated methods
@@ -335,14 +335,14 @@ module PageObject
 
     #
     # adds five methods - one to select, another to clear,
-    # another to return if a radio button is selected, 
+    # another to return if a radio button is selected,
     # another method to return a PageObject::Elements::RadioButton
     # object representing the radio button element, and another to check
     # the radio button's existence.
     #
     # @example
     #   radio_button(:north, :id => "north")
-    #   # will generate 'select_north', 'clear_north', 'north_selected?', 
+    #   # will generate 'select_north', 'clear_north', 'north_selected?',
     #   # 'north_element', and 'north?' methods
     #
     # @param [Symbol] the name used for the generated methods
@@ -712,9 +712,9 @@ module PageObject
       end
       alias_method "#{name}_ordered_list".to_sym, "#{name}_element".to_sym
     end
-    
+
     #
-    # adds three methods - one to retrieve the text of a h1 element, another to 
+    # adds three methods - one to retrieve the text of a h1 element, another to
     # retrieve a h1 element, and another to check for it's existence.
     #
     # @example
@@ -746,7 +746,7 @@ module PageObject
       end
       alias_method "#{name}_h1".to_sym, "#{name}_element".to_sym
     end
-    
+
     #
     # adds three methods - one to retrieve the text of a h2 element, another
     # to retrieve a h2 element, and another to check for it's existence.
@@ -1049,7 +1049,7 @@ module PageObject
       end
       define_method("#{name}?") do
         self.send("#{name}_element").exists?
-      end      
+      end
     end
 
   end
