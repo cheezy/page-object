@@ -1,3 +1,7 @@
+=== Version 0.7.0
+* Enhancements
+  * Updated to use selenium-webdriver 2.24.0
+
 === Version 0.6.9 / 2012-6-12
 * Enhancements
   * Added select_value method to SelectList
