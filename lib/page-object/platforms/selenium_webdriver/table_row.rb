@@ -8,6 +8,7 @@ module PageObject
         # Return the PageObject::Elements::TableCell for the index provided.  Index
         # is zero based.  If the index provided is a String then it
         # will be matched with the text from the columns in the first row.
+        # The text can be a substring of the full column text.
         #
         def [](idx)
           els = table_cells
@@ -28,7 +29,7 @@ module PageObject
         def find_index_by_title(title)
           table = parent
           table = table.parent if parent.element.tag_name == 'tbody'
-          table[0].find_index {|column| column.text == title}
+          table[0].find_index { |column| column.text.include? title }
         end
 
         def table_cells
