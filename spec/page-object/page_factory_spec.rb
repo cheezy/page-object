@@ -72,6 +72,26 @@ describe PageObject::PageFactory do
     current_page.should === page
   end
 
+  it "should not execute block if page is not @current_page" do
+    @world.instance_variable_set "@current_page", TestPageWithDirectUrl.new(@world.browser)
+    @world.if_page(FactoryTestPage) do |page|
+      fail
+    end
+  end
+
+  it "should return the @current_page if asking for another page" do
+    expected = TestPageWithDirectUrl.new(@world.browser)
+    @world.instance_variable_set "@current_page", expected
+    @world.if_page(FactoryTestPage).should == expected
+  end
+
+  it "should execute the block when we ask if it is the correct page" do
+    @world.instance_variable_set "@current_page", FactoryTestPage.new(@world.browser)
+    @world.if_page(FactoryTestPage) do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+  end
+
   it "should raise an error when you do not provide a default route" do
     expect { PageObject::PageFactory.routes = {:another => []} }.to raise_error
   end

@@ -75,6 +75,9 @@ module PageObject
       on_page(page_class, false, &block)
     end
 
+    # Support 'if' for readability of usage
+    alias_method :if, :if_page
+
     #
     # Navigate to a specific page following a predefined path.
     #
