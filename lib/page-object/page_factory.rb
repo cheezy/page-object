@@ -62,6 +62,18 @@ module PageObject
 
     # Support 'on' for readability of usage
     alias_method :on, :on_page
+    
+    #
+    # Create a page object if and only if the current page is the same page to be created
+    #
+    # @param [PageObject]  a class that has included the PageObject module
+    # @param [block]  an optional block to be called
+    # @return [PageObject] the newly created page object
+    #
+    def if_page(page_class, &block)
+      return @current_page unless @current_page.class == page_class
+      on_page(page_class, false, &block)
+    end
 
     #
     # Navigate to a specific page following a predefined path.
