@@ -1,4 +1,4 @@
-=== Version 0.7.0
+=== Version 0.7.0 / 2012-6-30
 * Enhancements
   * Updated Table [] method to return a row that has matching partial text in any column (Thanks George Shakhnazaryan)
   * Updated TableRow [] method to return column that matching partial text in any column (Thanks George Shakhnazaryan)
