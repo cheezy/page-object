@@ -1,5 +1,7 @@
 === Version 0.7.0
 * Enhancements
+  * Updated Table [] method to return a row that has matching partial text in any column (Thanks George Shakhnazaryan)
+  * Updated TableRow [] method to return column that matching partial text in any column (Thanks George Shakhnazaryan)
   * Added if_page to PageFactory (Thanks Gregory Shayko)
   * Added index_property for accessing sets of related fields (Thanks robkid)
   * Updated to use selenium-webdriver 2.24.0
