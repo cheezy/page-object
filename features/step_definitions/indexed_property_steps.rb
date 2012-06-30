@@ -1,18 +1,14 @@
 class IndexedPropertyPage
   include PageObject
 
-  indexed_property :table, [
-    [:text_field, :text, :id => 'table[%s].text'],
-    [:text_field, :text_name, :name => 'tableName[%s].text'],
-    [:radio_button, :radio, :id => 'table[%s].radio'],
-    [:checkbox, :check, :id => 'table[%s].check'],
-    [:text_area, :area, :id => 'table[%s].area'],
-    [:button, :button, :id => 'table[%s].button']
-  ]
+  indexed_property :table, [[:text_field, :text, {:id => 'table[%s].text'}],
+                            [:text_field, :text_name, {:name => 'tableName[%s].text'}],
+                            [:radio_button, :radio, {:id => 'table[%s].radio'}],
+                            [:checkbox, :check, {:id => 'table[%s].check'}],
+                            [:text_area, :area, {:id => 'table[%s].area'}],
+                            [:button, :button, {:id => 'table[%s].button'}]]
 
-  indexed_property :nottable, [
-    [:text_field, :text, :id => 'nottable[%s].text']
-  ]
+  indexed_property :nottable, [[:text_field, :text, {:id => 'nottable[%s].text'}]]
 
 end
 
