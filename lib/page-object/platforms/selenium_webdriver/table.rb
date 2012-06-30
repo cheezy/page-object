@@ -6,7 +6,7 @@ module PageObject
         #
         # Return the PageObject::Elements::TableRow for the index provided.  Index
         # is zero based.  If the index provided is a String then it
-        # will be matched with the text from the first column.
+        # will be matched with the text from any column. The text can be a substring of the full column text.
         #
         # @return [PageObject::Elements::TableRow]
         #
@@ -37,7 +37,7 @@ module PageObject
         def find_index_by_title(row_title, eles)
           eles.find_index do |row|
             columns = row.find_elements(:xpath, ".//child::td|th")
-            columns.first.text == row_title
+            columns.any? { |col| col.text.include? row_title }
           end
         end
 
