@@ -1,3 +1,40 @@
+=== Version 0.7.1
+* Enhancements
+  * Added the following aliased methods to their corresponding Accessors method
+	a => link
+  * Added the following methods to return generic Element objects
+	abbr
+	address
+	article
+	aside
+	bdi
+	bdo
+	cite
+	code
+	dd
+	dfn
+	dt
+	em
+	figcaption
+	figure
+	footer
+	header
+	hgroup
+	kbd
+	mark
+	nav
+	noscript
+	rp
+	rt
+	ruby
+	samp
+	section
+	sub
+	summary
+	sup
+	var
+	wbr
+
 === Version 0.7.0 / 2012-6-30
 * Enhancements
   * Updated Table [] method to return a row that has matching partial text in any column (Thanks George Shakhnazaryan)

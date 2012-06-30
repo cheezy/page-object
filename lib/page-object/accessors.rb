@@ -285,6 +285,7 @@ module PageObject
         platform.link_for(identifier.clone).exists?
       end
       alias_method "#{name}_link".to_sym, "#{name}_element".to_sym
+      alias_method :a, :link
     end
 
     #
@@ -1050,6 +1051,688 @@ module PageObject
       define_method("#{name}?") do
         self.send("#{name}_element").exists?
       end
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an abbr, another
+    # to retrieve an  abbr, and another to check the abbr's existence.
+    #
+    # @example
+    #   abbr(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an abbr.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when abbr method is called
+    #
+    def abbr(name, identifier={:index => 0}, &block)
+      element(name, :abbr, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an address, another
+    # to retrieve an  address, and another to check the address's existence.
+    #
+    # @example
+    #   address(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an address.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when address method is called
+    #
+    def address(name, identifier={:index => 0}, &block)
+      element(name, :address, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an article, another
+    # to retrieve an  article, and another to check the article's existence.
+    #
+    # @example
+    #   article(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an article.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when article method is called
+    #
+    def article(name, identifier={:index => 0}, &block)
+      element(name, :article, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an aside, another
+    # to retrieve an  aside, and another to check the aside's existence.
+    #
+    # @example
+    #   aside(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an aside.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when aside method is called
+    #
+    def aside(name, identifier={:index => 0}, &block)
+      element(name, :aside, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an bdi, another
+    # to retrieve an  bdi, and another to check the bdi's existence.
+    #
+    # @example
+    #   bdi(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an bdi.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when bdi method is called
+    #
+    def bdi(name, identifier={:index => 0}, &block)
+      element(name, :bdi, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an bdo, another
+    # to retrieve an  bdo, and another to check the bdo's existence.
+    #
+    # @example
+    #   bdo(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an bdo.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when bdo method is called
+    #
+    def bdo(name, identifier={:index => 0}, &block)
+      element(name, :bdo, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an cite, another
+    # to retrieve an  cite, and another to check the cite's existence.
+    #
+    # @example
+    #   cite(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an cite.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when cite method is called
+    #
+    def cite(name, identifier={:index => 0}, &block)
+      element(name, :cite, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an code, another
+    # to retrieve an  code, and another to check the code's existence.
+    #
+    # @example
+    #   code(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an code.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when code method is called
+    #
+    def code(name, identifier={:index => 0}, &block)
+      element(name, :code, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an dd, another
+    # to retrieve an  dd, and another to check the dd's existence.
+    #
+    # @example
+    #   dd(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an dd.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when dd method is called
+    #
+    def dd(name, identifier={:index => 0}, &block)
+      element(name, :dd, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an dfn, another
+    # to retrieve an  dfn, and another to check the dfn's existence.
+    #
+    # @example
+    #   dfn(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an dfn.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when dfn method is called
+    #
+    def dfn(name, identifier={:index => 0}, &block)
+      element(name, :dfn, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an dt, another
+    # to retrieve an  dt, and another to check the dt's existence.
+    #
+    # @example
+    #   dt(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an dt.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when dt method is called
+    #
+    def dt(name, identifier={:index => 0}, &block)
+      element(name, :dt, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an em, another
+    # to retrieve an  em, and another to check the em's existence.
+    #
+    # @example
+    #   em(:title, :id => 'title')
+    #   # will generate 'title', 'title_element', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an em.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when em method is called
+    #
+    def em(name, identifier={:index => 0}, &block)
+      element(name, :em, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an figcaption, another
+    # to retrieve an  figcaption, and another to check the figcaption's existence.
+    #
+    # @example
+    #   figcaption(:title, :id => 'title')
+    #   # will generate 'title', 'title_elfigcaptionent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an figcaption.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when figcaption method is called
+    #
+    def figcaption(name, identifier={:index => 0}, &block)
+      element(name, :figcaption, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an figure, another
+    # to retrieve an  figure, and another to check the figure's existence.
+    #
+    # @example
+    #   figure(:title, :id => 'title')
+    #   # will generate 'title', 'title_elfigureent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an figure.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when figure method is called
+    #
+    def figure(name, identifier={:index => 0}, &block)
+      element(name, :figure, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an footer, another
+    # to retrieve an  footer, and another to check the footer's existence.
+    #
+    # @example
+    #   footer(:title, :id => 'title')
+    #   # will generate 'title', 'title_elfooterent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an footer.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when footer method is called
+    #
+    def footer(name, identifier={:index => 0}, &block)
+      element(name, :footer, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an header, another
+    # to retrieve an  header, and another to check the header's existence.
+    #
+    # @example
+    #   header(:title, :id => 'title')
+    #   # will generate 'title', 'title_elheaderent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an header.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when header method is called
+    #
+    def header(name, identifier={:index => 0}, &block)
+      element(name, :header, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an hgroup, another
+    # to retrieve an  hgroup, and another to check the hgroup's existence.
+    #
+    # @example
+    #   hgroup(:title, :id => 'title')
+    #   # will generate 'title', 'title_elhgroupent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an hgroup.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when hgroup method is called
+    #
+    def hgroup(name, identifier={:index => 0}, &block)
+      element(name, :hgroup, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an kbd, another
+    # to retrieve an  kbd, and another to check the kbd's existence.
+    #
+    # @example
+    #   kbd(:title, :id => 'title')
+    #   # will generate 'title', 'title_elkbdent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an kbd.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when kbd method is called
+    #
+    def kbd(name, identifier={:index => 0}, &block)
+      element(name, :kbd, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an mark, another
+    # to retrieve an  mark, and another to check the mark's existence.
+    #
+    # @example
+    #   mark(:title, :id => 'title')
+    #   # will generate 'title', 'title_elmarkent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an mark.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when mark method is called
+    #
+    def mark(name, identifier={:index => 0}, &block)
+      element(name, :mark, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an nav, another
+    # to retrieve an  nav, and another to check the nav's existence.
+    #
+    # @example
+    #   nav(:title, :id => 'title')
+    #   # will generate 'title', 'title_elnavent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an nav.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when nav method is called
+    #
+    def nav(name, identifier={:index => 0}, &block)
+      element(name, :nav, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an noscript, another
+    # to retrieve an  noscript, and another to check the noscript's existence.
+    #
+    # @example
+    #   noscript(:title, :id => 'title')
+    #   # will generate 'title', 'title_elnoscriptent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an noscript.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when noscript method is called
+    #
+    def noscript(name, identifier={:index => 0}, &block)
+      element(name, :noscript, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an rp, another
+    # to retrieve an  rp, and another to check the rp's existence.
+    #
+    # @example
+    #   rp(:title, :id => 'title')
+    #   # will generate 'title', 'title_elrpent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an rp.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when rp method is called
+    #
+    def rp(name, identifier={:index => 0}, &block)
+      element(name, :rp, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an rt, another
+    # to retrieve an  rt, and another to check the rt's existence.
+    #
+    # @example
+    #   rt(:title, :id => 'title')
+    #   # will generate 'title', 'title_elrtent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an rt.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when rt method is called
+    #
+    def rt(name, identifier={:index => 0}, &block)
+      element(name, :rt, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an ruby, another
+    # to retrieve an  ruby, and another to check the ruby's existence.
+    #
+    # @example
+    #   ruby(:title, :id => 'title')
+    #   # will generate 'title', 'title_elrubyent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an ruby.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when ruby method is called
+    #
+    def ruby(name, identifier={:index => 0}, &block)
+      element(name, :ruby, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an samp, another
+    # to retrieve an  samp, and another to check the samp's existence.
+    #
+    # @example
+    #   samp(:title, :id => 'title')
+    #   # will generate 'title', 'title_elsampent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an samp.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when samp method is called
+    #
+    def samp(name, identifier={:index => 0}, &block)
+      element(name, :samp, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an section, another
+    # to retrieve an  section, and another to check the section's existence.
+    #
+    # @example
+    #   section(:title, :id => 'title')
+    #   # will generate 'title', 'title_elsectionent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an section.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when section method is called
+    #
+    def section(name, identifier={:index => 0}, &block)
+      element(name, :section, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an sub, another
+    # to retrieve an  sub, and another to check the sub's existence.
+    #
+    # @example
+    #   sub(:title, :id => 'title')
+    #   # will generate 'title', 'title_elsubent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an sub.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when sub method is called
+    #
+    def sub(name, identifier={:index => 0}, &block)
+      element(name, :sub, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an summary, another
+    # to retrieve an  summary, and another to check the summary's existence.
+    #
+    # @example
+    #   summary(:title, :id => 'title')
+    #   # will generate 'title', 'title_elsummaryent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an summary.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when summary method is called
+    #
+    def summary(name, identifier={:index => 0}, &block)
+      element(name, :summary, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an sup, another
+    # to retrieve an  sup, and another to check the sup's existence.
+    #
+    # @example
+    #   sup(:title, :id => 'title')
+    #   # will generate 'title', 'title_elsupent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an sup.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when sup method is called
+    #
+    def sup(name, identifier={:index => 0}, &block)
+      element(name, :sup, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an var, another
+    # to retrieve an  var, and another to check the var's existence.
+    #
+    # @example
+    #   var(:title, :id => 'title')
+    #   # will generate 'title', 'title_elvarent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an var.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when var method is called
+    #
+    def var(name, identifier={:index => 0}, &block)
+      element(name, :var, identifier, &block)
+    end
+
+    #
+    # adds three methods - one to retrieve the text of an wbr, another
+    # to retrieve an  wbr, and another to check the wbr's existence.
+    #
+    # @example
+    #   wbr(:title, :id => 'title')
+    #   # will generate 'title', 'title_elwbrent', and 'title?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an wbr.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when wbr method is called
+    #
+    def wbr(name, identifier={:index => 0}, &block)
+      element(name, :wbr, identifier, &block)
     end
 
     #
