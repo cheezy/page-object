@@ -2,6 +2,16 @@
 * Enhancements
   * Added the following aliased methods to their corresponding Accessors method
 	a => link
+	hidden => hidden_field
+	img => image
+	li => list_item
+	ol => ordered_list
+	p => paragraph
+	radio => radio_button
+	select => select_list
+	td => cell
+	textarea => text_area
+	ul => unordered_list
   * Added the following methods to return generic Element objects
 	abbr
 	address
