@@ -804,7 +804,20 @@ module PageObject
         #
         def file_fields_for(identifier)
           find_watir_elements("file_fields(identifier)", Elements::FileField, identifier)
-          
+        end
+
+        #
+        # platform method to click on an area
+        #
+        def click_area_for(identifier)
+          process_watir_call("area(identifier).click", Elements::Area, identifier, nil, 'area')
+        end
+
+        #
+        # platform method to retrieve an area element
+        #
+        def area_for(identifier)
+          find_watir_element("area(identifier)", Elements::Area, identifier, 'area')
         end
 
         #

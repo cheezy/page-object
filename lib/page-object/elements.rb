@@ -50,4 +50,5 @@ require 'page-object/elements/heading'
 require 'page-object/elements/paragraph'
 require 'page-object/elements/label'
 require 'page-object/elements/file_field'
+require 'page-object/elements/area'
 

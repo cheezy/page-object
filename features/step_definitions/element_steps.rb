@@ -42,6 +42,10 @@ When /^I retrieve a heading element$/ do
   @element = @page.h1_id_element
 end
 
+When /^I retrieve an area element$/ do
+  @element = @page.area_id_element
+end
+
 When /^I locate the form$/ do
   @element = @page.form_id_element
 end

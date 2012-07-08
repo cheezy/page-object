@@ -864,6 +864,22 @@ module PageObject
         end
 
         #
+        # platform method to click on an area
+        #
+        def click_area_for(identifier)
+          process_selenium_call(identifier, Elements::Area, 'area') do |how, what|
+            @browser.find_element(how, what).click
+          end
+        end
+
+        #
+        # platform method to retrieve an area element
+        #
+        def area_for(identifier)
+          find_selenium_element(identifier, Elements::Area, 'area')
+        end
+
+        #
         # platform method to retrieve a generic element
         # See PageObject::Accessors#element
         #

@@ -150,13 +150,14 @@ class Page
   button(:btn_class_index, :class => "btn_class", :index => 0)
   button(:btn_name_index, :name => "btn_name", :index => 0)
 
+  
   button(:disabled_button, :value => 'Disabled')
 
   image(:image_id, :id => 'image_id')
   image(:image_name, :name => 'image_name')
   image(:image_class, :class => 'image_class')
-  image(:image_index, :index => 0)
-  image(:image_xpath, :xpath => '//img')
+  image(:image_index, :index => 1)
+  image(:image_xpath, :xpath => '//img[2]')
   image(:image_alt, :alt => 'image_alt')
   image(:image_src, :src => 'images/circle.png')
   image(:image_class_index, :class => "image_class", :index => 0)
@@ -276,10 +277,19 @@ class Page
   link(:open_window, :text => 'New Window')
   link(:child, :id => 'child')
 
+  area(:area_id, :id => 'area')
+  area(:area_name, :name => 'area')
+  area(:area_class, :class => 'area')
+  area(:area_index, :index => 0)
+  area(:area_xpath, :xpath => '//area')
+  area(:area_class_index, :class => 'area', :index => 0)
+  area(:area_name_index, :name => 'area', :index => 0)
+
   element(:article_id, :article, :id => 'article_id')
   element(:header_id, :header, :id => 'header_id')
   element(:footer_id, :footer, :id => 'footer_id')
   element(:summary_id, :summary, :id => 'summary_id')
   element(:details_id, :details, :id => 'details_id')
+
 end
 
