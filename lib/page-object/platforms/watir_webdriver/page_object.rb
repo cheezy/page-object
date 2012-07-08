@@ -821,6 +821,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an array of area elements
+        #
+        def areas_for(identifier)
+          find_watir_elements("areas(identifier)", Elements::Area, identifier, 'area')
+        end
+
+        #
         # platform method to return a PageObject::Elements::Element element
         # See PageObject::Accessors#elem
         #

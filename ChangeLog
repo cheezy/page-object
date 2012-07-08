@@ -1,5 +1,7 @@
 === Version 0.7.1
 * Enhancements
+  * Added support for the following new elements
+	Area
   * Added the following aliased methods to their corresponding Accessors method
 	a => link
 	hidden => hidden_field

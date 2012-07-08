@@ -880,6 +880,13 @@ module PageObject
         end
 
         #
+        # platform method to return an array of area elements
+        #
+        def areas_for(identifier)
+          find_selenium_elements(identifier, Elements::Area, 'area')
+        end
+        
+        #
         # platform method to retrieve a generic element
         # See PageObject::Accessors#element
         #
