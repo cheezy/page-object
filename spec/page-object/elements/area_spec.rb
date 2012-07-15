@@ -23,22 +23,22 @@ describe PageObject::Elements::Area do
   context "implementation" do
     let(:area_element) { double('area_element') }
 
-    context "when using watir" do
-      let(:watir_area) { PageObject::Elements::Area.new(area_element, :platform => :watir_webdriver) }
-
+    context "when using selenium" do
+      let(:selenium_area) { PageObject::Elements::Area.new(area_element, :platform => :selenium_webdriver) }
+      
       it "should know its coords" do
-        area_element.should_receive(:attribute_value).with(:coords).and_return("1,2,3,4")
-        watir_area.coords.should == "1,2,3,4"
+        area_element.should_receive(:attribute).with(:coords).and_return("1,2,3,4")
+        selenium_area.coords.should == "1,2,3,4"
       end
 
       it "should know its shape" do
-        area_element.should_receive(:attribute_value).with(:shape).and_return('circle')
-        watir_area.shape.should == 'circle'
+        area_element.should_receive(:attribute).with(:shape).and_return('circle')
+        selenium_area.shape.should == 'circle'
       end
 
-      it "should know its hre" do
-        area_element.should_receive(:attribute_value).with(:href).and_return('twitter.com')
-        watir_area.href.should == 'twitter.com'
+      it "should know its href" do
+        area_element.should_receive(:attribute).with(:href).and_return('twitter.com')
+        selenium_area.href.should == 'twitter.com'
       end
     end
   end
