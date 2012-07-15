@@ -42,7 +42,7 @@ When /^I retrieve a heading element$/ do
   @element = @page.h1_id_element
 end
 
-When /^I retrieve an area element$/ do
+When /^I retrieve the area element$/ do
   @element = @page.area_id_element
 end
 
