@@ -1,3 +1,4 @@
+@focus
 Feature: List item
 
   Background:
@@ -18,6 +19,7 @@ Feature: List item
     | xpath     |
     | index     |
     | name      |
+    | text      |
 
   Scenario Outline: Locating list items using multiple parameters
     When I search for the list item by "<param1>" and "<param2>"

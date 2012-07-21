@@ -975,7 +975,7 @@ module PageObject
           return false if identifier[:label]
           return false if identifier[:text] and tag == 'input' and additional[:type] == 'hidden'
           return false if identifier[:text] and tag == 'input' and additional[:type] == 'text'
-          return false if identifier[:text] and ['div', 'span', 'td', 'label'].include? tag
+          return false if identifier[:text] and ['div', 'span', 'td', 'label', 'li'].include? tag
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'text'
           return false if identifier[:title] and tag == 'input' and additional[:type] == 'file'
           return false if identifier[:title] and tag == 'a'

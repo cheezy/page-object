@@ -176,6 +176,7 @@ class Page
   list_item(:li_name, :name => 'li_name')
   list_item(:li_class, :class => 'li_class')
   list_item(:li_index, :index => 0)
+  list_item(:li_text, :text => 'Item One')
   list_item(:li_xpath, :xpath => '//li[1]')
   list_item(:li_class_index, :class => "li_class", :index => 0)
   list_item(:li_name_index, :name => "li_name", :index => 0)
