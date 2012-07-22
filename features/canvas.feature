@@ -1,4 +1,3 @@
-@focus
 Feature:  Support for the canvas element
 
   Background:
