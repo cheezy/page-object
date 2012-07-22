@@ -291,7 +291,7 @@ class Page
   canvas(:canvas_class, :class => 'canvas')
   canvas(:canvas_index, :index => 0)
   canvas(:canvas_xpath, :xpath => '//canvas')
-  canvas(:canvas_class_index, :class => 'area', :index => 0)
+  canvas(:canvas_class_index, :class => 'canvas', :index => 0)
   canvas(:canvas_name_index, :name => 'canvas', :index => 0)
 
   audio(:audio_id, :id => 'audio')
