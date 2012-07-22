@@ -220,5 +220,13 @@ module PageObject
     def canvas_elements(identifier={:index => 0})
       @platform.canvases_for(identifier)
     end
+
+    def audio_element(identifier={:index => 0})
+      @platform.audio_for(identifier)
+    end
+
+    def audio_elements(identifier={:index => 0})
+      @platform.audios_for(identifier)
+    end
   end
 end

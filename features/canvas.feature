@@ -25,4 +25,12 @@ Feature:  Support for the canvas element
     Then I should see that the canvas width is "200"
     And I should see that the canvas height is "100"
 
+  Scenario Outline: Locating canvases using multiple parameters
+    When I search for the canvas element by "<param1>" and "<param2>"
+    Then I should know it is visible
+
+  Scenarios:
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |
 

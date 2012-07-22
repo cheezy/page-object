@@ -3,6 +3,7 @@
   * Added ability to find list_item by :text
   * Added support for the following new elements
 	Canvas
+	Audio
   * Updated to use selenium-webdriver 2.25.0
 
 === Version 0.7.1 / 2012-7-15

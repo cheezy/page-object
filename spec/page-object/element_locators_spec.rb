@@ -624,9 +624,31 @@ describe PageObject::ElementLocators do
       elements[0].should be_instance_of PageObject::Elements::Canvas
     end
 
-    it "should find all areas with no identifier" do
+    it "should find all canvases with no identifier" do
       watir_browser.should_receive(:canvases).with({}).and_return([watir_browser])
       watir_page_object.canvas_elements
+    end
+
+    it "should find an audio element" do
+      watir_browser.should_receive(:audio).with(:id => 'blah').and_return(watir_browser)
+      element = watir_page_object.audio_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Audio
+    end
+
+    it "should find an audio element using a default identifier" do
+      watir_browser.should_receive(:audio).with(:index => 0).and_return(watir_browser)
+      watir_page_object.audio_element
+    end
+
+    it "should find all audio elements" do
+      watir_browser.should_receive(:audios).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.audio_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Audio
+    end
+
+    it "should find all audio elements with no identifier" do
+      watir_browser.should_receive(:audios).with({}).and_return([watir_browser])
+      watir_page_object.audio_elements
     end
 
     it "should find an element" do
@@ -991,9 +1013,31 @@ describe PageObject::ElementLocators do
       elements[0].should be_instance_of PageObject::Elements::Canvas
     end
 
-    it "should find all areas with no identifier" do
+    it "should find all canvases with no identifier" do
       selenium_browser.should_receive(:find_elements).with(:tag_name, 'canvas').and_return([selenium_browser])
       selenium_page_object.canvas_elements
+    end
+
+    it "should find an audio element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.audio_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Audio
+    end
+
+    it "should find an audio element using a default identifier" do
+      selenium_browser.should_receive(:find_element).with(:xpath, './/audio[1]').and_return(selenium_browser)
+      selenium_page_object.audio_element
+    end
+
+    it "should find all audio elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.audio_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Audio
+    end
+
+    it "should find all audio elements with no identifier" do
+      selenium_browser.should_receive(:find_elements).with(:tag_name, 'audio').and_return([selenium_browser])
+      selenium_page_object.audio_elements
     end
   end
 end
