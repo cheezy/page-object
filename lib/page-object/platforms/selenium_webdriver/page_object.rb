@@ -892,6 +892,13 @@ module PageObject
         def canvas_for(identifier)
           find_selenium_element(identifier, Elements::Canvas, 'canvas')
         end
+
+        #
+        # platform method to return an array of canvas elements
+        #
+        def canvases_for(identifier)
+          find_selenium_elements(identifier, Elements::Canvas, 'canvas')
+        end
         
         #
         # platform method to retrieve a generic element

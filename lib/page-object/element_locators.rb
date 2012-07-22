@@ -912,6 +912,36 @@ module PageObject
     end
 
     #
+    # Finds a canvas
+    #
+    # @param [Hash] identifier how we find a canvas.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first file field.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    def canvas_element(identifier={:index => 0})
+      platform.canvas_for(identifier.clone)
+    end
+
+    #
+    # Finds all canvases that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a canvas.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  It defaults to and empty Hash
+    #   which will return all file fields.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    def canvas_elements(identifier={})
+      platform.canvases_for(identifier.clone)
+    end
+
+    #
     # Finds an element
     #
     # @param [Symbol] the name of the tag for the element

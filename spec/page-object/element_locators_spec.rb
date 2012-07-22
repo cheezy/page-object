@@ -585,6 +585,50 @@ describe PageObject::ElementLocators do
       watir_page_object.file_field_elements
     end
 
+    it "should find an area element" do
+      watir_browser.should_receive(:area).with(:id => 'blah').and_return(watir_browser)
+      element = watir_page_object.area_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Area
+    end
+
+    it "should find an area element using a default identifier" do
+      watir_browser.should_receive(:area).with(:index => 0).and_return(watir_browser)
+      watir_page_object.area_element
+    end
+
+    it "should find all area elements" do
+      watir_browser.should_receive(:areas).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.area_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Area
+    end
+
+    it "should find all areas with no identifier" do
+      watir_browser.should_receive(:areas).with({}).and_return([watir_browser])
+      watir_page_object.area_elements
+    end
+    
+    it "should find a canvas element" do
+      watir_browser.should_receive(:canvas).with(:id => 'blah').and_return(watir_browser)
+      element = watir_page_object.canvas_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Canvas
+    end
+
+    it "should find a canvas element using a default identifier" do
+      watir_browser.should_receive(:canvas).with(:index => 0).and_return(watir_browser)
+      watir_page_object.canvas_element
+    end
+
+    it "should find all canvas elements" do
+      watir_browser.should_receive(:canvases).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.canvas_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Canvas
+    end
+
+    it "should find all areas with no identifier" do
+      watir_browser.should_receive(:canvases).with({}).and_return([watir_browser])
+      watir_page_object.canvas_elements
+    end
+
     it "should find an element" do
       watir_browser.should_receive(:audio).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.element(:audio, :id => 'blah')
@@ -906,6 +950,50 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
       element = selenium_page_object.file_field_element(:id => 'blah')
       element.should be_instance_of PageObject::Elements::FileField
+    end
+
+        it "should find an area element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.area_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Area
+    end
+
+    it "should find an area element using a default identifier" do
+      selenium_browser.should_receive(:find_element).with(:xpath, './/area[1]').and_return(selenium_browser)
+      selenium_page_object.area_element
+    end
+
+    it "should find all area elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.area_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Area
+    end
+
+    it "should find all areas with no identifier" do
+      selenium_browser.should_receive(:find_elements).with(:tag_name, 'area').and_return([selenium_browser])
+      selenium_page_object.area_elements
+    end
+
+    it "should find a canvas element" do
+      selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+      element = selenium_page_object.canvas_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Canvas
+    end
+
+    it "should find a canvas element using a default identifier" do
+      selenium_browser.should_receive(:find_element).with(:xpath, './/canvas[1]').and_return(selenium_browser)
+      selenium_page_object.canvas_element
+    end
+
+    it "should find all canvas elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.canvas_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Canvas
+    end
+
+    it "should find all areas with no identifier" do
+      selenium_browser.should_receive(:find_elements).with(:tag_name, 'canvas').and_return([selenium_browser])
+      selenium_page_object.canvas_elements
     end
   end
 end

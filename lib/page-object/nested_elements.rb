@@ -204,5 +204,21 @@ module PageObject
     def file_field_element(identifier={:index => 0})
       @platform.file_field_for(identifier)
     end
+
+    def area_element(identifier={:index => 0})
+      @platform.area_for(identifier)
+    end
+
+    def area_elements(identifier={:index => 0})
+      @platform.areas_for(identifier)
+    end
+
+    def canvas_element(identifier={:index => 0})
+      @platform.canvas_for(identifier)
+    end
+
+    def canvas_elements(identifier={:index => 0})
+      @platform.canvases_for(identifier)
+    end
   end
 end

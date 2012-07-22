@@ -2,7 +2,8 @@
 * Enhancements
   * Added ability to find list_item by :text
   * Updated to use selenium-webdriver 2.25.0
-
+  * Added support for the following new elements
+	Canvas
 
 === Version 0.7.1 / 2012-7-15
 * Enhancements
