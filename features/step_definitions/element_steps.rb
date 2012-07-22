@@ -48,7 +48,6 @@ end
 
 When /^I retrieve the canvas element$/ do
   @element = @page.canvas_id_element
-  puts @element
 end
 
 When /^I locate the form$/ do

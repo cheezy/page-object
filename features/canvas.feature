@@ -20,3 +20,10 @@ Feature:  Support for the canvas element
     | name      |
     | xpath     |
     | index     |
+
+  Scenario: Determining the width and height of the canvas
+    When I retrieve the canvas element
+    Then I should see that the canvas width is "200"
+    And I should see that the canvas height is "100"
+
+
