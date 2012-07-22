@@ -286,6 +286,14 @@ class Page
   area(:area_class_index, :class => 'area', :index => 0)
   area(:area_name_index, :name => 'area', :index => 0)
 
+  canvas(:canvas_id, :id => 'canvas')
+  canvas(:canvas_name, :name => 'canvas')
+  canvas(:canvas_class, :class => 'canvas')
+  canvas(:canvas_index, :index => 0)
+  canvas(:canvas_xpath, :xpath => '//canvas')
+  canvas(:canvas_class_index, :class => 'area', :index => 0)
+  canvas(:canvas_name_index, :name => 'canvas', :index => 0)
+
   element(:article_id, :article, :id => 'article_id')
   element(:header_id, :header, :id => 'header_id')
   element(:footer_id, :footer, :id => 'footer_id')

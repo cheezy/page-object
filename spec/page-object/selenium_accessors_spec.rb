@@ -31,6 +31,8 @@ class SeleniumAccessorsTestPageObject
   h6(:heading6, :id => 'main_heading')
   paragraph(:first_para, :id => 'first')
   file_field(:upload_me, :id => 'the_file')
+  area(:img_area, :id => 'area')
+  canvas(:my_canvas, :id => 'canvas')
 end
 
 class SeleniumBlockPageObject
@@ -113,12 +115,18 @@ class SeleniumBlockPageObject
   file_field :a_file do |element|
     "file_field"
   end
+  area :img_area do |element|
+    "area"
+  end
+  canvas :my_canvas do |element|
+    "canvas"
+  end
 end
 
 describe PageObject::Accessors do
   let(:selenium_browser) { mock_selenium_browser }
   let(:selenium_page_object) { SeleniumAccessorsTestPageObject.new(selenium_browser) }
-  let(:block_page_object) { SeleniumBlockPageObject.new(watir_browser) }
+  let(:block_page_object) { SeleniumBlockPageObject.new(selenium_browser) }
   
   before(:each) do
     selenium_browser.stub(:switch_to).and_return(selenium_browser)
@@ -502,4 +510,42 @@ describe PageObject::Accessors do
       element.should be_instance_of PageObject::Elements::FileField
     end
   end
+
+  describe "area accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        selenium_page_object.should respond_to(:img_area)
+        selenium_page_object.should respond_to(:img_area_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.img_area_element.should == "area"
+      end
+    end
+
+    it "should click on the area" do
+      selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+      selenium_browser.should_receive(:click)
+      selenium_page_object.img_area
+    end
+
+    it "should retrieve the element from the page" do
+      selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+      element = selenium_page_object.img_area_element
+      element.should be_instance_of PageObject::Elements::Area
+    end
+  end
+
+  describe "canvas accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        selenium_page_object.should respond_to(:my_canvas_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.my_canvas_element.should == "canvas"
+      end
+    end
+  end
+  
 end

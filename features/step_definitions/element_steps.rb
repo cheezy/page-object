@@ -46,6 +46,11 @@ When /^I retrieve the area element$/ do
   @element = @page.area_id_element
 end
 
+When /^I retrieve the canvas element$/ do
+  @element = @page.canvas_id_element
+  puts @element
+end
+
 When /^I locate the form$/ do
   @element = @page.form_id_element
 end

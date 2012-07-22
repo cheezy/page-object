@@ -885,6 +885,13 @@ module PageObject
         def areas_for(identifier)
           find_selenium_elements(identifier, Elements::Area, 'area')
         end
+
+        #
+        # platform method to retrieve a canvas element
+        #
+        def canvas_for(identifier)
+          find_selenium_element(identifier, Elements::Canvas, 'canvas')
+        end
         
         #
         # platform method to retrieve a generic element

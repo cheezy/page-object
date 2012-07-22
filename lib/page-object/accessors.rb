@@ -1069,6 +1069,35 @@ module PageObject
     end
 
     #
+    # adds two methods - one to return the canvas element and another to check
+    # the canvas's existence.
+    #
+    # @example
+    #   canvas(:my_canvas, :id => 'canvas_id')
+    #   # will generate 'my_canvas_element' and 'my_canvas?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find a canvas.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def canvas(name, identifier={:index => 0}, &block)
+      define_method("#{name}_element") do
+        return call_block(&block) if block_given?
+        platform.canvas_for(identifier.clone)
+      end
+      define_method("#{name}?") do
+        return call_block(&block).exists? if block_given?
+        platform.canvas_for(identifier.clone).exists?
+      end
+    end
+
+    #
     # adds three methods - one to retrieve the text of an element, another
     # to retrieve an element, and another to check the element's existence.
     #

@@ -828,6 +828,13 @@ module PageObject
         end
 
         #
+        # platform method to retrieve a canvas element
+        #
+        def canvas_for(identifier)
+          find_watir_element("canvas(identifier)", Elements::Canvas, identifier, 'canvas')
+        end
+
+        #
         # platform method to return a PageObject::Elements::Element element
         # See PageObject::Accessors#elem
         #
