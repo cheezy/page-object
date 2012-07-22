@@ -33,6 +33,7 @@ class WatirAccessorsTestPageObject
   file_field(:upload_me, :id => 'the_file')
   area(:img_area, :id => 'area')
   canvas(:my_canvas, :id => 'canvas_id')
+  audio(:acdc, :id => 'audio_id')
 end
 
 class WatirBlockPageObject
@@ -120,6 +121,9 @@ class WatirBlockPageObject
   end
   canvas :my_canvas do |element|
     "canvas"
+  end
+  audio :acdc do |element|
+    "audio"
   end
 end
 
@@ -1071,4 +1075,15 @@ describe PageObject::Accessors do
     end
   end
   
+  describe "audio accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:acdc_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.acdc_element.should == "audio"
+      end
+    end
+  end
 end

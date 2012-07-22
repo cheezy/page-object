@@ -294,6 +294,14 @@ class Page
   canvas(:canvas_class_index, :class => 'area', :index => 0)
   canvas(:canvas_name_index, :name => 'canvas', :index => 0)
 
+  audio(:audio_id, :id => 'audio')
+  audio(:audio_name, :name => 'audio')
+  audio(:audio_class, :class => 'audio')
+  audio(:audio_index, :index => 0)
+  audio(:audio_xpath, :xpath => '//audio')
+  audio(:audio_class_index, :class => 'audio', :index => 0)
+  audio(:audio_name_index, :name => 'audio', :index => 0)
+  
   element(:article_id, :article, :id => 'article_id')
   element(:header_id, :header, :id => 'header_id')
   element(:footer_id, :footer, :id => 'footer_id')

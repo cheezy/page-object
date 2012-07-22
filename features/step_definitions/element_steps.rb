@@ -50,6 +50,10 @@ When /^I retrieve the canvas element$/ do
   @element = @page.canvas_id_element
 end
 
+When /^I retrieve the audio element$/ do
+  @element = @page.audio_id_element
+end
+
 When /^I locate the form$/ do
   @element = @page.form_id_element
 end

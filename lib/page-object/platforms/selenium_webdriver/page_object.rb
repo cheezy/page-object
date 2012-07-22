@@ -901,6 +901,20 @@ module PageObject
         end
         
         #
+        # platform method to retrieve an audio element
+        #
+        def audio_for(identifier)
+          find_selenium_element(identifier, Elements::Audio, 'audio')
+        end
+
+        #
+        # platform method to return an array of audio elements
+        #
+        def audios_for(identifier)
+          find_selenium_elements(identifier, Elements::Audio, 'audio')
+        end
+        
+        #
         # platform method to retrieve a generic element
         # See PageObject::Accessors#element
         #

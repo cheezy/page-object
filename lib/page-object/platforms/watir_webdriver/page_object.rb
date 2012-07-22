@@ -842,6 +842,20 @@ module PageObject
         end
 
         #
+        # platform method to retrieve an audio element
+        #
+        def audio_for(identifier)
+          find_watir_element("audio(identifier)", Elements::Audio, identifier, 'audio')
+        end
+
+        #
+        # platform method to retrieve an array of audio elements
+        #
+        def audios_for(identifier)
+          find_watir_elements("audios(identifier)", Elements::Audio, identifier, 'audio')
+        end
+
+        #
         # platform method to return a PageObject::Elements::Element element
         # See PageObject::Accessors#elem
         #
