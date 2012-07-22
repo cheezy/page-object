@@ -1,4 +1,3 @@
-@focus
 Feature: List item
 
   Background:
