@@ -11,7 +11,7 @@ guard 'rspec', :cli => '--color --format Fuubar' do
   watch('spec/spec_helper.rb')  { "spec" }
 end
 
-guard 'cucumber', :notification => true, :all_after_pass => false, :all_on_start => false, :cli => '--profile focus'  do
+guard 'cucumber', :notification => true, :all_after_pass => false, :cli => '--profile focus'  do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$})          { "features" }
   watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
