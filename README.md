@@ -15,6 +15,8 @@ To see the changes from release to release please look at the [ChangeLog](https:
 
 To read about the motivation for this gem please read this [blog entry](http://www.cheezyworld.com/2010/11/19/ui-tests-introducing-a-simple-dsl/)
 
+There is a book that describes in detail how to use this gem and others to create a complete view of testing web and other types of applications.  The book is named [Cucumber & Cheese](http://leanpub.com/cucumber_and_cheese)
+
 ## Support
 
 If you need help using the page-object gem please ask your questions on [Stack Overflow](http://stackoverflow.com).  Please be sure to use the [page-object-gem](http://stackoverflow.com/questions/tagged/page-object-gem) tag.  If you wish to report an issue or request a new feature use the [github issue tracking page](http://github.com/cheezy/page-object/issues).
