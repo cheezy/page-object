@@ -25,8 +25,27 @@ Feature:  Support for the audio element
     When I search for the audio element by "<param1>" and "<param2>"
     Then I should know it is visible
 
-  Scenarios:
+  Examples:
     | param1 | param2 |
     | class  | index  |
     | name   | index  |
 
+  Scenario: Should know if it is autoplay
+    When I retrieve the audio element
+    Then I should know the audio is not autoplay
+    
+  Scenario: Should know if the controls are displayed
+    When I retrieve the audio element
+    Then I should know that the controls are displayed
+
+  Scenario: Should know if it is paused
+    When I retrieve the audio element
+    Then I should know that the audio is paused
+
+  Scenario: Should know its duration
+    When I retrieve the audio element
+    Then I should know that the duration is greater than 74 seconds
+
+  Scenario: Should know its volume
+    When I retrieve the audio element
+    Then I should know that its volume is 1
