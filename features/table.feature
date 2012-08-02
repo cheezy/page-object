@@ -46,6 +46,14 @@ Feature: Table
     When I retrieve a table element
     Then the data for column "Data2" and row "2" should be "Data4"
 
+  Scenario: Retrieve data from a table with a thead using a column header
+    When I retrieve a table with thead element
+    Then the data for column "Col1" and row "2" should be "Data1"
+
+  Scenario: Retrieve data from the first row of a table with a thead using a column header
+    When I retrieve a table with thead element
+    Then the data for column "Col1" and row "1" should be "Col1"
+
   Scenario: Retrieve data from a table using a partial column header
     When I retrieve a table element
     Then the data for column "ata2" and row "2" should be "Data4"

@@ -28,7 +28,8 @@ module PageObject
 
         def find_index_by_title(title)
           table = parent
-          table = table.parent if parent.element.tag_name == 'tbody'
+          parent_tag_name = parent.element.tag_name
+          table = table.parent if (parent_tag_name == 'tbody' || parent_tag_name == 'thead')
           table[0].find_index { |column| column.text.include? title }
         end
 
