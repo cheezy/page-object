@@ -5,6 +5,7 @@
 	Canvas
 	Audio
   * Updated to use selenium-webdriver 2.25.0
+  * Updated to provide better support for table_row.find_index_by_title when tables have theads... (George Shakhnazaryan)
 
 === Version 0.7.1 / 2012-7-15
 * Enhancements
