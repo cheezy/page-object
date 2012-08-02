@@ -30,6 +30,10 @@ When /^I retrieve a table element$/ do
   @element = @page.table_id_element
 end
 
+When /^I retrieve a table with thead element$/ do
+  @element = @page.table_with_thead_id_element
+end
+
 When /^I retrieve a button element$/ do
   @element = @page.button_id_element
 end
