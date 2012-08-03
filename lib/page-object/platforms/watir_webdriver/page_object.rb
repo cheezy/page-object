@@ -71,9 +71,9 @@ module PageObject
         #
         def alert(frame=nil, &block)
           switch_to_frame(frame)
-          @browser.wd.execute_script "window.alert = function(msg) { window.__lastWatirAlert = msg; }"
           yield
-          value = @browser.wd.execute_script "return window.__lastWatirAlert"
+          value = @browser.alert.text
+          @browser.alert.ok
           switch_to_default_content(frame)
           value
         end
@@ -84,9 +84,9 @@ module PageObject
         #
         def confirm(response, frame=nil, &block)
           switch_to_frame(frame)
-          @browser.wd.execute_script "window.confirm = function(msg) { window.__lastWatirConfirm = msg; return #{!!response} }"
           yield
-          value = @browser.wd.execute_script "return window.__lastWatirConfirm"
+          value = @browser.alert.text
+          response ? @browser.alert.ok : @browser.alert.close
           switch_to_default_content(frame)
           value
         end

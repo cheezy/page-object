@@ -23,6 +23,12 @@ When /^I handle the alert$/ do
   end
 end
 
+When /^I handle the alert that reloads the page$/ do
+  @msg = @page.alert do
+    @page.alert_button_that_reloads
+  end
+end
+
 Then /^I should be able to get the alert\'s message$/ do
   @msg.should == "I am an alert"
 end
@@ -30,6 +36,12 @@ end
 When /^I handle the confirm$/ do
   @msg = @page.confirm(true) do
     @page.confirm_button
+  end
+end
+
+When /^I handle the confirm that reloads the page$/ do
+  @msg = @page.confirm(true) do
+    @page.confirm_button_that_reloads
   end
 end
 

@@ -255,7 +255,9 @@ class Page
   paragraph(:p_name_index, :name => 'p_name', :index => 0)
 
   button(:alert_button, :id => 'alert_button')
+  button(:alert_button_that_reloads, :id => 'alert_button_that_reloads')
   button(:confirm_button, :id => 'confirm_button')
+  button(:confirm_button_that_reloads, :id => 'confirm_button_that_reloads')
   button(:prompt_button, :id => 'prompt_button')
 
   file_field(:file_field_id, :id => 'file_field_id')

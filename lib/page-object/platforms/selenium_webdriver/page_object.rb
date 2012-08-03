@@ -70,9 +70,11 @@ module PageObject
         # See PageObject#alert
         #
         def alert(frame=nil, &block)
-          @browser.execute_script "window.alert = function(msg) { window.__lastWatirAlert = msg; }"
           yield
-          @browser.execute_script "return window.__lastWatirAlert"
+          alert = @browser.switch_to.alert
+          value = alert.text
+          alert.accept
+          value
         end
 
         #
@@ -80,9 +82,11 @@ module PageObject
         # See PageObject#confirm
         #
         def confirm(response, frame=nil, &block)
-          @browser.execute_script "window.confirm = function(msg) { window.__lastWatirConfirm = msg; return #{!!response} }"
           yield
-          @browser.execute_script "return window.__lastWatirConfirm"
+          alert = @browser.switch_to.alert
+          value = alert.text
+          response ? alert.accept : alert.dismiss
+          value
         end
 
         #
