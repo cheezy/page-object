@@ -123,15 +123,17 @@ describe PageObject do
       end
 
       it "should override alert popup behavior" do
-        watir_browser.should_receive(:wd).twice.and_return(watir_browser)
-        watir_browser.should_receive(:execute_script).twice
+        watir_browser.should_receive(:alert).twice.and_return(watir_browser)
+        watir_browser.should_receive(:text)
+        watir_browser.should_receive(:ok)
         watir_page_object.alert do
         end
       end
 
       it "should override confirm popup behavior" do
-        watir_browser.should_receive(:wd).twice.and_return(watir_browser)
-        watir_browser.should_receive(:execute_script).twice
+        watir_browser.should_receive(:alert).twice.and_return(watir_browser)
+        watir_browser.should_receive(:text)
+        watir_browser.should_receive(:ok)
         watir_page_object.confirm(true) do
         end
       end
@@ -233,13 +235,19 @@ describe PageObject do
       end
 
       it "should override alert popup behavior" do
-        selenium_browser.should_receive(:execute_script).twice
+        selenium_browser.should_receive(:switch_to).and_return(selenium_browser)
+        selenium_browser.should_receive(:alert).and_return(selenium_browser)
+        selenium_browser.should_receive(:text)
+        selenium_browser.should_receive(:accept)
         selenium_page_object.alert do
         end
       end
 
       it "should override confirm popup behavior" do
-        selenium_browser.should_receive(:execute_script).twice
+        selenium_browser.should_receive(:switch_to).and_return(selenium_browser)
+        selenium_browser.should_receive(:alert).and_return(selenium_browser)
+        selenium_browser.should_receive(:text)
+        selenium_browser.should_receive(:accept)
         selenium_page_object.confirm(true) do
         end
       end
