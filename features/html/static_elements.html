@@ -128,7 +128,9 @@
     <a href="success.html">Hello</a>
 
     <input id=alert_button type=button onclick="alert('I am an alert')" value=Alert>
+    <input id=alert_button_that_reloads type=button onclick="alert('I am an alert'); location.reload()" value="Alert that Reloads">
     <input id=confirm_button type=button onclick="this.value = confirm('set the value')" value=Confirm>
+    <input id=confirm_button_that_reloads type=button onclick="if(confirm('set the value')) location.reload()" value="Confirm that Reloads">
     <input id=prompt_button type=button onclick='this.value = prompt("enter your name", "John Doe")' value=Prompt>
 
     <h1 id="h1_id" class="h1_class" name="h1_name">h1's are cool</h1>
