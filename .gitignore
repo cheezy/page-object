@@ -4,3 +4,4 @@ Gemfile.lock
 .idea/
 pkg
 TAGS
+chromedriver.log
