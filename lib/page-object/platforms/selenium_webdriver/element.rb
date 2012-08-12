@@ -28,10 +28,10 @@ module PageObject
         #
         def flash
           original_color = attribute('backgroundColor')
-          bridge = element.instance_variable_get(:@bridge)
+          the_bridge = bridge
           10.times do |n|
             color = (n % 2 == 0) ? 'red' : original_color
-            bridge.executeScript("arguments[0].style.backgroundColor = '#{color}'", element)
+            the_bridge.executeScript("arguments[0].style.backgroundColor = '#{color}'", element)
           end
         end
         
@@ -109,8 +109,15 @@ module PageObject
         def fire_event(event_name)
           event_name = event_name.to_s.sub(/^on/, '').downcase
           script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:fireEvent)
-          bridge = element.instance_variable_get(:@bridge)
           bridge.executeScript(script, element, event_name)
+        end
+
+        #
+        # hover over the element
+        #
+        def hover
+          mouse = Selenium::WebDriver::Mouse.new(bridge)
+          mouse.move_to(element)
         end
 
         #
@@ -118,7 +125,6 @@ module PageObject
         #
         def parent
           script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:getParentElement)
-          bridge = element.instance_variable_get(:@bridge)
           parent = bridge.executeScript(script, element)
           type = element.attribute(:type).to_s.downcase if parent.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
@@ -129,7 +135,6 @@ module PageObject
         # Set the focus to the current element
         #
         def focus
-          bridge = element.instance_variable_get(:@bridge)
           bridge.executeScript("return arguments[0].focus()", element)
         end
 
@@ -232,6 +237,12 @@ module PageObject
         #
         def clear
           element.clear
+        end
+
+        private
+
+        def bridge
+          bridge = element.instance_variable_get(:@bridge)
         end
       end
     end

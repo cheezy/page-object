@@ -190,4 +190,22 @@ Then /^I should be able to flash it$/ do
   @element.flash
 end
 
+class HoverPage
+  include PageObject
+
+  link(:hello)
+end
+
+Given /^I am on the hover page$/ do
+  @page = HoverPage.new(@browser)
+  @page.navigate_to UrlHelper.hover
+end
+
+When /^I hover over the hello link$/ do
+  @page.hello_element.hover
+end
+
+Then /^the font size should be "([^\"]*)"$/ do |font_size|
+  @page.hello_element.style('font-size').should == font_size if ENV['BROWSER'] == 'chrome'
+end
 

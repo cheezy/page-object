@@ -44,5 +44,9 @@ module UrlHelper
     def indexed
       "#{files}/indexed_property.html"
     end
+
+    def hover
+      "#{files}/hover.html"
+    end
   end
 end

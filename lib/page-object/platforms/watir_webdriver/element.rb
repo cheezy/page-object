@@ -103,6 +103,13 @@ module PageObject
         end
 
         #
+        # hover over the element
+        #
+        def hover
+          element.hover
+        end
+
+        #
         # find the parent element
         #
         def parent
