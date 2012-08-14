@@ -34,6 +34,7 @@ class WatirAccessorsTestPageObject
   area(:img_area, :id => 'area')
   canvas(:my_canvas, :id => 'canvas_id')
   audio(:acdc, :id => 'audio_id')
+  video(:movie, :id => 'video_id')
 end
 
 class WatirBlockPageObject
@@ -124,6 +125,9 @@ class WatirBlockPageObject
   end
   audio :acdc do |element|
     "audio"
+  end
+  video :movie do |element|
+    "video"
   end
 end
 
@@ -1083,6 +1087,18 @@ describe PageObject::Accessors do
 
       it "should call a block on the element method when present" do
         block_page_object.acdc_element.should == "audio"
+      end
+    end
+  end
+
+  describe "video accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:movie_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.movie_element.should == "video"
       end
     end
   end

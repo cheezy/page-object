@@ -1127,6 +1127,35 @@ module PageObject
     end
 
     #
+    # adds two methods - one to return the video element and another to check
+    # the video's existence.
+    #
+    # @example
+    #   video(:movie, :id => 'video_id')
+    #   # will generate 'movie_element' and 'movie?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find a video element.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def video(name, identifier={:index => 0}, &block)
+      define_method("#{name}_element") do
+        return call_block(&block) if block_given?
+        platform.video_for(identifier.clone)
+      end
+      define_method("#{name}?") do
+        return call_block(&block).exists? if block_given?
+        platform.video__for(identifier.clone).exists?
+      end
+    end
+
+    #
     # adds three methods - one to retrieve the text of an element, another
     # to retrieve an element, and another to check the element's existence.
     #

@@ -919,6 +919,20 @@ module PageObject
         end
         
         #
+        # platform method to retrieve a video element
+        #
+        def video_for(identifier)
+          find_selenium_element(identifier, Elements::Video, 'video')
+        end
+
+        #
+        # platform method to return an array of video elements
+        #
+        def videos_for(identifier)
+          find_selenium_elements(identifier, Elements::Video, 'video')
+        end
+        
+        #
         # platform method to retrieve a generic element
         # See PageObject::Accessors#element
         #
