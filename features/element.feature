@@ -264,7 +264,6 @@ Feature: Elements
     When I set the focus to the test text_field using the onfocus event
     Then I should see the onfocus text "changed by onfocus event"
     
-  @focus
   Scenario: Hovering over an element
     Given I am on the hover page
     When I hover over the hello link
