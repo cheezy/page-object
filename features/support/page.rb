@@ -306,8 +306,8 @@ class Page
   audio(:audio_name_index, :name => 'audio', :index => 0)
 
   video(:video_id, :id => 'video')
-  video(:video_name, :id => 'video')
-  video(:video_class, :id => 'video')
+  video(:video_name, :name => 'video')
+  video(:video_class, :class => 'video')
   video(:video_index, :index => 0)
   video(:video_xpath, :xpath => '//video')
   video(:video_class_index, :class => 'video', :index => 0)

@@ -20,3 +20,12 @@ Feature: Support for video element
     | name      |
     | xpath     |
     | index     |
+
+  Scenario Outline: Locating videos using multiple parameters
+    When I search for the video element by "<param1>" and "<param2>"
+    Then I should know it is visible
+
+  Examples:
+    | param1 | param2 |
+    | class  | index  |
+    | name   | index  |
