@@ -1,4 +1,4 @@
-=== Version 0.7.3
+=== Version 0.7.3 / 2012-8-18
 * Enhancements
   * Improved handling of alert and confirm Javascript popups (George Shakhnazaryan)
   * Added hover method to Element.  Browser support is limited.
