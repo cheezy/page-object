@@ -49,7 +49,6 @@ Feature: Support for video element
     When I retrieve the video element
     Then I should know that its volume is 1
 
-@focus    
   Scenario: Should know its height and width
     When I retrieve the video element
     Then I should know that its height is 240 pixels

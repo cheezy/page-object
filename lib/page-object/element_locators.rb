@@ -972,6 +972,36 @@ module PageObject
     end
 
     #
+    # Finds a video element
+    #
+    # @param [Hash] identifier how we find a video.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  It defaults to {:index => 0}
+    #   which will return the first file field.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    def video_element(identifier={:index => 0})
+      platform.video_for(identifier.clone)
+    end
+
+    #
+    # Finds all video elements that match the provided identifier
+    #
+    # @param [Hash] identifier how we find a video element.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  It defaults to and empty Hash
+    #   which will return all file fields.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    def video_elements(identifier={})
+      platform.videos_for(identifier.clone)
+    end
+
+    #
     # Finds an element
     #
     # @param [Symbol] the name of the tag for the element

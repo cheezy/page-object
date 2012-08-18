@@ -651,6 +651,28 @@ describe PageObject::ElementLocators do
       watir_page_object.audio_elements
     end
 
+    it "should find a video element" do
+      watir_browser.should_receive(:video).with(:id => 'blah').and_return(watir_browser)
+      element = watir_page_object.video_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Video
+    end
+
+    it "should find a video element using a default identifier" do
+      watir_browser.should_receive(:video).with(:index => 0).and_return(watir_browser)
+      watir_page_object.video_element
+    end
+
+    it "should find all video elements" do
+      watir_browser.should_receive(:videos).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.video_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Video
+    end
+
+    it "should find all video elements with no identifier" do
+      watir_browser.should_receive(:videos).with({}).and_return([watir_browser])
+      watir_page_object.video_elements
+    end
+
     it "should find an element" do
       watir_browser.should_receive(:audio).with(:id => 'blah').and_return(watir_browser)
       element = watir_page_object.element(:audio, :id => 'blah')
