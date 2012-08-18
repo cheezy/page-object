@@ -239,6 +239,13 @@ module PageObject
           element.clear
         end
 
+        #
+        # get the id of the element
+        #
+        def id
+          attribute(:id)
+        end
+
         private
 
         def bridge

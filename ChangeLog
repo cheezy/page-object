@@ -2,6 +2,7 @@
 * Enhancements
   * Improved handling of alert and confirm Javascript popups (George Shakhnazaryan)
   * Added hover method to Element.  Browser support is limited.
+  * Added method to get the id of an Element
   * Added support for the following new elements
 	Video
 

@@ -209,3 +209,6 @@ Then /^the font size should be "([^\"]*)"$/ do |font_size|
   @page.hello_element.style('font-size').should == font_size if ENV['BROWSER'] == 'chrome'
 end
 
+Then /^I should know its id is "([^\"]*)"$/ do |id|
+  @element.id.should == id
+end

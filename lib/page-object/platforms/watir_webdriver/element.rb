@@ -204,6 +204,13 @@ module PageObject
         def clear
           element.clear
         end
+
+        #
+        # get the id of the element
+        #
+        def id
+          element.id
+        end
       end
     end
   end
