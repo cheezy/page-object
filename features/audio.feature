@@ -1,3 +1,4 @@
+@focus
 Feature:  Support for the audio element
 
   Background:

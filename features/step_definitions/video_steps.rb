@@ -10,3 +10,11 @@ end
 When /^I search for the video element by "([^\"]*)" and "([^\"]*)"$/ do |param1, param2|
   @element = @page.send "video_#{param1}_#{param2}_element"
 end
+
+Then /^I should know the video is not autoplay$/ do
+  @element.should_not be_autoplay
+end
+
+Then /^I should know that the video is paused$/ do
+  @element.should be_paused
+end

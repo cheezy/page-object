@@ -52,6 +52,7 @@ require 'page-object/elements/label'
 require 'page-object/elements/file_field'
 require 'page-object/elements/area'
 require 'page-object/elements/canvas'
+require 'page-object/elements/media'
 require 'page-object/elements/audio'
 require 'page-object/elements/video'
 

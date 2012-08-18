@@ -29,3 +29,23 @@ Feature: Support for video element
     | param1 | param2 |
     | class  | index  |
     | name   | index  |
+
+  Scenario: Should know if it is autoplay
+    When I retrieve the video element
+    Then I should know the video is not autoplay
+    
+  Scenario: Should know if the controls are displayed
+    When I retrieve the video element
+    Then I should know that the controls are displayed
+
+  Scenario: Should know if it is paused
+    When I retrieve the video element
+    Then I should know that the video is paused
+
+  Scenario: Should know its duration
+    When I retrieve the video element
+    Then I should know that the duration is greater than 12 seconds
+
+  Scenario: Should know its volume
+    When I retrieve the video element
+    Then I should know that its volume is 1
