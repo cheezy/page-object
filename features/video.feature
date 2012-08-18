@@ -1,4 +1,3 @@
-  @focus
 Feature: Support for video element
 
   Background:
@@ -49,3 +48,26 @@ Feature: Support for video element
   Scenario: Should know its volume
     When I retrieve the video element
     Then I should know that its volume is 1
+
+@focus    
+  Scenario: Should know its height and width
+    When I retrieve the video element
+    Then I should know that its height is 240 pixels
+    And I should knot what its width is 320 pixels
+    
+  Scenario: Should know if it has ended
+    When I retrieve the video element
+    Then I should know that it has not ended
+
+  Scenario: Should know if it is seeking
+    When I retrieve the video element
+    Then I should know that it is not seeking
+
+  Scenario: Should know if it is in a loop
+    When I retrieve the video element
+    Then I should know that it is not in a loop
+
+  Scenario: Should know if it is muted
+    When I retrieve the video element
+    Then I should know that it is muted
+

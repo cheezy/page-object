@@ -1151,7 +1151,7 @@ module PageObject
       end
       define_method("#{name}?") do
         return call_block(&block).exists? if block_given?
-        platform.video__for(identifier.clone).exists?
+        platform.video_for(identifier.clone).exists?
       end
     end
 

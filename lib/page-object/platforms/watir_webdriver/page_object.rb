@@ -859,14 +859,14 @@ module PageObject
         # platform method to retrieve a video element
         #
         def video_for(identifier)
-          find_watir_element("video(identifier)", Elements::Audio, identifier, 'video')
+          find_watir_element("video(identifier)", Elements::Video, identifier, 'video')
         end
 
         #
         # platform method to retrieve an array of video elements
         #
         def videos_for(identifier)
-          find_watir_elements("videos(identifier)", Elements::Audio, identifier, 'video')
+          find_watir_elements("videos(identifier)", Elements::Video, identifier, 'video')
         end
 
         #
