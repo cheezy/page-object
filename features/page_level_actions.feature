@@ -31,6 +31,10 @@ Feature: Page level actions
     When I handle the alert
     Then I should be able to get the alert's message
 
+  Scenario: Handling possible alert popups
+    When I handle the possible alert
+    Then I should be able to verify the popup didn't have a message
+
   Scenario: Handling alert popups that reload the page
     When I handle the alert that reloads the page
     Then I should be able to get the alert's message
@@ -39,6 +43,10 @@ Feature: Page level actions
     When I handle the confirm
     Then I should be able to get the confirm message
 
+  Scenario: Handling possible confirm popups
+    When I handle the possible confirm
+    Then I should be able to verify the popup didn't have a message
+
   Scenario: Handling confirm popups that reload the page
     When I handle the confirm that reloads the page
     Then I should be able to get the confirm message
@@ -46,6 +54,10 @@ Feature: Page level actions
   Scenario: Handling prompt popups
     When I handle the prompt
     Then I should be able to get the message and default value
+
+  Scenario: Handling possible prompt popups
+    When I handle the possible prompt
+    Then I should be able to verify the popup didn't have a message
     
   Scenario: Attach to window using title
     When I open a second window

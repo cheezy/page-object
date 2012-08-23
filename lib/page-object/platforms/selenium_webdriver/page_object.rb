@@ -71,9 +71,12 @@ module PageObject
         #
         def alert(frame=nil, &block)
           yield
-          alert = @browser.switch_to.alert
-          value = alert.text
-          alert.accept
+          begin
+            alert = @browser.switch_to.alert
+            value = alert.text
+            alert.accept
+          rescue Selenium::WebDriver::Error::NoAlertPresentError
+          end
           value
         end
 
@@ -83,9 +86,12 @@ module PageObject
         #
         def confirm(response, frame=nil, &block)
           yield
-          alert = @browser.switch_to.alert
-          value = alert.text
-          response ? alert.accept : alert.dismiss
+          begin
+            alert = @browser.switch_to.alert
+            value = alert.text
+            response ? alert.accept : alert.dismiss
+          rescue Selenium::WebDriver::Error::NoAlertPresentError
+          end
           value
         end
 
