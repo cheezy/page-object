@@ -72,8 +72,11 @@ module PageObject
         def alert(frame=nil, &block)
           switch_to_frame(frame)
           yield
-          value = @browser.alert.text
-          @browser.alert.ok
+          value = nil
+          if @browser.alert.exists?
+            value = @browser.alert.text
+            @browser.alert.ok
+          end
           switch_to_default_content(frame)
           value
         end
@@ -85,8 +88,11 @@ module PageObject
         def confirm(response, frame=nil, &block)
           switch_to_frame(frame)
           yield
-          value = @browser.alert.text
-          response ? @browser.alert.ok : @browser.alert.close
+          value = nil
+          if @browser.alert.exists?
+            value = @browser.alert.text
+            response ? @browser.alert.ok : @browser.alert.close
+          end
           switch_to_default_content(frame)
           value
         end

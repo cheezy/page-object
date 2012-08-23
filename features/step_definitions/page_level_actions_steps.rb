@@ -23,6 +23,12 @@ When /^I handle the alert$/ do
   end
 end
 
+When /^I handle the possible alert$/ do
+  @msg = @page.alert do
+    @page.alert_button_element.focus
+  end
+end
+
 When /^I handle the alert that reloads the page$/ do
   @msg = @page.alert do
     @page.alert_button_that_reloads
@@ -33,9 +39,19 @@ Then /^I should be able to get the alert\'s message$/ do
   @msg.should == "I am an alert"
 end
 
+Then /^I should be able to verify the popup didn\'t have a message$/ do
+  @msg.should be_nil
+end
+
 When /^I handle the confirm$/ do
   @msg = @page.confirm(true) do
     @page.confirm_button
+  end
+end
+
+When /^I handle the possible confirm$/ do
+  @msg = @page.confirm(true) do
+    @page.confirm_button_element.focus
   end
 end
 
@@ -52,6 +68,12 @@ end
 When /^I handle the prompt$/ do
   @msg = @page.prompt("Cheezy") do
     @page.prompt_button
+  end
+end
+
+When /^I handle the possible prompt$/ do
+  @msg = @page.prompt("Cheezy") do
+    @page.prompt_button_element.focus
   end
 end
 
