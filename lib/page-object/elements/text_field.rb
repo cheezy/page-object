@@ -19,7 +19,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        super + [:title, :value, :text, :label]
+        super + [:title, :value, :text, :label, :css]
       end
 
       def include_platform_for platform

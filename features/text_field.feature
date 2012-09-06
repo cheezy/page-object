@@ -10,6 +10,7 @@ Feature: Text Fields
     When I type "abcDEF" into the text field
     Then the text field should contain "abcDEF"
 
+@focus
   Scenario Outline: Locating text fields on the Page
     When I search for the text field by "<search_by>"
     Then I should be able to type "I found it" into the field
@@ -24,6 +25,16 @@ Feature: Text Fields
     | title     |
     | text      |
     | label     |
+
+  @selenium_only
+  Scenario Outline: Locating text fields on the Page using Selenium
+    When I search for the text field by "<search_by>"
+    Then I should be able to type "I found it" into the field
+
+  Examples:
+    | search_by |
+    | css       |
+
 
   Scenario Outline: Locating a text field using multiple parameters
     When I search for the text field by "<param1>" and "<param2>"
