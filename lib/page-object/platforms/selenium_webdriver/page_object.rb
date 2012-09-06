@@ -297,9 +297,13 @@ module PageObject
         #
         def select_list_value_for(identifier)
           process_selenium_call(identifier, Elements::SelectList, 'select') do |how, what|
+            selected = nil
             @browser.find_element(how, what).find_elements(:tag_name => 'option').each do |o|
-              return o.text if o.selected?
+              if selected.nil?
+                selected = o.text if o.selected?
+              end
             end
+            selected
           end
         end
 
