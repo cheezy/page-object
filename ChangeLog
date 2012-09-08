@@ -1,4 +1,4 @@
-=== Version 0.7.4
+=== Version 0.7.4 / 2012-9-8
 * Enhancements
   * Added ability to find text_fields with :css when using Selenium
   * Added selected_values method to SelectList to get values of all selected elements
