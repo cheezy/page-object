@@ -59,3 +59,7 @@ end
 When /^I select an option using the value "([^\"]*)"$/ do |value|
   @page.sel_list_id_element.select_value(value)
 end
+
+Then /^the selected option should have a value of "([^\"]*)"$/ do |value|
+  @page.sel_list_id_element.selected_values[0].should == value
+end

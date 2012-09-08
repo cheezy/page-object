@@ -1,6 +1,7 @@
 === Version 0.7.4
 * Enhancements
   * Added ability to find text_fields with :css when using Selenium
+  * Added selected_values method to SelectList to get values of all selected elements
 * Fixes
   * Fixed problem getting value from SelectList when it is in a Frame with Selenium
 

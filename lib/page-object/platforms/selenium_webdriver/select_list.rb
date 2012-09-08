@@ -42,10 +42,17 @@ module PageObject
         end
 
         #
-        # @return [Array<String>] An array of strings representing the text value of the currently selected options.
+        # @return [Array<String>] An array of strings representing the text of the currently selected options.
         #
         def selected_options
           find_options.map { |e| e.text if e.selected? }.compact
+        end
+
+        #
+        # @return [Array<String>] An array of strings representing the value of the currently selected options.
+        #
+        def selected_values
+          find_options.map { |e| e.attribute('value') if e.selected? }.compact
         end
 
         #

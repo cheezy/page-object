@@ -67,6 +67,12 @@ describe PageObject::Elements::SelectList do
         sel_list.stub(:selected?).with('blah').and_return(true)
         watir_sel_list.selected?('blah')
       end
+
+      it "should be able to get the value for the selected options" do
+        sel_list.stub(:selected_options).and_return(opts)
+        sel_list.stub(:value).and_return(sel_list)
+        watir_sel_list.selected_values.should == opts
+      end
     end
 
     context "for selenium"  do
@@ -96,6 +102,16 @@ describe PageObject::Elements::SelectList do
         opts[0].should_receive(:text).and_return('test1')
         opts[1].should_receive(:selected?).and_return(false)
         selected = selenium_sel_list.selected_options
+        selected.size.should == 1
+        selected[0].should == 'test1'
+      end
+
+      it "should return an array of selected options" do
+        sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
+        opts[0].should_receive(:selected?).and_return(true)
+        opts[0].should_receive(:attribute).and_return('test1')
+        opts[1].should_receive(:selected?).and_return(false)
+        selected = selenium_sel_list.selected_values
         selected.size.should == 1
         selected[0].should == 'test1'
       end

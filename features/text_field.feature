@@ -10,7 +10,6 @@ Feature: Text Fields
     When I type "abcDEF" into the text field
     Then the text field should contain "abcDEF"
 
-@focus
   Scenario Outline: Locating text fields on the Page
     When I search for the text field by "<search_by>"
     Then I should be able to type "I found it" into the field

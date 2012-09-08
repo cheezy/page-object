@@ -282,7 +282,6 @@ Feature: Elements
     When I retrieve a button element
     Then I should be able to flash it
     
-  @focus
   Scenario: Getting an element's id
     When I retrieve a button element
     Then I should know its id is "button_id"
