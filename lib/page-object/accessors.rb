@@ -221,6 +221,7 @@ module PageObject
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
