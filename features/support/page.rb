@@ -99,6 +99,7 @@ class Page
   div(:div_title, :title => 'div_title')
   div(:div_class_index, :class => "div_class", :index => 0)
   div(:div_name_index, :name => "div_name", :index => 0)
+  div(:div_css, :css => ".div_class")
 
   span(:span_id, :id => 'span_id')
   span(:span_name, :name => 'span_name')
