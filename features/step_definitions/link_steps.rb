@@ -20,7 +20,5 @@ When /^I select a link while the script is executing$/ do
 end
 
 Then /^I should see that the link exists$/ do
-  require 'ruby-debug'
-  debugger
   @page.link_id?.should == true
 end
