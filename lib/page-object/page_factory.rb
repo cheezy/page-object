@@ -35,7 +35,7 @@ module PageObject
     # Create and navigate to a page object.  The navigation will only work if the
     # 'page_url' method was call on the page object.
     #
-    # @param [PageObject] a class that has included the PageObject module
+    # @param [PageObject, String] a class that has included the PageObject module or a string containing the name of the class 
     # @param an optional block to be called
     # @return [PageObject] the newly created page object
     #
@@ -50,7 +50,7 @@ module PageObject
     #
     # Create a page object.
     #
-    # @param [PageObject]  a class that has included the PageObject module
+    # @param [PageObject, String]  a class that has included the PageObject module or a string containing the name of the class
     # @param [Boolean]  a boolean indicating if the page should be visited?  default is false.
     # @param [block]  an optional block to be called
     # @return [PageObject] the newly created page object
@@ -68,11 +68,12 @@ module PageObject
     #
     # Create a page object if and only if the current page is the same page to be created
     #
-    # @param [PageObject]  a class that has included the PageObject module
+    # @param [PageObject, String]  a class that has included the PageObject module or a string containing the name of the class
     # @param [block]  an optional block to be called
     # @return [PageObject] the newly created page object
     #
     def if_page(page_class, &block)
+      page_class = class_from_string(page_class) if page_class.is_a? String
       return @current_page unless @current_page.class == page_class
       on_page(page_class, false, &block)
     end
