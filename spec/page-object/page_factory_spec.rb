@@ -19,6 +19,12 @@ class YetAnotherPage
   include PageObject
 end
 
+module ContainingModule
+    class PageInsideModule
+      include PageObject
+    end
+end
+
 class TestWorld
   include PageObject::PageFactory
   attr_accessor :browser
@@ -36,6 +42,12 @@ describe PageObject::PageFactory do
     @world.on_page FactoryTestPage do |page|
       page.should be_instance_of FactoryTestPage
     end
+    @world.on_page "FactoryTestPage" do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.on_page "ContainingModule::PageInsideModule" do |page|
+      page.should be_instance_of ContainingModule::PageInsideModule
+    end
   end
 
   it "should create a new page object and execute a block using 'on'" do
@@ -43,18 +55,30 @@ describe PageObject::PageFactory do
     @world.on FactoryTestPage do |page|
       page.should be_instance_of FactoryTestPage
     end
+    @world.on "FactoryTestPage" do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.on "ContainingModule::PageInsideModule" do |page|
+      page.should be_instance_of ContainingModule::PageInsideModule
+    end
   end
 
   it "should create and visit a new page" do
-    @world.browser.should_receive(:goto)
+    @world.browser.should_receive(:goto).twice
     @world.visit_page FactoryTestPage do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.visit_page "FactoryTestPage" do |page|
       page.should be_instance_of FactoryTestPage
     end
   end
 
   it "should create and visit a new page using 'visit'" do
-    @world.browser.should_receive(:goto)
+    @world.browser.should_receive(:goto).twice
     @world.visit FactoryTestPage do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.visit "FactoryTestPage" do |page|
       page.should be_instance_of FactoryTestPage
     end
   end
