@@ -24,6 +24,17 @@ Feature: Select List
     | xpath     |
     | index     |
 
+  @selenium_only
+  Scenario Outline: Locating select lists on the Page using Selenium
+    When I search for the select list by "<search_by>"
+    Then I should be able to select "Test 2"
+    And the value for the selected item should be "Test 2"
+    And the value for the option should be "option2"
+
+  Examples:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating a select list using multiple parameters
     When I search for the select list by "<param1>" and "<param2>"
     Then I should be able to select "Test 2"

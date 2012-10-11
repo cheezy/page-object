@@ -29,6 +29,15 @@ Feature: Div
     | text      |
     | title     |
 
+  @selenium_only
+  Scenario Outline: Locating divs on the page
+    When I search for the div by "<search_by>"
+    Then the text should be "page-object rocks!"
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating divs using multiple parameters
     When I search for the div by "<param1>" and "<param2>"
     Then the text should be "page-object rocks!"
