@@ -70,6 +70,10 @@ Feature: Table
     When I retrieve a table element
     Then the data for row "Data3" and column "Data20" should be nil
 
+  Scenario: Retrieve data from a table that does not have a cell which corresponds to a column header
+    When I retrieve a table with thead element
+    Then the data for row "Data5" and column "Col2" should be nil
+
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"
     Then the data for row "1" should be "Data1" and "Data2"
