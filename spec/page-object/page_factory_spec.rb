@@ -19,6 +19,13 @@ class YetAnotherPage
   include PageObject
 end
 
+module ContainingModule
+    class PageInsideModule
+      include PageObject
+      page_url "http://google.co.uk"
+    end
+end
+
 class TestWorld
   include PageObject::PageFactory
   attr_accessor :browser
@@ -36,6 +43,12 @@ describe PageObject::PageFactory do
     @world.on_page FactoryTestPage do |page|
       page.should be_instance_of FactoryTestPage
     end
+    @world.on_page "FactoryTestPage" do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.on_page "ContainingModule::PageInsideModule" do |page|
+      page.should be_instance_of ContainingModule::PageInsideModule
+    end
   end
 
   it "should create a new page object and execute a block using 'on'" do
@@ -43,19 +56,37 @@ describe PageObject::PageFactory do
     @world.on FactoryTestPage do |page|
       page.should be_instance_of FactoryTestPage
     end
+    @world.on "FactoryTestPage" do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.on "ContainingModule::PageInsideModule" do |page|
+      page.should be_instance_of ContainingModule::PageInsideModule
+    end
   end
 
   it "should create and visit a new page" do
-    @world.browser.should_receive(:goto)
+    @world.browser.should_receive(:goto).exactly(3).times
     @world.visit_page FactoryTestPage do |page|
       page.should be_instance_of FactoryTestPage
+    end
+    @world.visit_page "FactoryTestPage" do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.visit_page "ContainingModule::PageInsideModule" do |page|
+      page.should be_instance_of ContainingModule::PageInsideModule
     end
   end
 
   it "should create and visit a new page using 'visit'" do
-    @world.browser.should_receive(:goto)
+    @world.browser.should_receive(:goto).exactly(3).times
     @world.visit FactoryTestPage do |page|
       page.should be_instance_of FactoryTestPage
+    end
+    @world.visit "FactoryTestPage" do |page|
+      page.should be_instance_of FactoryTestPage
+    end
+    @world.visit "ContainingModule::PageInsideModule" do |page|
+      page.should be_instance_of ContainingModule::PageInsideModule
     end
   end
 
@@ -77,19 +108,47 @@ describe PageObject::PageFactory do
     @world.if_page(FactoryTestPage) do |page|
       fail
     end
+    @world.if_page("FactoryTestPage") do |page|
+      fail
+    end
+    @world.if_page("ContainingModule::PageInsideModule") do |page|
+      fail
+    end
   end
 
   it "should return the @current_page if asking for another page" do
     expected = TestPageWithDirectUrl.new(@world.browser)
     @world.instance_variable_set "@current_page", expected
     @world.if_page(FactoryTestPage).should == expected
+    @world.if_page("FactoryTestPage").should == expected
+    @world.if_page("ContainingModule::PageInsideModule").should == expected
   end
 
   it "should execute the block when we ask if it is the correct page" do
     @world.instance_variable_set "@current_page", FactoryTestPage.new(@world.browser)
+    
+    done = false
     @world.if_page(FactoryTestPage) do |page|
       page.should be_instance_of FactoryTestPage
+      done = true 
     end
+    done.should be true
+    
+    done = false
+    @world.if_page("FactoryTestPage") do |page|
+      page.should be_instance_of FactoryTestPage
+      done = true
+    end
+    done.should be true
+    
+    done = false
+    @world.instance_variable_set "@current_page", ContainingModule::PageInsideModule.new(@world.browser) 
+    @world.if_page("ContainingModule::PageInsideModule") do |page|
+      page.should be_instance_of ContainingModule::PageInsideModule
+      done = true
+    end
+    done.should be true
+    
   end
 
   it "should raise an error when you do not provide a default route" do
