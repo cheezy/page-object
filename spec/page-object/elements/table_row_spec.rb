@@ -14,6 +14,7 @@ describe PageObject::Elements::TableRow do
     context "for selenium" do
       it "should return a table cell when indexed" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
+        table_row.stub(:columns).and_return(2)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_cell)
         table_cell.should_receive(:[]).and_return(table_cell)
         table_row[0].should be_instance_of PageObject::Elements::TableCell
@@ -43,6 +44,7 @@ describe PageObject::Elements::TableRow do
 
       it "should return a table cell when indexed" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
+        table_row.stub(:columns).and_return(2)
         table_row_driver.should_receive(:[]).with(1).and_return(table_cell)
         table_row[1].should be_instance_of PageObject::Elements::TableCell
       end
