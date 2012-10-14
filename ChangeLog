@@ -1,4 +1,4 @@
-=== Version 0.7.5
+=== Version 0.7.5 / 2012-10-14
 * Enhancements
   * Enhanced TabeleCell to return nil when there is no corresponding  cell for a referenced column
   * Added css selector support for SelectList and Div
