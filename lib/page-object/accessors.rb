@@ -10,6 +10,24 @@ module PageObject
   module Accessors
 
     #
+    # Set some values that can be used withing the class.  This is
+    # typically used to provide values that help build dynamic urls in
+    # the page_url method
+    #
+    # @param [Hash] the value to set the params
+    #
+    def params=(the_params)
+      @params = the_params
+    end
+
+    #
+    # Return the params that exist on this page class
+    #
+    def params
+      @params ||= {}
+    end
+
+    #
     # Specify the url for the page.  A call to this method will generate a
     # 'goto' method to take you to the page.
     #

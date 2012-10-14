@@ -3,6 +3,7 @@
   * Enhanced TabeleCell to return nil when there is no corresponding  cell for a referenced column
   * Added css selector support for SelectList and Div
   * Added ability to pass clasname as string to visit_page, on_page, and if_page methods
+  * Added params class instance variable to hold hash values that can be used in the page
 
 === Version 0.7.4 / 2012-9-8
 * Enhancements

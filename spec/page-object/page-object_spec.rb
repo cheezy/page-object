@@ -13,7 +13,7 @@ describe PageObject do
   let(:watir_page_object) { PageObjectTestPageObject.new(watir_browser) }
   let(:selenium_page_object) { PageObjectTestPageObject.new(selenium_browser) }
 
-  context "setting values for the Javascript Framework" do
+  context "setting values on the PageObject module" do
     it "should set the javascript framework" do
       PageObject::JavascriptFrameworkFacade.should_receive(:framework=)
       PageObject.javascript_framework = :foo
@@ -23,8 +23,58 @@ describe PageObject do
       PageObject::JavascriptFrameworkFacade.should_receive(:add_framework)
       PageObject.add_framework(:foo, :bar)
     end
+
+    it "should set a default page wait value" do
+      PageObject.default_page_wait = 20
+      wait = PageObject.instance_variable_get("@page_wait")
+      wait.should == 20
+    end
+
+    it "should provide the default page wait value" do
+      PageObject.instance_variable_set("@page_wait", 10)
+      PageObject.default_page_wait.should == 10
+    end
+
+    it "should default the page wait value to 30" do
+      PageObject.instance_variable_set("@page_wait", nil)
+      PageObject.default_page_wait.should == 30
+    end
+
+    it "should set the default element wait value" do
+      PageObject.default_element_wait = 20
+      wait = PageObject.instance_variable_get("@element_wait")
+      wait.should == 20
+    end
+
+    it "should provide the default element wait value" do
+      PageObject.instance_variable_set("@element_wait", 10)
+      PageObject.default_element_wait.should == 10
+    end
+
+    it "should default the element wait to 5" do
+      PageObject.instance_variable_set("@element_wait", nil)
+      PageObject.default_element_wait.should == 5
+    end
   end
-  
+
+  context "setting values on the PageObject class instance" do
+    it "should set the params value" do
+      PageObjectTestPageObject.params = {:some => :value}
+      params = PageObjectTestPageObject.instance_variable_get("@params")
+      params[:some].should == :value
+    end
+
+    it "should provide the params value" do
+      PageObjectTestPageObject.instance_variable_set("@params", {:value => :updated})
+      PageObjectTestPageObject.params[:value].should == :updated
+    end
+
+    it "should default the params to an empty hash" do
+      PageObjectTestPageObject.instance_variable_set("@params", nil)
+      PageObjectTestPageObject.params.should == {}
+    end
+  end
+
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
       watir_page_object.platform.should be_kind_of PageObject::Platforms::WatirWebDriver::PageObject
