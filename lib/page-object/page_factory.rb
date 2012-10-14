@@ -39,8 +39,10 @@ module PageObject
     # @param an optional block to be called
     # @return [PageObject] the newly created page object
     #
-    def visit_page(page_class, &block)
+    def visit_page(page_class, params={:using_params => {}}, &block)
       page_class = class_from_string(page_class) if page_class.is_a? String
+      merged = page_class.params.merge(params[:using_params])
+      page_class.instance_variable_set("@merged_params", merged) unless merged.empty?
       on_page page_class, true, &block
     end
 

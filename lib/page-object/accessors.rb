@@ -1,3 +1,5 @@
+require 'erb'
+
 module PageObject
   #
   # Contains the class level methods that are inserted into your page objects
@@ -37,7 +39,10 @@ module PageObject
     def page_url(url)
       define_method("goto") do
         url = url.kind_of?(Symbol) ? self.send(url) : url
-        platform.navigate_to url
+        erb = ERB.new(%Q{#{url}})
+        merged_params = self.class.instance_variable_get("@merged_params")
+        params = merged_params ? merged_params : self.class.params
+        platform.navigate_to erb.result(binding)
       end
     end
     alias_method :direct_url, :page_url

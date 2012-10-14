@@ -77,6 +77,33 @@ describe PageObject::PageFactory do
     end
   end
 
+  it "should merge params with the class level params if provided when visiting" do
+    @world.browser.should_receive(:goto)
+    FactoryTestPage.params = {:initial => :value}
+    @world.visit_page(FactoryTestPage, :using_params => {:new_value => :merged})
+    merged = FactoryTestPage.instance_variable_get("@merged_params")
+    merged[:initial].should == :value
+    merged[:new_value].should == :merged
+  end
+
+  it "should use the params in the url when they are provided" do
+    class PageUsingParams
+      include PageObject
+      page_url "http://google.com/<%=params[:value]%>"
+    end
+    @world.browser.should_receive(:goto).with("http://google.com/PageObject")
+    @world.visit_page(PageUsingParams, :using_params => {:value => 'PageObject'})
+  end
+
+  it "should use the params as well as interpolated values" do
+    class PageUsingParmsAndInterpolated
+      include PageObject
+      page_url "http://google.com/#{1+2}/<%=params[:value]%>"
+    end
+    @world.browser.should_receive(:goto).with("http://google.com/3/PageObject")
+    @world.visit_page(PageUsingParmsAndInterpolated, :using_params => {:value => 'PageObject'})
+  end
+
   it "should create and visit a new page using 'visit'" do
     @world.browser.should_receive(:goto).exactly(3).times
     @world.visit FactoryTestPage do |page|
@@ -148,7 +175,6 @@ describe PageObject::PageFactory do
       done = true
     end
     done.should be true
-    
   end
 
   it "should raise an error when you do not provide a default route" do
