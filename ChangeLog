@@ -1,3 +1,7 @@
+=== Version 0.7.5.1
+* Fixes
+  * Fixed issue when passing symbol to page_url and calling multiple times
+
 === Version 0.7.5 / 2012-10-14
 * Enhancements
   * Enhanced TabeleCell to return nil when there is no corresponding  cell for a referenced column
