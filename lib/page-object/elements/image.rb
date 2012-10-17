@@ -13,7 +13,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        super + [:alt, :src]
+        super + [:alt, :src, :css]
       end
 
       def include_platform_for platform
