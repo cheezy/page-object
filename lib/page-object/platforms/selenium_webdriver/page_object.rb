@@ -126,7 +126,7 @@ module PageObject
           handles.each do |handle|
             @browser.switch_to.window handle
             if (key == :title and value == @browser.title) or
-              (key == :url and value == @browser.current_url)
+              (key == :url and @browser.current_url.include?(value))
               return @browser.switch_to.window handle, &block
             end
           end
