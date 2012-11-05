@@ -110,6 +110,13 @@ module PageObject
         end
 
         #
+        # double click the element
+        #
+        def double_click
+          element.double_click
+        end
+
+        #
         # find the parent element
         #
         def parent

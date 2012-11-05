@@ -121,6 +121,14 @@ module PageObject
         end
 
         #
+        # hover over the element
+        #
+        def double_click
+          mouse = Selenium::WebDriver::Mouse.new(bridge)
+          mouse.double_click(element)
+        end
+
+        #
         # find the parent element
         #
         def parent
