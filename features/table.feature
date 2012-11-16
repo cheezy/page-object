@@ -86,6 +86,15 @@ Feature: Table
     | index     |
     | name      |
 
+  @selenium_only
+  Scenario Outline: Locating table cells on the Page
+    When I retrieve a table element by "<search_by>"
+    Then the data for row "1" should be "Data1" and "Data2"
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating table using multiple parameters
     When I retrieve a table element by "<param1>" and "<param2>"
     Then the data for row "1" should be "Data1" and "Data2"

@@ -27,6 +27,15 @@ Feature: Links
     | css       |
     | title     |
 
+  @selenium_only
+  Scenario Outline: Locating links on the Page
+    When I search for the link by "<search_by>"
+    Then I should be able to select the link
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario: Support for multiple parameters
     When I select a link labeled "Hello" and index "0"
     Then the page should contain the text "Success"

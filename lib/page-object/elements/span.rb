@@ -9,7 +9,7 @@ module PageObject
       end
       
       def self.selenium_finders
-        [:class, :id, :name, :text, :title, :xpath, :index]
+        [:class, :css, :id, :name, :text, :title, :xpath, :index]
       end
     end
 

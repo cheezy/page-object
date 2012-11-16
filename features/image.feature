@@ -23,6 +23,16 @@ Feature: Image
     | alt       |
     | src       |
 
+  @selenium_only
+  Scenario Outline: Locating an image on the page
+    When I get the image element by "<search_by>"
+    Then the image should be "106" pixels wide
+    And the image should be "106" pixels tall
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating an image using multiple parameters
     When I get the image element by "<param1>" and "<param2>"
     Then the image should be "106" pixels wide

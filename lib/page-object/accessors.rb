@@ -164,6 +164,7 @@ module PageObject
     # @param [Hash] identifier how we find a hidden field.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -203,6 +204,7 @@ module PageObject
     # @param [Hash] identifier how we find a text area.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -331,6 +333,7 @@ module PageObject
     # @param [Hash] identifier how we find a checkbox.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -378,6 +381,7 @@ module PageObject
     # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -498,6 +502,7 @@ module PageObject
     # @param [Hash] identifier how we find a span.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -535,6 +540,7 @@ module PageObject
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -566,6 +572,7 @@ module PageObject
     # @param [Hash] identifier how we find a cell.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -603,6 +610,7 @@ module PageObject
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :alt => Watir and Selenium
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -636,6 +644,7 @@ module PageObject
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :action => Watir and Selenium
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :xpath => Watir and Selenium
@@ -666,6 +675,7 @@ module PageObject
     # @param [Hash] identifier how we find a list item.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -702,6 +712,7 @@ module PageObject
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -733,6 +744,7 @@ module PageObject
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -764,6 +776,7 @@ module PageObject
     # @param [Hash] identifier how we find a H1.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -798,6 +811,7 @@ module PageObject
     # @param [Hash] identifier how we find a H2.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -832,6 +846,7 @@ module PageObject
     # @param [Hash] identifier how we find a H3.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -866,6 +881,7 @@ module PageObject
     # @param [Hash] identifier how we find a H4.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -900,6 +916,7 @@ module PageObject
     # @param [Hash] identifier how we find a H5.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -934,6 +951,7 @@ module PageObject
     # @param [Hash] identifier how we find a H6.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -968,6 +986,7 @@ module PageObject
     # @param [Hash] identifier how we find a paragraph.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1003,6 +1022,7 @@ module PageObject
     # @param [Hash] identifier how we find a file_field.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1037,6 +1057,7 @@ module PageObject
     # @param [Hash] identifier how we find a label.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1072,6 +1093,7 @@ module PageObject
     # @param [Hash] identifier how we find an area.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1106,6 +1128,7 @@ module PageObject
     # @param [Hash] identifier how we find a canvas.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1135,6 +1158,7 @@ module PageObject
     # @param [Hash] identifier how we find an audio element.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1164,6 +1188,7 @@ module PageObject
     # @param [Hash] identifier how we find a video element.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1194,6 +1219,7 @@ module PageObject
     # @param [Hash] identifier how we find an element.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1225,6 +1251,7 @@ module PageObject
     # @param [Hash] identifier how we find an abbr.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1247,6 +1274,7 @@ module PageObject
     # @param [Hash] identifier how we find an address.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1269,6 +1297,7 @@ module PageObject
     # @param [Hash] identifier how we find an article.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1291,6 +1320,7 @@ module PageObject
     # @param [Hash] identifier how we find an aside.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1313,6 +1343,7 @@ module PageObject
     # @param [Hash] identifier how we find an bdi.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1335,6 +1366,7 @@ module PageObject
     # @param [Hash] identifier how we find an bdo.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1357,6 +1389,7 @@ module PageObject
     # @param [Hash] identifier how we find an cite.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1379,6 +1412,7 @@ module PageObject
     # @param [Hash] identifier how we find an code.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1401,6 +1435,7 @@ module PageObject
     # @param [Hash] identifier how we find an dd.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1423,6 +1458,7 @@ module PageObject
     # @param [Hash] identifier how we find an dfn.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1445,6 +1481,7 @@ module PageObject
     # @param [Hash] identifier how we find an dt.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1467,6 +1504,7 @@ module PageObject
     # @param [Hash] identifier how we find an em.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1489,6 +1527,7 @@ module PageObject
     # @param [Hash] identifier how we find an figcaption.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1511,6 +1550,7 @@ module PageObject
     # @param [Hash] identifier how we find an figure.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1533,6 +1573,7 @@ module PageObject
     # @param [Hash] identifier how we find an footer.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1555,6 +1596,7 @@ module PageObject
     # @param [Hash] identifier how we find an header.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1577,6 +1619,7 @@ module PageObject
     # @param [Hash] identifier how we find an hgroup.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1599,6 +1642,7 @@ module PageObject
     # @param [Hash] identifier how we find an kbd.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1621,6 +1665,7 @@ module PageObject
     # @param [Hash] identifier how we find an mark.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1643,6 +1688,7 @@ module PageObject
     # @param [Hash] identifier how we find an nav.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1665,6 +1711,7 @@ module PageObject
     # @param [Hash] identifier how we find an noscript.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1687,6 +1734,7 @@ module PageObject
     # @param [Hash] identifier how we find an rp.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1709,6 +1757,7 @@ module PageObject
     # @param [Hash] identifier how we find an rt.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1731,6 +1780,7 @@ module PageObject
     # @param [Hash] identifier how we find an ruby.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1753,6 +1803,7 @@ module PageObject
     # @param [Hash] identifier how we find an samp.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1775,6 +1826,7 @@ module PageObject
     # @param [Hash] identifier how we find an section.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1797,6 +1849,7 @@ module PageObject
     # @param [Hash] identifier how we find an sub.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1819,6 +1872,7 @@ module PageObject
     # @param [Hash] identifier how we find an summary.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1841,6 +1895,7 @@ module PageObject
     # @param [Hash] identifier how we find an sup.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1863,6 +1918,7 @@ module PageObject
     # @param [Hash] identifier how we find an var.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
@@ -1885,6 +1941,7 @@ module PageObject
     # @param [Hash] identifier how we find an wbr.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
+    #   * :css => Selenium only
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
