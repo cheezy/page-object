@@ -115,15 +115,15 @@ describe PageObject do
       it "should call initialize_page if it exists" do
         class CallbackPage
           include PageObject
-          attr_reader :initialize_page
+          attr_reader :initialize_page_called
         
           def initialize_page
-            @initialize_page = true
+            @initialize_page_called = true
           end
         end
         
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_page.should be_true
+        @page.initialize_page_called.should be_true
       end
 
       it "should call initialize_accessors if it exists" do
