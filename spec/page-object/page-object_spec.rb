@@ -126,6 +126,38 @@ describe PageObject do
         @page.initialize_page.should be_true
       end
 
+      it "should call initialize_accessors if it exists" do
+        class CallbackPage
+          include PageObject
+          attr_reader :initialize_accessors_called
+
+          def initialize_accessors
+            @initialize_accessors_called = true
+          end
+        end
+
+        @page = CallbackPage.new(watir_browser)
+        @page.initialize_accessors_called.should be_true
+      end
+
+      it "should call initialize_accessors before initialize_page if both exist" do
+        class CallbackPage
+          include PageObject
+          attr_reader :initialize_page, :initialize_accessors
+
+          def initialize_page
+            @initialize_accessors = Time.now
+          end
+
+          def initialize_page
+            @initialize_accessors = Time.now
+          end
+        end
+
+        @page = CallbackPage.new(watir_browser)
+        @page.initialize_accessors.usec.should be < @page.initialize_page.usec
+      end
+
       it "should know which element has focus" do
         watir_browser.should_receive(:execute_script).and_return(watir_browser)
         watir_browser.should_receive(:tag_name).twice.and_return(:input)
