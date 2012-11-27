@@ -86,6 +86,10 @@ When /^I open a second window$/ do
   @page.open_window
 end
 
+When /^I open a third window$/ do
+  @page.open_another_window
+end
+
 class SecondPage
   include PageObject
 end
@@ -93,11 +97,13 @@ end
 Then /^I should be able to attach to a page object using title$/ do
   @second_page = SecondPage.new(@browser)
   @second_page.attach_to_window(:title => "Success")
+  @second_page.title.should == "Success"
 end
 
 Then /^I should be able to attach to a page object using url$/ do
   @second_page = SecondPage.new(@browser)
   @second_page.attach_to_window(:url => "success.html")
+  @second_page.current_url.should include 'success.html'
 end
 
 Then /^I should be able to refresh the page$/ do
