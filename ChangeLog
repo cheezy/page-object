@@ -4,6 +4,7 @@
   * Fixed double click works on Selenium (William Powell)
 * Enhancements
   * Added css selector support for all elements when using Selenium (Brendan Mulholland)
+  * Added callback to initialize_accessors method during initialization (Theodore Robert Campbell Jr)
 
 === Version 0.7.5.1 / 2012-10-16
 * Fixes
