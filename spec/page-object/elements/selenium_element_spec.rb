@@ -67,6 +67,7 @@ describe "Element for Selenium" do
   end
 
   it "should be double clickable" do
+    Selenium::WebDriver::Mouse.should_receive(:new).and_return(@selenium_driver)
     @selenium_driver.should_receive(:double_click)
     @selenium_element.double_click
   end

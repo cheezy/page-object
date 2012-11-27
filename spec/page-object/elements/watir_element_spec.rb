@@ -5,6 +5,10 @@ describe "Element for Watir" do
   let(:watir_driver) { double('watir_driver') }
   let(:watir_element) { ::PageObject::Elements::Element.new(watir_driver, :platform => :watir_webdriver) }
 
+  before(:each) do
+    Selenium::WebDriver::Mouse.stub(:new).and_return(watir_driver)
+  end
+
   it "should know when it is visible" do
     watir_driver.stub(:present?).and_return(true)
     watir_driver.stub(:displayed?).and_return(true)
@@ -61,6 +65,7 @@ describe "Element for Watir" do
   end
   
   it "should be double clickable" do
+    
     watir_driver.should_receive(:double_click)
     watir_element.double_click
   end
