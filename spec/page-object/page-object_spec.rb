@@ -115,15 +115,47 @@ describe PageObject do
       it "should call initialize_page if it exists" do
         class CallbackPage
           include PageObject
-          attr_reader :initialize_page
+          attr_reader :initialize_page_called
         
           def initialize_page
-            @initialize_page = true
+            @initialize_page_called = true
           end
         end
         
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_page.should be_true
+        @page.initialize_page_called.should be_true
+      end
+
+      it "should call initialize_accessors if it exists" do
+        class CallbackPage
+          include PageObject
+          attr_reader :initialize_accessors_called
+
+          def initialize_accessors
+            @initialize_accessors_called = true
+          end
+        end
+
+        @page = CallbackPage.new(watir_browser)
+        @page.initialize_accessors_called.should be_true
+      end
+
+      it "should call initialize_accessors before initialize_page if both exist" do
+        class CallbackPage
+          include PageObject
+          attr_reader :initialize_page, :initialize_accessors
+
+          def initialize_page
+            @initialize_accessors = Time.now
+          end
+
+          def initialize_page
+            @initialize_accessors = Time.now
+          end
+        end
+
+        @page = CallbackPage.new(watir_browser)
+        @page.initialize_accessors.usec.should be < @page.initialize_page.usec
       end
 
       it "should know which element has focus" do
