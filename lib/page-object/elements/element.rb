@@ -25,12 +25,7 @@ module PageObject
         element.click
       end
 
-      #
-      # double click the element
-      #
-      def double_click
-        element.double_click
-      end
+
 
       #
       # return true if the element is enabled

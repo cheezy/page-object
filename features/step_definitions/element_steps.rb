@@ -212,3 +212,22 @@ end
 Then /^I should know its id is "([^\"]*)"$/ do |id|
   @element.id.should == id
 end
+
+class DoubleClickPage
+  include PageObject
+  button(:click)
+  paragraph(:text)
+end
+
+Given /^I am on the Double Click page$/ do
+  @page = DoubleClickPage.new(@browser)
+  @page.navigate_to UrlHelper.double_click
+end
+
+When /^I double click the button$/ do
+  @page.click_element.double_click
+end
+
+Then /^the paragraph should read "([^"]*)"$/ do |expected_text|
+  @page.text.should == expected_text
+end

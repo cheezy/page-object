@@ -285,3 +285,8 @@ Feature: Elements
   Scenario: Getting an element's id
     When I retrieve a button element
     Then I should know its id is "button_id"
+
+  Scenario: Double Clicking
+    Given I am on the Double Click page
+    When I double click the button
+    Then the paragraph should read "Double Click Received"

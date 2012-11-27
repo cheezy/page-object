@@ -8,7 +8,6 @@ module UrlHelper
       "file://#{html}"
     end
 
-
     def static_elements
       "#{files}/static_elements.html"
     end
@@ -47,6 +46,10 @@ module UrlHelper
 
     def hover
       "#{files}/hover.html"
+    end
+
+    def double_click
+      "#{files}/double_click.html"
     end
   end
 end
