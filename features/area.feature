@@ -20,6 +20,15 @@ Feature: Area
     | xpath     |
     | index     |
 
+  @selenium_only
+  Scenario Outline: Locating areas on the page
+    When I search for the area by "<search_by>"
+    Then I should be able to click the area
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario: Getting the coordinates for the area
     When I retrieve the area element
     Then I should see the coordinates are "0,0,82,126"

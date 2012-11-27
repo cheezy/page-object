@@ -20,6 +20,15 @@ Feature: Support for video element
     | xpath     |
     | index     |
 
+  @selenium_only
+  Scenario Outline: Locating a video element on the page
+    When I search for the video element by "<search_by>"
+    Then I should know it is visible
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating videos using multiple parameters
     When I search for the video element by "<param1>" and "<param2>"
     Then I should know it is visible

@@ -19,6 +19,15 @@ Feature: Paragraph
     | index     |
     | name      |
 
+  @selenium_only
+  Scenario Outline: Locating paragraphs on the page
+    When I search for the paragraph by "<search_by>"
+    Then the text should be "Static Elements Page"
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating paragraphs using multiple parameters
     When I search for the paragraph by "<param1>" and "<param2>"
     Then the text should be "Static Elements Page"

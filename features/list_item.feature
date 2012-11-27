@@ -20,6 +20,15 @@ Feature: List item
     | name      |
     | text      |
 
+  @selenium_only
+  Scenario Outline: Locating list items on the page
+    When I search for the list item by "<search_by>"
+    Then the text should be "Item One"
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating list items using multiple parameters
     When I search for the list item by "<param1>" and "<param2>"
     Then the text should be "Item One"

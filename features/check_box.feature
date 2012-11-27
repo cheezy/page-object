@@ -25,6 +25,15 @@ Feature: Check Box
     | index     |
     | value     |
 
+  @selenium_only
+  Scenario Outline: Locating check boxes on the page
+    When I search for the check box by "<search_by>"
+    Then I should be able to check the check box
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating check boxes using multiple parameters
     When I search for the check box by "<param1>" and "<param2>"
     Then I should be able to check the check box

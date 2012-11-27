@@ -20,6 +20,15 @@ Feature:  Support for the audio element
     | xpath     |
     | index     |
 
+  @selenium_only
+  Scenario Outline: Locating an audio element on the page
+    When I search for the audio element by "<search_by>"
+    Then I should know it is visible
+
+  Scenarios:
+    | search_by |
+    | css       |
+
   Scenario Outline: Locating audios using multiple parameters
     When I search for the audio element by "<param1>" and "<param2>"
     Then I should know it is visible

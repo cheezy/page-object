@@ -181,7 +181,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        [:class, :id, :index, :name, :xpath]
+        [:class, :css, :id, :index, :name, :xpath]
       end
 
       def self.selenium_mapping
