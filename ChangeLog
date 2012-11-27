@@ -2,6 +2,8 @@
 * Fixes
   * Fixed attach_to_window workes with partial url on Selenium (George Shakhnazaryan)
   * Fixed double click works on Selenium (William Powell)
+* Enhancements
+  * Added css selector support for all elements when using Selenium (Brendan Mulholland)
 
 === Version 0.7.5.1 / 2012-10-16
 * Fixes
