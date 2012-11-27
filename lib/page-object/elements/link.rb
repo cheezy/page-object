@@ -19,7 +19,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        super + [:link, :link_text, :css, :title]
+        super + [:link, :link_text, :title]
       end
 
       def self.selenium_mapping

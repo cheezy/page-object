@@ -20,6 +20,14 @@ Feature: Text Area
     | xpath     |
     | index     |
 
+  @selenium_only
+  Scenario Outline: Locating text area on the Page
+    When I search for the text area by "<search_by>"
+    Then I should be able to type "I found it" into the area
+
+  Scenarios:
+    | search_by |
+    | css       |
 
   Scenario Outline: Locating a text area using multiple parameters
     When I search for the text area by "<param1>" and "<param2>"
