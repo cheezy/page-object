@@ -281,6 +281,7 @@ class Page
   label(:label_name_index, :name => "label_name", :index => 0)
 
   link(:open_window, :text => 'New Window')
+  link(:open_another_window, :text => 'Another New Window')
   link(:child, :id => 'child')
 
   area(:area_id, :id => 'area')

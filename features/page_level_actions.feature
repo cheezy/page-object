@@ -62,9 +62,19 @@ Feature: Page level actions
   Scenario: Attach to window using title
     When I open a second window
     Then I should be able to attach to a page object using title
+
+  Scenario: Attach to window using title with multiple windows
+    When I open a second window
+    When I open a third window
+    Then I should be able to attach to a page object using title
     
   Scenario: Attach to window using url
     When I open a second window
+    Then I should be able to attach to a page object using url
+
+  Scenario: Attach to window using url with multiple windows
+    When I open a second window
+    When I open a third window
     Then I should be able to attach to a page object using url
     
   Scenario: Refreshing the page
