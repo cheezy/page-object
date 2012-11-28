@@ -1,4 +1,4 @@
-=== Version 0.7.6
+=== Version 0.7.6 / 2012-11-28
 * Fixes
   * Fixed attach_to_window workes with partial url on Selenium (George Shakhnazaryan)
   * Fixed double click works on Selenium (William Powell)
