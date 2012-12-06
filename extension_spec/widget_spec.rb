@@ -5,42 +5,16 @@ require 'page-object/elements'
 
 describe "Widget PageObject Extensions" do
   context "When module is loaded and included before PageObject is loaded " do
-    module WidgetElements
-      class GxtTable < PageObject::Elements::Table
-        protected
-        def child_xpath
-          ".//descendant::tr"
-        end
+
+    class GxtTable < PageObject::Elements::Table
+      protected
+      def child_xpath
+        ".//descendant::tr"
       end
     end
+
+    Widgets::register_widget :gxt_table, GxtTable
   end
-
-  describe "Widget Class registration" do
-    context "when tag is set to tag_widget" do
-      Widgets::register_widget :tag_widget, WidgetElements.class
-
-      accessors_module = Module.new {class_eval "def tag_widget(name, identifier={}, &block)
-          identifier={:index=>0} if identifier.empty?
-          define_method(\"\#{name}_element\") do
-            return call_block(&block) if block_given?
-            platform.tag_widget_for(identifier.clone)
-          end
-          define_method(\"\#{name}?\") do
-            return call_block(&block).exists? if block_given?
-            platform.tag_widget_for(identifier.clone).exists?
-          end
-        alias_method \"\#{name}_table\".to_sym, \"\#{name}_element\".to_sym
-        end"}
-    end
-    let(:page_object) { mock_page_object_accessors }
-    :page_object.send(:include,Widgets)
-    it "should set the tag name used to define accessors" do
-       page_object.should_receive(:send).with(accessors_module)
-    end
-  end
-
-
-  PageObject.send(:include, Widgets)
 
   class WidgetTestPageObject
     include PageObject
@@ -60,7 +34,7 @@ describe "Widget PageObject Extensions" do
       it "should find a gxt_table element" do
         watir_browser.should_receive(:div).with(:id => 'blah').and_return(watir_browser)
         element = watir_page_object.gxt_table_element(:id => 'blah')
-        element.should be_instance_of PageObject::Elements::GxtTable
+        element.should be_instance_of GxtTable
       end
     end
 
@@ -71,9 +45,8 @@ describe "Widget PageObject Extensions" do
       it "should find a gxt_table element" do
         selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
         element = selenium_page_object.gxt_table_element(:id => 'blah')
-        element.should be_instance_of PageObject::Elements::GxtTable
+        element.should be_instance_of GxtTable
       end
-
     end
   end
 
@@ -116,24 +89,23 @@ describe "Widget PageObject Extensions" do
       it "should retrieve the table element from the page" do
         watir_browser.should_receive(:div).and_return(watir_browser)
         element = watir_page_object.a_table_element
-        element.should be_instance_of PageObject::Elements::GxtTable
+        element.should be_instance_of GxtTable
       end
     end
-
   end
 
   describe "Widget Elements-GxtTable" do
     describe "when mapping how to find an element" do
       it "should map watir types to same" do
         [:class, :id, :index, :xpath].each do |t|
-          identifier = PageObject::Elements::GxtTable.watir_identifier_for t => 'value'
+          identifier = GxtTable.watir_identifier_for t => 'value'
           identifier.keys.first.should == t
         end
       end
 
       it "should map selenium types to same" do
         [:class, :id, :index, :name, :xpath].each do |t|
-          key, value = PageObject::Elements::GxtTable.selenium_identifier_for t => 'value'
+          key, value = GxtTable.selenium_identifier_for t => 'value'
           key.should == t
         end
       end
@@ -148,7 +120,7 @@ describe "Widget PageObject Extensions" do
       end
 
       context "for watir" do
-        let(:watir_table) { PageObject::Elements::GxtTable.new(gxt_table_element, :platform => :watir_webdriver) }
+        let(:watir_table) { GxtTable.new(gxt_table_element, :platform => :watir_webdriver) }
 
         it "should return a table row when indexed" do
           gxt_table_element.stub(:[]).with(1).and_return(gxt_table_element)
@@ -164,7 +136,7 @@ describe "Widget PageObject Extensions" do
       end
 
       context "for selenium" do
-        let(:selenium_table) { PageObject::Elements::GxtTable.new(gxt_table_element, :platform => :selenium_webdriver) }
+        let(:selenium_table) { GxtTable.new(gxt_table_element, :platform => :selenium_webdriver) }
 
         it "should return a table row when indexed" do
           gxt_table_element.should_receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
@@ -185,7 +157,6 @@ describe "Widget PageObject Extensions" do
         end
       end
     end
-
   end
 
   describe "Element with nested elements" do
@@ -212,9 +183,9 @@ describe "Widget PageObject Extensions" do
         @selenium_element.gxt_table_element
       end
     end
-
   end
 end
+
 
 
 

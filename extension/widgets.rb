@@ -3,26 +3,14 @@ require 'page-object/elements'
 require 'page-object/platforms/selenium_webdriver/page_object'
 require 'page-object/platforms/watir_webdriver/page_object'
 
-
 module Widgets
 
-  def self.included(base)
-    widget_tag = "gxt_table"
-    base::Elements.send(:include, WidgetElements)
-    define_accessors(base::Accessors, widget_tag)
-    define_nested_elements(base::Elements::Element, widget_tag)
-    define_locators(base, widget_tag)
-    define_selenium_accessors(base::Platforms::SeleniumWebDriver::PageObject, widget_tag)
-    define_watir_accessors(base::Platforms::WatirWebDriver::PageObject, widget_tag)
-  end
-
   def self.register_widget(widget_tag, widget_class)
-    base::Elements.send(:include, widget_class)
-    define_accessors(base::Accessors, widget_tag)
-    define_nested_elements(base::Elements::Element, widget_tag)
-    define_locators(base, widget_tag)
-    define_selenium_accessors(base::Platforms::SeleniumWebDriver::PageObject, widget_tag)
-    define_watir_accessors(base::Platforms::WatirWebDriver::PageObject, widget_tag)
+    define_accessors(PageObject::Accessors, widget_tag)
+    define_nested_elements(PageObject::Elements::Element, widget_tag)
+    define_locators(PageObject, widget_tag)
+    define_selenium_accessors(PageObject::Platforms::SeleniumWebDriver::PageObject, widget_tag, widget_class)
+    define_watir_accessors(PageObject::Platforms::WatirWebDriver::PageObject, widget_tag, widget_class)
   end
 
   @private
@@ -43,34 +31,34 @@ module Widgets
     base.send(:include,accessors_module)
   end
 
-  def self.define_watir_accessors(base, widget_tag)
+  def self.define_watir_accessors(base, widget_tag, widget_class)
     #
     # platform method to retrieve a table element
     # See WidgetAccessors#table
     #
     base.send(:define_method,"#{widget_tag}_for") do |identifier|
-      find_watir_element("div(identifier)", PageObject::Elements::GxtTable, identifier, 'div')
+      find_watir_element("div(identifier)", widget_class, identifier, 'div')
     end
 
     #
     # platform method to retrieve an array of table elements
     #
     base.send(:define_method,"#{widget_tag}s_for") do |identifier|
-      find_watir_elements("div(identifier)", PageObject::Elements::GxtTable, identifier, 'div')
+      find_watir_elements("div(identifier)", widget_class, identifier, 'div')
     end
 
   end
 
-  def self.define_selenium_accessors(base, widget_tag)
+  def self.define_selenium_accessors(base, widget_tag, widget_class)
     base.send(:define_method, "#{widget_tag}_for") do |identifier|
-      find_selenium_element(identifier, PageObject::Elements::GxtTable, 'div')
+      find_selenium_element(identifier, widget_class, 'div')
     end
 
     #
     # platform method to retrieve all table elements
     #
     base.send(:define_method, "#{widget_tag}s_for") do |identifier|
-      find_selenium_elements(identifier, PageObject::Elements::GxtTable, 'div')
+      find_selenium_elements(identifier, widget_class, 'div')
     end
   end
 
