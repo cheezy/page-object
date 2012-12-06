@@ -78,7 +78,6 @@ describe "Widget PageObject Extensions" do
       context "when called on a page object" do
         it "should generate accessor methods" do
           watir_page_object.should respond_to(:a_table_element)
-          watir_page_object.should respond_to(:a_table_table)
         end
 
         it "should call a block on the element method when present" do

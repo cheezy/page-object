@@ -15,7 +15,8 @@ module Widgets
 
   @private
   def self.define_accessors(base, widget_tag)
-    accessors_module = Module.new {class_eval "def #{widget_tag}(name, identifier={}, &block)
+    accessors_module = Module.new do
+      class_eval "def #{widget_tag}(name, identifier={}, &block)
           identifier={:index=>0} if identifier.empty?
           define_method(\"\#{name}_element\") do
             return call_block(&block) if block_given?
@@ -25,8 +26,8 @@ module Widgets
             return call_block(&block).exists? if block_given?
             platform.#{widget_tag}_for(identifier.clone).exists?
           end
-        alias_method \"\#{name}_table\".to_sym, \"\#{name}_element\".to_sym
-        end"   }
+        end"
+    end
 
     base.send(:include,accessors_module)
   end
