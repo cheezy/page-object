@@ -1,3 +1,8 @@
+=== Version 0.7.7
+* Enhancements
+  * Updated to use the latest selenium-webdriver 2.27.1
+  * Updated to use the latest watir-webdriver 0.6.2
+
 === Version 0.7.6 / 2012-11-28
 * Fixes
   * Fixed attach_to_window workes with partial url on Selenium (George Shakhnazaryan)
