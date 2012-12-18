@@ -1,5 +1,4 @@
 require 'spec_helper'
-require_relative '../extension/widgets'
 require 'page-object'
 require 'page-object/elements'
 
@@ -7,13 +6,15 @@ describe "Widget PageObject Extensions" do
   context "When module is loaded and included before PageObject is loaded " do
 
     class GxtTable < PageObject::Elements::Table
-      protected
+
+      @protected
+
       def child_xpath
         ".//descendant::tr"
       end
     end
 
-    Widgets::register_widget :gxt_table, GxtTable
+    PageObject.register_widget :gxt_table, GxtTable, :div
   end
 
   class WidgetTestPageObject
@@ -23,6 +24,9 @@ describe "Widget PageObject Extensions" do
     gxt_table :gxt_block_table do |element|
       "block_gxt_table"
     end
+
+    div(:outer_div)
+    gxt_table(:a_nested_gxt_table) { |page| page.outer_div_element.gxt_table_element }
   end
 
   describe "Widget Element Locators" do
