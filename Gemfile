@@ -7,6 +7,6 @@ gem 'fuubar-cucumber'
 gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
 gem 'growl'
 gem 'guard-rspec'
-gem 'guard-cucumber'\
+gem 'guard-cucumber'
 
 gemspec
