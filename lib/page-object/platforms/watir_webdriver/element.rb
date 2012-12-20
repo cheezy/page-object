@@ -37,6 +37,15 @@ module PageObject
         end
 
         #
+        # Get the html for the element
+        #
+        # @return [String]
+        #
+        def html
+          element.html
+        end
+
+        #
         # Get the value of this element
         #
         # @return [String]

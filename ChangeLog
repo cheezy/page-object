@@ -1,5 +1,6 @@
 === Version 0.7.7
 * Enhancements
+  * Added html method to Element
   * Updated to use the latest selenium-webdriver 2.27.1
   * Updated to use the latest watir-webdriver 0.6.2
 

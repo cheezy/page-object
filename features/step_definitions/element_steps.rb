@@ -78,6 +78,10 @@ Then /^I should know the text is "(.*)"$/ do |text|
   @element.text.should == text
 end
 
+Then /^I should know the html is "(.*)"$/ do |html|
+  @element.html.should == html
+end
+
 Then /^I should know the text includes "(.*)"$/ do |text|
   @element.text.should include text
 end
@@ -228,6 +232,7 @@ When /^I double click the button$/ do
   @page.click_element.double_click
 end
 
-Then /^the paragraph should read "([^"]*)"$/ do |expected_text|
+Then /^the paragraph should read "([^\"]*)"$/ do |expected_text|
   @page.text.should == expected_text
 end
+

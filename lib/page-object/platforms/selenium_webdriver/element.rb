@@ -45,6 +45,16 @@ module PageObject
         end
 
         #
+        # Get the html for the element
+        #
+        # @return [String]
+        #
+        def html
+          script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:getOuterHtml)
+          bridge.executeScript(script, element).strip
+        end
+
+        #
         # Get the value of this element
         #
         # @return [String]
