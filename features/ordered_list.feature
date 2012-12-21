@@ -49,3 +49,8 @@ Feature: Ordered list
     Then I should see that the ordered list exists
     When I get the first item from the list
     Then the list items text should be "Number One"
+
+  Scenario: Getting the test for an ordered list
+    Then the text for the ordered list should contain "Number One"
+    And the text for the ordered list should contain "Number Two"
+    And the text for the ordered list should contain "Number Three"

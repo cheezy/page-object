@@ -656,6 +656,16 @@ module PageObject
         end
 
         #
+        # platform method to retrieve the text from an ordered list
+        # See PageObject::Accessors#ordered_list
+        #
+        def ordered_list_text_for(identifier)
+          process_selenium_call(identifier, Elements::OrderedList, 'ol') do |how, what|
+            @browser.find_element(how, what).text
+          end
+        end
+
+        #
         # platform method to retrieve an ordered list element
         # See PageObject::Accessors#ordered_list
         #

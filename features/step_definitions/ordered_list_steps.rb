@@ -17,3 +17,7 @@ end
 Then /^I should see that the ordered list exists$/ do
   @page.ol_id?.should == true
 end
+
+Then /^the text for the ordered list should contain "(.*)"$/ do |text|
+  @page.send("ol_id").should include text
+end

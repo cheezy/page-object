@@ -604,6 +604,14 @@ module PageObject
           find_watir_elements("uls(identifier)", Elements::UnorderedList, identifier, 'ul')
         end
 
+       #
+        # platform method to retrieve the text from an ordered list
+        # See PageObject::Accessors#ordered_list
+        #
+        def ordered_list_text_for(identifier)
+          process_watir_call("ol(identifier).text", Elements::OrderedList, identifier, nil, 'ol')
+        end
+
         #
         # platform method to retrieve an ordered list element
         # See PageObject::Accessors#ordered_list

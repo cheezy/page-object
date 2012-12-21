@@ -706,12 +706,13 @@ module PageObject
     alias_method :li, :list_item
 
     #
-    # adds two methods - one to retrieve the unordered list element, and another to
+    # adds three methods - one to return the text within the unorderd
+    # list, one to retrieve the unordered list element, and another to
     # check it's existence.
     #
     # @example
     #   unordered_list(:menu, :id => 'main_menu')
-    #   # will generate 'menu_element' and 'menu?' methods
+    #   # will generate 'menu', 'menu_element' and 'menu?' methods
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Hash] identifier how we find an unordered list.  You can use a multiple paramaters
@@ -742,12 +743,13 @@ module PageObject
     alias_method :ul, :unordered_list
 
     #
-    # adds two methods - one to retrieve the ordered list element, and another to
+    # adds three methods - one to return the text withing the ordered
+    # list, one to retrieve the ordered list element, and another to
     # test it's existence.
     #
     # @example
     #   ordered_list(:top_five, :id => 'top')
-    #   # will generate 'top_five_element' and 'top_five?' methods
+    #   # will generate 'top_five', 'top_five_element' and 'top_five?' methods
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Hash] identifier how we find an ordered list.  You can use a multiple paramaters
@@ -761,6 +763,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def ordered_list(name, identifier={:index => 0}, &block)
+      define_method(name) do
+        return platform.ordered_list_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
       define_method("#{name}_element") do
         return call_block(&block) if block_given?
         platform.ordered_list_for(identifier.clone)
