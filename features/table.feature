@@ -111,3 +111,8 @@ Feature: Table
   @watir_only
   Scenario: Finding an existing table
     Then I should see that the table exists
+    
+  @focus
+  Scenario: Getting the text from a table
+    Then I should see the text includes "Data1" when I retrieve it by "id"
+    And I should see the text includes "Data2" when I retrieve it by "id"

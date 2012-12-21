@@ -526,6 +526,16 @@ module PageObject
         end
         
         #
+        # platform method to return the text for a table
+        # See PageObject::Accessors#table
+        #
+        def table_text_for(identifier)
+          process_selenium_call(identifier, Elements::Table, 'table') do |how, what|
+            @browser.find_element(how, what).text
+          end
+        end
+
+        #
         # platform method to retrieve a table element
         # See PageObject::Accessors#table
         #

@@ -482,6 +482,14 @@ module PageObject
         end
 
         #
+        # platform method to return the text for a table
+        # See PageObject::Accessors#table
+        #
+        def table_text_for(identifier)
+          process_watir_call("table(identifier).text", Elements::Table, identifier, nil, 'table')
+        end
+
+        #
         # platform method to retrieve a table element
         # See PageObject::Accessors#table
         #

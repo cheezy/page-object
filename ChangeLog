@@ -1,5 +1,6 @@
 === Version 0.7.7
 * Enhancements
+  * Added generated method to return text for a table
   * Added html method to Element
   * Updated to use the latest selenium-webdriver 2.27.2
   * Updated to use the latest watir-webdriver 0.6.2

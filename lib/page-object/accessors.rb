@@ -528,13 +528,14 @@ module PageObject
     end
 
     #
-    # adds two methods - one to retrieve the table element, and another to
+    # adds three methods - one to return the text for the table, one
+    # to  retrieve the table element, and another to
     # check the table's existence.  The existence method does not work
     # on Selenium so it should not be called.
     #
     # @example
     #   table(:cart, :id => 'shopping_cart')
-    #   # will generate a 'cart_element' and 'cart?' method
+    #   # will generate a 'cart', 'cart_element' and 'cart?' method
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Hash] identifier how we find a table.  You can use a multiple paramaters
@@ -548,6 +549,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def table(name, identifier={:index => 0}, &block)
+      define_method(name) do
+        return platform.table_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
       define_method("#{name}_element") do
         return call_block(&block) if block_given?
         platform.table_for(identifier.clone)

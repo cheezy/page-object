@@ -55,3 +55,7 @@ end
 Then /^the data for row "([^\"]*)" and column "([^\"]*)" should be nil$/ do |row, column|
   @element[row][column].should be_nil
 end
+
+Then /^I should see the text includes "([^"]*)" when I retrieve it by "([^"]*)"$/ do |text, how|
+  @page.send("table_#{how}").should include text
+end
