@@ -582,6 +582,14 @@ module PageObject
         end
 
         #
+        # platform method to retrieve the text from an unordered list
+        # See PageObject::Accessors#unordered_list
+        #
+        def unordered_list_text_for(identifier)
+          process_watir_call("ul(identifier).text", Elements::UnorderedList, identifier, nil, 'ul')
+        end
+
+        #
         # platform method to retrieve an unordered list element
         # See PageObject::Accessors#unordered_list
         #

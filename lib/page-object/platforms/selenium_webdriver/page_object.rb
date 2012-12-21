@@ -631,6 +631,16 @@ module PageObject
         end
 
         #
+        # platform method to retrieve the text from an unordered list
+        # See PageObject::Accessors#unordered_list
+        #
+        def unordered_list_text_for(identifier)
+          process_selenium_call(identifier, Elements::UnorderedList, 'ul') do |how, what|
+            @browser.find_element(how, what).text
+          end
+        end
+
+        #
         # platform method to retrieve an unordered list element
         # See PageObject::Accessors#unordered_list
         #

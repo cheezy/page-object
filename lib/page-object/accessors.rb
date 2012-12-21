@@ -725,6 +725,10 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def unordered_list(name, identifier={:index => 0}, &block)
+      define_method(name) do
+        return platform.unordered_list_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
       define_method("#{name}_element") do
         return call_block(&block) if block_given?
         platform.unordered_list_for(identifier.clone)

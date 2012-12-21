@@ -49,3 +49,8 @@ Feature: Unordered list
     Then I should see that the unordered list exists
     When I get the first item from the list
     Then the list items text should be "Item One"
+
+  Scenario: Getting the text from an unordered list
+    Then the text for the unordered list should contain "Item One"
+    And the text for the unordered list should contain "Item Two"
+    And the text for the unordered list should contain "Item Three"

@@ -17,3 +17,7 @@ end
 Then /^I should see that the unordered list exists$/ do
   @page.ul_id?.should == true
 end
+
+Then /^the text for the unordered list should contain "(.*)"$/ do |text|
+  @page.send("ul_id").should include text
+end
