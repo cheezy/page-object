@@ -1997,6 +1997,21 @@ module PageObject
       end
     end
 
+    #
+    # methods to fetch multiple elements of the same type
+    #
+    # adds a method to the page object to retrun all of the matching elements
+    #
+    # @example
+    #   text_fields(:first_name, :id => "first_name")
+    #   # will generate 'first_name_elements'
+    #
+    # @param  [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a text field.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid
+    #   keys are the same ones supported by the standard methods.
+    # @param optional block to be invoked when element method is called
+    #
     [:text_fields,
      :hidden_fields,
      :text_areas,
