@@ -450,3 +450,25 @@ Feature: Multi Elements
     And the text for H6 2 should be "H6 Two"
     And the text for H6 3 should be "H6 Three"
 
+  Scenario: Selecting paragraphs based on a class declaration
+    When I select the paragraph using the generated method
+    Then I should have 3 paragraphs
+    And the text for paragraph 1 should be "Paragraph One"
+    And the text for paragraph 2 should be "Paragraph Two"
+    And the text for paragraph 3 should be "Paragraph Three"
+
+@focus
+  Scenario: Selecting labels based on a class declaration
+    When I select the labels using the generated method
+    Then I should have 3 labels
+    And the text for label 1 should be "Label 1"
+    And the text for label 2 should be "Label 2"
+    And the text for label 3 should be "Label 3"
+
+@focus
+  Scenario: Selecting file fields based on a class declaration
+    When I select the file fields using the generated method
+    Then I should have 3 file fields
+    And the title for file field 1 should be "File Field 1"
+    And the title for file field 2 should be "File Field 2"
+    And the title for file field 3 should be "File Field 3"
