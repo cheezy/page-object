@@ -26,7 +26,7 @@ When /^I retrieve a GxtTable widget$/ do
 end
 
 
-When /^the GxtTable should have "([^"]*)" rows$/ do |rows|
+When /^the GxtTable should have "(\d+)" rows$/ do |rows|
   @element.rows.should == rows.to_i
 end
 
