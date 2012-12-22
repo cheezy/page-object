@@ -5,6 +5,7 @@
     * buttons
     * text_fields
     * hidden_fields
+    * text_areas
   * Added ability to register and use custom elements based on standard elements (William Powell)
   * Added generated method to return text for a table
   * Added generated method to return text for an unordered list

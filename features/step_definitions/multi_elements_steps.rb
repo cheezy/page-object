@@ -5,6 +5,7 @@ class MultiElementsPage
   buttons(:the_buttons, :class => 'button')
   text_fields(:the_text_fields, :class => 'textfield')
   hidden_fields(:the_hidden_fields, :class => 'hiddenfield')
+  text_areas(:the_text_areas, :class => 'textarea')
 end
 
 
@@ -423,5 +424,9 @@ end
 
 When /^I select the hidden fields using the generated method$/ do
   @elements = @page.the_hidden_fields_elements
+end
+
+When /^I select the text areas using the generated method$/ do
+  @elements = @page.the_text_areas_elements
 end
 
