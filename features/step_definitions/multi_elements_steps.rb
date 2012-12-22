@@ -18,6 +18,12 @@ class MultiElementsPage
   list_items(:the_list_items, :class => 'li')
   unordered_lists(:the_unordered_lists, :class => 'ul')
   ordered_lists(:the_ordered_lists, :class => 'ol')
+  h1s(:the_h1s, :class => 'h1')
+  h2s(:the_h2s, :class => 'h2')
+  h3s(:the_h3s, :class => 'h3')
+  h4s(:the_h4s, :class => 'h4')
+  h5s(:the_h5s, :class => 'h5')
+  h6s(:the_h6s, :class => 'h6')
 end
 
 
@@ -488,4 +494,8 @@ end
 
 When /^I select the ordered lists using the generated method$/ do
   @elements = @page.the_ordered_lists_elements
+end
+
+When /^I select the h(\d+)s using the generated method$/ do |num|
+  @elements = @page.send "the_h#{num.to_i}s_elements"
 end

@@ -18,6 +18,12 @@
     * list_items
     * unordered_lists
     * ordered_lists
+    * h1s
+    * h2s
+    * h3s
+    * h4s
+    * h5s
+    * h6s
   * Added ability to register and use custom elements based on standard elements (William Powell)
   * Added generated method to return text for a table
   * Added generated method to return text for an unordered list
