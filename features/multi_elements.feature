@@ -312,3 +312,11 @@ Feature: Multi Elements
     And the value of text field 1 should be "text 1"
     And the value of text field 2 should be "text 2"
     And the value of text field 3 should be "text 3"
+
+  @focus
+  Scenario: Selecting hidden fields based on a class declaration
+    When I select the hidden fields using the generated method
+    Then I should have 3 hidden fields
+    And the value of hidden field 1 should be "hidden 1"
+    And the value of hidden field 2 should be "hidden 2"
+    And the value of hidden field 3 should be "hidden 3"
