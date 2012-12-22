@@ -8,6 +8,7 @@ class MultiElementsPage
   text_areas(:the_text_areas, :class => 'textarea')
   select_lists(:the_select_lists, :class => 'selectlist')
   links(:the_links, :class => 'link')
+  checkboxes(:the_checkboxes, :class => 'checkbox')
 end
 
 
@@ -438,5 +439,9 @@ end
 
 When /^I select the link using the generated method$/ do
   @elements = @page.the_links_elements
+end
+
+When /^I select the check boxes using the generated method$/ do
+  @elements = @page.the_checkboxes_elements
 end
 
