@@ -338,10 +338,17 @@ Feature: Multi Elements
     And the text of link 2 should be "link 2"
     And the text of link 3 should be "link 3"
 
-  @focus
   Scenario: Selecting checkboxes based on a class declaration
     When I select the check boxes using the generated method
     Then I should have 3 checkboxes
     And the value of checkbox 1 should be "checkbox 1"
     And the value of checkbox 2 should be "checkbox 2"
     And the value of checkbox 3 should be "checkbox 3"
+
+  Scenario: Selecting radio buttons based on a class declaration
+    When I select the radio button using the generated method
+    Then I should have 3 radio buttons
+    And the value of radio button 1 should be "radio 1"
+    And the value of radio button 2 should be "radio 2"
+    And the value of radio button 3 should be "radio 3"
+

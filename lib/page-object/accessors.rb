@@ -2003,6 +2003,7 @@ module PageObject
      :select_lists,
      :links,
      :checkboxes,
+     :radio_buttons,
      :buttons,
      :divs].each do |method_name|
       define_method(method_name) do |name, identifier, &block|

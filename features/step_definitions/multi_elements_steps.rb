@@ -9,6 +9,7 @@ class MultiElementsPage
   select_lists(:the_select_lists, :class => 'selectlist')
   links(:the_links, :class => 'link')
   checkboxes(:the_checkboxes, :class => 'checkbox')
+  radio_buttons(:the_radio_buttons, :class => 'radio')
 end
 
 
@@ -443,5 +444,9 @@ end
 
 When /^I select the check boxes using the generated method$/ do
   @elements = @page.the_checkboxes_elements
+end
+
+When /^I select the radio button using the generated method$/ do
+  @elements = @page.the_radio_buttons_elements
 end
 
