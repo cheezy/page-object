@@ -372,3 +372,10 @@ Feature: Multi Elements
     And the text for cell 1 should be "Data 1"
     And the text for cell 2 should be "Data 2"
     And the text for cell 3 should be "Data 3"
+
+  Scenario: Selecting images based on a class declaration
+    When I select the images using the generated method
+    Then I should have 3 images
+    And the alt for image 1 should be "image 1"
+    And the alt for image 2 should be "image 2"
+    And the alt for image 3 should be "image 3"

@@ -13,6 +13,7 @@ class MultiElementsPage
   spans(:the_spans, :class => 'span')
   tables(:the_tables, :class => 'table')
   cells(:the_cells, :class => 'td')
+  images(:the_images, :class => 'image')
 end
 
 
@@ -463,5 +464,9 @@ end
 
 When /^I select the cells using the generated method$/ do
   @elements = @page.the_cells_elements
+end
+
+When /^I select the images using the generated method$/ do
+  @elements = @page.the_images_elements
 end
 
