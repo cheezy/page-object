@@ -457,7 +457,6 @@ Feature: Multi Elements
     And the text for paragraph 2 should be "Paragraph Two"
     And the text for paragraph 3 should be "Paragraph Three"
 
-@focus
   Scenario: Selecting labels based on a class declaration
     When I select the labels using the generated method
     Then I should have 3 labels
@@ -465,7 +464,6 @@ Feature: Multi Elements
     And the text for label 2 should be "Label 2"
     And the text for label 3 should be "Label 3"
 
-@focus
   Scenario: Selecting file fields based on a class declaration
     When I select the file fields using the generated method
     Then I should have 3 file fields
