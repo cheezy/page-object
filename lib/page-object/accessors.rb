@@ -2005,7 +2005,8 @@ module PageObject
      :checkboxes,
      :radio_buttons,
      :buttons,
-     :divs].each do |method_name|
+     :divs,
+     :spans].each do |method_name|
       define_method(method_name) do |name, identifier, &block|
         define_method("#{name}_elements") do
           return call_block(&block) if block_given?
