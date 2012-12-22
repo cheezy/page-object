@@ -1997,7 +1997,7 @@ module PageObject
       end
     end
 
-    [:divs].each do |method_name|
+    [:buttons, :divs].each do |method_name|
       define_method(method_name) do |name, identifier, &block|
         define_method("#{name}_elements") do
           return call_block(&block) if block_given?

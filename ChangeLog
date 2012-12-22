@@ -1,6 +1,7 @@
 === Version 0.8
 * Enhancements
   * Added divs class level method to return all elements matching the locator
+  * Added buttons class level method to return all elements matching the locator
   * Added ability to register and use custom elements based on standard elements (William Powell)
   * Added generated method to return text for a table
   * Added generated method to return text for an unordered list
