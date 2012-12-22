@@ -3,6 +3,7 @@ class MultiElementsPage
 
   divs(:the_divs, :class => 'div')
   buttons(:the_buttons, :class => 'button')
+  text_fields(:the_text_fields, :class => 'textfield')
 end
 
 
@@ -411,7 +412,11 @@ When /^I select the divs using the generated method$/ do
   @elements = @page.the_divs_elements
 end
 
-When /^I select the buttons using the generated methods$/ do
+When /^I select the buttons using the generated method$/ do
   @elements = @page.the_buttons_elements
+end
+
+When /^I select the text fields using the generated method$/ do
+  @elements = @page.the_text_fields_elements
 end
 
