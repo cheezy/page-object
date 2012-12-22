@@ -12,6 +12,7 @@ class MultiElementsPage
   radio_buttons(:the_radio_buttons, :class => 'radio')
   spans(:the_spans, :class => 'span')
   tables(:the_tables, :class => 'table')
+  cells(:the_cells, :class => 'td')
 end
 
 
@@ -458,5 +459,9 @@ end
 
 When /^I select the tables using the generated method$/ do
   @elements = @page.the_tables_elements
+end
+
+When /^I select the cells using the generated method$/ do
+  @elements = @page.the_cells_elements
 end
 
