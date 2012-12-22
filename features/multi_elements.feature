@@ -289,7 +289,6 @@ Feature: Multi Elements
     When I select the file fields using no identifier
     Then I should have 3 file fields
 
-  @focus
   Scenario: Selecting all divs based on a class declaration
     When I select the divs using the generated method
     Then I should have 3 divs
@@ -297,7 +296,6 @@ Feature: Multi Elements
     And the text of div 2 should be "Div 2"
     And the text of div 3 should be "Div 3"
 
-  @focus
   Scenario: Selecting buttons based on a class declaration
     When I select the buttons using the generated method
     Then I should have 3 buttons
@@ -305,7 +303,6 @@ Feature: Multi Elements
     And the value of button 2 should be "Button 2"
     And the value of button 3 should be "Button 3"
 
-  @focus
   Scenario: Selecting text fields based on a class declaration
     When I select the text fields using the generated method
     Then I should have 3 text fields
@@ -313,7 +310,6 @@ Feature: Multi Elements
     And the value of text field 2 should be "text 2"
     And the value of text field 3 should be "text 3"
 
-  @focus
   Scenario: Selecting hidden fields based on a class declaration
     When I select the hidden fields using the generated method
     Then I should have 3 hidden fields
@@ -321,10 +317,17 @@ Feature: Multi Elements
     And the value of hidden field 2 should be "hidden 2"
     And the value of hidden field 3 should be "hidden 3"
 
-  @focus
   Scenario: Selecting text areas based on a class declaration
     When I select the text areas using the generated method
     Then I should have 3 text areas
     And the value of text area 1 should be "textarea 1"
     And the value of text area 2 should be "textarea 2"
     And the value of text area 3 should be "textarea 3"
+
+  Scenario: Selecting select lists based on a class declaration
+    When I select the select lists using the generated method
+    Then I should have 3 select lists
+    And the value of select list 1 should be "selectlist 1"
+    And the value of select list 2 should be "selectlist 2"
+    And the value of select list 3 should be "selectlist 3"
+
