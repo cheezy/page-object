@@ -85,15 +85,15 @@ module PageObject
     end
 
     def self.define_multiple_nested_accessor(base, widget_tag)
-      base.send(:define_method, "#{widget_tag}_elements") do |identifier={}|
-        identifier={:index => 0} if identifier.empty?
+      base.send(:define_method, "#{widget_tag}_elements") do |*args|
+        identifier = args[0] ? args[0] : {:index => 0}
         @platform.send("#{widget_tag}s_for", identifier.clone)
       end
     end
 
     def self.define_singular_nested_accessor(base, widget_tag)
-      base.send(:define_method, "#{widget_tag}_element") do |identifier={}|
-        identifier={:index => 0} if identifier.empty?
+      base.send(:define_method, "#{widget_tag}_element") do |*args|
+        identifier = args[0] ? args[0] : {:index => 0}
         @platform.send("#{widget_tag}_for", identifier.clone)
       end
     end
@@ -104,14 +104,15 @@ module PageObject
     end
 
     def self.define_multiple_locator(base, widget_tag)
-      base.send(:define_method, "#{widget_tag}_elements") do |identifier={}|
+      base.send(:define_method, "#{widget_tag}_elements") do |*args|
+        identifier = args[0] ? args[0] : {}
         platform.send("#{widget_tag}s_for", identifier.clone)
       end
     end
 
     def self.define_singular_locator(base, widget_tag)
-      base.send(:define_method, "#{widget_tag}_element") do |identifier={}|
-        identifier={:index => 0} if identifier.empty?
+      base.send(:define_method, "#{widget_tag}_element") do |*args|
+        identifier = args[0] ? args[0] : {:index => 0}
         platform.send("#{widget_tag}_for", identifier.clone)
       end
     end
