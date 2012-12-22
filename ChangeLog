@@ -11,6 +11,7 @@
     * checkboxes
     * radio_buttons
     * spans
+    * tables
   * Added ability to register and use custom elements based on standard elements (William Powell)
   * Added generated method to return text for a table
   * Added generated method to return text for an unordered list

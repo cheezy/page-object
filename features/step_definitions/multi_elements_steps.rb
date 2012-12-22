@@ -11,6 +11,7 @@ class MultiElementsPage
   checkboxes(:the_checkboxes, :class => 'checkbox')
   radio_buttons(:the_radio_buttons, :class => 'radio')
   spans(:the_spans, :class => 'span')
+  tables(:the_tables, :class => 'table')
 end
 
 
@@ -453,5 +454,9 @@ end
 
 When /^I select the spans using the generated method$/ do
   @elements = @page.the_spans_elements
+end
+
+When /^I select the tables using the generated method$/ do
+  @elements = @page.the_tables_elements
 end
 

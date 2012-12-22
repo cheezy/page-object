@@ -358,3 +358,10 @@ Feature: Multi Elements
     And the text of span 1 should be "Span 1"
     And the text of span 2 should be "Span 2"
     And the text of span 3 should be "Span 3"
+
+  Scenario: Selecting tables based on a class declaration
+    When I select the tables using the generated method
+    Then I should have 3 tables
+    And the first row first column for table 1 should have "Data 1"
+    And the first row first column for table 2 should have "Data 4"
+    And the first row first column for table 3 should have "Data 7"
