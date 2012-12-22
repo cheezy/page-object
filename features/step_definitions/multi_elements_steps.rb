@@ -16,6 +16,8 @@ class MultiElementsPage
   images(:the_images, :class => 'image')
   forms(:the_forms, :class => 'form')
   list_items(:the_list_items, :class => 'li')
+  unordered_lists(:the_unordered_lists, :class => 'ul')
+  ordered_lists(:the_ordered_lists, :class => 'ol')
 end
 
 
@@ -480,3 +482,10 @@ When /^I select the list items using the generated method$/ do
   @elements = @page.the_list_items_elements
 end
 
+When /^I select the unordered list using the generated method$/ do
+  @elements = @page.the_unordered_lists_elements
+end
+
+When /^I select the ordered lists using the generated method$/ do
+  @elements = @page.the_ordered_lists_elements
+end

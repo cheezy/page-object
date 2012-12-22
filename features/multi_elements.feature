@@ -393,3 +393,17 @@ Feature: Multi Elements
     And the text for list item 1 should be "Item One"
     And the text for list item 2 should be "Item Two"
     And the text for list item 3 should be "Item Three"
+
+  Scenario: Selecting unordered lists based on a class declaration
+    When I select the unordered list using the generated method
+    Then I should have 3 unordered lists
+    And the text for the first item in unordered list 1 should be "Item One"
+    And the text for the first item in unordered list 2 should be "Item Four"
+    And the text for the first item in unordered list 3 should be "Item Five"
+
+  Scenario: Selecting ordered lists based on a class declaration
+    When I select the ordered lists using the generated method
+    Then I should have 3 ordered lists
+    And the text for the first item in ordered list 1 should be "Number One"
+    And the text for the first item in ordered list 2 should be "Number Two"
+    And the text for the first item in ordered list 3 should be "Number Three"
