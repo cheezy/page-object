@@ -7,6 +7,7 @@ class MultiElementsPage
   hidden_fields(:the_hidden_fields, :class => 'hiddenfield')
   text_areas(:the_text_areas, :class => 'textarea')
   select_lists(:the_select_lists, :class => 'selectlist')
+  links(:the_links, :class => 'link')
 end
 
 
@@ -433,5 +434,9 @@ end
 
 When /^I select the select lists using the generated method$/ do
   @elements = @page.the_select_lists_elements
+end
+
+When /^I select the link using the generated method$/ do
+  @elements = @page.the_links_elements
 end
 

@@ -331,3 +331,10 @@ Feature: Multi Elements
     And the value of select list 2 should be "selectlist 2"
     And the value of select list 3 should be "selectlist 3"
 
+  @focus
+  Scenario: Selecting links based on a class declaration
+    When I select the link using the generated method
+    Then I should have 3 links
+    And the text of link 1 should be "link 1"
+    And the text of link 2 should be "link 2"
+    And the text of link 3 should be "link 3"
