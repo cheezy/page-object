@@ -1,6 +1,6 @@
 === Version 0.8
 * Enhancements
-  * Added the following class level method to return all elements matching the locator
+  * Added the following class level methods to return all elements matching the locator
     * divs
     * buttons
     * text_fields
@@ -15,6 +15,7 @@
     * cells
     * images
     * forms
+    * list_items
   * Added ability to register and use custom elements based on standard elements (William Powell)
   * Added generated method to return text for a table
   * Added generated method to return text for an unordered list

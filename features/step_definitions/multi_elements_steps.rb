@@ -15,6 +15,7 @@ class MultiElementsPage
   cells(:the_cells, :class => 'td')
   images(:the_images, :class => 'image')
   forms(:the_forms, :class => 'form')
+  list_items(:the_list_items, :class => 'li')
 end
 
 
@@ -475,4 +476,7 @@ When /^I select the forms using the generated method$/ do
   @elements = @page.the_forms_elements
 end
 
+When /^I select the list items using the generated method$/ do
+  @elements = @page.the_list_items_elements
+end
 
