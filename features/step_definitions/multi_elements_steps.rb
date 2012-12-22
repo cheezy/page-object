@@ -1,5 +1,7 @@
 class MultiElementsPage
   include PageObject
+
+  divs(:div_num, :class => 'div')
 end
 
 
@@ -402,4 +404,8 @@ end
 
 When /^I select the file fields using no identifier$/ do
   @elements = @page.file_field_elements
+end
+
+When /^I select the divs using the generated method$/ do
+  @elements = @page.div_num_elements
 end

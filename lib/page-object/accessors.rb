@@ -1996,5 +1996,15 @@ module PageObject
         IndexedProperties::TableOfElements.new(@browser, identifier_list)
       end
     end
+
+    [:divs].each do |method_name|
+      define_method(method_name) do |name, identifier, &block|
+        define_method("#{name}_elements") do
+          return call_block(&block) if block_given?
+          platform.send "#{method_name.to_s}_for", identifier.clone
+        end
+      end
+    end
+    
   end
 end
