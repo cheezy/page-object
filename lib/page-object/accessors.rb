@@ -2009,7 +2009,8 @@ module PageObject
      :spans,
      :tables,
      :cells,
-     :images].each do |method_name|
+     :images,
+     :forms].each do |method_name|
       define_method(method_name) do |name, identifier, &block|
         define_method("#{name}_elements") do
           return call_block(&block) if block_given?
