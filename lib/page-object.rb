@@ -7,6 +7,7 @@ require 'page-object/page_factory'
 require 'page-object/page_populator'
 require 'page-object/javascript_framework_facade'
 require 'page-object/indexed_properties'
+require 'page-object/widgets'
 
 require 'selenium/webdriver/common/error'
 #
@@ -41,7 +42,7 @@ module PageObject
   include LoadsPlatform
   include ElementLocators
   include PagePopulator
-  
+
   # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
   attr_reader :browser
   # @return [PageObject::WatirPageObject or PageObject::SeleniumPageObject] the platform page object
@@ -251,7 +252,7 @@ module PageObject
   def execute_script(script)
     platform.execute_script(script)
   end
-  
+
   #
   # Identify an element as existing within a frame or iframe.  A frame parameter
   # is passed to the block and must be passed to the other calls to PageObject.
@@ -287,7 +288,7 @@ module PageObject
   #
   def modal_dialog(&block)
     script =
-    %Q{
+        %Q{
       window.showModalDialog = function(sURL, vArguments, sFeatures) {
         window.dialogArguments = vArguments;
         modalWin = window.open(sURL, 'modal', sFeatures);
@@ -297,7 +298,7 @@ module PageObject
     browser.execute_script script
     yield if block_given?
   end
-  
+
   #
   # Attach to a running window.  You can locate the window using either
   # the window's title or url.  If it failes to connect to a window it will
@@ -326,35 +327,35 @@ module PageObject
   def element_with_focus
     platform.element_with_focus
   end
-  
+
   #
   # Refresh to current page
   #
   def refresh
     platform.refresh
   end
-  
+
   #
   # Go back to the previous page
   #
   def back
     platform.back
   end
-  
+
   #
   # Go forward to the next page
   #
   def forward
     platform.forward
   end
-  
+
   #
   # Clear the cookies from the browser
   #
   def clear_cookies
     platform.clear_cookies
   end
-  
+
   #
   # Save the current screenshot to the provided url.  File
   # is saved as a png file.
@@ -363,13 +364,17 @@ module PageObject
     platform.save_screenshot file_name
   end
 
+  def self.register_widget(widget_tag, widget_class, base_element_tag)
+    Widgets.register_widget(widget_tag, widget_class, base_element_tag)
+  end
+
   private
 
   def include_platform_driver(browser)
     @platform = load_platform(browser, PageObject::Platforms.get)
   end
-  
+
   def call_block(&block)
-    block.arity == 1 ? block.call(self) : self.instance_eval(&block)      
+    block.arity == 1 ? block.call(self) : self.instance_eval(&block)
   end
 end
