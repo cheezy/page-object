@@ -2,6 +2,9 @@ class MultiElementsPage
   include PageObject
 
   divs(:the_divs, :class => 'div')
+  divs(:block_divs) do |page|
+    page.div_elements(:class => 'div')
+  end
   buttons(:the_buttons, :class => 'button')
   text_fields(:the_text_fields, :class => 'textfield')
   hidden_fields(:the_hidden_fields, :class => 'hiddenfield')
@@ -513,4 +516,8 @@ end
 
 When /^I select the file fields using the generated method$/ do
   @elements = @page.the_file_fields_elements
+end
+
+When /^I select the divs using a block$/ do
+  @elements = @page.block_divs_elements
 end

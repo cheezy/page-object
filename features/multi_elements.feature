@@ -295,6 +295,13 @@ Feature: Multi Elements
     And the text of div 1 should be "Div 1"
     And the text of div 2 should be "Div 2"
     And the text of div 3 should be "Div 3"
+    
+  Scenario: Selecting all divs using a block instead of an identifier
+    When I select the divs using a block
+    Then I should have 3 divs
+    And the text of div 1 should be "Div 1"
+    And the text of div 2 should be "Div 2"
+    And the text of div 3 should be "Div 3"
 
   Scenario: Selecting buttons based on a class declaration
     When I select the buttons using the generated method

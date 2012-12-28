@@ -2038,9 +2038,9 @@ module PageObject
      :paragraphs,
      :labels,
      :file_fields].each do |method_name|
-      define_method(method_name) do |name, identifier, &block|
+      define_method(method_name) do |name, identifier=nil, &block|
         define_method("#{name}_elements") do
-          return call_block(&block) if block_given?
+          return call_block(&block) unless block.nil?
           platform.send "#{method_name.to_s}_for", identifier.clone
         end
       end

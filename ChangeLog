@@ -1,3 +1,7 @@
+=== Version 0.8.1 / 2012-12-28
+* Fixes
+  * Fixed issue when calling new multi-element class methods using a block
+
 === Version 0.8 / 2012-12-22
 * Enhancements
   * Added the following class level methods to return all elements matching the locator
