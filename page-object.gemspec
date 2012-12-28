@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'selenium-webdriver', '>= 2.27.2'
 
   s.add_development_dependency 'rspec', '>= 2.12.0'
-  s.add_development_dependency 'cucumber', '< 1.2.0'
+  s.add_development_dependency 'cucumber', '>= 1.2.0'
   s.add_development_dependency 'yard', '>= 0.7.2'
   s.add_development_dependency 'rack', '>= 1.0'
 
