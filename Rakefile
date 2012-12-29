@@ -14,11 +14,11 @@ task :spec
 
 namespace :features do
   Cucumber::Rake::Task.new(:watir_webdriver, "Run features with Watir") do |t|
-    t.profile = "watir"
+    t.profile = "watir_webdriver"
   end
 
   Cucumber::Rake::Task.new(:selenium_webdriver, "Run features with Selenium") do |t|
-    t.profile = "selenium"
+    t.profile = "selenium_webdriver"
   end
 
   desc 'Run all features'

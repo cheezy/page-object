@@ -1,10 +1,10 @@
 <%
-std_opts = "BROWSER=firefox --no-source --color --format Cucumber::Formatter::Fuubar"
+std_opts = "--no-source --color --format Cucumber::Formatter::Fuubar"
 %>
 
 default: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only
-watir: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only
-selenium: DRIVER=SELENIUM <%= std_opts %> --tags ~@watir_only
-focus:  DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only --tags @focus
+watir_webdriver: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only
+selenium_webdriver: DRIVER=SELENIUM <%= std_opts %> --tags ~@watir_only
+focus: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only --tags @focus
 #focus:  DRIVER=SELENIUM <%= std_opts %> --tags ~@watir_only --tags @focus
 

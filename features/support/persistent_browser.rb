@@ -4,9 +4,14 @@ module PageObject
     @@browser = false
     def self.get_browser
       if !@@browser
-        target_browser = ENV['BROWSER'].to_sym
-        @@browser =  Watir::Browser.new target_browser if ENV['DRIVER'] == 'WATIR'
-        @@browser =  Selenium::WebDriver.for target_browser if ENV['DRIVER'] == 'SELENIUM'
+        target = ENV['BROWSER']
+        target = 'firefox_local' unless target
+
+        require_relative "targets/#{target}"
+        extend Target
+
+        @@browser =  watir_browser if ENV['DRIVER'] == 'WATIR'
+        @@browser =  selenium_browser if ENV['DRIVER'] == 'SELENIUM'
       end
       @@browser
     end
