@@ -9,7 +9,7 @@ class SampleApp
     Rack::Handler::WEBrick.run new,
                                :Host => host,
                                :Port => port,
-                               :Logger => ::WEBrick::Log.new('/dev/null'),
+                               :Logger => ::WEBrick::Log.new(RUBY_PLATFORM =~ /mswin|mingw/ ? 'NUL:' : '/dev/null'),
                                :AccessLog => [nil, nil]
   end
 
