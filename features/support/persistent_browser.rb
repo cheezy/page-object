@@ -7,7 +7,7 @@ module PageObject
         target = ENV['BROWSER']
         target = 'firefox_local' unless target
 
-        require_relative "targets/#{target}"
+        require File.dirname(__FILE__) + "/targets/#{target}"
         extend Target
 
         @@browser =  watir_browser if ENV['DRIVER'] == 'WATIR'
