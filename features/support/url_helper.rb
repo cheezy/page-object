@@ -5,7 +5,9 @@ module UrlHelper
     end
 
     def files
-      "file://#{html}"
+      target = ENV['BROWSER']
+      return "file://#{html}" if target.nil? or target.include? 'local'
+      'http://ec2-107-22-131-88.compute-1.amazonaws.com'
     end
 
     def static_elements
