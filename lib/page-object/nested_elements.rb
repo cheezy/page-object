@@ -45,6 +45,5 @@ module PageObject
       end
     end
 
-    end
   end
 end
