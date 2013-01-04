@@ -1,3 +1,4 @@
+require 'selenium/webdriver/remote/http/persistent'
 
 module PageObject
   module PersistantBrowser
@@ -35,7 +36,7 @@ module PageObject
                            :url => url,
                            :desired_capabilities => desired_capabilities)
       else
-        Watir::Browser.new :firefox
+        Watir::Browser.new :firefox, :http_client => client
       end
     end
 
@@ -46,7 +47,7 @@ module PageObject
                                 :url => url,
                                 :desired_capabilities => desired_capabilities)
       else
-        Selenium::WebDriver.for :firefox
+        Selenium::WebDriver.for :firefox, :http_client => client
       end
     end
 
