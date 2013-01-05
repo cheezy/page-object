@@ -389,7 +389,6 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:google_search)
         watir_page_object.should respond_to(:google_search_element)
-        watir_page_object.should respond_to(:google_search_link)
       end
 
       it "should call a block on the element method when present" do
@@ -416,7 +415,6 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to(:first_name)
         watir_page_object.should respond_to(:first_name=)
         watir_page_object.should respond_to(:first_name_element)
-        watir_page_object.should respond_to(:first_name_text_field)
         watir_page_object.should respond_to(:first_name?)
       end
 
@@ -450,7 +448,6 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:social_security_number)
         watir_page_object.should respond_to(:social_security_number_element)
-        watir_page_object.should respond_to(:social_security_number_hidden_field)
       end
 
       it "should call a block on the element method when present" do
@@ -477,7 +474,6 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to(:address)
         watir_page_object.should respond_to(:address=)
         watir_page_object.should respond_to(:address_element)
-        watir_page_object.should respond_to(:address_text_area)
       end
 
       it "should call a block on the element method when present" do
@@ -510,7 +506,6 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to :state
         watir_page_object.should respond_to :state=
         watir_page_object.should respond_to(:state_element)
-        watir_page_object.should respond_to(:state_select_list)
       end
 
       it "should call a block on the element method when present" do
@@ -548,7 +543,6 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to :uncheck_active
         watir_page_object.should respond_to :active_checked?
         watir_page_object.should respond_to :active_element
-        watir_page_object.should respond_to :active_checkbox
       end
 
       it "should call a block on the element method when present" do
@@ -589,7 +583,6 @@ describe PageObject::Accessors do
         watir_page_object.should respond_to :clear_first
         watir_page_object.should respond_to :first_selected?
         watir_page_object.should respond_to(:first_element)
-        watir_page_object.should respond_to(:first_radio_button)
       end
 
       it "should call a block on the element method when present" do
@@ -627,7 +620,6 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :click_me
         watir_page_object.should respond_to :click_me_element
-        watir_page_object.should respond_to :click_me_button
       end
 
       it "should call a block on the element method when present" do
@@ -653,7 +645,6 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:message)
         watir_page_object.should respond_to(:message_element)
-        watir_page_object.should respond_to(:message_div)
       end
 
       it "should call a block on the element method when present" do
@@ -679,7 +670,6 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:alert)
         watir_page_object.should respond_to(:alert_element)
-        watir_page_object.should respond_to(:alert_span)
       end
 
       it "should call a block on the element method when present" do
@@ -703,8 +693,8 @@ describe PageObject::Accessors do
   describe "table accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
+        watir_page_object.should respond_to(:cart)
         watir_page_object.should respond_to(:cart_element)
-        watir_page_object.should respond_to(:cart_table)
       end
 
       it "should call a block on the element method when present" do
@@ -724,7 +714,6 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:total)
         watir_page_object.should respond_to(:total_element)
-        watir_page_object.should respond_to(:total_cell)
       end
 
       it "should call a block on the element method when present" do
@@ -749,7 +738,6 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:logo_element)
-        watir_page_object.should respond_to(:logo_image)
       end
 
       it "should call a block on the element method when present" do
@@ -768,7 +756,6 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:login_element)
-        watir_page_object.should respond_to(:login_form)
       end
 
       it "should call a block on the element method when present" do
@@ -788,7 +775,6 @@ describe PageObject::Accessors do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:item_one)
         watir_page_object.should respond_to(:item_one_element)
-        watir_page_object.should respond_to(:item_one_list_item)
       end
 
       it "should call a block on the element method when present" do
@@ -813,7 +799,6 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:menu_element)
-        watir_page_object.should respond_to(:menu_unordered_list)
       end
 
       it "should call a block on the element method when present" do
@@ -832,7 +817,6 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to(:top_five_element)
-        watir_page_object.should respond_to(:top_five_ordered_list)
       end
 
       it "should call a block on the element method when present" do

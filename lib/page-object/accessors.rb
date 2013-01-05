@@ -140,15 +140,7 @@ module PageObject
         return platform.text_field_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.text_field_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.text_field_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_text_field".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'text_field_for', &block)
     end
 
     #
@@ -178,15 +170,7 @@ module PageObject
         return platform.hidden_field_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.hidden_field_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.hidden_field_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_hidden_field".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'hidden_field_for', &block)
     end
     alias_method :hidden, :hidden_field
 
@@ -220,15 +204,7 @@ module PageObject
         return platform.text_area_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.text_area_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.text_area_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_text_area".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'text_area_for', &block)
     end
     alias_method :textarea, :text_area
 
@@ -264,15 +240,7 @@ module PageObject
         return platform.select_list_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").select(value)
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.select_list_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.select_list_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_select_list".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'select_list_for', &block)
     end
     alias_method :select, :select_list
 
@@ -306,15 +274,7 @@ module PageObject
         return platform.click_link_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.link_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.link_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_link".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'link_for', &block)
     end
     alias_method :a, :link
 
@@ -354,15 +314,7 @@ module PageObject
         return platform.checkbox_checked?(identifier.clone) unless block_given?
         self.send("#{name}_element").checked?
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.checkbox_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.checkbox_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_checkbox".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'checkbox_for', &block)
     end
 
     #
@@ -402,15 +354,7 @@ module PageObject
         return platform.radio_selected?(identifier.clone) unless block_given?
         self.send("#{name}_element").selected?
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.radio_button_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.radio_button_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_radio_button".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'radio_button_for', &block)
     end
     alias_method :radio, :radio_button
 
@@ -442,15 +386,7 @@ module PageObject
         return platform.click_button_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.button_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.button_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_button".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'button_for', &block)
     end
 
     #
@@ -479,15 +415,7 @@ module PageObject
         return platform.div_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.div_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.div_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_div".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'div_for', &block)
     end
 
     #
@@ -516,15 +444,7 @@ module PageObject
         return platform.span_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.span_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.span_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_span".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'span_for', &block)
     end
 
     #
@@ -553,15 +473,7 @@ module PageObject
         return platform.table_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.table_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.table_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_table".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'table_for', &block)
     end
 
     #
@@ -590,15 +502,7 @@ module PageObject
         return platform.cell_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.cell_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.cell_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_cell".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'cell_for', &block)
     end
     alias_method :td, :cell
 
@@ -624,15 +528,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def image(name, identifier={:index => 0}, &block)
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.image_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.image_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_image".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'image_for', &block)
     end
     alias_method :img, :image
 
@@ -656,15 +552,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def form(name, identifier={:index => 0}, &block)
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.form_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.form_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_form".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'form_for', &block)
     end
 
     #
@@ -693,15 +581,7 @@ module PageObject
         return platform.list_item_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.list_item_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.list_item_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_list_item".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'list_item_for', &block)
     end
     alias_method :li, :list_item
 
@@ -730,15 +610,7 @@ module PageObject
         return platform.unordered_list_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.unordered_list_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.unordered_list_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_unordered_list".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'unordered_list_for', &block)
     end
     alias_method :ul, :unordered_list
 
@@ -767,15 +639,7 @@ module PageObject
         return platform.ordered_list_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.ordered_list_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.ordered_list_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_ordered_list".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'ordered_list_for', &block)
     end
     alias_method :ol, :ordered_list
 
@@ -803,15 +667,7 @@ module PageObject
         return platform.h1_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.h1_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.h1_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_h1".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier,'h1_for', &block)
     end
 
     #
@@ -838,15 +694,7 @@ module PageObject
         return platform.h2_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.h2_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.h2_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_h2".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'h2_for', &block)
     end
 
     #
@@ -873,15 +721,7 @@ module PageObject
         return platform.h3_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.h3_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.h3_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_h3".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'h3_for', &block)
     end
 
     #
@@ -908,15 +748,7 @@ module PageObject
         return platform.h4_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.h4_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.h4_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_h4".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'h4_for', &block)
     end
 
     #
@@ -943,15 +775,7 @@ module PageObject
         return platform.h5_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.h5_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.h5_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_h5".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'h5_for', &block)
     end
 
     #
@@ -978,15 +802,7 @@ module PageObject
         return platform.h6_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.h6_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.h6_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_h6".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'h6_for', &block)
     end
 
     #
@@ -1013,15 +829,7 @@ module PageObject
         return platform.paragraph_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.paragraph_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.paragraph_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_paragraph".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'paragraph_for', &block)
     end
     alias_method :p, :paragraph
 
@@ -1050,14 +858,7 @@ module PageObject
         return platform.file_field_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.file_field_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.file_field_for(identifier.clone).exists?
-      end
+      standard_methods(name, identifier, 'file_field_for', &block)
     end
 
     #
@@ -1085,15 +886,7 @@ module PageObject
         return platform.label_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.label_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.label_for(identifier.clone).exists?
-      end
-      alias_method "#{name}_label".to_sym, "#{name}_element".to_sym
+      standard_methods(name, identifier, 'label_for', &block)
     end
 
     #
@@ -1121,14 +914,7 @@ module PageObject
         return platform.click_area_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.area_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.area_for(identifier.clone).exists?
-      end
+      standard_methods(name, identifier, 'area_for', &block)
     end
 
     #
@@ -1151,14 +937,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def canvas(name, identifier={:index => 0}, &block)
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.canvas_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.canvas_for(identifier.clone).exists?
-      end
+      standard_methods(name, identifier, 'canvas_for', &block)
     end
 
     #
@@ -1181,14 +960,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def audio(name, identifier={:index => 0}, &block)
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.audio_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.audio_for(identifier.clone).exists?
-      end
+      standard_methods(name, identifier, 'audio_for', &block)
     end
 
     #
@@ -1211,14 +983,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def video(name, identifier={:index => 0}, &block)
-      define_method("#{name}_element") do
-        return call_block(&block) if block_given?
-        platform.video_for(identifier.clone)
-      end
-      define_method("#{name}?") do
-        return call_block(&block).exists? if block_given?
-        platform.video_for(identifier.clone).exists?
-      end
+      standard_methods(name, identifier, 'video_for', &block)
     end
 
     #
@@ -1967,6 +1732,18 @@ module PageObject
       element(name, :wbr, identifier, &block)
     end
 
+
+    def standard_methods(name, identifier, method, &block)
+      define_method("#{name}_element") do
+        return call_block(&block) if block_given?
+        platform.send(method, identifier.clone)
+      end
+      define_method("#{name}?") do
+        return call_block(&block).exists? if block_given?
+        platform.send(method, identifier.clone).exists?
+      end
+    end
+    
     #
     # adds a method that will return an indexed property.  The property will respond to
     # the [] method with an object that has a set of normal page_object properties that

@@ -1,5 +1,5 @@
 When /^I get the image element$/ do
-  @element = @page.image_id_image
+  @element = @page.image_id_element
 end
 
 Then /^the image should be "([^\"]*)" pixels wide$/ do |width|
