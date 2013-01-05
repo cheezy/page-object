@@ -2017,7 +2017,7 @@ module PageObject
      :text_areas,
      :select_lists,
      :links,
-     :checkboxs,
+     :checkboxes,
      :radio_buttons,
      :buttons,
      :divs,
@@ -2041,11 +2041,11 @@ module PageObject
       define_method(method_name) do |name, *identifier, &block|
         define_method("#{name}_elements") do
           return call_block(&block) unless block.nil?
-          identifier = identifier.first
-          platform.send "#{method_name.to_s}_for", identifier.clone
+          method_name = (method_name == :checkboxes) ? 'checkboxs_for' : "#{method_name.to_s}_for"
+          platform.send method_name, identifier.first.clone
         end
       end
     end
-    
+
   end
 end

@@ -1,3 +1,5 @@
+require 'page-object/locator_generator'
+
 module PageObject
   module  ElementLocators
 

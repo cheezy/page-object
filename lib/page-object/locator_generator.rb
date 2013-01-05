@@ -33,11 +33,11 @@ module PageObject
        :audio,
        :video].each do |tag|
         target.send(:define_method, "#{tag.to_s}_element") do |*identifier|
-          @platform.send "#{tag.to_s}_for", locator(identifier).clone
+          @platform.send "#{tag.to_s}_for", locator(identifier)
         end
 
         target.send(:define_method, "#{tag.to_s}_elements") do |*identifier|
-          @platform.send "#{tag.to_s}s_for", identifier[0] ? identifier[0].clone : {}
+          @platform.send("#{tag.to_s}s_for", identifier[0] ? identifier[0] : {})
         end
       end
     end
