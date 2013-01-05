@@ -401,7 +401,7 @@ module PageObject
         #
         # platform method to retrieve all checkbox elements
         #
-        def checkboxes_for(identifier)
+        def checkboxs_for(identifier)
           find_selenium_elements(identifier, Elements::CheckBox, 'input', :type => 'checkbox')
         end
 

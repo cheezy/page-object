@@ -2017,7 +2017,7 @@ module PageObject
      :text_areas,
      :select_lists,
      :links,
-     :checkboxes,
+     :checkboxs,
      :radio_buttons,
      :buttons,
      :divs,

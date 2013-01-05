@@ -366,7 +366,7 @@ module PageObject
         #
         # platform method to retrieve an array of checkbox elements
         #
-        def checkboxes_for(identifier)
+        def checkboxs_for(identifier)
           find_watir_elements("checkboxes(identifier)", Elements::CheckBox, identifier)
         end
 
