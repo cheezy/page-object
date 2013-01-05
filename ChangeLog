@@ -1,5 +1,6 @@
 === Version 0.8.2
 * Enhancements
+  * Updated expected_element to ue the global default element wait by default
   * Added *_element and *_elements methods to PageObject and Element for the following types
     * addr
     * address

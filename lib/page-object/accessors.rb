@@ -77,7 +77,7 @@ module PageObject
     #   expected_element(:address, 10)
     #   page.has_expected_element?
     #
-    def expected_element(element_name, timeout=5)
+    def expected_element(element_name, timeout=::PageObject.default_element_wait)
       define_method("has_expected_element?") do
         self.respond_to? "#{element_name}_element" and self.send("#{element_name}_element").when_present timeout
       end
