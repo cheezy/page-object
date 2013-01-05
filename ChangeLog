@@ -1,3 +1,38 @@
+=== Version 0.8.2
+* Enhancements
+  * Added *_element and *_elements methods to PageObject and Element for the following types
+    * addr
+    * address
+    * article
+    * aside
+    * bdi
+    * bdo
+    * cite
+    * code
+    * dd
+    * dfn
+    * dt
+    * em
+    * figcaption
+    * figure
+    * footer
+    * header
+    * hgroup
+    * kbd
+    * mark
+    * nav
+    * noscript
+    * rp
+    * rt
+    * ruby
+    * samp
+    * section
+    * sub
+    * summary
+    * sup
+    * var
+    * wbr
+
 === Version 0.8.1 / 2012-12-28
 * Fixes
   * Fixed issue when calling new multi-element class methods using a block
