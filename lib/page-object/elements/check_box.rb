@@ -1,4 +1,3 @@
-
 module PageObject
   module Elements
     class CheckBox < Element
@@ -15,7 +14,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        super + [:value]
+        super + [:value, :css]
       end
       
       def include_platform_for platform
