@@ -533,6 +533,21 @@ describe PageObject::Accessors do
       element = watir_page_object.state_element
       element.should be_instance_of PageObject::Elements::SelectList
     end
+    
+    it "should return list of selection options" do
+      option1 = double('option')
+      option2 = double('option')
+      option1.should_receive(:text).and_return("CA")
+      option2.should_receive(:text).and_return("OH")
+
+      select_element = double("select")
+      select_element.should_receive(:options).twice.and_return([option1, option2])
+      watir_page_object.should_receive(:state_element).and_return(select_element)
+      
+      watir_page_object.state_options.should == ["CA","OH"]
+    end
+    
+    
   end
 
 

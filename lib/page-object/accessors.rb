@@ -209,14 +209,15 @@ module PageObject
     alias_method :textarea, :text_area
 
     #
-    # adds four methods - one to select an item in a drop-down,
+    # adds five methods - one to select an item in a drop-down,
     # another to fetch the currently selected item text, another
-    # to retrieve the select list element, and another to check the
-    # drop down's existence.
+    # to retrieve the select list element, another to check the
+    # drop down's existence and another to get all the available options
+    # to select from.
     #
     # @example
     #   select_list(:state, :id => "state")
-    #   # will generate 'state', 'state=', 'state_element', 'state?' methods
+    #   # will generate 'state', 'state=', 'state_element', 'state?', "state_options" methods
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Hash] identifier how we find a select list.  You can use a multiple paramaters
@@ -240,6 +241,12 @@ module PageObject
         return platform.select_list_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").select(value)
       end
+      
+      define_method("#{name}_options") do
+        element = self.send("#{name}_element")
+        (element && element.options) ? element.options.collect(&:text) : []
+      end
+      
       standard_methods(name, identifier, 'select_list_for', &block)
     end
     alias_method :select, :select_list
