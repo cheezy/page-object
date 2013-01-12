@@ -240,6 +240,12 @@ module PageObject
         return platform.select_list_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").select(value)
       end
+      
+      define_method("#{name}_options") do
+        element = self.send("#{name}_element")
+        (element && !element.options.empty?) ? element.options.collect(&:text) : []
+      end
+      
       standard_methods(name, identifier, 'select_list_for', &block)
     end
     alias_method :select, :select_list
