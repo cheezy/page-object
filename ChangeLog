@@ -1,4 +1,4 @@
-=== Version 0.8.2
+=== Version 0.8.2 / 2013-1-13
 * Enhancements
   * Updated expected_element to ue the global default element wait by default
   * Updated routes to accept more than two entries in the array which are passed as arguments
