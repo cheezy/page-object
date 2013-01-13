@@ -196,6 +196,15 @@ describe PageObject::PageFactory do
     @world.navigate_to(AnotherPage).class.should == AnotherPage
   end
 
+  it "should pass parameters to methods when navigating" do
+    pages = [[FactoryTestPage, :a_method, 'blah'], [AnotherPage, :b_method]]
+    PageObject::PageFactory.routes = {:default => pages}
+    fake_page = double('a_page')
+    FactoryTestPage.should_receive(:new).and_return(fake_page)
+    fake_page.should_receive(:a_method).with('blah')
+    @world.navigate_to(AnotherPage).class.should == AnotherPage
+  end
+
   it "should fail when it does not find a proper route" do
     PageObject::PageFactory.routes = {:default => ['a'], :another => ['b']}
     expect { @world.navigate_to(AnotherPage, :using => :no_route) }.to raise_error
