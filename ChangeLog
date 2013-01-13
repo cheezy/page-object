@@ -1,6 +1,8 @@
 === Version 0.8.2
 * Enhancements
   * Updated expected_element to ue the global default element wait by default
+  * Added new generated method for select_list to return options -> <name>_options (X Zhang)
+  * Added scroll_into_view method to Element
   * Added *_element and *_elements methods to PageObject and Element for the following types
     * addr
     * address

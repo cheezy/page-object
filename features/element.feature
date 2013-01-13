@@ -291,3 +291,8 @@ Feature: Elements
     Given I am on the Double Click page
     When I double click the button
     Then the paragraph should read "Double Click Received"
+
+  Scenario: Scrolling so an element is visible
+    When I retrieve a heading element
+    And I scroll the heading element into view
+    Then the heading element should be visible

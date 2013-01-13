@@ -227,6 +227,13 @@ module PageObject
         def id
           element.id
         end
+
+        #
+        # Scroll until the element is viewable
+        #
+        def scroll_into_view
+          element.wd.location_once_scrolled_into_view
+        end
       end
     end
   end

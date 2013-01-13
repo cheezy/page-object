@@ -164,4 +164,9 @@ describe "Element for Selenium" do
     @selenium_driver.should_receive(:executeScript)
     @selenium_element.focus
   end
+
+  it "should scroll into view" do
+    @selenium_driver.should_receive(:location_once_scrolled_into_view)
+    @selenium_element.scroll_into_view
+  end
 end

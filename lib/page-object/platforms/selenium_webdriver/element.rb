@@ -264,6 +264,13 @@ module PageObject
           attribute(:id)
         end
 
+        #
+        # Scroll until the element is viewable
+        #
+        def scroll_into_view
+          element.location_once_scrolled_into_view
+        end
+
         private
 
         def bridge
