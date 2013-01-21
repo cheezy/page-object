@@ -1,6 +1,7 @@
 === Version 0.8.3
 * Fixes
   * Fixed issue when getting basic Element element when using Selenium
+  * Fixed issue when using plural class methods multiple times on same object
 
 === Version 0.8.2 / 2013-1-13
 * Enhancements
