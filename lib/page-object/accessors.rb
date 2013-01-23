@@ -60,8 +60,9 @@ module PageObject
     #
     def expected_title(expected_title)
       define_method("has_expected_title?") do
-        has_expected_title = expected_title === title
-        raise "Expected title '#{expected_title}' instead of '#{title}'" unless has_expected_title
+        page_title = title
+        has_expected_title = (expected_title === page_title)
+        raise "Expected title '#{expected_title}' instead of '#{page_title}'" unless has_expected_title
         has_expected_title
       end
     end
