@@ -188,7 +188,7 @@ describe PageObject::Accessors do
     end
 
     it "should raise error when it does not have expected title" do
-      watir_browser.should_receive(:title).twice.and_return("Not Expected")
+      watir_browser.should_receive(:title).once.and_return("Not Expected")
       expect { watir_page_object.has_expected_title? }.to raise_error
     end
   end
