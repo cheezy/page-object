@@ -26,9 +26,12 @@ module PageObject
   # @example Example routes defined in env.rb
   #   PageObject::PageFactory.routes = {
   #     :default => [[PageOne,:method1], [PageTwoA,:method2], [PageThree,:method3]],
-  #     :another_route => [[PageOne,:method1], [PageTwoB,:method2b], [PageThree,:method3]]
+  #     :another_route => [[PageOne,:method1, "arg1"], [PageTwoB,:method2b], [PageThree,:method3]]
   #   }
-  # 
+  #
+  # Notice the first entry of :anouther_route is passing an argument
+  # to the method.
+  #
   module PageFactory
 
     #
@@ -147,15 +150,16 @@ module PageObject
     end
     
     def navigate_through_pages(pages)
-      pages.each do |cls, method|
+      pages.each do |cls, method, *args|
         page = on_page(cls)
-        fail("Navigation method not specified on #{cls}.  Please call the ") unless page.respond_to? method
-        page.send method
+        fail("Navigation method not specified on #{cls}.") unless page.respond_to? method
+        page.send method unless args
+        page.send method, *args if args
       end
     end
 
     def find_index_for(path, item)
-      path.each_with_index { |each, index| return index if each[0] == item}
+      path.find_index { |each| each[0] == item}
     end
 
     class << self

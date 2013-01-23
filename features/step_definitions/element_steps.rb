@@ -236,3 +236,10 @@ Then /^the paragraph should read "([^\"]*)"$/ do |expected_text|
   @page.text.should == expected_text
 end
 
+When /^I scroll the heading element into view$/ do
+  @element.scroll_into_view
+end
+
+Then /^the heading element should be visible$/ do
+  @element.should be_visible
+end

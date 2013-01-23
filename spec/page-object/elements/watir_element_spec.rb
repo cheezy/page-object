@@ -133,4 +133,10 @@ describe "Element for Watir" do
     watir_driver.should_receive(:clear)
     watir_element.clear
   end
+
+  it "should scroll into view" do
+    watir_driver.stub(:wd).and_return(watir_driver)
+    watir_driver.should_receive(:location_once_scrolled_into_view)
+    watir_element.scroll_into_view
+  end
 end

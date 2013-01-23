@@ -977,7 +977,7 @@ module PageObject
         # See PageObject::Accessors#element
         #
         def element_for(tag, identifier)
-          find_selenium_element(identifier, Elements::FileField, tag.to_s)
+          find_selenium_element(identifier, Elements::Element, tag.to_s)
         end
 
         #
@@ -985,7 +985,7 @@ module PageObject
         # See PageObject::Accessors#elements
         #
         def elements_for(tag, identifier)
-          find_selenium_elements(identifier, Elements::FileField, tag.to_s)
+          find_selenium_elements(identifier, Elements::Element, tag.to_s)
         end
 
         private

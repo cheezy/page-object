@@ -1,6 +1,14 @@
-=== Version 0.8.2
+=== Version 0.8.3
+* Fixes
+  * Fixed issue when getting basic Element element when using Selenium
+  * Fixed issue when using plural class methods multiple times on same object
+
+=== Version 0.8.2 / 2013-1-13
 * Enhancements
   * Updated expected_element to ue the global default element wait by default
+  * Updated routes to accept more than two entries in the array which are passed as arguments
+  * Added new generated method for select_list to return options -> <name>_options (X Zhang)
+  * Added scroll_into_view method to Element
   * Added *_element and *_elements methods to PageObject and Element for the following types
     * addr
     * address
