@@ -1,4 +1,4 @@
-=== Version 0.8.3
+=== Version 0.8.3 / 2013-1-22
 * Enhancements
   * Updated to use the latest selenium-webdriver 2.29
   * Added :using_params parameter to both on_page and if_page methods
