@@ -38,15 +38,15 @@ module PageObject
     # Create and navigate to a page object.  The navigation will only work if the
     # 'page_url' method was call on the page object.
     #
-    # @param [PageObject, String] a class that has included the PageObject module or a string containing the name of the class 
+    # @param [PageObject, String] a class that has included the
+    # PageObject module or a string containing the name of the class
+    # @param Hash values that is pass through to page class a
+    # available in the @params instance variable.
     # @param an optional block to be called
     # @return [PageObject] the newly created page object
     #
     def visit_page(page_class, params={:using_params => {}}, &block)
-      page_class = class_from_string(page_class) if page_class.is_a? String
-      merged = page_class.params.merge(params[:using_params])
-      page_class.instance_variable_set("@merged_params", merged) unless merged.empty?
-      on_page page_class, true, &block
+      on_page page_class, params, true, &block
     end
 
     # Support 'visit' for readability of usage
@@ -56,12 +56,16 @@ module PageObject
     # Create a page object.
     #
     # @param [PageObject, String]  a class that has included the PageObject module or a string containing the name of the class
+    # @param Hash values that is pass through to page class a
+    # available in the @params instance variable.
     # @param [Boolean]  a boolean indicating if the page should be visited?  default is false.
     # @param [block]  an optional block to be called
     # @return [PageObject] the newly created page object
     #
-    def on_page(page_class, visit=false, &block)
+    def on_page(page_class, params={:using_params => {}}, visit=false, &block)
       page_class = class_from_string(page_class) if page_class.is_a? String
+      merged = page_class.params.merge(params[:using_params])
+      page_class.instance_variable_set("@merged_params", merged) unless merged.empty?
       @current_page = page_class.new(@browser, visit)
       block.call @current_page if block
       @current_page
@@ -74,13 +78,15 @@ module PageObject
     # Create a page object if and only if the current page is the same page to be created
     #
     # @param [PageObject, String]  a class that has included the PageObject module or a string containing the name of the class
+    # @param Hash values that is pass through to page class a
+    # available in the @params instance variable.
     # @param [block]  an optional block to be called
     # @return [PageObject] the newly created page object
     #
-    def if_page(page_class, &block)
+    def if_page(page_class, params={:using_params => {}},&block)
       page_class = class_from_string(page_class) if page_class.is_a? String
       return @current_page unless @current_page.class == page_class
-      on_page(page_class, false, &block)
+      on_page(page_class, params, false, &block)
     end
 
     # Support 'if' for readability of usage
