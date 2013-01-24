@@ -1,5 +1,8 @@
 === Version 0.8.3
+* Enhancements
+  * Updated to use the latest selenium-webdriver 2.29
 * Fixes
+  * Fixed issue where has_expected_title? displays misleading error message (X Zhang)
   * Fixed issue when getting basic Element element when using Selenium
   * Fixed issue when using plural class methods multiple times on same object
 
