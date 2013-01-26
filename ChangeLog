@@ -1,3 +1,7 @@
+=== Version 0.8.3
+* Enhancements
+  * Extracted navigational methods into new gem named page_navigation
+
 === Version 0.8.3 / 2013-1-22
 * Enhancements
   * Updated to use the latest selenium-webdriver 2.29
