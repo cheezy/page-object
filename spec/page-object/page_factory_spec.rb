@@ -184,7 +184,7 @@ describe PageObject::PageFactory do
   it "should store the routes" do
     routes = ['a', 'b', 'c']
     PageObject::PageFactory.routes = {:default => routes}
-    PageObject::PageFactory.page_object_routes[:default].should == routes
+    PageObject::PageFactory.routes[:default].should == routes
   end
 
   it "should navigate to a page calling the default methods" do

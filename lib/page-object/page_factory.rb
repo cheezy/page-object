@@ -1,3 +1,5 @@
+require 'page_navigation'
+
 module PageObject
   #
   # Module to facilitate to creating of page objects in step definitions.  You
@@ -33,6 +35,8 @@ module PageObject
   # to the method.
   #
   module PageFactory
+    include PageNavigation
+
 
     #
     # Create and navigate to a page object.  The navigation will only work if the
@@ -92,88 +96,11 @@ module PageObject
     # Support 'if' for readability of usage
     alias_method :if, :if_page
 
-    #
-    # Navigate to a specific page following a predefined path.
-    #
-    # This method requires a lot of setup.  See the documentation for
-    # this class.  Once the setup is complete you can navigate to a
-    # page traversing through all other pages along the way.  It will
-    # call the method you specified in the routes for each
-    # page as it navigates.  Using the example setup defined in the
-    # documentation above you can call the method two ways:
-    #
-    # @example
-    #   page.navigate_to(PageThree)  # will use the default path
-    #   page.navigate_to(PageThree, :using => :another_route)
-    #
-    # @param [PageObject]  a class that has included the PageObject
-    # module and which has the navigation_method defined
-    # @param [Hash] a hash that contains an element with the key
-    # :using.  This will be used to lookup the route.  It has a
-    # default value of :default.
-    # @param [block]  an optional block to be called
-    # @return [PageObject] the page you are navigating to
-    #
-    def navigate_to(page_cls, how = {:using => :default}, &block)
-      path = path_for how
-      to_index = find_index_for(path, page_cls)-1
-      navigate_through_pages(path[0..to_index])
-      on_page(page_cls, &block)
-    end
-
-    #
-    # Same as navigate_to except it will start at the @current_page
-    # instead the beginning of the path.
-    #
-    # @param [PageObject]  a class that has included the PageObject
-    # module and which has the navigation_method defined
-    # @param [Hash] a hash that contains an element with the key
-    # :using.  This will be used to lookup the route.  It has a
-    # default value of :default.
-    # @param [block]  an optional block to be called
-    # @return [PageObject] the page you are navigating to
-    #
-    def continue_navigation_to(page_cls, how = {:using => :default}, &block)
-      path = path_for how
-      from_index = find_index_for(path, @current_page.class)+1
-      to_index = find_index_for(path, page_cls)-1
-      navigate_through_pages(path[from_index..to_index])
-      on_page(page_cls, &block)
-    end
-
     private
     
     def class_from_string(str)
       str.split('::').inject(Object) do |mod, class_name|
         mod.const_get(class_name)
-      end
-    end
-    
-    def path_for(how)
-      path = PageObject::PageFactory.page_object_routes[how[:using]]
-      fail("PageFactory route :#{how[:using].to_s} not found") unless path
-      path
-    end
-    
-    def navigate_through_pages(pages)
-      pages.each do |cls, method, *args|
-        page = on_page(cls)
-        fail("Navigation method not specified on #{cls}.") unless page.respond_to? method
-        page.send method unless args
-        page.send method, *args if args
-      end
-    end
-
-    def find_index_for(path, item)
-      path.find_index { |each| each[0] == item}
-    end
-
-    class << self
-      attr_accessor :page_object_routes
-      
-      def routes=(routes)
-        raise("You must provide a :default route for PageFactory routes") unless routes[:default]
-        @page_object_routes = routes
       end
     end
   end
