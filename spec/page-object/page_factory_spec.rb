@@ -226,12 +226,16 @@ describe PageObject::PageFactory do
                    [AnotherPage, :b_method],
                    [YetAnotherPage, :c_method]]
     }
-    fake_page = double('a_page')
-    AnotherPage.should_receive(:new).and_return(fake_page)
-    fake_page.should_receive(:respond_to?).with(:b_method).and_return(true)
-    fake_page.should_receive(:b_method)
+
     @world.current_page = FactoryTestPage.new(@world.browser)
-    FactoryTestPage.should_not_receive(:new)
+    f_page = FactoryTestPage.new(@world.browser)
+    FactoryTestPage.should_receive(:new).and_return(f_page)
+    f_page.should_receive(:respond_to?).with(:a_method).and_return(true)
+    f_page.should_receive(:a_method)
+    a_page = AnotherPage.new(@world.browser)
+    AnotherPage.should_receive(:new).and_return(a_page)
+    a_page.should_receive(:respond_to?).with(:b_method).and_return(true)
+    a_page.should_receive(:b_method)
     @world.continue_navigation_to(YetAnotherPage).class.should == YetAnotherPage
   end
 end
