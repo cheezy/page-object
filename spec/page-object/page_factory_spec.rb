@@ -220,7 +220,7 @@ describe PageObject::PageFactory do
     expect { @world.navigate_to(AnotherPage) }.to raise_error
   end
 
-  it "should know how to continue routng from a location" do
+  it "should know how to continue routing from a location" do
     PageObject::PageFactory.routes = {
       :default => [[FactoryTestPage, :a_method],
                    [AnotherPage, :b_method],
