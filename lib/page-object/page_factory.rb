@@ -31,7 +31,7 @@ module PageObject
   #     :another_route => [[PageOne,:method1, "arg1"], [PageTwoB,:method2b], [PageThree,:method3]]
   #   }
   #
-  # Notice the first entry of :anouther_route is passing an argument
+  # Notice the first entry of :another_route is passing an argument
   # to the method.
   #
   module PageFactory
