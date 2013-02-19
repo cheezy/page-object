@@ -267,6 +267,7 @@ module PageObject
   #   * :id => Watir and Selenium
   #   * :index => Watir and Selenium
   #   * :name => Watir and Selenium
+  #   * :class => Watir only
   # @param frame passed from a previous call to in_frame.  Used to nest calls
   # @param block that contains the calls to elements that exist inside the frame.
   #
