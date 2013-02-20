@@ -26,6 +26,11 @@ module PageObject
         ".//child::td|th"
       end
 
+      def initialize_cell(row_element, platform)
+        Object::PageObject::Elements::TableCell.new(row_element, platform)
+      end
+
+
       def include_platform_for platform
         super
         if platform[:platform] == :watir_webdriver
