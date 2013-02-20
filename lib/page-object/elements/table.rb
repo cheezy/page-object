@@ -44,6 +44,11 @@ module PageObject
         ".//child::tr"
       end
 
+      def initialize_row(row_element, platform)
+        Object::PageObject::Elements::TableRow.new(row_element, platform)
+      end
+
+
       def include_platform_for platform
         super
         if platform[:platform] == :watir_webdriver
