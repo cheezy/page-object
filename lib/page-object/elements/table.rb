@@ -45,7 +45,7 @@ module PageObject
       end
 
       def initialize_row(row_element, platform)
-        Object::PageObject::Elements::TableRow.new(row_element, platform)
+        ::PageObject::Elements::TableRow.new(row_element, platform)
       end
 
 
