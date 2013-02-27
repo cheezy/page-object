@@ -901,16 +901,34 @@ module PageObject
 
         #
         # platform method to return a PageObject::Elements::Element element
-        # See PageObject::Accessors#elem
+        # See PageObject::Accessors#element
         #
         def element_for(tag, identifier)
           find_watir_element("#{tag.to_s}(identifier)", Elements::Element, identifier, tag.to_s)
         end
 
+        #
+        # platform method to return an array of  PageObject::Elements::Element elements
+        # See PageObject::Accessors#element
+        #
         def elements_for(tag, identifier)
           find_watir_elements("#{tag.to_s}s(identifier)", Elements::Element, identifier, tag.to_s)
         end
 
+        #
+        # platform method to return a svg element
+        #
+        def svg_for(identifier)
+          find_watir_element("element(identifier)", Elements::Element, identifier)
+        end
+ 
+        #
+        # platform method to return an array of svg elements
+        #
+        def svgs_for(identifier)
+          find_watir_elements("element(identifier)", Elements::Element, identifier)
+        end
+ 
         private
     
         def find_watir_elements(the_call, type, identifier, tag_name=nil)

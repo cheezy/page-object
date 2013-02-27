@@ -17,3 +17,15 @@ end
 When /^I get the text from the details$/ do
 	@text = @page.details_id
 end
+
+When /^I get the svg element$/ do
+  @svg = @page.svg_id_element
+end
+
+Then /^the svg width should be "(.*?)"$/ do |width|
+  @svg.attribute('width').should == width
+end
+
+Then /^the svg height should be "(.*?)"$/ do |height|
+  @svg.attribute('height').should == height
+end

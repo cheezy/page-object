@@ -988,6 +988,20 @@ module PageObject
           find_selenium_elements(identifier, Elements::Element, tag.to_s)
         end
 
+       #
+        # platform method to return a svg element
+        #
+        def svg_for(identifier)
+          find_selenium_element(identifier, Elements::Element, 'svg')
+        end
+ 
+        #
+        # platform method to return an array of svg elements
+        #
+        def svgs_for(identifier)
+          find_selenium_elements(identifier, Elements::Element, 'svg')
+        end
+ 
         private
         
         def process_selenium_call(identifier, type, tag, other=nil)

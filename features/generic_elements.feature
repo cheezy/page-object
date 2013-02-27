@@ -22,3 +22,9 @@ Feature: Generic Elements
   Scenario: Getting the text from the details element
     When I get the text from the details
     Then the text should be "The summary The details"
+
+@focus
+  Scenario: getting properties from a svg element
+    When I get the svg element
+    Then the svg width should be "100"
+    And the svg height should be "100"

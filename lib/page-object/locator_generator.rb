@@ -31,7 +31,8 @@ module PageObject
        :area,
        :canvas,
        :audio,
-       :video].each do |tag|
+       :video,
+       :svg].each do |tag|
         target.send(:define_method, "#{tag.to_s}_element") do |*identifier|
           @platform.send "#{tag.to_s}_for", locator(identifier)
         end

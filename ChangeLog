@@ -1,6 +1,8 @@
 === Version 0.8.6
+* Enhancements
+  * Added support for the svg element
 * Fixes
-  * Fixed issue with generic element calls
+  * Fixed issue with nested generic element calls
 
 === Version 0.8.5 / 2013-2-21
 * Enhancements
