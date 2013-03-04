@@ -73,6 +73,7 @@ class Page
   select_list(:sel_list_class_index, :class => "sel_list_class", :index => 0)
   select_list(:sel_list_name_index, :name => "sel_list_name", :index => 0)
   select_list(:sel_list_multiple, :id => "sel_list_multiple")
+  select_list(:sel_list_label, :label => "Select List")
 
   checkbox(:cb_id, :id => 'cb_id')
   checkbox(:cb_name, :name => 'cb_name')

@@ -232,6 +232,7 @@ module PageObject
     #   * :text => Watir only
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
+    #   * :label => Watir only
     # @param optional block to be invoked when element method is called
     #
     def select_list(name, identifier={:index => 0}, &block)

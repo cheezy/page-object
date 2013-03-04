@@ -24,6 +24,17 @@ Feature: Select List
     | xpath     |
     | index     |
 
+  @watir_only
+  Scenario Outline: Locating select lists on the Page using Selenium
+    When I search for the select list by "<search_by>"
+    Then I should be able to select "Test 2"
+    And the value for the selected item should be "Test 2"
+    And the value for the option should be "option2"
+
+  Examples:
+    | search_by |
+    | label     |
+
   @selenium_only
   Scenario Outline: Locating select lists on the Page using Selenium
     When I search for the select list by "<search_by>"
@@ -75,7 +86,7 @@ Feature: Select List
   Scenario: Selecting an option by its value
     When I select an option using the value "option2"
     Then the selected option should be "Test 2"
-    
+
   Scenario: Getting the value from a selected option
     When I select an option using the value "option2"
     Then the selected option should have a value of "option2"
