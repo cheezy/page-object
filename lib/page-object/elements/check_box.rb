@@ -11,13 +11,13 @@ module PageObject
       protected
 
       def self.watir_finders
-        super + [:value]
+        super + [:value, :label]
       end
 
       def self.selenium_finders
         super + [:value]
       end
-      
+
       def include_platform_for platform
         super
         if platform[:platform] == :watir_webdriver
@@ -33,6 +33,6 @@ module PageObject
     end
 
     ::PageObject::Elements.type_to_class[:checkbox] = ::PageObject::Elements::CheckBox
-    
+
   end
 end
