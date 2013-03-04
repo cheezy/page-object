@@ -34,6 +34,7 @@ class Page
   text_area(:text_area_value, :value => "")
   text_area(:text_area_class_index, :class => "text_area_class", :index => 0)
   text_area(:text_area_name_index, :name => "text_area_name", :index => 0)
+  text_area(:text_area_label, :label => "Text Area")
 
   hidden_field(:hidden_field_id, :id => "hidden_field_id")
   hidden_field(:hidden_field_class, :class => "hidden_field_class")

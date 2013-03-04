@@ -194,6 +194,7 @@ module PageObject
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    #   * :label => Watir only
     # @param optional block to be invoked when element method is called
     #
     def text_area(name, identifier={:index => 0}, &block)

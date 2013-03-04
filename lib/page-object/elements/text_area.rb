@@ -8,6 +8,10 @@ module PageObject
         include_platform_for platform
       end
 
+      def self.watir_finders
+        super + [:label]
+      end
+
       protected
 
       def include_platform_for platform
@@ -25,6 +29,6 @@ module PageObject
     end
 
     ::PageObject::Elements.tag_to_class[:textarea] = ::PageObject::Elements::TextArea
-    
+
   end
 end
