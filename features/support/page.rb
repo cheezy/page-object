@@ -298,6 +298,7 @@ class Page
   file_field(:file_field_class_index, :class => 'file_field_class', :index => 0)
   file_field(:file_field_name_index, :name => 'file_field_name', :index => 0)
   file_field(:file_field_xpath, :xpath => "//input[@type='file']")
+  file_field(:file_field_label, :label => "File Field")
 
   label(:label_id, :id => 'label_id')
   label(:label_name, :name => 'label_name')

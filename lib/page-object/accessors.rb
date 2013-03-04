@@ -863,6 +863,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :title => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    #   * :label => Watir only
     # @param optional block to be invoked when element method is called
     #
     def file_field(name, identifier={:index => 0}, &block)
