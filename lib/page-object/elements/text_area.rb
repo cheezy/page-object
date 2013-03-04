@@ -12,6 +12,10 @@ module PageObject
         super + [:label]
       end
 
+      def self.selenium_finders
+        super + [:label]
+      end
+
       protected
 
       def include_platform_for platform
