@@ -82,6 +82,7 @@ class Page
   checkbox(:cb_value, :value => '1')
   checkbox(:cb_class_index, :class => "cb_class", :index => 0)
   checkbox(:cb_name_index, :name => "cb_name", :index => 0)
+  checkbox(:cb_label, :label => 'Checkbox')
 
   radio_button(:milk_id, :id => 'milk_id')
   radio_button(:milk_name, :name => 'milk_name')
@@ -164,7 +165,7 @@ class Page
   button(:btn_class_index, :class => "btn_class", :index => 0)
   button(:btn_name_index, :name => "btn_name", :index => 0)
 
-  
+
   button(:disabled_button, :value => 'Disabled')
 
   image(:image_id, :id => 'image_id')
@@ -344,7 +345,7 @@ class Page
   video(:video_xpath, :xpath => '//video')
   video(:video_class_index, :class => 'video', :index => 0)
   video(:video_name_index, :name => 'video', :index => 0)
-  
+
   element(:article_id, :article, :id => 'article_id')
   element(:header_id, :header, :id => 'header_id')
   element(:footer_id, :footer, :id => 'footer_id')

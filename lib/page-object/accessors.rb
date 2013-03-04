@@ -242,12 +242,12 @@ module PageObject
         return platform.select_list_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").select(value)
       end
-      
+
       define_method("#{name}_options") do
         element = self.send("#{name}_element")
         (element && element.options) ? element.options.collect(&:text) : []
       end
-      
+
       standard_methods(name, identifier, 'select_list_for', &block)
     end
     alias_method :select, :select_list
@@ -307,6 +307,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    #   * :label => Watir only
     # @param optional block to be invoked when element method is called
     #
     def checkbox(name, identifier={:index => 0}, &block)
@@ -1118,7 +1119,7 @@ module PageObject
         platform.send(method, identifier.clone).exists?
       end
     end
-    
+
     #
     # adds a method that will return an indexed property.  The property will respond to
     # the [] method with an object that has a set of normal page_object properties that
