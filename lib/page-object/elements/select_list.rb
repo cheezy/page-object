@@ -15,7 +15,7 @@ module PageObject
       end
 
       def self.watir_finders
-        super + [:text, :value]
+        super + [:text, :value, :label]
       end
 
       def include_platform_for platform
