@@ -20,6 +20,15 @@ Feature: Text Area
     | xpath     |
     | index     |
 
+  @watir_only
+  Scenario Outline: Locating text area on the Page
+    When I search for the text area by "<search_by>"
+    Then I should be able to type "I found it" into the area
+
+  Scenarios:
+    | search_by |
+    | label     |
+
   @selenium_only
   Scenario Outline: Locating text area on the Page
     When I search for the text area by "<search_by>"
@@ -42,7 +51,7 @@ Feature: Text Area
     When I find a text area while the script is executing
     Then I should see that the text area exists
     And I should be able to type "I found it" into the area element
-    
+
   Scenario: Clearing the text area
     When I type "abcdefghijklmnop" into the text area
     Then the text area should contain "abcdefghijklmnop"

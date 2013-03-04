@@ -20,6 +20,15 @@ Feature: File Field
     | title     |
     | index     |
 
+  @watir_only
+  Scenario Outline: Locating file fields on the Page
+    When I search for the file field by "<search_by>"
+    Then I should be able to set the file field
+
+  Scenarios:
+    | search_by |
+    | label     |
+
   @selenium_only
   Scenario Outline: Locating file fields on the Page
     When I search for the file field by "<search_by>"

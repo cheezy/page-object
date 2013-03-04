@@ -11,7 +11,7 @@ module PageObject
       protected
 
       def self.watir_finders
-        super + [:title]
+        super + [:title, :label]
       end
 
       def self.selenium_finders
@@ -33,6 +33,6 @@ module PageObject
     end
 
     ::PageObject::Elements.type_to_class[:file] = ::PageObject::Elements::FileField
-    
+
   end
 end
