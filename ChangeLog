@@ -1,6 +1,8 @@
-=== Version 0.8.6.1
+=== Version 0.8.6.1 / 2013-3-4
 * Enhancements
   * Added lable locators for checkbox, text area, select list, radio button and file field (Thanks Alex Rodionov)
+  * Updated to use the latest selenium-webdriver 2.31.0
+  * Updated to use the latest page_navigation 0.7
 
 === Version 0.8.6 / 2013-2-27
 * Enhancements
