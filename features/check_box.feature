@@ -25,6 +25,15 @@ Feature: Check Box
     | index     |
     | value     |
 
+  @watir_only
+  Scenario Outline: Locating check boxes on the page
+    When I search for the check box by "<search_by>"
+    Then I should be able to check the check box
+
+  Scenarios:
+    | search_by |
+    | label     |
+
   @selenium_only
   Scenario Outline: Locating check boxes on the page
     When I search for the check box by "<search_by>"
@@ -47,7 +56,7 @@ Feature: Check Box
     When I retrieve a check box element
     Then I should know it exists
     And I should know it is visible
-      
+
   Scenario: Finding a check box dynamically
     When I select the first check box while the script is executing
     Then I should see that the checkbox exists
