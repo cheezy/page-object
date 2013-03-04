@@ -305,8 +305,8 @@ class Page
   label(:label_class, :class => 'label_class')
   label(:label_css, :css => '.label_class')
   label(:label_text, :text => 'page-object is the best!')
-  label(:label_index, :index => 1)
-  label(:label_xpath, :xpath => '//label[2]')
+  label(:label_index, :index => 5)
+  label(:label_xpath, :xpath => '//label[6]')
   label(:label_class_index, :class => "label_class", :index => 0)
   label(:label_name_index, :name => "label_name", :index => 0)
 

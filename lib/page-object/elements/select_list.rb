@@ -18,6 +18,10 @@ module PageObject
         super + [:text, :value, :label]
       end
 
+      def self.selenium_finders
+        super + [:label]
+      end
+
       def include_platform_for platform
         super
         if platform[:platform] == :watir_webdriver
