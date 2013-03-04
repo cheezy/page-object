@@ -9,9 +9,9 @@ module PageObject
       end
 
       protected
-      
+
       def self.watir_finders
-        super + [:value]
+        super + [:value, :label]
       end
 
       def self.selenium_finders

@@ -350,6 +350,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    #   * :label => Watir only
     # @param optional block to be invoked when element method is called
     #
     def radio_button(name, identifier={:index => 0}, &block)
