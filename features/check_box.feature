@@ -24,14 +24,6 @@ Feature: Check Box
     | xpath     |
     | index     |
     | value     |
-
-  @watir_only
-  Scenario Outline: Locating check boxes on the page
-    When I search for the check box by "<search_by>"
-    Then I should be able to check the check box
-
-  Scenarios:
-    | search_by |
     | label     |
 
   @selenium_only

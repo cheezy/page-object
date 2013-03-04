@@ -194,7 +194,7 @@ module PageObject
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
     #   * :xpath => Watir and Selenium
-    #   * :label => Watir only
+    #   * :label => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def text_area(name, identifier={:index => 0}, &block)
@@ -232,7 +232,7 @@ module PageObject
     #   * :text => Watir only
     #   * :value => Watir only
     #   * :xpath => Watir and Selenium
-    #   * :label => Watir only
+    #   * :label => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def select_list(name, identifier={:index => 0}, &block)
@@ -309,7 +309,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
-    #   * :label => Watir only
+    #   * :label => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def checkbox(name, identifier={:index => 0}, &block)
@@ -350,7 +350,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
-    #   * :label => Watir only
+    #   * :label => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def radio_button(name, identifier={:index => 0}, &block)
@@ -863,7 +863,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :title => Watir and Selenium
     #   * :xpath => Watir and Selenium
-    #   * :label => Watir only
+    #   * :label => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
     def file_field(name, identifier={:index => 0}, &block)

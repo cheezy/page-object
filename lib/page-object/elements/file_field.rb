@@ -15,7 +15,7 @@ module PageObject
       end
 
       def self.selenium_finders
-        super + [:title]
+        super + [:title, :label]
       end
 
       def include_platform_for platform
