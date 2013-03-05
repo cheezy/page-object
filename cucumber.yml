@@ -1,5 +1,5 @@
 <%
-std_opts = "--no-source --color --format Cucumber::Formatter::Fuubar"
+std_opts = "--no-source --color --format pretty" # Cucumber::Formatter::Fuubar"
 %>
 
 default: DRIVER=WATIR <%= std_opts %> --tags ~@selenium_only
