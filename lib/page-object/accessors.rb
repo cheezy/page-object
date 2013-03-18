@@ -386,7 +386,7 @@ module PageObject
     #   * :id => Watir and Selenium
     #   * :index => Watir and Selenium
     #   * :name => Watir and Selenium
-    #   * :text => Watir and Selenium
+    #   * :text => Watir only
     #   * :value => Watir and Selenium
     #   * :xpath => Watir and Selenium
     #   * :src => Watir and Selenium (input type=image only)
