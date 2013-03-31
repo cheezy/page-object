@@ -243,3 +243,7 @@ end
 Then /^the heading element should be visible$/ do
   @element.should be_visible
 end
+
+When /^I retrieve a div using data\-entity$/ do
+  @element = @page.div_data_entity_element
+end

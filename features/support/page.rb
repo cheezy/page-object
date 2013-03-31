@@ -110,6 +110,8 @@ class Page
   div(:div_class_index, :class => "div_class", :index => 0)
   div(:div_name_index, :name => "div_name", :index => 0)
   div(:div_css, :css => ".div_class")
+  
+  div(:div_data_entity, :data_entity => "test")
 
   span(:span_id, :id => 'span_id')
   span(:span_name, :name => 'span_name')
