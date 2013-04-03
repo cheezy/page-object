@@ -28,14 +28,6 @@ Feature: Headings
     | name      |
     | xpath     |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating h1s on the Page
-    When I search for the heading1 by "<search_by>"
-    Then I should see "h1's are cool"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating h2s on the Page
@@ -49,14 +41,6 @@ Feature: Headings
     | name      |
     | xpath     |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating h2s on the Page
-    When I search for the heading2 by "<search_by>"
-    Then I should see "h2's are cool"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating h3s on the Page
@@ -70,14 +54,6 @@ Feature: Headings
     | name      |
     | xpath     |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating h3s on the Page
-    When I search for the heading3 by "<search_by>"
-    Then I should see "h3's are cool"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating h4s on the Page
@@ -91,14 +67,6 @@ Feature: Headings
     | name      |
     | xpath     |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating h4s on the Page
-    When I search for the heading4 by "<search_by>"
-    Then I should see "h4's are cool"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating h5s on the Page
@@ -112,14 +80,6 @@ Feature: Headings
     | name      |
     | xpath     |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating h5s on the Page
-    When I search for the heading5 by "<search_by>"
-    Then I should see "h5's are cool"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating h6s on the Page
@@ -133,13 +93,5 @@ Feature: Headings
     | name      |
     | xpath     |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating h6s on the Page
-    When I search for the heading6 by "<search_by>"
-    Then I should see "h6's are cool"
-
-  Scenarios:
-    | search_by |
     | css       |
 

@@ -19,14 +19,6 @@ Feature:  Support for the canvas element
     | name      |
     | xpath     |
     | index     |
-
-  @selenium_only
-  Scenario Outline: Locating a canvas on the page
-    When I search for the canvas by "<search_by>"
-    Then I should know it is visible
-
-  Examples:
-    | search_by |
     | css       |
 
   Scenario: Determining the width and height of the canvas
