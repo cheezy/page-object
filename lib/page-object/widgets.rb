@@ -29,8 +29,7 @@ module PageObject
 
     def self.define_accessors(base, widget_tag, widget_class)
       accessors_module = Module.new do
-        define_method widget_tag do |name, identifier={}, &block|
-          identifier = {:index => 0} if identifier.empty?
+        define_method widget_tag do |name, identifier={:index => 0}, &block|
           define_method("#{name}_element") do
             return call_block(&block) if block
             platform.send("#{widget_tag}_for", identifier.clone)
