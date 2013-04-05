@@ -1,3 +1,4 @@
+@focus
 Feature: Gxt Table Extension
   As a Quality Engineer working on a Gxt or Gwt project
   In order to easily create test widgets to interact with application widgets
@@ -21,4 +22,4 @@ Feature: Gxt Table Extension
 
   Scenario: Confirm a correct row count from a GxtTable
     When I retrieve a GxtTable widget
-    And the GxtTable should have "13" rows
+    Then the GxtTable should have "13" rows

@@ -17,7 +17,7 @@ module PageObject
     #
     def self.register_widget(widget_tag, widget_class, base_element_tag)
       if widget_class.ancestors.include? Elements::Element
-        define_accessors(Accessors, widget_tag)
+        define_accessors(Accessors, widget_tag, widget_class)
         define_nested_elements(Elements::Element, widget_tag)
         define_locators(PageObject, widget_tag)
         define_selenium_accessors(Platforms::SeleniumWebDriver::PageObject, widget_tag, widget_class, base_element_tag)
@@ -25,21 +25,24 @@ module PageObject
       end
     end
 
-    @private
+    private
 
-    def self.define_accessors(base, widget_tag)
+    def self.define_accessors(base, widget_tag, widget_class)
       accessors_module = Module.new do
-        class_eval "def #{widget_tag}(name, identifier={}, &block)
-          identifier={:index=>0} if identifier.empty?
-          define_method(\"\#{name}_element\") do
-            return call_block(&block) if block_given?
-            platform.#{widget_tag}_for(identifier.clone)
+        define_method widget_tag do |name, identifier={:index => 0}, &block|
+          define_method("#{name}_element") do
+            puts "do I have a block? #{block}"
+            return call_block(&block) if block
+            platform.send("#{widget_tag}_for", identifier.clone)
           end
-          define_method(\"\#{name}?\") do
-            return call_block(&block).exists? if block_given?
-            platform.#{widget_tag}_for(identifier.clone).exists?
+          define_method("#{name}?") do
+            return call_block(&block).exists? if block
+            platform.send("#{widget_tag}_for", identifier.clone).exists?
           end
-        end"
+          if widget_class.respond_to? :accessor_methods
+            widget_class.accessor_methods(self, name)
+          end
+        end
       end
 
       base.send(:include, accessors_module)
