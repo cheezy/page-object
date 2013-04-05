@@ -155,7 +155,7 @@ describe PageObject do
         end
 
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_accessors.usec.should be < @page.initialize_page.usec
+        @page.initialize_accessors.usec.should be <= @page.initialize_page.usec
       end
 
       it "should know which element has focus" do
