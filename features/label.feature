@@ -28,14 +28,6 @@ Feature: Handling labels with page object
     | index     |
     | name      |
     | text      |
-
-  @selenium_only
-  Scenario Outline: Locating labels on the page
-    When I search for the label by "<search_by>"
-    Then the text should be "page-object is the best!"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating labels using multiple parameters
