@@ -1,10 +1,9 @@
 Given /^I am on the Gxt Examples page$/ do
-  @page = GxtSamplePageObject.new(@browser)
-  @page.navigate_to "http://gxtexamplegallery.appspot.com/"
+  visit GxtSamplePageObject
 end
 
 When /^I have the Basic Grid opened$/ do
-  @page.basic_grid_element.click
+  on(GxtSamplePageObject).basic_grid_element.click
 end
 
 When /^I have defined a GxtTable class extending Table$/ do
@@ -22,7 +21,7 @@ When /^I have registered the GxtTable with PageObject$/ do
 end
 
 When /^I retrieve a GxtTable widget$/ do
-  @element = @page.gxt_table_element
+  @element = on(GxtSamplePageObject).gxt_table_element
 end
 
 
@@ -33,6 +32,8 @@ end
 When /^I define a page-object using that widget$/ do
   class GxtSamplePageObject
     include PageObject
+
+    page_url "http://gxtexamplegallery.appspot.com/"
 
     div(:basic_grid, :class => "label_basic_grid")
     gxt_table(:gxt_table, :class => "x-grid3")
