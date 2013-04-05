@@ -1,6 +1,7 @@
 === Version 0.8.8
 * Enhancements
   * Added callback to widget classes to allow them to define their own accessors
+  * Added more support for using css when locating elements using Watir-webdriver (Neal Lindsay)
 
 === Version 0.8.7 / 2013-3-31
 * Enhancements
