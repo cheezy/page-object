@@ -1,3 +1,10 @@
+=== Version 0.8.9
+* Enhancements
+  * Updated to use the latest watir-webdriver 0.6.3
+  * Updated to use the latest selenium-webdriver 2.32.1
+* Fixes
+  * Fixed an issue when you try to find an element using no identifier (Thanks Alex Rodionov)
+
 === Version 0.8.8 / 2013-4-5
 * Enhancements
   * Added callback to widget classes to allow them to define their own accessors
