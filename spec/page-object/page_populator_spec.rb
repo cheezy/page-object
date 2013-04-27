@@ -34,6 +34,15 @@ describe PageObject::PagePopulator  do
     page_object.populate_page_with('tf' => true)
   end
 
+  it "should not populate a text field when it is not visible" do
+    page_object.should_not_receive(:tf=)
+    page_object.should_receive(:tf_element).twice.and_return(browser)
+    browser.should_receive(:enabled?).and_return(true)
+    browser.should_receive(:visible?).and_return(false)
+    browser.should_receive(:tag_name).and_return('input')
+    page_object.populate_page_with('tf' => true)
+  end
+
   it "should set a value in a text area" do
     page_object.should_receive(:ta=).with('value')
     page_object.should_receive(:ta_element).and_return(browser)
@@ -85,6 +94,15 @@ describe PageObject::PagePopulator  do
     page_object.populate_page_with('cb' => true)
   end
 
+  it "should not populate a checkbox if it is not visible" do
+    page_object.should_not_receive(:check_cb)
+    page_object.should_receive(:cb_element).twice.and_return(browser)
+    browser.should_receive(:enabled?).and_return(true)
+    browser.should_receive(:visible?).and_return(false)
+    browser.should_receive(:tag_name).and_return('input')
+    page_object.populate_page_with('cb' => true)
+  end
+
   it "should not populate a radio button when it is disabled" do
     page_object.should_not_receive(:select_rb)
     page_object.should_receive(:rb_element).twice.and_return(browser)
@@ -93,4 +111,12 @@ describe PageObject::PagePopulator  do
     page_object.populate_page_with('rb' => true)
   end
 
+  it "should not populate a radio button when it is not visible" do
+    page_object.should_not_receive(:select_rb)
+    page_object.should_receive(:rb_element).twice.and_return(browser)
+    browser.should_receive(:enabled?).and_return(true)
+    browser.should_receive(:visible?).and_return(false)
+    browser.should_receive(:tag_name).and_return('input')
+    page_object.populate_page_with('rb' => true)
+  end
 end
