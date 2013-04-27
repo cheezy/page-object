@@ -1,4 +1,3 @@
-@focus
 Feature: Gxt Table Extension
   As a Quality Engineer working on a Gxt or Gwt project
   In order to easily create test widgets to interact with application widgets
