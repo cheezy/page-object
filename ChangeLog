@@ -1,6 +1,7 @@
-=== Version 0.8.10
+=== Version 0.8.10 / 2013-5-3
 * Enhancements
   * Updated populate_page_with to also check if the element is visible prior to setting value
+  * Updated to use the latest watir-webdriver 0.6.4
 
 === Version 0.8.9 / 2013-4-13
 * Enhancements
