@@ -19,6 +19,7 @@ class Page
   text_field(:text_field_value, :value => "")
   text_field(:text_field_label, :label => "Text Field")
   text_field(:text_field_title, :title => 'text_field_title')
+  text_field(:text_field_data_field, :data_field => 'title')
   text_field(:text_field_class_index, :class => "text_field_class", :index => 0)
   text_field(:text_field_name_index, :name => "text_field_name", :index => 0)
 

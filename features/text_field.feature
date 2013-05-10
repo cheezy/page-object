@@ -15,15 +15,24 @@ Feature: Text Fields
     Then I should be able to type "I found it" into the field
 
   Examples:
-    | search_by |
-    | id        |
-    | class     |
-    | name      |
-    | xpath     |
-    | index     |
-    | title     |
-    | text      |
-    | label     |
+    | search_by  |
+    | id         |
+    | class      |
+    | name       |
+    | xpath      |
+    | index      |
+    | title      |
+    | text       |
+    | label      |
+
+
+  @watir_only
+  Scenario Outline: Locating text fields on the Page using Watir
+    When I search for the text field by "<search_by>"
+    Then I should be able to type "I found it" into the field
+  Examples:
+    | search_by  |
+    | data_field |
 
   @selenium_only
   Scenario Outline: Locating text fields on the Page using Selenium
