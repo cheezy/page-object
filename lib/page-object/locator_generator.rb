@@ -74,11 +74,11 @@ module PageObject
        :var,
        :wbr].each do |tag|
         target.send(:define_method, "#{tag.to_s}_element") do |*identifier|
-          @platform.send :element_for, locator(identifier)
+          @platform.send :element_for, tag, locator(identifier)
         end
 
         target.send(:define_method, "#{tag.to_s}_elements") do |*identifier|
-          @platform.send(:elements_for, identifier[0] ? identifier[0] : {})
+          @platform.send(:elements_for, tag, identifier[0] ? identifier[0] : {})
         end
       end
     end

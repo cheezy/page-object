@@ -359,6 +359,8 @@ class Page
   element(:summary_id, :summary, :id => 'summary_id')
   element(:details_id, :details, :id => 'details_id')
 
+  figure(:figure_id, :id => 'figure_id')
+         
   svg(:svg_id, :id => 'the_svg')
 end
 

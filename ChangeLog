@@ -1,3 +1,7 @@
+=== Version 0.9.0
+* Fixes
+  * Fixed issue when using the page and element accessors for html 5 elements.
+
 === Version 0.8.11
 * Enhancements
   * Updated to use the latest selenium-webdriver 2.33.0

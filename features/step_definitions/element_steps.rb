@@ -247,3 +247,15 @@ end
 When /^I retrieve a div using data\-entity$/ do
   @element = @page.div_data_entity_element
 end
+
+When(/^I retrieve the figure using the declaration$/) do
+  @element = @page.figure_id_element
+end
+
+When(/^I retrieve the figure using the element$/) do
+  @element = @page.figure_element(:id => 'figure_id')
+end
+
+Then(/^I should see the figure contains an image$/) do
+  @element.image_element.should_not be_nil
+end

@@ -304,3 +304,11 @@ Feature: Elements
     And I should know it is visible
     And I should know the text is "found using data-entity"
     
+
+  Scenario: Accessing an HTML 5 element using the declaration
+    When I retrieve the figure using the declaration
+    Then I should see the figure contains an image
+
+  Scenario: Accessing an HTML 5 element using the element method
+    When I retrieve the figure using the element
+    Then I should see the figure contains an image
