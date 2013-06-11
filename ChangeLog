@@ -1,4 +1,4 @@
-=== Version 0.9.0
+=== Version 0.9.0 / 2013-6-11
 * Enhancements
   * Added plural _elements methods for the following types:
     * area
@@ -44,12 +44,9 @@
     * time
     * title
     * track
+  * Updated to use the latest selenium-webdriver 2.33.0
 * Fixes
   * Fixed issue when using the page and element accessors for html 5 elements.
-
-=== Version 0.8.11
-* Enhancements
-  * Updated to use the latest selenium-webdriver 2.33.0
 
 === Version 0.8.10 / 2013-5-3
 * Enhancements
