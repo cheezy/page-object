@@ -6,6 +6,44 @@
     * audio
     * video
     * svg
+  * Added basic element support for the following types:
+    * as
+    * blockquote
+    * body
+    * br
+    * caption
+    * col
+    * colgroup
+    * command
+    * data
+    * datalist
+    * del
+    * details
+    * dialog
+    * dl
+    * embed
+    * fieldset
+    * head
+    * hr
+    * ins
+    * keygen
+    * legend
+    * map
+    * menu
+    * meta
+    * meter
+    * object
+    * optgroup
+    * output
+    * param
+    * pre
+    * progress
+    * small
+    * strong
+    * style
+    * time
+    * title
+    * track
 * Fixes
   * Fixed issue when using the page and element accessors for html 5 elements.
 
