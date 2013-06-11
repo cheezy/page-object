@@ -1,4 +1,5 @@
 require 'erb'
+require 'page-object/locator_generator'
 
 module PageObject
   #
@@ -1076,37 +1077,7 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    [:abbr,
-     :address,
-     :article,
-     :aside,
-     :bdi,
-     :bdo,
-     :cite,
-     :code,
-     :dd,
-     :dfn,
-     :dt,
-     :em,
-     :figcaption,
-     :figure,
-     :footer,
-     :header,
-     :hgroup,
-     :kbd,
-     :mark,
-     :nav,
-     :noscript,
-     :rp,
-     :rt,
-     :ruby,
-     :samp,
-     :section,
-     :sub,
-     :summary,
-     :sup,
-     :var,
-     :wbr].each do |type|
+    LocatorGenerator::BASIC_ELEMENTS.each do |type|
       define_method(type) do |name, *identifier, &block|
         identifier = identifier[0] ? identifier[0] : {:index => 0}
         element(name, type, identifier, &block)
@@ -1169,36 +1140,14 @@ module PageObject
     #   keys are the same ones supported by the standard methods.
     # @param optional block to be invoked when element method is called
     #
-    [:text_fields,
-     :hidden_fields,
-     :text_areas,
-     :select_lists,
-     :links,
-     :checkboxes,
-     :radio_buttons,
-     :buttons,
-     :divs,
-     :spans,
-     :tables,
-     :cells,
-     :images,
-     :forms,
-     :list_items,
-     :unordered_lists,
-     :ordered_lists,
-     :h1s,
-     :h2s,
-     :h3s,
-     :h4s,
-     :h5s,
-     :h6s,
-     :paragraphs,
-     :labels,
-     :file_fields].each do |method_name|
-      define_method(method_name) do |name, *identifier, &block|
+    idx = LocatorGenerator::ADVANCED_ELEMENTS.find_index { |type| type == :checkbox }
+    elements = LocatorGenerator::ADVANCED_ELEMENTS.clone
+    elements[idx] = :checkboxe
+    elements.each do |method_name|
+      define_method("#{method_name}s") do |name, *identifier, &block|
         define_method("#{name}_elements") do
           return call_block(&block) unless block.nil?
-          platform_method = (method_name == :checkboxes) ? 'checkboxs_for' : "#{method_name.to_s}_for"
+          platform_method = (method_name == :checkboxe) ? 'checkboxs_for' : "#{method_name.to_s}s_for"
           platform.send platform_method, (identifier.first ? identifier.first.clone : {})
         end
       end
