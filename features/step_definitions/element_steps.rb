@@ -259,3 +259,8 @@ end
 Then(/^I should see the figure contains an image$/) do
   @element.image_element.should_not be_nil
 end
+
+Then(/^I should know the attribute "(.*?)" includes "(.+)"$/) do |attribute, included|
+  @attr = @element.attribute(attribute)
+  @attr.should include included
+end
