@@ -508,6 +508,7 @@ module PageObject
     #   * :name => Watir and Selenium
     #   * :text => Watir and Selenium
     #   * :xpath => Watir and Selenium
+    #   * :css => Selenium only
     # @param optional block to be invoked when element method is called
     #
     def cell(name, identifier={:index => 0}, &block)
