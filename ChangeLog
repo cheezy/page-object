@@ -1,6 +1,8 @@
 === Version 0.9.1
 * Enhancements
   * Added css locator support for Image (Thanks Elben Shira)
+* Fixes
+  * Corrected isse with generated method in widgets module
 
 === Version 0.9.0 / 2013-6-11
 * Enhancements
