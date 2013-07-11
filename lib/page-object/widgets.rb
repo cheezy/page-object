@@ -54,7 +54,7 @@ module PageObject
 
     def self.define_multiple_watir_accessor(base, base_element_tag, widget_class, widget_tag)
       base.send(:define_method, "#{widget_tag}s_for") do |identifier|
-        find_watir_elements("#{base_element_tag}(identifier)", widget_class, identifier, base_element_tag)
+        find_watir_elements("#{base_element_tag}s(identifier)", widget_class, identifier, base_element_tag)
       end
     end
 
