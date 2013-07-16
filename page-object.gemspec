@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.authors = ["Jeff Morgan"]
   s.email = ["jeff.morgan@leandog.com"]
+  s.license       = 'MIT'
   s.homepage = "http://github.com/cheezy/page-object"
   s.summary = %q{Page Object DSL for browser testing}
   s.description = %q{Page Object DSL that works with both Watir and Selenium}
