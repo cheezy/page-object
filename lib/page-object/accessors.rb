@@ -1002,6 +1002,30 @@ module PageObject
     end
 
     #
+    # adds two methods - one to retrieve a svg, and another to check
+    # the svg's existence.
+    #
+    # @example
+    #   svg(:circle, :id => 'circle')
+    #   # will generate 'circle_element', and 'circle?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find a svg.  You can use a multiple paramaters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Selenium only
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def svg(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'svg_for', &block)
+    end
+
+
+    #
     # adds three methods - one to retrieve the text of an element, another
     # to retrieve an element, and another to check the element's existence.
     #
@@ -1035,25 +1059,16 @@ module PageObject
     end
 
     #
-    # returns an array of elements.
-    #
-    def elements(name, tag, identifier={:index => 0}, &block)
-      define_method("#{name}_elements") do
-        return call_block(&block) if block_given?
-        platform.elements_for(tag, identifier.clone)
-      end
-    end
-
-    #
-    # adds two methods - one to retrieve a svg, and another to check
-    # the svg's existence.
+    # adds a method to return a collection of generic Element objects
+    # for a specific tag.
     #
     # @example
-    #   svg(:circle, :id => 'circle')
-    #   # will generate 'circle_element', and 'circle?' methods
+    #   elements(:title, :header, :id => 'title')
+    #   # will generate ''title_elements'
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a svg.  You can use a multiple paramaters
+    # @param [Symbol] the name of the tag for the element
+    # @param [Hash] identifier how we find an element.  You can use a multiple paramaters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Selenium only
@@ -1063,18 +1078,22 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def svg(name, identifier={:index => 0}, &block)
-      standard_methods(name, identifier, 'svg_for', &block)
+    def elements(name, tag, identifier={:index => 0}, &block)
+      define_method("#{name}_elements") do
+        return call_block(&block) if block_given?
+        platform.elements_for(tag, identifier.clone)
+      end
     end
-
 
     #
     # methods to generate accessors for types that follow the same
     # pattern as element
     #
     # @example
-    #   address(:home_address, :id => "home_address")
-    #   will generate 'home_address', 'home_address_element' and 'home_address?'
+    #   article(:my_article, :id => "article_id")
+    #   will generate 'my_article', 'my_article_element' and 'my_article?'
+    #   articles(:my_article, :id => 'article_id')
+    #   will generate 'my_article_elements'
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Symbol] the name of the tag for the element
