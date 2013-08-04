@@ -30,6 +30,7 @@ class MultiElementsPage
   paragraphs(:the_paragraphs, :class => 'p')
   labels(:the_labels, :class => 'label')
   file_fields(:the_file_fields, :class => 'file_field_class')
+  elements(:generic_label, :label, :class => 'label')
 end
 
 
@@ -520,4 +521,8 @@ end
 
 When /^I select the divs using a block$/ do
   @elements = @page.block_divs_elements
+end
+
+When(/^I select the multiple elements with a tag label$/) do
+  @elements = @page.generic_label_elements
 end

@@ -1035,6 +1035,16 @@ module PageObject
     end
 
     #
+    # returns an array of elements.
+    #
+    def elements(name, tag, identifier={:index => 0}, &block)
+      define_method("#{name}_elements") do
+        return call_block(&block) if block_given?
+        platform.elements_for(tag, identifier.clone)
+      end
+    end
+
+    #
     # adds two methods - one to retrieve a svg, and another to check
     # the svg's existence.
     #
