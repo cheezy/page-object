@@ -9,7 +9,7 @@ A simple gem that assists in creating flexible page objects for testing browser 
 
 The project [wiki](https://github.com/cheezy/page-object/wiki/page-object) is the first place to go to learn about how to use page-object.
 
-The rdocs for this project can be found at [rubydoc.info](http://rubydoc.info/github/cheezy/page-object/master/frames).
+The rdocs for this project can be found at [rubydoc.info](http://rubydoc.info/gems/page-object/frames).
 
 To see the changes from release to release please look at the [ChangeLog](https://raw.github.com/cheezy/page-object/master/ChangeLog)
 
