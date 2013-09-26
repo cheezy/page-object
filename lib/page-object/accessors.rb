@@ -52,6 +52,7 @@ module PageObject
     # Creates a method that compares the expected_title of a page against the actual.
     # @param [String] expected_title the literal expected title for the page
     # @param [Regexp] expected_title the expected title pattern for the page
+    # @param [optional, Integer] timeout default value is nil - do not wait
     # @return [boolean]
     # @raise An exception if expected_title does not match actual title
     #
@@ -59,10 +60,16 @@ module PageObject
     #   expected_title "Google"
     #   page.has_expected_title?
     #
-    def expected_title(expected_title)
+    def expected_title(expected_title, timeout=nil)
       define_method("has_expected_title?") do
         page_title = title
         has_expected_title = (expected_title === page_title)
+        if !has_expected_title and !timeout.nil?
+          wait_until(timeout, "Expected title '#{expected_title}' instead of '#{page_title}'") do 
+            has_expected_title = (expected_title === page_title)
+            has_expected_title
+          end
+        end
         raise "Expected title '#{expected_title}' instead of '#{page_title}'" unless has_expected_title
         has_expected_title
       end
