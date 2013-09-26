@@ -64,7 +64,7 @@ module PageObject
       define_method("has_expected_title?") do
         page_title = title
         has_expected_title = (expected_title === page_title)
-        if !has_expected_title and !timeout.nil?
+        if not has_expected_title and not timeout.nil?
           wait_until(timeout, "Expected title '#{expected_title}' instead of '#{page_title}'") do 
             has_expected_title = (expected_title === page_title)
             has_expected_title
@@ -80,15 +80,24 @@ module PageObject
     # This is useful for pages that load dynamic content.
     # @param [Symbol] the name given to the element in the declaration
     # @param [optional, Integer] timeout default value is 5 seconds
+    # @param [optional, boolean] also check that element to be visible if set to true
     # @return [boolean]
     #
     # @example Specify a text box named :address expected on the page within 10 seconds
     #   expected_element(:address, 10)
     #   page.has_expected_element?
     #
-    def expected_element(element_name, timeout=::PageObject.default_element_wait)
+    def expected_element(element_name, timeout=::PageObject.default_element_wait, check_visible=false)
       define_method("has_expected_element?") do
-        self.respond_to? "#{element_name}_element" and self.send("#{element_name}_element").when_present timeout
+        is_present = false
+        is_visible = not check_visible
+        if self.respond_to? "#{element_name}_element"
+          is_present = self.send("#{element_name}_element").when_present timeout
+          if check_visible
+            is_visible = self.send("#{element_name}_element").when_visible timeout 
+          end
+        end
+        is_present and is_visible
       end
     end
 
