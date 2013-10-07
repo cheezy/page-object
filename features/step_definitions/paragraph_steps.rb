@@ -18,3 +18,7 @@ end
 Then /^I should see that the paragraph exists$/ do
   @page.p_id?.should == true
 end
+
+Then(/^I should know the paragraph class is "(.*?)"$/) do |class_name|
+  @page.p_id_element.class_name.should == class_name
+end

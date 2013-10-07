@@ -478,7 +478,6 @@ Feature: Multi Elements
     And the title for file field 2 should be "File Field 2"
     And the title for file field 3 should be "File Field 3"
 
-@focus
   Scenario: Selecting multple generic element types
     When I select the multiple elements with a tag label
     Then I should have 3 labels
