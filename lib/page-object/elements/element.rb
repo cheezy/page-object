@@ -52,12 +52,12 @@ module PageObject
         element.inspect
       end
 
-        #
-        # retrieve the class name for an element
-        #
-        def class_name
-          attribute 'class'
-        end
+      #
+      # retrieve the class name for an element
+      #
+      def class_name
+        attribute 'class'
+      end
 
       # @private
       def self.watir_identifier_for identifier
