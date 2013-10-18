@@ -49,7 +49,7 @@ module PageObject
     alias_method :direct_url, :page_url
 
     #
-    # Creates a method that compares the expected_title of a page against the actual.
+    # Creates a method that waits the expected_title of a page to match the actual.
     # @param [String] expected_title the literal expected title for the page
     # @param [Regexp] expected_title the expected title pattern for the page
     # @param [optional, Integer] timeout default value is nil - do not wait
@@ -60,8 +60,8 @@ module PageObject
     #   expected_title "Google"
     #   page.has_expected_title?
     #
-    def expected_title(expected_title, timeout=nil)
-      define_method("has_expected_title?") do
+    def wait_for_expected_title(expected_title, timeout=timeout=::PageObject.default_element_wait)
+      define_method("wait_for_expected_title?") do
         page_title = title
         has_expected_title = (expected_title === page_title)
         if not has_expected_title and not timeout.nil?
