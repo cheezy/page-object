@@ -75,9 +75,47 @@ module PageObject
       end
     end
 
+
+    #
+    # Creates a method that compares the expected_title of a page against the actual.
+    # @param [String] expected_title the literal expected title for the page
+    # @param [Regexp] expected_title the expected title pattern for the page
+    # @return [boolean]
+    # @raise An exception if expected_title does not match actual title
+    #
+    # @example Specify 'Google' as the expected title of a page
+    #   expected_title "Google"
+    #   page.has_expected_title?
+    #
+    def expected_title(expected_title)
+      define_method("has_expected_title?") do
+        page_title = title
+        has_expected_title = (expected_title === page_title)
+        raise "Expected title '#{expected_title}' instead of '#{page_title}'" unless has_expected_title
+        has_expected_title
+      end
+    end
+
     #
     # Creates a method that provides a way to initialize a page based upon an expected element.
     # This is useful for pages that load dynamic content.
+    # @param [Symbol] the name given to the element in the declaration
+    # @param [optional, Integer] timeout default value is 5 seconds
+    # @return [boolean]
+    #
+    # @example Specify a text box named :address expected on the page within 10 seconds
+    #   expected_element(:address, 10)
+    #   page.has_expected_element?
+    #
+    def expected_element(element_name, timeout=::PageObject.default_element_wait)
+      define_method("has_expected_element?") do
+        self.respond_to? "#{element_name}_element" and self.send("#{element_name}_element").when_present timeout
+      end
+    end
+
+    #
+    # Creates a method that provides a way to initialize a page based upon an expected element to become visible.
+    # This is useful for pages that load dynamic content and might have hidden elements that are not shown.
     # @param [Symbol] the name given to the element in the declaration
     # @param [optional, Integer] timeout default value is 5 seconds
     # @param [optional, boolean] also check that element to be visible if set to true
@@ -87,17 +125,11 @@ module PageObject
     #   expected_element(:address, 10)
     #   page.has_expected_element?
     #
-    def expected_element(element_name, timeout=::PageObject.default_element_wait, check_visible=false)
-      define_method("has_expected_element?") do
-        is_present = false
-        is_visible = not check_visible
-        if self.respond_to? "#{element_name}_element"
-          is_present = self.send("#{element_name}_element").when_present timeout
-          if check_visible
-            is_visible = self.send("#{element_name}_element").when_visible timeout 
-          end
-        end
-        is_present and is_visible
+    def expected_element_visible(element_name, timeout=::PageObject.default_element_wait, check_visible=false)
+      expected_element(element_name, timeout=::PageObject.default_element_wait)
+      define_method("has_expected_element_visible?") do
+        has_exected_element?
+        self.respond_to? "#{element_name}_element" and self.send("#{element_name}_element").when_visible timeout
       end
     end
 
