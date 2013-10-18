@@ -60,7 +60,7 @@ module PageObject
     #   expected_title "Google"
     #   page.has_expected_title?
     #
-    def wait_for_expected_title(expected_title, timeout=timeout=::PageObject.default_element_wait)
+    def wait_for_expected_title(expected_title, timeout=::PageObject.default_element_wait)
       define_method("wait_for_expected_title?") do
         page_title = title
         has_expected_title = (expected_title === page_title)
