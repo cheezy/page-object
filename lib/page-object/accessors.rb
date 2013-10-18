@@ -126,7 +126,6 @@ module PageObject
     #   page.has_expected_element?
     #
     def expected_element_visible(element_name, timeout=::PageObject.default_element_wait, check_visible=false)
-      expected_element(element_name, timeout=::PageObject.default_element_wait)
       define_method("has_expected_element_visible?") do
         has_exected_element?
         self.respond_to? "#{element_name}_element" and self.send("#{element_name}_element").when_visible timeout
