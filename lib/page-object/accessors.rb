@@ -122,8 +122,8 @@ module PageObject
     # @return [boolean]
     #
     # @example Specify a text box named :address expected on the page within 10 seconds
-    #   expected_element(:address, 10)
-    #   page.has_expected_element?
+    #   expected_element_visible(:address, 10)
+    #   page.has_expected_element_visible?
     #
     def expected_element_visible(element_name, timeout=::PageObject.default_element_wait, check_visible=false)
       define_method("has_expected_element_visible?") do
