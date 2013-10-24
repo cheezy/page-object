@@ -32,7 +32,7 @@ module PageObject
         define_method widget_tag do |name, *identifier_args, &block|
           
           identifier = identifier_args.first
-          identifier = {:index => 0} if identifier == nil
+          identifier = {:index => 0} if identifier.nil?
           
           define_method("#{name}_element") do
             return call_block(&block) if block

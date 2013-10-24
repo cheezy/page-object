@@ -1,7 +1,10 @@
 === Version 0.9.4
 * Enhancements
   * Added class_name method to Element
+  * Added wait_for_expected_title and expected_element_visible methods (Thanks smartkiwi)
   * Updated to use the latest selenium-webdriver 2.37.0
+* Fixes
+  * Fixed issue with custom widgets on Ruby 1.8.7 (Thanks X Zhang)
 
 === Version 0.9.3 / 2013-8-23
 * Enhancements
