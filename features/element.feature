@@ -317,3 +317,7 @@ Feature: Elements
   Scenario: Getting the class name for an element
     When I search for the paragraph by "id"
     Then I should know the paragraph class is "p_class"
+
+@focus
+  Scenario: Selecting the text for an element
+    Then I should be able to select "Elements" from the paragraph

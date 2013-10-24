@@ -1,3 +1,5 @@
+require 'watir-webdriver/extensions/select_text'
+
 module PageObject
   module Platforms
     #
@@ -140,6 +142,13 @@ module PageObject
         #
         def focus
           element.focus
+        end
+
+        #
+        # Select the provided text
+        #
+        def select_text(text)
+          element.select_text text
         end
         
         #

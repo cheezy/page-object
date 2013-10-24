@@ -1,6 +1,7 @@
 === Version 0.9.4
 * Enhancements
   * Added class_name method to Element
+  * Added select_text method to Element
   * Added wait_for_expected_title and expected_element_visible methods (Thanks smartkiwi)
   * Updated to use the latest selenium-webdriver 2.37.0
 * Fixes

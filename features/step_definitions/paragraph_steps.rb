@@ -22,3 +22,7 @@ end
 Then(/^I should know the paragraph class is "(.*?)"$/) do |class_name|
   @page.p_id_element.class_name.should == class_name
 end
+
+Then(/^I should be able to select "(.*?)" from the paragraph$/) do |text|
+  @page.p_id_element.select_text text
+end

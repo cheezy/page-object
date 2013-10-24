@@ -157,6 +157,15 @@ module PageObject
         end
 
         #
+        # Select the provided text
+        #
+        def select_text(text)
+          Watir::Atoms.load(:selectText)
+          script = "return (%s).apply(null, arguments)" % ATOMS.fetch(:selectText)
+          bridge.executeScript(script, element, text)
+        end
+
+        #
         # Click this element
         #
         def right_click
