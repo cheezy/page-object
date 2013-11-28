@@ -115,8 +115,8 @@ module PageObject
         # platform method to execute javascript on the browser
         # See PageObject#execute_script
         #
-        def execute_script(script)
-          @browser.execute_script(script)
+        def execute_script(script, *args)
+          @browser.execute_script(script, *args)
         end
     
         #
