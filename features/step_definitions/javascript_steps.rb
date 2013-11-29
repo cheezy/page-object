@@ -39,6 +39,15 @@ Given /^I execute the javascript "([^\"]*)"$/ do |script|
   @answer = @page.execute_script script
 end
 
+Given /^I execute the javascript "([^\"]*)" with an argument of "([^\"]*)"$/ do |script, arg|
+  @answer = @page.execute_script script, arg
+end
+
+Given /^I execute the javascript "([^\"]*)" with a text field argument$/ do |script|
+  text_field = @page.text_field_element(:id => 'text_field_id')
+  @page.execute_script(script, text_field)
+end
+
 Then /^I should get the answer "([^\"]*)"$/ do |answer|
   @answer.should == answer.to_i
 end

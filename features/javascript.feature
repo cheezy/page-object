@@ -16,3 +16,13 @@ Feature: Handling javascript events
     Given I am on the static elements page
     Given I execute the javascript "return 2 + 2;"
     Then I should get the answer "4"
+
+  Scenario: Executing javascript in the browser with value argument
+    Given I am on the static elements page
+    Given I execute the javascript "return 2 + Number(arguments[0]);" with an argument of "2"
+    Then I should get the answer "4"
+
+  Scenario: Executing javascript in the browser with element argument
+    Given I am on the static elements page
+    Given I execute the javascript "arguments[0].value = 'abcDEF';" with a text field argument
+    Then the text field should contain "abcDEF"

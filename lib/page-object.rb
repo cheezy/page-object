@@ -249,8 +249,14 @@ module PageObject
   #
   # Execute javascript on the browser
   #
-  def execute_script(script)
-    platform.execute_script(script)
+  # @example Get inner HTML of element
+  #   span = @page.span_element
+  #   @page.execute_script "return arguments[0].innerHTML", span
+  #   #=> "Span innerHTML"
+  #
+  def execute_script(script, *args)
+    args.map! { |e| e.kind_of?(PageObject::Elements::Element) ? e.element : e }
+    platform.execute_script(script, *args)    
   end
 
   #
