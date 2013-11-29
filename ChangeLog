@@ -1,4 +1,4 @@
-=== Version 0.9.4
+=== Version 0.9.4 / 2013-11-29
 * Enhancements
   * Added ability for execute_scripts to accept arguments (Thanks Justin Ko)
   * Added ability to identify frame using a regular expression when using Watir
