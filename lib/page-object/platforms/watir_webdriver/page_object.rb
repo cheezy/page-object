@@ -996,8 +996,12 @@ module PageObject
           frame_str = ''
           frame_identifiers.each do |id|
             value = id.values.first
-            frame_str += "frame(:#{id.keys.first} => #{value})." if value.to_s.is_integer
-            frame_str += "frame(:#{id.keys.first} => '#{value}')." unless value.to_s.is_integer
+            if value.is_a?(Regexp)
+              frame_str += "frame(:#{id.keys.first} => #{value.inspect})."
+            else
+              frame_str += "frame(:#{id.keys.first} => #{value})." if value.to_s.is_integer
+              frame_str += "frame(:#{id.keys.first} => '#{value}')." unless value.to_s.is_integer
+            end
           end
           frame_str
         end

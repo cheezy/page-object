@@ -1,6 +1,7 @@
 === Version 0.9.4
 * Enhancements
   * Added ability for execute_scripts to accept arguments (Thanks Justin Ko)
+  * Added ability to identify frame using a regular expression when using Watir
 
 === Version 0.9.3 / 2013-10-24
 * Enhancements
