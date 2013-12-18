@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'watir-webdriver', '>= 0.6.4'
-  s.add_dependency 'selenium-webdriver', '>= 2.37.0'
+  s.add_dependency 'selenium-webdriver', '>= 2.39.0'
   s.add_dependency 'page_navigation', '>= 0.8'
 
   s.add_development_dependency 'rspec', '>= 2.12.0'
