@@ -3,7 +3,7 @@ When /^I set the file field to the step definition file$/ do
 end
 
 Then /^its\' value should equal that file$/ do
-  @page.file_field_id_element.value.should == __FILE__
+  __FILE__.should include @page.file_field_id_element.value
 end
 
 When /^I search for the file field by "([^\"]*)"$/ do |how|
