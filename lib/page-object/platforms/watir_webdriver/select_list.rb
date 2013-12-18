@@ -10,7 +10,7 @@ module PageObject
         # @return [PageObject::Elements::Option]
         #
         def [](idx)
-          Object::PageObject::Elements::Option.new(options[idx], :platform => :watir_webdriver)
+          options[idx]
         end
 
         #
@@ -34,12 +34,7 @@ module PageObject
         # @return [array of PageObject::Elements::Option]
         #
         def options
-          elements = []
-          options = element.wd.find_elements(:xpath, child_xpath)
-          options.each do |opt|
-            elements << Object::PageObject::Elements::Option.new(opt, :platform => :watir_webdriver)
-          end
-          elements
+          element.options.map { |e| ::PageObject::Elements::Option.new(e, :platform => :watir_webdriver) }
         end
 
         #
@@ -55,7 +50,6 @@ module PageObject
         def selected_values
           element.selected_options.map { |e| e.value }.compact
         end
-
 
         #
         # Returns true if the select list has one or more options where text or label matches the given value.
