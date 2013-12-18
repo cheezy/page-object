@@ -31,6 +31,11 @@ Then /^the data for the first row should be "([^\"]*)" and "([^\"]*)"$/ do |col1
   @element.first_row[1].text.should == col2
 end
 
+Then /^the data for the second row should be "([^\"]*)" and "([^\"]*)"$/ do |col1, col2|
+  @element[1][0].text.should == col1
+  @element[1][1].text.should == col2
+end
+
 Then /^the data for the last row should be "([^\"]*)" and "([^\"]*)"$/ do |col1, col2|
   @element.last_row[0].text.should == col1
   @element.last_row[1].text.should == col2

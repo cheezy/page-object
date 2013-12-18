@@ -15,15 +15,14 @@ Feature: Table
     When I retrieve a table element
     Then I should know it exists
 
+@focus
   Scenario: Retrieve the data from a table
     When I retrieve a table element
-    Then the data for row "1" should be "Data1" and "Data2"
-    And the data for row "2" should be "Data3" and "Data4"
-    And the table should have "2" rows
-    And each row should contain "Data"
-    And row "1" should have "2" columns
-    And each column should contain "Data"
-    And the data for the first row should be "Data1" and "Data2"
+    Then the data for row "2" should be "Data1" and "Data2"
+    And the data for row "3" should be "Data3" and "Data4"
+    And the table should have "3" rows
+    And row "2" should have "2" columns
+    And the data for the second row should be "Data1" and "Data2"
     And the data for the last row should be "Data3" and "Data4"
     
   Scenario: Retrieve data from a table using a row header
@@ -44,7 +43,7 @@ Feature: Table
     
   Scenario: Retrieve data from a table using a column header
     When I retrieve a table element
-    Then the data for column "Data2" and row "2" should be "Data4"
+    Then the data for column "Header" and row "3" should be "Data4"
 
   Scenario: Retrieve data from a table with a thead using a column header
     When I retrieve a table with thead element
@@ -56,11 +55,11 @@ Feature: Table
 
   Scenario: Retrieve data from a table using a partial column header
     When I retrieve a table element
-    Then the data for column "ata2" and row "2" should be "Data4"
+    Then the data for column "eader" and row "3" should be "Data4"
     
   Scenario: Retrieve data from a table using both headers
     When I retrieve a table element
-    Then the data for row "Data3" and column "Data2" should be "Data4"
+    Then the data for row "Data3" and column "eader" should be "Data4"
     
   Scenario: Retrieve data from a table with an incorrect row header
     When I retrieve a table element
@@ -76,7 +75,7 @@ Feature: Table
 
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"
-    Then the data for row "1" should be "Data1" and "Data2"
+    Then the data for row "2" should be "Data1" and "Data2"
 
   Scenarios:
     | search_by |
@@ -89,7 +88,7 @@ Feature: Table
   @selenium_only
   Scenario Outline: Locating table cells on the Page
     When I retrieve a table element by "<search_by>"
-    Then the data for row "1" should be "Data1" and "Data2"
+    Then the data for row "2" should be "Data1" and "Data2"
 
   Scenarios:
     | search_by |
@@ -97,7 +96,7 @@ Feature: Table
 
   Scenario Outline: Locating table using multiple parameters
     When I retrieve a table element by "<param1>" and "<param2>"
-    Then the data for row "1" should be "Data1" and "Data2"
+    Then the data for row "2" should be "Data1" and "Data2"
 
   Scenarios:
     | param1 | param2 |
@@ -106,7 +105,7 @@ Feature: Table
 
   Scenario: Finding a table dynamically
     When I retrieve a table element while the script is executing
-    And the data for row "1" should be "Data1" and "Data2"
+    And the data for row "2" should be "Data1" and "Data2"
 
   @watir_only
   Scenario: Finding an existing table
