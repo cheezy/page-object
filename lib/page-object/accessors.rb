@@ -420,6 +420,61 @@ module PageObject
     alias_method :radio, :radio_button
 
     #
+    # adds five methods to help interact with a radio button group -
+    # a method to select a radio button in the group by given value/text,
+    # a method to clear all radio buttons in the group, a method to 
+    # return if a radio button in the group is selected (will return
+    # the text of the selected radio button, if true), a method to return
+    # an array of PageObject::Elements::RadioButton objects representing
+    # the radio button group, and finally a method to check the existence
+    # of the radio button group.
+    #
+    # @example
+    #   radio_button(:color, :name => "preferred_color")
+    #   # will generate 'select_color', 'clear_color', 'color_selected?',
+    #   # 'color_elements', and 'color?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] shared identifier for the radio button group. Typically, a 'name' attribute.
+    #   The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Selenium only
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :value => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #   * :label => Watir and Selenium
+    #
+    def radio_button_group(name, identifier)
+      define_method("select_#{name}") do |value|
+        platform.radio_buttons_for(identifier.clone).each do |radio_elem|
+          if radio_elem.value == value || radio_elem.text == value
+            return radio_elem.select
+          end
+        end
+      end
+      define_method("clear_#{name}") do
+        platform.radio_buttons_for(identifier.clone).each do |radio_elem|
+          radio_elem.clear
+        end
+      end
+      define_method("#{name}_selected?") do
+        platform.radio_buttons_for(identifier.clone).each do |radio_elem|
+          return radio_elem.text if radio_elem.selected?
+        end
+        return false
+      end
+      define_method("#{name}_elements") do
+        return platform.radio_buttons_for(identifier.clone)
+      end
+      define_method("#{name}?") do
+        return platform.radio_buttons_for(identifier.clone).any?
+      end
+    end
+    alias_method :radio_group, :radio_button_group
+
+    #
     # adds three methods - one to click a button, another to
     # return the button element, and another to check the button's existence.
     #
