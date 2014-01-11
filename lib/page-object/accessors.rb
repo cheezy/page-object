@@ -430,7 +430,7 @@ module PageObject
     # of the radio button group.
     #
     # @example
-    #   radio_button(:color, :name => "preferred_color")
+    #   radio_button_group(:color, :name => "preferred_color")
     #   # will generate 'select_color', 'clear_color', 'color_selected?',
     #   # 'color_elements', and 'color?' methods
     #
