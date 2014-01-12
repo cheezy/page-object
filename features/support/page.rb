@@ -100,6 +100,8 @@ class Page
 
   radio_button(:butter_id, :id => 'butter_id')
 
+  radio_button_group(:favorite_cheese, name: 'fav_cheese')
+
   div(:div_id, :id => 'div_id')
   div(:div_name, :name => 'div_name')
   div(:div_class, :class => 'div_class')
