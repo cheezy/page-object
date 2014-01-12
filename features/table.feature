@@ -15,7 +15,6 @@ Feature: Table
     When I retrieve a table element
     Then I should know it exists
 
-@focus
   Scenario: Retrieve the data from a table
     When I retrieve a table element
     Then the data for row "2" should be "Data1" and "Data2"

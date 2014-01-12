@@ -1,3 +1,7 @@
+=== Version 0.9.6
+* Enhancements
+  * Added href method to Link
+
 === Version 0.9.5
 * Enhancements
   * Updated to use the latest selenium-webdriver 2.39.0

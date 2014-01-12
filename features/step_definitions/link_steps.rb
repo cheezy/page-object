@@ -19,6 +19,14 @@ When /^I select a link while the script is executing$/ do
   link.click
 end
 
-Then /^I should see that the link exists$/ do
+Then(/^I should see that the link exists$/) do
   @page.link_id?.should == true
+end
+
+When(/^I get the href for the link$/) do
+  @href = @page.google_search_id_element.href
+end
+
+Then(/^I should know it was "(.*?)"$/) do |href|
+  @href.should include href
 end

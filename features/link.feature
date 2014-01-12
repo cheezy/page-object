@@ -42,3 +42,7 @@ Feature: Links
   Scenario: Finding a link dynamically
     When I select a link while the script is executing
     And the page should contain the text "Success"
+
+  Scenario: Getting the href for a link
+    When I get the href for the link
+    Then I should know it was "success.html"

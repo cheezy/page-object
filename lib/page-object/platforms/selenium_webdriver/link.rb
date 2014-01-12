@@ -9,6 +9,13 @@ module PageObject
         def value
           raise "value not available on link element with Selenium"
         end
+
+        #
+        # return the href for the link
+        #
+        def href
+          attribute('href')
+        end
       end
     end
   end
