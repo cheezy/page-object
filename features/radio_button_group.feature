@@ -7,7 +7,6 @@ Feature: Radio Button Groups
     Given I am on the static elements page
 
   Scenario: Confirm existence of a radio button group
-    When a page has a radio button group
     Then I should see that the radio button group exists
 
   Scenario: No radio buttons in the group have been selected

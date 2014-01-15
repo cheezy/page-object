@@ -2,7 +2,7 @@ When /^no radio buttons have been selected$/ do
   # nothing to do here
 end
 
-Then /^no radio buttons should be selected$/ do
+Then /^no radio buttons should be selected in the group$/ do
   @page.favorite_cheese_selected?.should == false
 end
 
