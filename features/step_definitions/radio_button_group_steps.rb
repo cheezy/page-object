@@ -6,11 +6,11 @@ Then /^no radio buttons should be selected$/ do
   @page.favorite_cheese_selected?.should == false
 end
 
-When /^I select the "([^\"]*)" radio button$/ do |how|
+When /^I select the "([^\"]*)" radio button in the group$/ do |how|
   @page.send "select_favorite_cheese(#{how})"
 end
 
-Then /^the "([^\"]*)" radio button should be selected$/ do |how|
+Then /^the "([^\"]*)" radio button should be selected in the group$/ do |how|
   @page.favorite_cheese_selected?.should == "#{how}"
 end
 
