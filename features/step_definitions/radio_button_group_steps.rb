@@ -15,7 +15,7 @@ Then /^the "([^\"]*)" radio button should be selected in the group$/ do |how|
 end
 
 Then /^the "([^\"]*)" radio button should not be selected$/ do |how|
-  @page.favorite_cheese_selected?.should != "#{how}"
+  @page.favorite_cheese_selected?.should_not == "#{how}"
 end
 
 Then /^I should see that the radio button group exists$/ do
