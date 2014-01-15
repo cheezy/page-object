@@ -7,7 +7,7 @@ Then /^no radio buttons should be selected in the group$/ do
 end
 
 When /^I select the "([^\"]*)" radio button in the group$/ do |how|
-  @page.send "select_favorite_cheese(#{how})"
+  @page.select_favorite_cheese("#{how}")
 end
 
 Then /^the "([^\"]*)" radio button should be selected in the group$/ do |how|
