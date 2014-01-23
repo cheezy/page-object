@@ -100,6 +100,8 @@ class Page
 
   radio_button(:butter_id, :id => 'butter_id')
 
+  radio_button_group(:favorite_cheese, name: 'fav_cheese')
+
   div(:div_id, :id => 'div_id')
   div(:div_name, :name => 'div_name')
   div(:div_class, :class => 'div_class')
@@ -309,8 +311,8 @@ class Page
   label(:label_class, :class => 'label_class')
   label(:label_css, :css => '.label_class')
   label(:label_text, :text => 'page-object is the best!')
-  label(:label_index, :index => 5)
-  label(:label_xpath, :xpath => '//label[6]')
+  label(:label_index, :index => 6)
+  label(:label_xpath, :xpath => '//label[7]')
   label(:label_class_index, :class => "label_class", :index => 0)
   label(:label_name_index, :name => "label_name", :index => 0)
 
