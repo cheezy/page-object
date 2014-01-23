@@ -104,7 +104,7 @@ module PageObject
                          :svg]
 
     def self.generate_locators(target)
-        ADVANCED_ELEMENTS.each do |tag|
+      ADVANCED_ELEMENTS.each do |tag|
         target.send(:define_method, "#{tag.to_s}_element") do |*identifier|
           @platform.send "#{tag.to_s}_for", locator(identifier)
         end

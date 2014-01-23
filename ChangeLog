@@ -1,10 +1,8 @@
-=== Version 0.9.6
-* Enhancements
-  * Added href method to Link
-
 === Version 0.9.5
 * Enhancements
   * Updated to use the latest selenium-webdriver 2.39.0
+  * Added href method to Link
+  * Added generation of plural version of basic types on class
 
 === Version 0.9.4 / 2013-11-29
 * Enhancements

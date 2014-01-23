@@ -1155,11 +1155,15 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    LocatorGenerator::BASIC_ELEMENTS.each do |type|
-      define_method(type) do |name, *identifier, &block|
+    LocatorGenerator::BASIC_ELEMENTS.each do |tag|
+      define_method(tag) do |name, *identifier, &block|
         identifier = identifier[0] ? identifier[0] : {:index => 0}
-        element(name, type, identifier, &block)
+        element(name, tag, identifier, &block)
       end
+      define_method("#{tag}s") do |name, *identifier, &block|
+        identifier = identifier[0] ? identifier[0] : {:index => 0}
+        elements(name, tag, identifier, &block)
+      end unless tag == :param
     end
 
     def standard_methods(name, identifier, method, &block)
