@@ -1,3 +1,9 @@
+=== Version 0.9.6 / 2014-2-4
+* Enhancements
+  * Updated to use the latest watir-webdriver 0.6.7
+* Fixes
+  * Added in_iframe methods to match the updates to the watir-webdriver gem.
+
 === Version 0.9.5 / 2014-1-22
 * Enhancements
   * Updated to use the latest selenium-webdriver 2.39.0

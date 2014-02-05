@@ -147,7 +147,17 @@ module PageObject
         # See PageObject#in_frame
         #
         def in_frame(identifier, frame=nil, &block)
-          switch_to_frame([identifier])
+          switch_to_frame([frame: identifier])
+          block.call(nil)
+          @browser.switch_to.default_content
+        end
+        
+        #
+        # platform method to switch to an iframe and execute a block
+        # See PageObject#in_frame
+        #
+        def in_iframe(identifier, frame=nil, &block)
+          switch_to_frame([iframe: identifier])
           block.call(nil)
           @browser.switch_to.default_content
         end
@@ -1088,7 +1098,8 @@ module PageObject
 
         def switch_to_frame(frame_identifiers)
           unless frame_identifiers.nil?
-            frame_identifiers.each do |frame_id|
+            frame_identifiers.each do |frame|
+              frame_id = frame.values.first
               value = frame_id.values.first
               @browser.switch_to.frame(value)
             end

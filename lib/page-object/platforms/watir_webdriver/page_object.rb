@@ -141,7 +141,17 @@ module PageObject
         #
         def in_frame(identifier, frame=nil, &block)
           frame = [] if frame.nil?
-          frame << identifier
+          frame << {frame: identifier}
+          block.call(frame)
+        end
+    
+        #
+        # platform method to switch to an iframe and execute a block
+        # See PageObject#in_frame
+        #
+        def in_iframe(identifier, frame=nil, &block)
+          frame = [] if frame.nil?
+          frame << {iframe: identifier}
           block.call(frame)
         end
     
@@ -994,13 +1004,15 @@ module PageObject
         def nested_frames(frame_identifiers)
           return if frame_identifiers.nil?
           frame_str = ''
-          frame_identifiers.each do |id|
+          frame_identifiers.each do |frame|
+            id = frame.values.first
+            type = frame.keys.first
             value = id.values.first
             if value.is_a?(Regexp)
-              frame_str += "frame(:#{id.keys.first} => #{value.inspect})."
+              frame_str += "#{type.to_s}(:#{id.keys.first} => #{value.inspect})."
             else
-              frame_str += "frame(:#{id.keys.first} => #{value})." if value.to_s.is_integer
-              frame_str += "frame(:#{id.keys.first} => '#{value}')." unless value.to_s.is_integer
+              frame_str += "#{type.to_s}(:#{id.keys.first} => #{value})." if value.to_s.is_integer
+              frame_str += "#{type.to_s}(:#{id.keys.first} => '#{value}')." unless value.to_s.is_integer
             end
           end
           frame_str
@@ -1028,7 +1040,8 @@ module PageObject
 
         def switch_to_frame(frame_identifiers)
           unless frame_identifiers.nil?
-            frame_identifiers.each do |frame_id|
+            frame_identifiers.each do |frame|
+              frame_id = frame.values.first
               value = frame_id.values.first
               @browser.wd.switch_to.frame(value)
             end

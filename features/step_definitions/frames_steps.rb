@@ -28,13 +28,40 @@ class FramePage
   
 end
 
+class IFramePage
+  include PageObject
+
+  in_iframe(:id => 'frame_two_2') do |frame|
+    text_field(:text_field_2_id, :name => 'recieverElement', :frame => frame)
+  end
+  in_iframe(:id => 'frame_one_1') do |frame|
+    text_field(:text_field_1_id, :name => 'senderElement', :frame => frame)
+  end
+
+  in_iframe(:name => 'frame2') do |frame|
+    text_field(:text_field_2_name, :name => 'recieverElement', :frame => frame)
+  end
+  in_iframe(:name => 'frame1') do |frame|
+    text_field(:text_field_1_name, :name => 'senderElement', :frame => frame)
+  end
+
+  in_iframe(:index => 1) do |frame|
+    text_field(:text_field_2_index, :name => 'recieverElement', :frame => frame)
+  end
+  in_iframe(:index => 0) do |frame|
+    text_field(:text_field_1_index, :name => 'senderElement', :frame => frame)
+  end
+
+end
+
+
 Given /^I am on the frame elements page$/ do
   @page = FramePage.new(@browser)
   @page.navigate_to(UrlHelper.frame_elements)
 end
 
 Given /^I am on the iframe elements page$/ do
-  @page = FramePage.new(@browser)
+  @page = IFramePage.new(@browser)
   @page.navigate_to(UrlHelper.iframe_elements)
 end
 
@@ -64,7 +91,7 @@ class NestedFramePage
   include PageObject
   
   in_frame(:id => 'two') do |frame|
-    in_frame({:id => 'three'}, frame) do |nested_frame|
+    in_iframe({:id => 'three'}, frame) do |nested_frame|
       link(:nested_link, :id => 'four', :frame => nested_frame)
     end
   end
