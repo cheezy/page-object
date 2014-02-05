@@ -1,3 +1,7 @@
+=== Version 0.9.6.1
+* Enhancements
+  * Table now supports exists?
+
 === Version 0.9.6 / 2014-2-4
 * Enhancements
   * Updated to use the latest watir-webdriver 0.6.7

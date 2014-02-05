@@ -10,7 +10,6 @@ Feature: Table
     When I retrieve a table element
     Then I should know it is visible
 
-  @watir_only
   Scenario: Determine if a table exists
     When I retrieve a table element
     Then I should know it exists

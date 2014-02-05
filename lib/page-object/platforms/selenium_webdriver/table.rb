@@ -24,14 +24,6 @@ module PageObject
           table_rows.size
         end
 
-        #
-        # override PageObject::Platforms::SeleniumElement because exists? is not
-        # available on a table element in Selenium.
-        #
-        def exists?
-          raise "exists? not available on table element"
-        end
-
         private
 
         def find_index_by_title(row_title, eles)
