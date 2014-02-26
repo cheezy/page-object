@@ -20,13 +20,21 @@ class YetAnotherPage
 end
 
 module ContainingModule
-    class PageInsideModule
-      include PageObject
-      page_url "http://google.co.uk"
-    end
+  class PageInsideModule
+    include PageObject
+    page_url "http://google.co.uk"
+  end
 end
 
-class TestWorld
+class WorldSuper
+  attr_reader :super_called
+  def on_page(cls, params={}, visit=false, &block)
+    @super_called = true
+  end
+end
+
+
+class TestWorld < WorldSuper
   include PageObject::PageFactory
   attr_accessor :browser
   attr_accessor :current_page
@@ -36,6 +44,13 @@ describe PageObject::PageFactory do
   before(:each) do
     @world = TestWorld.new
     @world.browser = mock_watir_browser
+  end
+
+  it "should call super when non page-object class passed " do
+    class NoPO
+    end
+    @world.on(NoPO)
+    @world.super_called.should be_true
   end
 
   it "should create a new page object and execute a block" do

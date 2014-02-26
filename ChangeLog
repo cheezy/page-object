@@ -1,5 +1,6 @@
 === Version 0.9.7
 * Enhancements
+  * super called when factory method invoked with non PageObject class
   * Updated to use the latest watir-webdriver 0.6.8
   * Updated to use the latest selenium-webdriver 2.40.0
 
