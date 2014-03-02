@@ -580,7 +580,7 @@ describe PageObject::Accessors do
     it "should know if a check box element is selected" do
       watir_browser.should_receive(:checkbox).and_return(watir_browser)
       watir_browser.should_receive(:set?).and_return(true)
-      watir_page_object.active_checked?.should be_true
+      watir_page_object.active_checked?.should be true
     end
 
     it "should retrieve a checkbox element" do

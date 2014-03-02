@@ -49,7 +49,7 @@ describe PageObject::Platforms::SeleniumWebDriver::PageObject do
     it "should know it is not exist" do
       selenium_browser.should_receive(:find_element).twice.and_raise(Selenium::WebDriver::Error::NoSuchElementError)
       page = SeleniumTestPageObject.new(selenium_browser)
-      page.link_element(:text => 'blah').element.exists?.should be_false
+      page.link_element(:text => 'blah').element.exists?.should be false
     end
 
     it "should know it is not visible" do

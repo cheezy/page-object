@@ -271,7 +271,7 @@ describe PageObject::Accessors do
     it "should know if a check box element is selected" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:selected?).and_return(true)
-      selenium_page_object.active_checked?.should be_true
+      selenium_page_object.active_checked?.should be true
     end
 
     it "should retrieve a checkbox element" do

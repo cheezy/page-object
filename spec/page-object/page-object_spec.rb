@@ -123,7 +123,7 @@ describe PageObject do
         end
         
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_page_called.should be_true
+        @page.initialize_page_called.should be true
       end
 
       it "should call initialize_accessors if it exists" do
@@ -137,7 +137,7 @@ describe PageObject do
         end
 
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_accessors_called.should be_true
+        @page.initialize_accessors_called.should be true
       end
 
       it "should call initialize_accessors before initialize_page if both exist" do

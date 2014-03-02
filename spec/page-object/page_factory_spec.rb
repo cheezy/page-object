@@ -50,7 +50,7 @@ describe PageObject::PageFactory do
     class NoPO
     end
     @world.on(NoPO)
-    @world.super_called.should be_true
+    @world.super_called.should be true
   end
 
   it "should create a new page object and execute a block" do

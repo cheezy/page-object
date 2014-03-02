@@ -58,7 +58,7 @@ describe "Element for Selenium" do
 
   it "should know how to retrieve the value of an attribute" do
     @selenium_driver.should_receive(:attribute).and_return(true)
-    @selenium_element.attribute('readonly').should be_true
+    @selenium_element.attribute('readonly').should be true
   end
 
   it "should be clickable" do

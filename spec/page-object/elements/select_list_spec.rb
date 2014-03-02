@@ -126,7 +126,7 @@ describe PageObject::Elements::SelectList do
         sel_list.should_receive(:find_elements).and_return(opts)
         opts[0].should_receive(:selected?).twice.and_return(true)
         opts[0].should_receive(:text).and_return('blah')
-        selenium_sel_list.selected?('blah').should be_true
+        selenium_sel_list.selected?('blah').should be true
       end
 
       it "should be able to clear selected options" do

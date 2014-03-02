@@ -56,7 +56,7 @@ describe "Element for Watir" do
   it "should know how to retrieve the value of an attribute" do
     watir_driver.stub(:attribute_value).and_return(true)
     watir_driver.stub(:attribute).and_return(true)
-    watir_element.attribute("readonly").should be_true
+    watir_element.attribute("readonly").should be true
   end
 
   it "should be clickable" do
