@@ -9,6 +9,7 @@ class PageObjectTestPageObject
   file_field(:ff, :id => 'id')
   checkbox(:cb, :id => 'id')
   radio_button(:rb, :id => 'id')
+  radio_button_group(:rbg, :id => 'id')
 end
 
 describe PageObject::PagePopulator  do
@@ -84,6 +85,11 @@ describe PageObject::PagePopulator  do
     page_object.should_receive(:clear_rb)
     page_object.stub(:is_enabled?).and_return(true)
     page_object.populate_page_with('rb' => false)
+  end
+
+  it "should select the correct element from a radio button group" do
+    page_object.should_receive(:select_rbg).with('blah')
+    page_object.populate_page_with('rbg' => 'blah')
   end
 
   it "should not populate a checkbox if it is disabled" do

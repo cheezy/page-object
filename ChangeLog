@@ -1,3 +1,7 @@
+=== Version 0.9.8
+* Enhancements
+  * populate_page_with not supports radio groups
+
 === Version 0.9.7 / 2014-2-26
 * Enhancements
   * Table now supports exists?
