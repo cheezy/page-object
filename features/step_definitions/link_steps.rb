@@ -30,3 +30,11 @@ end
 Then(/^I should know it was "(.*?)"$/) do |href|
   @href.should include href
 end
+
+When(/^I get the link using the href success$/) do
+  @link = @page.link_element(:href => /succ.*html/)
+end
+
+Then(/^I should be able to click the link$/) do
+  @link.click
+end

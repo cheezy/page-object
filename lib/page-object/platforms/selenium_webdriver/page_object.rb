@@ -114,7 +114,7 @@ module PageObject
         def execute_script(script, *args)
           @browser.execute_script(script, *args)
         end
-        
+
         #
         # platform method to handle attaching to a running window
         # See PageObject#attach_to_window
@@ -151,7 +151,7 @@ module PageObject
           block.call(nil)
           @browser.switch_to.default_content
         end
-        
+
         #
         # platform method to switch to an iframe and execute a block
         # See PageObject#in_frame
@@ -161,7 +161,7 @@ module PageObject
           block.call(nil)
           @browser.switch_to.default_content
         end
-        
+
         #
         # platform method to refresh the page
         # See PageObject#refresh
@@ -185,7 +185,7 @@ module PageObject
         def forward
           @browser.navigate.forward
         end
-        
+
         #
         # platform method to clear the cookies from the browser
         # See PageObject#clear_cookies
@@ -193,7 +193,7 @@ module PageObject
         def clear_cookies
           @browser.manage.delete_all_cookies
         end
-        
+
         #
         # platform method to save the current screenshot to a file
         # See PageObject#save_screenshot
@@ -534,7 +534,7 @@ module PageObject
         def buttons_for(identifier)
           find_selenium_elements(identifier, Elements::Button, 'input', :type => 'submit')
         end
-        
+
         #
         # platform method to return the text for a table
         # See PageObject::Accessors#table
@@ -682,7 +682,7 @@ module PageObject
         def ordered_list_for(identifier)
           find_selenium_element(identifier, Elements::OrderedList, 'ol')
         end
-        
+
         #
         # platform method to retrieve all ordered lists
         #
@@ -699,7 +699,7 @@ module PageObject
             @browser.find_element(how, what).text
           end
         end
-        
+
         #
         # platform method to retrieve the h1 element
         # See PageObject::Accessors#h1
@@ -724,7 +724,7 @@ module PageObject
             @browser.find_element(how, what).text
           end
         end
-        
+
         #
         # platform method to retrieve the h2 element
         # See PageObject::Accessors#h2
@@ -749,7 +749,7 @@ module PageObject
             @browser.find_element(how, what).text
           end
         end
-        
+
         #
         # platform method to retrieve the h3 element
         # See PageObject::Accessors#h3
@@ -774,7 +774,7 @@ module PageObject
             @browser.find_element(how, what).text
           end
         end
-        
+
         #
         # platform method to retrieve the h4 element
         # See PageObject::Accessors#h4
@@ -799,7 +799,7 @@ module PageObject
             @browser.find_element(how, what).text
           end
         end
-        
+
         #
         # platform method to retrieve the h5 element
         # See PageObject::Accessors#h5
@@ -824,7 +824,7 @@ module PageObject
             @browser.find_element(how, what).text
           end
         end
-        
+
         #
         # platform method to retrieve the h6 element
         # See PageObject::Accessors#h6
@@ -849,7 +849,7 @@ module PageObject
             @browser.find_element(how, what).text
           end
         end
-        
+
         #
         # platform method to retrieve the paragraph element
         # See PageObject::Accessors#paragraph
@@ -953,7 +953,7 @@ module PageObject
         def canvass_for(identifier)
           find_selenium_elements(identifier, Elements::Canvas, 'canvas')
         end
-        
+
         #
         # platform method to retrieve an audio element
         #
@@ -967,7 +967,7 @@ module PageObject
         def audios_for(identifier)
           find_selenium_elements(identifier, Elements::Audio, 'audio')
         end
-        
+
         #
         # platform method to retrieve a video element
         #
@@ -981,7 +981,7 @@ module PageObject
         def videos_for(identifier)
           find_selenium_elements(identifier, Elements::Video, 'video')
         end
-        
+
         #
         # platform method to retrieve a generic element
         # See PageObject::Accessors#element
@@ -1004,16 +1004,16 @@ module PageObject
         def svg_for(identifier)
           find_selenium_element(identifier, Elements::Element, 'svg')
         end
- 
+
         #
         # platform method to return an array of svg elements
         #
         def svgs_for(identifier)
           find_selenium_elements(identifier, Elements::Element, 'svg')
         end
- 
+
         private
-        
+
         def process_selenium_call(identifier, type, tag, other=nil)
           how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
           switch_to_frame(frame_identifiers)
@@ -1023,10 +1023,16 @@ module PageObject
         end
 
         def find_selenium_element(identifier, type, tag, other=nil)
+          regexp = delete_regexp(identifier)
           how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
           switch_to_frame(frame_identifiers)
           begin
-            element = @browser.find_element(how, what)
+            unless regexp
+              element = @browser.find_element(how, what)
+            else
+              elements = @browser.find_elements(how, what)
+              element = elements.find {|ele| matches_selector?(ele, regexp[0], regexp[1])}
+            end
           rescue Selenium::WebDriver::Error::NoSuchElementError
             @browser.switch_to.default_content unless frame_identifiers.nil?
             return build_null_object(identifier, type, tag, other)
@@ -1036,9 +1042,15 @@ module PageObject
         end
 
         def find_selenium_elements(identifier, type, tag, other=nil)
+          regexp = delete_regexp(identifier)
           how, what, frame_identifiers = parse_identifiers(identifier, type, tag, other)
           switch_to_frame(frame_identifiers)
-          elements = @browser.find_elements(how, what)
+          unless regexp
+            elements = @browser.find_elements(how, what)
+          else
+            eles = @browser.find_elements(how, what)
+            elements = eles.find_all {|ele| matches_selector?(ele, regexp[0], regexp[1])}
+          end
           @browser.switch_to.default_content unless frame_identifiers.nil?
           elements.map { |element| type.new(element, :platform => :selenium_webdriver) }
         end
@@ -1051,6 +1063,12 @@ module PageObject
           null_element.other = other
           null_element.platform = self
           Elements::Element.new(null_element, :platform => :selenium_webdriver)
+        end
+
+        def delete_regexp(identifier)
+          regexp = identifier.find {|ident| ident[1].is_a?(Regexp)}
+          identifier.delete(regexp[0]) if regexp
+          regexp
         end
 
         def parse_identifiers(identifier, element, tag_name=nil, additional=nil)
@@ -1096,6 +1114,23 @@ module PageObject
           true
         end
 
+        def matches_selector?(element, how, what)
+          what === fetch_value(element, how)
+        end
+
+        def fetch_value(element, how)
+          case how
+          when :text
+            element.text
+          when :tag_name
+            element.tag_name.downcase
+          when :href
+            (href = element.attribute(:href)) && href.strip
+          else
+            element.attribute(how.to_s.gsub("_", "-").to_sym)
+          end
+        end
+
         def switch_to_frame(frame_identifiers)
           unless frame_identifiers.nil?
             frame_identifiers.each do |frame|
@@ -1103,7 +1138,7 @@ module PageObject
               value = frame_id.values.first
               @browser.switch_to.frame(value)
             end
-          end          
+          end
         end
       end
     end

@@ -1,3 +1,7 @@
+=== Version 0.9.9
+* Enhancements
+  * Better support for using Regexp
+
 === Version 0.9.8 / 2014-3-16
 * Enhancements
   * populate_page_with not supports radio groups

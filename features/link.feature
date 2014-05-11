@@ -46,3 +46,7 @@ Feature: Links
   Scenario: Getting the href for a link
     When I get the href for the link
     Then I should know it was "success.html"
+
+  Scenario: Locating a link using a partial href
+    When I get the link using the href success
+    Then I should be able to click the link
