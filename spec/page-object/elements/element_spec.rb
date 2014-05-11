@@ -28,7 +28,7 @@ describe "Element" do
         identifier = {:tag_name => tag, :index => 1}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
-        what.should == ".//#{tag}[2]"
+        what.should == "(.//#{tag})[2]"
       end
     end
 
@@ -37,7 +37,7 @@ describe "Element" do
         identifier = {:tag_name => 'input', :type => tag, :index => 1}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
-        what.should include ".//input[@type='#{tag}'][2]"
+        what.should include "(.//input[@type='#{tag}'])[2]"
       end
     end
 
@@ -46,7 +46,7 @@ describe "Element" do
         identifier = {:tag_name => tag, :name => 'blah', :index => 0}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
-        what.should == ".//#{tag}[@name='blah'][1]"
+        what.should == "(.//#{tag}[@name='blah'])[1]"
       end
     end
 
@@ -55,7 +55,7 @@ describe "Element" do
         identifier = {:tag_name => 'input', :type => "#{type}", :name => 'blah', :index => 0}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
         how.should == :xpath
-        what.should include ".//input[@type='#{type}' and @name='blah'][1]"
+        what.should include "(.//input[@type='#{type}' and @name='blah'])[1]"
       end
     end
 

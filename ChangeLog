@@ -1,6 +1,8 @@
 === Version 0.9.9
 * Enhancements
   * Better support for using Regexp
+* Fixes
+  * Improved handling of index locator
 
 === Version 0.9.8 / 2014-3-16
 * Enhancements

@@ -1003,7 +1003,7 @@ describe PageObject::ElementLocators do
     end
 
     it "should find an area element using a default identifier" do
-      selenium_browser.should_receive(:find_element).with(:xpath, './/area[1]').and_return(selenium_browser)
+      selenium_browser.should_receive(:find_element).with(:xpath, '(.//area)[1]').and_return(selenium_browser)
       selenium_page_object.area_element
     end
 
@@ -1025,7 +1025,7 @@ describe PageObject::ElementLocators do
     end
 
     it "should find a canvas element using a default identifier" do
-      selenium_browser.should_receive(:find_element).with(:xpath, './/canvas[1]').and_return(selenium_browser)
+      selenium_browser.should_receive(:find_element).with(:xpath, '(.//canvas)[1]').and_return(selenium_browser)
       selenium_page_object.canvas_element
     end
 
@@ -1047,7 +1047,7 @@ describe PageObject::ElementLocators do
     end
 
     it "should find an audio element using a default identifier" do
-      selenium_browser.should_receive(:find_element).with(:xpath, './/audio[1]').and_return(selenium_browser)
+      selenium_browser.should_receive(:find_element).with(:xpath, '(.//audio)[1]').and_return(selenium_browser)
       selenium_page_object.audio_element
     end
 
