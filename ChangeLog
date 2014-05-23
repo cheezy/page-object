@@ -1,6 +1,8 @@
 === Version 0.9.9
 * Enhancements
   * Better support for using Regexp
+  * Updated to use the latest watir-webdriver 0.6.9
+  * Updated to use the latest selenium-webdriver 2.42.0
 * Fixes
   * Improved handling of index locator
 
