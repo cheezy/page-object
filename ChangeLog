@@ -1,4 +1,4 @@
-=== Version 0.9.9
+=== Version 1.0 / 2014-6-1
 * Enhancements
   * Better support for using Regexp
   * Added new page_url_value method that is created when you define page_url to return the value
