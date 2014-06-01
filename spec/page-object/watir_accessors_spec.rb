@@ -158,7 +158,7 @@ describe PageObject::Accessors do
       SymbolPageUrl.new(watir_browser, true, 'custom')
 
       watir_browser.should_receive(:goto).with('different')
-      SymbolPageUrl.new(watir_browser, true, 'different')
+      SymbolPageUrl.new(watir_browser, true, 'different')      
     end
 
     it "should not navigate to a page when not requested" do
@@ -169,6 +169,10 @@ describe PageObject::Accessors do
     it "should not navigate to a page when 'page_url' not specified" do
       watir_browser.should_not_receive(:goto)
       WatirBlockPageObject.new(watir_browser, true)
+    end
+
+    it "should provide the page url" do
+      watir_page_object.page_url_value.should == 'http://apple.com'
     end
   end
 

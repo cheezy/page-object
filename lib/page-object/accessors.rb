@@ -39,11 +39,15 @@ module PageObject
     #
     def page_url(url)
       define_method("goto") do
+        platform.navigate_to self.page_url_value
+      end
+
+      define_method('page_url_value') do
         lookup = url.kind_of?(Symbol) ? self.send(url) : url
         erb = ERB.new(%Q{#{lookup}})
         merged_params = self.class.instance_variable_get("@merged_params")
         params = merged_params ? merged_params : self.class.params
-        platform.navigate_to erb.result(binding)
+        erb.result(binding)
       end
     end
     alias_method :direct_url, :page_url
