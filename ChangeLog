@@ -2,6 +2,7 @@
 * Enhancements
   * Better support for using Regexp
   * Added new page_url_value method that is created when you define page_url to return the value
+  * Added better error message when nil is passed to the constructor of a PageObject
   * Updated to use the latest watir-webdriver 0.6.9
   * Updated to use the latest selenium-webdriver 2.42.0
 * Fixes

@@ -18,7 +18,9 @@ module PageObject
       adapters.each_value { |adapter|
         return adapter.create_page_object(browser) if adapter.is_for?(browser)
       }
-      raise 'Unable to pick a platform for the provided browser'
+      message = 'Unable to pick a platform for the provided browser.'
+      message += "\nnil was passed to the PageObject constructor instead of a valid browser object." if browser.nil?
+      raise message 
     end
   end
 end
