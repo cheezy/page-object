@@ -260,7 +260,7 @@ module PageObject
   end
 
   #
-  # Identify an element as existing within a frame or iframe.  A frame parameter
+  # Identify an element as existing within a frame.  A frame parameter
   # is passed to the block and must be passed to the other calls to PageObject.
   # You can nest calls to in_frame by passing the frame to the next level.
   #
@@ -279,6 +279,28 @@ module PageObject
   #
   def in_frame(identifier, frame=nil, &block)
     platform.in_frame(identifier, frame, &block)
+  end
+
+  #
+  # Identify an element as existing within an iframe.  A frame parameter
+  # is passed to the block and must be passed to the other calls to PageObject.
+  # You can nest calls to in_iframe by passing the frame to the next level.
+  #
+  # @example
+  #   in_iframe(:id => 'iframe_id') do |iframe|
+  #     text_field_element(:id => 'ifname', :frame => iframe)
+  #   end
+  #
+  # @param [Hash] identifier how we find the iframe.  The valid keys are:
+  #   * :id => Watir and Selenium
+  #   * :index => Watir and Selenium
+  #   * :name => Watir and Selenium
+  #   * :class => Watir only
+  # @param frame passed from a previous call to in_iframe.  Used to nest calls
+  # @param block that contains the calls to elements that exist inside the iframe.
+  #
+  def in_iframe(identifier, frame=nil, &block)
+    platform.in_iframe(identifier, frame, &block)
   end
 
   #
