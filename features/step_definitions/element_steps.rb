@@ -220,7 +220,7 @@ end
 class DoubleClickPage
   include PageObject
   button(:click)
-  paragraph(:text)
+  paragraph(:p_text)
 end
 
 Given /^I am on the Double Click page$/ do
@@ -233,7 +233,7 @@ When /^I double click the button$/ do
 end
 
 Then /^the paragraph should read "([^\"]*)"$/ do |expected_text|
-  @page.text.should == expected_text
+  @page.p_text.should == expected_text
 end
 
 When /^I scroll the heading element into view$/ do

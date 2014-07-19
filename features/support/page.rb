@@ -28,7 +28,6 @@ class Page
   text_area(:text_area_css, :css => ".text_area_class")
   text_area(:text_area_name, :name => "text_area_name")
   text_area(:text_area_xpath, :xpath => "//textarea")
-  text_area(:text_area_css, :css => "textarea")
   text_area(:text_area_tag_name, :tag_name => "textarea")
   text_area(:text_area_index, :index => 0)
   text_area(:text_area_text, :text => "")
@@ -42,7 +41,6 @@ class Page
   hidden_field(:hidden_field_css, :css => ".hidden_field_class")
   hidden_field(:hidden_field_name, :name => "hidden_field_name")
   hidden_field(:hidden_field_xpath, :xpath => "//input[@type='hidden']")
-  hidden_field(:hidden_field_css, :css => "input[type='hidden']")
   hidden_field(:hidden_field_tag_name, :tag_name => "input[type='hidden']")
   hidden_field(:hidden_field_index, :index => 0)
   hidden_field(:hidden_field_text, :text => "")
@@ -60,7 +58,6 @@ class Page
   link(:google_search_href, :href => "success.html")
   link(:google_search_text, :text => "Google Search")
   link(:google_search_index, :index => 0)
-  link(:google_search_css, :css => "a.link_class")
   link(:google_search_title, :title => "link_title")
 
   select_list(:sel_list_id, :id => "sel_list_id")
@@ -112,7 +109,6 @@ class Page
   div(:div_title, :title => 'div_title')
   div(:div_class_index, :class => "div_class", :index => 0)
   div(:div_name_index, :name => "div_name", :index => 0)
-  div(:div_css, :css => ".div_class")
   
   div(:div_data_entity, :data_entity => "test")
 
@@ -155,7 +151,6 @@ class Page
   button(:button_xpath, :xpath=> "//input[@type='submit']")
   button(:button_text, :text => 'Click Me')
   button(:button_value, :value => 'Click Me')
-  button(:button_css, :css => "input[type='submit']")
   button(:button_class_index, :class => "button_class", :index => 0)
   button(:button_name_index, :name => "button_name", :index => 0)
 

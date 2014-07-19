@@ -17,7 +17,7 @@ class WatirAccessorsTestPageObject
   div(:message, :id => 'message_id')
   table(:cart, :id => 'cart_id')
   cell(:total, :id => 'total')
-  span(:alert, :id => 'alert_id')
+  span(:alert_span, :id => 'alert_id')
   image(:logo, :id => 'logo')
   form(:login, :id => 'login')
   list_item(:item_one, :id => 'one')
@@ -69,7 +69,7 @@ class WatirBlockPageObject
   div :footer do |element|
     "div"
   end
-  span :alert do |element|
+  span :alert_span do |element|
     "span"
   end
   table :cart do |element|
@@ -687,24 +687,24 @@ describe PageObject::Accessors do
   describe "span accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
-        watir_page_object.should respond_to(:alert)
-        watir_page_object.should respond_to(:alert_element)
+        watir_page_object.should respond_to(:alert_span)
+        watir_page_object.should respond_to(:alert_span_element)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.alert_element.should == "span"
+        block_page_object.alert_span_element.should == "span"
       end
     end
 
     it "should retrieve the text from a span" do
       watir_browser.should_receive(:span).and_return(watir_browser)
       watir_browser.should_receive(:text).and_return("Alert")
-      watir_page_object.alert.should == "Alert"
+      watir_page_object.alert_span.should == "Alert"
     end
 
     it "should retrieve the span element from the page" do
       watir_browser.should_receive(:span).and_return(watir_browser)
-      element = watir_page_object.alert_element
+      element = watir_page_object.alert_span_element
       element.should be_instance_of PageObject::Elements::Span
     end
   end

@@ -17,7 +17,7 @@ class SeleniumAccessorsTestPageObject
   div(:message, :id => 'message_id')
   table(:cart, :id => 'cart_id')
   cell(:total, :id => 'total')
-  span(:alert, :id => 'alert_id')
+  span(:alert_span, :id => 'alert_id')
   image(:logo, :id => 'logo')
   form(:login, :id => 'login')
   list_item(:item_one, :id => 'one')
@@ -69,7 +69,7 @@ class SeleniumBlockPageObject
   div :footer do |element|
     "div"
   end
-  span :alert do |element|
+  span :alert_span do |element|
     "span"
   end
   table :cart do |element|
@@ -342,12 +342,12 @@ describe PageObject::Accessors do
     it "should retrieve the text from a span" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("Alert")
-      selenium_page_object.alert.should == "Alert"
+      selenium_page_object.alert_span.should == "Alert"
     end
 
     it "should retrieve the span element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
-      element = selenium_page_object.alert_element
+      element = selenium_page_object.alert_span_element
       element.should be_instance_of PageObject::Elements::Span
     end
   end

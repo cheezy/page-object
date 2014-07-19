@@ -209,7 +209,8 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def text_field(name, identifier={:index => 0}, &block)
+    def text_field(name, identifier={:index => 0}, &block) 
+      standard_methods(name, identifier, 'text_field_for', &block)
       define_method(name) do
         return platform.text_field_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
@@ -218,7 +219,6 @@ module PageObject
         return platform.text_field_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
-      standard_methods(name, identifier, 'text_field_for', &block)
     end
 
     #
@@ -244,11 +244,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def hidden_field(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'hidden_field_for', &block)
       define_method(name) do
         return platform.hidden_field_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
       end
-      standard_methods(name, identifier, 'hidden_field_for', &block)
     end
     alias_method :hidden, :hidden_field
 
@@ -275,6 +275,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def text_area(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'text_area_for', &block)
       define_method(name) do
         return platform.text_area_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
@@ -283,7 +284,6 @@ module PageObject
         return platform.text_area_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
-      standard_methods(name, identifier, 'text_area_for', &block)
     end
     alias_method :textarea, :text_area
 
@@ -313,6 +313,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def select_list(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'select_list_for', &block)
       define_method(name) do
         return platform.select_list_value_for identifier.clone unless block_given?
         self.send("#{name}_element").value
@@ -321,13 +322,10 @@ module PageObject
         return platform.select_list_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").select(value)
       end
-
       define_method("#{name}_options") do
         element = self.send("#{name}_element")
         (element && element.options) ? element.options.collect(&:text) : []
       end
-
-      standard_methods(name, identifier, 'select_list_for', &block)
     end
     alias_method :select, :select_list
 
@@ -357,11 +355,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def link(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'link_for', &block)
       define_method(name) do
         return platform.click_link_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
-      standard_methods(name, identifier, 'link_for', &block)
     end
     alias_method :a, :link
 
@@ -390,6 +388,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def checkbox(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'checkbox_for', &block)
       define_method("check_#{name}") do
         return platform.check_checkbox(identifier.clone) unless block_given?
         self.send("#{name}_element").check
@@ -402,7 +401,6 @@ module PageObject
         return platform.checkbox_checked?(identifier.clone) unless block_given?
         self.send("#{name}_element").checked?
       end
-      standard_methods(name, identifier, 'checkbox_for', &block)
     end
 
     #
@@ -431,6 +429,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def radio_button(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'radio_button_for', &block)
       define_method("select_#{name}") do
         return platform.select_radio(identifier.clone) unless block_given?
         self.send("#{name}_element").select
@@ -443,7 +442,6 @@ module PageObject
         return platform.radio_selected?(identifier.clone) unless block_given?
         self.send("#{name}_element").selected?
       end
-      standard_methods(name, identifier, 'radio_button_for', &block)
     end
     alias_method :radio, :radio_button
 
@@ -468,6 +466,7 @@ module PageObject
     # * :name => Watir and Selenium
     #
     def radio_button_group(name, identifier)
+      check_name(name)
       define_method("select_#{name}") do |value|
         platform.radio_buttons_for(identifier.clone).each do |radio_elem|
           if radio_elem.value == value
@@ -521,11 +520,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def button(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'button_for', &block)
       define_method(name) do
         return platform.click_button_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
-      standard_methods(name, identifier, 'button_for', &block)
     end
 
     #
@@ -550,11 +549,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def div(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'div_for', &block)
       define_method(name) do
         return platform.div_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'div_for', &block)
     end
 
     #
@@ -579,11 +578,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def span(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'span_for', &block)
       define_method(name) do
         return platform.span_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'span_for', &block)
     end
 
     #
@@ -608,11 +607,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def table(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'table_for', &block)
       define_method(name) do
         return platform.table_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'table_for', &block)
     end
 
     #
@@ -638,11 +637,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def cell(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'cell_for', &block)
       define_method("#{name}") do
         return platform.cell_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'cell_for', &block)
     end
     alias_method :td, :cell
 
@@ -717,11 +716,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def list_item(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'list_item_for', &block)
       define_method(name) do
         return platform.list_item_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'list_item_for', &block)
     end
     alias_method :li, :list_item
 
@@ -746,11 +745,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def unordered_list(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'unordered_list_for', &block)
       define_method(name) do
         return platform.unordered_list_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'unordered_list_for', &block)
     end
     alias_method :ul, :unordered_list
 
@@ -775,11 +774,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def ordered_list(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'ordered_list_for', &block)
       define_method(name) do
         return platform.ordered_list_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'ordered_list_for', &block)
     end
     alias_method :ol, :ordered_list
 
@@ -803,11 +802,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h1(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier,'h1_for', &block)
       define_method(name) do
         return platform.h1_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier,'h1_for', &block)
     end
 
     #
@@ -830,11 +829,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h2(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'h2_for', &block)
       define_method(name) do
         return platform.h2_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'h2_for', &block)
     end
 
     #
@@ -857,11 +856,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h3(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'h3_for', &block)
       define_method(name) do
         return platform.h3_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'h3_for', &block)
     end
 
     #
@@ -884,11 +883,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h4(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'h4_for', &block)
       define_method(name) do
         return platform.h4_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'h4_for', &block)
     end
 
     #
@@ -911,11 +910,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h5(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'h5_for', &block)
       define_method(name) do
         return platform.h5_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'h5_for', &block)
     end
 
     #
@@ -938,11 +937,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h6(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'h6_for', &block)
       define_method(name) do
         return platform.h6_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'h6_for', &block)
     end
 
     #
@@ -965,11 +964,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def paragraph(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'paragraph_for', &block)
       define_method(name) do
         return platform.paragraph_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'paragraph_for', &block)
     end
     alias_method :p, :paragraph
 
@@ -995,11 +994,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def file_field(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'file_field_for', &block)
       define_method("#{name}=") do |value|
         return platform.file_field_value_set(identifier.clone, value) unless block_given?
         self.send("#{name}_element").value = value
       end
-      standard_methods(name, identifier, 'file_field_for', &block)
     end
 
     #
@@ -1023,11 +1022,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def label(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'label_for', &block)
       define_method(name) do
         return platform.label_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
-      standard_methods(name, identifier, 'label_for', &block)
     end
 
     #
@@ -1051,11 +1050,11 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def area(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'area_for', &block)
       define_method(name) do
         return platform.click_area_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
-      standard_methods(name, identifier, 'area_for', &block)
     end
 
     #
@@ -1172,6 +1171,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def element(name, tag, identifier={:index => 0}, &block)
+      check_name(name)
       define_method("#{name}") do
         self.send("#{name}_element").text
       end
@@ -1205,6 +1205,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def elements(name, tag, identifier={:index => 0}, &block)
+      check_name(name)
       define_method("#{name}_elements") do
         return call_block(&block) if block_given?
         platform.elements_for(tag, identifier.clone)
@@ -1245,6 +1246,7 @@ module PageObject
     end
 
     def standard_methods(name, identifier, method, &block)
+      check_name(name)
       define_method("#{name}_element") do
         return call_block(&block) if block_given?
         platform.send(method, identifier.clone)
@@ -1313,5 +1315,8 @@ module PageObject
       end
     end
 
+    def check_name(name)
+      raise NameError, "Identifier '#{name}' conflicts with page-object method of the same name" if self.instance_methods.include? name
+    end
   end
 end
