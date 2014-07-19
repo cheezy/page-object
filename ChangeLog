@@ -1,3 +1,9 @@
+=== Version 1.0.1
+* Enhancements
+  * Checks the name of generated methods to ensure they do not colide with existing page-object methods
+* Fixes
+  * Added support for dynamically finding elements inside iframes (Thanks Justin Ko)
+
 === Version 1.0 / 2014-6-1
 * Enhancements
   * Better support for using Regexp
