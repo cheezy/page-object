@@ -15,7 +15,7 @@ module PageObject
           how_and_what.each do |key, value|
             how_and_what[key] = value % index
           end
-          self.class.send type, name, how_and_what
+          self.class.send type, name, how_and_what unless self.class.instance_methods.include? name
         end
       end
     end

@@ -30,6 +30,7 @@ module PageObject
     def self.define_accessors(base, widget_tag, widget_class)
       accessors_module = Module.new do
         define_method widget_tag do |name, *identifier_args, &block|
+          check_name(name)
           
           identifier = identifier_args.first
           identifier = {:index => 0} if identifier.nil?

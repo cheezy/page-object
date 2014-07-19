@@ -1,3 +1,13 @@
+
+def class_exists?(class_name)
+  begin
+    klass = Module.const_get(class_name)
+    return klass.is_a?(Class)
+  rescue NameError
+    return false
+  end
+end
+
 Given /^I am on the Gxt Examples page$/ do
   visit GxtSamplePageObject
 end
@@ -28,9 +38,9 @@ When /^I define a page-object using that widget$/ do
 
     page_url "http://gxtexamplegallery.appspot.com/"
 
-    div(:basic_grid, :class => "label_basic_grid")
+    div(:basic_grid, :class => "label_basic_grid") 
     gxt_table(:gxt_table, :class => "x-grid3")
-  end
+  end unless class_exists? 'GxtSamplePageObject'
 end
 
 When /^I have registered the GxtTable with PageObject$/ do
