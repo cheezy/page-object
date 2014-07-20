@@ -154,3 +154,11 @@ When /^I trigger a prompt within a frame$/ do
     end
   end
 end
+
+When /^I retrieve a text field element within an iframe$/ do
+  @element = @page.text_field_2_id_element
+end
+
+Then /^I should be able to get the name of the text field element within an iframe$/ do
+  @element.attribute(:name).should == 'recieverElement'
+end
