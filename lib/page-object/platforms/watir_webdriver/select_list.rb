@@ -29,7 +29,7 @@ module PageObject
         end
 
         #
-        # Return an array of Options contained in the select lit.
+        # Return an array of Options contained in the select list.
         #
         # @return [array of PageObject::Elements::Option]
         #
