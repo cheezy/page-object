@@ -1,4 +1,6 @@
-=== Version 1.0.2
+=== Version 1.0.2 / 2014-7-21
+* Enhancements
+  * Added support to use multiple identifiers when locating nested frames / iframes (Thanks Justin Ko)
 * Fixes
   * Reverted the method name check due to unintended consequences
 
