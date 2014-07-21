@@ -974,24 +974,26 @@ module PageObject
           identifier[:tag_name] = tag if identifier[:name]
           identifier
         end
-    
+
         def nested_frames(frame_identifiers)
           return if frame_identifiers.nil?
           frame_str = ''
           frame_identifiers.each do |frame|
-            id = frame.values.first
             type = frame.keys.first
-            value = id.values.first
-            if value.is_a?(Regexp)
-              frame_str += "#{type.to_s}(:#{id.keys.first} => #{value.inspect})."
-            else
-              frame_str += "#{type.to_s}(:#{id.keys.first} => #{value})." if value.to_s.is_integer
-              frame_str += "#{type.to_s}(:#{id.keys.first} => '#{value}')." unless value.to_s.is_integer
-            end
+            identifier = frame.values.first.map do |key, value|
+              if value.is_a?(Regexp)
+                ":#{key} => #{value.inspect}"
+              elsif value.to_s.is_integer
+                ":#{key} => #{value}"
+              else
+                ":#{key} => '#{value}'"
+              end
+            end.join(', ')
+            frame_str += "#{type.to_s}(#{identifier})."
           end
           frame_str
         end
-        
+
         def switch_to_default_content(frame_identifiers)
           @browser.wd.switch_to.default_content unless frame_identifiers.nil?          
         end

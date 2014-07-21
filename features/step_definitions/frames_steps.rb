@@ -52,6 +52,9 @@ class IFramePage
     text_field(:text_field_1_index, :name => 'senderElement', :frame => frame)
   end
 
+  in_iframe(:class => 'iframe', :name => 'frame2') do |frame|
+    text_field(:text_field_2_multiple_identifiers, :name => 'recieverElement', :frame => frame)      
+  end
 end
 
 
@@ -66,11 +69,11 @@ Given /^I am on the iframe elements page$/ do
 end
 
 When /^I type "([^\"]*)" into the text field for frame 2 using "([^\"]*)"$/ do |text, arg_type|
-  @page.send "text_field_2_#{arg_type}=".to_sym, text
+  @page.send "text_field_2_#{arg_type.gsub(' ', '_')}=".to_sym, text
 end
 
 Then /^I should verify "([^\"]*)" is in the text field for frame 2 using "([^\"]*)"$/ do |text, arg_type|
-  result = @page.send "text_field_2_#{arg_type}".to_sym
+  result = @page.send "text_field_2_#{arg_type.gsub(' ', '_')}".to_sym
   result.should == text
 end
 
@@ -79,11 +82,11 @@ end
 #end
 
 When /^I type "([^\"]*)" into the text field from frame 1 using "([^\"]*)"$/ do |text, arg_type|
-  @page.send "text_field_1_#{arg_type}=".to_sym, text
+  @page.send "text_field_1_#{arg_type.gsub(' ', '_')}=".to_sym, text
 end
 
 Then /^I should verify "([^\"]*)" is in the text field for frame 1 using "([^\"]*)"$/ do |text, arg_type|
-  result = @page.send "text_field_1_#{arg_type}".to_sym
+  result = @page.send "text_field_1_#{arg_type.gsub(' ', '_')}".to_sym
   result.should == text
 end
 
