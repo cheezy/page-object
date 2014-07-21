@@ -466,7 +466,6 @@ module PageObject
     # * :name => Watir and Selenium
     #
     def radio_button_group(name, identifier)
-      check_name(name)
       define_method("select_#{name}") do |value|
         platform.radio_buttons_for(identifier.clone).each do |radio_elem|
           if radio_elem.value == value
@@ -1171,7 +1170,6 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def element(name, tag, identifier={:index => 0}, &block)
-      check_name(name)
       define_method("#{name}") do
         self.send("#{name}_element").text
       end
@@ -1205,7 +1203,6 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def elements(name, tag, identifier={:index => 0}, &block)
-      check_name(name)
       define_method("#{name}_elements") do
         return call_block(&block) if block_given?
         platform.elements_for(tag, identifier.clone)
@@ -1246,7 +1243,6 @@ module PageObject
     end
 
     def standard_methods(name, identifier, method, &block)
-      check_name(name)
       define_method("#{name}_element") do
         return call_block(&block) if block_given?
         platform.send(method, identifier.clone)
@@ -1313,10 +1309,6 @@ module PageObject
           platform.send platform_method, (identifier.first ? identifier.first.clone : {})
         end
       end
-    end
-
-    def check_name(name)
-      raise NameError, "Identifier '#{name}' conflicts with page-object method of the same name" if self.instance_methods.include? name
     end
   end
 end

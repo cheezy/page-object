@@ -1,4 +1,8 @@
-=== Version 1.0.1
+=== Version 1.0.2
+* Fixes
+  * Reverted the method name check due to unintended consequences
+
+=== Version 1.0.1 / 2014-7-19
 * Enhancements
   * Checks the name of generated methods to ensure they do not colide with existing page-object methods
   * Removed old legacy css code and now delegate everything to Watir
