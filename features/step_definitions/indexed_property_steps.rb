@@ -6,9 +6,15 @@ class IndexedPropertyPage
                             [:radio_button, :radio, {:id => 'table[%s].radio'}],
                             [:checkbox, :check, {:id => 'table[%s].check'}],
                             [:text_area, :area, {:id => 'table[%s].area'}],
-                            [:button, :button, {:id => 'table[%s].button'}]]
+                            [:button, :button, {:id => 'table[%s].button'}],
+                            [:div, :content, {:id => 'table[%s].content'}]]
 
   indexed_property :nottable, [[:text_field, :text_nottable, {:id => 'nottable[%s].text'}]]
+
+  indexed_property :other_table, [
+      [:text_field, :text_table, {:id => 'other_table[%s].text'}],
+      [:div, :content, {:id => 'other_table[%s].content'}]
+  ]
 
 end
 
@@ -81,3 +87,43 @@ Then /^The regular indexed text field by id should contain "([^\"]*)"$/ do |val|
   page.nottable[@index].text_nottable.should == val
 end
 
+
+When(/^I search for an element not on my indexed property but on another$/) do
+  @index = 'foo'
+end
+
+Then(/^I should see that the element doesn't exist$/) do
+  expect { page.other_table[@index].radio_element.value }.to raise_error(NoMethodError)
+end
+
+When(/^I search for an element that is on an indexed property$/) do
+  page.table['foo'].radio_element
+end
+
+And(/^I search for the element on another indexed property it is not on$/) do
+  @index = 'foo'
+end
+
+When(/^I search using the index which is not on another indexed property$/) do
+  @index = '123'
+end
+
+Then(/^I should see that the element doesn't exist for that index/) do
+  expect { page.other_table[@index].text_table_element.html }.to raise_error Watir::Exception::UnknownObjectException
+end
+
+When(/^I search for an element by an index on an indexed property$/) do
+  page.table['123'].text_table_element.html
+end
+
+And(/^I search using an index which is on another indexed property$/) do
+  @index = 'bar'
+end
+
+Then(/^I should see the content of the element on the second indexed property$/) do
+  expect(page.other_table['bar'].content).to eq 'bar!'
+end
+
+When(/^I search for an element with text by an index on an indexed property$/) do
+  expect(page.table['123'].content).to eq '123!'
+end
