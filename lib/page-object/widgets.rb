@@ -46,7 +46,7 @@ module PageObject
             widget_class.accessor_methods(self, name)
           end
         end
-        define_method "#{widget_tag}s" do |name, *identifier_args, &block|
+        define_method widget_class.plural_form do |name, *identifier_args, &block|
           define_method("#{name}_elements") do
             return call_block(&block) unless block.nil?
             platform_method = "#{widget_tag.to_s}s_for"

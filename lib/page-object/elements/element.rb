@@ -59,6 +59,17 @@ module PageObject
         attribute 'class'
       end
 
+      #
+      # specify plural form of element
+      #
+      def self.plural_form
+        "#{self.to_s.split('::')[-1].
+            gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+            gsub(/([a-z\d])([A-Z])/,'\1_\2').
+            tr("-", "_").
+            downcase}s"
+      end
+
       # @private
       def self.watir_identifier_for identifier
         if should_build_watir_xpath(identifier)

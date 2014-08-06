@@ -15,6 +15,13 @@ describe "Widget PageObject Extensions" do
     end
 
     PageObject.register_widget :gxt_table, GxtTable, :div
+
+    class WidgetMatrix < PageObject::Elements::Table
+      def self.plural_form
+        'widget_matrices'
+      end
+    end
+    PageObject.register_widget :widget_matrix, WidgetMatrix, :div
   end
 
   class WidgetTestPageObject
@@ -28,6 +35,8 @@ describe "Widget PageObject Extensions" do
     gxt_tables :gxt_multiple_block_table do |element|
       "multiple_block_gxt_table"
     end
+
+    widget_matrices :matrix, :class => 'matrix'
 
     div(:outer_div)
     gxt_table(:a_nested_gxt_table) { |page| page.outer_div_element.gxt_table_element }
@@ -111,6 +120,12 @@ describe "Widget PageObject Extensions" do
         watir_browser.should_receive(:divs).and_return([watir_browser])
         element = watir_page_object.some_table_elements
         element[0].should be_instance_of GxtTable
+      end
+
+      it "should be able to specify the plural form" do
+        watir_browser.should_receive(:divs).and_return([watir_browser])
+        element = watir_page_object.matrix_elements
+        element[0].should be_instance_of WidgetMatrix
       end
     end
   end
