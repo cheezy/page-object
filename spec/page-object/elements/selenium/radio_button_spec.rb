@@ -35,12 +35,6 @@ describe PageObject::Elements::RadioButton do
         radio_button.select
       end
       
-      it "should clear" do
-        selenium_rb.should_receive(:click)
-        selenium_rb.should_receive(:selected?).and_return(true)
-        radio_button.clear
-      end
-      
       it "should know if it is selected" do
         selenium_rb.should_receive(:selected?).and_return(true)
         radio_button.should be_selected

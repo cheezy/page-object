@@ -404,19 +404,18 @@ module PageObject
     end
 
     #
-    # adds five methods - one to select, another to clear,
-    # another to return if a radio button is selected,
-    # another method to return a PageObject::Elements::RadioButton
+    # adds four methods - one to select, another to return if a radio button 
+    # is selected, another method to return a PageObject::Elements::RadioButton
     # object representing the radio button element, and another to check
     # the radio button's existence.
     #
     # @example
     #   radio_button(:north, :id => "north")
-    #   # will generate 'select_north', 'clear_north', 'north_selected?',
+    #   # will generate 'select_north', 'north_selected?',
     #   # 'north_element', and 'north?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a radio button.  You can use a multiple paramaters
+    # @param [Hash] identifier how we find a radio button.  You can use a multiple parameters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
     #   * :css => Selenium only
@@ -433,10 +432,6 @@ module PageObject
       define_method("select_#{name}") do
         return platform.select_radio(identifier.clone) unless block_given?
         self.send("#{name}_element").select
-      end
-      define_method("clear_#{name}") do
-        return platform.clear_radio(identifier.clone) unless block_given?
-        self.send("#{name}_element").clear
       end
       define_method("#{name}_selected?") do
         return platform.radio_selected?(identifier.clone) unless block_given?

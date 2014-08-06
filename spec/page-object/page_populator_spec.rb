@@ -81,12 +81,6 @@ describe PageObject::PagePopulator  do
     page_object.populate_page_with('rb' => true)
   end
 
-  it "should clear a radio button when false is specified" do
-    page_object.should_receive(:clear_rb)
-    page_object.stub(:is_enabled?).and_return(true)
-    page_object.populate_page_with('rb' => false)
-  end
-
   it "should select the correct element from a radio button group" do
     page_object.should_receive(:select_rbg).with('blah')
     page_object.populate_page_with('rbg' => 'blah')
