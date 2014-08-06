@@ -21,8 +21,12 @@ describe "Widget PageObject Extensions" do
     include PageObject
 
     gxt_table(:a_table, :id => "top_div_id")
+    gxt_tables(:some_table, :class => "top_div_class")
     gxt_table :gxt_block_table do |element|
       "block_gxt_table"
+    end
+    gxt_tables :gxt_multiple_block_table do |element|
+      "multiple_block_gxt_table"
     end
 
     div(:outer_div)
@@ -84,8 +88,16 @@ describe "Widget PageObject Extensions" do
           watir_page_object.should respond_to(:a_table_element)
         end
 
+        it "should generate multiple accessor methods" do
+          watir_page_object.should respond_to(:some_table_elements)
+        end
+
         it "should call a block on the element method when present" do
           watir_page_object.gxt_block_table_element.should == "block_gxt_table"
+        end
+
+        it "should call a block on the elements method when present" do
+          watir_page_object.gxt_multiple_block_table_elements.should == "multiple_block_gxt_table"
         end
       end
 
@@ -93,6 +105,12 @@ describe "Widget PageObject Extensions" do
         watir_browser.should_receive(:div).and_return(watir_browser)
         element = watir_page_object.a_table_element
         element.should be_instance_of GxtTable
+      end
+
+      it "should retrieve all table elements from the page" do
+        watir_browser.should_receive(:divs).and_return([watir_browser])
+        element = watir_page_object.some_table_elements
+        element[0].should be_instance_of GxtTable
       end
     end
   end
