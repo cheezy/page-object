@@ -200,7 +200,7 @@ module PageObject
         #
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         # @param [String] the message to display if the event timeouts
-        # @param the block to execute when the event occurrs
+        # @param the block to execute when the event occurs
         #
         def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
           Object::Watir::Wait.until(timeout, message, &block)
