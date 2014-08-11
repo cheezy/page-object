@@ -78,7 +78,7 @@ login_page.login_with 'cheezy', 'secret'
 ````
 
 ### Creating your page object
-page-object supports both [watir-webdriver](https://github.com/jarib/watir-webdriver) and [selenium-webdriver](http://seleniumhq.org/docs/03_webdriver.html). The one used will be determined by which driver you pass into the constructor of your page object. The page object can be create like this:
+page-object supports both [watir-webdriver](https://github.com/jarib/watir-webdriver) and [selenium-webdriver](http://seleniumhq.org/docs/03_webdriver.html). The one used will be determined by which driver you pass into the constructor of your page object. The page object can be created like this:
 
 ````ruby
 browser = Watir::Browser.new :firefox
