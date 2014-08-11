@@ -1,3 +1,7 @@
+=== Version 1.0.3
+* Fixes
+  * Fixed issue that allows access to elements on other indexed properties (Thanks Dane Andersen)
+
 === Version 1.0.2 / 2014-7-21
 * Enhancements
   * Added support to use multiple identifiers when locating nested frames / iframes (Thanks Justin Ko)
