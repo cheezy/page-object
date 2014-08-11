@@ -599,7 +599,6 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         watir_page_object.should respond_to :select_first
-        watir_page_object.should respond_to :clear_first
         watir_page_object.should respond_to :first_selected?
         watir_page_object.should respond_to(:first_element)
       end
@@ -613,12 +612,6 @@ describe PageObject::Accessors do
       watir_browser.should_receive(:radio).and_return(watir_browser)
       watir_browser.should_receive(:set)
       watir_page_object.select_first
-    end
-
-    it "should clear a radio button" do
-      watir_browser.should_receive(:radio).and_return(watir_browser)
-      watir_browser.should_receive(:clear)
-      watir_page_object.clear_first
     end
 
     it "should determine if a radio is selected" do
