@@ -51,7 +51,6 @@ module PageObject
 
     def populate_radiobutton(key, value)
       return self.send "select_#{key}" if value
-      return self.send "clear_#{key}"
     end
 
     def populate_radiobuttongroup(key, value)

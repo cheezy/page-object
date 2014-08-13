@@ -9,13 +9,6 @@ module PageObject
         def select
           element.click unless selected?
         end
-        
-        #
-        # clear the radiobutton
-        #
-        def clear
-          element.click if selected?
-        end
 
         #
         # return if it is selected

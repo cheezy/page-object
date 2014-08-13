@@ -11,13 +11,6 @@ module PageObject
         end
 
         #
-        # clear the radiobutton
-        #
-        def clear
-          element.clear
-        end
-
-        #
         # return if it is selected
         #
         def selected?

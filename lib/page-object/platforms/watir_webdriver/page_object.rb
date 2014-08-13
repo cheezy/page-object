@@ -389,14 +389,6 @@ module PageObject
         end
 
         #
-        # platform method to clear a radio button
-        # See PageObject::Accessors#radio_button
-        #
-        def clear_radio(identifier)
-          process_watir_call("radio(identifier).clear", Elements::RadioButton, identifier)
-        end
-
-        #
         # platform method to determine if a radio button is selected
         # See PageObject::Accessors#radio_button
         #

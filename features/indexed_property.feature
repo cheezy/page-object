@@ -81,3 +81,18 @@ Feature: Indexed Property
     | foo    |
     | 123    |
     | 12test |
+
+  Scenario: Element on first indexed property but not second
+    When I search for an element that is on an indexed property
+    And I search for the element on another indexed property it is not on
+    Then I should see that the element doesn't exist
+
+  Scenario: Index on first indexed property but not on second
+    When I search for an element by an index on an indexed property
+    And I search using the index which is not on another indexed property
+    Then I should see that the element doesn't exist for that index
+
+  Scenario: Index on first indexed property and different on second
+    When I search for an element with text by an index on an indexed property
+    And I search using an index which is on another indexed property
+    Then I should see the content of the element on the second indexed property

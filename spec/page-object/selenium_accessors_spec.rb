@@ -290,13 +290,6 @@ describe PageObject::Accessors do
       selenium_page_object.select_first
     end
 
-    it "should clear a radio button" do
-      selenium_browser.should_receive(:find_element).twice.and_return(selenium_browser)
-      selenium_browser.should_receive(:selected?).and_return(true)
-      selenium_browser.should_receive(:click)
-      selenium_page_object.clear_first
-    end
-
     it "should determine if a radio is selected" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:selected?).and_return(true)
