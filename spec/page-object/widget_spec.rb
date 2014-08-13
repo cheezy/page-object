@@ -13,7 +13,6 @@ describe "Widget PageObject Extensions" do
         ".//descendant::tr"
       end
     end
-
     PageObject.register_widget :gxt_table, GxtTable, :div
 
     class WidgetMatrix < PageObject::Elements::Table
