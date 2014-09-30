@@ -1,5 +1,5 @@
 When /^I get the bold text for the "([^\"]*)" element$/ do |el|
-  @b = @page.send "#{el}"
+  @b = @page.send "#{el}_id"
 end
 
 Then /^I should see "([^\"]*)" in bold$/ do |text|
