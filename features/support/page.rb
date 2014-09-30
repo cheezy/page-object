@@ -360,5 +360,14 @@ class Page
   figure(:figure_id, :id => 'figure_id')
          
   svg(:svg_id, :id => 'the_svg')
+
+  b(:b_id, :id => 'b_id')
+  b(:b_class, :class => 'b_class')
+  b(:b_css, :css => '.b_class')
+  b(:b_name, :name => 'b_name')
+  b(:b_index, :index => 0)
+  b(:b_xpath, :xpath => '//b')
+  b(:b_class_index, :class => 'b_class', :index => 0)
+  b(:b_name_index, :name => 'b_name', :index => 0)
 end
 

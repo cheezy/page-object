@@ -35,6 +35,7 @@ class SeleniumAccessorsTestPageObject
   canvas(:my_canvas, :id => 'canvas')
   audio(:acdc, :id => 'audio_id')
   video(:movie, :id => 'movie_id')
+  b(:bold, :id=>'bold')
 end
 
 class SeleniumBlockPageObject
@@ -128,6 +129,10 @@ class SeleniumBlockPageObject
   end
   video :movie do |element|
     'video'
+  end
+
+  b :bold do |element|
+    'b'
   end
 end
 
@@ -586,4 +591,19 @@ describe PageObject::Accessors do
       end
     end
   end
+
+  describe "b accessors" do
+    it "should retrieve the text from the b" do
+      selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+      selenium_browser.should_receive(:text).and_return("value")
+      selenium_page_object.bold.should == "value"
+    end
+
+    it "should retrieve the element from the page" do
+      selenium_browser.should_receive(:find_element).and_return(selenium_browser)
+      element = selenium_page_object.bold_element
+      element.should be_instance_of PageObject::Elements::Bold
+    end
+  end
+
 end

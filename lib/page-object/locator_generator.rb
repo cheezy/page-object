@@ -101,6 +101,7 @@ module PageObject
                          :canvas,
                          :audio,
                          :video,
+                         :b,
                          :svg]
 
     def self.generate_locators(target)

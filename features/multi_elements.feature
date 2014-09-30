@@ -484,3 +484,9 @@ Feature: Multi Elements
     And the text for label 1 should be "Label 1"
     And the text for label 2 should be "Label 2"
     And the text for label 3 should be "Label 3"
+
+  Scenario: Selecting bs using an identifier
+    When I select the bs
+    Then I should have 2 bs
+    And the text for b 1 should be "One B"
+    And the text for b 2 should be "Two B"

@@ -930,6 +930,29 @@ module PageObject
         def svgs_for(identifier)
           find_watir_elements("element(identifier)", Elements::Element, identifier)
         end
+
+        #
+        # platform method to retrieve the text for a b
+        # See PageObject::Accessors#b
+        #
+        def b_text_for(identifier)
+          process_watir_call("b(identifier).text", Elements::Bold, identifier, nil, 'b')
+        end
+
+        #
+        # platform method to retrieve the b element
+        # See PageObject::Accessors#h1
+        #
+        def b_for(identifier)
+          find_watir_element("b(identifier)", Elements::Bold, identifier, 'b')
+        end
+
+        #
+        # platform method to retrieve an array of bs
+        #
+        def bs_for(identifier)
+          find_watir_elements("bs(identifier)", Elements::Bold, identifier, 'b')
+        end
  
         private
 

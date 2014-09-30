@@ -1002,6 +1002,32 @@ module PageObject
           find_selenium_elements(identifier, Elements::Element, 'svg')
         end
 
+
+        #
+        # platform method to retrieve the text from a b
+        # See PageObject::Accessors#b
+        #
+        def b_text_for(identifier)
+          process_selenium_call(identifier, Elements::Bold, 'b') do |how, what|
+            @browser.find_element(how, what).text
+          end
+        end
+
+        #
+        # platform method to retrieve the h1 element
+        # See PageObject::Accessors#b
+        #
+        def b_for(identifier)
+          find_selenium_element(identifier, Elements::Bold, 'b')
+        end
+
+        #
+        # platform method to retrieve all b elements
+        #
+        def bs_for(identifier)
+          find_selenium_elements(identifier, Elements::Bold, 'b')
+        end
+
         private
 
         def process_selenium_call(identifier, type, tag, other=nil)
