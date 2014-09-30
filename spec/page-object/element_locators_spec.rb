@@ -683,6 +683,29 @@ describe PageObject::ElementLocators do
       watir_browser.should_receive(:audio).with(:index => 0).and_return(watir_browser)
       watir_page_object.element(:audio)
     end
+
+    it "should find a b element" do
+      watir_browser.should_receive(:b).with(:id => 'blah').and_return(watir_browser)
+      element = watir_page_object.b_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Bold
+    end
+
+    it "should find a b element using a default identifier" do
+      watir_browser.should_receive(:b).with(:index => 0).and_return(watir_browser)
+      watir_page_object.b_element
+    end
+
+    it "should find all b elements" do
+      watir_browser.should_receive(:bs).with(:id => 'blah').and_return([watir_browser])
+      elements = watir_page_object.b_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Bold
+    end
+
+    it "should find all b elements using no parameters" do
+      watir_browser.should_receive(:bs).with({}).and_return([watir_browser])
+      watir_page_object.b_elements
+    end
+
   end
 
   context "when using Selenium" do
@@ -1061,5 +1084,18 @@ describe PageObject::ElementLocators do
       selenium_browser.should_receive(:find_elements).with(:tag_name, 'audio').and_return([selenium_browser])
       selenium_page_object.audio_elements
     end
+    it "should find a b element" do
+      selenium_browser.should_receive(:find_element).with(:id,'blah').and_return(selenium_browser)
+      element = selenium_page_object.b_element(:id => 'blah')
+      element.should be_instance_of PageObject::Elements::Bold
+    end
+
+
+    it "should find all b elements" do
+      selenium_browser.should_receive(:find_elements).with(:id, 'blah').and_return([selenium_browser])
+      elements = selenium_page_object.b_elements(:id => 'blah')
+      elements[0].should be_instance_of PageObject::Elements::Bold
+    end
+
   end
 end

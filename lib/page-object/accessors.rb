@@ -1121,6 +1121,33 @@ module PageObject
     end
 
     #
+    # adds three methods - one to retrieve the text of a b element, another to
+    # retrieve a b element, and another to check for it's existence.
+    #
+    # @example
+    #   b(:bold, :id => 'title')
+    #   # will generate 'bold', 'bold_element', and 'bold?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find a b.  You can use a multiple parameters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def b(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier,'b_for', &block)
+      define_method(name) do
+        return platform.b_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
+    end
+
+    #
     # adds two methods - one to retrieve a svg, and another to check
     # the svg's existence.
     #
