@@ -8,7 +8,7 @@ Feature: Bold
     Then I should see "part in bold" in bold
 
   Scenario Outline: Locating b on the Page
-    When I search bold text for the by "<search_by>"
+    When I search bold text for the b by "<search_by>"
     Then I should see "some text in bold with id" in bold
 
   Scenarios:
