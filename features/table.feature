@@ -38,7 +38,7 @@ Feature: Table
   Scenario: Retrieve data from a table using a partial row header in the 2nd column
     When I retrieve a table element
     Then the data for row "ata4" should be "Data3" and "Data4"
-    
+
   Scenario: Retrieve data from a table using a column header
     When I retrieve a table element
     Then the data for column "Header" and row "3" should be "Data4"
@@ -54,11 +54,11 @@ Feature: Table
   Scenario: Retrieve data from a table using a partial column header
     When I retrieve a table element
     Then the data for column "eader" and row "3" should be "Data4"
-    
+
   Scenario: Retrieve data from a table using both headers
     When I retrieve a table element
     Then the data for row "Data3" and column "eader" should be "Data4"
-    
+
   Scenario: Retrieve data from a table with an incorrect row header
     When I retrieve a table element
     Then the data for row "Data20" should be nil
@@ -82,6 +82,14 @@ Feature: Table
     | xpath     |
     | index     |
     | name      |
+
+  Scenario: Matching the expected table with the table on the Page
+    When I retrieve a table element
+    Then the table should be like the expected one
+      | Table | Header |
+      | Data1 | Data2  |
+      | Data3 | Data4  |
+
 
   @selenium_only
   Scenario Outline: Locating table cells on the Page
@@ -108,7 +116,7 @@ Feature: Table
   @watir_only
   Scenario: Finding an existing table
     Then I should see that the table exists
-    
+
   Scenario: Getting the text from a table
     Then I should see the text includes "Data1" when I retrieve it by "id"
     And I should see the text includes "Data2" when I retrieve it by "id"

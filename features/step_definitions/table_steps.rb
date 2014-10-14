@@ -64,3 +64,7 @@ end
 Then /^I should see the text includes "([^"]*)" when I retrieve it by "([^"]*)"$/ do |text, how|
   @page.send("table_#{how}").should include text
 end
+
+Then /^the table should be like the expected one$/ do |expected_table|
+  (expected_table.diff!@element.hashes).should be_nil
+end
