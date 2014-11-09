@@ -29,5 +29,10 @@ describe  'accessors' do
       allow(browser).to receive(:title).and_return 'wrong title', 'expected title'
       expect(page.wait_for_expected_title?).to be_truthy
     end
+
+    it '#has_expected_title?' do
+      allow(browser).to receive(:title).and_return 'wrong title', 'expected title'
+      expect(page).to have_expected_title
+    end
   end
 end

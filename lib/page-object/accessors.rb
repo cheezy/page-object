@@ -76,8 +76,9 @@ module PageObject
         raise "Expected title '#{expected_title}' instead of '#{page_title}'" unless has_expected_title
         has_expected_title
       end
-    end
 
+      alias_method :has_expected_title?, :wait_for_expected_title?
+    end
 
     #
     # Creates a method that compares the expected_title of a page against the actual.
