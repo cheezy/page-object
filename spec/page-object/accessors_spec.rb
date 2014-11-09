@@ -20,6 +20,13 @@ describe  'accessors' do
       expect(page.wait_for_expected_title?).to be_truthy
     end
 
+    it 'does not wait if it already is there' do
+      allow(browser).to receive(:title).and_return 'expected title'
+      expect(browser).to_not receive(:wait_until)
+
+      expect(page).to have_expected_title
+    end
+
     it 'errors when it does not match' do
       allow(browser).to receive(:title).and_return 'wrong title'
       expect { page.wait_for_expected_title? }.to raise_error "Expected title 'expected title' instead of 'wrong title'"
