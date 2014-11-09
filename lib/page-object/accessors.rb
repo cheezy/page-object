@@ -69,8 +69,8 @@ module PageObject
         page_title = title
         has_expected_title = (expected_title === page_title)
         if not has_expected_title and not timeout.nil?
-          wait_until(timeout, "Expected title '#{expected_title}' instead of '#{page_title}'") do 
-            has_expected_title = (expected_title === page_title)
+          wait_until(timeout, "Expected title '#{expected_title}' instead of '#{page_title}'") do
+            has_expected_title = (expected_title === title)
             has_expected_title
           end
         end
