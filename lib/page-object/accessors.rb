@@ -76,8 +76,6 @@ module PageObject
         raise error_message.call unless has_expected_title
         has_expected_title
       end
-
-      alias_method :has_expected_title?, :wait_for_expected_title?
     end
 
     #
