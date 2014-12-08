@@ -8,7 +8,7 @@ describe PageObject::Elements::TableRow do
   describe "interface" do
 
     it "should register with tag_name :tr" do
-      ::PageObject::Elements.element_class_for(:tr).should == ::PageObject::Elements::TableRow
+      expect(::PageObject::Elements.element_class_for(:tr)).to eql ::PageObject::Elements::TableRow
     end
     
     context "for selenium" do
@@ -17,14 +17,14 @@ describe PageObject::Elements::TableRow do
         table_row.stub(:columns).and_return(2)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_cell)
         table_cell.should_receive(:[]).and_return(table_cell)
-        table_row[0].should be_instance_of PageObject::Elements::TableCell
+        expect(table_row[0]).to be_instance_of PageObject::Elements::TableCell
       end
 
       it "should retrun the number of columns" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
         table_row_driver.should_receive(:size).and_return(3)
-        table_row.columns.should == 3
+        expect(table_row.columns).to eql 3
       end
 
       it "should iterate over the table columns" do
@@ -33,7 +33,7 @@ describe PageObject::Elements::TableRow do
         table_row.stub(:[]).and_return(table_row_driver)
         count = 0
         table_row.each { |e| count += 1 }
-        count.should == 2
+        expect(count).to eql 2
       end
     end
 
@@ -46,7 +46,7 @@ describe PageObject::Elements::TableRow do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
         table_row.stub(:columns).and_return(2)
         table_row_driver.should_receive(:[]).with(1).and_return(table_cell)
-        table_row[1].should be_instance_of PageObject::Elements::TableCell
+        expect(table_row[1]).to be_instance_of PageObject::Elements::TableCell
       end
 
       it "should return the number of columns" do
@@ -54,7 +54,7 @@ describe PageObject::Elements::TableRow do
         table_row_driver.stub(:wd).and_return(table_row_driver)
         table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
         table_row_driver.should_receive(:size).and_return(3)
-        table_row.columns.should == 3
+        expect(table_row.columns).to eql 3
       end
 
       it "should iterate over the table columns" do
@@ -63,7 +63,7 @@ describe PageObject::Elements::TableRow do
         table_row.stub(:[])
         count = 0
         table_row.each { |e| count += 1 }
-        count.should == 2
+        expect(count).to eql 2
       end
     end
   end

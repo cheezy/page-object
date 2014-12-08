@@ -12,51 +12,51 @@ describe "Element for Watir" do
   it "should know when it is visible" do
     watir_driver.stub(:present?).and_return(true)
     watir_driver.stub(:displayed?).and_return(true)
-    watir_element.visible?.should == true
+    expect(watir_element.visible?).to eql true
   end
 
   it "should know when it is not visible" do
     watir_driver.stub(:present?).and_return(false)
     watir_driver.stub(:displayed?).and_return(false)
-    watir_element.visible?.should == false
+    expect(watir_element.visible?).to eql false
   end
 
   it "should know when it exists" do
     watir_driver.stub(:exists?).and_return(true)
-    watir_element.exists?.should == true
+    expect(watir_element.exists?).to eql true
   end
 
   it "should know when it does not exist" do
     watir_driver.stub(:exists?).and_return(false)
     watir_driver.stub(:nil?).and_return(true)
-    watir_element.exists?.should == false
+    expect(watir_element.exists?).to eql false
   end
 
   it "should be able to return the text contained in the element" do
     watir_driver.should_receive(:text).and_return("my text")
-    watir_element.text.should == "my text"
+    expect(watir_element.text).to eql "my text"
   end
 
   it "should know when it is equal to another" do
     watir_driver.should_receive(:==).and_return(true)
-    watir_element.should == watir_element
+    expect(watir_element).to eq watir_element
   end
 
   it "should return its tag name" do
     watir_driver.should_receive(:tag_name).and_return("h1")
-    watir_element.tag_name.should == "h1"
+    expect(watir_element.tag_name).to eql "h1"
   end
 
   it "should know its value" do
     watir_driver.stub(:value).and_return("value")
     watir_driver.stub(:attribute).and_return("value")
-    watir_element.value.should == "value"
+    expect(watir_element.value).to eql "value"
   end
 
   it "should know how to retrieve the value of an attribute" do
     watir_driver.stub(:attribute_value).and_return(true)
     watir_driver.stub(:attribute).and_return(true)
-    watir_element.attribute("readonly").should be true
+    expect(watir_element.attribute("readonly")).to be true
   end
 
   it "should be clickable" do
@@ -65,7 +65,6 @@ describe "Element for Watir" do
   end
   
   it "should be double clickable" do
-    
     watir_driver.should_receive(:double_click)
     watir_element.double_click
   end
@@ -84,7 +83,7 @@ describe "Element for Watir" do
   it "should return the element when it is present" do
     watir_driver.stub(:wait_until_present).with(10)
     element = watir_element.when_present(10)
-    element.should === watir_element
+    expect(element).to equal watir_element
   end
 
   it "should use the overriden wait when set" do
@@ -103,7 +102,7 @@ describe "Element for Watir" do
     ::Watir::Wait.stub(:until).with(10, "Element was not visible in 10 seconds")
     watir_driver.stub(:displayed?).and_return(true)
     element = watir_element.when_visible(10)
-    element.should === watir_element
+    expect(element).to equal watir_element
   end
 
   it "should be able to block until it is not visible" do
@@ -116,7 +115,7 @@ describe "Element for Watir" do
     ::Watir::Wait.stub(:while).with(10, "Element still visible after 10 seconds")
     watir_driver.stub(:displayed?).and_return(false)
     element = watir_element.when_not_visible(10)
-    element.should === watir_element
+    expect(element).to equal watir_element
   end
 
   it "should be able to block until a user define event fires true" do

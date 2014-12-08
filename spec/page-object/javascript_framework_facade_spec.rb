@@ -10,27 +10,27 @@ describe PageObject::JavascriptFrameworkFacade do
   
   it "should allow the selection of a javascript framework" do
     facade.framework = :jquery
-    facade.framework.should == :jquery
+    expect(facade.framework).to eql :jquery
   end
 
   it "should register the jQuery script builder" do
     facade.framework = :jquery
-    facade.script_builder.should == ::PageObject::Javascript::JQuery
+    expect(facade.script_builder).to eql ::PageObject::Javascript::JQuery
   end
 
   it "should return script for pending requests in jQuery" do
     facade.framework = :jquery
-    facade.pending_requests.should == 'return jQuery.active'
+    expect(facade.pending_requests).to eql 'return jQuery.active'
   end
 
   it "should register the Prototype script builder" do
     facade.framework = :prototype
-    facade.script_builder.should == ::PageObject::Javascript::Prototype
+    expect(facade.script_builder).to eql ::PageObject::Javascript::Prototype
   end
 
   it "should return script for pending requests in Prototype" do
     facade.framework = :prototype
-    facade.pending_requests.should == 'return Ajax.activeRequestCount'
+    expect(facade.pending_requests).to eql 'return Ajax.activeRequestCount'
   end
 
   it "should not allow you to set the framework to one it does not know about" do
@@ -46,7 +46,7 @@ describe PageObject::JavascriptFrameworkFacade do
     
     facade.add_framework(:blah, GoodFake)
     facade.framework = :blah
-    facade.pending_requests.should == "fake"
+    expect(facade.pending_requests).to eql "fake"
   end
 
   it "should not allow you to add a new javascript framework that is invalid" do

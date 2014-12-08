@@ -8,14 +8,14 @@ describe PageObject::Elements::UnorderedList do
     it "should map watir types to same" do
       [:class, :id, :index, :xpath].each do |t|
         identifier = ul.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :index, :name, :xpath].each do |t|
         key, value = ul.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
   end
@@ -24,7 +24,7 @@ describe PageObject::Elements::UnorderedList do
     let(:ul_element) { double('ul_element') }
 
     it "should register with tag_name :ul" do
-      ::PageObject::Elements.element_class_for(:ul).should == ::PageObject::Elements::UnorderedList
+      expect(::PageObject::Elements.element_class_for(:ul)).to eql ::PageObject::Elements::UnorderedList
     end
 
     context "for watir" do
@@ -47,7 +47,7 @@ describe PageObject::Elements::UnorderedList do
         ul_element.stub(:parent).and_return(ul_element)
         ul_element.stub(:element).and_return(ul_element)
         ul_element.stub(:==).and_return(true)
-        ul.items.should == 1
+        expect(ul.items).to eql 1
       end
 
       it "should know how to iterate over the items" do
@@ -56,7 +56,7 @@ describe PageObject::Elements::UnorderedList do
         ul.stub(:[])
         count = 0
         ul.each { |item| count += 1 }
-        count.should == 5
+        expect(count).to eql 5
       end
     end
 
@@ -78,7 +78,7 @@ describe PageObject::Elements::UnorderedList do
         ul_element.should_receive(:parent).and_return(ul_element)
         ul_element.should_receive(:element).and_return(ul_element)
         ul_element.should_receive(:==).and_return(true)
-        ul.items.should == 1
+        expect(ul.items).to eql 1
       end
 
       it "should know how to iterate over the items" do
@@ -87,8 +87,7 @@ describe PageObject::Elements::UnorderedList do
         ul.stub(:[])
         count = 0
         ul.each { |item| count += 1 }
-        count.should == 5
-
+        expect(count).to eql 5
       end
     end
   end
