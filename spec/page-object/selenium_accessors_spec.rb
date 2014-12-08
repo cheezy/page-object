@@ -155,7 +155,7 @@ describe PageObject::Accessors do
     it "should return a link element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.google_search_element
-      element.should be_instance_of PageObject::Elements::Link
+      expect(element).to be_instance_of PageObject::Elements::Link
     end
   end
 
@@ -164,7 +164,7 @@ describe PageObject::Accessors do
     it "should get the text from the text field element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:attribute).with('value').and_return('Katie')
-      selenium_page_object.first_name.should == 'Katie'
+      expect(selenium_page_object.first_name).to eql 'Katie'
     end
 
     it "should set some text on a text field element" do
@@ -177,7 +177,7 @@ describe PageObject::Accessors do
     it "should retrieve a text field element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.first_name_element
-      element.should be_instance_of PageObject::Elements::TextField
+      expect(element).to be_instance_of PageObject::Elements::TextField
     end
   end
 
@@ -186,13 +186,13 @@ describe PageObject::Accessors do
     it "should get the text from a hidden field" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:attribute).with('value').and_return("12345")
-      selenium_page_object.social_security_number.should == "12345"
+      expect(selenium_page_object.social_security_number).to eql "12345"
     end
 
     it "should retrieve a hidden field element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.social_security_number_element
-      element.should be_instance_of PageObject::Elements::HiddenField
+      expect(element).to be_instance_of PageObject::Elements::HiddenField
     end
   end
 
@@ -207,13 +207,13 @@ describe PageObject::Accessors do
     it "should get the text from the text area" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:attribute).with('value').and_return("123 main street")
-      selenium_page_object.address.should == "123 main street"
+      expect(selenium_page_object.address).to eql "123 main street"
     end
 
     it "should retrieve a text area element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.address_element
-      element.should be_instance_of PageObject::Elements::TextArea
+      expect(element).to be_instance_of PageObject::Elements::TextArea
     end
   end
 
@@ -224,7 +224,7 @@ describe PageObject::Accessors do
       selected.should_receive(:text).and_return("OH")
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:find_elements).and_return([selected])
-      selenium_page_object.state.should == "OH"
+      expect(selenium_page_object.state).to eql "OH"
     end
 
     it "should set the current item of a select list" do
@@ -239,7 +239,7 @@ describe PageObject::Accessors do
     it "should retrieve the select list element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.state_element
-      element.should be_instance_of PageObject::Elements::SelectList
+      expect(element).to be_instance_of PageObject::Elements::SelectList
     end
     
     it "should return list of selection options" do
@@ -252,7 +252,7 @@ describe PageObject::Accessors do
       select_element.should_receive(:options).twice.and_return([option1, option2])
       selenium_page_object.should_receive(:state_element).and_return(select_element)
       
-      selenium_page_object.state_options.should == ["CA","OH"]
+      expect(selenium_page_object.state_options).to eql ["CA","OH"]
     end
     
   end
@@ -276,13 +276,13 @@ describe PageObject::Accessors do
     it "should know if a check box element is selected" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:selected?).and_return(true)
-      selenium_page_object.active_checked?.should be true
+      expect(selenium_page_object.active_checked?).to be true
     end
 
     it "should retrieve a checkbox element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.active_element
-      element.should be_instance_of PageObject::Elements::CheckBox
+      expect(element).to be_instance_of PageObject::Elements::CheckBox
     end
   end
 
@@ -304,7 +304,7 @@ describe PageObject::Accessors do
     it "should retrieve a radio button element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.first_element
-      element.should be_instance_of PageObject::Elements::RadioButton
+      expect(element).to be_instance_of PageObject::Elements::RadioButton
     end
   end
 
@@ -318,7 +318,7 @@ describe PageObject::Accessors do
     it "should retrieve a button element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.click_me_element
-      element.should be_instance_of PageObject::Elements::Button
+      expect(element).to be_instance_of PageObject::Elements::Button
     end
   end
 
@@ -326,13 +326,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from a div" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("Message from div")
-      selenium_page_object.message.should == "Message from div"
+      expect(selenium_page_object.message).to eql "Message from div"
     end
 
     it "should retrieve the div element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.message_element
-      element.should be_instance_of PageObject::Elements::Div
+      expect(element).to be_instance_of PageObject::Elements::Div
     end
   end
 
@@ -340,13 +340,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from a span" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("Alert")
-      selenium_page_object.alert_span.should == "Alert"
+      expect(selenium_page_object.alert_span).to eql "Alert"
     end
 
     it "should retrieve the span element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.alert_span_element
-      element.should be_instance_of PageObject::Elements::Span
+      expect(element).to be_instance_of PageObject::Elements::Span
     end
   end
 
@@ -354,7 +354,7 @@ describe PageObject::Accessors do
     it "should retrieve the table element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.cart_element
-      element.should be_instance_of(PageObject::Elements::Table)
+      expect(element).to be_instance_of(PageObject::Elements::Table)
     end
   end
 
@@ -362,13 +362,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the cell" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return('celldata')
-      selenium_page_object.total.should == 'celldata'
+      expect(selenium_page_object.total).to eql 'celldata'
     end
 
     it "should retrieve the cell element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.total_element
-      element.should be_instance_of PageObject::Elements::TableCell
+      expect(element).to be_instance_of PageObject::Elements::TableCell
     end
   end
 
@@ -376,7 +376,7 @@ describe PageObject::Accessors do
     it "should retrieve the image element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.logo_element
-      element.should be_instance_of PageObject::Elements::Image
+      expect(element).to be_instance_of PageObject::Elements::Image
     end
   end
 
@@ -384,7 +384,7 @@ describe PageObject::Accessors do
     it "should retrieve the form element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.login_element
-      element.should be_instance_of PageObject::Elements::Form
+      expect(element).to be_instance_of PageObject::Elements::Form
     end
   end
 
@@ -392,13 +392,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the list item" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.item_one.should == "value"
+      expect(selenium_page_object.item_one).to eql "value"
     end
 
     it "should retrieve the list item from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.item_one_element
-      element.should be_instance_of PageObject::Elements::ListItem
+      expect(element).to be_instance_of PageObject::Elements::ListItem
     end
   end
 
@@ -406,7 +406,7 @@ describe PageObject::Accessors do
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.menu_element
-      element.should be_instance_of PageObject::Elements::UnorderedList
+      expect(element).to be_instance_of PageObject::Elements::UnorderedList
     end
   end
 
@@ -414,7 +414,7 @@ describe PageObject::Accessors do
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.top_five_element
-      element.should be_instance_of PageObject::Elements::OrderedList
+      expect(element).to be_instance_of PageObject::Elements::OrderedList
     end
   end
   
@@ -422,13 +422,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h1" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.heading1.should == "value"
+      expect(selenium_page_object.heading1).to eql "value"
     end
   
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.heading1_element
-      element.should be_instance_of PageObject::Elements::Heading
+      expect(element).to be_instance_of PageObject::Elements::Heading
     end
   end
   
@@ -436,13 +436,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h2" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.heading2.should == "value"
+      expect(selenium_page_object.heading2).to eql "value"
     end
 
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.heading2_element
-      element.should be_instance_of PageObject::Elements::Heading
+      expect(element).to be_instance_of PageObject::Elements::Heading
     end
   end
 
@@ -450,13 +450,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h3" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.heading3.should == "value"
+      expect(selenium_page_object.heading3).to eql "value"
     end
 
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.heading3_element
-      element.should be_instance_of PageObject::Elements::Heading
+      expect(element).to be_instance_of PageObject::Elements::Heading
     end
   end
 
@@ -464,13 +464,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h4" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.heading4.should == "value"
+      expect(selenium_page_object.heading4).to eql "value"
     end
 
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.heading4_element
-      element.should be_instance_of PageObject::Elements::Heading
+      expect(element).to be_instance_of PageObject::Elements::Heading
     end
   end
 
@@ -478,13 +478,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h5" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.heading5.should == "value"
+      expect(selenium_page_object.heading5).to eql "value"
     end
 
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.heading5_element
-      element.should be_instance_of PageObject::Elements::Heading
+      expect(element).to be_instance_of PageObject::Elements::Heading
     end
   end
 
@@ -492,13 +492,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the h6" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.heading6.should == "value"
+      expect(selenium_page_object.heading6).to eql "value"
     end
 
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.heading6_element
-      element.should be_instance_of PageObject::Elements::Heading
+      expect(element).to be_instance_of PageObject::Elements::Heading
     end
   end
 
@@ -507,13 +507,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the p" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.first_para.should == "value"
+      expect(selenium_page_object.first_para).to eql "value"
     end
 
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.first_para_element
-      element.should be_instance_of PageObject::Elements::Paragraph
+      expect(element).to be_instance_of PageObject::Elements::Paragraph
     end
   end
 
@@ -527,19 +527,19 @@ describe PageObject::Accessors do
     it "should retrieve a file_field element" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.upload_me_element
-      element.should be_instance_of PageObject::Elements::FileField
+      expect(element).to be_instance_of PageObject::Elements::FileField
     end
   end
 
   describe "area accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
-        selenium_page_object.should respond_to(:img_area)
-        selenium_page_object.should respond_to(:img_area_element)
+        expect(selenium_page_object).to respond_to(:img_area)
+        expect(selenium_page_object).to respond_to(:img_area_element)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.img_area_element.should == "area"
+        expect(block_page_object.img_area_element).to eql "area"
       end
     end
 
@@ -552,18 +552,18 @@ describe PageObject::Accessors do
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.img_area_element
-      element.should be_instance_of PageObject::Elements::Area
+      expect(element).to be_instance_of PageObject::Elements::Area
     end
   end
 
   describe "canvas accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
-        selenium_page_object.should respond_to(:my_canvas_element)
+        expect(selenium_page_object).to respond_to(:my_canvas_element)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.my_canvas_element.should == "canvas"
+        expect(block_page_object.my_canvas_element).to eql "canvas"
       end
     end
   end
@@ -571,11 +571,11 @@ describe PageObject::Accessors do
   describe "audio accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
-        selenium_page_object.should respond_to(:acdc_element)
+        expect(selenium_page_object).to respond_to(:acdc_element)
       end
 
       it "should call a block on the element method when present" do
-        block_page_object.acdc_element.should == "audio"
+        expect(block_page_object.acdc_element).to eql "audio"
       end
     end
   end
@@ -583,11 +583,11 @@ describe PageObject::Accessors do
   describe "video accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
-        selenium_page_object.should respond_to(:movie_element)
+        expect(selenium_page_object).to respond_to(:movie_element)
       end
 
       it "should call a block on the elmenet method when present" do
-        block_page_object.movie_element.should == "video"
+        expect(block_page_object.movie_element).to eql "video"
       end
     end
   end
@@ -596,13 +596,13 @@ describe PageObject::Accessors do
     it "should retrieve the text from the b" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       selenium_browser.should_receive(:text).and_return("value")
-      selenium_page_object.bold.should == "value"
+      expect(selenium_page_object.bold).to eql "value"
     end
 
     it "should retrieve the element from the page" do
       selenium_browser.should_receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.bold_element
-      element.should be_instance_of PageObject::Elements::Bold
+      expect(element).to be_instance_of PageObject::Elements::Bold
     end
   end
 

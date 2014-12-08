@@ -50,45 +50,45 @@ describe PageObject::PageFactory do
     class NoPO
     end
     @world.on(NoPO)
-    @world.super_called.should be true
+    expect(@world.super_called).to be true
   end
 
   it "should create a new page object and execute a block" do
     @world.browser.should_not_receive(:goto)
     @world.on_page FactoryTestPage do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.on_page "FactoryTestPage" do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.on_page "ContainingModule::PageInsideModule" do |page|
-      page.should be_instance_of ContainingModule::PageInsideModule
+      expect(page).to be_instance_of ContainingModule::PageInsideModule
     end
   end
 
   it "should create a new page object and execute a block using 'on'" do
     @world.browser.should_not_receive(:goto)
     @world.on FactoryTestPage do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.on "FactoryTestPage" do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.on "ContainingModule::PageInsideModule" do |page|
-      page.should be_instance_of ContainingModule::PageInsideModule
+      expect(page).to be_instance_of ContainingModule::PageInsideModule
     end
   end
 
   it "should create and visit a new page" do
     @world.browser.should_receive(:goto).exactly(3).times
     @world.visit_page FactoryTestPage do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.visit_page "FactoryTestPage" do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.visit_page "ContainingModule::PageInsideModule" do |page|
-      page.should be_instance_of ContainingModule::PageInsideModule
+      expect(page).to be_instance_of ContainingModule::PageInsideModule
     end
   end
 
@@ -97,8 +97,8 @@ describe PageObject::PageFactory do
     FactoryTestPage.params = {:initial => :value}
     @world.visit_page(FactoryTestPage, :using_params => {:new_value => :merged})
     merged = FactoryTestPage.instance_variable_get("@merged_params")
-    merged[:initial].should == :value
-    merged[:new_value].should == :merged
+    expect(merged[:initial]).to eql :value
+    expect(merged[:new_value]).to eql :merged
   end
 
   it "should use the params in the url when they are provided" do
@@ -122,27 +122,27 @@ describe PageObject::PageFactory do
   it "should create and visit a new page using 'visit'" do
     @world.browser.should_receive(:goto).exactly(3).times
     @world.visit FactoryTestPage do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.visit "FactoryTestPage" do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
     end
     @world.visit "ContainingModule::PageInsideModule" do |page|
-      page.should be_instance_of ContainingModule::PageInsideModule
+      expect(page).to be_instance_of ContainingModule::PageInsideModule
     end
   end
 
   it "should create and visit a new page when url is defined as 'direct_url'" do
     @world.browser.should_receive(:goto)
     @world.visit TestPageWithDirectUrl do |page|
-      page.should be_instance_of TestPageWithDirectUrl
+      expect(page).to be_instance_of TestPageWithDirectUrl
     end
   end
   
   it "should set an instance variable that can be used outside of the block" do
     page = @world.on_page FactoryTestPage
     current_page = @world.instance_variable_get "@current_page"
-    current_page.should === page
+    expect(current_page).to equal page
   end
 
   it "should not execute block if page is not @current_page" do
@@ -161,9 +161,9 @@ describe PageObject::PageFactory do
   it "should return the @current_page if asking for another page" do
     expected = TestPageWithDirectUrl.new(@world.browser)
     @world.instance_variable_set "@current_page", expected
-    @world.if_page(FactoryTestPage).should == expected
-    @world.if_page("FactoryTestPage").should == expected
-    @world.if_page("ContainingModule::PageInsideModule").should == expected
+    expect(@world.if_page(FactoryTestPage)).to eql expected
+    expect(@world.if_page("FactoryTestPage")).to eql expected
+    expect(@world.if_page("ContainingModule::PageInsideModule")).to eql expected
   end
 
   it "should execute the block when we ask if it is the correct page" do
@@ -171,25 +171,25 @@ describe PageObject::PageFactory do
     
     done = false
     @world.if_page(FactoryTestPage) do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
       done = true 
     end
-    done.should be true
+    expect(done).to be true
     
     done = false
     @world.if_page("FactoryTestPage") do |page|
-      page.should be_instance_of FactoryTestPage
+      expect(page).to be_instance_of FactoryTestPage
       done = true
     end
-    done.should be true
+    expect(done).to be true
     
     done = false
     @world.instance_variable_set "@current_page", ContainingModule::PageInsideModule.new(@world.browser) 
     @world.if_page("ContainingModule::PageInsideModule") do |page|
-      page.should be_instance_of ContainingModule::PageInsideModule
+      expect(page).to be_instance_of ContainingModule::PageInsideModule
       done = true
     end
-    done.should be true
+    expect(done).to be true
   end
 
   it "should raise an error when you do not provide a default route" do
@@ -199,7 +199,7 @@ describe PageObject::PageFactory do
   it "should store the routes" do
     routes = ['a', 'b', 'c']
     PageObject::PageFactory.routes = {:default => routes}
-    PageObject::PageFactory.routes[:default].should == routes
+    expect(PageObject::PageFactory.routes[:default]).to eql routes
   end
 
   it "should navigate to a page calling the default methods" do
@@ -208,7 +208,7 @@ describe PageObject::PageFactory do
     fake_page = double('a_page')
     FactoryTestPage.should_receive(:new).and_return(fake_page)
     fake_page.should_receive(:a_method)
-    @world.navigate_to(AnotherPage).class.should == AnotherPage
+    expect(@world.navigate_to(AnotherPage).class).to eql AnotherPage
   end
 
   it "should pass parameters to methods when navigating" do
@@ -217,7 +217,7 @@ describe PageObject::PageFactory do
     fake_page = double('a_page')
     FactoryTestPage.should_receive(:new).and_return(fake_page)
     fake_page.should_receive(:a_method).with('blah')
-    @world.navigate_to(AnotherPage).class.should == AnotherPage
+    expect(@world.navigate_to(AnotherPage).class).to eql AnotherPage
   end
 
   it "should fail when it does not find a proper route" do
@@ -251,6 +251,6 @@ describe PageObject::PageFactory do
     AnotherPage.should_receive(:new).and_return(a_page)
     a_page.should_receive(:respond_to?).with(:b_method).and_return(true)
     a_page.should_receive(:b_method)
-    @world.continue_navigation_to(YetAnotherPage).class.should == YetAnotherPage
+    expect(@world.continue_navigation_to(YetAnotherPage).class).to eql YetAnotherPage
   end
 end

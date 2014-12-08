@@ -27,33 +27,33 @@ describe PageObject do
     it "should set a default page wait value" do
       PageObject.default_page_wait = 20
       wait = PageObject.instance_variable_get("@page_wait")
-      wait.should == 20
+      expect(wait).to eql 20
     end
 
     it "should provide the default page wait value" do
       PageObject.instance_variable_set("@page_wait", 10)
-      PageObject.default_page_wait.should == 10
+      expect(PageObject.default_page_wait).to eql 10
     end
 
     it "should default the page wait value to 30" do
       PageObject.instance_variable_set("@page_wait", nil)
-      PageObject.default_page_wait.should == 30
+      expect(PageObject.default_page_wait).to eql 30
     end
 
     it "should set the default element wait value" do
       PageObject.default_element_wait = 20
       wait = PageObject.instance_variable_get("@element_wait")
-      wait.should == 20
+      expect(wait).to eql 20
     end
 
     it "should provide the default element wait value" do
       PageObject.instance_variable_set("@element_wait", 10)
-      PageObject.default_element_wait.should == 10
+      expect(PageObject.default_element_wait).to eql 10
     end
 
     it "should default the element wait to 5" do
       PageObject.instance_variable_set("@element_wait", nil)
-      PageObject.default_element_wait.should == 5
+      expect(PageObject.default_element_wait).to eql 5
     end
   end
 
@@ -61,38 +61,39 @@ describe PageObject do
     it "should set the params value" do
       PageObjectTestPageObject.params = {:some => :value}
       params = PageObjectTestPageObject.instance_variable_get("@params")
-      params[:some].should == :value
+      expect(params[:some]).to eql :value
     end
 
     it "should provide the params value" do
       PageObjectTestPageObject.instance_variable_set("@params", {:value => :updated})
-      PageObjectTestPageObject.params[:value].should == :updated
+      expect(PageObjectTestPageObject.params[:value]).to eql :updated
     end
 
     it "should default the params to an empty hash" do
       PageObjectTestPageObject.instance_variable_set("@params", nil)
-      PageObjectTestPageObject.params.should == {}
+      expect(PageObjectTestPageObject.params).to eql Hash.new
     end
   end
 
   context "when created with a watir-webdriver browser" do
     it "should include the WatirPageObject module" do
-      watir_page_object.platform.should be_kind_of PageObject::Platforms::WatirWebDriver::PageObject
+      expect(watir_page_object.platform).to be_kind_of PageObject::Platforms::WatirWebDriver::PageObject
     end
   end
 
   context "when created with a selenium browser" do
     it "should include the SeleniumPageObject module" do
-      selenium_page_object.platform.should be_kind_of PageObject::Platforms::SeleniumWebDriver::PageObject
+      expect(selenium_page_object.platform).to be_kind_of PageObject::Platforms::SeleniumWebDriver::PageObject
     end
   end
   
   context "when created with a non_bundled adapter" do
     let(:custom_adapter) { mock_adapter(:custom_browser, CustomPlatform) }
+    
     it "should be an instance of whatever that objects adapter is" do
       mock_adapters({:custom_adapter=>custom_adapter})
       custom_page_object = PageObjectTestPageObject.new(:custom_browser)
-      custom_page_object.platform.should be custom_adapter.create_page_object
+      expect(custom_page_object.platform).to be custom_adapter.create_page_object
     end
   end
   
@@ -123,7 +124,7 @@ describe PageObject do
         end
         
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_page_called.should be true
+        expect(@page.initialize_page_called).to be true
       end
 
       it "should call initialize_accessors if it exists" do
@@ -137,7 +138,7 @@ describe PageObject do
         end
 
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_accessors_called.should be true
+        expect(@page.initialize_accessors_called).to be true
       end
 
       it "should call initialize_accessors before initialize_page if both exist" do
@@ -155,31 +156,31 @@ describe PageObject do
         end
 
         @page = CallbackPage.new(watir_browser)
-        @page.initialize_accessors.usec.should be <= @page.initialize_page.usec
+        expect(@page.initialize_accessors.usec).to be <= @page.initialize_page.usec
       end
 
       it "should know which element has focus" do
         watir_browser.should_receive(:execute_script).and_return(watir_browser)
         watir_browser.should_receive(:tag_name).twice.and_return(:input)
         watir_browser.should_receive(:type).and_return(:submit)
-        watir_page_object.element_with_focus.class.should == PageObject::Elements::Button
+        expect(watir_page_object.element_with_focus.class).to eql PageObject::Elements::Button
       end
     end
     
     context "when using WatirPageObject" do
       it "should display the page text" do
         watir_browser.should_receive(:text).and_return("browser text")
-        watir_page_object.text.should == "browser text"
+        expect(watir_page_object.text).to eql "browser text"
       end
 
       it "should display the html of the page" do
         watir_browser.should_receive(:html).and_return("<html>Some Sample HTML</html>")
-        watir_page_object.html.should == "<html>Some Sample HTML</html>"
+        expect(watir_page_object.html).to eql "<html>Some Sample HTML</html>"
       end
 
       it "should display the title of the page" do
         watir_browser.should_receive(:title).and_return("I am the title of a page")
-        watir_page_object.title.should == "I am the title of a page"
+        expect(watir_page_object.title).to eql "I am the title of a page"
       end
 
       it "should be able to navigate to a page" do
@@ -231,7 +232,7 @@ describe PageObject do
 
       it "should execute javascript on the browser" do
         watir_browser.should_receive(:execute_script).and_return("abc")
-        watir_page_object.execute_script("333").should == "abc"
+        expect(watir_page_object.execute_script("333")).to eql "abc"
       end
       
       it "should convert a modal popup to a window" do
@@ -268,7 +269,7 @@ describe PageObject do
       
       it "should know its' current url" do
         watir_browser.should_receive(:url).and_return("cheezyworld.com")
-        watir_page_object.current_url.should == "cheezyworld.com"
+        expect(watir_page_object.current_url).to eql "cheezyworld.com"
       end
       
       it "should know how to clear all of the cookies from the browser" do
@@ -287,17 +288,17 @@ describe PageObject do
     context "when using SeleniumPageObject" do
       it "should display the page text" do
         selenium_browser.stub_chain(:find_element, :text).and_return("browser text")
-        selenium_page_object.text.should == "browser text"
+        expect(selenium_page_object.text).to eql "browser text"
       end
 
       it "should display the html of the page" do
         selenium_browser.should_receive(:page_source).and_return("<html>Some Sample HTML</html>")
-        selenium_page_object.html.should == "<html>Some Sample HTML</html>"
+        expect(selenium_page_object.html).to eql "<html>Some Sample HTML</html>"
       end
 
       it "should display the title of the page" do
         selenium_browser.should_receive(:title).and_return("I am the title of a page")
-        selenium_page_object.title.should == "I am the title of a page"
+        expect(selenium_page_object.title).to eql "I am the title of a page"
       end
 
       it "should be able to navigate to a page" do
@@ -348,7 +349,7 @@ describe PageObject do
       
       it "should execute javascript on the browser" do
         selenium_browser.should_receive(:execute_script).and_return("abc")
-        selenium_page_object.execute_script("333").should == "abc"
+        expect(selenium_page_object.execute_script("333")).to eql "abc"
       end
 
       it "should switch to a new window with a given title" do
@@ -387,7 +388,7 @@ describe PageObject do
       
       it "should know its' current url" do
         selenium_browser.should_receive(:current_url).and_return("cheezyworld.com")
-        selenium_page_object.current_url.should == "cheezyworld.com"
+        expect(selenium_page_object.current_url).to eql "cheezyworld.com"
       end
       
       it "should clear all of the cookies from the browser" do

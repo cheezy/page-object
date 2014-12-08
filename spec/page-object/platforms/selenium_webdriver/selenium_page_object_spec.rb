@@ -43,19 +43,19 @@ describe PageObject::Platforms::SeleniumWebDriver::PageObject do
       selenium_browser.should_receive(:find_element).and_raise(Selenium::WebDriver::Error::NoSuchElementError)
       page = SeleniumTestPageObject.new(selenium_browser)
       element = page.link_element(:text => 'blah')
-      element.element.should be_instance_of PageObject::Platforms::SeleniumWebDriver::SurrogateSeleniumElement
+      expect(element.element).to be_instance_of PageObject::Platforms::SeleniumWebDriver::SurrogateSeleniumElement
     end
 
     it "should know it is not exist" do
       selenium_browser.should_receive(:find_element).twice.and_raise(Selenium::WebDriver::Error::NoSuchElementError)
       page = SeleniumTestPageObject.new(selenium_browser)
-      page.link_element(:text => 'blah').element.exists?.should be false
+      expect(page.link_element(:text => 'blah').element.exists?).to be false
     end
 
     it "should know it is not visible" do
       selenium_browser.should_receive(:find_element).twice.and_raise(Selenium::WebDriver::Error::NoSuchElementError)
       page = SeleniumTestPageObject.new(selenium_browser)
-      page.link_element(:text => 'blah').element.should_not be_visible
+      expect(page.link_element(:text => 'blah').element).not_to be_visible
     end
 
     it "should raise an error when actions are requested" do
