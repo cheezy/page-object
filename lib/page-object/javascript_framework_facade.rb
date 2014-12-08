@@ -1,6 +1,7 @@
 require 'page-object/javascript/jquery'
 require 'page-object/javascript/prototype'
 require 'page-object/javascript/yui'
+require 'page-object/javascript/angularjs'
 
 
 module PageObject
@@ -63,6 +64,7 @@ module PageObject
           :jquery => ::PageObject::Javascript::JQuery,
           :prototype => ::PageObject::Javascript::Prototype,
           :yui => ::PageObject::Javascript::YUI,
+          :angularjs => ::PageObject::Javascript::AngularJS
         }
       end
 
