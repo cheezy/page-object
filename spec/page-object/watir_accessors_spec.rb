@@ -35,6 +35,7 @@ class WatirAccessorsTestPageObject
   canvas(:my_canvas, :id => 'canvas_id')
   audio(:acdc, :id => 'audio_id')
   video(:movie, :id => 'video_id')
+  b(:bold,:id=>'bold')
 end
 
 class WatirBlockPageObject
@@ -129,6 +130,9 @@ class WatirBlockPageObject
   video :movie do |element|
     "video"
   end
+  b :bold do |element|
+    "b"
+  end
 end
 
 describe PageObject::Accessors do
@@ -158,7 +162,7 @@ describe PageObject::Accessors do
       SymbolPageUrl.new(watir_browser, true, 'custom')
 
       watir_browser.should_receive(:goto).with('different')
-      SymbolPageUrl.new(watir_browser, true, 'different')      
+      SymbolPageUrl.new(watir_browser, true, 'different')
     end
 
     it "should not navigate to a page when not requested" do
@@ -537,7 +541,7 @@ describe PageObject::Accessors do
       element = watir_page_object.state_element
       element.should be_instance_of PageObject::Elements::SelectList
     end
-    
+
     it "should return list of selection options" do
       option1 = double('option')
       option2 = double('option')
@@ -547,11 +551,11 @@ describe PageObject::Accessors do
       select_element = double("select")
       select_element.should_receive(:options).twice.and_return([option1, option2])
       watir_page_object.should_receive(:state_element).and_return(select_element)
-      
+
       watir_page_object.state_options.should == ["CA","OH"]
     end
-    
-    
+
+
   end
 
 
@@ -1080,7 +1084,7 @@ describe PageObject::Accessors do
       end
     end
   end
-  
+
   describe "audio accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
@@ -1104,4 +1108,30 @@ describe PageObject::Accessors do
       end
     end
   end
+
+  describe "b accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        watir_page_object.should respond_to(:bold)
+        watir_page_object.should respond_to(:bold_element)
+      end
+
+      it "should call a block on the element method when present" do
+        block_page_object.bold_element.should == "b"
+      end
+    end
+
+    it "should retrieve the text from the b" do
+      watir_browser.should_receive(:b).and_return(watir_browser)
+      watir_browser.should_receive(:text).and_return("value")
+      watir_page_object.bold.should == "value"
+    end
+
+    it "should retrieve the element from the page" do
+      watir_browser.should_receive(:b).and_return(watir_browser)
+      element = watir_page_object.bold_element
+      element.should be_instance_of PageObject::Elements::Bold
+    end
+  end
+
 end
