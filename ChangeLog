@@ -1,7 +1,9 @@
-=== Version 1.0.3
+=== Version 1.0.3 / 2014-12-8
 * Enhancements
   * Added support for the bold tag (Thanks sedx)
   * Added support for angularjs in wait_for_ajax (Thanks Owen Housden)
+  * Added hashes method to Table to return table contents as a Hash (Thanks Tobi)
+  * Fixed wait_for_expected_title so it detects if the title changes (Thanks Levi Wilson)
 * Fixes
   * Fixed issue that allows access to elements on other indexed properties (Thanks Dane Andersen)
   * Removed the method to clear radio buttons.  It didn't work on selenium and threw an exception on watir. (Thanks Justin Ko)
