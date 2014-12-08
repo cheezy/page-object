@@ -20,11 +20,11 @@ Gem::Specification.new do |s|
   s.executables = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'watir-webdriver', '>= 0.6.9'
-  s.add_dependency 'selenium-webdriver', '>= 2.42.0'
+  s.add_dependency 'watir-webdriver', '>= 0.6.11'
+  s.add_dependency 'selenium-webdriver', '>= 2.44.0'
   s.add_dependency 'page_navigation', '>= 0.9'
 
-  s.add_development_dependency 'rspec', '< 3.0'
+  s.add_development_dependency 'rspec'
   s.add_development_dependency 'cucumber', '>= 1.3.0'
   s.add_development_dependency 'yard', '>= 0.7.2'
   s.add_development_dependency 'rack', '>= 1.0'
