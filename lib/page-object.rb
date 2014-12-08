@@ -103,7 +103,8 @@ module PageObject
 
   #
   # Set the javascript framework to use when determining number of
-  # ajax requests.  Valid frameworks are :jquery and :prototype
+  # ajax requests.  Valid frameworks are :jquery, :prototype, :yui,
+  # and :angularjs
   #
   def self.javascript_framework=(framework)
     PageObject::JavascriptFrameworkFacade.framework = framework
