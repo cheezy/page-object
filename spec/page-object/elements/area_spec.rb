@@ -8,14 +8,14 @@ describe PageObject::Elements::Area do
     it "should map watir types to same" do
       [:class, :id, :index, :name, :xpath].each do |t|
         identifier = area.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :index, :name, :xpath].each do |t|
         key, value = area.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
   end
@@ -28,17 +28,17 @@ describe PageObject::Elements::Area do
       
       it "should know its coords" do
         area_element.should_receive(:attribute).with(:coords).and_return("1,2,3,4")
-        selenium_area.coords.should == "1,2,3,4"
+        expect(selenium_area.coords).to eql "1,2,3,4"
       end
 
       it "should know its shape" do
         area_element.should_receive(:attribute).with(:shape).and_return('circle')
-        selenium_area.shape.should == 'circle'
+        expect(selenium_area.shape).to eql 'circle'
       end
 
       it "should know its href" do
         area_element.should_receive(:attribute).with(:href).and_return('twitter.com')
-        selenium_area.href.should == 'twitter.com'
+        expect(selenium_area.href).to eql 'twitter.com'
       end
     end
   end

@@ -8,14 +8,14 @@ describe PageObject::Elements::Canvas do
     it "should map watir types to same" do
       [:class, :id, :index, :name, :xpath].each do |t|
         identifier = area.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :index, :name, :xpath].each do |t|
         key, value = area.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
   end
@@ -28,12 +28,12 @@ describe PageObject::Elements::Canvas do
 
       it "should know its width" do
         canvas_element.should_receive(:attribute).with(:width).and_return("400")
-        selenium_canvas.width.should == 400
+        expect(selenium_canvas.width).to eql 400
       end
 
       it "should know its height" do
         canvas_element.should_receive(:attribute).with(:height).and_return("100")
-        selenium_canvas.height.should == 100
+        expect(selenium_canvas.height).to eql 100
       end
     end
   end

@@ -9,7 +9,7 @@ describe "Element" do
       ['table', 'span', 'div', 'td', 'li', 'ol', 'ul'].each do |tag|
         how = {:tag_name => tag, :name => 'blah'}
         result = PageObject::Elements::Element.watir_identifier_for how
-        result[:xpath].should == ".//#{tag}[@name='blah']"
+        expect(result[:xpath]).to eql ".//#{tag}[@name='blah']"
       end
     end
   end
@@ -27,8 +27,8 @@ describe "Element" do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :index => 1}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        how.should == :xpath
-        what.should == "(.//#{tag})[2]"
+        expect(how).to eql :xpath
+        expect(what).to eql "(.//#{tag})[2]"
       end
     end
 
@@ -36,8 +36,8 @@ describe "Element" do
       all_input_elements.each do |tag|
         identifier = {:tag_name => 'input', :type => tag, :index => 1}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        how.should == :xpath
-        what.should include "(.//input[@type='#{tag}'])[2]"
+        expect(how).to eql :xpath
+        expect(what).to include "(.//input[@type='#{tag}'])[2]"
       end
     end
 
@@ -45,8 +45,8 @@ describe "Element" do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :name => 'blah', :index => 0}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        how.should == :xpath
-        what.should == "(.//#{tag}[@name='blah'])[1]"
+        expect(how).to eql :xpath
+        expect(what).to eql "(.//#{tag}[@name='blah'])[1]"
       end
     end
 
@@ -54,8 +54,8 @@ describe "Element" do
       all_input_elements.each do |type|
         identifier = {:tag_name => 'input', :type => "#{type}", :name => 'blah', :index => 0}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        how.should == :xpath
-        what.should include "(.//input[@type='#{type}' and @name='blah'])[1]"
+        expect(how).to eql :xpath
+        expect(what).to include "(.//input[@type='#{type}' and @name='blah'])[1]"
       end
     end
 
@@ -63,8 +63,8 @@ describe "Element" do
       all_basic_elements.each do |tag|
         identifier = {:tag_name => tag, :class => 'bar', :name => 'foo'}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        how.should == :xpath
-        what.should == ".//#{tag}[@class='bar' and @name='foo']"
+        expect(how).to eql :xpath
+        expect(what).to eql ".//#{tag}[@class='bar' and @name='foo']"
       end
     end
 
@@ -72,7 +72,7 @@ describe "Element" do
       all_input_elements.each do |type|
         identifier = {:tag_name => 'input', :type => "#{type}", :class => 'bar', :name => 'foo'}
         how, what = PageObject::Elements::Element.selenium_identifier_for identifier
-        what.should include ".//input[@type='#{type}' and @class='bar' and @name='foo']"
+        expect(what).to include ".//input[@type='#{type}' and @class='bar' and @name='foo']"
       end
     end
   end
@@ -83,7 +83,7 @@ describe "Element" do
 
     it "should check if native is enabled" do
       native.should_receive(:enabled?).and_return(true)
-      element.should be_enabled
+      expect(element).to be_enabled
     end
 
     it "should click the native" do
@@ -103,12 +103,12 @@ describe "Element" do
 
     it "should retrieve the native's style" do
       native.should_receive(:style).with('foo').and_return("cheezy_style")
-      element.style('foo').should == 'cheezy_style'
+      expect(element.style('foo')).to eql 'cheezy_style'
     end
 
     it "should know if a native is disabled" do
       native.should_receive(:enabled?).and_return(false)
-      element.should be_disabled
+      expect(element).to be_disabled
     end
   end
 end
