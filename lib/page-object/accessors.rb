@@ -66,19 +66,17 @@ module PageObject
     #
     def wait_for_expected_title(expected_title, timeout=::PageObject.default_element_wait)
       define_method("wait_for_expected_title?") do
-        page_title = title
-        has_expected_title = (expected_title === page_title)
-        if not has_expected_title and not timeout.nil?
-          wait_until(timeout, "Expected title '#{expected_title}' instead of '#{page_title}'") do 
-            has_expected_title = (expected_title === page_title)
-            has_expected_title
-          end
-        end
-        raise "Expected title '#{expected_title}' instead of '#{page_title}'" unless has_expected_title
+        error_message = lambda { "Expected title '#{expected_title}' instead of '#{title}'" }
+
+        has_expected_title = (expected_title === title)
+        wait_until(timeout, error_message.call) do
+          has_expected_title = (expected_title === title)
+        end unless has_expected_title
+
+        raise error_message.call unless has_expected_title
         has_expected_title
       end
     end
-
 
     #
     # Creates a method that compares the expected_title of a page against the actual.
