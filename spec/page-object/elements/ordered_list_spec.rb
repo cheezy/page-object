@@ -8,14 +8,14 @@ describe PageObject::Elements::OrderedList do
     it "should map watir types to same" do
       [:class, :id, :index, :xpath].each do |t|
         identifier = ol.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :index, :name, :xpath].each do |t|
         key, value = ol.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
   end
@@ -24,7 +24,7 @@ describe PageObject::Elements::OrderedList do
     let(:ol_element) { double('ol_element') }
 
     it "should register as tag_name :ol" do
-      ::PageObject::Elements.element_class_for(:ol).should == ::PageObject::Elements::OrderedList
+      expect(::PageObject::Elements.element_class_for(:ol)).to eql ::PageObject::Elements::OrderedList
     end
 
     context "for watir" do
@@ -47,7 +47,7 @@ describe PageObject::Elements::OrderedList do
         ol_element.stub(:parent).and_return(ol_element)
         ol_element.stub(:element).and_return(ol_element)
         ol_element.stub(:==).and_return(true)
-        ol.items.should == 1
+        expect(ol.items).to eql 1
       end
 
       it "should iterate over the list items" do
@@ -56,7 +56,7 @@ describe PageObject::Elements::OrderedList do
         ol.stub(:[])
         count = 0
         ol.each { |item| count += 1 }
-        count.should == 5
+        expect(count).to eql 5
       end
     end
 
@@ -78,7 +78,7 @@ describe PageObject::Elements::OrderedList do
         ol_element.should_receive(:parent).and_return(ol_element)
         ol_element.should_receive(:element).and_return(ol_element)
         ol_element.should_receive(:==).and_return(true)
-        ol.items.should == 1
+        expect(ol.items).to eql 1
       end
 
       it "should iterate over the list items" do
@@ -87,7 +87,7 @@ describe PageObject::Elements::OrderedList do
         ol.stub(:[])
         count = 0
         ol.each { |item| count += 1 }
-        count.should == 5
+        expect(count).to eql 5
       end
     end
   end

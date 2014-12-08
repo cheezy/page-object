@@ -9,14 +9,14 @@ describe PageObject::Elements::TextField do
     it "should map watir types to same" do
       [:class, :id, :index, :name, :title, :xpath, :text, :label].each do |t|
         identifier = textfield.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :name, :title, :xpath, :index, :text, :label].each do |t|
         key, value = textfield.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
   end
@@ -26,11 +26,11 @@ describe PageObject::Elements::TextField do
     let(:selenium_text_field) { PageObject::Elements::TextField.new(text_field_element, :platform => :selenium_webdriver) }
 
     it "should register with type :text" do
-      ::PageObject::Elements.element_class_for(:input, :text).should == ::PageObject::Elements::TextField
+      expect(::PageObject::Elements.element_class_for(:input, :text)).to eql ::PageObject::Elements::TextField
     end
 
     it "should register with type :password" do
-      ::PageObject::Elements.element_class_for(:input, :password).should == ::PageObject::Elements::TextField
+      expect(::PageObject::Elements.element_class_for(:input, :password)).to eql ::PageObject::Elements::TextField
     end
 
     it "should append text" do

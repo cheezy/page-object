@@ -8,20 +8,20 @@ describe PageObject::Elements::Label do
     it "should map watir types to same" do
       [:class, :id, :text, :index, :xpath].each do |t|
         identifier = label.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :text, :index, :xpath].each do |t|
         key, value = label.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
 
     describe "interface" do
       it "should register with tag :label" do
-        ::PageObject::Elements.element_class_for(:label).should == ::PageObject::Elements::Label
+        expect(::PageObject::Elements.element_class_for(:label)).to eql ::PageObject::Elements::Label
       end
     end
   end

@@ -9,14 +9,14 @@ describe PageObject::Elements::FileField do
     it "should map watir types to same" do
       [:class, :id, :index, :name, :xpath, :title].each do |t|
         identifier = filefield.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :index, :name, :xpath, :title].each do |t|
         key, value = filefield.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
   end
@@ -25,7 +25,7 @@ describe PageObject::Elements::FileField do
     let(:filefield) { double('file_field') }
 
     it "should register as type :file" do
-      ::PageObject::Elements.element_class_for(:input, :file).should == ::PageObject::Elements::FileField
+      expect(::PageObject::Elements.element_class_for(:input, :file)).to eql ::PageObject::Elements::FileField
     end
     
     context "for selenium" do

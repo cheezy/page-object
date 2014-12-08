@@ -10,22 +10,22 @@ describe "Element for Selenium" do
 
   it "should know when it is visible" do
     @selenium_driver.should_receive(:displayed?).and_return(true)
-    @selenium_element.visible?.should == true
+    expect(@selenium_element.visible?).to be true
   end
 
   it "should know when it is not visible" do
     @selenium_driver.should_receive(:displayed?).and_return(false)
-    @selenium_element.visible?.should == false
+    expect(@selenium_element.visible?).to eql false
   end
 
   it "should know when it exists" do
     @selenium_driver.should_receive(:nil?).and_return(false)
-    @selenium_element.exists?.should == true
+    expect(@selenium_element.exists?).to eql true
   end
 
   it "should know when it does not exist" do
     @selenium_element = ::PageObject::Elements::Element.new(nil, :platform => :selenium_webdriver)
-    @selenium_element.exists?.should == false
+    expect(@selenium_element.exists?).to eql false
   end
 
   it "should flash an element" do
@@ -38,27 +38,27 @@ describe "Element for Selenium" do
 
   it "should be able to return the text contained in the element" do
     @selenium_driver.should_receive(:text).and_return("my text")
-    @selenium_element.text.should == "my text"
+    expect(@selenium_element.text).to eql "my text"
   end
 
   it "should know when it is equal to another" do
     @selenium_driver.should_receive(:==).and_return(true)
-    @selenium_element.should == @selenium_element
+    expect(@selenium_element).to eq @selenium_element
   end
 
   it "should return its tag name" do
     @selenium_driver.should_receive(:tag_name).and_return("h1")
-    @selenium_element.tag_name.should == "h1"
+    expect(@selenium_element.tag_name).to eql "h1"
   end
 
   it "should know its value" do
     @selenium_driver.should_receive(:attribute).with('value').and_return("value")
-    @selenium_element.value.should == "value"
+    expect(@selenium_element.value).to eql "value"
   end
 
   it "should know how to retrieve the value of an attribute" do
     @selenium_driver.should_receive(:attribute).and_return(true)
-    @selenium_element.attribute('readonly').should be true
+    expect(@selenium_element.attribute('readonly')).to be true
   end
 
   it "should be clickable" do
@@ -89,7 +89,7 @@ describe "Element for Selenium" do
     ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     element = @selenium_element.when_present(10)
-    element.should === @selenium_element
+    expect(element).to equal @selenium_element
   end
 
   it "should return when an element is not present" do
@@ -111,7 +111,7 @@ describe "Element for Selenium" do
     ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     element = @selenium_element.when_visible(10)
-    element.should === @selenium_element
+    expect(element).to equal @selenium_element
   end
 
   it "should be able to block until it is not visible" do
@@ -126,7 +126,7 @@ describe "Element for Selenium" do
     ::Selenium::WebDriver::Wait.should_receive(:new).and_return(wait)
     wait.should_receive(:until)
     element = @selenium_element.when_not_visible(10)
-    element.should === @selenium_element
+    expect(element).to equal @selenium_element
   end
 
   it "should be able to block until a user define event fires true" do

@@ -8,14 +8,14 @@ describe PageObject::Elements::SelectList do
     it "should map watir types to same" do
       [:class, :id, :index, :name, :text, :value, :xpath].each do |t|
         identifier = selectlist.watir_identifier_for t => 'value'
-        identifier.keys.first.should == t
+        expect(identifier.keys.first).to eql t
       end
     end
 
     it "should map selenium types to same" do
       [:class, :id, :name, :xpath, :index].each do |t|
         key, value = selectlist.selenium_identifier_for t => 'value'
-        key.should == t
+        expect(key).to eql t
       end
     end
   end
@@ -36,7 +36,7 @@ describe PageObject::Elements::SelectList do
     end
 
     it "should register with tag_name :select" do
-      ::PageObject::Elements.element_class_for(:select).should == ::PageObject::Elements::SelectList
+      expect(::PageObject::Elements.element_class_for(:select)).to eql ::PageObject::Elements::SelectList
     end
 
     context "for watir" do
@@ -44,18 +44,18 @@ describe PageObject::Elements::SelectList do
 
       it "should return an option when indexed" do
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
-        watir_sel_list[0].should be_instance_of PageObject::Elements::Option
+        expect(watir_sel_list[0]).to be_instance_of PageObject::Elements::Option
       end
 
       it "should return an array of options" do
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
-        watir_sel_list.options.size.should == 2
+        expect(watir_sel_list.options.size).to eql 2
       end
 
       it "should return an array of selected options" do
         sel_list.stub(:selected_options).and_return(opts)
         sel_list.stub(:text).and_return(sel_list)
-        watir_sel_list.selected_options.should == opts
+        expect(watir_sel_list.selected_options).to eql opts
       end
 
       it "should know if it includes some value" do
@@ -71,7 +71,7 @@ describe PageObject::Elements::SelectList do
       it "should be able to get the value for the selected options" do
         sel_list.stub(:selected_options).and_return(opts)
         sel_list.stub(:value).and_return(sel_list)
-        watir_sel_list.selected_values.should == opts
+        expect(watir_sel_list.selected_values).to eql opts
       end
     end
 
@@ -80,12 +80,12 @@ describe PageObject::Elements::SelectList do
 
       it "should return an option when indexed" do
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
-        selenium_sel_list[1].should be_instance_of PageObject::Elements::Option
+        expect(selenium_sel_list[1]).to be_instance_of PageObject::Elements::Option
       end
 
       it "should return an array of options" do
         sel_list.should_receive(:find_elements).with(:xpath, ".//child::option").and_return(opts)
-        selenium_sel_list.options.size.should == 2
+        expect(selenium_sel_list.options.size).to eql 2
       end
 
       it "should select an element" do
@@ -102,8 +102,8 @@ describe PageObject::Elements::SelectList do
         opts[0].should_receive(:text).and_return('test1')
         opts[1].should_receive(:selected?).and_return(false)
         selected = selenium_sel_list.selected_options
-        selected.size.should == 1
-        selected[0].should == 'test1'
+        expect(selected.size).to eql 1
+        expect(selected[0]).to eql 'test1'
       end
 
       it "should return an array of selected options" do
@@ -112,21 +112,21 @@ describe PageObject::Elements::SelectList do
         opts[0].should_receive(:attribute).and_return('test1')
         opts[1].should_receive(:selected?).and_return(false)
         selected = selenium_sel_list.selected_values
-        selected.size.should == 1
-        selected[0].should == 'test1'
+        expect(selected.size).to eql 1
+        expect(selected[0]).to eql 'test1'
       end
 
       it "should know if it includes some value" do
         sel_list.should_receive(:find_elements).and_return(opts)
         opts[0].should_receive(:text).and_return('blah')
-        selenium_sel_list.should include 'blah'
+        expect(selenium_sel_list).to include 'blah'
       end
 
       it "should know if an option is selected" do
         sel_list.should_receive(:find_elements).and_return(opts)
         opts[0].should_receive(:selected?).twice.and_return(true)
         opts[0].should_receive(:text).and_return('blah')
-        selenium_sel_list.selected?('blah').should be true
+        expect(selenium_sel_list.selected?('blah')).to be true
       end
 
       it "should be able to clear selected options" do

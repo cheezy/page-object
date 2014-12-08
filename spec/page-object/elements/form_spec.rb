@@ -6,7 +6,7 @@ describe PageObject::Elements::Form do
     let(:form_element) { double('form_element') }
 
     it "should register with tag_name :form" do
-      ::PageObject::Elements.element_class_for(:form).should == ::PageObject::Elements::Form
+      expect(::PageObject::Elements.element_class_for(:form)).to eql ::PageObject::Elements::Form
     end
 
     context "for watir" do
