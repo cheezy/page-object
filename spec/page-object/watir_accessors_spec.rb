@@ -143,7 +143,7 @@ describe PageObject::Accessors do
   context "goto a page" do
 
     it "should navigate to a page when requested" do
-      watir_browser.should_receive(:goto)
+      expect(watir_browser).to receive(:goto)
       WatirAccessorsTestPageObject.new(watir_browser, true)
     end
 
@@ -158,20 +158,20 @@ describe PageObject::Accessors do
           super(b, v)
         end
       end
-      watir_browser.should_receive(:goto).with('custom')
+      expect(watir_browser).to receive(:goto).with('custom')
       SymbolPageUrl.new(watir_browser, true, 'custom')
 
-      watir_browser.should_receive(:goto).with('different')
+      expect(watir_browser).to receive(:goto).with('different')
       SymbolPageUrl.new(watir_browser, true, 'different')
     end
 
     it "should not navigate to a page when not requested" do
-      watir_browser.should_not_receive(:goto)
+      expect(watir_browser).not_to receive(:goto)
       WatirAccessorsTestPageObject.new(watir_browser)
     end
 
     it "should not navigate to a page when 'page_url' not specified" do
-      watir_browser.should_not_receive(:goto)
+      expect(watir_browser).not_to receive(:goto)
       WatirBlockPageObject.new(watir_browser, true)
     end
 
@@ -182,7 +182,7 @@ describe PageObject::Accessors do
 
   context "validating the page title" do
     it "should validate the title" do
-      watir_browser.should_receive(:title).and_return("Expected Title")
+      expect(watir_browser).to receive(:title).and_return("Expected Title")
       expect(watir_page_object).to have_expected_title
     end
 
@@ -191,20 +191,20 @@ describe PageObject::Accessors do
         include PageObject
         expected_title /\w+ \w+/
       end
-      watir_browser.should_receive(:title).and_return("Expected Title")
+      expect(watir_browser).to receive(:title).and_return("Expected Title")
       expect(RegexpExpectedTitle.new(watir_browser)).to have_expected_title
     end
 
     it "should raise error when it does not have expected title" do
-      watir_browser.should_receive(:title).once.and_return("Not Expected")
+      expect(watir_browser).to receive(:title).once.and_return("Not Expected")
       expect { watir_page_object.has_expected_title? }.to raise_error
     end
   end
 
   context "validating the existence of an element" do
     it "should validate an element exists" do
-      watir_page_object.should_receive(:google_search_element).and_return(watir_browser)
-      watir_browser.should_receive(:when_present).and_return(true)
+      expect(watir_page_object).to receive(:google_search_element).and_return(watir_browser)
+      expect(watir_browser).to receive(:when_present).and_return(true)
       watir_page_object.has_expected_element?
     end
 
@@ -252,7 +252,7 @@ describe PageObject::Accessors do
     let(:default_identifier) { WatirDefaultIdentifier.new(watir_browser) }
 
     def mock_driver_for(tag)
-      watir_browser.should_receive(tag).with(:index => 0).and_return(watir_browser)
+      expect(watir_browser).to receive(tag).with(:index => 0).and_return(watir_browser)
     end
 
     it "should work with a text_field" do
@@ -405,12 +405,12 @@ describe PageObject::Accessors do
     end
 
     it "should select a link" do
-      watir_browser.stub_chain(:link, :click)
+      expect(watir_browser).to receive_messages(link: watir_browser, click: watir_browser)
       watir_page_object.google_search
     end
 
     it "should return a link element" do
-      watir_browser.should_receive(:link).and_return(watir_browser)
+      expect(watir_browser).to receive(:link).and_return(watir_browser)
       element = watir_page_object.google_search_element
       expect(element).to be_instance_of PageObject::Elements::Link
     end
@@ -432,19 +432,19 @@ describe PageObject::Accessors do
     end
 
     it "should get the text from the text field element" do
-      watir_browser.should_receive(:text_field).and_return(watir_browser)
-      watir_browser.should_receive(:value).and_return('Kim')
+      expect(watir_browser).to receive(:text_field).and_return(watir_browser)
+      expect(watir_browser).to receive(:value).and_return('Kim')
       expect(watir_page_object.first_name).to eql 'Kim'
     end
 
     it "should set some text on a text field element" do
-      watir_browser.should_receive(:text_field).and_return(watir_browser)
-      watir_browser.should_receive(:set).with('Kim')
+      expect(watir_browser).to receive(:text_field).and_return(watir_browser)
+      expect(watir_browser).to receive(:set).with('Kim')
       watir_page_object.first_name = 'Kim'
     end
 
     it "should retrieve a text field element" do
-      watir_browser.should_receive(:text_field).and_return(watir_browser)
+      expect(watir_browser).to receive(:text_field).and_return(watir_browser)
       element = watir_page_object.first_name_element
       expect(element).to be_instance_of PageObject::Elements::TextField
     end
@@ -464,13 +464,13 @@ describe PageObject::Accessors do
     end
 
     it "should get the text from a hidden field" do
-      watir_browser.should_receive(:hidden).and_return(watir_browser)
-      watir_browser.should_receive(:value).and_return("value")
+      expect(watir_browser).to receive(:hidden).and_return(watir_browser)
+      expect(watir_browser).to receive(:value).and_return("value")
       expect(watir_page_object.social_security_number).to eql "value"
     end
 
     it "should retrieve a hidden field element" do
-      watir_browser.should_receive(:hidden).and_return(watir_browser)
+      expect(watir_browser).to receive(:hidden).and_return(watir_browser)
       element = watir_page_object.social_security_number_element
       expect(element).to be_instance_of(PageObject::Elements::HiddenField)
     end
@@ -490,19 +490,19 @@ describe PageObject::Accessors do
     end
 
     it "should set some text on the text area" do
-      watir_browser.should_receive(:textarea).and_return(watir_browser)
-      watir_browser.should_receive(:set).with("123 main street")
+      expect(watir_browser).to receive(:textarea).and_return(watir_browser)
+      expect(watir_browser).to receive(:set).with("123 main street")
       watir_page_object.address = "123 main street"
     end
 
     it "should get the text from the text area" do
-      watir_browser.should_receive(:textarea).and_return(watir_browser)
-      watir_browser.should_receive(:value).and_return("123 main street")
+      expect(watir_browser).to receive(:textarea).and_return(watir_browser)
+      expect(watir_browser).to receive(:value).and_return("123 main street")
       expect(watir_page_object.address).to eql "123 main street"
     end
 
     it "should retrieve a text area element" do
-      watir_browser.should_receive(:textarea).and_return(watir_browser)
+      expect(watir_browser).to receive(:textarea).and_return(watir_browser)
       element = watir_page_object.address_element
       expect(element).to be_instance_of PageObject::Elements::TextArea
     end
@@ -523,21 +523,21 @@ describe PageObject::Accessors do
 
     it "should get the current item from a select list" do
       selected = "OH"
-      selected.should_receive(:selected?).and_return(selected)
-      selected.should_receive(:text).and_return("OH")
-      watir_browser.should_receive(:select_list).and_return watir_browser
-      watir_browser.should_receive(:options).and_return([selected])
+      expect(selected).to receive(:selected?).and_return(selected)
+      expect(selected).to receive(:text).and_return("OH")
+      expect(watir_browser).to receive(:select_list).and_return watir_browser
+      expect(watir_browser).to receive(:options).and_return([selected])
       expect(watir_page_object.state).to eql "OH"
     end
 
     it "should set the current item of a select list" do
-      watir_browser.should_receive(:select_list).and_return watir_browser
-      watir_browser.should_receive(:select).with("OH")
+      expect(watir_browser).to receive(:select_list).and_return watir_browser
+      expect(watir_browser).to receive(:select).with("OH")
       watir_page_object.state = "OH"
     end
 
     it "should retreive the select list element" do
-      watir_browser.should_receive(:select_list).and_return(watir_browser)
+      expect(watir_browser).to receive(:select_list).and_return(watir_browser)
       element = watir_page_object.state_element
       expect(element).to be_instance_of PageObject::Elements::SelectList
     end
@@ -545,12 +545,12 @@ describe PageObject::Accessors do
     it "should return list of selection options" do
       option1 = double('option')
       option2 = double('option')
-      option1.should_receive(:text).and_return("CA")
-      option2.should_receive(:text).and_return("OH")
+      expect(option1).to receive(:text).and_return("CA")
+      expect(option2).to receive(:text).and_return("OH")
 
       select_element = double("select")
-      select_element.should_receive(:options).twice.and_return([option1, option2])
-      watir_page_object.should_receive(:state_element).and_return(select_element)
+      expect(select_element).to receive(:options).twice.and_return([option1, option2])
+      expect(watir_page_object).to receive(:state_element).and_return(select_element)
 
       expect(watir_page_object.state_options).to eql ["CA","OH"]
     end
@@ -571,25 +571,25 @@ describe PageObject::Accessors do
     end
 
     it "should check a check box element" do
-      watir_browser.should_receive(:checkbox).and_return(watir_browser)
-      watir_browser.should_receive(:set)
+      expect(watir_browser).to receive(:checkbox).and_return(watir_browser)
+      expect(watir_browser).to receive(:set)
       watir_page_object.check_active
     end
 
     it "should clear a check box element" do
-      watir_browser.should_receive(:checkbox).and_return(watir_browser)
-      watir_browser.should_receive(:clear)
+      expect(watir_browser).to receive(:checkbox).and_return(watir_browser)
+      expect(watir_browser).to receive(:clear)
       watir_page_object.uncheck_active
     end
 
     it "should know if a check box element is selected" do
-      watir_browser.should_receive(:checkbox).and_return(watir_browser)
-      watir_browser.should_receive(:set?).and_return(true)
+      expect(watir_browser).to receive(:checkbox).and_return(watir_browser)
+      expect(watir_browser).to receive(:set?).and_return(true)
       expect(watir_page_object.active_checked?).to be true
     end
 
     it "should retrieve a checkbox element" do
-      watir_browser.should_receive(:checkbox).and_return(watir_browser)
+      expect(watir_browser).to receive(:checkbox).and_return(watir_browser)
       element = watir_page_object.active_element
       expect(element).to be_instance_of PageObject::Elements::CheckBox
     end
@@ -610,19 +610,19 @@ describe PageObject::Accessors do
     end
 
     it "should select a radio button" do
-      watir_browser.should_receive(:radio).and_return(watir_browser)
-      watir_browser.should_receive(:set)
+      expect(watir_browser).to receive(:radio).and_return(watir_browser)
+      expect(watir_browser).to receive(:set)
       watir_page_object.select_first
     end
 
     it "should determine if a radio is selected" do
-      watir_browser.should_receive(:radio).and_return(watir_browser)
-      watir_browser.should_receive(:set?)
+      expect(watir_browser).to receive(:radio).and_return(watir_browser)
+      expect(watir_browser).to receive(:set?)
       watir_page_object.first_selected?
     end
 
     it "should retrieve a radio button element" do
-      watir_browser.should_receive(:radio).and_return(watir_browser)
+      expect(watir_browser).to receive(:radio).and_return(watir_browser)
       element = watir_page_object.first_element
       expect(element).to be_instance_of PageObject::Elements::RadioButton
     end
@@ -641,13 +641,13 @@ describe PageObject::Accessors do
     end
 
     it "should be able to click a button" do
-      watir_browser.should_receive(:button).and_return(watir_browser)
-      watir_browser.should_receive(:click)
+      expect(watir_browser).to receive(:button).and_return(watir_browser)
+      expect(watir_browser).to receive(:click)
       watir_page_object.click_me
     end
 
     it "should retrieve a button element" do
-      watir_browser.should_receive(:button).and_return(watir_browser)
+      expect(watir_browser).to receive(:button).and_return(watir_browser)
       element = watir_page_object.click_me_element
       expect(element).to be_instance_of PageObject::Elements::Button
     end
@@ -666,13 +666,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from a div" do
-      watir_browser.should_receive(:div).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("Message from div")
+      expect(watir_browser).to receive(:div).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("Message from div")
       expect(watir_page_object.message).to eql "Message from div"
     end
 
     it "should retrieve the div element from the page" do
-      watir_browser.should_receive(:div).and_return(watir_browser)
+      expect(watir_browser).to receive(:div).and_return(watir_browser)
       element = watir_page_object.message_element
       expect(element).to be_instance_of PageObject::Elements::Div
     end
@@ -691,13 +691,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from a span" do
-      watir_browser.should_receive(:span).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("Alert")
+      expect(watir_browser).to receive(:span).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("Alert")
       expect(watir_page_object.alert_span).to eql "Alert"
     end
 
     it "should retrieve the span element from the page" do
-      watir_browser.should_receive(:span).and_return(watir_browser)
+      expect(watir_browser).to receive(:span).and_return(watir_browser)
       element = watir_page_object.alert_span_element
       expect(element).to be_instance_of PageObject::Elements::Span
     end
@@ -716,7 +716,7 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the table element from the page" do
-      watir_browser.should_receive(:table).and_return(watir_browser)
+      expect(watir_browser).to receive(:table).and_return(watir_browser)
       element = watir_page_object.cart_element
       expect(element).to be_instance_of PageObject::Elements::Table
     end
@@ -735,13 +735,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text for the cell" do
-      watir_browser.should_receive(:td).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return('10.00')
+      expect(watir_browser).to receive(:td).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return('10.00')
       expect(watir_page_object.total).to eql '10.00'
     end
 
     it "should retrieve the cell element from the page" do
-      watir_browser.should_receive(:td).and_return(watir_browser)
+      expect(watir_browser).to receive(:td).and_return(watir_browser)
       element = watir_page_object.total_element
       expect(element).to be_instance_of PageObject::Elements::TableCell
     end
@@ -759,7 +759,7 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the image element from the page" do
-      watir_browser.should_receive(:image).and_return(watir_browser)
+      expect(watir_browser).to receive(:image).and_return(watir_browser)
       element = watir_page_object.logo_element
       expect(element).to be_instance_of PageObject::Elements::Image
     end
@@ -777,7 +777,7 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the form element from the page" do
-      watir_browser.should_receive(:form).and_return(watir_browser)
+      expect(watir_browser).to receive(:form).and_return(watir_browser)
       element = watir_page_object.login_element
       expect(element).to be_instance_of PageObject::Elements::Form
     end
@@ -796,13 +796,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the list item" do
-      watir_browser.should_receive(:li).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:li).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.item_one).to eql "value"
     end
 
     it "should retrieve the list item element from the page" do
-      watir_browser.should_receive(:li).and_return(watir_browser)
+      expect(watir_browser).to receive(:li).and_return(watir_browser)
       element = watir_page_object.item_one_element
       expect(element).to be_instance_of PageObject::Elements::ListItem
     end
@@ -820,7 +820,7 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:ul).and_return(watir_browser)
+      expect(watir_browser).to receive(:ul).and_return(watir_browser)
       element = watir_page_object.menu_element
       expect(element).to be_instance_of PageObject::Elements::UnorderedList
     end
@@ -838,7 +838,7 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:ol).and_return(watir_browser)
+      expect(watir_browser).to receive(:ol).and_return(watir_browser)
       element = watir_page_object.top_five_element
       expect(element).to be_instance_of PageObject::Elements::OrderedList
     end
@@ -857,13 +857,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the h1" do
-      watir_browser.should_receive(:h1).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:h1).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.heading1).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:h1).and_return(watir_browser)
+      expect(watir_browser).to receive(:h1).and_return(watir_browser)
       element = watir_page_object.heading1_element
       expect(element).to be_instance_of PageObject::Elements::Heading
     end
@@ -882,13 +882,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the h2" do
-      watir_browser.should_receive(:h2).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:h2).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.heading2).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:h2).and_return(watir_browser)
+      expect(watir_browser).to receive(:h2).and_return(watir_browser)
       element = watir_page_object.heading2_element
       expect(element).to be_instance_of PageObject::Elements::Heading
     end
@@ -907,13 +907,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the h3" do
-      watir_browser.should_receive(:h3).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:h3).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.heading3).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:h3).and_return(watir_browser)
+      expect(watir_browser).to receive(:h3).and_return(watir_browser)
       element = watir_page_object.heading3_element
       expect(element).to be_instance_of PageObject::Elements::Heading
     end
@@ -932,13 +932,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the h4" do
-      watir_browser.should_receive(:h4).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:h4).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.heading4).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:h4).and_return(watir_browser)
+      expect(watir_browser).to receive(:h4).and_return(watir_browser)
       element = watir_page_object.heading4_element
       expect(element).to be_instance_of PageObject::Elements::Heading
     end
@@ -957,13 +957,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the h5" do
-      watir_browser.should_receive(:h5).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:h5).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.heading5).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:h5).and_return(watir_browser)
+      expect(watir_browser).to receive(:h5).and_return(watir_browser)
       element = watir_page_object.heading5_element
       expect(element).to be_instance_of PageObject::Elements::Heading
     end
@@ -982,13 +982,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the h6" do
-      watir_browser.should_receive(:h6).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:h6).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.heading6).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:h6).and_return(watir_browser)
+      expect(watir_browser).to receive(:h6).and_return(watir_browser)
       element = watir_page_object.heading6_element
       expect(element).to be_instance_of PageObject::Elements::Heading
     end
@@ -1008,13 +1008,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the p" do
-      watir_browser.should_receive(:p).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:p).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.first_para).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:p).and_return(watir_browser)
+      expect(watir_browser).to receive(:p).and_return(watir_browser)
       element = watir_page_object.first_para_element
       expect(element).to be_instance_of PageObject::Elements::Paragraph
     end
@@ -1033,13 +1033,13 @@ describe PageObject::Accessors do
     end
 
     it "should set the file name" do
-      watir_browser.should_receive(:file_field).and_return(watir_browser)
-      watir_browser.should_receive(:set).with('some_file')
+      expect(watir_browser).to receive(:file_field).and_return(watir_browser)
+      expect(watir_browser).to receive(:set).with('some_file')
       watir_page_object.upload_me = 'some_file'
     end
 
     it "should retrieve a text field element" do
-      watir_browser.should_receive(:file_field).and_return(watir_browser)
+      expect(watir_browser).to receive(:file_field).and_return(watir_browser)
       element = watir_page_object.upload_me_element
       expect(element).to be_instance_of PageObject::Elements::FileField
     end
@@ -1058,13 +1058,13 @@ describe PageObject::Accessors do
     end
 
     it "should click on the area" do
-      watir_browser.should_receive(:area).and_return(watir_browser)
-      watir_browser.should_receive(:click)
+      expect(watir_browser).to receive(:area).and_return(watir_browser)
+      expect(watir_browser).to receive(:click)
       watir_page_object.img_area
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:area).and_return(watir_browser)
+      expect(watir_browser).to receive(:area).and_return(watir_browser)
       element = watir_page_object.img_area_element
       expect(element).to be_instance_of PageObject::Elements::Area
     end
@@ -1119,13 +1119,13 @@ describe PageObject::Accessors do
     end
 
     it "should retrieve the text from the b" do
-      watir_browser.should_receive(:b).and_return(watir_browser)
-      watir_browser.should_receive(:text).and_return("value")
+      expect(watir_browser).to receive(:b).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
       expect(watir_page_object.bold).to eql "value"
     end
 
     it "should retrieve the element from the page" do
-      watir_browser.should_receive(:b).and_return(watir_browser)
+      expect(watir_browser).to receive(:b).and_return(watir_browser)
       element = watir_page_object.bold_element
       expect(element).to be_instance_of PageObject::Elements::Bold
     end

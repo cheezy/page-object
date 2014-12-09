@@ -48,7 +48,7 @@ describe "Widget PageObject Extensions" do
       let(:watir_page_object) { WidgetTestPageObject.new(watir_browser) }
 
       it "should find a gxt_table element" do
-        watir_browser.should_receive(:div).with(:id => 'blah').and_return(watir_browser)
+        expect(watir_browser).to receive(:div).with(:id => 'blah').and_return(watir_browser)
         element = watir_page_object.gxt_table_element(:id => 'blah')
         expect(element).to be_instance_of GxtTable
       end
@@ -59,7 +59,7 @@ describe "Widget PageObject Extensions" do
       let(:selenium_page_object) { WidgetTestPageObject.new(selenium_browser) }
 
       it "should find a gxt_table element" do
-        selenium_browser.should_receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
+        expect(selenium_browser).to receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
         element = selenium_page_object.gxt_table_element(:id => 'blah')
         expect(element).to be_instance_of GxtTable
       end
@@ -80,7 +80,7 @@ describe "Widget PageObject Extensions" do
       let(:default_identifier) { WatirDefaultIdentifier.new(watir_browser) }
 
       def mock_driver_for(tag)
-        watir_browser.should_receive(tag).with(:index => 0).and_return(watir_browser)
+        expect(watir_browser).to receive(tag).with(:index => 0).and_return(watir_browser)
       end
 
       it "should work for a gxt_table" do
@@ -110,19 +110,19 @@ describe "Widget PageObject Extensions" do
       end
 
       it "should retrieve the table element from the page" do
-        watir_browser.should_receive(:div).and_return(watir_browser)
+        expect(watir_browser).to receive(:div).and_return(watir_browser)
         element = watir_page_object.a_table_element
         expect(element).to be_instance_of GxtTable
       end
 
       it "should retrieve all table elements from the page" do
-        watir_browser.should_receive(:divs).and_return([watir_browser])
+        expect(watir_browser).to receive(:divs).and_return([watir_browser])
         element = watir_page_object.some_table_elements
         expect(element[0]).to be_instance_of GxtTable
       end
 
       it "should be able to specify the plural form" do
-        watir_browser.should_receive(:divs).and_return([watir_browser])
+        expect(watir_browser).to receive(:divs).and_return([watir_browser])
         element = watir_page_object.matrix_elements
         expect(element[0]).to be_instance_of WidgetMatrix
       end
@@ -150,22 +150,22 @@ describe "Widget PageObject Extensions" do
       let(:gxt_table_element) { double('gxt_table_element') }
 
       before(:each) do
-        gxt_table_element.stub(:[]).and_return(gxt_table_element)
-        gxt_table_element.stub(:find_elements).and_return(gxt_table_element)
+        allow(gxt_table_element).to receive(:[]).and_return(gxt_table_element)
+        allow(gxt_table_element).to receive(:find_elements).and_return(gxt_table_element)
       end
 
       context "for watir" do
         let(:watir_table) { GxtTable.new(gxt_table_element, :platform => :watir_webdriver) }
 
         it "should return a table row when indexed" do
-          gxt_table_element.stub(:[]).with(1).and_return(gxt_table_element)
+          allow(gxt_table_element).to receive(:[]).with(1).and_return(gxt_table_element)
           expect(watir_table[1]).to be_instance_of PageObject::Elements::TableRow
         end
 
         it "should return the number of rows" do
-          gxt_table_element.stub(:wd).and_return(gxt_table_element)
-          gxt_table_element.should_receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
-          gxt_table_element.should_receive(:size).and_return(2)
+          allow(gxt_table_element).to receive(:wd).and_return(gxt_table_element)
+          expect(gxt_table_element).to receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
+          expect(gxt_table_element).to receive(:size).and_return(2)
           expect(watir_table.rows).to eql 2
         end
       end
@@ -174,18 +174,18 @@ describe "Widget PageObject Extensions" do
         let(:selenium_table) { GxtTable.new(gxt_table_element, :platform => :selenium_webdriver) }
 
         it "should return a table row when indexed" do
-          gxt_table_element.should_receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
+          expect(gxt_table_element).to receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
           expect(selenium_table[1]).to be_instance_of PageObject::Elements::TableRow
         end
 
         it "should return the number of rows" do
-          gxt_table_element.should_receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
-          gxt_table_element.should_receive(:size).and_return(2)
+          expect(gxt_table_element).to receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
+          expect(gxt_table_element).to receive(:size).and_return(2)
           expect(selenium_table.rows).to eql 2
         end
 
         it "should iterate over the table rows" do
-          selenium_table.should_receive(:rows).and_return(2)
+          expect(selenium_table).to receive(:rows).and_return(2)
           count = 0
           selenium_table.each { |e| count += 1 }
           expect(count).to eql 2
@@ -202,7 +202,7 @@ describe "Widget PageObject Extensions" do
       end
 
       it "should find a nested gxt_table" do
-        @watir_driver.should_receive(:div).and_return(@watir_driver)
+        expect(@watir_driver).to receive(:div).and_return(@watir_driver)
         @watir_element.gxt_table_element
       end
     end
@@ -214,7 +214,7 @@ describe "Widget PageObject Extensions" do
       end
 
       it "should find a nested gxt_table" do
-        @selenium_driver.should_receive(:find_element).and_return(@selenium_driver)
+        expect(@selenium_driver).to receive(:find_element).and_return(@selenium_driver)
         @selenium_element.gxt_table_element
       end
     end

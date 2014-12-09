@@ -54,7 +54,7 @@ describe PageObject::PageFactory do
   end
 
   it "should create a new page object and execute a block" do
-    @world.browser.should_not_receive(:goto)
+    expect(@world.browser).not_to receive(:goto)
     @world.on_page FactoryTestPage do |page|
       expect(page).to be_instance_of FactoryTestPage
     end
@@ -67,7 +67,7 @@ describe PageObject::PageFactory do
   end
 
   it "should create a new page object and execute a block using 'on'" do
-    @world.browser.should_not_receive(:goto)
+    expect(@world.browser).not_to receive(:goto)
     @world.on FactoryTestPage do |page|
       expect(page).to be_instance_of FactoryTestPage
     end
@@ -80,7 +80,7 @@ describe PageObject::PageFactory do
   end
 
   it "should create and visit a new page" do
-    @world.browser.should_receive(:goto).exactly(3).times
+    expect(@world.browser).to receive(:goto).exactly(3).times
     @world.visit_page FactoryTestPage do |page|
       expect(page).to be_instance_of FactoryTestPage
     end
@@ -93,7 +93,7 @@ describe PageObject::PageFactory do
   end
 
   it "should merge params with the class level params if provided when visiting" do
-    @world.browser.should_receive(:goto)
+    expect(@world.browser).to receive(:goto)
     FactoryTestPage.params = {:initial => :value}
     @world.visit_page(FactoryTestPage, :using_params => {:new_value => :merged})
     merged = FactoryTestPage.instance_variable_get("@merged_params")
@@ -106,7 +106,7 @@ describe PageObject::PageFactory do
       include PageObject
       page_url "http://google.com/<%=params[:value]%>"
     end
-    @world.browser.should_receive(:goto).with("http://google.com/PageObject")
+    expect(@world.browser).to receive(:goto).with("http://google.com/PageObject")
     @world.visit_page(PageUsingParams, :using_params => {:value => 'PageObject'})
   end
 
@@ -115,12 +115,12 @@ describe PageObject::PageFactory do
       include PageObject
       page_url "http://google.com/#{1+2}/<%=params[:value]%>"
     end
-    @world.browser.should_receive(:goto).with("http://google.com/3/PageObject")
+    expect(@world.browser).to receive(:goto).with("http://google.com/3/PageObject")
     @world.visit_page(PageUsingParmsAndInterpolated, :using_params => {:value => 'PageObject'})
   end
 
   it "should create and visit a new page using 'visit'" do
-    @world.browser.should_receive(:goto).exactly(3).times
+    expect(@world.browser).to receive(:goto).exactly(3).times
     @world.visit FactoryTestPage do |page|
       expect(page).to be_instance_of FactoryTestPage
     end
@@ -133,7 +133,7 @@ describe PageObject::PageFactory do
   end
 
   it "should create and visit a new page when url is defined as 'direct_url'" do
-    @world.browser.should_receive(:goto)
+    expect(@world.browser).to receive(:goto)
     @world.visit TestPageWithDirectUrl do |page|
       expect(page).to be_instance_of TestPageWithDirectUrl
     end
@@ -206,8 +206,8 @@ describe PageObject::PageFactory do
     pages = [[FactoryTestPage, :a_method], [AnotherPage, :b_method]]
     PageObject::PageFactory.routes = {:default => pages}
     fake_page = double('a_page')
-    FactoryTestPage.should_receive(:new).and_return(fake_page)
-    fake_page.should_receive(:a_method)
+    expect(FactoryTestPage).to receive(:new).and_return(fake_page)
+    expect(fake_page).to receive(:a_method)
     expect(@world.navigate_to(AnotherPage).class).to eql AnotherPage
   end
 
@@ -215,8 +215,8 @@ describe PageObject::PageFactory do
     pages = [[FactoryTestPage, :a_method, 'blah'], [AnotherPage, :b_method]]
     PageObject::PageFactory.routes = {:default => pages}
     fake_page = double('a_page')
-    FactoryTestPage.should_receive(:new).and_return(fake_page)
-    fake_page.should_receive(:a_method).with('blah')
+    expect(FactoryTestPage).to receive(:new).and_return(fake_page)
+    expect(fake_page).to receive(:a_method).with('blah')
     expect(@world.navigate_to(AnotherPage).class).to eql AnotherPage
   end
 
@@ -230,8 +230,8 @@ describe PageObject::PageFactory do
       :default => [[FactoryTestPage, :a_method], [AnotherPage, :b_method]]
     }
     fake_page = double('a_page')
-    FactoryTestPage.should_receive(:new).and_return(fake_page)
-    fake_page.should_receive(:respond_to?).with(:a_method).and_return(false)
+    expect(FactoryTestPage).to receive(:new).and_return(fake_page)
+    expect(fake_page).to receive(:respond_to?).with(:a_method).and_return(false)
     expect { @world.navigate_to(AnotherPage) }.to raise_error
   end
 
@@ -244,13 +244,13 @@ describe PageObject::PageFactory do
 
     @world.current_page = FactoryTestPage.new(@world.browser)
     f_page = FactoryTestPage.new(@world.browser)
-    FactoryTestPage.should_receive(:new).and_return(f_page)
-    f_page.should_receive(:respond_to?).with(:a_method).and_return(true)
-    f_page.should_receive(:a_method)
+    expect(FactoryTestPage).to receive(:new).and_return(f_page)
+    expect(f_page).to receive(:respond_to?).with(:a_method).and_return(true)
+    expect(f_page).to receive(:a_method)
     a_page = AnotherPage.new(@world.browser)
-    AnotherPage.should_receive(:new).and_return(a_page)
-    a_page.should_receive(:respond_to?).with(:b_method).and_return(true)
-    a_page.should_receive(:b_method)
+    expect(AnotherPage).to receive(:new).and_return(a_page)
+    expect(a_page).to receive(:respond_to?).with(:b_method).and_return(true)
+    expect(a_page).to receive(:b_method)
     expect(@world.continue_navigation_to(YetAnotherPage).class).to eql YetAnotherPage
   end
 end
