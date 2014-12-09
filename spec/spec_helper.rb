@@ -33,7 +33,7 @@ end
 
 def mock_adapter(browser, page_object)
   adapter = double('adapter')
-  adapter.stub(:is_for?).with(anything()).and_return false
+  allow(adapter).to receive(:is_for?).with(anything()).and_return false
   allow(adapter).to receive(:is_for?).with(browser).and_return true
   allow(adapter).to receive(:create_page_object).and_return page_object
   adapter

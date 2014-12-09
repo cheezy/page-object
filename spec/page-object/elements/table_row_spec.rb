@@ -14,23 +14,23 @@ describe PageObject::Elements::TableRow do
     context "for selenium" do
       it "should return a table cell when indexed" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
-        table_row.stub(:columns).and_return(2)
-        table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_cell)
-        table_cell.should_receive(:[]).and_return(table_cell)
+        allow(table_row).to receive(:columns).and_return(2)
+        expect(table_row_driver).to receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_cell)
+        expect(table_cell).to receive(:[]).and_return(table_cell)
         expect(table_row[0]).to be_instance_of PageObject::Elements::TableCell
       end
 
       it "should retrun the number of columns" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
-        table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
-        table_row_driver.should_receive(:size).and_return(3)
+        expect(table_row_driver).to receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
+        expect(table_row_driver).to receive(:size).and_return(3)
         expect(table_row.columns).to eql 3
       end
 
       it "should iterate over the table columns" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :selenium_webdriver)
-        table_row.should_receive(:columns).and_return(2)
-        table_row.stub(:[]).and_return(table_row_driver)
+        expect(table_row).to receive(:columns).and_return(2)
+        allow(table_row).to receive(:[]).and_return(table_row_driver)
         count = 0
         table_row.each { |e| count += 1 }
         expect(count).to eql 2
@@ -39,28 +39,28 @@ describe PageObject::Elements::TableRow do
 
     context "for watir" do
       before(:each) do
-        table_row_driver.stub(:find_elements).and_return(table_row_driver)
+        allow(table_row_driver).to receive(:find_elements).and_return(table_row_driver)
       end
 
       it "should return a table cell when indexed" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
-        table_row.stub(:columns).and_return(2)
-        table_row_driver.should_receive(:[]).with(1).and_return(table_cell)
+        allow(table_row).to receive(:columns).and_return(2)
+        expect(table_row_driver).to receive(:[]).with(1).and_return(table_cell)
         expect(table_row[1]).to be_instance_of PageObject::Elements::TableCell
       end
 
       it "should return the number of columns" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
-        table_row_driver.stub(:wd).and_return(table_row_driver)
-        table_row_driver.should_receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
-        table_row_driver.should_receive(:size).and_return(3)
+        allow(table_row_driver).to receive(:wd).and_return(table_row_driver)
+        expect(table_row_driver).to receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
+        expect(table_row_driver).to receive(:size).and_return(3)
         expect(table_row.columns).to eql 3
       end
 
       it "should iterate over the table columns" do
         table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir_webdriver)
-        table_row.should_receive(:columns).and_return(2)
-        table_row.stub(:[])
+        expect(table_row).to receive(:columns).and_return(2)
+        allow(table_row).to receive(:[])
         count = 0
         table_row.each { |e| count += 1 }
         expect(count).to eql 2

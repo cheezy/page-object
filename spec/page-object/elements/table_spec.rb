@@ -22,8 +22,8 @@ describe PageObject::Elements::Table do
     let(:table_element) { double('table_element') }
 
     before(:each) do
-      table_element.stub(:[]).and_return(table_element)
-      table_element.stub(:find_elements).and_return(table_element)
+      allow(table_element).to receive(:[]).and_return(table_element)
+      allow(table_element).to receive(:find_elements).and_return(table_element)
     end
 
     it "should register with tag_name :table" do
@@ -34,29 +34,29 @@ describe PageObject::Elements::Table do
       let(:watir_table) { PageObject::Elements::Table.new(table_element, :platform => :watir_webdriver) }
       
       it "should return a table row when indexed" do
-        table_element.stub(:[]).with(1).and_return(table_element)
+        allow(table_element).to receive(:[]).with(1).and_return(table_element)
         expect(watir_table[1]).to be_instance_of PageObject::Elements::TableRow
       end
 
       it "should return the first row" do
-        table_element.stub(:[]).with(0).and_return(table_element)
+        allow(table_element).to receive(:[]).with(0).and_return(table_element)
         expect(watir_table.first_row).to be_instance_of PageObject::Elements::TableRow
       end
 
       it "shoudl return the last row" do
-        table_element.stub(:[]).with(-1).and_return(table_element)
+        allow(table_element).to receive(:[]).with(-1).and_return(table_element)
         expect(watir_table.last_row).to be_instance_of PageObject::Elements::TableRow
       end
 
       it "should return the number of rows" do
-        table_element.stub(:wd).and_return(table_element)
-        table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
-        table_element.should_receive(:size).and_return(2)
+        allow(table_element).to receive(:wd).and_return(table_element)
+        expect(table_element).to receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
+        expect(table_element).to receive(:size).and_return(2)
         expect(watir_table.rows).to eql 2
       end
 
       it "should iterate over the table rows" do
-        watir_table.should_receive(:rows).and_return(2)
+        expect(watir_table).to receive(:rows).and_return(2)
         count = 0
         watir_table.each { |e| count += 1 }
         expect(count).to eql 2
@@ -67,28 +67,28 @@ describe PageObject::Elements::Table do
       let(:selenium_table) { PageObject::Elements::Table.new(table_element, :platform => :selenium_webdriver) }
       
       it "should return a table row when indexed" do
-        table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
+        expect(table_element).to receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
         expect(selenium_table[1]).to be_instance_of PageObject::Elements::TableRow
       end
 
       it "should return the first row" do
-        table_element.stub(:[]).with(0).and_return(table_element)
+        allow(table_element).to receive(:[]).with(0).and_return(table_element)
         expect(selenium_table.first_row).to be_instance_of PageObject::Elements::TableRow
       end
 
       it "shoudl return the last row" do
-        table_element.stub(:[]).with(-1).and_return(table_element)
+        allow(table_element).to receive(:[]).with(-1).and_return(table_element)
         expect(selenium_table.last_row).to be_instance_of PageObject::Elements::TableRow
       end
 
       it "should return the number of rows" do
-        table_element.should_receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
-        table_element.should_receive(:size).and_return(2)
+        expect(table_element).to receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
+        expect(table_element).to receive(:size).and_return(2)
         expect(selenium_table.rows).to eql 2
       end
 
       it "should iterate over the table rows" do
-        selenium_table.should_receive(:rows).and_return(2)
+        allow(selenium_table).to receive(:rows).and_return(2)
         count = 0
         selenium_table.each { |e| count += 1 }
         expect(count).to eql 2
