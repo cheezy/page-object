@@ -235,22 +235,4 @@ describe PageObject::PageFactory do
     expect { @world.navigate_to(AnotherPage) }.to raise_error
   end
 
-  it "should know how to continue routing from a location" do
-    PageObject::PageFactory.routes = {
-      :default => [[FactoryTestPage, :a_method],
-                   [AnotherPage, :b_method],
-                   [YetAnotherPage, :c_method]]
-    }
-
-    @world.current_page = FactoryTestPage.new(@world.browser)
-    f_page = FactoryTestPage.new(@world.browser)
-    expect(FactoryTestPage).to receive(:new).and_return(f_page)
-    expect(f_page).to receive(:respond_to?).with(:a_method).and_return(true)
-    expect(f_page).to receive(:a_method)
-    a_page = AnotherPage.new(@world.browser)
-    expect(AnotherPage).to receive(:new).and_return(a_page)
-    expect(a_page).to receive(:respond_to?).with(:b_method).and_return(true)
-    expect(a_page).to receive(:b_method)
-    expect(@world.continue_navigation_to(YetAnotherPage).class).to eql YetAnotherPage
-  end
 end
