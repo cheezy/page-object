@@ -528,7 +528,7 @@ When(/^I select the multiple elements with a tag label$/) do
   @elements = @page.generic_label_elements
 end
 
-When /^I select the bs"$/ do
+When /^I select the bs$/ do
   @elements = @page.b_elements
 end
 
