@@ -1,4 +1,4 @@
-=== Version 1.0.3 / 2014-12-8
+=== Version 1.0.3 / 2014-12-9
 * Enhancements
   * Added support for the bold tag (Thanks sedx)
   * Added support for angularjs in wait_for_ajax (Thanks Owen Housden)
