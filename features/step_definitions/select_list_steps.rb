@@ -40,7 +40,7 @@ Then /^the select list should include "([^\"]*)"$/ do |text|
 end
 
 Then /^the select list should know that "([^\"]*)" is selected$/ do |text|
-  @page.sel_list_id_element.selected?(text).should be_true
+  @page.sel_list_id_element.selected?(text).should be true
 end
 
 Then /^the value for the option should be "([^\"]*)"$/ do |value|

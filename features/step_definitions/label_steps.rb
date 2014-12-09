@@ -15,5 +15,5 @@ When /^I get the text from a label while the script is executing$/ do
 end
 
 Then /^I should see that the label exists$/ do
-  @page.label_id?.should be_true
+  @page.label_id?.should be true
 end

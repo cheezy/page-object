@@ -79,5 +79,5 @@ end
 
 Then /^I should not be able to find the button$/ do
   @page.created_button_element.when_not_present
-  @page.created_button_element.exists?.should be_false
+  @page.created_button_element.exists?.should be false
 end

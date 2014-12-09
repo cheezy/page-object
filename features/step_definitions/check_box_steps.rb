@@ -3,7 +3,7 @@ When /^I select the First check box$/ do
 end
 
 Then /^the First check box should be selected$/ do
-  @page.cb_id_checked?.should be_true
+  @page.cb_id_checked?.should be true
 end
 
 When /^I unselect the First check box$/ do
@@ -11,7 +11,7 @@ When /^I unselect the First check box$/ do
 end
 
 Then /^the First check box should not be selected$/ do
-  @page.cb_id_checked?.should be_false
+  @page.cb_id_checked?.should be false
 end
 
 When /^I search for the check box by "([^\"]*)"$/ do |how|
