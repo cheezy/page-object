@@ -27,12 +27,12 @@ describe PageObject::Elements::Canvas do
       let(:selenium_canvas) { PageObject::Elements::Canvas.new(canvas_element, :platform => :selenium_webdriver) }
 
       it "should know its width" do
-        canvas_element.should_receive(:attribute).with(:width).and_return("400")
+        expect(canvas_element).to receive(:attribute).with(:width).and_return("400")
         expect(selenium_canvas.width).to eql 400
       end
 
       it "should know its height" do
-        canvas_element.should_receive(:attribute).with(:height).and_return("100")
+        expect(canvas_element).to receive(:attribute).with(:height).and_return("100")
         expect(selenium_canvas.height).to eql 100
       end
     end

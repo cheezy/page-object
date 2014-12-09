@@ -24,7 +24,7 @@ describe PageObject::Elements::Image do
     let(:image_element) { double('image_element') }
 
     before(:each) do
-      image_element.stub(:size).and_return(image_element)
+      allow(image_element).to receive(:size).and_return(image_element)
     end
 
     it "should register with tag_name :img" do
@@ -34,13 +34,13 @@ describe PageObject::Elements::Image do
     context "for watir" do
       it "should know the images width" do
         image = PageObject::Elements::Image.new(image_element, :platform => :watir_webdriver)
-        image_element.should_receive(:width).and_return(100)
+        expect(image_element).to receive(:width).and_return(100)
         expect(image.width).to eql 100
       end
 
       it "should know the images height" do
         image = PageObject::Elements::Image.new(image_element, :platform => :watir_webdriver)
-        image_element.should_receive(:height).and_return(120)
+        expect(image_element).to receive(:height).and_return(120)
         expect(image.height).to eql 120
       end
     end
@@ -49,16 +49,16 @@ describe PageObject::Elements::Image do
       it "should know the images width" do
         dim = double('dimension')
         image = PageObject::Elements::Image.new(image_element, :platform => :selenium_webdriver)
-        image_element.should_receive(:size).and_return(dim)
-        dim.should_receive(:width).and_return(100)
+        expect(image_element).to receive(:size).and_return(dim)
+        expect(dim).to receive(:width).and_return(100)
         expect(image.width).to eql 100
       end
 
       it "should know the images height" do
         dim = double('dimension')
         image = PageObject::Elements::Image.new(image_element, :platform => :selenium_webdriver)
-        image_element.should_receive(:size).and_return(dim)
-        dim.should_receive(:height).and_return(120)
+        expect(image_element).to receive(:size).and_return(dim)
+        expect(dim).to receive(:height).and_return(120)
         expect(image.height).to eql 120
       end
     end

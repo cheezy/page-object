@@ -31,7 +31,7 @@ describe PageObject::Elements::FileField do
     context "for selenium" do
       it "should set its' value" do
         selenium_file_field = PageObject::Elements::FileField.new(filefield, :platform => :selenium_webdriver)
-        filefield.should_receive(:send_keys).with('a file')
+        expect(filefield).to receive(:send_keys).with('a file')
         selenium_file_field.value = 'a file'
       end
     end

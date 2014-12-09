@@ -27,17 +27,17 @@ describe PageObject::Elements::Area do
       let(:selenium_area) { PageObject::Elements::Area.new(area_element, :platform => :selenium_webdriver) }
       
       it "should know its coords" do
-        area_element.should_receive(:attribute).with(:coords).and_return("1,2,3,4")
+        expect(area_element).to receive(:attribute).with(:coords).and_return("1,2,3,4")
         expect(selenium_area.coords).to eql "1,2,3,4"
       end
 
       it "should know its shape" do
-        area_element.should_receive(:attribute).with(:shape).and_return('circle')
+        expect(area_element).to receive(:attribute).with(:shape).and_return('circle')
         expect(selenium_area.shape).to eql 'circle'
       end
 
       it "should know its href" do
-        area_element.should_receive(:attribute).with(:href).and_return('twitter.com')
+        expect(area_element).to receive(:attribute).with(:href).and_return('twitter.com')
         expect(selenium_area.href).to eql 'twitter.com'
       end
     end

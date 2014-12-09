@@ -29,19 +29,19 @@ describe PageObject::Elements::CheckBox do
     
     context "for selenium" do
       it "should check" do
-        check_box.should_receive(:click)
-        check_box.should_receive(:selected?).and_return(false)
+        expect(check_box).to receive(:click)
+        expect(check_box).to receive(:selected?).and_return(false)
         selenium_cb.check
       end
 
       it "should uncheck" do
-        check_box.should_receive(:click)
-        check_box.should_receive(:selected?).and_return(true)
+        expect(check_box).to receive(:click)
+        expect(check_box).to receive(:selected?).and_return(true)
         selenium_cb.uncheck
       end
       
       it "should know if it is checked" do
-        check_box.should_receive(:selected?).and_return(true)
+        expect(check_box).to receive(:selected?).and_return(true)
         expect(selenium_cb).to be_checked
       end
     end

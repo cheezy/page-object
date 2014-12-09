@@ -82,32 +82,32 @@ describe "Element" do
     let(:element) { PageObject::Elements::Element.new(native, :platform => :watir_webdriver) }
 
     it "should check if native is enabled" do
-      native.should_receive(:enabled?).and_return(true)
+      expect(native).to receive(:enabled?).and_return(true)
       expect(element).to be_enabled
     end
 
     it "should click the native" do
-      native.should_receive(:click)
+      expect(native).to receive(:click)
       element.click
     end
 
     it "should double click the native" do
-      native.should_receive(:double_click)
+      expect(native).to receive(:double_click)
       element.double_click
     end
 
     it "should inspect the native" do
-      native.should_receive(:inspect)
+      expect(native).to receive(:inspect)
       element.inspect
     end
 
     it "should retrieve the native's style" do
-      native.should_receive(:style).with('foo').and_return("cheezy_style")
+      expect(native).to receive(:style).with('foo').and_return("cheezy_style")
       expect(element.style('foo')).to eql 'cheezy_style'
     end
 
     it "should know if a native is disabled" do
-      native.should_receive(:enabled?).and_return(false)
+      expect(native).to receive(:enabled?).and_return(false)
       expect(element).to be_disabled
     end
   end

@@ -30,13 +30,13 @@ describe PageObject::Elements::RadioButton do
       let(:radio_button) { PageObject::Elements::RadioButton.new(selenium_rb, :platform => :selenium_webdriver) }
 
       it "should select" do
-        selenium_rb.should_receive(:click)
-        selenium_rb.should_receive(:selected?).and_return(false)
+        expect(selenium_rb).to receive(:click)
+        expect(selenium_rb).to receive(:selected?).and_return(false)
         radio_button.select
       end
       
       it "should know if it is selected" do
-        selenium_rb.should_receive(:selected?).and_return(true)
+        expect(selenium_rb).to receive(:selected?).and_return(true)
         expect(radio_button).to be_selected
       end
     end

@@ -34,14 +34,14 @@ describe PageObject::Elements::TextField do
     end
 
     it "should append text" do
-      text_field_element.should_receive(:send_keys).with('abc')
+      expect(text_field_element).to receive(:send_keys).with('abc')
       selenium_text_field.append('abc')
     end
     
     context "for selenium" do
       it "should set its' value" do
-        text_field_element.should_receive(:clear)
-        text_field_element.should_receive(:send_keys).with('Joseph')
+        expect(text_field_element).to receive(:clear)
+        expect(text_field_element).to receive(:send_keys).with('Joseph')
         selenium_text_field.value = 'Joseph'
       end
     end
