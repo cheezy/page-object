@@ -988,6 +988,23 @@ module PageObject
           find_selenium_elements(identifier, Elements::Element, tag.to_s)
         end
 
+        #
+        # platform method to return a specified class wrapping an element
+        # See PageObject::Accessors#page_section
+        #
+        def page_section_for(section_class, identifier)
+          find_selenium_element(identifier, section_class, 'element')
+        end
+
+
+        #
+        # platform method to return an array of specified classes wrapping elements
+        # See PageObject::Accessors#page_sections
+        #
+        def page_sections_for(section_class, identifier)
+          find_selenium_elements(identifier, section_class, 'element')
+        end
+
        #
         # platform method to return a svg element
         #

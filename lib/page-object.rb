@@ -8,6 +8,7 @@ require 'page-object/page_populator'
 require 'page-object/javascript_framework_facade'
 require 'page-object/indexed_properties'
 require 'page-object/widgets'
+require 'page-object/section'
 
 require 'selenium/webdriver/common/error'
 #
