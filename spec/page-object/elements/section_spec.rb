@@ -58,6 +58,10 @@ describe PageObject::SectionCollection do
     contained_items = [ContainedItem.new(:sandwich, :reuben), ContainedItem.new(:soup, :lobster_bisque), ContainedItem.new(:sandwich, :dagwood)]
     PageObject::SectionCollection.new(contained_items)
   end
+  it 'should be indexed to the sections' do
+    expect(section_collection[0]).to be_an_instance_of ContainedItem
+    expect(section_collection[-1]).to be_an_instance_of ContainedItem
+  end
   it 'should be able to iterate over the sections' do
     section_collection.each do |section|
       expect(section).to be_an_instance_of ContainedItem

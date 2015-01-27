@@ -115,6 +115,7 @@ Feature: Sections
   Scenario: Selecting multiple sections
     When I select multiple sections
     Then I should have a section collection containing the sections
+    And I can access any index of that collection of sections
 
   Scenario: Searching section collection
     Given I select multiple sections

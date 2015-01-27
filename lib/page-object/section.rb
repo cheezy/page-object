@@ -24,6 +24,10 @@ module PageObject
       sections.each(&block)
     end
 
+    def [] index
+      sections[index]
+    end
+
     def find_by values_hash
       find { |section| values_hash.all? { |method, matcher| matcher === section.send(method) } }
     end

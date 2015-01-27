@@ -245,3 +245,8 @@ Then(/^I will find all sections with that value$/) do
     expect(element).to match(/\w+/)
   end
 end
+
+And(/^I can access any index of that collection of sections$/) do
+  expect(@sections[0]).to be_a(PageObject::Section)
+  expect(@sections[-1]).to be_a(PageObject::Section)
+end
