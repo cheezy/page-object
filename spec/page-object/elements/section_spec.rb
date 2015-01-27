@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'page-object/elements'
 
-class Container < PageObject::Section;
+class Container < PageObject::Section
 end
 class SectionsPage
   include PageObject
@@ -21,8 +21,9 @@ describe PageObject::Accessors do
       expect(section).to be_instance_of Container
     end
     it 'it should find page sections' do
-      expect(watir_browser).to receive(:elements).with(:class => 'foo').and_return([watir_browser,watir_browser])
+      expect(watir_browser).to receive(:elements).with(:class => 'foo').and_return([watir_browser, watir_browser])
       sections = watir_page_object.containers
+      expect(sections).to be_instance_of(PageObject::SectionCollection)
       sections.each do |section|
         expect(section).to be_instance_of(Container)
       end
@@ -38,7 +39,7 @@ describe PageObject::Accessors do
       expect(section).to be_instance_of Container
     end
     it 'it should find page sections' do
-      expect(selenium_browser).to receive(:find_elements).with(:class, 'foo').and_return([selenium_browser,selenium_browser])
+      expect(selenium_browser).to receive(:find_elements).with(:class, 'foo').and_return([selenium_browser, selenium_browser])
       sections = selenium_page_object.containers
       sections.each do |section|
         expect(section).to be_instance_of(Container)
@@ -49,5 +50,23 @@ end
 describe PageObject::Section do
   it 'should have accessors' do
     expect(PageObject::Section).to respond_to(:link, :div, :table, :indexed_property)
+  end
+end
+describe PageObject::SectionCollection do
+  ContainedItem = Struct.new(:type, :name)
+  let(:section_collection) do
+    contained_items = [ContainedItem.new(:sandwich, :reuben), ContainedItem.new(:soup, :lobster_bisque), ContainedItem.new(:sandwich, :dagwood)]
+    PageObject::SectionCollection.new(contained_items)
+  end
+  it 'should be able to iterate over the sections' do
+    section_collection.each do |section|
+      expect(section).to be_an_instance_of ContainedItem
+    end
+  end
+  it 'should find a section by one of its values' do
+    expect(section_collection.find_by(name: :dagwood).name).to eq :dagwood
+  end
+  it 'should find all sections matching a value' do
+    expect(section_collection.select_by(type: :sandwich).map(&:type)).to eq [:sandwich, :sandwich]
   end
 end

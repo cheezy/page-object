@@ -207,7 +207,7 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def text_field(name, identifier={:index => 0}, &block) 
+    def text_field(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'text_field_for', &block)
       define_method(name) do
         return platform.text_field_value_for identifier.clone unless block_given?
@@ -794,7 +794,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h1(name, identifier={:index => 0}, &block)
-      standard_methods(name, identifier,'h1_for', &block)
+      standard_methods(name, identifier, 'h1_for', &block)
       define_method(name) do
         return platform.h1_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
@@ -1138,7 +1138,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def b(name, identifier={:index => 0}, &block)
-      standard_methods(name, identifier,'b_for', &block)
+      standard_methods(name, identifier, 'b_for', &block)
       define_method(name) do
         return platform.b_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
@@ -1348,7 +1348,7 @@ module PageObject
     #
     def page_sections (name, section_class, identifier_list)
       define_method("#{name}") do
-        platform.page_sections_for(section_class, identifier_list.clone)
+        SectionCollection.new(platform.page_sections_for(section_class, identifier_list.clone))
       end
     end
 

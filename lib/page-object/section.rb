@@ -12,4 +12,25 @@ module PageObject
       block.arity == 1 ? block.call(self) : self.instance_eval(&block)
     end
   end
+  class SectionCollection
+    include Enumerable
+    attr_reader :sections
+
+    def initialize sections
+      @sections = sections
+    end
+
+    def each &block
+      sections.each(&block)
+    end
+
+    def find_by values_hash
+      find { |section| values_hash.all? { |method, matcher| matcher === section.send(method) } }
+    end
+
+    def select_by values_hash
+      sections = select { |section| values_hash.all? { |method, matcher| matcher === section.send(method) } }
+      SectionCollection.new(sections)
+    end
+  end
 end

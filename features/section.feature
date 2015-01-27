@@ -111,3 +111,17 @@ Feature: Sections
   Scenario: Finding a paragraph within a section
     When I search for a paragraph located in a section
     Then I should see the section paragraphs text should be "This is a paragraph."
+
+  Scenario: Selecting multiple sections
+    When I select multiple sections
+    Then I should have a section collection containing the sections
+
+  Scenario: Searching section collection
+    Given I select multiple sections
+    When I search by a specific value of the section
+    Then I will find the first section with that value
+
+  Scenario: Filtering section collection
+    Given I select multiple sections
+    When I filter by a specific value of the sections
+    Then I will find all sections with that value

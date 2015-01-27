@@ -28,10 +28,15 @@ class Container < PageObject::Section
   unordered_list(:outside_section, :id => 'outer')
 end
 
+class InputSection < PageObject::Section
+
+end
+
 class SectionElementsPage
   include PageObject
 
   page_section(:container, Container, :id => 'div_id')
+  page_sections(:page_inputs, InputSection, :tag_name => 'input')
 end
 
 When(/^I get the text from the section$/) do
@@ -211,4 +216,32 @@ end
 
 Then(/^I should see that it doesn't exist in the section$/) do
   expect(@element).not_to exist
+end
+
+When(/^I select multiple sections$/) do
+  @sections = @page.page_inputs
+end
+
+Then(/^I should have a section collection containing the sections$/) do
+  expect(@sections).to be_an_instance_of(PageObject::SectionCollection)
+end
+
+When(/^I search by a specific value of the section$/) do
+  @element = @sections.find_by(:value => 'LeanDog')
+end
+
+Then(/^I will find the first section with that value$/) do
+  expect(@element).to be_a(PageObject::Section)
+  expect(@element.value).to eq 'LeanDog'
+end
+
+When(/^I filter by a specific value of the sections$/) do
+  @elements = @sections.select_by(:value => /\w+/)
+end
+
+Then(/^I will find all sections with that value$/) do
+  expect(@elements).to be_a PageObject::SectionCollection
+  @elements.map(&:value).each do |element|
+    expect(element).to match(/\w+/)
+  end
 end
