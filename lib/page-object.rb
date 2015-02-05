@@ -65,7 +65,7 @@ module PageObject
   end
 
   def initialize_browser(root)
-    @root = root_element_for root, PageObject::Platforms.get
+    @root_element = root_element_for root, PageObject::Platforms.get
     @browser = browser_for root, PageObject::Platforms.get
     include_platform_driver(root)
   end
@@ -146,7 +146,7 @@ module PageObject
   # Returns the text of the current page
   #
   def text
-    @root.text
+    root.text
   end
 
   #
@@ -400,6 +400,10 @@ module PageObject
   end
 
   private
+
+  def root
+    @root_element || browser_root_for(browser, PageObject::Platforms.get)
+  end
 
   def include_platform_driver(browser)
     @platform = load_platform(browser, PageObject::Platforms.get)

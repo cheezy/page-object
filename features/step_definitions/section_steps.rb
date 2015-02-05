@@ -36,7 +36,7 @@ class InputSection
   include PageObject
 
   def value
-    @root.value
+    root.value
   end
 end
 

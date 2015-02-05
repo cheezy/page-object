@@ -18,8 +18,11 @@ module PageObject
       end
 
       def self.root_element_for root
-        root = root.find_element(:tag_name, 'html') unless root.is_a? ::Selenium::WebDriver::Element
-        Elements::Element.new root, platform: :selenium_webdriver
+        Elements::Element.new root, platform: :selenium_webdriver if root.is_a?(::Selenium::WebDriver::Element)
+      end
+
+      def self.browser_root_for browser
+        browser.find_element(tag_name: 'html')
       end
     end
   end

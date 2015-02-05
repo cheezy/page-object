@@ -18,8 +18,11 @@ module PageObject
       end
 
       def self.root_element_for root
-        root = root.element unless root.is_a? ::Watir::HTMLElement
-        Elements::Element.new root, :platform => :watir_webdriver
+        Elements::Element.new root, :platform => :watir_webdriver if root.is_a? ::Watir::HTMLElement
+      end
+
+      def self.browser_root_for browser
+        browser.element
       end
     end
   end
