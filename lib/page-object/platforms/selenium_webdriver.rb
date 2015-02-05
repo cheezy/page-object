@@ -9,7 +9,17 @@ module PageObject
 
       def self.is_for?(browser)
         require 'selenium-webdriver'
-        browser.is_a? ::Selenium::WebDriver::Driver
+        browser.is_a?(::Selenium::WebDriver::Driver) || browser.is_a?(::Selenium::WebDriver::Element)
+      end
+
+      def self.browser_for root
+        return root if root.is_a?(::Selenium::WebDriver::Driver)
+        Selenium::WebDriver::Driver.new(root.send(:bridge))
+      end
+
+      def self.root_element_for root
+        root = root.find_element(:tag_name, 'html') unless root.is_a? ::Selenium::WebDriver::Element
+        Elements::Element.new root, platform: :selenium_webdriver
       end
     end
   end

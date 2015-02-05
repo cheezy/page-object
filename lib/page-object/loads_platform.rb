@@ -22,5 +22,23 @@ module PageObject
       message += "\nnil was passed to the PageObject constructor instead of a valid browser object." if browser.nil?
       raise message 
     end
+
+    def browser_for root,adapters
+      adapters.each_value { |adapter|
+        return adapter.browser_for(root) if adapter.is_for?(root)
+      }
+      message = 'Unable to pick a platform for the provided browser.'
+      message += "\nnil was passed to the PageObject constructor instead of a valid browser object." if root.nil?
+      raise message
+    end
+
+    def root_element_for root, adapters
+      adapters.each_value { |adapter|
+        return adapter.root_element_for(root) if adapter.is_for?(root)
+      }
+      message = 'Unable to pick a platform for the provided browser.'
+      message += "\nnil was passed to the PageObject constructor instead of a valid browser object." if root.nil?
+      raise message
+    end
   end
 end

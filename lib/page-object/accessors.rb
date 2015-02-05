@@ -1229,6 +1229,18 @@ module PageObject
       end
     end
 
+    def page_section(name, section_class, identifier)
+      define_method(name) do
+        section_class.new platform.element_for(:element, identifier.clone).element
+      end
+    end
+
+    def page_sections(name, section_class, identifier)
+      define_method(name) do
+        SectionCollection.new(platform.elements_for(:element, identifier.clone).map{|element| section_class.new element.element})
+      end
+    end
+
     #
     # methods to generate accessors for types that follow the same
     # pattern as element

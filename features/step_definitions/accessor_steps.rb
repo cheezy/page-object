@@ -6,6 +6,10 @@ Then /^the text should be "([^\"]*)"$/ do |expected_text|
   @text.should == expected_text
 end
 
+Then /^the text should include "([^\"]*)"$/ do |expected_text|
+  expect(@text).to include expected_text
+end
+
 Then /^I should be on the success page$/ do
   @page.text.should include 'Success'
   @page.title.should == 'Success'
