@@ -36,6 +36,8 @@ def mock_adapter(browser, page_object)
   allow(adapter).to receive(:is_for?).with(anything()).and_return false
   allow(adapter).to receive(:is_for?).with(browser).and_return true
   allow(adapter).to receive(:create_page_object).and_return page_object
+  allow(adapter).to receive(:root_element_for).and_return browser
+  allow(adapter).to receive(:browser_for).and_return browser
   adapter
 end
 

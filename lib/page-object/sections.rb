@@ -6,8 +6,8 @@ module PageObject
       @sections = sections
     end
 
-    def each
-      @sections.each
+    def each &block
+      @sections.each &block
     end
 
     def [] index

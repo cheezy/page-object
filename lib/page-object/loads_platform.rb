@@ -46,7 +46,7 @@ module PageObject
         return adapter.browser_root_for(browser) if adapter.is_for?(browser)
       }
       message = 'Unable to pick a platform for the provided browser.'
-      message += "\nnil was passed to the PageObject constructor instead of a valid browser object." if root.nil?
+      message += "\nnil was passed to the PageObject constructor instead of a valid browser object." if browser.nil?
       raise message
     end
   end
