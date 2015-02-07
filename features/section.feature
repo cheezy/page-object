@@ -112,6 +112,10 @@ Feature: Sections
     When I search for a paragraph located in a section
     Then I should see the section paragraphs text should be "This is a paragraph."
 
+  Scenario: Indexed property in section
+    Given I search for a link in an indexed property located in a section
+    Then I should see the text "Success" in the section indexed link
+
   Scenario: Selecting multiple sections
     When I select multiple sections
     Then I should have a section collection containing the sections

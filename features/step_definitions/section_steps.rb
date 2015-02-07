@@ -25,12 +25,14 @@ class Container < PageObject::Section
   paragraph(:section_paragraph)
   file_field(:section_file_field)
 
+  indexed_property(:indexed_list,[[:link,:indexed_link,href: '%s.html']])
+
   unordered_list(:outside_section, :id => 'outer')
 end
 
 class InputSection < PageObject::Section
 
-end
+  end
 
 class SectionElementsPage
   include PageObject
@@ -118,6 +120,10 @@ end
 
 Then /^I should see the text "([^\"]*)" in the section div$/ do |value|
   @div.text.should == value
+end
+
+Then /^I should see the text "([^\"]*)" in the section indexed link$/ do |value|
+  @link.text.should == value
 end
 
 When /^I search for a span located in a section$/ do
@@ -249,4 +255,8 @@ end
 And(/^I can access any index of that collection of sections$/) do
   expect(@sections[0]).to be_a(PageObject::Section)
   expect(@sections[-1]).to be_a(PageObject::Section)
+end
+
+Given(/^I search for a link in an indexed property located in a section$/) do
+  @link = @page.container.indexed_list['success'].indexed_link_element
 end
