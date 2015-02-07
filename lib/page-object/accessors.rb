@@ -1249,7 +1249,7 @@ module PageObject
     #
     def page_section(name, section_class, identifier)
       define_method(name) do
-        section_class.new platform.element_for(:element, identifier.clone).element
+        platform.page_for(identifier, section_class)
       end
     end
 
@@ -1273,7 +1273,7 @@ module PageObject
     #
     def page_sections(name, section_class, identifier)
       define_method(name) do
-        SectionCollection.new(platform.elements_for(:element, identifier.clone).map{|element| section_class.new element.element})
+        platform.pages_for(identifier, section_class)
       end
     end
 
