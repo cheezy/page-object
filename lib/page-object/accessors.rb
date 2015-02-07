@@ -1237,6 +1237,7 @@ module PageObject
     #   # will generate 'navigation_bar' and 'navigation_bar?'
     #
     # @param [Symbol] the name used for the generated methods
+    # @param [Class] the class to instantiate for the element
     # @param [Hash] identifier how we find an element.  You can use multiple parameters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
@@ -1260,6 +1261,7 @@ module PageObject
     #   # will generate 'articles'
     #
     # @param [Symbol] the name used for the generated method
+    # @param [Class] the class to instantiate for each element
     # @param [Hash] identifier how we find an element.  You can use a multiple parameters
     #   by combining of any of the following except xpath.  The valid keys are:
     #   * :class => Watir and Selenium
