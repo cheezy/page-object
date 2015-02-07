@@ -1229,12 +1229,46 @@ module PageObject
       end
     end
 
+    #
+    # adds a method to return a page object rooted at an element
+    #
+    # @example
+    #   page_section(:navigation_bar, NavigationBar, :id => 'nav-bar')
+    #   # will generate 'navigation_bar' and 'navigation_bar?'
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an element.  You can use multiple parameters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Selenium only
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
     def page_section(name, section_class, identifier)
       define_method(name) do
         section_class.new platform.element_for(:element, identifier.clone).element
       end
     end
 
+    #
+    # adds a method to return a collection of page objects rooted at elements
+    #
+    # @example
+    #   page_sections(:articles, Article, :class => 'article')
+    #   # will generate 'articles'
+    #
+    # @param [Symbol] the name used for the generated method
+    # @param [Hash] identifier how we find an element.  You can use a multiple parameters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Selenium only
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
     def page_sections(name, section_class, identifier)
       define_method(name) do
         SectionCollection.new(platform.elements_for(:element, identifier.clone).map{|element| section_class.new element.element})
