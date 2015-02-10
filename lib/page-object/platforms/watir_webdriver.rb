@@ -9,7 +9,14 @@ module PageObject
 
       def self.is_for?(browser)
         require 'watir-webdriver'
-        browser.is_a?(::Watir::Browser)
+        res=browser.is_a?(::Watir::Browser)
+
+        unless res && Gem::Specification.find_all_by_name('watir-nokogiri').any?
+          require 'watir-nokogiri'
+          res= browser.is_a?(::WatirNokogiri::Document)
+        end
+
+        res
       end
     end
   end
