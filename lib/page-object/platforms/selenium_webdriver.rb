@@ -3,7 +3,6 @@ module PageObject
     module SeleniumWebDriver
 
       def self.create_page_object(browser)
-        require 'page-object/platforms/selenium_webdriver/page_object'
         SeleniumWebDriver::PageObject.new(browser)
       end
 

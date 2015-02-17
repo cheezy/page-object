@@ -3,7 +3,6 @@ module PageObject
     module WatirWebDriver
       
       def self.create_page_object(browser)
-        require 'page-object/platforms/watir_webdriver/page_object'
         return WatirWebDriver::PageObject.new(browser)
       end
 
