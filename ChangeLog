@@ -1,3 +1,7 @@
+=== Version 1.0.4
+* Enhancements
+  * Performance enhancements when initializing elements (Thanks Dane Andersen)
+
 === Version 1.0.3 / 2014-12-9
 * Enhancements
   * Added support for the bold tag (Thanks sedx)
