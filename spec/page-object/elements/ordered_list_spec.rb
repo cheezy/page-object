@@ -67,7 +67,7 @@ describe PageObject::Elements::OrderedList do
         expect(ol_element).to receive(:map).and_return([ol_element])
         expect(ol_element).to receive(:parent).and_return(ol_element)
         expect(ol_element).to receive(:element).and_return(ol_element)
-        expect(ol_element).to receive(:==).and_return(true)
+        expect(ol_element).to receive(:==).twice.and_return(true)
         ol[1]
       end
 
@@ -77,7 +77,7 @@ describe PageObject::Elements::OrderedList do
         expect(ol_element).to receive(:map).and_return([ol_element])
         expect(ol_element).to receive(:parent).and_return(ol_element)
         expect(ol_element).to receive(:element).and_return(ol_element)
-        expect(ol_element).to receive(:==).and_return(true)
+        expect(ol_element).to receive(:==).twice.and_return(true)
         expect(ol.items).to eql 1
       end
 

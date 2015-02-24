@@ -67,7 +67,7 @@ describe PageObject::Elements::UnorderedList do
         expect(ul_element).to receive(:map).and_return([ul_element])
         expect(ul_element).to receive(:parent).and_return(ul_element)
         expect(ul_element).to receive(:element).and_return(ul_element)
-        expect(ul_element).to receive(:==).and_return(true)
+        expect(ul_element).to receive(:==).twice.and_return(true)
         ul[1]
       end
 
@@ -77,7 +77,7 @@ describe PageObject::Elements::UnorderedList do
         expect(ul_element).to receive(:map).and_return([ul_element])
         expect(ul_element).to receive(:parent).and_return(ul_element)
         expect(ul_element).to receive(:element).and_return(ul_element)
-        expect(ul_element).to receive(:==).and_return(true)
+        expect(ul_element).to receive(:==).twice.and_return(true)
         expect(ul.items).to eql 1
       end
 
