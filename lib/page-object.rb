@@ -9,6 +9,11 @@ require 'page-object/javascript_framework_facade'
 require 'page-object/indexed_properties'
 require 'page-object/widgets'
 
+require 'page-object/platforms/watir_webdriver/element'
+require 'page-object/platforms/watir_webdriver/page_object'
+require 'page-object/platforms/selenium_webdriver/element'
+require 'page-object/platforms/selenium_webdriver/page_object'
+
 require 'selenium/webdriver/common/error'
 #
 # Module that when included adds functionality to a page object.  This module

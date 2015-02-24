@@ -208,13 +208,9 @@ module PageObject
 
       def include_platform_for platform
         if platform[:platform] == :watir_webdriver
-          require 'page-object/platforms/watir_webdriver/element'
-          require 'page-object/platforms/watir_webdriver/page_object'
           self.class.send :include,  ::PageObject::Platforms::WatirWebDriver::Element
           @platform = ::PageObject::Platforms::WatirWebDriver::PageObject.new(@element)
         elsif platform[:platform] == :selenium_webdriver
-          require 'page-object/platforms/selenium_webdriver/element'
-          require 'page-object/platforms/selenium_webdriver/page_object'
           self.class.send :include, ::PageObject::Platforms::SeleniumWebDriver::Element
           @platform = ::PageObject::Platforms::SeleniumWebDriver::PageObject.new(@element)
         else
