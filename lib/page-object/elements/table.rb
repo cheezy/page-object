@@ -59,19 +59,6 @@ module PageObject
         ::PageObject::Elements::TableRow.new(row_element, platform)
       end
 
-
-      def include_platform_for platform
-        super
-        if platform[:platform] == :watir_webdriver
-          require 'page-object/platforms/watir_webdriver/table'
-          self.class.send :include, PageObject::Platforms::WatirWebDriver::Table
-        elsif platform[:platform] == :selenium_webdriver
-          require 'page-object/platforms/selenium_webdriver/table'
-          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Table
-        else
-          raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
-        end
-      end
     end
 
     ::PageObject::Elements.tag_to_class[:table] = ::PageObject::Elements::Table

@@ -28,7 +28,14 @@ module PageObject
         def flash
           element.flash
         end
-        
+
+        #
+        # Click this element
+        #
+        def right_click
+          element.right_click
+        end
+
         #
         # Get the text for the element
         #
