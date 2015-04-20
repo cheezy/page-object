@@ -42,6 +42,10 @@ describe "Element for Watir" do
     expect(watir_element).to eq watir_element
   end
 
+  it "should know when it is not equal to another" do
+    expect(watir_element).not_to eq 'not an element'
+  end
+
   it "should return its tag name" do
     expect(watir_driver).to receive(:tag_name).and_return("h1")
     expect(watir_element.tag_name).to eql "h1"

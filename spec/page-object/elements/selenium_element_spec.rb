@@ -47,6 +47,10 @@ describe "Element for Selenium" do
     expect(@selenium_element).to eq @selenium_element
   end
 
+  it "should know when it is not equal to another" do
+    expect(@selenium_element).not_to eq 'not an element'
+  end
+
   it "should return its tag name" do
     expect(@selenium_driver).to receive(:tag_name).and_return("h1")
     expect(@selenium_element.tag_name).to eql "h1"

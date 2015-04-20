@@ -67,7 +67,7 @@ module PageObject
         # compare this element to another to determine if they are equal
         #
         def ==(other)
-          element == other.element
+          other.is_a? self.class and element == other.element
         end
 
         #
