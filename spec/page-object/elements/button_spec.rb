@@ -38,13 +38,6 @@ describe PageObject::Elements::Button do
     it "should retisger with type :reset" do
       expect(::PageObject::Elements.element_class_for(:input, :reset)).to eql ::PageObject::Elements::Button
     end
-
-    context "for selenium" do
-      it "should return error when asked for its' text" do
-        button = PageObject::Elements::Button.new(button_element, :platform => :selenium_webdriver)
-        expect(lambda { button.text }).to raise_error
-      end
-    end
   end
 
 end
