@@ -38,7 +38,7 @@ describe "Element for Watir" do
   end
 
   it "should know when it is equal to another" do
-    expect(watir_driver).to receive(:==).twice.and_return(true)
+    expect(watir_driver).to receive(:==).and_return(true)
     expect(watir_element).to eq watir_element
   end
 

@@ -42,7 +42,7 @@ describe "Element for Selenium" do
   end
 
   it "should know when it is equal to another" do
-    expect(@selenium_driver).to receive(:==).twice.and_return(true)
+    expect(@selenium_driver).to receive(:==).and_return(true)
     expect(@selenium_element).to eq @selenium_element
   end
 
