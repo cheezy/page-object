@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'page-object/elements'
 require 'selenium-webdriver'
 
