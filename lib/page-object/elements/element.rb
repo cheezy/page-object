@@ -217,6 +217,10 @@ module PageObject
           raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
         end
       end
+
+      def to_ary
+        nil
+      end
     end
   end
 end
