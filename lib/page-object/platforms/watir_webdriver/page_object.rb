@@ -918,6 +918,23 @@ module PageObject
         end
 
         #
+        # platform method to return a specified class wrapping an element
+        # See PageObject::Accessors#page_section
+        #
+        def page_section_for(section_class, identifier)
+          find_watir_element("element(identifier)", section_class, identifier, 'element')
+        end
+
+
+        #
+        # platform method to return an array of specified classes wrapping elements
+        # See PageObject::Accessors#page_sections
+        #
+        def page_sections_for(section_class, identifier)
+          find_watir_elements("elements(identifier)", section_class, identifier, 'element')
+        end
+
+        #
         # platform method to return a svg element
         #
         def svg_for(identifier)

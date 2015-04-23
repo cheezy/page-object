@@ -207,7 +207,7 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def text_field(name, identifier={:index => 0}, &block) 
+    def text_field(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'text_field_for', &block)
       define_method(name) do
         return platform.text_field_value_for identifier.clone unless block_given?
@@ -794,7 +794,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def h1(name, identifier={:index => 0}, &block)
-      standard_methods(name, identifier,'h1_for', &block)
+      standard_methods(name, identifier, 'h1_for', &block)
       define_method(name) do
         return platform.h1_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
@@ -1138,7 +1138,7 @@ module PageObject
     # @param optional block to be invoked when element method is called
     #
     def b(name, identifier={:index => 0}, &block)
-      standard_methods(name, identifier,'b_for', &block)
+      standard_methods(name, identifier, 'b_for', &block)
       define_method(name) do
         return platform.b_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
@@ -1300,6 +1300,55 @@ module PageObject
     def indexed_property (name, identifier_list)
       define_method("#{name}") do
         IndexedProperties::TableOfElements.new(@browser, identifier_list)
+      end
+    end
+
+    #
+    # adds a method to return a specified class wrapping a generic Element object
+    #
+    # @example
+    #   page_section(:navigation_bar, :id => 'nav-bar')
+    #   # will generate 'navigation_bar' and 'navigation_bar?'
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find an element.  You can use multiple parameters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Selenium only
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def page_section (name, section_class, identifier_list)
+      define_method("#{name}") do
+        platform.page_section_for(section_class, identifier_list.clone)
+      end
+      define_method("#{name}?") do
+        platform.page_section_for(section_class, identifier_list.clone).exists?
+      end
+    end
+
+    #
+    # adds a method to return a collection of specified classes wrapping generic Element objects
+    #
+    # @example
+    #   page_sections(:articles, :class => 'article')
+    #   # will generate 'articles'
+    #
+    # @param [Symbol] the name used for the generated method
+    # @param [Hash] identifier how we find an element.  You can use a multiple parameters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Selenium only
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    #
+    def page_sections (name, section_class, identifier_list)
+      define_method("#{name}") do
+        SectionCollection.new(platform.page_sections_for(section_class, identifier_list.clone))
       end
     end
 
