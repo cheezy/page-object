@@ -41,3 +41,8 @@ end
 Then /^I should see that the button exists$/ do
   @page.button_id?.should == true
 end
+
+
+When(/^I get the text for a button that is a "([^"]*)"$/) do |tagname|
+  @text = @page.button_element(:id => "#{tagname}_button").text
+end

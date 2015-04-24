@@ -9,11 +9,11 @@ Feature: Button
   Scenario: Clicking a button (type=submit)
     When I click the button
     Then I should be on the success page
-    
+
   Scenario: Clicking a button (type=image)
     When I click the button with type image
     Then I should be on the success page
-    
+
   Scenario: Clicking an image button by src
     When I click the image button using src
     Then I should be on the success page
@@ -62,6 +62,16 @@ Feature: Button
     | search_by |
     | text      |
 
+    @dane
+  Scenario Outline: Getting the text from a button
+    When I get the text for a button that is a "<tag>"
+    Then the text should be "This button is a <tag>"
+
+  Scenarios:
+    | tag    |
+    | button |
+    | input  |
+
   Scenario Outline: Locating button using multiple parameters
     When I search for the button by "<param1>" and "<param2>"
     Then I should be able to click the button
@@ -70,7 +80,7 @@ Feature: Button
     | param1 | param2 |
     | class  | index  |
     | name   | index  |
-    
+
   Scenario Outline: Locating real button using multiple parameters
     When I search for the button by "<param1>" and "<param2>"
     Then I should be able to click the real button
