@@ -34,6 +34,15 @@ describe "Element" do
       element.double_click
     end
 
+    it "should drag and drop the native" do
+      expect(native).to receive(:drag_and_drop_on).with(native)
+      element.drag_and_drop_on element
+    end
+
+    it 'should fail to drag and drop the native on a non-element' do
+      expect{element.drag_and_drop_on :not_element}.to raise_error ArgumentError
+    end
+
     it "should inspect the native" do
       expect(native).to receive(:inspect)
       element.inspect
