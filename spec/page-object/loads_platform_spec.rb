@@ -34,19 +34,19 @@ describe TestLoadsPlatform do
   end
 
   context "When an unknow object is passed in" do
-    let(:basic_message) { 'Unable to pick a platform for the provided browser.' }
+    let(:basic_message) { 'Unable to pick a platform for the provided browser or element:' }
     
     it "should throw an exception" do
       expect {
         subject.load_platform("browser", {})
-      }.to raise_error(basic_message)
+      }.to raise_error("#{basic_message} \"browser\".")
     end
 
     it "should notify when the browser is nil" do
       begin
         subject.load_platform(nil, {})
       rescue Exception => e
-        expect(e.message).to eql "#{basic_message}\nnil was passed to the PageObject constructor instead of a valid browser object."
+        expect(e.message).to eql "#{basic_message} nil.\nnil was passed to the PageObject constructor instead of a valid browser or element object."
       end
     end
   end
