@@ -3,11 +3,11 @@ module PageObject
     module SeleniumWebDriver
       module Button
         #
-        # Override PageObject::PLatforms::SeleniumElement#text because
-        # #text does not reliably return a value in Selenium
+        # Override PageObject::PLatforms::SeleniumElement#text
+        # to get #text from buttons and #attribute('value') from inputs
         #
         def text
-          raise "text is not available on button element in Selenium"
+          element.tag_name == 'button' ? element.text : element.attribute('value')
         end
       end
     end
