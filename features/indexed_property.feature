@@ -71,6 +71,16 @@ Feature: Indexed Property
     | 123    |
     | 12test |
 
+  Scenario Outline: Locating indexed text fields by index in a table on the page
+    When I search for the elements for index "<index>"
+    And I select the table's indexed radio button
+    Then The table's indexed radio button should be selected
+
+  Scenarios:
+    | index |
+    | 0     |
+    | 1     |
+
   Scenario Outline: Locating indexed text fields outside a table on the Page
     When I search for the elements for index "<index>"
     And I type "I found it" into the regular indexed text field by id

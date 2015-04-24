@@ -20,7 +20,11 @@ module PageObject
               name = identifier[1]
               how_and_what = identifier[2].clone # Cannot modify the original...
               how_and_what.each do |key, value|
-                how_and_what[key] = value % index
+                if key == :index
+                  how_and_what[key] = (value % index).to_i
+                else
+                  how_and_what[key] = value % index
+                end
               end
               self.class.send type, name, how_and_what unless Class.instance_methods.include? name
             end
@@ -29,7 +33,7 @@ module PageObject
       end
 
       def [] (index)
-        @indexed_property_class.new(@browser,index,@identifier_list)
+        @indexed_property_class.new(@browser, index, @identifier_list)
       end
     end
   end

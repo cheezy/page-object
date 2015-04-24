@@ -11,6 +11,8 @@ class IndexedPropertyPage
                             [:div, :nil?, {:id => 'table[%s].bad_name'}],
                          ]
 
+  indexed_property :index_table, [[:radio_button, :radio, {:index => '%d'}]]
+
   indexed_property :nottable, [[:text_field, :text_nottable, {:id => 'nottable[%s].text'}]]
 
   indexed_property :other_table, [
@@ -146,4 +148,16 @@ end
 
 Then(/^the original method remains$/) do
   expect(page.table['foo'].nil?).to be false
+end
+
+When(/^I search for the elements with index (.*)$/) do |index|
+  @index = index.to_i
+end
+
+And(/^I select the table's indexed radio button$/) do
+  page.index_table[@index].select_radio
+end
+
+Then(/^The table's indexed radio button should be selected$/) do
+  expect(page.index_table[@index]).to be_radio_selected
 end
