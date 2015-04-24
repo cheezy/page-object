@@ -131,7 +131,7 @@ module PageObject
         # drag and drop the element on another element
         #
         def drag_and_drop_on other
-          fail ArgumentError, "Can only drag and drop on page-object element, got #{other.class}: #{other.inspect}" unless other.respond_to? :element
+          fail ArgumentError, "Can only drag and drop on page-object element, got #{other.class}: #{other.inspect}"
           element.drag_and_drop_on other.element
         end
 
@@ -158,14 +158,7 @@ module PageObject
         def select_text(text)
           element.select_text text
         end
-
-        #
-        # Right click on an element
-        #
-        def right_click
-          element.right_click
-        end
-
+        
         #
         # Waits until the element is present
         #
@@ -257,43 +250,6 @@ module PageObject
         #
         def scroll_into_view
           element.wd.location_once_scrolled_into_view
-        end
-
-        #
-        # location of element (x, y)
-        #
-        def location
-          element.wd.location
-        end
-
-        #
-        # size of element (width, height)
-        #
-        def size
-          element.wd.size
-        end
-
-        #
-        # Get height of element
-        #
-        def height
-          element.wd.size['height']
-        end
-
-        #
-        # Get width of element
-        #
-        def width
-          element.wd.size['width']
-        end
-
-        #
-        # Get centre coordinates of element
-        #
-        def centre
-          location = element.wd.location
-          size = element.wd.size
-          {'y' => (location['y'] + (size['height']/2)), 'x' => (location['x'] + (size['width']/2))}
         end
       end
     end
