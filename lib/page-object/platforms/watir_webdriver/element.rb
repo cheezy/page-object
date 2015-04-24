@@ -128,6 +128,14 @@ module PageObject
         end
 
         #
+        # drag and drop the element on another element
+        #
+        def drag_and_drop_on other
+          fail ArgumentError, "Can only drag and drop on page-object element, got #{other.class}: #{other.inspect}"
+          element.drag_and_drop_on other.element
+        end
+
+        #
         # find the parent element
         #
         def parent

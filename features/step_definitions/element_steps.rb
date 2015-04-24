@@ -264,3 +264,14 @@ Then(/^I should know the attribute "(.*?)" includes "(.+)"$/) do |attribute, inc
   @attr = @element.attribute(attribute)
   @attr.should include included
 end
+
+
+When(/^I drag and drop an image on a text field$/) do
+  link = @page.open_window_element
+  @link_url = link.href
+  link.drag_and_drop_on @page.text_field_id_element
+end
+
+Then(/^the text field should contain the image url$/) do
+  expect(@page.text_field_id).to eq @link_url
+end
