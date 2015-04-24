@@ -22,7 +22,7 @@ module PageObject
               how_and_what.each do |key, value|
                 how_and_what[key] = value % index
               end
-              self.class.send type, name, how_and_what unless self.class.instance_methods.include? name
+              self.class.send type, name, how_and_what unless Class.instance_methods.include? name
             end
           end
         }

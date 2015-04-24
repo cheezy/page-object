@@ -7,7 +7,9 @@ class IndexedPropertyPage
                             [:checkbox, :check, {:id => 'table[%s].check'}],
                             [:text_area, :area, {:id => 'table[%s].area'}],
                             [:button, :button, {:id => 'table[%s].button'}],
-                            [:div, :content, {:id => 'table[%s].content'}]]
+                            [:div, :content, {:id => 'table[%s].content'}],
+                            [:div, :nil?, {:id => 'table[%s].bad_name'}],
+                         ]
 
   indexed_property :nottable, [[:text_field, :text_nottable, {:id => 'nottable[%s].text'}]]
 
@@ -125,5 +127,23 @@ Then(/^I should see the content of the element on the second indexed property$/)
 end
 
 When(/^I search for an element with text by an index on an indexed property$/) do
-  expect(page.table['123'].content).to eq '123!'
+  @indexed_property = page.table
+  @contents = [@indexed_property['123'].content]
+  expect(@contents[0]).to eq '123!'
+end
+
+And(/^I search for a different element with text by index on the indexed property$/) do
+  @contents << @indexed_property['12test'].content
+end
+
+Then(/^I should see the contents of both elements$/) do
+  expect(@contents).to eq ['123!','12test!']
+end
+
+When(/^I use a name that collides with a ruby method on an indexed property$/) do
+  #noop element is already defined on indexed property
+end
+
+Then(/^the original method remains$/) do
+  expect(page.table['foo'].nil?).to be false
 end

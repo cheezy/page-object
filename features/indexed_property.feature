@@ -96,3 +96,12 @@ Feature: Indexed Property
     When I search for an element with text by an index on an indexed property
     And I search using an index which is on another indexed property
     Then I should see the content of the element on the second indexed property
+
+  Scenario: Different indexes on stored indexed property
+    When I search for an element with text by an index on an indexed property
+    And I search for a different element with text by index on the indexed property
+    Then I should see the contents of both elements
+
+  Scenario: Can't redefine ruby methods
+    When I use a name that collides with a ruby method on an indexed property
+    Then the original method remains
