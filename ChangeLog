@@ -1,4 +1,4 @@
-=== Version 1.0.4
+=== Version 1.1.0
 * Enhancements
   * Performance enhancements when initializing elements (Thanks Dane Andersen)
   * Enabled button elements to return text when using selenium-webdriver.
