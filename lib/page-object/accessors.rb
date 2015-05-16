@@ -640,9 +640,9 @@ module PageObject
 
 
     def tr(name, identifier={:index => 0}, &block)
-      standard_methods(name, identifier, 'table_row_for', &block)
+      standard_methods(name, identifier, 'tr_for', &block)
       define_method("#{name}") do
-        return platform.table_row_text_for identifier.clone unless block_given?
+        return platform.tr_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
