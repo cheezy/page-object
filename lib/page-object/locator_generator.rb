@@ -83,6 +83,7 @@ module PageObject
                          :span,
                          :table,
                          :cell,
+                         :tr,
                          :image,
                          :form,
                          :list_item,

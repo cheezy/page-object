@@ -637,6 +637,16 @@ module PageObject
     end
     alias_method :td, :cell
 
+
+
+    def tr(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'table_row_for', &block)
+      define_method("#{name}") do
+        return platform.table_row_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
+    end
+
     #
     # adds two methods - one to retrieve the image element, and another to
     # check the image's existence.
