@@ -1,4 +1,3 @@
-@temp
 Feature: Table Row
   
   Background:

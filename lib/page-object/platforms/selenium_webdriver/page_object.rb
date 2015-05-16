@@ -577,9 +577,9 @@ module PageObject
 
         #
         # platform method to retrieve the text from a table row
-        # See PageObject::Accessors#tr
+        # See PageObject::Accessors#row
         #
-        def tr_text_for(identifier)
+        def row_text_for(identifier)
           process_selenium_call(identifier, Elements::TableRow, 'tr') do |how, what|
             @browser.find_element(how, what).text
           end
@@ -587,16 +587,16 @@ module PageObject
 
         #
         # platform method to retrieve a table row element
-        # See PageObject::Accessors#tr
+        # See PageObject::Accessors#row
         #
-        def tr_for(identifier)
+        def row_for(identifier)
           find_selenium_element(identifier, Elements::TableRow, 'tr')
         end
 
         #
         # platform method to retrieve all table row elements
         #
-        def trs_for(identifier)
+        def rows_for(identifier)
           find_selenium_elements(identifier, Elements::TableRow, 'tr')
         end
 

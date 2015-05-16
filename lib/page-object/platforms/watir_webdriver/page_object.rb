@@ -532,25 +532,25 @@ module PageObject
 
         #
         # platform method to retrieve the text from a table row
-        # See PageObject::Accessors#tr
+        # See PageObject::Accessors#row
         #
-        def tr_text_for(identifier)
+        def row_text_for(identifier)
           process_watir_call("tr(identifier).text", Elements::TableRow, identifier,
                              nil, 'tr')
         end
 
         #
         # platform method to retrieve a table row element
-        # See PageObject::Accessors#tr
+        # See PageObject::Accessors#row
         #
-        def tr_for(identifier)
+        def row_for(identifier)
           find_watir_element("tr(identifier)", Elements::TableRow, identifier, 'tr')
         end
 
         #
         # platform method to retrieve an array of table row elements
         #
-        def trs_for(identifier)
+        def rows_for(identifier)
           find_watir_elements("trs(identifier)", Elements::TableRow, identifier, 'tr')
         end
 

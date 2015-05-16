@@ -659,10 +659,10 @@ module PageObject
     #   * :css => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def tr(name, identifier={:index => 0}, &block)
-      standard_methods(name, identifier, 'tr_for', &block)
+    def row(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'row_for', &block)
       define_method("#{name}") do
-        return platform.tr_text_for identifier.clone unless block_given?
+        return platform.row_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end

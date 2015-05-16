@@ -7,7 +7,7 @@ When /^I retrieve a table row element by "([^"]*)" and "([^"]*)"$/ do |param1, p
 end
 
 When /^I retrieve a table row element while the script is executing$/ do
-  @row_data = @page.tr_element(:id => 'tr_id').text
+  @row_data = @page.row_element(:id => 'tr_id').text
 end
 
 Then /^I should see that the row exists$/ do

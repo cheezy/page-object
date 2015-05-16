@@ -279,24 +279,24 @@ describe PageObject::ElementLocators do
 
     it "should find a table row" do
       expect(watir_browser).to receive(:tr).with(:id => 'blah').and_return(watir_browser)
-      element = watir_page_object.tr_element(:id => 'blah')
+      element = watir_page_object.row_element(:id => 'blah')
       expect(element).to be_instance_of PageObject::Elements::TableRow
     end
 
     it "should find a table row using a default identifier" do
       expect(watir_browser).to receive(:tr).with(:index => 0).and_return(watir_browser)
-      watir_page_object.tr_element
+      watir_page_object.row_element
     end
 
     it "should find all table row" do
       expect(watir_browser).to receive(:trs).with(:id => 'blah').and_return([watir_browser])
-      elements = watir_page_object.tr_elements(:id => 'blah')
+      elements = watir_page_object.row_elements(:id => 'blah')
       expect(elements[0]).to be_instance_of PageObject::Elements::TableRow
     end
 
     it "should find all table rows using no identifier" do
       expect(watir_browser).to receive(:trs).with({}).and_return([watir_browser])
-      watir_page_object.tr_elements
+      watir_page_object.row_elements
     end
     
     it "should find an image" do
