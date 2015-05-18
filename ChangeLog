@@ -1,6 +1,6 @@
 === Version 1.1.1
 * Enhancements
-  * Added row accessor method and support for finding row elements directly
+  * Added row accessor method and support for finding row elements directly (Thanks Ethan Hedrick)
 
 === Version 1.1.0
 * Enhancements
