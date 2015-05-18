@@ -637,6 +637,36 @@ module PageObject
     end
     alias_method :td, :cell
 
+
+    #
+    # adds three methods - one to retrieve the text from a table row,
+    # another to return the table row element, and another to check the row's
+    # existence.
+    #
+    # @example
+    #   row(:sums, :id => 'sum_row')
+    #   # will generate 'sums', 'sums_element', and 'sums?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find a cell.  You can use a multiple parameters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :text => Watir only
+    #   * :xpath => Watir and Selenium
+    #   * :css => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def row(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'row_for', &block)
+      define_method("#{name}") do
+        return platform.row_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
+    end
+
     #
     # adds two methods - one to retrieve the image element, and another to
     # check the image's existence.
