@@ -1,3 +1,7 @@
+=== Version 1.1.1
+* Enhancements
+  * Added row accessor method and support for finding row elements directly
+
 === Version 1.1.0
 * Enhancements
   * Performance enhancements when initializing elements (Thanks Dane Andersen)
