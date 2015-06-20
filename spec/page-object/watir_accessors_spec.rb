@@ -217,6 +217,33 @@ describe PageObject::Accessors do
     end
   end
 
+  context "using element accessor" do
+    class WatirDefaultElementTagToElement
+      include PageObject
+      # verify that the explicit :element tag can be omitted
+      # element('button', :element, {:css => 'some css'})
+      element('button', { :css => 'some css' })
+      elements('button2', { :css => 'some css' })
+    end
+
+    let (:page) { WatirDefaultElementTagToElement.new(watir_browser) }
+
+    def mock_driver_for(tag)
+      expect(watir_browser).to receive(tag).with(:css => 'some css').and_return(watir_browser)
+    end
+
+    it "should default element tag to element" do
+      mock_driver_for :element
+      page.button_element
+    end
+
+    it "should default elements tag to element" do
+      mock_driver_for :elements
+      expect(watir_browser).to receive(:map).and_return([])
+      page.button2_elements.to_a
+    end
+  end
+
   context "using default identifiers" do
     class WatirDefaultIdentifier
       include PageObject
