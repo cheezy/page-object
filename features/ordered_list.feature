@@ -21,17 +21,6 @@ Feature: Ordered list
     | xpath     |
     | index     |
     | name      |
-
-  @selenium_only
-  Scenario Outline: Locating ordered lists on the page
-    When I search for the ordered list by "<search_by>"
-    And I get the first item from the list
-    Then the list items text should be "Number One"
-    And the list should contain 3 items
-    And each item should contain "Number"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating ordered lists using multiple parameters

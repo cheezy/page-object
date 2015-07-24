@@ -20,14 +20,6 @@ Feature: Hidden Fields
     | index     |
     | text      |
     | value     |
-
-  @selenium_only
-  Scenario Outline: Locating hidden fields on the Page
-    When I search for the hidden field by "<search_by>"
-    Then the hidden field element should contain "12345"
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating a hidden field using multiple parameters

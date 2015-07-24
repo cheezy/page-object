@@ -938,7 +938,9 @@ module PageObject
         # See PageObject::Accessors#element
         #
         def element_for(tag, identifier)
-          find_watir_element("#{tag.to_s}(identifier)", Elements::Element, identifier, tag.to_s)
+          the_call = "#{tag.to_s}(identifier)"
+          the_call << ".to_subtype" if tag.to_s == 'element'
+          find_watir_element(the_call, Elements::Element, identifier, tag.to_s)
         end
 
         #
@@ -946,7 +948,9 @@ module PageObject
         # See PageObject::Accessors#element
         #
         def elements_for(tag, identifier)
-          find_watir_elements("#{tag.to_s}s(identifier)", Elements::Element, identifier, tag.to_s)
+          the_call = "#{tag.to_s}s(identifier)"
+          the_call << ".to_subtype" if tag.to_s == 'element'
+          find_watir_elements(the_call, Elements::Element, identifier, tag.to_s)
         end
 
         #

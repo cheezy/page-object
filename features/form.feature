@@ -18,14 +18,6 @@ Feature: Form
     | xpath     |
     | index     |
     | action    |
-
-  @selenium_only
-  Scenario Outline: Locating a form on the page
-    When I locate the form by "<search_by>"
-    Then I should be able to submit the form
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating table using multiple parameters

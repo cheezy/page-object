@@ -26,15 +26,6 @@ Feature: Radio Buttons
     | value     |
     | index     |
     | label     |
-
-  @selenium_only
-  Scenario Outline: Locating radio buttons on the Page
-    When I search for the radio button by "<search_by>"
-    And I select the radio button
-    Then the "Milk" radio button should be selected
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating radio buttons using multiple parameters
