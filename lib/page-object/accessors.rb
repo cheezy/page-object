@@ -1262,7 +1262,7 @@ module PageObject
         element = self.send("#{name}_element")
 
         %w(Button TextField Radio Hidden CheckBox FileField).each do |klass|
-          next unless element.element.is_a? Object.const_get("Watir::#{klass}")
+          next unless element.element.class.to_s  == "Watir::#{klass}"
           self.class.send(klass.gsub(/(.)([A-Z])/,'\1_\2').downcase, name, identifier, &block)
           return self.send name
         end
