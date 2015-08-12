@@ -20,12 +20,24 @@ module PageObject
         define_accessors(Accessors, widget_tag, widget_class)
         define_nested_elements(Elements::Element, widget_tag)
         define_locators(PageObject, widget_tag)
-        define_selenium_accessors(Platforms::SeleniumWebDriver::PageObject, widget_tag, widget_class, base_element_tag)
-        define_watir_accessors(Platforms::WatirWebDriver::PageObject, widget_tag, widget_class, base_element_tag)
+
+        PageObject::Platforms.constants.each { |platform|
+          platform_class = constantize_classname("PageObject::Platforms::#{platform}::PageObject")
+          if platform_class.respond_to?(:define_widget_accessors)
+            platform_class.send(:define_widget_accessors,widget_tag, widget_class, base_element_tag)
+          else
+            $stderr.puts "*** WARNING"
+            $stderr.puts "*** Platform PageObject::Platforms::#{platform} does not support widgets! Please add the 'define_widget_accessors' method in PageObject::Platforms::#{platform}::PageObject to support widgets."
+          end
+        }
       end
     end
 
     private
+
+    def self.constantize_classname name
+      name.split("::").inject(Object) { |k,n| k.const_get(n) }
+    end
 
     def self.define_accessors(base, widget_tag, widget_class)
       accessors_module = Module.new do
@@ -56,40 +68,6 @@ module PageObject
       end
 
       base.send(:include, accessors_module)
-    end
-
-    def self.define_watir_accessors(base, widget_tag, widget_class, base_element_tag)
-      define_singular_watir_accessor(base, base_element_tag, widget_class, widget_tag)
-      define_multiple_watir_accessor(base, base_element_tag, widget_class, widget_tag)
-    end
-
-    def self.define_multiple_watir_accessor(base, base_element_tag, widget_class, widget_tag)
-      base.send(:define_method, "#{widget_tag}s_for") do |identifier|
-        find_watir_elements("#{base_element_tag}s(identifier)", widget_class, identifier, base_element_tag)
-      end
-    end
-
-    def self.define_singular_watir_accessor(base, base_element_tag, widget_class, widget_tag)
-      base.send(:define_method, "#{widget_tag}_for") do |identifier|
-        find_watir_element("#{base_element_tag}(identifier)", widget_class, identifier, base_element_tag)
-      end
-    end
-
-    def self.define_selenium_accessors(base, widget_tag, widget_class, base_element_tag)
-      define_singular_selenium_accessor(base, base_element_tag, widget_class, widget_tag)
-      define_multiple_selenium_accessor(base, base_element_tag, widget_class, widget_tag)
-    end
-
-    def self.define_multiple_selenium_accessor(base, base_element_tag, widget_class, widget_tag)
-      base.send(:define_method, "#{widget_tag}s_for") do |identifier|
-        find_selenium_elements(identifier, widget_class, base_element_tag)
-      end
-    end
-
-    def self.define_singular_selenium_accessor(base, base_element_tag, widget_class, widget_tag)
-      base.send(:define_method, "#{widget_tag}_for") do |identifier|
-        find_selenium_element(identifier, widget_class, base_element_tag)
-      end
     end
 
     def self.define_nested_elements(base, widget_tag)

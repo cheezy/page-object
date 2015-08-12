@@ -14,6 +14,13 @@ module PageObject
       class PageObject
         attr_reader :browser
 
+
+
+        def self.define_widget_accessors(widget_tag, widget_class, base_element_tag)
+        define_widget_singular_accessor(base_element_tag, widget_class, widget_tag)
+        define_widget_multiple_accessor(base_element_tag, widget_class, widget_tag)
+        end
+
         def initialize(browser)
           @browser = browser
         end
@@ -1091,6 +1098,18 @@ module PageObject
               @browser.wd.switch_to.frame(value)
             end
           end          
+        end
+
+        def self.define_widget_multiple_accessor(base_element_tag, widget_class, widget_tag)
+          send(:define_method, "#{widget_tag}s_for") do |identifier|
+            find_watir_elements("#{base_element_tag}s(identifier)", widget_class, identifier, base_element_tag)
+          end
+        end
+
+        def self.define_widget_singular_accessor(base_element_tag, widget_class, widget_tag)
+          send(:define_method, "#{widget_tag}_for") do |identifier|
+            find_watir_element("#{base_element_tag}(identifier)", widget_class, identifier, base_element_tag)
+          end
         end
       end
     end
