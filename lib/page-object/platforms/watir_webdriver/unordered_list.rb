@@ -10,7 +10,7 @@ module PageObject
         # @return [PageObject::Elements::ListItem]
         #
         def [](idx)
-          Object::PageObject::Elements::ListItem.new(children[idx], :platform => :watir_webdriver)
+          Object::PageObject::Elements::ListItem.new(children[idx], :platform => @platform.class::PLATFORM_NAME)
         end
 
         #

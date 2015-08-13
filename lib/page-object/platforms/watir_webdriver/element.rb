@@ -141,7 +141,7 @@ module PageObject
           parent = element.parent
           type = element.type if parent.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
-          cls.new(parent, :platform => :watir_webdriver)
+          cls.new(parent, :platform => @platform.class::PLATFORM_NAME)
         end
 
         #

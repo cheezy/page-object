@@ -6,6 +6,7 @@ require 'page-object/core_ext/string'
 module PageObject
   module Platforms
     module WatirWebDriver
+
       #
       # Watir implementation of the page object platform driver.  You should not use the
       # class directly.  Instead you should include the PageObject module in your page object
@@ -14,7 +15,7 @@ module PageObject
       class PageObject
         attr_reader :browser
 
-
+        PLATFORM_NAME = :watir_webdriver
 
         def self.define_widget_accessors(widget_tag, widget_class, base_element_tag)
         define_widget_singular_accessor(base_element_tag, widget_class, widget_tag)
@@ -139,7 +140,7 @@ module PageObject
           element = browser.execute_script("return document.activeElement")
           type = element.type.to_sym if element.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(element.tag_name, type)
-          cls.new(element, :platform => :watir_webdriver)    
+          cls.new(element, :platform => self.class::PLATFORM_NAME)
         end
 
         #
@@ -1007,14 +1008,14 @@ module PageObject
           identifier, frame_identifiers = parse_identifiers(identifier, type, tag_name)
           elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
           switch_to_default_content(frame_identifiers)
-          elements.map { |element| type.new(element, :platform => :watir_webdriver) }
+          elements.map { |element| type.new(element, :platform => self.class::PLATFORM_NAME) }
         end
 
         def find_watir_element(the_call, type, identifier, tag_name=nil)
           identifier, frame_identifiers = parse_identifiers(identifier, type, tag_name)
           element = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
           switch_to_default_content(frame_identifiers)
-          type.new(element, :platform => :watir_webdriver)
+          type.new(element, :platform => self.class::PLATFORM_NAME)
         end
 
         def find_watir_pages(identifier, page_class)

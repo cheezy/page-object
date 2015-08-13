@@ -24,7 +24,7 @@ module PageObject
 
         def children
           items = list_items.map do |item|
-            ::PageObject::Elements::ListItem.new(item, :platform => :selenium_webdriver)
+            ::PageObject::Elements::ListItem.new(item, :platform => @platform.class::PLATFORM_NAME)
           end
           items.find_all { |item| item.parent.element == element }
         end
