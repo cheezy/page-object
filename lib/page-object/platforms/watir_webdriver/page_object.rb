@@ -320,7 +320,7 @@ module PageObject
         # See PageObject::Accessors#link
         #
         def click_link_for(identifier)
-          call = call_for_watir_element(identifier, "link(identifier)")
+          call = "link(identifier)"
           process_watir_call("#{call}.click if identifier", Elements::Link, identifier)
         end
 
@@ -329,7 +329,7 @@ module PageObject
         # see PageObject::Accessors#link
         #
         def link_for(identifier)
-          call = call_for_watir_element(identifier, "link(identifier)")
+          call = "link(identifier)"
           find_watir_element(call, Elements::Link, identifier)
         end
 
@@ -337,7 +337,7 @@ module PageObject
         # platform method to retrieve an array of link elements
         #
         def links_for(identifier)
-          call = call_for_watir_elements(identifier, "links(identifier)")
+          call = "links(identifier)"
           find_watir_elements(call, Elements::Link, identifier)
         end
 
@@ -462,7 +462,7 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def click_button_for(identifier)
-          call = call_for_watir_element(identifier, "button(identifier)")
+          call = "button(identifier)"
           process_watir_call("#{call}.click", Elements::Button, identifier)
         end
 
@@ -471,7 +471,7 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def button_for(identifier)
-          call = call_for_watir_element(identifier, "button(identifier)")
+          call = "button(identifier)"
           find_watir_element(call, Elements::Button, identifier)
         end
 
@@ -479,7 +479,7 @@ module PageObject
         # platform method to retrieve an array of button elements
         #
         def buttons_for(identifier)
-          call = call_for_watir_elements(identifier, "buttons(identifier)")
+          call = "buttons(identifier)"
           find_watir_elements(call, Elements::Button, identifier)
         end
 
@@ -1065,22 +1065,6 @@ module PageObject
 
         def switch_to_default_content(frame_identifiers)
           @browser.wd.switch_to.default_content unless frame_identifiers.nil?          
-        end
-
-        def css_element
-          "element(identifier)"
-        end
-
-        def css_elements
-          "elements(identifier)"
-        end
-
-        def call_for_watir_element(identifier, call)
-          identifier[:css] ? "#{css_element}" : call
-        end
-
-        def call_for_watir_elements(identifier, call)
-          identifier[:css] ? "#{css_elements}" : call          
         end
 
         def switch_to_frame(frame_identifiers)
