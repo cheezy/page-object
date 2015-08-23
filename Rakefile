@@ -3,7 +3,9 @@ require 'bundler'
 require 'rspec/core/rake_task'
 require 'cucumber'
 require 'cucumber/rake/task'
+require 'coveralls/rake/task'
 
+Coveralls::RakeTask.new
 Bundler::GemHelper.install_tasks
 
 RSpec::Core::RakeTask.new(:spec) do |spec|
@@ -32,4 +34,6 @@ task :lib do
   $LOAD_PATH.unshift(File.expand_path("lib", File.dirname(__FILE__)))
 end
 
-task :default => :test
+task :test_with_coveralls => [:test, 'coveralls:push']
+
+task :default => :test_with_coveralls

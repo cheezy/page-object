@@ -28,5 +28,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'cucumber', '>= 1.3.0'
   s.add_development_dependency 'yard', '>= 0.7.2'
   s.add_development_dependency 'rack', '>= 1.0'
+  s.add_development_dependency 'coveralls', '~> 0.8.1'
 
 end
