@@ -99,7 +99,7 @@ module PageObject
 
     def self.define_multiple_nested_accessor(base, widget_tag)
       base.send(:define_method, "#{widget_tag}_elements") do |*args|
-        identifier = args[0] ? args[0] : {:index => 0}
+        identifier = args[0] ? args[0] : {}
         @platform.send("#{widget_tag}s_for", identifier.clone)
       end
     end
