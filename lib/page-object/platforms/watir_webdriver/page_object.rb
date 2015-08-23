@@ -320,7 +320,7 @@ module PageObject
         # See PageObject::Accessors#link
         #
         def click_link_for(identifier)
-          call = call_for_watir_element(identifier, "link(identifier)")
+          call = "link(identifier)"
           process_watir_call("#{call}.click if identifier", Elements::Link, identifier)
         end
 
@@ -329,7 +329,7 @@ module PageObject
         # see PageObject::Accessors#link
         #
         def link_for(identifier)
-          call = call_for_watir_element(identifier, "link(identifier)")
+          call = "link(identifier)"
           find_watir_element(call, Elements::Link, identifier)
         end
 
@@ -337,7 +337,7 @@ module PageObject
         # platform method to retrieve an array of link elements
         #
         def links_for(identifier)
-          call = call_for_watir_elements(identifier, "links(identifier)")
+          call = "links(identifier)"
           find_watir_elements(call, Elements::Link, identifier)
         end
 
@@ -462,7 +462,7 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def click_button_for(identifier)
-          call = call_for_watir_element(identifier, "button(identifier)")
+          call = "button(identifier)"
           process_watir_call("#{call}.click", Elements::Button, identifier)
         end
 
@@ -471,7 +471,7 @@ module PageObject
         # See PageObject::Accessors#button
         #
         def button_for(identifier)
-          call = call_for_watir_element(identifier, "button(identifier)")
+          call = "button(identifier)"
           find_watir_element(call, Elements::Button, identifier)
         end
 
@@ -479,7 +479,7 @@ module PageObject
         # platform method to retrieve an array of button elements
         #
         def buttons_for(identifier)
-          call = call_for_watir_elements(identifier, "buttons(identifier)")
+          call = "buttons(identifier)"
           find_watir_elements(call, Elements::Button, identifier)
         end
 
@@ -528,6 +528,30 @@ module PageObject
         #
         def cells_for(identifier)
           find_watir_elements("tds(identifier)", Elements::TableCell, identifier, 'td')
+        end
+
+        #
+        # platform method to retrieve the text from a table row
+        # See PageObject::Accessors#row
+        #
+        def row_text_for(identifier)
+          process_watir_call("tr(identifier).text", Elements::TableRow, identifier,
+                             nil, 'tr')
+        end
+
+        #
+        # platform method to retrieve a table row element
+        # See PageObject::Accessors#row
+        #
+        def row_for(identifier)
+          find_watir_element("tr(identifier)", Elements::TableRow, identifier, 'tr')
+        end
+
+        #
+        # platform method to retrieve an array of table row elements
+        #
+        def rows_for(identifier)
+          find_watir_elements("trs(identifier)", Elements::TableRow, identifier, 'tr')
         end
 
         #
@@ -918,6 +942,22 @@ module PageObject
         end
 
         #
+        # platform method to return a PageObject rooted at an element
+        # See PageObject::Accessors#page_section
+        #
+        def page_for(identifier, page_class)
+          find_watir_page(identifier, page_class)
+        end
+
+        #
+        # platform method to return a collection of PageObjects rooted at elements
+        # See PageObject::Accessors#page_sections
+        #
+        def pages_for(identifier, page_class)
+          SectionCollection.new(find_watir_pages(identifier, page_class))
+        end
+
+        #
         # platform method to return a svg element
         #
         def svg_for(identifier)
@@ -970,6 +1010,20 @@ module PageObject
           type.new(element, :platform => :watir_webdriver)
         end
 
+        def find_watir_pages(identifier, page_class)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Element, 'element')
+          elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}elements(identifier)"
+          switch_to_default_content(frame_identifiers)
+          elements.map { |element| page_class.new(element) }
+        end
+
+        def find_watir_page(identifier, page_class)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Element, 'element')
+          element = @browser.instance_eval "#{nested_frames(frame_identifiers)}element(identifier)"
+          switch_to_default_content(frame_identifiers)
+          page_class.new(element)
+        end
+
         def process_watir_call(the_call, type, identifier, value=nil, tag_name=nil)
           identifier, frame_identifiers = parse_identifiers(identifier, type, tag_name)
           value = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
@@ -1011,22 +1065,6 @@ module PageObject
 
         def switch_to_default_content(frame_identifiers)
           @browser.wd.switch_to.default_content unless frame_identifiers.nil?          
-        end
-
-        def css_element
-          "element(identifier)"
-        end
-
-        def css_elements
-          "elements(identifier)"
-        end
-
-        def call_for_watir_element(identifier, call)
-          identifier[:css] ? "#{css_element}" : call
-        end
-
-        def call_for_watir_elements(identifier, call)
-          identifier[:css] ? "#{css_elements}" : call          
         end
 
         def switch_to_frame(frame_identifiers)

@@ -576,6 +576,31 @@ module PageObject
         end
 
         #
+        # platform method to retrieve the text from a table row
+        # See PageObject::Accessors#row
+        #
+        def row_text_for(identifier)
+          process_selenium_call(identifier, Elements::TableRow, 'tr') do |how, what|
+            @browser.find_element(how, what).text
+          end
+        end
+
+        #
+        # platform method to retrieve a table row element
+        # See PageObject::Accessors#row
+        #
+        def row_for(identifier)
+          find_selenium_element(identifier, Elements::TableRow, 'tr')
+        end
+
+        #
+        # platform method to retrieve all table row elements
+        #
+        def rows_for(identifier)
+          find_selenium_elements(identifier, Elements::TableRow, 'tr')
+        end
+
+        #
         # platform method to retrieve an image element
         # See PageObject::Accessors#image
         #
@@ -988,6 +1013,22 @@ module PageObject
           find_selenium_elements(identifier, Elements::Element, tag.to_s)
         end
 
+        #
+        # platform method to return a PageObject rooted at an element
+        # See PageObject::Accessors#page_section
+        #
+        def page_for(identifier, page_class)
+          find_selenium_page(identifier, page_class)
+        end
+
+        #
+        # platform method to return a collection of PageObjects rooted at elements
+        # See PageObject::Accessors#page_sections
+        #
+        def pages_for(identifier, page_class)
+          SectionCollection.new(find_selenium_pages(identifier, page_class))
+        end
+
        #
         # platform method to return a svg element
         #
@@ -1069,6 +1110,40 @@ module PageObject
           end
           @browser.switch_to.default_content unless frame_identifiers.nil?
           elements.map { |element| type.new(element, :platform => :selenium_webdriver) }
+        end
+
+        def find_selenium_pages(identifier, page_class)
+          regexp = delete_regexp(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, Elements::Element, 'element')
+          switch_to_frame(frame_identifiers)
+          unless regexp
+            elements = @browser.find_elements(how, what)
+          else
+            eles = @browser.find_elements(how, what)
+            elements = eles.find_all {|ele| matches_selector?(ele, regexp[0], regexp[1])}
+          end
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          elements.map { |element| page_class.new(element) }
+        end
+
+        def find_selenium_page(identifier, page_class)
+          type, tag = Elements::Element, 'element'
+          regexp = delete_regexp(identifier)
+          how, what, frame_identifiers = parse_identifiers(identifier, type, tag)
+          switch_to_frame(frame_identifiers)
+          begin
+            unless regexp
+              element = @browser.find_element(how, what)
+            else
+              elements = @browser.find_elements(how, what)
+              element = elements.find {|ele| matches_selector?(ele, regexp[0], regexp[1])}
+            end
+          rescue Selenium::WebDriver::Error::NoSuchElementError
+            @browser.switch_to.default_content unless frame_identifiers.nil?
+            return build_null_object(identifier, type, tag, nil)
+          end
+          @browser.switch_to.default_content unless frame_identifiers.nil?
+          page_class.new(element)
         end
 
         def build_null_object(identifier, type, tag, other)

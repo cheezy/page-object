@@ -169,6 +169,7 @@ describe PageObject do
     
     context "when using WatirPageObject" do
       it "should display the page text" do
+        expect(watir_browser).to receive(:element).and_return(watir_browser)
         expect(watir_browser).to receive(:text).and_return("browser text")
         expect(watir_page_object.text).to eql "browser text"
       end

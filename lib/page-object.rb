@@ -7,8 +7,10 @@ require 'page-object/page_factory'
 require 'page-object/page_populator'
 require 'page-object/javascript_framework_facade'
 require 'page-object/indexed_properties'
+require 'page-object/sections'
 require 'page-object/widgets'
 
+require 'watir-webdriver'
 require 'page-object/platforms/watir_webdriver/element'
 require 'page-object/platforms/watir_webdriver/page_object'
 require 'page-object/platforms/selenium_webdriver/element'
@@ -58,19 +60,20 @@ module PageObject
   # a method named initialize_accessors if it exists. Upon initialization of 
   # the page it will call a method named initialize_page if it exists.
   #
-  # @param [Watir::Browser or Selenium::WebDriver::Driver] the platform browser to use
+  # @param [Watir::Browser, Watir::HTMLElement or Selenium::WebDriver::Driver, Selenium::WebDriver::Element] the platform browser/element to use
   # @param [bool] open the page if page_url is set
   #
-  def initialize(browser, visit=false)
+  def initialize(root, visit=false)
     initialize_accessors if respond_to?(:initialize_accessors)
-    initialize_browser(browser)
+    initialize_browser(root)
     goto if visit && respond_to?(:goto)
     initialize_page if respond_to?(:initialize_page)
   end
 
-  def initialize_browser(browser)
-    @browser = browser
-    include_platform_driver(browser)
+  def initialize_browser(root)
+    @root_element = root_element_for root, PageObject::Platforms.get
+    @browser = browser_for root, PageObject::Platforms.get
+    include_platform_driver(root)
   end
 
   # @private
@@ -149,7 +152,7 @@ module PageObject
   # Returns the text of the current page
   #
   def text
-    platform.text
+    root.text
   end
 
   #
@@ -403,6 +406,10 @@ module PageObject
   end
 
   private
+
+  def root
+    @root_element || browser_root_for(browser, PageObject::Platforms.get)
+  end
 
   def include_platform_driver(browser)
     @platform = load_platform(browser, PageObject::Platforms.get)

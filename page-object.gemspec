@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name = "page-object"
   s.version = PageObject::VERSION
   s.platform = Gem::Platform::RUBY
-  s.authors = ["Jeff Morgan"]
-  s.email = ["jeff.morgan@leandog.com"]
+  s.authors = ["Jeff Morgan", 'Dane Andersen']
+  s.email = ["jeff.morgan@leandog.com", 'dane.andersen@gmail.com']
   s.license       = 'MIT'
   s.homepage = "http://github.com/cheezy/page-object"
   s.summary = %q{Page Object DSL for browser testing}
@@ -28,5 +28,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'cucumber', '>= 1.3.0'
   s.add_development_dependency 'yard', '>= 0.7.2'
   s.add_development_dependency 'rack', '>= 1.0'
+  s.add_development_dependency 'coveralls', '~> 0.8.1'
 
 end

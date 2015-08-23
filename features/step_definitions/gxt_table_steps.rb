@@ -12,10 +12,6 @@ Given /^I am on the Gxt Examples page$/ do
   visit GxtSamplePageObject
 end
 
-When /^I have the Basic Grid opened$/ do
-  on(GxtSamplePageObject).basic_grid_element.click
-end
-
 When /^I have defined a GxtTable class extending Table$/ do
   class GxtTable < PageObject::Elements::Table
 
@@ -36,9 +32,8 @@ When /^I define a page-object using that widget$/ do
   class GxtSamplePageObject
     include PageObject
 
-    page_url "http://gxtexamplegallery.appspot.com/"
+    page_url UrlHelper.widgets
 
-    div(:basic_grid, :class => "label_basic_grid") 
     gxt_table(:gxt_table, :class => "x-grid3")
   end unless class_exists? 'GxtSamplePageObject'
 end
