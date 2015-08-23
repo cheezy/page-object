@@ -53,5 +53,9 @@ module UrlHelper
     def double_click
       "#{files}/double_click.html"
     end
+
+    def widgets
+      "#{files}/widgets.html"
+    end
   end
 end

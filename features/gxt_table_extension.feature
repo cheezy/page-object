@@ -8,7 +8,6 @@ Feature: Gxt Table Extension
     And I have registered the GxtTable with PageObject
     And I define a page-object using that widget
     And I am on the Gxt Examples page
-    And I have the Basic Grid opened
 
   Scenario: Retrieve a GxtTable
     When I retrieve a GxtTable widget
@@ -21,4 +20,4 @@ Feature: Gxt Table Extension
 
   Scenario: Confirm a correct row count from a GxtTable
     When I retrieve a GxtTable widget
-    Then the GxtTable should have "13" rows
+    Then the GxtTable should have "3" rows
