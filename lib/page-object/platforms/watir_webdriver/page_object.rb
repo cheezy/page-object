@@ -531,6 +531,30 @@ module PageObject
         end
 
         #
+        # platform method to retrieve the text from a table row
+        # See PageObject::Accessors#row
+        #
+        def row_text_for(identifier)
+          process_watir_call("tr(identifier).text", Elements::TableRow, identifier,
+                             nil, 'tr')
+        end
+
+        #
+        # platform method to retrieve a table row element
+        # See PageObject::Accessors#row
+        #
+        def row_for(identifier)
+          find_watir_element("tr(identifier)", Elements::TableRow, identifier, 'tr')
+        end
+
+        #
+        # platform method to retrieve an array of table row elements
+        #
+        def rows_for(identifier)
+          find_watir_elements("trs(identifier)", Elements::TableRow, identifier, 'tr')
+        end
+
+        #
         # platform method to retrieve an image element
         # See PageObject::Accessors#image
         #
@@ -918,6 +942,22 @@ module PageObject
         end
 
         #
+        # platform method to return a PageObject rooted at an element
+        # See PageObject::Accessors#page_section
+        #
+        def page_for(identifier, page_class)
+          find_watir_page(identifier, page_class)
+        end
+
+        #
+        # platform method to return a collection of PageObjects rooted at elements
+        # See PageObject::Accessors#page_sections
+        #
+        def pages_for(identifier, page_class)
+          SectionCollection.new(find_watir_pages(identifier, page_class))
+        end
+
+        #
         # platform method to return a svg element
         #
         def svg_for(identifier)
@@ -968,6 +1008,20 @@ module PageObject
           element = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
           switch_to_default_content(frame_identifiers)
           type.new(element, :platform => :watir_webdriver)
+        end
+
+        def find_watir_pages(identifier, page_class)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Element, 'element')
+          elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}elements(identifier)"
+          switch_to_default_content(frame_identifiers)
+          elements.map { |element| page_class.new(element) }
+        end
+
+        def find_watir_page(identifier, page_class)
+          identifier, frame_identifiers = parse_identifiers(identifier, Elements::Element, 'element')
+          element = @browser.instance_eval "#{nested_frames(frame_identifiers)}element(identifier)"
+          switch_to_default_content(frame_identifiers)
+          page_class.new(element)
         end
 
         def process_watir_call(the_call, type, identifier, value=nil, tag_name=nil)

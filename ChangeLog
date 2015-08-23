@@ -1,6 +1,16 @@
-=== Version 1.0.4
+=== Version 1.1.1
+* Enhancements
+  * Added row accessor method and support for finding row elements directly (Thanks Ethan Hedrick)
+
+=== Version 1.1.0
 * Enhancements
   * Performance enhancements when initializing elements (Thanks Dane Andersen)
+  * Enabled button elements to return text when using selenium-webdriver.
+  * Added support for :index identifier in indexed properties.
+  * Added page_section and page_sections accessor methods which can specify a page object of elements on another page object.
+* Fixes
+  * Fixed issue causing exceptions when comparing equality of element to non-element objects.
+  * Fixed issue that causes indexed properties to return the same value for any index.
 
 === Version 1.0.3 / 2014-12-9
 * Enhancements
