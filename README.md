@@ -1,6 +1,8 @@
 # page-object
 
+[![Gem Version](https://badge.fury.io/rb/page-object.svg)](http://badge.fury.io/rb/page-object)
 [![Build Status](https://travis-ci.org/cheezy/page-object.png)](https://travis-ci.org/cheezy/page-object)
+[![Coverage Status](https://coveralls.io/repos/bootstraponline/page_object/badge.svg?nocache)](https://coveralls.io/r/cheezy/page_object)
 
 
 A simple gem that assists in creating flexible page objects for testing browser based applications. The goal is to facilitate creating abstraction layers in your tests to decouple the tests from the item they are testing and to provide a simple interface to the elements on a page. It works with both watir-webdriver and selenium-webdriver.
