@@ -1055,7 +1055,7 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the h1 element
+        # platform method to retrieve the b element
         # See PageObject::Accessors#b
         #
         def b_for(identifier)
