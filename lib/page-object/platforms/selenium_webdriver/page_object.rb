@@ -1069,6 +1069,31 @@ module PageObject
           find_selenium_elements(identifier, Elements::Bold, 'b')
         end
 
+        #
+        # platform method to retrieve the text from a i
+        # See PageObject::Accessors#i
+        #
+        def i_text_for(identifier)
+          process_selenium_call(identifier, Elements::Italic, 'i') do |how, what|
+            @browser.find_element(how, what).text
+          end
+        end
+
+        #
+        # platform method to retrieve the i element
+        # See PageObject::Accessors#i
+        #
+        def i_for(identifier)
+          find_selenium_element(identifier, Elements::Italic, 'i')
+        end
+
+        #
+        # platform method to retrieve all i elements
+        #
+        def is_for(identifier)
+          find_selenium_elements(identifier, Elements::Italic, 'i')
+        end
+
         private
 
         def process_selenium_call(identifier, type, tag, other=nil)

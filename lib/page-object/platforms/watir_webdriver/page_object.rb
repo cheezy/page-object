@@ -994,6 +994,29 @@ module PageObject
           find_watir_elements("bs(identifier)", Elements::Bold, identifier, 'b')
         end
 
+        #
+        # platform method to retrieve the text for a i
+        # See PageObject::Accessors#i
+        #
+        def i_text_for(identifier)
+          process_watir_call("i(identifier).text", Elements::Italic, identifier, nil, 'i')
+        end
+
+        #
+        # platform method to retrieve the i element
+        # See PageObject::Accessors#i
+        #
+        def i_for(identifier)
+          find_watir_element("i(identifier)", Elements::Italic, identifier, 'i')
+        end
+
+        #
+        # platform method to retrieve an array of is
+        #
+        def is_for(identifier)
+          find_watir_elements("is(identifier)", Elements::Italic, identifier, 'i')
+        end
+
         private
 
         def find_watir_elements(the_call, type, identifier, tag_name=nil)
