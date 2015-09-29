@@ -1,4 +1,4 @@
-Feature: Bold
+Feature: Italic
 
   Background:
     Given I am on the static elements page
