@@ -9,7 +9,7 @@ Feature: Multi Elements
     And the value of button 1 should be "Button 1"
     And the value of button 2 should be "Button 2"
     And the value of button 3 should be "Button 3"
-    
+
   Scenario: Selecting buttons using no identifier
     When I select all buttons using no identifier
     Then I should have 3 buttons
@@ -20,7 +20,7 @@ Feature: Multi Elements
     And the value of text field 1 should be "text 1"
     And the value of text field 2 should be "text 2"
     And the value of text field 3 should be "text 3"
-    
+
   Scenario: Selecting text fields using no identifier
     When I select all text fields using no identifier
     Then I should have 3 text fields
@@ -79,7 +79,7 @@ Feature: Multi Elements
   Scenario: Selecting checkboxes using no identifier
     When I select checboxes using no identifier
     Then I should have 3 checkboxes
-    
+
   Scenario: Selecting radio buttons using an identifier
     When I select the radio button with class "radio"
     Then I should have 3 radio buttons
@@ -141,7 +141,7 @@ Feature: Multi Elements
     And the alt for image 1 should be "image 1"
     And the alt for image 2 should be "image 2"
     And the alt for image 3 should be "image 3"
-    
+
   Scenario: Selecting images using no identifier
     When I select the images using no identifier
     Then I should have 3 images
@@ -152,7 +152,7 @@ Feature: Multi Elements
     And the action for form 1 should be "form1"
     And the action for form 2 should be "form2"
     And the action for form 3 should be "form3"
-    
+
   Scenario: Selecting forms using no identifier
     When I select the forms using no identifier
     Then I should have 3 forms
@@ -163,7 +163,7 @@ Feature: Multi Elements
     And the text for list item 1 should be "Item One"
     And the text for list item 2 should be "Item Two"
     And the text for list item 3 should be "Item Three"
-    
+
   Scenario: Selecting list items using no identifier
     When I select the list items using no identifier
     Then I should have 8 list items
@@ -174,18 +174,18 @@ Feature: Multi Elements
     And the text for the first item in unordered list 1 should be "Item One"
     And the text for the first item in unordered list 2 should be "Item Four"
     And the text for the first item in unordered list 3 should be "Item Five"
-    
+
   Scenario: Selecting unordered lists using no identifier
     When I select the unordered list using no parameter
     Then I should have 3 unordered lists
-    
+
   Scenario: Selecting ordered lists using an identifier
     When I select the ordered lists with class "ol"
     Then I should have 3 ordered lists
     And the text for the first item in ordered list 1 should be "Number One"
     And the text for the first item in ordered list 2 should be "Number Two"
     And the text for the first item in ordered list 3 should be "Number Three"
-    
+
   Scenario: Selecting ordered lists using no identifier
     When I select the ordered lists using no identifier
     Then I should have 3 ordered lists
@@ -196,7 +196,7 @@ Feature: Multi Elements
     And the text for h1 1 should be "H1 One"
     And the text for h1 2 should be "H1 Two"
     And the text for h1 3 should be "H1 Three"
-    
+
   Scenario: Selecting h1s using no identifier
     When I select h1s using no identifier
     Then I should have 3 h1s
@@ -207,7 +207,7 @@ Feature: Multi Elements
     And the text for h2 1 should be "H2 One"
     And the text for h2 2 should be "H2 Two"
     And the text for h2 3 should be "H2 Three"
-    
+
   Scenario: Selecting h2s using no identifier
     When I select h2s using no identifier
     Then I should have 3 h2s
@@ -218,7 +218,7 @@ Feature: Multi Elements
     And the text for h3 1 should be "H3 One"
     And the text for h3 2 should be "H3 Two"
     And the text for h3 3 should be "H3 Three"
-    
+
   Scenario: Selecting h3s using no identifier
     When I select h3s using no identifier
     Then I should have 3 h3s
@@ -229,18 +229,18 @@ Feature: Multi Elements
     And the text for H4 1 should be "H4 One"
     And the text for H4 2 should be "H4 Two"
     And the text for H4 3 should be "H4 Three"
-    
+
   Scenario: Selecting h4s using no identifier
     When I select h4s using no identifier
     Then I should have 3 h4s
-    
+
   Scenario: Selecting h5s using an identifier
     When I select the h5s with the class "h5"
     Then I should have 3 h5s
     And the text for H5 1 should be "H5 One"
     And the text for H5 2 should be "H5 Two"
     And the text for H5 3 should be "H5 Three"
-    
+
   Scenario: Selecting h5s using no identifier
     When I select h5s using no identifier
     Then I should have 3 h5s
@@ -251,7 +251,7 @@ Feature: Multi Elements
     And the text for H6 1 should be "H6 One"
     And the text for H6 2 should be "H6 Two"
     And the text for H6 3 should be "H6 Three"
-    
+
   Scenario: Selecting h6s using no identifier
     When I select h6s using no identifier
     Then I should have 3 h6s
@@ -295,7 +295,7 @@ Feature: Multi Elements
     And the text of div 1 should be "Div 1"
     And the text of div 2 should be "Div 2"
     And the text of div 3 should be "Div 3"
-    
+
   Scenario: Selecting all divs using a block instead of an identifier
     When I select the divs using a block
     Then I should have 3 divs
@@ -421,35 +421,35 @@ Feature: Multi Elements
     And the text for h1 1 should be "H1 One"
     And the text for h1 2 should be "H1 Two"
     And the text for h1 3 should be "H1 Three"
-    
+
   Scenario: Selecting h2s based on a class declaration
     When I select the h2s using the generated method
     Then I should have 3 h2s
     And the text for h2 1 should be "H2 One"
     And the text for h2 2 should be "H2 Two"
     And the text for h2 3 should be "H2 Three"
-    
+
   Scenario: Selecting h3s based on a class declaration
     When I select the h3s using the generated method
     Then I should have 3 h3s
     And the text for h3 1 should be "H3 One"
     And the text for h3 2 should be "H3 Two"
     And the text for h3 3 should be "H3 Three"
-    
+
   Scenario: Selecting h4s based on a class declaration
     When I select the h4s using the generated method
     Then I should have 3 h4s
     And the text for H4 1 should be "H4 One"
     And the text for H4 2 should be "H4 Two"
     And the text for H4 3 should be "H4 Three"
-    
+
   Scenario: Selecting h5s based on a class declaration
     When I select the h5s using the generated method
     Then I should have 3 h5s
     And the text for H5 1 should be "H5 One"
     And the text for H5 2 should be "H5 Two"
     And the text for H5 3 should be "H5 Three"
-    
+
   Scenario: Selecting h6s based on a class declaration
     When I select the h6s using the generated method
     Then I should have 3 h6s
@@ -490,3 +490,9 @@ Feature: Multi Elements
     Then I should have 2 bs
     And the text for b 1 should be "One B"
     And the text for b 2 should be "Two B"
+
+  Scenario: Selecting is using an identifier
+    When I select the is
+    Then I should have 2 is
+    And the text for i 1 should be "One I"
+    And the text for i 2 should be "Two I"
