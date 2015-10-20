@@ -3,7 +3,6 @@ require 'page-object/elements'
 
 describe PageObject::Elements::Media do
 
-  let(:native) { double('') }
   let(:media) { PageObject::Elements::Media.new(double(''), :platform => :watir_webdriver) }
 
   it "should return autoplay" do
