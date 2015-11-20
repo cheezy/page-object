@@ -243,6 +243,20 @@ module PageObject
         def scroll_into_view
           element.wd.location_once_scrolled_into_view
         end
+
+        #
+        # location of element (x, y)
+        #
+        def location
+          element.wd.location
+        end
+
+        #
+        # size of element (width, height)
+        #
+        def size
+          element.wd.size
+        end
       end
     end
   end
