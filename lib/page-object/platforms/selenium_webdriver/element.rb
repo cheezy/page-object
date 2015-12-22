@@ -280,6 +280,44 @@ module PageObject
           element.location_once_scrolled_into_view
         end
 
+        #
+        # Get vertical location of element
+        #
+        def location_y
+          element.location['y']
+        end
+
+        #
+        # Get horizontal location of element
+        #
+        def location_x
+          element.location['x']
+        end
+
+        #
+        # Get height of element
+        #
+        def height
+          element.size['height']
+        end
+
+        #
+        # Get width of element
+        #
+        def width
+          element.size['width']
+        end
+
+        #
+        # Get centre coordinates of element
+        #
+        def centre
+          location = element.location
+          size = element.size
+          centre = {'y' => (location['y'] + (size['height']/2)), 'x' => (location['x'] + (size['width']/2))}
+          centre
+        end
+
         private
 
         def bridge

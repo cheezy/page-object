@@ -320,3 +320,24 @@ Feature: Elements
 
   Scenario: Selecting the text for an element
     Then I should be able to select "Elements" from the paragraph
+
+  Scenario: Getting the horizontal location of an element
+    When I retrieve a link element
+    Then the horizontal element location is not 0
+
+  Scenario: Getting the vertical location of an element
+    When I retrieve a link element
+    And the vertical element location is not 0
+
+  Scenario: Getting the height of an element
+    When I retrieve a link element
+    Then the element height is not 0
+
+  Scenario: Getting the width of an element
+    When I retrieve a link element
+    Then the element width is not 0
+
+  Scenario: Getting the centre of an element
+    When I retrieve a button element
+    Then the element centre should be greater than element y position
+    And the element centre should be greater than element x position
