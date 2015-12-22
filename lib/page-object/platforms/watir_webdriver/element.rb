@@ -275,8 +275,7 @@ module PageObject
         def centre
           location = element.wd.location
           size = element.wd.size
-          centre = {'y' => (location['y'] + (size['height']/2)), 'x' => (location['x'] + (size['width']/2))}
-          centre
+          {'y' => (location['y'] + (size['height']/2)), 'x' => (location['x'] + (size['width']/2))}
         end
       end
     end
