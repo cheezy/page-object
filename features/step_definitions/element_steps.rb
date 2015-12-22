@@ -274,3 +274,20 @@ Then(/^I should be able to know its size$/) do
   expect(@element.size.width).to be > 0
   expect(@element.size.height).to be > 0
 end
+
+Then(/the element height is not 0/) do
+  @element.height.should > 0
+end
+
+Then(/the element width is not 0/) do
+  @element.width.should > 0
+  (@element.width.is_a? Integer).should ==true
+end
+
+Then(/the element centre should be greater than element y position/) do
+  @element.centre['y'].should > @element.location.y
+end
+
+Then(/the element centre should be greater than element x position/) do
+  @element.centre['x'].should > @element.location.x
+end
