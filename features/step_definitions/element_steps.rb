@@ -276,12 +276,13 @@ Then(/^I should be able to know its size$/) do
 end
 
 Then(/the element height is not 0/) do
+  (@element.height.is_a? Integer).should ==true
   @element.height.should > 0
 end
 
 Then(/the element width is not 0/) do
-  @element.width.should > 0
   (@element.width.is_a? Integer).should ==true
+  @element.width.should > 0
 end
 
 Then(/the element centre should be greater than element y position/) do
