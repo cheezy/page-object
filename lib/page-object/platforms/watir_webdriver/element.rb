@@ -249,17 +249,10 @@ module PageObject
         end
 
         #
-        # Get vertical location of element
+        # Get location of element
         #
-        def location_y
-          element.wd.location['y']
-        end
-
-        #
-        # Get horizontal location of element
-        #
-        def location_x
-          element.wd.location['x']
+        def location
+          element.wd.location
         end
 
         #

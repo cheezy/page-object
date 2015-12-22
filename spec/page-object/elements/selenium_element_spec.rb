@@ -177,12 +177,12 @@ describe "Element for Selenium" do
 
   it "should have a y location" do
     expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
-    expect(@selenium_element.location_y).to eql 80
+    expect(@selenium_element.location['y']).to eql 80
   end
 
   it "should have an x location" do
     expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
-    expect(@selenium_element.location_x).to eql 40
+    expect(@selenium_element.location['x']).to eql 40
   end
 
   it "should have a height" do
@@ -207,12 +207,12 @@ describe "Element for Selenium" do
   it "should have a centre greater than y position" do
     expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40}).twice
     expect(@selenium_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
-    expect(@selenium_element.centre['y']).to be > @selenium_element.location_y
+    expect(@selenium_element.centre['y']).to be > @selenium_element.location['y']
   end
 
   it "should have a centre greater than x position" do
     expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40}).twice
     expect(@selenium_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
-    expect(@selenium_element.centre['x']).to be > @selenium_element.location_x
+    expect(@selenium_element.centre['x']).to be > @selenium_element.location['x']
   end
 end

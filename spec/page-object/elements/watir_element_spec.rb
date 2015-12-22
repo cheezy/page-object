@@ -146,13 +146,13 @@ describe "Element for Watir" do
   it "should have a y location" do
     allow(watir_driver).to receive(:wd).and_return(watir_driver)
     expect(watir_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
-    expect(watir_element.location_y).to eql 80
+    expect(watir_element.location['y']).to eql 80
   end
 
   it "should have a x location" do
     allow(watir_driver).to receive(:wd).and_return(watir_driver)
     expect(watir_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
-    expect(watir_element.location_x).to eql 40
+    expect(watir_element.location['x']).to eql 40
   end
 
   it "should have a height" do
@@ -181,13 +181,13 @@ describe "Element for Watir" do
     allow(watir_driver).to receive(:wd).and_return(watir_driver)
     expect(watir_driver).to receive(:location).and_return({'y' => 80, 'x' => 40}).twice
     expect(watir_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
-    expect(watir_element.centre['y']).to be > watir_element.location_y
+    expect(watir_element.centre['y']).to be > watir_element.location['y']
   end
 
   it "should have a centre greater than x position" do
     allow(watir_driver).to receive(:wd).and_return(watir_driver)
     expect(watir_driver).to receive(:location).and_return({'y' => 80, 'x' => 40}).twice
     expect(watir_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
-    expect(watir_element.centre['x']).to be > watir_element.location_x
+    expect(watir_element.centre['x']).to be > watir_element.location['x']
   end
 end

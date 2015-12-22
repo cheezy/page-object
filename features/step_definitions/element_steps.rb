@@ -266,26 +266,27 @@ Then(/^I should know the attribute "(.*?)" includes "(.+)"$/) do |attribute, inc
 end
 
 Then(/the horizontal element location is not 0/) do
-  @element.location_x.should > 0
+  @element.location['x'].should > 0
 end
 
 Then(/the vertical element location is not 0/) do
-  @element.location_y.should > 0
+  @element.location['y'].should > 0
 end
 
 Then(/the element height is not 0/) do
+  (@element.height.is_a? Integer).should ==true
   @element.height.should > 0
 end
 
 Then(/the element width is not 0/) do
-  @element.width.should > 0
   (@element.width.is_a? Integer).should ==true
+  @element.width.should > 0
 end
 
 Then(/the element centre should be greater than element y position/) do
-  @element.centre['y'].should > @element.location_y
+  @element.centre['y'].should > @element.location['y']
 end
 
 Then(/the element centre should be greater than element x position/) do
-  @element.centre['x'].should > @element.location_x
+  @element.centre['x'].should > @element.location['x']
 end
