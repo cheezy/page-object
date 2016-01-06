@@ -320,3 +320,11 @@ Feature: Elements
 
   Scenario: Selecting the text for an element
     Then I should be able to select "Elements" from the paragraph
+
+  Scenario: Element location
+    When I retrieve a link element
+    Then I should be able to know its location
+
+  Scenario: Element size
+    When I retrieve a link element
+    Then I should be able to know its size

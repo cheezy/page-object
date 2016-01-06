@@ -264,3 +264,13 @@ Then(/^I should know the attribute "(.*?)" includes "(.+)"$/) do |attribute, inc
   @attr = @element.attribute(attribute)
   @attr.should include included
 end
+
+Then(/^I should be able to know its location$/) do
+  expect(@element.location.y).to be > 0
+  expect(@element.location.x).to be > 0
+end
+
+Then(/^I should be able to know its size$/) do
+  expect(@element.size.width).to be > 0
+  expect(@element.size.height).to be > 0
+end

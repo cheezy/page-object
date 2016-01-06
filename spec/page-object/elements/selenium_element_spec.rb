@@ -174,4 +174,14 @@ describe "Element for Selenium" do
     expect(@selenium_driver).to receive(:location_once_scrolled_into_view)
     @selenium_element.scroll_into_view
   end
+
+  it "should have a location" do
+    expect(@selenium_driver).to receive(:location)
+    @selenium_element.location
+  end
+
+  it "should have a size" do
+    expect(@selenium_driver).to receive(:size)
+    @selenium_element.size
+  end
 end

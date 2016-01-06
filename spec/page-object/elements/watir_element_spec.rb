@@ -142,4 +142,16 @@ describe "Element for Watir" do
     expect(watir_driver).to receive(:location_once_scrolled_into_view)
     watir_element.scroll_into_view
   end
+
+  it "should know its location" do
+    allow(watir_driver).to receive(:wd).and_return(watir_driver)
+    expect(watir_driver).to receive(:location)
+    watir_element.location
+  end
+
+  it "should know its size" do
+    allow(watir_driver).to receive(:wd).and_return(watir_driver)
+    expect(watir_driver).to receive(:size)
+    watir_element.size
+  end
 end

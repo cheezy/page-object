@@ -280,6 +280,20 @@ module PageObject
           element.location_once_scrolled_into_view
         end
 
+        #
+        # location of element (x, y)
+        #
+        def location
+          element.location
+        end
+
+        #
+        # size of element (width, height)
+        #
+        def size
+          element.size
+        end
+
         private
 
         def bridge
