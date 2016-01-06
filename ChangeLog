@@ -3,6 +3,8 @@
   * Added row accessor method and support for finding row elements directly (Thanks Ethan Hedrick)
   * Added list_items method to UnorderedList to get an array of children.
   * Speed optimizations for UnorderedList
+  * Added list_items method to OrderedList to get an array of children.
+  * Speed optimizations for OrderedList
 
 
 === Version 1.1.0 / 2015-5-2

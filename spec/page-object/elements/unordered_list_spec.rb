@@ -31,7 +31,7 @@ describe PageObject::Elements::UnorderedList do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)
         allow(ul_element).to receive(:find_elements).and_return(ul_element)
-        expect(ul_element).to receive(:[]).exactly(2).times
+        expect(ul_element).to receive(:[])
         ul[1]
       end
 
@@ -54,8 +54,7 @@ describe PageObject::Elements::UnorderedList do
     context "for selenium" do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
-        expect(ul_element).to receive(:find_elements).exactly(2).times.
-                               and_return([ul_element, ul_element])
+        expect(ul_element).to receive(:find_elements).and_return([ul_element, ul_element])
         ul[1]
       end
 

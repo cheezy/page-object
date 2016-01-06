@@ -20,13 +20,18 @@ module PageObject
           children.size
         end
 
+        #
+        # Return the ListItem objects that are children of the OrderedList
+        #
+        def list_items
+          children.collect do |obj|
+            Object::PageObject::Elements::ListItem.new(obj, :platform => :watir_webdriver)
+          end
+        end
+
         private
 
         def children
-          list_items.find_all { |item| item.parent == element }
-        end
-
-        def list_items
           element.ols(:xpath => child_xpath)
         end
       end

@@ -11,7 +11,6 @@ module PageObject
         #
         def [](idx)
           Object::PageObject::Elements::ListItem.new(children[idx], :platform => :selenium_webdriver)
-          children[idx]
         end
 
         #
