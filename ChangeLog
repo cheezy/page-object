@@ -5,7 +5,7 @@
   * Speed optimizations for UnorderedList
   * Added list_items method to OrderedList to get an array of children.
   * Speed optimizations for OrderedList
-
+  * Added ability to check if a section is visible?, present?, or exists? (Thanks Donavan Stanley)
 
 === Version 1.1.0 / 2015-5-2
 * Enhancements
