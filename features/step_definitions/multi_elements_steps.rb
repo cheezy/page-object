@@ -32,6 +32,7 @@ class MultiElementsPage
   file_fields(:the_file_fields, :class => 'file_field_class')
   elements(:generic_label, :label, :class => 'label')
   b(:bs)
+  i(:is)
 end
 
 
@@ -538,4 +539,16 @@ end
 
 Then /^the text for b (\d+) should be "([^\"]*)"$/ do |b_num, text|
   @elements[b_num.to_i - 1].text.should == text
+end
+
+When /^I select the is$/ do
+  @elements = @page.i_elements
+end
+
+Then /^I should have (\d+) is$/ do |num_is|
+  @elements.size.should == num_is.to_i
+end
+
+Then /^the text for i (\d+) should be "([^\"]*)"$/ do |i_num, text|
+  @elements[i_num.to_i - 1].text.should == text
 end

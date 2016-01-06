@@ -109,7 +109,7 @@ class Page
   div(:div_title, :title => 'div_title')
   div(:div_class_index, :class => "div_class", :index => 0)
   div(:div_name_index, :name => "div_name", :index => 0)
-  
+
   div(:div_data_entity, :data_entity => "test")
 
   span(:span_id, :id => 'span_id')
@@ -349,7 +349,7 @@ class Page
   element(:details_id, :details, :id => 'details_id')
 
   figure(:figure_id, :id => 'figure_id')
-         
+
   svg(:svg_id, :id => 'the_svg')
 
   b(:b_id, :id => 'b_id')
@@ -360,5 +360,14 @@ class Page
   b(:b_xpath, :xpath => '//b')
   b(:b_class_index, :class => 'b_class', :index => 0)
   b(:b_name_index, :name => 'b_name', :index => 0)
+
+  i(:i_id, :id => 'i_id')
+  i(:i_class, :class => 'i_class')
+  i(:i_css, :css => '.i_class')
+  i(:i_name, :name => 'i_name')
+  i(:i_index, :index => 0)
+  i(:i_xpath, :xpath => '//i')
+  i(:i_class_index, :class => 'i_class', :index => 0)
+  i(:i_name_index, :name => 'i_name', :index => 0)
 end
 

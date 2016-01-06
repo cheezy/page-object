@@ -35,7 +35,8 @@ class WatirAccessorsTestPageObject
   canvas(:my_canvas, :id => 'canvas_id')
   audio(:acdc, :id => 'audio_id')
   video(:movie, :id => 'video_id')
-  b(:bold,:id=>'bold')
+  b(:bold, :id => 'bold')
+  i(:italic, :id => 'italic')
 end
 
 class WatirBlockPageObject
@@ -132,6 +133,9 @@ class WatirBlockPageObject
   end
   b :bold do |element|
     "b"
+  end
+  i :italic do |element|
+    "i"
   end
 end
 
@@ -1155,6 +1159,31 @@ describe PageObject::Accessors do
       expect(watir_browser).to receive(:b).and_return(watir_browser)
       element = watir_page_object.bold_element
       expect(element).to be_instance_of PageObject::Elements::Bold
+    end
+  end
+
+  describe "i accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        expect(watir_page_object).to respond_to(:italic)
+        expect(watir_page_object).to respond_to(:italic_element)
+      end
+
+      it "should call a block on the element method when present" do
+        expect(block_page_object.italic_element).to eql "i"
+      end
+    end
+
+    it "should retrieve the text from the i" do
+      expect(watir_browser).to receive(:i).and_return(watir_browser)
+      expect(watir_browser).to receive(:text).and_return("value")
+      expect(watir_page_object.italic).to eql "value"
+    end
+
+    it "should retrieve the element from the page" do
+      expect(watir_browser).to receive(:i).and_return(watir_browser)
+      element = watir_page_object.italic_element
+      expect(element).to be_instance_of PageObject::Elements::Italic
     end
   end
 
