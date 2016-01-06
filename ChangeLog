@@ -7,6 +7,7 @@
   * Speed optimizations for OrderedList
   * Added ability to check if a section is visible?, present?, or exists? (Thanks Donavan Stanley)
   * Added support for the Italic (i) element (Thanks Sergey Morozov)
+  * Added size and location methods to all elements (Thanks Steve Jackson)
 
 === Version 1.1.0 / 2015-5-2
 * Enhancements
