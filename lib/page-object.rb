@@ -49,6 +49,10 @@ module PageObject
   include LoadsPlatform
   include ElementLocators
   include PagePopulator
+  extend Forwardable
+
+  # Forward visibility checks to root so page sections can be tested for existence.
+  def_delegators :root, :visible?, :present?, :exists?
 
   # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
   attr_reader :browser
