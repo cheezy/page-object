@@ -294,6 +294,29 @@ module PageObject
           element.size
         end
 
+        #
+        # Get height of element
+        #
+        def height
+          element.size['height']
+        end
+
+        #
+        # Get width of element
+        #
+        def width
+          element.size['width']
+        end
+
+        #
+        # Get centre coordinates of element
+        #
+        def centre
+          location = element.location
+          size = element.size
+          {'y' => (location['y'] + (size['height']/2)), 'x' => (location['x'] + (size['width']/2))}
+        end
+
         private
 
         def bridge
