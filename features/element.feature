@@ -321,13 +321,13 @@ Feature: Elements
   Scenario: Selecting the text for an element
     Then I should be able to select "Elements" from the paragraph
 
-  Scenario: Getting the horizontal location of an element
+  Scenario: Element location
     When I retrieve a link element
-    Then the horizontal element location is not 0
+    Then I should be able to know its location
 
-  Scenario: Getting the vertical location of an element
+  Scenario: Element size
     When I retrieve a link element
-    And the vertical element location is not 0
+    Then I should be able to know its size
 
   Scenario: Getting the height of an element
     When I retrieve a link element

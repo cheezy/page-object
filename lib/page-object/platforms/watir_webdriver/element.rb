@@ -256,6 +256,13 @@ module PageObject
         end
 
         #
+        # size of element (width, height)
+        #
+        def size
+          element.wd.size
+        end
+
+        #
         # Get height of element
         #
         def height

@@ -143,16 +143,16 @@ describe "Element for Watir" do
     watir_element.scroll_into_view
   end
 
-  it "should have a y location" do
+  it "should know its location" do
     allow(watir_driver).to receive(:wd).and_return(watir_driver)
-    expect(watir_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
-    expect(watir_element.location['y']).to eql 80
+    expect(watir_driver).to receive(:location)
+    watir_element.location
   end
 
-  it "should have a x location" do
+  it "should know its size" do
     allow(watir_driver).to receive(:wd).and_return(watir_driver)
-    expect(watir_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
-    expect(watir_element.location['x']).to eql 40
+    expect(watir_driver).to receive(:size)
+    watir_element.size
   end
 
   it "should have a height" do

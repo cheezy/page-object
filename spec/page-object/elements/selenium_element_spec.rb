@@ -175,6 +175,11 @@ describe "Element for Selenium" do
     @selenium_element.scroll_into_view
   end
 
+  it "should have a location" do
+    expect(@selenium_driver).to receive(:location)
+    @selenium_element.location
+  end
+
   it "should have a y location" do
     expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
     expect(@selenium_element.location['y']).to eql 80
@@ -183,6 +188,11 @@ describe "Element for Selenium" do
   it "should have an x location" do
     expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
     expect(@selenium_element.location['x']).to eql 40
+  end
+
+  it "should have a size" do
+    expect(@selenium_driver).to receive(:size)
+    @selenium_element.size
   end
 
   it "should have a height" do

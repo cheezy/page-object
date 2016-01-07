@@ -30,23 +30,14 @@ describe PageObject::Elements::OrderedList do
     context "for watir" do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
-        allow(ol_element).to receive(:ols).and_return([ol_element])
-        allow(ol_element).to receive(:find_elements).and_return(ol_element)
-        allow(ol_element).to receive(:map).and_return([ol_element])
-        allow(ol_element).to receive(:parent).and_return(ol_element)
-        allow(ol_element).to receive(:element).and_return(ol_element)
-        allow(ol_element).to receive(:==).and_return(true)
+        expect(ol_element).to receive(:find_elements).
+                               and_return([ol_element, ol_element])
         ol[1]
       end
 
       it "should know how many list items it contains" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir_webdriver)
-        allow(ol_element).to receive(:ols).and_return([ol_element])
-        allow(ol_element).to receive(:find_elements).and_return(ol_element)
-        allow(ol_element).to receive(:map).and_return([ol_element])
-        allow(ol_element).to receive(:parent).and_return(ol_element)
-        allow(ol_element).to receive(:element).and_return(ol_element)
-        allow(ol_element).to receive(:==).and_return(true)
+        expect(ol_element).to receive(:find_elements).and_return([ol_element])
         expect(ol.items).to eql 1
       end
 
@@ -63,21 +54,14 @@ describe PageObject::Elements::OrderedList do
     context "for selenium" do
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
-        expect(ol_element).to receive(:find_elements).and_return(ol_element)
-        expect(ol_element).to receive(:map).and_return([ol_element])
-        expect(ol_element).to receive(:parent).and_return(ol_element)
-        expect(ol_element).to receive(:element).and_return(ol_element)
-        expect(ol_element).to receive(:==).and_return(true)
+        expect(ol_element).to receive(:find_elements).
+                               and_return([ol_element, ol_element])
         ol[1]
       end
 
       it "should know how many list items it contains" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
-        expect(ol_element).to receive(:find_elements).and_return(ol_element)
-        expect(ol_element).to receive(:map).and_return([ol_element])
-        expect(ol_element).to receive(:parent).and_return(ol_element)
-        expect(ol_element).to receive(:element).and_return(ol_element)
-        expect(ol_element).to receive(:==).and_return(true)
+        expect(ol_element).to receive(:find_elements).and_return([ol_element])
         expect(ol.items).to eql 1
       end
 

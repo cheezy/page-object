@@ -265,12 +265,14 @@ Then(/^I should know the attribute "(.*?)" includes "(.+)"$/) do |attribute, inc
   @attr.should include included
 end
 
-Then(/the horizontal element location is not 0/) do
-  @element.location['x'].should > 0
+Then(/^I should be able to know its location$/) do
+  expect(@element.location.y).to be > 0
+  expect(@element.location.x).to be > 0
 end
 
-Then(/the vertical element location is not 0/) do
-  @element.location['y'].should > 0
+Then(/^I should be able to know its size$/) do
+  expect(@element.size.width).to be > 0
+  expect(@element.size.height).to be > 0
 end
 
 Then(/the element height is not 0/) do
@@ -284,9 +286,9 @@ Then(/the element width is not 0/) do
 end
 
 Then(/the element centre should be greater than element y position/) do
-  @element.centre['y'].should > @element.location['y']
+  @element.centre['y'].should > @element.location.y
 end
 
 Then(/the element centre should be greater than element x position/) do
-  @element.centre['x'].should > @element.location['x']
+  @element.centre['x'].should > @element.location.x
 end

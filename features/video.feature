@@ -1,7 +1,7 @@
 Feature: Support for video element
 
   Background:
-    Given I am on the static elements page
+    Given I am on the audio video page
 
   Scenario: finding an video element
     When I retrieve the video element
@@ -41,10 +41,6 @@ Feature: Support for video element
   Scenario: Should know if it is paused
     When I retrieve the video element
     Then I should know that the video is paused
-
-  Scenario: Should know its duration
-    When I retrieve the video element
-    Then I should know that the duration is greater than 12 seconds
 
   Scenario: Should know its volume
     When I retrieve the video element
