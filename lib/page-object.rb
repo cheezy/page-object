@@ -76,6 +76,9 @@ module PageObject
   # @param [bool] open the page if page_url is set
   #
   def initialize(root, visit=false)
+    # change root type, replace selenium element is not good for dynamic pages ,
+    # such that object may change reference and it is best to use identifier every time what we need to find element
+    # that will be similar to the behaviour of nested objects (a bit slower) but nothing noticeable.
     initialize_accessors if respond_to?(:initialize_accessors)
     initialize_browser(root)
     goto if visit && respond_to?(:goto)
