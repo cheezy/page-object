@@ -34,12 +34,12 @@ module PageObject
         populate_checkbox(key, value) if is_checkbox?(key) and is_enabled?(key)
         populate_radiobuttongroup(key, value) if is_radiobuttongroup?(key)
         populate_radiobutton(key, value) if is_radiobutton?(key) and is_enabled?(key)
+        populate_select_list(key, value) if is_select_list?(key)
         populate_text(key, value) if is_text?(key) and is_enabled?(key)
       end
     end
 
     private
-    
     def populate_text(key, value)
       self.send "#{key}=", value
     end
@@ -51,6 +51,10 @@ module PageObject
 
     def populate_radiobutton(key, value)
       return self.send "select_#{key}" if value
+    end
+
+    def populate_select_list(key, value)
+      return self.send("#{key}_element").select(value)
     end
 
     def populate_radiobuttongroup(key, value)
@@ -73,11 +77,17 @@ module PageObject
       respond_to?("select_#{key}".to_sym) and respond_to?("#{key}_values")
     end
 
+    def is_select_list?(key)
+      respond_to?("#{key}_options".to_sym)
+    end
+
     def is_enabled?(key)
       return false if is_radiobuttongroup?(key)
+      return false if is_select_list?(key)
       return true if (self.send "#{key}_element").tag_name == "textarea"
       element = self.send("#{key}_element")
       element.enabled? and element.visible?
     end
   end
 end
+
