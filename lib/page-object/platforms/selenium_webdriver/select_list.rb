@@ -18,7 +18,7 @@ module PageObject
         #
         def select(value)
           find_options.each do |option|
-            if option.text == value
+            if option.attribute(:text) == value
               return option.click
             elsif option.attribute(:value) == value
               return option.click
@@ -43,7 +43,7 @@ module PageObject
         #
         # @return [array of PageObject::Elements::Option]
         def options
-          find_options.map { |e| ::PageObject::Elements::Option.new(e, :platform => :selenium_webdriver) }
+          find_options.map { |e| ::PageObject::Elements::Option.new(e, :platform => @platform.class::PLATFORM_NAME) }
         end
 
         def options_text
