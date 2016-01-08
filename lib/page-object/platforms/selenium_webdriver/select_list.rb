@@ -17,9 +17,14 @@ module PageObject
         # Select a value from the list
         #
         def select(value)
-          find_options.find do |option|
-            option.text == value
-          end.click
+          find_options.each do |option|
+            if option.attribute(:text) == value
+              return option.click
+            elsif option.attribute(:value) == value
+              return option.click
+            end
+          end
+          raise "Failed to select value [#{value}] from list. Available options text: [#{options_text}] \n Available options value [#{options_value}]"
         end
 
         #
@@ -28,7 +33,7 @@ module PageObject
         #
         def select_value(value)
           options = find_options.find_all do |option|
-            option.attribute('value') == value
+            option.attribute(:value) == value
           end
           options.each {|opt| opt.click}
         end
@@ -39,6 +44,14 @@ module PageObject
         # @return [array of PageObject::Elements::Option]
         def options
           find_options.map { |e| ::PageObject::Elements::Option.new(e, :platform => :selenium_webdriver) }
+        end
+
+        def options_text
+          find_options.map{ |opt| opt.attribute(:text)}
+        end
+
+        def options_value
+          find_options.map{ |opt| opt.attribute(:value)}
         end
 
         #
@@ -52,7 +65,7 @@ module PageObject
         # @return [Array<String>] An array of strings representing the value of the currently selected options.
         #
         def selected_values
-          find_options.map { |e| e.attribute('value') if e.selected? }.compact
+          find_options.map { |e| e.attribute(:value) if e.selected? }.compact
         end
 
         #
