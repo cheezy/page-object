@@ -97,7 +97,7 @@ module PageObject
         private
 
         def find_options
-          element.find_elements(:css, '*')
+          element.find_elements(:xpath, child_xpath)
         end
       end
     end
