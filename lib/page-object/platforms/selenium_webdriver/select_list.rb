@@ -18,7 +18,7 @@ module PageObject
         #
         def select(value)
           find_options.each do |option|
-            if option.attribute(:text) == value
+            if option.text == value
               return option.click
             elsif option.attribute(:value) == value
               return option.click
