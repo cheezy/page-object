@@ -44,7 +44,7 @@ module PageObject
       #
       # get the value of the given CSS property
       #
-      def style(property)
+      def style(property = nil)
         element.style property
       end
 
