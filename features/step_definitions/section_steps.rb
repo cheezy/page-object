@@ -266,3 +266,12 @@ end
 Given(/^I search for a link in an indexed property located in a section$/) do
   @link = @page.container.indexed_list['success'].indexed_link_element
 end
+
+When(/^I have a page section$/) do
+  @section = @page.container
+end
+
+Then(/^methods called on the section are passed to the root if missing$/) do
+  expect(-> { @section.visible? }).not_to raise_error
+  expect(@section.visible?).to be true
+end
