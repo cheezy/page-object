@@ -954,7 +954,7 @@ module PageObject
         # See PageObject::Accessors#page_sections
         #
         def pages_for(identifier, page_class)
-          SectionCollection.new(find_watir_pages(identifier, page_class))
+          SectionCollection[*find_watir_pages(identifier, page_class)]
         end
 
         #
