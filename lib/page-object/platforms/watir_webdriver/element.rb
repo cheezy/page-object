@@ -158,7 +158,14 @@ module PageObject
         def select_text(text)
           element.select_text text
         end
-        
+
+        #
+        # Right click on an element
+        #
+        def right_click
+          element.right_click
+        end
+
         #
         # Waits until the element is present
         #
@@ -250,6 +257,43 @@ module PageObject
         #
         def scroll_into_view
           element.wd.location_once_scrolled_into_view
+        end
+
+        #
+        # location of element (x, y)
+        #
+        def location
+          element.wd.location
+        end
+
+        #
+        # size of element (width, height)
+        #
+        def size
+          element.wd.size
+        end
+
+        #
+        # Get height of element
+        #
+        def height
+          element.wd.size['height']
+        end
+
+        #
+        # Get width of element
+        #
+        def width
+          element.wd.size['width']
+        end
+
+        #
+        # Get centre coordinates of element
+        #
+        def centre
+          location = element.wd.location
+          size = element.wd.size
+          {'y' => (location['y'] + (size['height']/2)), 'x' => (location['x'] + (size['width']/2))}
         end
       end
     end

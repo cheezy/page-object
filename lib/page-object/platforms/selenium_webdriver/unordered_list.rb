@@ -10,7 +10,7 @@ module PageObject
         # @return [PageObject::Elements::ListItem]
         #
         def [](idx)
-          children[idx]
+          Object::PageObject::Elements::ListItem.new(children[idx], :platform => :selenium_webdriver)
         end
 
         #
@@ -20,19 +20,17 @@ module PageObject
           children.size
         end
 
+        def list_items
+          children.collect do |obj|
+            Object::PageObject::Elements::ListItem.new(obj, :platform => :selenium_webdriver)
+          end
+        end
+
         private
 
         def children
-          items = list_items.map do |item|
-            ::PageObject::Elements::ListItem.new(item, :platform => :selenium_webdriver)
-          end
-          items.find_all { |item| item.parent.element == element }
-        end
-
-        def list_items
           element.find_elements(:xpath, child_xpath)
         end
-
       end
     end
   end

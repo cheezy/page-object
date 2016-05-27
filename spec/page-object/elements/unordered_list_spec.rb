@@ -30,23 +30,14 @@ describe PageObject::Elements::UnorderedList do
     context "for watir" do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)
-        allow(ul_element).to receive(:uls).and_return([ul_element])
         allow(ul_element).to receive(:find_elements).and_return(ul_element)
-        allow(ul_element).to receive(:map).and_return([ul_element])
-        allow(ul_element).to receive(:parent).and_return(ul_element)
-        allow(ul_element).to receive(:element).and_return(ul_element)
-        allow(ul_element).to receive(:==).and_return(true)
+        expect(ul_element).to receive(:[])
         ul[1]
       end
 
       it "should know how many items it contains" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)
-        allow(ul_element).to receive(:uls).and_return([ul_element])
-        allow(ul_element).to receive(:find_elements).and_return(ul_element)
-        allow(ul_element).to receive(:map).and_return([ul_element])
-        allow(ul_element).to receive(:parent).and_return(ul_element)
-        allow(ul_element).to receive(:element).and_return(ul_element)
-        allow(ul_element).to receive(:==).and_return(true)
+        allow(ul_element).to receive(:find_elements).and_return([ul_element])
         expect(ul.items).to eql 1
       end
 
@@ -63,21 +54,13 @@ describe PageObject::Elements::UnorderedList do
     context "for selenium" do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
-        expect(ul_element).to receive(:find_elements).and_return(ul_element)
-        expect(ul_element).to receive(:map).and_return([ul_element])
-        expect(ul_element).to receive(:parent).and_return(ul_element)
-        expect(ul_element).to receive(:element).and_return(ul_element)
-        expect(ul_element).to receive(:==).and_return(true)
+        expect(ul_element).to receive(:find_elements).and_return([ul_element, ul_element])
         ul[1]
       end
 
       it "should know how many items it contains" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
-        expect(ul_element).to receive(:find_elements).and_return(ul_element)
-        expect(ul_element).to receive(:map).and_return([ul_element])
-        expect(ul_element).to receive(:parent).and_return(ul_element)
-        expect(ul_element).to receive(:element).and_return(ul_element)
-        expect(ul_element).to receive(:==).and_return(true)
+        expect(ul_element).to receive(:find_elements).and_return([ul_element])
         expect(ul.items).to eql 1
       end
 

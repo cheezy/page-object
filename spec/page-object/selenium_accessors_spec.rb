@@ -35,7 +35,8 @@ class SeleniumAccessorsTestPageObject
   canvas(:my_canvas, :id => 'canvas')
   audio(:acdc, :id => 'audio_id')
   video(:movie, :id => 'movie_id')
-  b(:bold, :id=>'bold')
+  b(:bold, :id => 'bold')
+  i(:italic, :id => 'italic')
 end
 
 class SeleniumBlockPageObject
@@ -134,13 +135,17 @@ class SeleniumBlockPageObject
   b :bold do |element|
     'b'
   end
+
+  i :italic do |element|
+    'i'
+  end
 end
 
 describe PageObject::Accessors do
   let(:selenium_browser) { mock_selenium_browser }
   let(:selenium_page_object) { SeleniumAccessorsTestPageObject.new(selenium_browser) }
   let(:block_page_object) { SeleniumBlockPageObject.new(selenium_browser) }
-  
+
   before(:each) do
     allow(selenium_browser).to receive(:switch_to).and_return(selenium_browser)
     allow(selenium_browser).to receive(:default_content)
@@ -241,7 +246,7 @@ describe PageObject::Accessors do
       element = selenium_page_object.state_element
       expect(element).to be_instance_of PageObject::Elements::SelectList
     end
-    
+
     it "should return list of selection options" do
       option1 = double('option')
       option2 = double('option')
@@ -251,10 +256,10 @@ describe PageObject::Accessors do
       select_element = double("select")
       expect(select_element).to receive(:options).twice.and_return([option1, option2])
       expect(selenium_page_object).to receive(:state_element).and_return(select_element)
-      
+
       expect(selenium_page_object.state_options).to eql ["CA","OH"]
     end
-    
+
   end
 
 
@@ -417,21 +422,21 @@ describe PageObject::Accessors do
       expect(element).to be_instance_of PageObject::Elements::OrderedList
     end
   end
-  
+
   describe "h1 accessors" do
     it "should retrieve the text from the h1" do
       expect(selenium_browser).to receive(:find_element).and_return(selenium_browser)
       expect(selenium_browser).to receive(:text).and_return("value")
       expect(selenium_page_object.heading1).to eql "value"
     end
-  
+
     it "should retrieve the element from the page" do
       expect(selenium_browser).to receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.heading1_element
       expect(element).to be_instance_of PageObject::Elements::Heading
     end
   end
-  
+
   describe "h2 accessors" do
     it "should retrieve the text from the h2" do
       expect(selenium_browser).to receive(:find_element).and_return(selenium_browser)
@@ -567,7 +572,7 @@ describe PageObject::Accessors do
       end
     end
   end
-  
+
   describe "audio accessors" do
     context "when called on a page object" do
       it "should generate accessor methods" do
@@ -603,6 +608,20 @@ describe PageObject::Accessors do
       expect(selenium_browser).to receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.bold_element
       expect(element).to be_instance_of PageObject::Elements::Bold
+    end
+  end
+
+  describe "i accessors" do
+    it "should retrieve the text from the i" do
+      expect(selenium_browser).to receive(:find_element).and_return(selenium_browser)
+      expect(selenium_browser).to receive(:text).and_return("value")
+      expect(selenium_page_object.italic).to eql "value"
+    end
+
+    it "should retrieve the element from the page" do
+      expect(selenium_browser).to receive(:find_element).and_return(selenium_browser)
+      element = selenium_page_object.italic_element
+      expect(element).to be_instance_of PageObject::Elements::Italic
     end
   end
 

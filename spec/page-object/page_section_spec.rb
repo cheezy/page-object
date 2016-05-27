@@ -53,7 +53,14 @@ describe PageObject::SectionCollection do
   ContainedItem = Struct.new(:type, :name)
   let(:section_collection) do
     contained_items = [ContainedItem.new(:sandwich, :reuben), ContainedItem.new(:soup, :lobster_bisque), ContainedItem.new(:sandwich, :dagwood)]
-    PageObject::SectionCollection.new(contained_items)
+    PageObject::SectionCollection[*contained_items]
+  end
+  it 'should inherit from Array' do
+    expect(PageObject::SectionCollection.superclass).to eq Array
+  end
+  it 'should have functioning array methods' do
+    expect(section_collection.methods).to include *Array.instance_methods
+    expect(section_collection.last.type).to eq :sandwich
   end
   it 'should be indexed to the sections' do
     expect(section_collection[0]).to be_an_instance_of ContainedItem

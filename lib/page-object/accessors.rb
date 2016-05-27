@@ -207,7 +207,7 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def text_field(name, identifier={:index => 0}, &block) 
+    def text_field(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'text_field_for', &block)
       define_method(name) do
         return platform.text_field_value_for identifier.clone unless block_given?
@@ -402,7 +402,7 @@ module PageObject
     end
 
     #
-    # adds four methods - one to select, another to return if a radio button 
+    # adds four methods - one to select, another to return if a radio button
     # is selected, another method to return a PageObject::Elements::RadioButton
     # object representing the radio button element, and another to check
     # the radio button's existence.
@@ -1176,6 +1176,34 @@ module PageObject
     end
 
     #
+    # adds three methods - one to retrieve the text of a i element, another to
+    # retrieve a i element, and another to check for it's existence.
+    #
+    # @example
+    #   i(:italic, :id => 'title')
+    #   # will generate 'italic', 'italic_element', and 'italic?' methods
+    #
+    # @param [Symbol] the name used for the generated methods
+    # @param [Hash] identifier how we find a i. You can use a multiple parameters
+    #   by combining of any of the following except xpath.  The valid keys are:
+    #   * :class => Watir and Selenium
+    #   * :css => Watir and Selenium
+    #   * :id => Watir and Selenium
+    #   * :index => Watir and Selenium
+    #   * :name => Watir and Selenium
+    #   * :xpath => Watir and Selenium
+    # @param optional block to be invoked when element method is called
+    #
+    def i(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier,'i_for', &block)
+      define_method(name) do
+        return platform.i_text_for identifier.clone unless block_given?
+        self.send("#{name}_element").text
+      end
+    end
+    alias_method :icon, :i
+
+    #
     # adds two methods - one to retrieve a svg, and another to check
     # the svg's existence.
     #
@@ -1219,7 +1247,20 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def element(name, tag, identifier={:index => 0}, &block)
+    def element(name, tag=:element, identifier={ :index => 0 }, &block)
+      # default tag to :element
+      #
+      # element 'button', css: 'some css'
+      #
+      # is the same as
+      #
+      # element 'button', :element, css: 'some css'
+      #
+      if tag.is_a?(Hash)
+        identifier = tag
+        tag        = :element
+      end
+
       define_method("#{name}") do
         self.send("#{name}_element").text
       end
@@ -1252,7 +1293,20 @@ module PageObject
     #   * :xpath => Watir and Selenium
     # @param optional block to be invoked when element method is called
     #
-    def elements(name, tag, identifier={:index => 0}, &block)
+    def elements(name, tag=:element, identifier={:index => 0}, &block)
+      # default tag to :element
+      #
+      # elements 'button', css: 'some css'
+      #
+      # is the same as
+      #
+      # elements 'button', :element, css: 'some css'
+      #
+      if tag.is_a?(Hash)
+        identifier = tag
+        tag        = :element
+      end
+
       define_method("#{name}_elements") do
         return call_block(&block) if block_given?
         platform.elements_for(tag, identifier.clone)

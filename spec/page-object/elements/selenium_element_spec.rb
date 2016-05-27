@@ -174,4 +174,45 @@ describe "Element for Selenium" do
     expect(@selenium_driver).to receive(:location_once_scrolled_into_view)
     @selenium_element.scroll_into_view
   end
+
+  it "should have a location" do
+    expect(@selenium_driver).to receive(:location)
+    @selenium_element.location
+  end
+
+  it "should have a size" do
+    expect(@selenium_driver).to receive(:size)
+    @selenium_element.size
+  end
+
+  it "should have a height" do
+    expect(@selenium_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
+    expect(@selenium_element.height).to eql 20
+  end
+
+  it "should have a width" do
+    expect(@selenium_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
+    expect(@selenium_element.width).to eql 30
+  end
+
+  it "should have a centre" do
+    expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40})
+    expect(@selenium_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
+    expect(@selenium_element.centre).to include(
+      'y' => 90,
+      'x' => 55
+    )
+  end
+
+  it "should have a centre greater than y position" do
+    expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40}).twice
+    expect(@selenium_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
+    expect(@selenium_element.centre['y']).to be > @selenium_element.location['y']
+  end
+
+  it "should have a centre greater than x position" do
+    expect(@selenium_driver).to receive(:location).and_return({'y' => 80, 'x' => 40}).twice
+    expect(@selenium_driver).to receive(:size).and_return({'width' => 30, 'height' => 20})
+    expect(@selenium_element.centre['x']).to be > @selenium_element.location['x']
+  end
 end

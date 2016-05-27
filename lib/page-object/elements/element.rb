@@ -10,7 +10,7 @@ module PageObject
     #
     class Element
       include ::PageObject::NestedElements
-      
+
       attr_reader :element
 
       def initialize(element, platform)
@@ -40,14 +40,14 @@ module PageObject
       def disabled?
         not enabled?
       end
-      
+
       #
       # get the value of the given CSS property
       #
       def style(property)
         element.style property
       end
-      
+
       def inspect
         element.inspect
       end
@@ -97,7 +97,7 @@ module PageObject
           return how, what
         end
       end
-      
+
       # @private
       # delegate calls to driver element
       def method_missing(*args, &block)
@@ -118,7 +118,7 @@ module PageObject
       protected
 
       def self.should_build_watir_xpath identifier
-        ['table', 'span', 'div', 'td', 'li', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label', 'area', 'canvas', 'audio', 'video', 'b'].include? identifier[:tag_name] and identifier[:name]
+        ['table', 'span', 'div', 'td', 'li', 'ul', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label', 'area', 'canvas', 'audio', 'video', 'b', 'i'].include? identifier[:tag_name] and identifier[:name]
       end
 
       def self.build_xpath_for identifier

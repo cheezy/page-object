@@ -1,8 +1,21 @@
-=== Version 1.1.1
+Version 1.1.2
+* Enhancements
+  * Added array methods to section collections (Thanks Cohen Carlisle)
+
+=== Version 1.1.1 / 2016-1-7
 * Enhancements
   * Added row accessor method and support for finding row elements directly (Thanks Ethan Hedrick)
+  * Added list_items method to UnorderedList to get an array of children.
+  * Speed optimizations for UnorderedList
+  * Added list_items method to OrderedList to get an array of children.
+  * Speed optimizations for OrderedList
+  * Added ability to check if a section is visible?, present?, or exists? (Thanks Donavan Stanley)
+  * Added support for the Italic (i) element (Thanks Sergey Morozov)
+  * Added size and location methods to all elements (Thanks Steve Jackson)
+  * Added width, height, and centre methods for elements (Thanks David Selby)
+  * Added missing right_click method for watir (Thanks David Selby)
 
-=== Version 1.1.0
+=== Version 1.1.0 / 2015-5-2
 * Enhancements
   * Performance enhancements when initializing elements (Thanks Dane Andersen)
   * Enabled button elements to return text when using selenium-webdriver.

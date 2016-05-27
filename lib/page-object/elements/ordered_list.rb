@@ -23,7 +23,7 @@ module PageObject
       protected
 
       def child_xpath
-        ".//child::li"
+        "./child::li"
       end
 
       def self.watir_finders

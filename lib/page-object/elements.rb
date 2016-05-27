@@ -20,7 +20,7 @@ module PageObject
         return type_to_class[type.to_sym] if type
         tag_to_class[tag_name.to_sym] || ::PageObject::Elements::Element
       end
-      
+
     end
   end
 end
@@ -56,5 +56,6 @@ require 'page-object/elements/media'
 require 'page-object/elements/audio'
 require 'page-object/elements/video'
 require 'page-object/elements/bold'
+require 'page-object/elements/italic'
 
 
