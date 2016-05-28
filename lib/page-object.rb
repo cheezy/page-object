@@ -58,8 +58,8 @@ module PageObject
     end
   end
 
-  def respond_to_missing?(method, include_private = false)
-    @root_element && @root_element.respond_to?(method, include_private) || super
+  def respond_to_missing?(method, include_all = false)
+    @root_element && @root_element.respond_to?(method) || super
   end
 
   # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
