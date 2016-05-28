@@ -7,7 +7,7 @@ require 'page-object/page_factory'
 require 'page-object/page_populator'
 require 'page-object/javascript_framework_facade'
 require 'page-object/indexed_properties'
-require 'page-object/sections'
+require 'page-object/section_collection'
 require 'page-object/widgets'
 
 require 'watir-webdriver'

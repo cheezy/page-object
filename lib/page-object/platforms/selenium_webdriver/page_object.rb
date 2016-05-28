@@ -1026,7 +1026,7 @@ module PageObject
         # See PageObject::Accessors#page_sections
         #
         def pages_for(identifier, page_class)
-          SectionCollection.new(find_selenium_pages(identifier, page_class))
+          SectionCollection[*find_selenium_pages(identifier, page_class)]
         end
 
        #
