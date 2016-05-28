@@ -188,6 +188,9 @@ describe PageObject do
           expect(watir_page_object).not_to respond_to :baz
           expect(watir_page_object.bar).to eq :bar_called
           expect { watir_page_object.baz }.to raise_error NoMethodError
+          # can't get to private methods
+          expect(watir_page_object.respond_to?(:baz, true)).to be false
+          expect { watir_page_object.send(:baz) }.to raise_error NoMethodError
         end
       end
     end
