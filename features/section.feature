@@ -116,6 +116,10 @@ Feature: Sections
     Given I search for a link in an indexed property located in a section
     Then I should see the text "Success" in the section indexed link
 
+  Scenario: Sections roots can be accessed
+    When I have a page section
+    Then methods called on the section are passed to the root if missing
+
   Scenario: Selecting multiple sections
     When I select multiple sections
     Then I should have a section collection containing the sections

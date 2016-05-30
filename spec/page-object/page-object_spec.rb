@@ -86,17 +86,17 @@ describe PageObject do
       expect(selenium_page_object.platform).to be_kind_of PageObject::Platforms::SeleniumWebDriver::PageObject
     end
   end
-  
+
   context "when created with a non_bundled adapter" do
     let(:custom_adapter) { mock_adapter(:custom_browser, CustomPlatform) }
-    
+
     it "should be an instance of whatever that objects adapter is" do
       mock_adapters({:custom_adapter=>custom_adapter})
       custom_page_object = PageObjectTestPageObject.new(:custom_browser)
       expect(custom_page_object.platform).to be custom_adapter.create_page_object
     end
   end
-  
+
   context "when created with an object we do not understand" do
     it "should throw an error" do
       expect {
@@ -112,17 +112,17 @@ describe PageObject do
         expect(watir_page_object.platform).to receive(:attach_to_window)
         watir_page_object.attach_to_window("blah")
       end
-      
+
       it "should call initialize_page if it exists" do
         class CallbackPage
           include PageObject
           attr_reader :initialize_page_called
-        
+
           def initialize_page
             @initialize_page_called = true
           end
         end
-        
+
         @page = CallbackPage.new(watir_browser)
         expect(@page.initialize_page_called).to be true
       end
@@ -165,8 +165,36 @@ describe PageObject do
         expect(watir_browser).to receive(:type).and_return(:submit)
         expect(watir_page_object.element_with_focus.class).to eql PageObject::Elements::Button
       end
+
+      context "when sent a missing method" do
+        it "should not respond to it if the @root_element doesn't exist" do
+          # nil responds to `to_i`, @root_element is nil, but the page object doesn't respond
+          expect(nil).to respond_to :to_i
+          expect(watir_page_object.instance_variable_get(:@root_element)).to be nil
+          expect(watir_page_object).not_to respond_to :to_i
+          expect { watir_page_object.to_i }.to raise_error NoMethodError
+        end
+
+        it "should respond to it if the @root_element exists and responds" do
+          # sanity checks
+          expect(watir_page_object.instance_variable_get(:@root_element)).to be nil
+          expect(watir_page_object).not_to respond_to :bar
+          expect(watir_page_object).not_to respond_to :baz
+          # set @root_element
+          class Foo; def bar; :bar_called; end; private; def baz; end; end
+          watir_page_object.instance_variable_set(:@root_element, Foo.new)
+          # test
+          expect(watir_page_object).to respond_to :bar
+          expect(watir_page_object).not_to respond_to :baz
+          expect(watir_page_object.bar).to eq :bar_called
+          expect { watir_page_object.baz }.to raise_error NoMethodError
+          # can't get to private methods
+          expect(watir_page_object.respond_to?(:baz, true)).to be false
+          expect { watir_page_object.send(:baz) }.to raise_error NoMethodError
+        end
+      end
     end
-    
+
     context "when using WatirPageObject" do
       it "should display the page text" do
         expect(watir_browser).to receive(:element).and_return(watir_browser)
@@ -235,24 +263,24 @@ describe PageObject do
         expect(watir_browser).to receive(:execute_script).and_return("abc")
         expect(watir_page_object.execute_script("333")).to eql "abc"
       end
-      
+
       it "should convert a modal popup to a window" do
         expect(watir_browser).to receive(:execute_script)
         watir_page_object.modal_dialog {}
       end
-      
+
       it "should switch to a new window with a given title" do
         expect(watir_browser).to receive(:window).with(:title => /My\ Title/).and_return(watir_browser)
         expect(watir_browser).to receive(:use)
         watir_page_object.attach_to_window(:title => "My Title")
       end
-      
+
       it "should switch to a new window with a given url" do
         expect(watir_browser).to receive(:window).with(:url => /success\.html/).and_return(watir_browser)
         expect(watir_browser).to receive(:use)
         watir_page_object.attach_to_window(:url => "success.html")
       end
-      
+
       it "should refresh the page contents" do
         expect(watir_browser).to receive(:refresh)
         watir_page_object.refresh
@@ -267,18 +295,18 @@ describe PageObject do
         expect(watir_browser).to receive(:forward)
         watir_page_object.forward
       end
-      
+
       it "should know its' current url" do
         expect(watir_browser).to receive(:url).and_return("cheezyworld.com")
         expect(watir_page_object.current_url).to eql "cheezyworld.com"
       end
-      
+
       it "should know how to clear all of the cookies from the browser" do
         expect(watir_browser).to receive(:cookies).and_return(watir_browser)
         expect(watir_browser).to receive(:clear)
         watir_page_object.clear_cookies
       end
-      
+
       it "should be able to save a screenshot" do
         expect(watir_browser).to receive(:wd).and_return(watir_browser)
         expect(watir_browser).to receive(:save_screenshot)
@@ -342,12 +370,12 @@ describe PageObject do
         selenium_page_object.prompt("blah") do
         end
       end
-      
+
       it "should convert a modal popup to a window" do
         expect(selenium_browser).to receive(:execute_script)
         selenium_page_object.modal_dialog {}
       end
-      
+
       it "should execute javascript on the browser" do
         expect(selenium_browser).to receive(:execute_script).and_return("abc")
         expect(selenium_page_object.execute_script("333")).to eql "abc"
@@ -360,7 +388,7 @@ describe PageObject do
         expect(selenium_browser).to receive(:title).and_return("My Title")
         selenium_page_object.attach_to_window(:title => "My Title")
       end
-      
+
       it "should switch to a new window with a given url" do
         expect(selenium_browser).to receive(:window_handles).and_return(["win1"])
         expect(selenium_browser).to receive(:switch_to).twice.and_return(selenium_browser)
@@ -368,36 +396,36 @@ describe PageObject do
         expect(selenium_browser).to receive(:current_url).and_return("page.html")
         selenium_page_object.attach_to_window(:url => "page.html")
       end
-      
+
       it "should refresh the page contents" do
         expect(selenium_browser).to receive(:navigate).and_return(selenium_browser)
         expect(selenium_browser).to receive(:refresh)
         selenium_page_object.refresh
       end
-      
+
       it "should know how to go back" do
         expect(selenium_browser).to receive(:navigate).and_return(selenium_browser)
         expect(selenium_browser).to receive(:back)
         selenium_page_object.back
       end
-      
+
       it "should know how to go forward" do
         expect(selenium_browser).to receive(:navigate).and_return(selenium_browser)
         expect(selenium_browser).to receive(:forward)
         selenium_page_object.forward
       end
-      
+
       it "should know its' current url" do
         expect(selenium_browser).to receive(:current_url).and_return("cheezyworld.com")
         expect(selenium_page_object.current_url).to eql "cheezyworld.com"
       end
-      
+
       it "should clear all of the cookies from the browser" do
         expect(selenium_browser).to receive(:manage).and_return(selenium_browser)
         expect(selenium_browser).to receive(:delete_all_cookies)
         selenium_page_object.clear_cookies
       end
-      
+
       it "should be able to save a screenshot" do
         expect(selenium_browser).to receive(:save_screenshot)
         selenium_page_object.save_screenshot("test.png")
