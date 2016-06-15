@@ -34,7 +34,7 @@ module PageObject
         # @return [array of PageObject::Elements::Option]
         #
         def options
-          element.options.map { |e| ::PageObject::Elements::Option.new(e, :platform => :watir_webdriver) }
+          element.options.map { |e| ::PageObject::Elements::Option.new(e, :platform => @platform.class::PLATFORM_NAME) }
         end
 
         #

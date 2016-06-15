@@ -146,7 +146,7 @@ module PageObject
           parent = bridge.executeScript(script, element)
           type = element.attribute(:type).to_s.downcase if parent.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
-          cls.new(parent, :platform => :selenium_webdriver)
+          cls.new(parent, :platform => @platform.class::PLATFORM_NAME)
         end
 
         #

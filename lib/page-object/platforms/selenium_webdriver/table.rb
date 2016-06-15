@@ -14,7 +14,7 @@ module PageObject
           eles = table_rows
           idx = find_index_by_title(idx, eles) if idx.kind_of?(String)
           return nil unless idx
-          initialize_row(eles[idx], :platform => :selenium_webdriver)
+          initialize_row(eles[idx], :platform => @platform.class::PLATFORM_NAME)
         end
 
         #

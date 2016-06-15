@@ -207,20 +207,63 @@ module PageObject
       end
 
       def include_platform_for platform
-        if platform[:platform] == :watir_webdriver
-          self.class.send :include,  ::PageObject::Platforms::WatirWebDriver::Element
-          @platform = ::PageObject::Platforms::WatirWebDriver::PageObject.new(@element)
-        elsif platform[:platform] == :selenium_webdriver
-          self.class.send :include, ::PageObject::Platforms::SeleniumWebDriver::Element
-          @platform = ::PageObject::Platforms::SeleniumWebDriver::PageObject.new(@element)
-        else
-          raise ArgumentError, "expect platform to be :watir_webdriver or :selenium_webdriver"
+        platform_information = PageObject::Platforms.get
+        raise ArgumentError,"Expected hash with at least a key :platform for platform information! (#{platform.inspect})" unless platform.class == Hash && platform.has_key?(:platform)
+        platform_name = platform[:platform]
+
+        raise ArgumentError, "Unknown platform #{platform_name}! Expect platform to be one of the following: #{platform_information.keys.inspect}" unless platform_information.keys.include?(platform_name)
+        base_platform_class = "#{platform_information[platform_name]}::"
+
+        self.send :extend, constantize_classname(base_platform_class + "Element")
+        @platform = constantize_classname(base_platform_class+ "PageObject").new(@element)
+
+        # include class specific code
+        class_to_include = case
+                             when self.class ==  PageObject::Elements::Element
+                               # already loaded
+                               return true
+                             when self.class.name =~/PageObject:Elements::/
+                               self.class
+                               # inherited classes for example the widgets
+                             else
+                               parent_classes = self.class.ancestors.select { |item| item.name =~/PageObject::Elements::/ }
+                               raise RuntimeError,"Could not identify page-object inherited class for #{self.class}!" if parent_classes.empty?
+                               parent_classes.first
+                           end
+
+        element_type_specific_code = File.expand_path(File.dirname(__FILE__) + "../../platforms/#{platform_name}/"+ get_element_type_underscored(class_to_include) )
+        if File.exist? element_type_specific_code + '.rb'
+          require element_type_specific_code
+          self.send :extend, constantize_classname( base_platform_class + get_element_type(class_to_include) )
         end
+
       end
 
       def to_ary
         nil
       end
+
+      private
+
+
+      def constantize_classname name
+        name.split("::").inject(Object) { |k,n| k.const_get(n) }
+      end
+
+
+      def get_element_type(class_name = self.class)
+        class_name.name.split('::').last
+      end
+
+      # retrieved from ruby on rails underscore method
+      def get_element_type_underscored(class_name = self.class)
+        get_element_type(class_name).to_s.gsub(/::/, '/').
+         gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+         gsub(/([a-z\d])([A-Z])/,'\1_\2').
+         tr("-", "_").
+         downcase
+      end
+
     end
   end
 end

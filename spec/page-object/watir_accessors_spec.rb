@@ -284,6 +284,7 @@ describe PageObject::Accessors do
 
     def mock_driver_for(tag)
       expect(watir_browser).to receive(tag).with(:index => 0).and_return(watir_browser)
+      allow(watir_browser).to receive(:exists?).with(no_args)
     end
 
     it "should work with a text_field" do

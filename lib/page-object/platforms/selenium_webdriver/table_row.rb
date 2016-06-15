@@ -14,7 +14,7 @@ module PageObject
           els = table_cells
           idx = find_index_by_title(idx) if idx.kind_of?(String)
           return nil unless idx  && columns >= idx + 1
-          initialize_cell(els[idx], :platform => :selenium_webdriver)
+          initialize_cell(els[idx], :platform => @platform.class::PLATFORM_NAME)
         end
 
         #
