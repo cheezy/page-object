@@ -12,7 +12,7 @@ module PageObject
         def [](idx)
           idx = find_index_by_title(idx) if idx.kind_of?(String)
           return nil unless idx && columns >= idx + 1
-          initialize_cell(element[idx], :platform => :watir_webdriver)
+          initialize_cell(element[idx], :platform => @platform.class::PLATFORM_NAME)
         end
 
         #

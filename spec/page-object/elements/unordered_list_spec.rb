@@ -30,14 +30,14 @@ describe PageObject::Elements::UnorderedList do
     context "for watir" do
       it "should return a list item when indexed" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)
-        allow(ul_element).to receive(:find_elements).and_return(ul_element)
+        allow(ul_element).to receive(:uls).and_return(ul_element)
         expect(ul_element).to receive(:[])
         ul[1]
       end
 
       it "should know how many items it contains" do
         ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :watir_webdriver)
-        allow(ul_element).to receive(:find_elements).and_return([ul_element])
+        allow(ul_element).to receive(:uls).and_return([ul_element])
         expect(ul.items).to eql 1
       end
 

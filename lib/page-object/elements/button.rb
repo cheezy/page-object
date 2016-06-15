@@ -18,13 +18,6 @@ module PageObject
         super + [:value, :src, :alt]
       end
 
-      def include_platform_for platform
-        super
-        if platform[:platform] == :selenium_webdriver
-          require 'page-object/platforms/selenium_webdriver/button'
-          self.class.send :include, PageObject::Platforms::SeleniumWebDriver::Button
-        end
-      end
     end
 
     ::PageObject::Elements.type_to_class[:submit] = ::PageObject::Elements::Button
