@@ -1,11 +1,11 @@
-Version 1.1.2
+Version 1.2.0 / 2016-6-15
 * Enhancements
   * Added array methods to section collections (Thanks Cohen Carlisle)
   * Ensuring that method_missing is always forwarded to the root element (Thanks Cohen Carlisle)
   * Added ability to call style method with no parameters (Thanks Justin Watts)
     - with Watir will return all styles; with Selenium will return empty string
   * Cleaned up frame and iframe nesting (Thanks Jon Snow)
-
+  * Support for adding other platforms (Thanks pvmeerbe)
 
 === Version 1.1.1 / 2016-1-7
 * Enhancements
