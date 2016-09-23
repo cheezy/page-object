@@ -1,4 +1,4 @@
-require 'watir/alerts'
+require 'watir/alert'
 require 'page-object/elements'
 require 'page-object/core_ext/string'
 
