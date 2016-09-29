@@ -1,4 +1,4 @@
-require 'watir-webdriver/extensions/alerts'
+#require 'watir/alert' TODO: y u no work
 require 'page-object/elements'
 require 'page-object/core_ext/string'
 
