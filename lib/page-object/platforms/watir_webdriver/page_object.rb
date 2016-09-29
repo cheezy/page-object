@@ -564,6 +564,14 @@ module PageObject
         end
 
         #
+        # platform method to retrieve load status of an image element
+        # See PageObject::Accessors#image
+        #
+        def image_loaded_for(identifier)
+          process_watir_call("image(identifier).loaded?", Elements::Image, identifier)
+        end
+
+        #
         # platform method to retrieve an image element
         # See PageObject::Accessors#image
         #

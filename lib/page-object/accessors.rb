@@ -668,12 +668,13 @@ module PageObject
     end
 
     #
-    # adds two methods - one to retrieve the image element, and another to
-    # check the image's existence.
+    # adds three methods - one to retrieve the image element, another to
+    # check the load status of the image, and another to check the
+    # image's existence.
     #
     # @example
     #   image(:logo, :id => 'logo')
-    #   # will generate 'logo_element' and 'logo?' methods
+    #   # will generate 'logo_element', 'logo_loaded?', and 'logo?' methods
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Hash] identifier how we find an image.  You can use a multiple parameters
@@ -690,6 +691,10 @@ module PageObject
     #
     def image(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'image_for', &block)
+      define_method("#{name}_loaded?") do
+        return platform.image_loaded_for identifier.clone unless block_given?
+        self.send("#{name}_element").loaded?
+      end
     end
     alias_method :img, :image
 
