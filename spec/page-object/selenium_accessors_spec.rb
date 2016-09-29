@@ -378,6 +378,17 @@ describe PageObject::Accessors do
   end
 
   describe "image accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        expect(selenium_page_object).to respond_to(:logo_element)
+        expect(selenium_page_object).to respond_to(:logo_loaded?)
+      end
+
+      it "should call a block on the element method when present" do
+        expect(block_page_object.logo_element).to eql "image"
+      end
+    end
+
     it "should retrieve the image element from the page" do
       expect(selenium_browser).to receive(:find_element).and_return(selenium_browser)
       element = selenium_page_object.logo_element

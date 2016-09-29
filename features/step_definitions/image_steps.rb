@@ -2,6 +2,14 @@ When /^I get the image element$/ do
   @element = @page.image_id_element
 end
 
+When /^I get the image element load status$/ do
+  @status = @page.image_id_loaded?
+end
+
+When /^I get the broken image element load status$/ do
+  @status = @page.image_broken_loaded?
+end
+
 Then /^the image should be "([^\"]*)" pixels wide$/ do |width|
   @element.width.should == width.to_i
 end
@@ -24,4 +32,12 @@ end
 
 Then /^I should see that the image exists$/ do
   @page.image_id?.should == true
+end
+
+Then /^I should see that the image loaded$/ do
+  @status.should be true
+end
+
+Then /^I should see that the image is not loaded$/ do
+  @status.should be false
 end
