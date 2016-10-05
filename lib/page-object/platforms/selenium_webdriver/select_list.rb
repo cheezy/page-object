@@ -54,6 +54,14 @@ module PageObject
           find_options.map{ |opt| opt.attribute(:value)}
         end
 
+        def options_text
+          find_options.map{ |opt| opt.attribute(:text)}
+        end
+
+        def options_value
+          find_options.map{ |opt| opt.attribute(:value)}
+        end
+
         #
         # @return [Array<String>] An array of strings representing the text of the currently selected options.
         #
