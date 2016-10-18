@@ -102,12 +102,14 @@ module PageObject
       # delegate calls to driver element
       def method_missing(*args, &block)
         m = args.shift
-        $stderr.puts "*** DEPRECATION WARNING"
-        $stderr.puts "*** You are calling a method named #{m} at #{caller[0]}."
-        $stderr.puts "*** This method does not exist in page-object so it is being passed to the driver."
-        $stderr.puts "*** This feature will be removed in the near future."
-        $stderr.puts "*** Please change your code to call the correct page-object method."
-        $stderr.puts "*** If you are using functionality that does not exist in page-object please request it be added."
+        unless (m == :wait_until_present || m == :wait_while_present || m == :when_present)
+          $stderr.puts "*** DEPRECATION WARNING"
+          $stderr.puts "*** You are calling a method named #{m} at #{caller[0]}."
+          $stderr.puts "*** This method does not exist in page-object so it is being passed to the driver."
+          $stderr.puts "*** This feature will be removed in the near future."
+          $stderr.puts "*** Please change your code to call the correct page-object method."
+          $stderr.puts "*** If you are using functionality that does not exist in page-object please request it be added."
+        end
         begin
           element.send m, *args, &block
         rescue Exception => e
