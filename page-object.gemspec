@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'watir-webdriver', '>= 0.6.11'
   s.add_dependency 'selenium-webdriver', '>= 2.44.0'
   s.add_dependency 'page_navigation', '>= 0.9'
+  s.add_dependency 'net-http-persistent', '~> 2.9.4'
 
   s.add_development_dependency 'rspec', '~> 3.1.0'
   s.add_development_dependency 'cucumber', '>= 1.3.0'
