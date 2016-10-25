@@ -33,7 +33,7 @@ describe "Element for Selenium" do
     bridge = double('bridge')
     expect(@selenium_driver).to receive(:attribute).and_return('blue')
     expect(@selenium_driver).to receive(:instance_variable_get).and_return(bridge)
-    expect(bridge).to receive(:executeScript).exactly(10).times
+    expect(bridge).to receive(:execute_script).exactly(10).times
     @selenium_element.flash
   end
 
@@ -153,20 +153,20 @@ describe "Element for Selenium" do
 
   it "should fire an event" do
     expect(@selenium_driver).to receive(:instance_variable_get).with(:@bridge).and_return(@selenium_driver)
-    expect(@selenium_driver).to receive(:executeScript)
+    expect(@selenium_driver).to receive(:execute_script)
     @selenium_element.fire_event('onfocus')
   end
 
   it "should find the parent element" do
     expect(@selenium_driver).to receive(:instance_variable_get).with(:@bridge).and_return(@selenium_driver)
-    expect(@selenium_driver).to receive(:executeScript).and_return(@selenium_driver)
+    expect(@selenium_driver).to receive(:execute_script).and_return(@selenium_driver)
     expect(@selenium_driver).to receive(:tag_name).twice.and_return(:div)
     @selenium_element.parent
   end
 
   it "should set the focus" do
     expect(@selenium_driver).to receive(:instance_variable_get).and_return(@selenium_driver)
-    expect(@selenium_driver).to receive(:executeScript)
+    expect(@selenium_driver).to receive(:execute_script)
     @selenium_element.focus
   end
 
