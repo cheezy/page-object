@@ -3,7 +3,7 @@ Then /^the current item should be "([^\"]*)"$/ do |expected_text|
 end
 
 Then /^the text should be "([^\"]*)"$/ do |expected_text|
-  @text.should == expected_text
+  @text.tr("\n", ' ').should == expected_text
 end
 
 Then /^the text should include "([^\"]*)"$/ do |expected_text|
