@@ -22,7 +22,6 @@ Feature: Text Fields
     | xpath      |
     | index      |
     | title      |
-    | text       |
     | label      |
 
 
@@ -42,7 +41,7 @@ Feature: Text Fields
   Examples:
     | search_by |
     | css       |
-
+    | text       |
 
   Scenario Outline: Locating a text field using multiple parameters
     When I search for the text field by "<param1>" and "<param2>"
