@@ -7,6 +7,8 @@ describe "Element with nested elements" do
     before(:each) do
       @watir_driver = Watir::Element.new(nil, {})
       @watir_element = PageObject::Elements::Element.new(@watir_driver, :platform => :watir_webdriver)
+      allow(@watir_driver).to receive(:exists?).and_return(true)
+      allow(@watir_driver).to receive(:to_subtype).and_return(@watir_driver)
     end
     
     it "should find nested links" do
