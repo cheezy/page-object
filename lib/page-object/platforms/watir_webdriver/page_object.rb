@@ -1,4 +1,3 @@
-require 'watir-webdriver/extensions/alerts'
 require 'page-object/elements'
 require 'page-object/core_ext/string'
 

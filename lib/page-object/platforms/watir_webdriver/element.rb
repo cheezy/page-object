@@ -1,4 +1,4 @@
-require 'watir-webdriver/extensions/select_text'
+require 'watir/extensions/select_text'
 
 module PageObject
   module Platforms
@@ -27,13 +27,6 @@ module PageObject
         #
         def flash
           element.flash
-        end
-
-        #
-        # Click this element
-        #
-        def right_click
-          element.right_click
         end
 
         #
