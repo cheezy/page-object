@@ -5,16 +5,14 @@ module PageObject
     @@browser = false
     def self.get_browser
       if !@@browser
-        target = ENV['BROWSER']
-        target = 'firefox_local' unless target
+        target = ENV['BROWSER'] || 'local_chrome'
 
         if is_remote?(target)
           require File.dirname(__FILE__) + "/targets/#{target}"
           extend Target
         end
-        
-        @@browser =  watir_browser(target) if ENV['DRIVER'] == 'WATIR'
-        @@browser =  selenium_browser(target) if ENV['DRIVER'] == 'SELENIUM'
+
+        @@browser =  ENV['DRIVER'] == 'SELENIUM' ? selenium_browser(target) : watir_browser(target)
       end
       @@browser
     end
@@ -36,7 +34,8 @@ module PageObject
                            :url => url,
                            :desired_capabilities => desired_capabilities)
       else
-        Watir::Browser.new :firefox, :http_client => client
+        browser = target.gsub('local_', '').to_sym
+        Watir::Browser.new browser, :http_client => client
       end
     end
 
@@ -47,7 +46,8 @@ module PageObject
                                 :url => url,
                                 :desired_capabilities => desired_capabilities)
       else
-        Selenium::WebDriver.for :firefox, :http_client => client
+        browser = target.gsub('local_', '').to_sym
+        Selenium::WebDriver.for browser, :http_client => client
       end
     end
 
