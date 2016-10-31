@@ -1,3 +1,7 @@
+Version 1.2.1
+* Enhancements
+  * Added numerous missing element types
+
 Version 1.2.0 / 2016-6-15
 * Enhancements
   * Added array methods to section collections (Thanks Cohen Carlisle)
