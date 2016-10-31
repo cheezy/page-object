@@ -193,7 +193,7 @@ describe PageObject::PageFactory do
   end
 
   it "should raise an error when you do not provide a default route" do
-    expect { PageObject::PageFactory.routes = {:another => []} }.to raise_error
+    expect { PageObject::PageFactory.routes = {:another => []} }.to raise_error "You must provide a :default route"
   end
 
   it "should store the routes" do
@@ -222,7 +222,7 @@ describe PageObject::PageFactory do
 
   it "should fail when it does not find a proper route" do
     PageObject::PageFactory.routes = {:default => ['a'], :another => ['b']}
-    expect { @world.navigate_to(AnotherPage, :using => :no_route) }.to raise_error
+    expect { @world.navigate_to(AnotherPage, :using => :no_route) }.to raise_error "PageFactory route :no_route not found"
   end
 
   it "should fail when no default method specified" do
@@ -232,7 +232,7 @@ describe PageObject::PageFactory do
     fake_page = double('a_page')
     expect(FactoryTestPage).to receive(:new).and_return(fake_page)
     expect(fake_page).to receive(:respond_to?).with(:a_method).and_return(false)
-    expect { @world.navigate_to(AnotherPage) }.to raise_error
+    expect { @world.navigate_to(AnotherPage) }.to raise_error "Navigation method 'a_method' not defined on FactoryTestPage."
   end
 
 end

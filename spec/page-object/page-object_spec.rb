@@ -100,8 +100,8 @@ describe PageObject do
   context "when created with an object we do not understand" do
     it "should throw an error" do
       expect {
-        TestPageObject.new("blah")
-      }.to raise_error
+        PageObjectTestPageObject.new("blah")
+      }.to raise_error 'Unable to pick a platform for the provided browser or element: "blah".'
     end
   end
 

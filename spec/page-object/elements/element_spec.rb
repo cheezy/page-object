@@ -169,7 +169,7 @@ describe "Element" do
 
     it "should wait until present" do
       expect(native).to receive(:wait_until_present).with(42)
-      element.wait_until_present(42)
+      element.when_present(42)
     end
 
     it "should send keys" do

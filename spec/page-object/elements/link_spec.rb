@@ -42,7 +42,7 @@ describe PageObject::Elements::Link do
     context "for selenium" do
       it "should return error when asked for its' value" do
         link = PageObject::Elements::Link.new(link_element, :platform => :selenium_webdriver)
-        expect(lambda { link.value }).to raise_error
+        expect(lambda { link.value }).to raise_error "value not available on link element with Selenium"
       end
     end
   end

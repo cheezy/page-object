@@ -62,7 +62,7 @@ describe PageObject::Platforms::SeleniumWebDriver::PageObject do
       expect(selenium_browser).to receive(:find_element).and_raise(Selenium::WebDriver::Error::NoSuchElementError)
       page = SeleniumTestPageObject.new(selenium_browser)
       element = page.link_element(:text => 'blah')
-      expect { element.text }.to raise_error
+      expect { element.text }.to raise_error Selenium::WebDriver::Error::NoSuchElementError
     end
   end
 end
