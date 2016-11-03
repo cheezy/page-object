@@ -1,6 +1,7 @@
 Version 1.2.1
 * Enhancements
   * Added numerous missing element types
+  * Support for Selenium 3 (Thanks Titus Fortner)
 
 Version 1.2.0 / 2016-6-15
 * Enhancements
