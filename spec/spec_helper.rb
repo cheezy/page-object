@@ -7,7 +7,7 @@ require 'coveralls'
 SimpleCov.start { add_filter 'spec/' }
 
 require 'rspec'
-require 'watir-webdriver'
+require 'watir'
 require 'selenium-webdriver'
 
 require 'page-object'
@@ -16,6 +16,8 @@ def mock_watir_browser
   watir_browser = double('watir')
   allow(watir_browser).to receive(:is_a?).with(anything()).and_return(false)
   allow(watir_browser).to receive(:is_a?).with(Watir::Browser).and_return(true)
+  allow(watir_browser).to receive(:exists?).and_return(true)
+  allow(watir_browser).to receive(:to_subtype).and_return(watir_browser)
   watir_browser
 end
 

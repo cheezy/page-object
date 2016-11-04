@@ -82,6 +82,7 @@ Feature: Table
     | xpath     |
     | index     |
     | name      |
+    | css       |
 
   Scenario: Matching the expected table with the table on the Page
     When I retrieve a table element
@@ -89,16 +90,6 @@ Feature: Table
       | Table | Header |
       | Data1 | Data2  |
       | Data3 | Data4  |
-
-
-  @selenium_only
-  Scenario Outline: Locating table cells on the Page
-    When I retrieve a table element by "<search_by>"
-    Then the data for row "2" should be "Data1" and "Data2"
-
-  Scenarios:
-    | search_by |
-    | css       |
 
   Scenario Outline: Locating table using multiple parameters
     When I retrieve a table element by "<param1>" and "<param2>"

@@ -22,8 +22,8 @@ Feature: Text Fields
     | xpath      |
     | index      |
     | title      |
-    | text       |
     | label      |
+    | css        |
 
 
   @watir_only
@@ -35,14 +35,12 @@ Feature: Text Fields
     | data_field |
 
   @selenium_only
-  Scenario Outline: Locating text fields on the Page using Selenium
+  Scenario Outline: Locating text fields on the Page using Watir
     When I search for the text field by "<search_by>"
     Then I should be able to type "I found it" into the field
-
   Examples:
-    | search_by |
-    | css       |
-
+    | search_by  |
+    | text       |
 
   Scenario Outline: Locating a text field using multiple parameters
     When I search for the text field by "<param1>" and "<param2>"

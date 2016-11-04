@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/cheezy/page-object/badge.svg?nocache)](https://coveralls.io/r/cheezy/page-object)
 
 
-A simple gem that assists in creating flexible page objects for testing browser based applications. The goal is to facilitate creating abstraction layers in your tests to decouple the tests from the item they are testing and to provide a simple interface to the elements on a page. It works with both watir-webdriver and selenium-webdriver.
+A simple gem that assists in creating flexible page objects for testing browser based applications. The goal is to facilitate creating abstraction layers in your tests to decouple the tests from the item they are testing and to provide a simple interface to the elements on a page. It works with both watir and selenium-webdriver.
 
 ## Documentation
 
@@ -80,7 +80,7 @@ login_page.login_with 'cheezy', 'secret'
 ````
 
 ### Creating your page object
-page-object supports both [watir-webdriver](https://github.com/jarib/watir-webdriver) and [selenium-webdriver](http://seleniumhq.org/docs/03_webdriver.html). The one used will be determined by which driver you pass into the constructor of your page object. The page object can be created like this:
+page-object supports both [watir](https://github.com/watir/watir) and [selenium-webdriver](http://seleniumhq.org/docs/03_webdriver.html). The one used will be determined by which driver you pass into the constructor of your page object. The page object can be created like this:
 
 ````ruby
 browser = Watir::Browser.new :firefox

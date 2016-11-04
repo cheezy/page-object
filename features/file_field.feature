@@ -20,14 +20,6 @@ Feature: File Field
     | title     |
     | index     |
     | label     |
-
-  @selenium_only
-  Scenario Outline: Locating file fields on the Page
-    When I search for the file field by "<search_by>"
-    Then I should be able to set the file field
-
-  Scenarios:
-    | search_by |
     | css       |
 
   Scenario Outline: Locating file fields using multiple parameters
