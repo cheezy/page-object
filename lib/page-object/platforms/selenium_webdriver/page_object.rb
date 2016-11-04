@@ -614,7 +614,11 @@ module PageObject
         #
         def image_loaded_for(identifier)
           process_selenium_call(identifier, Elements::Image, 'img') do |how, what|
-            @browser.find_element(how, what).loaded?
+            element = @browser.find_element(how, what)
+            @browser.execute_script(
+              'return typeof arguments[0].naturalWidth != "undefined" && arguments[0].naturalWidth > 0',
+              element
+            )
           end
         end
 
