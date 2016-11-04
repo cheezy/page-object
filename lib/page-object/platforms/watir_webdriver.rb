@@ -7,7 +7,7 @@ module PageObject
       end
 
       def self.is_for?(browser)
-        require 'watir'
+        require 'watir-webdriver'
         browser.is_a?(::Watir::Browser) || browser.is_a?(::Watir::HTMLElement)
       end
 

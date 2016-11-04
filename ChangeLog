@@ -3,6 +3,7 @@ Version 1.2.1
   * Added numerous missing element types
   * Support for Selenium 3 (Thanks Titus Fortner)
   * Added new generated method for Image - (name)_loaded? (Thanks joesho112358)
+  * Added CSS support for Watir (Thanks Titus Fortner)
 
 Version 1.2.0 / 2016-6-15
 * Enhancements

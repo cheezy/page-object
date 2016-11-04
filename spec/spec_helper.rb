@@ -7,7 +7,7 @@ require 'coveralls'
 SimpleCov.start { add_filter 'spec/' }
 
 require 'rspec'
-require 'watir'
+require 'watir-webdriver'
 require 'selenium-webdriver'
 
 require 'page-object'

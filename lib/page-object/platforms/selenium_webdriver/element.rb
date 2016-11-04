@@ -1,4 +1,4 @@
-require 'watir/atoms'
+require 'watir-webdriver/atoms'
 
 module PageObject
   module Platforms
