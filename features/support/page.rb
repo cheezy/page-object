@@ -191,6 +191,7 @@ class Page
   image(:image_class_index, :class => "image_class", :index => 0)
   image(:image_name_index, :name => "image_name", :index => 0)
   image(:image_css, :css => ".image_class")
+  image(:image_broken, :id => "non_existent")
 
   form(:form_id, :id => 'form_id')
   form(:form_name, :id => 'form_name')

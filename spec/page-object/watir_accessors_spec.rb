@@ -783,6 +783,7 @@ describe PageObject::Accessors do
     context "when called on a page object" do
       it "should generate accessor methods" do
         expect(watir_page_object).to respond_to(:logo_element)
+        expect(watir_page_object).to respond_to(:logo_loaded?)
       end
 
       it "should call a block on the element method when present" do
