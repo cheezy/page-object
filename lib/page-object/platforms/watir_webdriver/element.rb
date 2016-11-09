@@ -1,4 +1,4 @@
-require 'watir-webdriver/extensions/select_text'
+require 'watir/extensions/select_text'
 
 module PageObject
   module Platforms
