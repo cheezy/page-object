@@ -25,7 +25,7 @@ module PageObject
         #
         def list_items
           children.collect do |obj|
-            Object::PageObject::Elements::ListItem.new(obj, :platform => :watir_webdriver)
+            Object::PageObject::Elements::ListItem.new(obj, :platform => :watir)
           end
         end
 
