@@ -155,7 +155,7 @@ describe "Widget PageObject Extensions" do
       end
 
       context "for watir" do
-        let(:watir_table) { GxtTable.new(gxt_table_element, :platform => :watir_webdriver) }
+        let(:watir_table) { GxtTable.new(gxt_table_element, :platform => :watir) }
 
         it "should return a table row when indexed" do
           allow(gxt_table_element).to receive(:[]).with(1).and_return(gxt_table_element)
