@@ -3,7 +3,7 @@ require 'page-object/elements/element'
 
 describe "Element for Watir" do
   let(:watir_driver) { double('watir_driver') }
-  let(:watir_element) { ::PageObject::Elements::Element.new(watir_driver, :platform => :watir_webdriver) }
+  let(:watir_element) { ::PageObject::Elements::Element.new(watir_driver, :platform => :watir) }
 
   before(:each) do
     allow(Selenium::WebDriver::Mouse).to receive(:new).and_return(watir_driver)

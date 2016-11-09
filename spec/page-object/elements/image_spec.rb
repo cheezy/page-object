@@ -33,13 +33,13 @@ describe PageObject::Elements::Image do
 
     context "for watir" do
       it "should know the images width" do
-        image = PageObject::Elements::Image.new(image_element, :platform => :watir_webdriver)
+        image = PageObject::Elements::Image.new(image_element, :platform => :watir)
         expect(image_element).to receive(:width).and_return(100)
         expect(image.width).to eql 100
       end
 
       it "should know the images height" do
-        image = PageObject::Elements::Image.new(image_element, :platform => :watir_webdriver)
+        image = PageObject::Elements::Image.new(image_element, :platform => :watir)
         expect(image_element).to receive(:height).and_return(120)
         expect(image.height).to eql 120
       end

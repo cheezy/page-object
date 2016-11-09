@@ -3,7 +3,7 @@ require 'page-object/elements'
 
 describe PageObject::Elements::Video do
 
-  let(:video) { PageObject::Elements::Video.new(platform, :platform => :watir_webdriver) }
+  let(:video) { PageObject::Elements::Video.new(platform, :platform => :watir) }
   let(:platform) { double('platform')}
   let(:wd) { double('wd') }
 
