@@ -80,7 +80,7 @@ describe "Element" do
   context "interaction with native element" do
     let(:wd) { double('') }
     let(:native) { double(wd: wd) }
-    let(:element) { PageObject::Elements::Element.new(native, :platform => :watir_webdriver) }
+    let(:element) { PageObject::Elements::Element.new(native, :platform => :watir) }
 
     it "should check if native is enabled" do
       expect(native).to receive(:enabled?).and_return(true)

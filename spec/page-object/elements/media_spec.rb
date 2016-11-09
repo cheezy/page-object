@@ -3,7 +3,7 @@ require 'page-object/elements'
 
 describe PageObject::Elements::Media do
 
-  let(:media) { PageObject::Elements::Media.new(double(''), :platform => :watir_webdriver) }
+  let(:media) { PageObject::Elements::Media.new(double(''), :platform => :watir) }
 
   it "should return autoplay" do
     expect(media).to receive(:attribute).with(:autoplay).and_return(true)
