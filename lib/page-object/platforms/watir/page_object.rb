@@ -14,7 +14,7 @@ module PageObject
       class PageObject
         attr_reader :browser
 
-        PLATFORM_NAME = :watir_webdriver
+        PLATFORM_NAME = :watir
 
         def self.define_widget_accessors(widget_tag, widget_class, base_element_tag)
         define_widget_singular_accessor(base_element_tag, widget_class, widget_tag)
@@ -139,7 +139,6 @@ module PageObject
           element = browser.execute_script("return document.activeElement")
           type = element.type.to_sym if element.tag_name.to_sym == :input
           cls = ::PageObject::Elements.element_class_for(element.tag_name, type)
-          # cls.new(element, :platform => :watir_webdriver)
           cls.new(element, :platform => self.class::PLATFORM_NAME)
         end
 
