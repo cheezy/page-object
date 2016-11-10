@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'watir', '~> 6.0'
   s.add_dependency 'selenium-webdriver', '~> 3.0'
   s.add_dependency 'page_navigation', '~> 0.9'
-  s.add_dependency 'net-http-persistent', '~> 2.9'
+  s.add_dependency 'net-http-persistent', '~> 3.0'
 
   s.add_development_dependency 'rspec', '~>3.0'
   s.add_development_dependency 'cucumber', '~>2.0'
