@@ -4,6 +4,9 @@ Version 1.2.1
   * Support for Selenium 3 (Thanks Titus Fortner)
   * Added new generated method for Image - (name)_loaded? (Thanks joesho112358)
   * Added CSS support for Watir (Thanks Titus Fortner)
+  * Added two new methods that check without throwing exception
+        - check_visible
+        - check_exists
 
 Version 1.2.0 / 2016-6-15
 * Enhancements

@@ -172,6 +172,18 @@ describe "Element" do
       element.when_present(42)
     end
 
+    it 'should check if the element is visible' do
+      expect(native).to receive(:present?).and_return(false)
+      expect(native).to receive(:present?).and_return(true)
+      expect(element.check_visible).to be true
+    end
+
+    it 'should check if the element exists' do
+      expect(native).to receive(:exists?).twice.and_return(false)
+      expect(native).to receive(:exists?).and_return(true)
+      expect(element.check_exists).to be true
+    end
+
     it "should send keys" do
       expect(native).to receive(:send_keys).with('foo bar')
       element.send_keys('foo bar')
