@@ -16,7 +16,7 @@ Feature: Elements
     When I check a disabled button
     Then it should know it is not enabled
     And it should know that it is disabled
-    
+
   Scenario: Setting focus and finding the element with focus
     When I set the focus to the test text_field
     Then I should know that the text_field has the focus
@@ -265,12 +265,12 @@ Feature: Elements
   Scenario: Firing an event
     When I set the focus to the test text_field using the onfocus event
     Then I should see the onfocus text "changed by onfocus event"
-    
+
   Scenario: Hovering over an element
     Given I am on the hover page
     When I hover over the hello link
     Then the font size should be "20px"
-    
+
   Scenario: Setting focus on an element
     When I set the focus on the test text_field
     Then I should see the onfocus text "changed by onfocus event"
@@ -283,7 +283,7 @@ Feature: Elements
   Scenario: Flashing an element
     When I retrieve a button element
     Then I should be able to flash it
-    
+
   Scenario: Getting an element's id
     When I retrieve a button element
     Then I should know its id is "button_id"
@@ -304,7 +304,7 @@ Feature: Elements
     Then I should know it exists
     And I should know it is visible
     And I should know the text is "found using data-entity"
-    
+
 
   Scenario: Accessing an HTML 5 element using the declaration
     When I retrieve the figure using the declaration
@@ -341,3 +341,8 @@ Feature: Elements
     When I retrieve a button element
     Then the element centre should be greater than element y position
     And the element centre should be greater than element x position
+
+  @watir_only
+  Scenario: Drag and Drop on an element
+    When I drag and drop an image on a text field
+    Then the text field should contain the image url
