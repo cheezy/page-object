@@ -243,7 +243,7 @@ describe PageObject::Accessors do
 
     it "should default elements tag to element" do
       mock_driver_for :elements
-      expect(watir_browser).to receive(:map).and_return([], [])
+      expect(watir_browser).to receive(:map)
       page.button2_elements.to_a
     end
   end

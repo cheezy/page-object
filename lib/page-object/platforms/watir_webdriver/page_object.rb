@@ -946,9 +946,7 @@ module PageObject
         # See PageObject::Accessors#element
         #
         def element_for(tag, identifier)
-          the_call = "#{tag.to_s}(identifier)"
-          the_call << ".to_subtype" if tag.to_s == 'element'
-          find_watir_element(the_call, Elements::Element, identifier, tag.to_s)
+          find_watir_element("#{tag.to_s}(identifier)", Elements::Element, identifier, tag.to_s)
         end
 
         #
@@ -956,9 +954,7 @@ module PageObject
         # See PageObject::Accessors#element
         #
         def elements_for(tag, identifier)
-          the_call = "#{tag.to_s}s(identifier)"
-          the_call << ".to_subtype" if tag.to_s == 'element'
-          find_watir_elements(the_call, Elements::Element, identifier, tag.to_s)
+          find_watir_elements("#{tag.to_s}s(identifier)", Elements::Element, identifier, tag.to_s)
         end
 
         #
@@ -1042,7 +1038,6 @@ module PageObject
         def find_watir_elements(the_call, type, identifier, tag_name=nil)
           identifier, frame_identifiers = parse_identifiers(identifier, type, tag_name)
           elements = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
-          elements.map(&:to_subtype)
           switch_to_default_content(frame_identifiers)
           elements.map { |element| type.new(element, :platform => self.class::PLATFORM_NAME) }
         end
@@ -1050,7 +1045,6 @@ module PageObject
         def find_watir_element(the_call, type, identifier, tag_name=nil)
           identifier, frame_identifiers = parse_identifiers(identifier, type, tag_name)
           element = @browser.instance_eval "#{nested_frames(frame_identifiers)}#{the_call}"
-          element = element.to_subtype if element.exists?
           switch_to_default_content(frame_identifiers)
           type.new(element, :platform => self.class::PLATFORM_NAME)
         end
