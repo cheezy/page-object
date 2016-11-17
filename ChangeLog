@@ -1,3 +1,7 @@
+Version 1.2.2 / 2016-11-17
+* Fixes
+  * Fixed a bug that was introduced in the latest release
+
 Version 1.2.1 / 2016-11-11
 * Enhancements
   * Added numerous missing element types
