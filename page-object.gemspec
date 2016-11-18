@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(pkg|spec|features|coverage)/}) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'watir-webdriver', ['>= 0.6.11', '< 0.9.9']
-  s.add_dependency 'selenium-webdriver', '>= 2.53.0'
+  s.add_dependency 'watir', '~> 6.0'
+  s.add_dependency 'selenium-webdriver', '~> 3.0'
   s.add_dependency 'page_navigation', '>= 0.9'
   s.add_dependency 'net-http-persistent', '~> 2.9.4'
 

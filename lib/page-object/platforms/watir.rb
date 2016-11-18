@@ -7,7 +7,7 @@ module PageObject
       end
 
       def self.is_for?(browser)
-        require 'watir-webdriver'
+        require 'watir'
         browser.is_a?(::Watir::Browser) || browser.is_a?(::Watir::HTMLElement)
       end
 
@@ -17,7 +17,7 @@ module PageObject
       end
 
       def self.root_element_for root
-        Elements::Element.new root, :platform => :watir_webdriver if root.is_a? ::Watir::HTMLElement
+        Elements::Element.new root, :platform => :watir if root.is_a? ::Watir::HTMLElement
       end
 
       def self.browser_root_for browser
@@ -27,4 +27,4 @@ module PageObject
   end
 end
 
-PageObject::Platforms.register(:watir_webdriver, PageObject::Platforms::WatirWebDriver)
+PageObject::Platforms.register(:watir, PageObject::Platforms::WatirWebDriver)

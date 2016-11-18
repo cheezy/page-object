@@ -113,7 +113,11 @@ When(/^I search using the index which is not on another indexed property$/) do
 end
 
 Then(/^I should see that the element doesn't exist for that index/) do
-  expect { page.other_table[@index].text_table_element.text }.to raise_error /unable to locate element|Selenium::WebDriver::Error::NoSuchElementError/
+  if page.platform.class == PageObject::Platforms::SeleniumWebDriver::PageObject
+    expect { page.other_table[@index].text_table_element.text }.to raise_error Selenium::WebDriver::Error::NoSuchElementError
+  else
+    expect { page.other_table[@index].text_table_element.text }.to raise_error Watir::Exception::UnknownObjectException
+  end
 end
 
 When(/^I search for an element by an index on an indexed property$/) do
