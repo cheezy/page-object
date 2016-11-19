@@ -164,7 +164,7 @@ module PageObject
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
         def when_present(timeout=::PageObject.default_element_wait)
-          element.wait_until_present(timeout)
+          element.wait_until(timeout: timeout, message: "Element not present in #{timeout} seconds",  &:present?)
           self
         end
 
@@ -175,7 +175,7 @@ module PageObject
         # timing out
         #
         def when_not_present(timeout=::PageObject.default_element_wait)
-          element.wait_while_present(timeout)
+          element.wait_while(timeout: timeout, message: "Element still present in #{timeout} seconds", &:present?)
         end
 
         #
@@ -184,9 +184,7 @@ module PageObject
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
         def when_visible(timeout=::PageObject.default_element_wait)
-          Object::Watir::Wait.until(timeout, "Element was not visible in #{timeout} seconds") do
-            visible?
-          end
+          element.wait_until(timeout: timeout, message: "Element not visible in #{timeout} seconds", &:visible?)
           self
         end
 
@@ -196,10 +194,7 @@ module PageObject
         # @param [Integer] (defaults to: 5) seconds to wait before timing out
         #
         def when_not_visible(timeout=::PageObject.default_element_wait)
-          Object::Watir::Wait.while(timeout, "Element still visible after #{timeout} seconds") do
-            visible?
-          end
-          self
+            element.wait_while(timeout: timeout, message: "Element still visible after #{timeout} seconds", &:visible?)
         end
 
         #
@@ -210,7 +205,7 @@ module PageObject
         # @param the block to execute when the event occurs
         #
         def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
-          Object::Watir::Wait.until(timeout, message, &block)
+          Object::Watir::Wait.until(timeout: timeout, message: message, &block)
         end
         
         #

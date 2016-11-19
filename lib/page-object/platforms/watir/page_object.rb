@@ -69,7 +69,7 @@ module PageObject
         # platform method to wait for a block to return true
         # See PageObject#wait_until
         def wait_until(timeout, message = nil, &block)
-          @browser.wait_until(timeout, message, &block)
+          @browser.wait_until(timeout: timeout, message: message, &block)
         end
 
         #
