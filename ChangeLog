@@ -1,6 +1,6 @@
 Version 2.0.0
 * Enhancements
-  * Updated to use Watir 6 instead of Watir-Webdriver
+  * Updated to use Watir 6 instead of Watir-Webdriver (Thanks Robert MacCracken)
 
 Version 1.2.2 / 2016-11-17
 * Fixes
