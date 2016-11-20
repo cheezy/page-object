@@ -170,6 +170,18 @@ describe "Element for Selenium" do
     @selenium_element.focus
   end
 
+  it "should know when it is focused" do
+    expect(@selenium_driver).to receive(:instance_variable_get).and_return(@selenium_driver)
+    expect(@selenium_driver).to receive(:active_element).and_return(@selenium_driver)
+    expect(@selenium_element.focused?).to be true
+  end
+
+  it "should know when it is not focused" do
+    expect(@selenium_driver).to receive(:instance_variable_get).and_return(@selenium_driver)
+    expect(@selenium_driver).to receive(:active_element).and_return(false)
+    expect(@selenium_element.focused?).to be false
+  end
+
   it "should scroll into view" do
     expect(@selenium_driver).to receive(:location_once_scrolled_into_view)
     @selenium_element.scroll_into_view

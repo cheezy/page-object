@@ -186,6 +186,22 @@ When /^I set the focus to the test text_field$/ do
   @page.text_field_element(:id => 'onfocus_text_field').focus
 end
 
+When /^I set the focus off the test text_field$/ do
+  @page.text_field_unfocus_element.focus
+end
+
+When /^I retrieve the focus state of the text_field$/ do
+  @focused_state = @page.text_field_onfocus_element.focused?
+end
+
+When /^I should know that the text_field is focused$/ do
+  @focused_state.should be true
+end
+
+When /^I should know that the text_field is not focused$/ do
+  @focused_state.should be false
+end
+
 When /^I retrieve the label element$/ do
   @element = @page.label_id_element
 end

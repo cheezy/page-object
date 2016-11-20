@@ -157,6 +157,13 @@ module PageObject
         end
 
         #
+        # return true if an element is focused
+        #
+        def focused?
+          element == bridge.active_element
+        end
+
+        #
         # Select the provided text
         #
         def select_text(text)
@@ -320,7 +327,7 @@ module PageObject
         private
 
         def bridge
-          bridge = element.instance_variable_get(:@bridge)
+          element.instance_variable_get(:@bridge)
         end
       end
     end
