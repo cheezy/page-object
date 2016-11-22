@@ -218,13 +218,13 @@ describe PageObject do
       end
 
       it "should wait until a block returns true" do
-        expect(watir_browser).to receive(:wait_until).with(5, "too long")
+        expect(watir_browser).to receive(:wait_until).with(timeout: 5, message: "too long")
         watir_page_object.wait_until(5, "too long")
       end
 
       it "should use the overriden timeout value when set" do
         PageObject.default_page_wait = 10
-        expect(watir_browser).to receive(:wait_until).with(10, nil)
+        expect(watir_browser).to receive(:wait_until).with(timeout: 10, message: nil)
         watir_page_object.wait_until
       end
 

@@ -168,7 +168,7 @@ describe "Element" do
     end
 
     it "should wait until present" do
-      expect(native).to receive(:wait_until_present).with(42)
+      expect(native).to receive(:wait_until).with(timeout: 42, message: "Element not present in 42 seconds")
       element.when_present(42)
     end
 
