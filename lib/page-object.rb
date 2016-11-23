@@ -10,9 +10,9 @@ require 'page-object/indexed_properties'
 require 'page-object/section_collection'
 require 'page-object/widgets'
 
-require 'watir-webdriver'
-require 'page-object/platforms/watir_webdriver/element'
-require 'page-object/platforms/watir_webdriver/page_object'
+require 'watir'
+require 'page-object/platforms/watir/element'
+require 'page-object/platforms/watir/page_object'
 require 'page-object/platforms/selenium_webdriver/element'
 require 'page-object/platforms/selenium_webdriver/page_object'
 

@@ -80,7 +80,7 @@ describe "Element" do
   context "interaction with native element" do
     let(:wd) { double('') }
     let(:native) { double(wd: wd) }
-    let(:element) { PageObject::Elements::Element.new(native, :platform => :watir_webdriver) }
+    let(:element) { PageObject::Elements::Element.new(native, :platform => :watir) }
 
     it "should check if native is enabled" do
       expect(native).to receive(:enabled?).and_return(true)
@@ -178,8 +178,20 @@ describe "Element" do
     end
 
     it "should wait until present" do
-      expect(native).to receive(:wait_until_present).with(42)
+      expect(native).to receive(:wait_until).with(timeout: 42, message: "Element not present in 42 seconds")
       element.when_present(42)
+    end
+
+    it 'should check if the element is visible' do
+      expect(native).to receive(:present?).and_return(false)
+      expect(native).to receive(:present?).and_return(true)
+      expect(element.check_visible).to be true
+    end
+
+    it 'should check if the element exists' do
+      expect(native).to receive(:exists?).twice.and_return(false)
+      expect(native).to receive(:exists?).and_return(true)
+      expect(element.check_exists).to be true
     end
 
     it "should send keys" do

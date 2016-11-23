@@ -2,6 +2,19 @@
 $:.push File.expand_path("../lib", __FILE__)
 require "page-object/version"
 
+message =
+"""
+This version of the gem moves to using the new Watir gem and away from
+using Watir Webdriver. You will need to update you Gemfile to use `watir`
+instead of `watir-webdriver` and update any `require` statements in your
+code.
+
+This is an important move as Watir Webdriver will not be supported any
+longer. All new development has been moved to Watir.  There are also
+significant benefits to this move.  See the Watir site at
+https://watir.github.io for more details.
+"""
+
 Gem::Specification.new do |s|
   s.name = "page-object"
   s.version = PageObject::VERSION
@@ -16,7 +29,10 @@ Gem::Specification.new do |s|
   s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(pkg|spec|features|coverage)/}) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'watir-webdriver', '>= 0.6.11'
+  s.post_install_message = message
+
+  s.add_dependency 'watir', '~> 6.0'
+  s.add_dependency 'selenium-webdriver', '~> 3.0'
   s.add_dependency 'page_navigation', '>= 0.9'
   s.add_dependency 'net-http-persistent', '~> 2.9.4'
 

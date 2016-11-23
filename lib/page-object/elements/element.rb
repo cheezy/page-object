@@ -70,6 +70,23 @@ module PageObject
             downcase}s"
       end
 
+      #
+      # Keeps checking until the element is visible
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      #
+      def check_visible(timeout=::PageObject.default_element_wait)
+        timed_loop(timeout) do |element|
+          element.visible?
+        end
+      end
+
+      def check_exists(timeout=::PageObject.default_element_wait)
+        timed_loop(timeout) do |element|
+          element.exists?
+        end
+      end
+
       # @private
       def self.watir_identifier_for identifier
         if should_build_watir_xpath(identifier)
@@ -245,6 +262,15 @@ module PageObject
 
       private
 
+      def timed_loop(timeout)
+        end_time = ::Time.now + timeout
+        until ::Time.now > end_time
+          result = yield(self)
+          return result if result
+          sleep 0.5
+        end
+        false
+      end
 
       def constantize_classname name
         name.split("::").inject(Object) { |k,n| k.const_get(n) }

@@ -1,6 +1,6 @@
 require 'page-object/elements'
 require 'page-object/platforms/selenium_webdriver/page_object'
-require 'page-object/platforms/watir_webdriver/page_object'
+require 'page-object/platforms/watir/page_object'
 
 module PageObject
   module Widgets

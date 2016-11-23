@@ -1,9 +1,25 @@
-Version 1.2.1
+Version 2.0.0
+* Enhancements
+  * Updated to use Watir 6 instead of Watir-Webdriver (Thanks Robert MacCracken)
+        This change requires updates to your project.  You will need to update your
+        Gemfile to use 'watir' instead of 'watir-webdriver' and you will need to
+        update any require statement you might have.  Also, Watir 6 is more strick
+        with text_field and text_area.  You will have to use the proper one or it
+        will not locate the element.
+
+Version 1.2.2 / 2016-11-17
+* Fixes
+  * Fixed a bug that was introduced in the latest release
+
+Version 1.2.1 / 2016-11-11
 * Enhancements
   * Added numerous missing element types
   * Support for Selenium 3 (Thanks Titus Fortner)
   * Added new generated method for Image - (name)_loaded? (Thanks joesho112358)
   * Added CSS support for Watir (Thanks Titus Fortner)
+  * Added two new methods that check without throwing exception
+        - check_visible
+        - check_exists
 
 Version 1.2.0 / 2016-6-15
 * Enhancements

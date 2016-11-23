@@ -8,7 +8,6 @@ Feature: Handling frames
     Then I should verify "page-object" is in the text field for frame 2 using "name"
     When I type "page-object" into the text field for frame 2 using "index"
     Then I should verify "page-object" is in the text field for frame 2 using "index"
-    #And I should be able to get the text fields text from frame 2 using "index"
 
 @watir_only    
   Scenario: Accessing elements within the frame using Regexp
