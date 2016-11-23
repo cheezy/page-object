@@ -1,5 +1,6 @@
-Version 2.0.0
+Version 2.0.0 / 2016-11-22
 * Enhancements
+  * Added focused? method on element. (Thanks Joe Schulte)
   * Updated to use Watir 6 instead of Watir-Webdriver (Thanks Robert MacCracken)
         This change requires updates to your project.  You will need to update your
         Gemfile to use 'watir' instead of 'watir-webdriver' and you will need to
