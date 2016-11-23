@@ -11,13 +11,6 @@ describe PageObject::Elements::OrderedList do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
-        key, value = ol.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do
@@ -43,30 +36,6 @@ describe PageObject::Elements::OrderedList do
 
       it "should iterate over the list items" do
         ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :watir)
-        expect(ol).to receive(:items).and_return(5)
-        allow(ol).to receive(:[])
-        count = 0
-        ol.each { |item| count += 1 }
-        expect(count).to eql 5
-      end
-    end
-
-    context "for selenium" do
-      it "should return a list item when indexed" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
-        expect(ol_element).to receive(:find_elements).
-                               and_return([ol_element, ol_element])
-        ol[1]
-      end
-
-      it "should know how many list items it contains" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
-        expect(ol_element).to receive(:find_elements).and_return([ol_element])
-        expect(ol.items).to eql 1
-      end
-
-      it "should iterate over the list items" do
-        ol = PageObject::Elements::OrderedList.new(ol_element, :platform => :selenium_webdriver)
         expect(ol).to receive(:items).and_return(5)
         allow(ol).to receive(:[])
         count = 0

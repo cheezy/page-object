@@ -13,7 +13,6 @@ Feature: Gxt Table Extension
     When I retrieve a GxtTable widget
     Then I should know it is visible
 
-  @watir_only
   Scenario: Determine if a GxtTable exists
     When I retrieve a GxtTable widget
     Then I should know it exists

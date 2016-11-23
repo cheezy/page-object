@@ -11,12 +11,6 @@ describe PageObject::Elements::CheckBox do
         expect(identifier.keys.first).to eql t
       end
     end
-    it "should map selenium types to same" do
-      [:class, :id, :name, :xpath, :index, :value].each do |t|
-        key, value = checkbox.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
   
   describe "interface" do
@@ -25,25 +19,6 @@ describe PageObject::Elements::CheckBox do
 
     it "should register with type :checkbox" do
       expect(::PageObject::Elements.element_class_for(:input, :checkbox)).to eql ::PageObject::Elements::CheckBox
-    end
-    
-    context "for selenium" do
-      it "should check" do
-        expect(check_box).to receive(:click)
-        expect(check_box).to receive(:selected?).and_return(false)
-        selenium_cb.check
-      end
-
-      it "should uncheck" do
-        expect(check_box).to receive(:click)
-        expect(check_box).to receive(:selected?).and_return(true)
-        selenium_cb.uncheck
-      end
-      
-      it "should know if it is checked" do
-        expect(check_box).to receive(:selected?).and_return(true)
-        expect(selenium_cb).to be_checked
-      end
     end
   end
 end

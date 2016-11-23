@@ -53,17 +53,6 @@ describe "Widget PageObject Extensions" do
         expect(element).to be_instance_of GxtTable
       end
     end
-
-    context "when using Selenium" do
-      let(:selenium_browser) { mock_selenium_browser }
-      let(:selenium_page_object) { WidgetTestPageObject.new(selenium_browser) }
-
-      it "should find a gxt_table element" do
-        expect(selenium_browser).to receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
-        element = selenium_page_object.gxt_table_element(:id => 'blah')
-        expect(element).to be_instance_of GxtTable
-      end
-    end
   end
 
   describe "Widget Accessors" do
@@ -169,28 +158,6 @@ describe "Widget PageObject Extensions" do
           expect(watir_table.rows).to eql 2
         end
       end
-
-      context "for selenium" do
-        let(:selenium_table) { GxtTable.new(gxt_table_element, :platform => :selenium_webdriver) }
-
-        it "should return a table row when indexed" do
-          expect(gxt_table_element).to receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
-          expect(selenium_table[1]).to be_instance_of PageObject::Elements::TableRow
-        end
-
-        it "should return the number of rows" do
-          expect(gxt_table_element).to receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
-          expect(gxt_table_element).to receive(:size).and_return(2)
-          expect(selenium_table.rows).to eql 2
-        end
-
-        it "should iterate over the table rows" do
-          expect(selenium_table).to receive(:rows).and_return(2)
-          count = 0
-          selenium_table.each { |e| count += 1 }
-          expect(count).to eql 2
-        end
-      end
     end
   end
 
@@ -206,18 +173,6 @@ describe "Widget PageObject Extensions" do
       it "should find a nested gxt_table" do
         expect(@watir_driver).to receive(:div).and_return(@watir_driver)
         @watir_element.gxt_table_element
-      end
-    end
-
-    context "in Selenium" do
-      before(:each) do
-        @selenium_driver = double('selenium')
-        @selenium_element = PageObject::Elements::Element.new(@selenium_driver, :platform => :selenium_webdriver)
-      end
-
-      it "should find a nested gxt_table" do
-        expect(@selenium_driver).to receive(:find_element).and_return(@selenium_driver)
-        @selenium_element.gxt_table_element
       end
     end
   end

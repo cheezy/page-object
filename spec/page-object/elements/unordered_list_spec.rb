@@ -12,12 +12,6 @@ describe PageObject::Elements::UnorderedList do
       end
     end
 
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
-        key, value = ul.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do
@@ -51,27 +45,5 @@ describe PageObject::Elements::UnorderedList do
       end
     end
 
-    context "for selenium" do
-      it "should return a list item when indexed" do
-        ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
-        expect(ul_element).to receive(:find_elements).and_return([ul_element, ul_element])
-        ul[1]
-      end
-
-      it "should know how many items it contains" do
-        ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
-        expect(ul_element).to receive(:find_elements).and_return([ul_element])
-        expect(ul.items).to eql 1
-      end
-
-      it "should know how to iterate over the items" do
-        ul = PageObject::Elements::UnorderedList.new(ul_element, :platform => :selenium_webdriver)
-        expect(ul).to receive(:items).and_return(5)
-        allow(ul).to receive(:[])
-        count = 0
-        ul.each { |item| count += 1 }
-        expect(count).to eql 5
-      end
-    end
   end
 end

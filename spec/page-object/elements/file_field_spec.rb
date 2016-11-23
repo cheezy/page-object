@@ -12,13 +12,6 @@ describe PageObject::Elements::FileField do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath, :title].each do |t|
-        key, value = filefield.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do
@@ -26,14 +19,6 @@ describe PageObject::Elements::FileField do
 
     it "should register as type :file" do
       expect(::PageObject::Elements.element_class_for(:input, :file)).to eql ::PageObject::Elements::FileField
-    end
-    
-    context "for selenium" do
-      it "should set its' value" do
-        selenium_file_field = PageObject::Elements::FileField.new(filefield, :platform => :selenium_webdriver)
-        expect(filefield).to receive(:send_keys).with('a file')
-        selenium_file_field.value = 'a file'
-      end
     end
   end
 end

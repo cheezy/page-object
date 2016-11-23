@@ -30,25 +30,8 @@ describe PageObject::Accessors do
       end
     end
   end
-  context 'when using selenium' do
-    let(:selenium_browser) { mock_selenium_browser }
-    let(:selenium_page_object) { SectionsPage.new(selenium_browser) }
-
-    it 'it should find a page section' do
-      expect(selenium_browser).to receive(:find_element).with(:id, 'blah').and_return(selenium_browser)
-      section = selenium_page_object.container
-      expect(section).to be_instance_of Container
-    end
-    it 'it should find page sections' do
-      expect(selenium_browser).to receive(:find_elements).with(:class, 'foo').and_return([selenium_browser, selenium_browser])
-      sections = selenium_page_object.containers
-      expect(sections).to be_instance_of(PageObject::SectionCollection)
-      sections.each do |section|
-        expect(section).to be_instance_of(Container)
-      end
-    end
-  end
 end
+
 describe PageObject::SectionCollection do
   ContainedItem = Struct.new(:type, :name)
   let(:section_collection) do

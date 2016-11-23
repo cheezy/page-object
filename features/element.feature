@@ -43,11 +43,9 @@ Feature: Elements
     And I should know the attribute "href" includes "success.html"
     And I should be able to click it
 
-  @watir_only
   Scenario: Link element methods for watir
     When I retrieve a link element
     Then I should know the value is ""
-
 
   Scenario: Button element methods
     When I retrieve a button element
@@ -59,7 +57,6 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  @watir_only
   Scenario: Button element methods for watir
     When I retrieve a button element
     Then I should know the text is "Click Me"
@@ -85,15 +82,9 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  @watir_only
   Scenario: Div element methods for watir
     When I retrieve the div element
     Then I should know the value is ""
-
-  @selenium_only
-  Scenario: Div element methods for selenium
-    When I retrieve the div element
-    Then I should know the value is nil
 
   Scenario: Radio Button element methods
     When I retrieve a radio button
@@ -126,16 +117,10 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  @watir_only
   Scenario: Table element methods in watir
     When I retrieve a table element
     Then I should know it exists
     And I should know the value is ""
-
-  @selenium_only
-  Scenario: Table element methods in selenium
-    When I retrieve a table element
-    Then I should know the value is nil
 
   Scenario: Table Cell element methods
     When I retrieve table cell
@@ -147,15 +132,9 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  @watir_only
   Scenario: Table Cell element methods in watir
     When I retrieve table cell
     Then I should know the value is ""
-
-  @selenium_only
-  Scenario: Table Cell element methods in selenium
-    When I retrieve table cell
-    Then I should know the value is nil
 
   Scenario: Text Field element methods
     When I retrieve a text field
@@ -189,15 +168,9 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  @watir_only
   Scenario: Image element methods in watir
     When I get the image element
     Then I should know the value is ""
-
-  @selenium_only
-  Scenario: Image element methods in selenium
-    When I get the image element
-    Then I should know the value is nil
 
   Scenario: Hidden Field element methods
     When I retrieve the hidden field element
@@ -218,15 +191,9 @@ Feature: Elements
     And I should know the tag name is "form"
     And I should know the attribute "readonly" is false
 
-  @watir_only
   Scenario: Form element methods in watir
     When I locate the form
     Then I should know the value is ""
-
-  @selenium_only
-  Scenario: Form element methods in selenium
-    When I locate the form
-    Then I should know the value is nil
 
   Scenario: List item element methods
     When I retrieve a list item element
@@ -308,13 +275,11 @@ Feature: Elements
     And I scroll the heading element into view
     Then the heading element should be visible
 
-  @watir_only
   Scenario: Expanding how we find elements to include non-standard locators
     When I retrieve a div using data-entity
     Then I should know it exists
     And I should know it is visible
     And I should know the text is "found using data-entity"
-    
 
   Scenario: Accessing an HTML 5 element using the declaration
     When I retrieve the figure using the declaration

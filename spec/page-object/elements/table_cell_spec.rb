@@ -14,7 +14,7 @@ describe PageObject::Elements::TableCell do
 
     it "should always be enabled" do
       table_cell_element = double('table_cell_element')
-      table_cell = PageObject::Elements::TableCell.new(table_cell_element, :platform => :selenium_webdriver)
+      table_cell = PageObject::Elements::TableCell.new(table_cell_element, :platform => :watir)
       expect(table_cell.enabled?).to be true
     end
   end

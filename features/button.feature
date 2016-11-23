@@ -53,7 +53,6 @@ Feature: Button
     | index     |
     | value     |
 
-  @watir_only
   Scenario Outline: Locating buttons on Watir only
     When I search for the button by "<search_by>"
     Then I should be able to click the button
@@ -62,7 +61,6 @@ Feature: Button
     | search_by |
     | text      |
 
-    @dane
   Scenario Outline: Getting the text from a button
     When I get the text for a button that is a "<tag>"
     Then the text should be "This button is a <tag>"

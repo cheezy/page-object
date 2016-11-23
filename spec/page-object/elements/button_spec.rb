@@ -11,13 +11,6 @@ describe PageObject::Elements::Button do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :value, :xpath, :src, :alt, :css].each do |t|
-        key, value = button.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do
@@ -38,22 +31,5 @@ describe PageObject::Elements::Button do
     it "should register with type :reset" do
       expect(::PageObject::Elements.element_class_for(:input, :reset)).to eql ::PageObject::Elements::Button
     end
-
-    context "for selenium" do
-      it "should return text for a button tag button" do
-        allow(button_element).to receive(:tag_name).and_return('button')
-        allow(button_element).to receive(:text).and_return('button?')
-        button = PageObject::Elements::Button.new(button_element, :platform => :selenium_webdriver)
-        expect(button.text).to eq 'button?'
-      end
-
-      it "should return text for an input tag button" do
-        allow(button_element).to receive(:tag_name).and_return('input')
-        allow(button_element).to receive(:attribute).with('value').and_return('button!')
-        button = PageObject::Elements::Button.new(button_element, :platform => :selenium_webdriver)
-        expect(button.text).to eq 'button!'
-      end
-    end
   end
-
 end

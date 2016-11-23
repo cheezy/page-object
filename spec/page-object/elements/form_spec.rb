@@ -16,13 +16,5 @@ describe PageObject::Elements::Form do
         form.submit
       end
     end
-
-    context "for selenium" do
-      it "should submit a form" do
-        form = PageObject::Elements::Form.new(form_element, :platform => :selenium_webdriver)
-        expect(form_element).to receive(:submit)
-        form.submit
-      end
-    end
   end
 end

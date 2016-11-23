@@ -11,13 +11,6 @@ describe PageObject::Elements::Image do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath, :alt, :src].each do |t|
-        key, value = image.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do
@@ -41,24 +34,6 @@ describe PageObject::Elements::Image do
       it "should know the images height" do
         image = PageObject::Elements::Image.new(image_element, :platform => :watir)
         expect(image_element).to receive(:height).and_return(120)
-        expect(image.height).to eql 120
-      end
-    end
-
-    context "for selenium" do
-      it "should know the images width" do
-        dim = double('dimension')
-        image = PageObject::Elements::Image.new(image_element, :platform => :selenium_webdriver)
-        expect(image_element).to receive(:size).and_return(dim)
-        expect(dim).to receive(:width).and_return(100)
-        expect(image.width).to eql 100
-      end
-
-      it "should know the images height" do
-        dim = double('dimension')
-        image = PageObject::Elements::Image.new(image_element, :platform => :selenium_webdriver)
-        expect(image_element).to receive(:size).and_return(dim)
-        expect(dim).to receive(:height).and_return(120)
         expect(image.height).to eql 120
       end
     end

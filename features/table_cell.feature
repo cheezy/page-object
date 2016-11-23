@@ -21,7 +21,6 @@ Feature: Table Cell
     | text      |
     | css       |
 
-  @watir_only
   Scenario Outline: Locating table cells on the Page with watir
     When I search for the table cell by "<search_by>"
     Then the cell data should be 'Data4'

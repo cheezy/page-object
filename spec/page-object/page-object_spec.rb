@@ -9,9 +9,7 @@ end
 
 describe PageObject do
   let(:watir_browser) { mock_watir_browser }
-  let(:selenium_browser) { mock_selenium_browser }
   let(:watir_page_object) { PageObjectTestPageObject.new(watir_browser) }
-  let(:selenium_page_object) { PageObjectTestPageObject.new(selenium_browser) }
 
   context "setting values on the PageObject module" do
     it "should set the javascript framework" do
@@ -78,12 +76,6 @@ describe PageObject do
   context "when created with a watir browser" do
     it "should include the WatirPageObject module" do
       expect(watir_page_object.platform).to be_kind_of PageObject::Platforms::WatirWebDriver::PageObject
-    end
-  end
-
-  context "when created with a selenium browser" do
-    it "should include the SeleniumPageObject module" do
-      expect(selenium_page_object.platform).to be_kind_of PageObject::Platforms::SeleniumWebDriver::PageObject
     end
   end
 
@@ -314,122 +306,5 @@ describe PageObject do
       end
     end
 
-    context "when using SeleniumPageObject" do
-      it "should display the page text" do
-        expect(selenium_browser).to receive_messages(find_element: selenium_browser, text: 'browser text')
-        expect(selenium_page_object.text).to eql "browser text"
-      end
-
-      it "should display the html of the page" do
-        expect(selenium_browser).to receive(:page_source).and_return("<html>Some Sample HTML</html>")
-        expect(selenium_page_object.html).to eql "<html>Some Sample HTML</html>"
-      end
-
-      it "should display the title of the page" do
-        expect(selenium_browser).to receive(:title).and_return("I am the title of a page")
-        expect(selenium_page_object.title).to eql "I am the title of a page"
-      end
-
-      it "should be able to navigate to a page" do
-        expect(selenium_browser).to receive_messages(navigate: selenium_browser, to: 'cheezyworld.com')
-        selenium_page_object.navigate_to('cheezyworld.com')
-      end
-
-      it "should wait until a block returns true" do
-        wait = double('wait')
-        expect(Selenium::WebDriver::Wait).to receive(:new).with({:timeout => 5, :message => 'too long'}).and_return(wait)
-        expect(wait).to receive(:until)
-        selenium_page_object.wait_until(5, 'too long')
-      end
-
-      it "should wait until there are no pending ajax requests" do
-        expect(PageObject::JavascriptFrameworkFacade).to receive(:pending_requests).and_return('pending requests')
-        expect(selenium_browser).to receive(:execute_script).with('pending requests').and_return(0)
-        selenium_page_object.wait_for_ajax
-      end
-
-      it "should override alert popup behavior" do
-        expect(selenium_browser).to receive(:switch_to).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:alert).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:text)
-        expect(selenium_browser).to receive(:accept)
-        selenium_page_object.alert do
-        end
-      end
-
-      it "should override confirm popup behavior" do
-        expect(selenium_browser).to receive(:switch_to).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:alert).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:text)
-        expect(selenium_browser).to receive(:accept)
-        selenium_page_object.confirm(true) do
-        end
-      end
-      it "should override prompt popup behavior" do
-        expect(selenium_browser).to receive(:execute_script).twice
-        selenium_page_object.prompt("blah") do
-        end
-      end
-
-      it "should convert a modal popup to a window" do
-        expect(selenium_browser).to receive(:execute_script)
-        selenium_page_object.modal_dialog {}
-      end
-
-      it "should execute javascript on the browser" do
-        expect(selenium_browser).to receive(:execute_script).and_return("abc")
-        expect(selenium_page_object.execute_script("333")).to eql "abc"
-      end
-
-      it "should switch to a new window with a given title" do
-        expect(selenium_browser).to receive(:window_handles).and_return(["win1"])
-        expect(selenium_browser).to receive(:switch_to).twice.and_return(selenium_browser)
-        expect(selenium_browser).to receive(:window).twice.with("win1").and_return(selenium_browser)
-        expect(selenium_browser).to receive(:title).and_return("My Title")
-        selenium_page_object.attach_to_window(:title => "My Title")
-      end
-
-      it "should switch to a new window with a given url" do
-        expect(selenium_browser).to receive(:window_handles).and_return(["win1"])
-        expect(selenium_browser).to receive(:switch_to).twice.and_return(selenium_browser)
-        expect(selenium_browser).to receive(:window).twice.with("win1").and_return(selenium_browser)
-        expect(selenium_browser).to receive(:current_url).and_return("page.html")
-        selenium_page_object.attach_to_window(:url => "page.html")
-      end
-
-      it "should refresh the page contents" do
-        expect(selenium_browser).to receive(:navigate).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:refresh)
-        selenium_page_object.refresh
-      end
-
-      it "should know how to go back" do
-        expect(selenium_browser).to receive(:navigate).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:back)
-        selenium_page_object.back
-      end
-
-      it "should know how to go forward" do
-        expect(selenium_browser).to receive(:navigate).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:forward)
-        selenium_page_object.forward
-      end
-
-      it "should know its' current url" do
-        expect(selenium_browser).to receive(:current_url).and_return("cheezyworld.com")
-        expect(selenium_page_object.current_url).to eql "cheezyworld.com"
-      end
-
-      it "should clear all of the cookies from the browser" do
-        expect(selenium_browser).to receive(:manage).and_return(selenium_browser)
-        expect(selenium_browser).to receive(:delete_all_cookies)
-        selenium_page_object.clear_cookies
-      end
-
-      it "should be able to save a screenshot" do
-        expect(selenium_browser).to receive(:save_screenshot)
-        selenium_page_object.save_screenshot("test.png")
-      end
-    end
   end
 end

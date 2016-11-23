@@ -9,13 +9,11 @@ Feature: Handling frames
     When I type "page-object" into the text field for frame 2 using "index"
     Then I should verify "page-object" is in the text field for frame 2 using "index"
 
-@watir_only    
   Scenario: Accessing elements within the frame using Regexp
     Given I am on the frame elements page
     When I type "page-object" into the text field for frame 2 using "regex"
     Then I should verify "page-object" is in the text field for frame 2 using "regex"
 
-@watir_only    
   Scenario: Accessing elements within the frame using multiple identifiers
     Given I am on the iframe elements page
     When I type "page-object" into the text field for frame 2 using "multiple identifiers"

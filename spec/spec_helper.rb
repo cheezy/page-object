@@ -22,14 +22,6 @@ def mock_watir_browser
 end
 
 
-def mock_selenium_browser
-  selenium_browser = double('selenium')
-  allow(selenium_browser).to receive(:is_a?).with(anything).and_return(false)
-  allow(selenium_browser).to receive(:is_a?).with(Selenium::WebDriver::Driver).and_return(true)
-  selenium_browser
-end
-
-
 def mock_adapter(browser, page_object)
   adapter = double('adapter')
   allow(adapter).to receive(:is_for?).with(anything()).and_return false

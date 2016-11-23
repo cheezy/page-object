@@ -104,7 +104,6 @@ Feature: Table
     When I retrieve a table element while the script is executing
     And the data for row "2" should be "Data1" and "Data2"
 
-  @watir_only
   Scenario: Finding an existing table
     Then I should see that the table exists
 

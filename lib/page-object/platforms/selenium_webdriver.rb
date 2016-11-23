@@ -3,7 +3,8 @@ module PageObject
     module SeleniumWebDriver
 
       def self.create_page_object(browser)
-        SeleniumWebDriver::PageObject.new(browser)
+        browser = Watir::Browser.new(browser) if browser.is_a?(Selenium::WebDriver::Driver)
+        WatirWebDriver::PageObject.new(browser)
       end
 
       def self.is_for?(browser)
@@ -12,8 +13,12 @@ module PageObject
       end
 
       def self.browser_for root
-        return root if root.is_a?(::Selenium::WebDriver::Driver)
-        Selenium::WebDriver::Driver.new(root.send(:bridge))
+        watir_browser_for(root).browser
+      end
+
+      def self.watir_browser_for(root)
+        return Watir::Browser.new(root) if root.is_a?(::Selenium::WebDriver::Driver)
+        Watir::Browser.new(Selenium::WebDriver::Driver.new(root.send(:bridge)))
       end
 
       def self.root_element_for root

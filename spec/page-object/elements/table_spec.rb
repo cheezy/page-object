@@ -10,12 +10,6 @@ describe PageObject::Elements::Table do
       end
     end
 
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
-        key, value = PageObject::Elements::Table.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do
@@ -63,36 +57,5 @@ describe PageObject::Elements::Table do
       end
     end
 
-    context "for selenium" do
-      let(:selenium_table) { PageObject::Elements::Table.new(table_element, :platform => :selenium_webdriver) }
-      
-      it "should return a table row when indexed" do
-        expect(table_element).to receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
-        expect(selenium_table[1]).to be_instance_of PageObject::Elements::TableRow
-      end
-
-      it "should return the first row" do
-        allow(table_element).to receive(:[]).with(0).and_return(table_element)
-        expect(selenium_table.first_row).to be_instance_of PageObject::Elements::TableRow
-      end
-
-      it "shoudl return the last row" do
-        allow(table_element).to receive(:[]).with(-1).and_return(table_element)
-        expect(selenium_table.last_row).to be_instance_of PageObject::Elements::TableRow
-      end
-
-      it "should return the number of rows" do
-        expect(table_element).to receive(:find_elements).with(:xpath, ".//child::tr").and_return(table_element)
-        expect(table_element).to receive(:size).and_return(2)
-        expect(selenium_table.rows).to eql 2
-      end
-
-      it "should iterate over the table rows" do
-        allow(selenium_table).to receive(:rows).and_return(2)
-        count = 0
-        selenium_table.each { |e| count += 1 }
-        expect(count).to eql 2
-      end
-    end
   end
 end
