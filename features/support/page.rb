@@ -22,6 +22,8 @@ class Page
   text_field(:text_field_data_field, :data_field => 'title')
   text_field(:text_field_class_index, :class => "text_field_class", :index => 0)
   text_field(:text_field_name_index, :name => "text_field_name", :index => 0)
+  text_field(:text_field_onfocus, :id => "onfocus_text_field")
+  text_field(:text_field_unfocus, :id => "unfocus_text_field")
 
   text_area(:text_area_id, :id => "text_area_id")
   text_area(:text_area_class, :class => "text_area_class")

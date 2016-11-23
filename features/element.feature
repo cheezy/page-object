@@ -21,6 +21,16 @@ Feature: Elements
     When I set the focus to the test text_field
     Then I should know that the text_field has the focus
 
+  Scenario: Checking focus of the element with focus
+    And I set the focus to the test text_field
+    When I retrieve the focus state of the text_field
+    Then I should know that the text_field is focused
+
+  Scenario: Checking focus of the element without focus
+    And I set the focus off the test text_field
+    When I retrieve the focus state of the text_field
+    Then I should know that the text_field is not focused
+
   Scenario: Link element methods
     When I retrieve a link element
     Then I should know it exists

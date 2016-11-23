@@ -162,6 +162,16 @@ describe "Element" do
       element.focus
     end
 
+    it "should know if a native is focused" do
+      expect(native).to receive(:focused?).and_return(true)
+      expect(element).to be_focused
+    end
+
+    it "should know if a native is not focused" do
+      expect(native).to receive(:focused?).and_return(false)
+      expect(element).to_not be_focused
+    end
+
     it "should select the native's text" do
       expect(native).to receive(:select_text).with('hello')
       element.select_text('hello')
