@@ -22,4 +22,4 @@ script: bundle exec rake $RAKE_TASK
 env:
   - RAKE_TASK=spec
   - RAKE_TASK=features:watir WATIR_BRANCH=master
-  - RAKE_TASK=features:selenium_webdriver
+  - RAKE_TASK=features:selenium
