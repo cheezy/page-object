@@ -14,21 +14,11 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
 end
 task :spec
 
-namespace :features do
-  Cucumber::Rake::Task.new(:watir, "Run features with Watir") do |t|
-    t.profile = "watir"
-  end
+Cucumber::Rake::Task.new(:features, "Run the cucumber features")
 
-  Cucumber::Rake::Task.new(:selenium, "Run features with Selenium") do |t|
-    t.profile = "selenium_webdriver"
-  end
-
-  desc 'Run all features'
-  task :all => [:watir, :selenium]
-end
 
 desc 'Run all specs and cukes'
-task :test => ['spec', 'features:all']
+task :test => ['spec', 'features']
 
 task :lib do
   $LOAD_PATH.unshift(File.expand_path("lib", File.dirname(__FILE__)))
