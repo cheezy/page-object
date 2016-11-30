@@ -3,7 +3,7 @@ module PageObject
     class HiddenField < Element
 
       def click
-        raise "click is not available on hidden field element with Selenium or Watir"
+        raise "click is not available on the hidden field element"
       end
 
       protected

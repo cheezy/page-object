@@ -60,9 +60,9 @@ module PageObject
     @root_element && @root_element.respond_to?(method) || super
   end
 
-  # @return [Watir::Browser or Selenium::WebDriver::Driver] the platform browser passed to the constructor
+  # @return the platform browser passed to the constructor
   attr_reader :browser
-  # @return [PageObject::WatirPageObject or PageObject::SeleniumPageObject] the platform page object
+  # @return [PageObject::WatirPageObject] the platform page object
   attr_reader :platform
 
   #
@@ -289,10 +289,10 @@ module PageObject
   #   end
   #
   # @param [Hash] identifier how we find the frame.  The valid keys are:
-  #   * :id => Watir and Selenium
-  #   * :index => Watir and Selenium
-  #   * :name => Watir and Selenium
-  #   * :class => Watir only
+  #   * :id
+  #   * :index
+  #   * :name
+  #   * :class
   # @param frame passed from a previous call to in_frame.  Used to nest calls
   # @param block that contains the calls to elements that exist inside the frame.
   #
@@ -310,10 +310,10 @@ module PageObject
   #   end
   #
   # @param [Hash] identifier how we find the iframe.  The valid keys are:
-  #   * :id => Watir and Selenium
-  #   * :index => Watir and Selenium
-  #   * :name => Watir and Selenium
-  #   * :class => Watir only
+  #   * :id
+  #   * :index
+  #   * :name
+  #   * :class
   # @param frame passed from a previous call to in_iframe.  Used to nest calls
   # @param block that contains the calls to elements that exist inside the iframe.
   #
