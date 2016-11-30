@@ -20,6 +20,7 @@ module PageObject
               name = identifier[1]
               how_and_what = identifier[2].clone # Cannot modify the original...
               how_and_what.each do |key, value|
+                next if value.is_a? Regexp # Cannot format Regexp with %
                 if key == :index
                   how_and_what[key] = (value % index).to_i
                 else

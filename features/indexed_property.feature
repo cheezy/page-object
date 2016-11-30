@@ -92,6 +92,16 @@ Feature: Indexed Property
     | 123    |
     | 12test |
 
+  Scenario Outline: Locating indexed element by property via regexp
+    When I search for the elements for index "<index>"
+    And I select the table's indexed radio button by regex
+    Then The table's indexed radio button should be selected
+
+  Examples:
+    | index |
+    | 0     |
+    | 1     |
+
   Scenario: Element on first indexed property but not second
     When I search for an element that is on an indexed property
     And I search for the element on another indexed property it is not on
