@@ -3,9 +3,18 @@ module PageObject
   module Elements
     class RadioButton < Element
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
+      #
+      # select the radiobutton
+      #
+      def select
+        element.set
+      end
+
+      #
+      # return if it is selected
+      #
+      def selected?
+        element.set?
       end
 
       protected

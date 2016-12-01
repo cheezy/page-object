@@ -2,9 +2,25 @@ module PageObject
   module Elements
     class CheckBox < Element
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
+      #
+      # check the checkbox
+      #
+      def check
+        element.set
+      end
+
+      #
+      # uncheck the checkbox
+      #
+      def uncheck
+        element.clear
+      end
+
+      #
+      # return true if checkbox is checked
+      #
+      def checked?
+        element.set?
       end
 
       protected

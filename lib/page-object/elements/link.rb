@@ -3,9 +3,11 @@ module PageObject
   module Elements
     class Link < Element
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
+      #
+      # return the href for the link
+      #
+      def href
+        element.href
       end
 
       protected

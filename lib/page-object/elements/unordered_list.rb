@@ -4,11 +4,6 @@ module PageObject
     class UnorderedList < Element
       include Enumerable
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
-      end
-
       #
       # iterator that yields with a PageObject::Elements::ListItem
       #
@@ -20,6 +15,32 @@ module PageObject
         end
       end
 
+      #
+      # Return the PageObject::Elements::ListItem for the index provided.  Index
+      # is zero based.
+      #
+      # @return [PageObject::Elements::ListItem]
+      #
+      def [](idx)
+        Object::PageObject::Elements::ListItem.new(children[idx], :platform => :watir)
+      end
+
+      #
+      # Return the number of items contained in the unordered list
+      #
+      def items
+        children.size
+      end
+
+      #
+      # Return the ListItem objects that are children of the
+      # UnorderedList
+      #
+      def list_items
+        children.collect do |obj|
+          Object::PageObject::Elements::ListItem.new(obj, :platform => :watir)
+        end
+      end
 
       protected
 
@@ -29,6 +50,10 @@ module PageObject
 
       def self.watir_finders
         [:class, :id, :index, :xpath]
+      end
+
+      def children
+        element.uls(:xpath => child_xpath)
       end
 
     end

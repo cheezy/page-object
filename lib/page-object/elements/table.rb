@@ -3,11 +3,6 @@ module PageObject
     class Table < Element
       include Enumerable
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
-      end
-
       #
       # iterator that yields with a PageObject::Elements::TableRow
       #
@@ -49,6 +44,26 @@ module PageObject
         end
       end
 
+      #
+      # Return the PageObject::Elements::TableRow for the index provided.  Index
+      # is zero based.  If the index provided is a String then it
+      # will be matched with the text from any column. The text can be a substring of the full column text.
+      #
+      # @return [PageObject::Elements::TableRow]
+      #
+      def [](idx)
+        idx = find_index_by_title(idx) if idx.kind_of?(String)
+        return nil unless idx
+        initialize_row(element[idx], :platform => :watir)
+      end
+
+      #
+      # Returns the number of rows in the table.
+      #
+      def rows
+        element.wd.find_elements(:xpath, child_xpath).size
+      end
+
       protected
 
       def child_xpath
@@ -57,6 +72,12 @@ module PageObject
 
       def initialize_row(row_element, platform)
         ::PageObject::Elements::TableRow.new(row_element, platform)
+      end
+
+      def find_index_by_title(row_title)
+        element.rows.find_index do |row|
+          row.cells.any? { |col| col.text.include? row_title }
+        end
       end
 
     end

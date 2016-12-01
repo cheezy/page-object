@@ -3,9 +3,11 @@ module PageObject
   module Elements
     class FileField < Element
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
+      #
+      # Set the value of the FileField
+      #
+      def value=(new_value)
+        element.set(new_value)
       end
 
       protected

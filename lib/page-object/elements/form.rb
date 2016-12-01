@@ -2,9 +2,12 @@
 module PageObject
   module Elements
     class Form < Element
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
+
+      #
+      # Submit the form.
+      #
+      def submit
+        element.submit
       end
 
       protected

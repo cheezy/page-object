@@ -3,13 +3,15 @@ module PageObject
   module Elements
     class TextField < Element
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
-      end
-
       def append(text)
         element.send_keys text
+      end
+
+      #
+      # Set the value of the TextField
+      #
+      def value=(new_value)
+        element.set(new_value)
       end
 
       protected

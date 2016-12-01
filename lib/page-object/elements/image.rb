@@ -1,9 +1,19 @@
 module PageObject
   module Elements
     class Image < Element
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
+
+      #
+      # Return the width of the image.
+      #
+      def width
+        element.width
+      end
+
+      #
+      # Return the height of the image
+      #
+      def height
+        element.height
       end
 
       protected
