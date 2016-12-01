@@ -16,10 +16,6 @@ module PageObject
         super + [:title, :label]
       end
 
-      def self.selenium_finders
-        super + [:title, :label]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:file] = ::PageObject::Elements::FileField

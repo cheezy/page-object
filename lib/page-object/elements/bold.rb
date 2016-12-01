@@ -6,6 +6,5 @@ module PageObject
 
     ::PageObject::Elements.tag_to_class[:b] = ::PageObject::Elements::Bold
 
-    
   end
 end

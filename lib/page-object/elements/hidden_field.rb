@@ -12,9 +12,6 @@ module PageObject
         super + [:text, :value]
       end
 
-      def self.selenium_finders
-        super + [:value]
-      end
     end
 
     ::PageObject::Elements.type_to_class[:hidden] = ::PageObject::Elements::HiddenField

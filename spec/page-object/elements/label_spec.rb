@@ -12,13 +12,6 @@ describe PageObject::Elements::Label do
       end
     end
 
-    it "should map selenium types to same" do
-      [:class, :id, :text, :index, :xpath].each do |t|
-        key, value = label.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
-
     describe "interface" do
       it "should register with tag :label" do
         expect(::PageObject::Elements.element_class_for(:label)).to eql ::PageObject::Elements::Label

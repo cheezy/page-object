@@ -20,10 +20,6 @@ module PageObject
         super + [:title, :value, :text, :label]
       end
 
-      def self.selenium_finders
-        super + [:title, :value, :text, :label]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:text] = ::PageObject::Elements::TextField

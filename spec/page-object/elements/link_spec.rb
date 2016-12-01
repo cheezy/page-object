@@ -11,13 +11,6 @@ describe PageObject::Elements::Link do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :link, :link_text, :name, :xpath, :index, :css, :title].each do |t|
-        key, value = link.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do

@@ -3,14 +3,6 @@ module PageObject
   module Elements
     class TextArea < Element
 
-      def self.watir_finders
-        super + [:label]
-      end
-
-      def self.selenium_finders
-        super + [:label]
-      end
-
       #
       # Set the value of the TextArea
       #
@@ -23,6 +15,12 @@ module PageObject
       #
       def clear
         element.wd.clear
+      end
+
+      protected
+
+      def self.watir_finders
+        super + [:label]
       end
 
     end

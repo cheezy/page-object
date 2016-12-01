@@ -14,10 +14,6 @@ module PageObject
         super + [:text, :value, :src, :alt, :css]
       end
 
-      def self.selenium_finders
-        super + [:value, :src, :alt]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:submit] = ::PageObject::Elements::Button

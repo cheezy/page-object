@@ -12,13 +12,6 @@ describe PageObject::Elements::Div do
       end
     end
 
-    it "should map selenium types to same" do
-      [:class, :id, :text, :index, :name, :xpath, :title, :css].each do |t|
-        key, value = div.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
-
     describe "interface" do
       it "should register with tag :div" do
         expect(::PageObject::Elements.element_class_for(:div)).to eql ::PageObject::Elements::Div

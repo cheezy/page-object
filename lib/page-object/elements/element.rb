@@ -389,18 +389,6 @@ module PageObject
       end
 
       # @private
-      def self.selenium_identifier_for identifier
-        if identifier.length == 1
-          identifier = identifier_for identifier, selenium_finders, selenium_mapping
-          return identifier.keys.first, identifier.values.first
-        elsif identifier.length > 1
-          how = :xpath
-          what = build_xpath_for identifier
-          return how, what
-        end
-      end
-
-      # @private
       # delegate calls to driver element
       def method_missing(*args, &block)
         m = args.shift
@@ -500,14 +488,6 @@ module PageObject
         {}
       end
 
-      def self.selenium_finders
-        [:class, :css, :id, :index, :name, :xpath]
-      end
-
-      def self.selenium_mapping
-        {}
-      end
-
       def include_platform_for platform
         platform_information = PageObject::Platforms.get
         raise ArgumentError,"Expected hash with at least a key :platform for platform information! (#{platform.inspect})" unless platform.class == Hash && platform.has_key?(:platform)
@@ -537,20 +517,6 @@ module PageObject
 
       def constantize_classname name
         name.split("::").inject(Object) { |k,n| k.const_get(n) }
-      end
-
-
-      def get_element_type(class_name = self.class)
-        class_name.name.split('::').last
-      end
-
-      # retrieved from ruby on rails underscore method
-      def get_element_type_underscored(class_name = self.class)
-        get_element_type(class_name).to_s.gsub(/::/, '/').
-         gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-         gsub(/([a-z\d])([A-Z])/,'\1_\2').
-         tr("-", "_").
-         downcase
       end
 
     end

@@ -22,10 +22,6 @@ module PageObject
         super + [:alt, :src]
       end
 
-      def self.selenium_finders
-        super + [:alt, :src, :css]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:img] = ::PageObject::Elements::Image

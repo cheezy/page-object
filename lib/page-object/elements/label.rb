@@ -8,10 +8,6 @@ module PageObject
         super + [:text]
       end
 
-      def self.selenium_finders
-        super + [:text]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:label] = ::PageObject::Elements::Label

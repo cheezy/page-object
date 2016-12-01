@@ -11,13 +11,6 @@ describe PageObject::Elements::TextArea do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :name, :xpath, :index].each do |t|
-        key, value = textarea.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
   
   describe "interface" do

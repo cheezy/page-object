@@ -16,10 +16,6 @@ module PageObject
         super + [:action]
       end
 
-      def self.selenium_finders
-        super + [:action]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:form] = ::PageObject::Elements::Form

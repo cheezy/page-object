@@ -11,13 +11,6 @@ describe PageObject::Elements::HiddenField do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :name, :xpath, :index, :value].each do |t|
-        key, value = hiddenfield.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do

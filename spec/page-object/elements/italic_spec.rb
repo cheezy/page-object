@@ -11,13 +11,6 @@ describe PageObject::Elements::Italic do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
-        key, value = italic.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   describe "interface" do

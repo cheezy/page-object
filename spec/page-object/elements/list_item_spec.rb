@@ -12,13 +12,6 @@ describe PageObject::Elements::ListItem do
       end
     end
 
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :text, :xpath].each do |t|
-        key, value = list_item.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
-
     describe "interface" do
       it "should register as tag_name :li" do
         expect(::PageObject::Elements.element_class_for(:li)).to eql ::PageObject::Elements::ListItem

@@ -11,13 +11,6 @@ describe PageObject::Elements::Span do
         expect(identifier.keys.first).to eql t
       end
     end
-
-    it "should map selenium types to same" do
-      [:class, :id, :index, :name, :text, :title, :xpath].each do |t|
-        key, value = span.selenium_identifier_for t => 'value'
-        expect(key).to eql t
-      end
-    end
   end
 
   it "should register with tag_name :span" do

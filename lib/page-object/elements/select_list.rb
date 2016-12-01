@@ -79,10 +79,6 @@ module PageObject
         super + [:text, :value, :label]
       end
 
-      def self.selenium_finders
-        super + [:label]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:select] = ::PageObject::Elements::SelectList

@@ -23,10 +23,6 @@ module PageObject
         super + [:value, :label]
       end
 
-      def self.selenium_finders
-        super + [:value, :label]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:radio] = ::PageObject::Elements::RadioButton

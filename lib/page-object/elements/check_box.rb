@@ -29,10 +29,6 @@ module PageObject
         super + [:value, :label]
       end
 
-      def self.selenium_finders
-        super + [:value, :label, :css]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:checkbox] = ::PageObject::Elements::CheckBox
