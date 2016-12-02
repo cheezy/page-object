@@ -8,4 +8,15 @@ describe PageObject::Elements::Option do
       expect(::PageObject::Elements.element_class_for(:option)).to eql ::PageObject::Elements::Option
     end
   end
+
+  describe "interacting with the option" do
+    let(:wd) { double('') }
+    let(:native) { double(wd: wd) }
+    let(:element) { PageObject::Elements::Option.new(native, :platform => :watir) }
+
+    it 'should know if it is selected' do
+      expect(native).to receive(:selected?).and_return true
+      expect(element.selected?).to be true
+    end
+  end
 end

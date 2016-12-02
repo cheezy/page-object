@@ -40,6 +40,14 @@ module PageObject
       end
 
       #
+      # return true if the element is stale (no longer attached
+      # to the DOM)
+      #
+      def stale?
+        element.stale?
+      end
+
+      #
       # get the value of the given CSS property
       #
       def style(property = nil)
@@ -121,12 +129,30 @@ module PageObject
       end
 
       #
-      # Get the html for the element
+      # Returns the html for the element
       #
       # @return [String]
       #
       def html
         element.html
+      end
+
+      #
+      # Returns the outer html for the element
+      #
+      # @return [String]
+      #
+      def outer_html
+        element.outer_html
+      end
+
+      #
+      # Returns the inner html for the element
+      #
+      # @return [String]
+      #
+      def inner_html
+        element.inner_html
       end
 
       #

@@ -146,10 +146,25 @@ describe "Element" do
       expect(element.id).to eq('element123')
     end
 
-    it "should inspect the native's id" do
+    it "should scroll the element into view" do
       expect(wd).to receive(:location_once_scrolled_into_view)
       expect(native).to receive(:wd).and_return(wd)
       element.scroll_into_view
+    end
+
+    it 'should return the outer html' do
+      expect(native).to receive(:outer_html).and_return("<div>blah</div>")
+      element.outer_html
+    end
+
+    it 'should return the inner html' do
+      expect(native).to receive(:inner_html).and_return('blah')
+      element.inner_html
+    end
+
+    it 'should know if it is stale' do
+      expect(native).to receive(:stale?).and_return(false)
+      expect(element.stale?).to be false
     end
   end
 end

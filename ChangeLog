@@ -1,7 +1,13 @@
 Version 2.1
 * Enhancements
   * Removed Selenium Platform.
-        Still support Selenium driver by wrapping it with a Watir browser
+        Still support Selenium driver by wrapping it with a Watir browser.
+  * Added the following methods to Element
+    - outer_html
+    - inner_html
+    - stale?
+  * Added the selected? method to Option
+  * Added the append method to TextArea
 
 Version 2.0.0 / 2016-11-22
 * Enhancements

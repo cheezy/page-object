@@ -14,10 +14,8 @@ describe PageObject::Elements::TextArea do
   end
   
   describe "interface" do
-
     it "should register with tag_name :textarea" do
       expect(::PageObject::Elements.element_class_for(:textarea)).to eql ::PageObject::Elements::TextArea
     end
-    
   end
 end

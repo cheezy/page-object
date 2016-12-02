@@ -4,7 +4,7 @@ module PageObject
     class TextField < Element
 
       def append(text)
-        element.send_keys text
+        element.append(text)
       end
 
       #
