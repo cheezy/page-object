@@ -13,6 +13,10 @@ class IndexedPropertyPage
 
   indexed_property :index_table, [[:radio_button, :radio, {:index => '%d'}]]
 
+  indexed_property :index_table_by_regex, [
+      [:radio_button, :radio, {:id => /^table.*radio$/, :index => '%d'}]
+  ]
+
   indexed_property :nottable, [[:text_field, :text_nottable, {:id => 'nottable[%s].text'}]]
 
   indexed_property :other_table, [
@@ -156,6 +160,10 @@ end
 
 And(/^I select the table's indexed radio button$/) do
   page.index_table[@index].select_radio
+end
+
+And(/^I select the table's indexed radio button by regex$/) do
+  page.index_table_by_regex[@index].select_radio
 end
 
 Then(/^The table's indexed radio button should be selected$/) do
