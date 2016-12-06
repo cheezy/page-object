@@ -9,9 +9,13 @@ class IndexedPropertyPage
                             [:button, :button, {:id => 'table[%s].button'}],
                             [:div, :content, {:id => 'table[%s].content'}],
                             [:div, :nil?, {:id => 'table[%s].bad_name'}],
-                         ]
+  ]
 
   indexed_property :index_table, [[:radio_button, :radio, {:index => '%d'}]]
+
+  indexed_property :index_table_by_regex, [
+      [:radio_button, :radio, {:id => /^table.*radio$/, :index => '%d'}]
+  ]
 
   indexed_property :nottable, [[:text_field, :text_nottable, {:id => 'nottable[%s].text'}]]
 
@@ -139,7 +143,7 @@ And(/^I search for a different element with text by index on the indexed propert
 end
 
 Then(/^I should see the contents of both elements$/) do
-  expect(@contents).to eq ['123!','12test!']
+  expect(@contents).to eq ['123!', '12test!']
 end
 
 When(/^I use a name that collides with a ruby method on an indexed property$/) do
@@ -160,4 +164,8 @@ end
 
 Then(/^The table's indexed radio button should be selected$/) do
   expect(page.index_table[@index]).to be_radio_selected
+end
+
+And(/^I select the table's indexed radio button by regex$/) do
+  page.index_table_by_regex[@index].select_radio
 end

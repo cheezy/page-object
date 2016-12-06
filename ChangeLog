@@ -8,6 +8,7 @@ Version 2.1
     - stale?
   * Added the selected? method to Option
   * Added the append method to TextArea
+  * Added ability to locate indexed element by regex (Thanks Sean MacGahan)
 
 Version 2.0.0 / 2016-11-22
 * Enhancements
