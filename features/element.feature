@@ -16,20 +16,10 @@ Feature: Elements
     When I check a disabled button
     Then it should know it is not enabled
     And it should know that it is disabled
-    
+
   Scenario: Setting focus and finding the element with focus
     When I set the focus to the test text_field
     Then I should know that the text_field has the focus
-
-  Scenario: Checking focus of the element with focus
-    And I set the focus to the test text_field
-    When I retrieve the focus state of the text_field
-    Then I should know that the text_field is focused
-
-  Scenario: Checking focus of the element without focus
-    And I set the focus off the test text_field
-    When I retrieve the focus state of the text_field
-    Then I should know that the text_field is not focused
 
   Scenario: Link element methods
     When I retrieve a link element
@@ -43,9 +33,11 @@ Feature: Elements
     And I should know the attribute "href" includes "success.html"
     And I should be able to click it
 
+  @watir_only
   Scenario: Link element methods for watir
     When I retrieve a link element
     Then I should know the value is ""
+
 
   Scenario: Button element methods
     When I retrieve a button element
@@ -57,6 +49,7 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
+  @watir_only
   Scenario: Button element methods for watir
     When I retrieve a button element
     Then I should know the text is "Click Me"
@@ -82,9 +75,15 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
+  @watir_only
   Scenario: Div element methods for watir
     When I retrieve the div element
     Then I should know the value is ""
+
+  @selenium_only
+  Scenario: Div element methods for selenium
+    When I retrieve the div element
+    Then I should know the value is nil
 
   Scenario: Radio Button element methods
     When I retrieve a radio button
@@ -117,10 +116,16 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
+  @watir_only
   Scenario: Table element methods in watir
     When I retrieve a table element
     Then I should know it exists
     And I should know the value is ""
+
+  @selenium_only
+  Scenario: Table element methods in selenium
+    When I retrieve a table element
+    Then I should know the value is nil
 
   Scenario: Table Cell element methods
     When I retrieve table cell
@@ -132,9 +137,15 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
+  @watir_only
   Scenario: Table Cell element methods in watir
     When I retrieve table cell
     Then I should know the value is ""
+
+  @selenium_only
+  Scenario: Table Cell element methods in selenium
+    When I retrieve table cell
+    Then I should know the value is nil
 
   Scenario: Text Field element methods
     When I retrieve a text field
@@ -168,9 +179,15 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
+  @watir_only
   Scenario: Image element methods in watir
     When I get the image element
     Then I should know the value is ""
+
+  @selenium_only
+  Scenario: Image element methods in selenium
+    When I get the image element
+    Then I should know the value is nil
 
   Scenario: Hidden Field element methods
     When I retrieve the hidden field element
@@ -191,9 +208,15 @@ Feature: Elements
     And I should know the tag name is "form"
     And I should know the attribute "readonly" is false
 
+  @watir_only
   Scenario: Form element methods in watir
     When I locate the form
     Then I should know the value is ""
+
+  @selenium_only
+  Scenario: Form element methods in selenium
+    When I locate the form
+    Then I should know the value is nil
 
   Scenario: List item element methods
     When I retrieve a list item element
@@ -242,12 +265,12 @@ Feature: Elements
   Scenario: Firing an event
     When I set the focus to the test text_field using the onfocus event
     Then I should see the onfocus text "changed by onfocus event"
-    
+
   Scenario: Hovering over an element
     Given I am on the hover page
     When I hover over the hello link
     Then the font size should be "20px"
-    
+
   Scenario: Setting focus on an element
     When I set the focus on the test text_field
     Then I should see the onfocus text "changed by onfocus event"
@@ -260,7 +283,7 @@ Feature: Elements
   Scenario: Flashing an element
     When I retrieve a button element
     Then I should be able to flash it
-    
+
   Scenario: Getting an element's id
     When I retrieve a button element
     Then I should know its id is "button_id"
@@ -275,11 +298,13 @@ Feature: Elements
     And I scroll the heading element into view
     Then the heading element should be visible
 
+  @watir_only
   Scenario: Expanding how we find elements to include non-standard locators
     When I retrieve a div using data-entity
     Then I should know it exists
     And I should know it is visible
     And I should know the text is "found using data-entity"
+
 
   Scenario: Accessing an HTML 5 element using the declaration
     When I retrieve the figure using the declaration
@@ -316,3 +341,8 @@ Feature: Elements
     When I retrieve a button element
     Then the element centre should be greater than element y position
     And the element centre should be greater than element x position
+
+  @watir_only
+  Scenario: Drag and Drop on an element
+    When I drag and drop an image on a text field
+    Then the text field should contain the image url
