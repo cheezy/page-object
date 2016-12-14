@@ -14,5 +14,4 @@ module PageObject
   end
 end
 require 'page-object/platforms/watir'
-require 'page-object/platforms/selenium_webdriver'
 
