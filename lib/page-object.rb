@@ -13,7 +13,6 @@ require 'page-object/widgets'
 require 'watir'
 require 'page-object/platforms/watir/page_object'
 
-require 'selenium/webdriver/common/error'
 #
 # Module that when included adds functionality to a page object.  This module
 # will add numerous class and instance methods that you use to define and
