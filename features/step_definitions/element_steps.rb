@@ -304,3 +304,14 @@ end
 Then(/the element centre should be greater than element x position/) do
   @element.centre['x'].should > @element.location.x
 end
+
+
+When(/^I drag and drop an image on a text field$/) do
+  link = @page.open_window_element
+  @link_url = link.href
+  link.drag_and_drop_on @page.text_field_id_element
+end
+
+Then(/^the text field should contain the image url$/) do
+  expect(@page.text_field_id).to eq @link_url
+end
