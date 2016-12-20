@@ -16,7 +16,7 @@ describe PageObject::Platforms::WatirWebDriver do
   
   describe "is for?" do
     it "should be true when the browser is Watir::Browser" do
-      browser = mock_watir_browser()
+      browser = mock_watir_browser
       expect(PageObject::Platforms::WatirWebDriver.is_for?(browser)).to be true
     end
     

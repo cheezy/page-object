@@ -162,14 +162,12 @@ describe PageObject do
         it "should not respond to it if the @root_element doesn't exist" do
           # nil responds to `to_i`, @root_element is nil, but the page object doesn't respond
           expect(nil).to respond_to :to_i
-          expect(watir_page_object.instance_variable_get(:@root_element)).to be nil
           expect(watir_page_object).not_to respond_to :to_i
           expect { watir_page_object.to_i }.to raise_error NoMethodError
         end
 
         it "should respond to it if the @root_element exists and responds" do
           # sanity checks
-          expect(watir_page_object.instance_variable_get(:@root_element)).to be nil
           expect(watir_page_object).not_to respond_to :bar
           expect(watir_page_object).not_to respond_to :baz
           # set @root_element
@@ -189,7 +187,6 @@ describe PageObject do
 
     context "when using WatirPageObject" do
       it "should display the page text" do
-        expect(watir_browser).to receive(:element).and_return(watir_browser)
         expect(watir_browser).to receive(:text).and_return("browser text")
         expect(watir_page_object.text).to eql "browser text"
       end
