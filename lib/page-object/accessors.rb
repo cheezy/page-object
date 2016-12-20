@@ -1336,7 +1336,7 @@ module PageObject
     #
     # @example
     #   page_section(:navigation_bar, NavigationBar, :id => 'nav-bar')
-    #   # will generate 'navigation_bar' and 'navigation_bar?'
+    #   # will generate 'navigation_bar'
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Class] the class to instantiate for the element
