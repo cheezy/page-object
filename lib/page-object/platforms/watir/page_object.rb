@@ -17,8 +17,8 @@ module PageObject
         PLATFORM_NAME = :watir
 
         def self.define_widget_accessors(widget_tag, widget_class, base_element_tag)
-        define_widget_singular_accessor(base_element_tag, widget_class, widget_tag)
-        define_widget_multiple_accessor(base_element_tag, widget_class, widget_tag)
+          define_widget_singular_accessor(base_element_tag, widget_class, widget_tag)
+          define_widget_multiple_accessor(base_element_tag, widget_class, widget_tag)
         end
 
         def initialize(browser)
@@ -232,7 +232,7 @@ module PageObject
         #
         def text_fields_for(identifier)
           elements = find_watir_elements("text_fields(identifier)", Elements::TextField, identifier)
-          elements.select {|e| e.element.tag_name == 'input'}
+          elements.select { |e| e.element.tag_name == 'input' }
         end
 
         #
@@ -646,7 +646,7 @@ module PageObject
           find_watir_elements("uls(identifier)", Elements::UnorderedList, identifier, 'ul')
         end
 
-       #
+        #
         # platform method to retrieve the text from an ordered list
         # See PageObject::Accessors#ordered_list
         #

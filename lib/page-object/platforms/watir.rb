@@ -8,20 +8,17 @@ module PageObject
 
       def self.is_for?(browser)
         require 'watir'
-        # browser.is_a?(::Watir::Browser) || browser.is_a?(::Watir::HTMLElement)
         watir?(browser) || selenium?(browser)
       end
 
       def self.browser_for root
-        # return root if root.is_a?(::Watir::Browser)
-        # root.browser
         return watir_browser(root) if watir?(root)
         return selenium_browser(root) if selenium?(root)
         nil
       end
 
       def self.root_element_for root
-        Elements::Element.new root, :platform => :watir if root.is_a? ::Watir::HTMLElement
+        Elements::Element.new root, :platform => :watir if is_for? root
       end
 
       def self.browser_root_for browser
