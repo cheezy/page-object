@@ -3,7 +3,7 @@ When /^I type "([^\"]*)" into the text area$/ do |text|
 end
 
 Then /^the text area should contain "([^\"]*)"$/ do |expected_text|
-  @page.text_area_id.should == expected_text
+  expect(@page.text_area_id).to eql expected_text
 end
 
 When /^I search for the text area by "([^\"]*)"$/ do |how|
@@ -31,5 +31,5 @@ When /^I clear the text area$/ do
 end
 
 Then /^I should see that the text area exists$/ do
-  @page.text_area_id?.should == true
+  expect(@page.text_area_id?).to be true
 end

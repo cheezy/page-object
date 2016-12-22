@@ -1,13 +1,13 @@
 Then /^the page should contain the text "([^\"]*)"$/ do |text|
-  @page.text.should include text
+  expect(@page.text).to include text
 end
 
 Then /^the page should contain the html "([^\"]*)"$/ do |html|
-  @page.html.should include html
+  expect(@page.html).to include html
 end
 
 Then /^the page should have the title "([^\"]*)"$/ do |title|
-  @page.title.should include title
+  expect(@page.title).to include title
 end
 
 Then /^I should be able to wait for a block to return true$/ do
@@ -36,11 +36,11 @@ When /^I handle the alert that reloads the page$/ do
 end
 
 Then /^I should be able to get the alert\'s message$/ do
-  @msg.should == "I am an alert"
+  expect(@msg).to eql "I am an alert"
 end
 
 Then /^I should be able to verify the popup didn\'t have a message$/ do
-  @msg.should be_nil
+  expect(@msg).to be_nil
 end
 
 When /^I handle the confirm$/ do
@@ -62,7 +62,7 @@ When /^I handle the confirm that reloads the page$/ do
 end
 
 Then /^I should be able to get the confirm message$/ do
-  @msg.should == 'set the value'
+  expect(@msg).to eql 'set the value'
 end
 
 When /^I handle the prompt$/ do
@@ -78,8 +78,8 @@ When /^I handle the possible prompt$/ do
 end
 
 Then /^I should be able to get the message and default value$/ do
-  @msg[:message].should == "enter your name"
-  @msg[:default_value].should == 'John Doe'
+  expect(@msg[:message]).to eql "enter your name"
+  expect(@msg[:default_value]).to eql 'John Doe'
 end
 
 When /^I open a second window$/ do
@@ -97,13 +97,13 @@ end
 Then /^I should be able to attach to a page object using title$/ do
   @second_page = SecondPage.new(@browser)
   @second_page.attach_to_window(:title => "Success")
-  @second_page.title.should == "Success"
+  expect(@second_page.title).to eql "Success"
 end
 
 Then /^I should be able to attach to a page object using url$/ do
   @second_page = SecondPage.new(@browser)
   @second_page.attach_to_window(:url => "success.html")
-  @second_page.current_url.should include 'success.html'
+  expect(@second_page.current_url).to include 'success.html'
 end
 
 Then /^I should be able to refresh the page$/ do
@@ -119,11 +119,11 @@ When /^I press the forward button$/ do
 end
 
 Then /^the page should have the expected title$/ do
-  @page.should have_expected_title
+  expect(@page).to have_expected_title
 end
 
 Then /^the page should have the expected element$/ do
-  @page.should have_expected_element
+  expect(@page).to have_expected_element
 end
 
 Then /^the page should not have the expected element$/ do
@@ -131,5 +131,5 @@ Then /^the page should not have the expected element$/ do
     include PageObject
     expected_element :blah
   end
-  FakePage.new(@browser).should_not have_expected_element
+  expect(FakePage.new(@browser)).not_to have_expected_element
 end

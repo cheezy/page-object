@@ -3,7 +3,7 @@ When /^I type "([^\"]*)" into the text field$/ do |text|
 end
 
 Then /^the text field should contain "([^\"]*)"$/ do |expected_text|
-  @page.text_field_id.should == expected_text
+  expect(@page.text_field_id).to eql expected_text
 end
 
 When /^I search for the text field by "([^\"]*)"$/ do |how|
@@ -27,7 +27,7 @@ Then /^I should be able to type "([^\"]*)" into the field element$/ do |value|
 end
 
 Then /^I should see that the text field exists$/ do
-  @page.text_field_id?.should == true
+  expect(@page.text_field_id?).to be true
 end
 
 When /^I append "([^\"]*)" to the text field$/ do |text|

@@ -66,7 +66,7 @@ When /^I search for a hidden field located in a div$/ do
 end
 
 Then /^I should be able to see that the nested hidden field contains "([^\"]*)"$/ do |value|
-  @hidden_field.value.should == value
+  expect(@hidden_field.value).to eql value
 end
 
 When /^I search for a text area located in a div$/ do
@@ -106,7 +106,7 @@ When /^I search for a div located in a div$/ do
 end
 
 Then /^I should see the text "([^\"]*)" in the nested div$/ do |value|
-  @div.text.should == value
+  expect(@div.text).to eql value
 end
 
 When /^I search for a span located in a div$/ do
@@ -114,7 +114,7 @@ When /^I search for a span located in a div$/ do
 end
 
 Then /^I should see the text "([^\"]*)" in the nested span$/ do |value|
-  @span.text.should == value
+  expect(@span.text).to eql value
 end
 
 When /^I search for a table located in a div$/ do
@@ -123,8 +123,8 @@ end
 
 Then /^the data for row "([^\"]*)" of the nested table should be "([^\"]*)" and "([^\"]*)"$/ do |row, col1, col2|
   table_row = @table[row.to_i - 1]
-  table_row[0].text.should == col1
-  table_row[1].text.should == col2
+  expect(table_row[0].text).to eql col1
+  expect(table_row[1].text).to eql col2
 end
 
 When /^I search the second table cell located in a table in a div$/ do
@@ -132,7 +132,7 @@ When /^I search the second table cell located in a table in a div$/ do
 end
 
 Then /^the nested table cell should contain "([^\"]*)"$/ do |value|
-  @cell.text.should == value
+  expect(@cell.text).to eql value
 end
 
 When /^I search for an image located in a div$/ do
@@ -140,11 +140,11 @@ When /^I search for an image located in a div$/ do
 end
 
 Then /^the nested image should be "([^\"]*)" pixels wide$/ do |width|
-  @image.width.should == width.to_i  
+  expect(@image.width).to eql width.to_i
 end
 
 Then /^the nested image should be "([^\"]*)" pixels tall$/ do |height|
-  @image.height.should == height.to_i
+  expect(@image.height).to eql height.to_i
 end
 
 When /^I search for a form located in a div$/ do
@@ -160,7 +160,7 @@ When /^I search for an ordered list located in a div$/ do
 end
 
 Then /^the first nested list items text should be "([^\"]*)"$/ do |value|
-  @list[0].text.should == value
+  expect(@list[0].text).to eql value
 end
 
 When /^I search for an unordered list located in a div$/ do
@@ -172,7 +172,7 @@ When /^I search for a list item nested in an ordered list in a div$/ do
 end
 
 Then /^I should see the nested list items text should be "([^\"]*)"$/ do |value|
-  @li.text.should == value
+  expect(@li.text).to eql value
 end
 
 When /^I search for a h(\d+) located in a div$/ do |num|
@@ -180,7 +180,7 @@ When /^I search for a h(\d+) located in a div$/ do |num|
 end
 
 Then /^I should see the nested h(\d+)s text should be "([^\"]*)"$/ do |num, value|
-  @header.text.should == value
+  expect(@header.text).to eql value
 end
 
 When /^I search for a paragraph located in a div$/ do
@@ -188,7 +188,7 @@ When /^I search for a paragraph located in a div$/ do
 end
 
 Then /^I should see the nested paragraphs text should be "([^\"]*)"$/ do |value|
-  @para.text.should == value
+  expect(@para.text).to eql value
 end
 
 When /^I search for a file field located in a div$/ do
@@ -208,5 +208,5 @@ When /^I get the outter ordered list$/ do
 end
 
 Then /^I should see "([^\"]*)" for list item (\d+)$/ do |text, item_number|
-  @list[item_number.to_i - 1].text.should == text
+  expect(@list[item_number.to_i - 1].text).to eql text
 end

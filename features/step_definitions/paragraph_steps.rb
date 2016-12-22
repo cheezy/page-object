@@ -16,11 +16,11 @@ When /^I get the text from a paragraph while the script is executing$/ do
 end
 
 Then /^I should see that the paragraph exists$/ do
-  @page.p_id?.should == true
+  expect(@page.p_id?).to eql true
 end
 
 Then(/^I should know the paragraph class is "(.*?)"$/) do |class_name|
-  @page.p_id_element.class_name.should == class_name
+  expect(@page.p_id_element.class_name).to eql class_name
 end
 
 Then(/^I should be able to select "(.*?)" from the paragraph$/) do |text|

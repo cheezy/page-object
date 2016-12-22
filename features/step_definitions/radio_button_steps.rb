@@ -23,5 +23,5 @@ When /^I select the radio button while the script is executing$/ do
 end
 
 Then /^I should see that the radio button exists$/ do
-  @page.milk_id?.should == true
+  expect(@page.milk_id?).to eql true
 end

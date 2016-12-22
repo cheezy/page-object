@@ -48,6 +48,6 @@ end
 
 
 When /^the GxtTable should have "(\d+)" rows$/ do |rows|
-  on(GxtSamplePageObject).gxt_table_rows.should == rows.to_i
+  expect(on(GxtSamplePageObject).gxt_table_rows).to eql rows.to_i
 end
 

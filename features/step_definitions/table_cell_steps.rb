@@ -11,5 +11,5 @@ When /^I retrieve a table cell element while the script is executing$/ do
 end
 
 Then /^I should see that the cell exists$/ do
-  @page.cell_id?.should == true
+  expect(@page.cell_id?).to be true
 end

@@ -11,7 +11,7 @@ When /^I retrieve a table row element while the script is executing$/ do
 end
 
 Then /^I should see that the row exists$/ do
-  @page.tr_id?.should == true
+  expect(@page.tr_id?).to be true
 end
 
 When /^I retrieve the data from the table row/ do
@@ -19,5 +19,5 @@ When /^I retrieve the data from the table row/ do
 end
 
 Then /^the row data should be '([^"]*)'$/ do |expected|
-  @row_data.should == expected
+  expect(@row_data).to eql expected
 end

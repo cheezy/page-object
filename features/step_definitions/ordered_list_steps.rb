@@ -15,9 +15,9 @@ When /^I search for the ordered list while the script is executing$/ do
 end
 
 Then /^I should see that the ordered list exists$/ do
-  @page.ol_id?.should == true
+  expect(@page.ol_id?).to eql true
 end
 
 Then /^the text for the ordered list should contain "(.*)"$/ do |text|
-  @page.send("ol_id").should include text
+  expect(@page.send("ol_id")).to include text
 end

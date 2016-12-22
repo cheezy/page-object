@@ -15,5 +15,5 @@ When /^I get the text from a span while the script is executing$/ do
 end
 
 Then /^I should see that the span exists$/ do
-  @page.span_id?.should == true
+  expect(@page.span_id?).to eql true
 end
