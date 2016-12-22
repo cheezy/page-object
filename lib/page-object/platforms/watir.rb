@@ -3,6 +3,7 @@ module PageObject
     module WatirWebDriver
 
       def self.create_page_object(browser)
+        browser = selenium_browser(browser) unless watir?(browser)
         return WatirWebDriver::PageObject.new(browser)
       end
 
