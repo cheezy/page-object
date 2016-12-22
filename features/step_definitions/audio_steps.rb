@@ -11,17 +11,17 @@ When /^I retrieve the audio element from the page$/ do
 end
 
 Then /^I should know the audio is not autoplay$/ do
-  @element.should_not be_autoplay
+  expect(@element).not_to be_autoplay
 end
 
 Then /^I should know that the controls are displayed$/ do
-  @element.should have_controls
+  expect(@element).to have_controls
 end
 
 Then /^I should know that the audio is paused$/ do
-  @element.should be_paused
+  expect(@element).to be_paused
 end
 
 Then /^I should know that its volume is (\d+)$/ do |volume|
-  @element.volume.should == volume.to_i
+  expect(@element.volume).to eql volume.to_i
 end

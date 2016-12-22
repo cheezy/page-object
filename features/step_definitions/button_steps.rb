@@ -39,7 +39,7 @@ Then /^I should be able to click the button element$/ do
 end
 
 Then /^I should see that the button exists$/ do
-  @page.button_id?.should == true
+  expect(@page.button_id?).to be true
 end
 
 

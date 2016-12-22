@@ -15,5 +15,5 @@ When /^I get the text from a div while the script is executing$/ do
 end
 
 Then /^I should see that the div exists$/ do
-  @page.div_id?.should == true
+  expect(@page.div_id?).to be true
 end

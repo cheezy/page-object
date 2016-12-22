@@ -3,7 +3,7 @@ When /^I select the First check box$/ do
 end
 
 Then /^the First check box should be selected$/ do
-  @page.cb_id_checked?.should be true
+  expect(@page.cb_id_checked?).to be true
 end
 
 When /^I unselect the First check box$/ do
@@ -11,7 +11,7 @@ When /^I unselect the First check box$/ do
 end
 
 Then /^the First check box should not be selected$/ do
-  @page.cb_id_checked?.should be false
+  expect(@page.cb_id_checked?).to be false
 end
 
 When /^I search for the check box by "([^\"]*)"$/ do |how|
@@ -31,5 +31,5 @@ When /^I select the first check box while the script is executing$/ do
 end
 
 Then /^I should see that the checkbox exists$/ do
-  @page.button_id?.should == true
+  expect(@page.button_id?).to be true
 end

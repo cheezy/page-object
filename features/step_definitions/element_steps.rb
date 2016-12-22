@@ -63,45 +63,45 @@ When /^I locate the form$/ do
 end
 
 Then /^I should know it exists$/ do
-  @element.should exist
+  expect(@element).to exist
 end
 
 Then /^I should know it is visible$/ do
-  @element.should be_visible
+  expect(@element).to be_visible
 end
 
 Then /^I should know it is not visible$/ do
-  @element.should_not be_visible
+  expect(@element).not_to be_visible
 end
 
 Then /^I should know the text is "(.*)"$/ do |text|
-  @element.text.should == text
+  expect(@element.text).to eql text
 end
 
 Then /^I should know the html is "(.*)"$/ do |html|
-  @element.html.should == html
+  expect(@element.html).to eql html
 end
 
 Then /^I should know the text includes "(.*)"$/ do |text|
-  @element.text.should include text
+  expect(@element.text).to include text
 end
 
 Then /^I should know the value is "(.*)"$/ do |value|
-  @element.value.should == value
+  expect(@element.value).to eql value
 end
 
 Then /^I should know it is equal to itself$/ do
-  @element.should == @element
+  expect(@element).to eql @element
 end
 
 Then /^I should know the tag name is "(.+)"$/ do |tagname|
-  @element.tag_name.should == tagname
+  expect(@element.tag_name).to eql tagname
 end
 
 Then /^I should know the attribute "(.+)" is false$/ do |attr_name|
   @attr = @element.attribute(attr_name)
-  @attr.should be_false if @attr.is_a? FalseClass
-  @attr.should == "false" if @attr.is_a? String
+  expect(@attr).to be false if @attr.is_a? FalseClass
+  expect(@attr).to eql "false" if @attr.is_a? String
 end
 
 Then /^I should be able to click it$/ do
@@ -129,7 +129,7 @@ When /^I check an enabled button$/ do
 end
 
 Then /^it should know it is enabled$/ do
-  @element.should be_enabled
+  expect(@element).to be_enabled
 end
 
 When /^I check a disabled button$/ do
@@ -137,15 +137,15 @@ When /^I check a disabled button$/ do
 end
 
 Then /^it should know it is not enabled$/ do
-  @element.should_not be_enabled
+  expect(@element).not_to be_enabled
 end
 
 Then /^it should know that is it not disabled$/ do
-  @element.should_not be_disabled
+  expect(@element).not_to be_disabled
 end
 
 Then /^it should know that it is disabled$/ do
-  @element.should be_disabled
+  expect(@element).to be_disabled
 end
 
 When /^I set the focus to the test text_field using the onfocus event$/ do
@@ -153,7 +153,7 @@ When /^I set the focus to the test text_field using the onfocus event$/ do
 end
 
 Then /^I should see the onfocus text "([^\"]*)"$/ do |text|
-  @page.div_element(:id => 'onfocus_test').text.should == text
+  expect(@page.div_element(:id => 'onfocus_test').text).to eql text
 end
 
 When /^I set the focus on the test text_field$/ do
@@ -169,13 +169,13 @@ When /^ask for the parent element$/ do
 end
 
 Then /^I should have a div parent$/ do
-  @parent.should be_instance_of ::PageObject::Elements::Div
+  expect(@parent).to be_instance_of ::PageObject::Elements::Div
 end
 
 Then /^I should know that the text_field has the focus$/ do
   element = @page.element_with_focus
-  element.should_not be_nil
-  element.class.should == PageObject::Elements::TextField
+  expect(element.focused?).to be true
+  expect(element.class).to eql PageObject::Elements::TextField
 end
 
 When /^I set the focus to the test text_field$/ do
@@ -191,11 +191,11 @@ When /^I retrieve the focus state of the text_field$/ do
 end
 
 When /^I should know that the text_field is focused$/ do
-  @focused_state.should be true
+  expect(@focused_state).to be true
 end
 
 When /^I should know that the text_field is not focused$/ do
-  @focused_state.should be false
+  expect(@focused_state).to be false
 end
 
 When /^I retrieve the label element$/ do
@@ -222,11 +222,11 @@ When /^I hover over the hello link$/ do
 end
 
 Then /^the font size should be "([^\"]*)"$/ do |font_size|
-  @page.hello_element.style('font-size').should == font_size if ENV['BROWSER'] == 'chrome'
+  expect(@page.hello_element.style('font-size')).to eql font_size if ENV['BROWSER'] == 'chrome'
 end
 
 Then /^I should know its id is "([^\"]*)"$/ do |id|
-  @element.id.should == id
+  expect(@element.id).to eql id
 end
 
 class DoubleClickPage
@@ -245,7 +245,7 @@ When /^I double click the button$/ do
 end
 
 Then /^the paragraph should read "([^\"]*)"$/ do |expected_text|
-  @page.p_text.should == expected_text
+  expect(@page.p_text).to eql expected_text
 end
 
 When /^I scroll the heading element into view$/ do
@@ -253,7 +253,7 @@ When /^I scroll the heading element into view$/ do
 end
 
 Then /^the heading element should be visible$/ do
-  @element.should be_visible
+  expect(@element).to be_visible
 end
 
 When /^I retrieve a div using data\-entity$/ do
@@ -269,12 +269,12 @@ When(/^I retrieve the figure using the element$/) do
 end
 
 Then(/^I should see the figure contains an image$/) do
-  @element.image_element.should_not be_nil
+  expect(@element.image_element).not_to be_nil
 end
 
 Then(/^I should know the attribute "(.*?)" includes "(.+)"$/) do |attribute, included|
   @attr = @element.attribute(attribute)
-  @attr.should include included
+  expect(@attr).to include included
 end
 
 Then(/^I should be able to know its location$/) do
@@ -288,19 +288,19 @@ Then(/^I should be able to know its size$/) do
 end
 
 Then(/the element height is not 0/) do
-  (@element.height.is_a? Integer).should ==true
-  @element.height.should > 0
+  expect(@element.height.is_a? Integer).to be true
+  expect(@element.height).to be > 0
 end
 
 Then(/the element width is not 0/) do
-  (@element.width.is_a? Integer).should ==true
-  @element.width.should > 0
+  expect(@element.width.is_a? Integer).to be true
+  expect(@element.width).to be > 0
 end
 
 Then(/the element centre should be greater than element y position/) do
-  @element.centre['y'].should > @element.location.y
+  expect(@element.centre['y']).to be > @element.location.y
 end
 
 Then(/the element centre should be greater than element x position/) do
-  @element.centre['x'].should > @element.location.x
+  expect(@element.centre['x']).to be > @element.location.x
 end

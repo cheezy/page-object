@@ -7,13 +7,13 @@ Then /^I should be able to click the area$/ do
 end
 
 Then /^I should see the coordinates are "([^\"]*)"$/ do |coords|
-  @element.coords.should == coords
+  expect(@element.coords).to eql coords
 end
 
 Then /^I should see the shape is "([^\"]*)"$/ do |shape|
-  @element.shape.should == shape
+  expect(@element.shape).to eql shape
 end
 
 Then /^I should see the href is "([^\"]*)"$/ do |href|
-  @element.href.should include href
+  expect(@element.href).to include href
 end

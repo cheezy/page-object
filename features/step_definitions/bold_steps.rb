@@ -3,7 +3,7 @@ When /^I get the bold text for the "([^\"]*)" element$/ do |el|
 end
 
 Then /^I should see "([^\"]*)" in bold$/ do |text|
-  @b.should == text
+  expect(@b).to eql text
 end
 
 When /^I search bold text for the (\w+) by "([^"]*)"$/ do |text_decorator, type|

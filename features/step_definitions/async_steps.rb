@@ -60,7 +60,7 @@ end
 Then /^I should be able to wait until the button becomes invisible$/ do
   @page.hide
   @page.target_element.when_not_visible do
-    @page.target_element.attribute("block").should == "none"
+    expect(@page.target_element.attribute("block")).to eql "none"
   end
 end
 
@@ -79,5 +79,5 @@ end
 
 Then /^I should not be able to find the button$/ do
   @page.created_button_element.when_not_present
-  @page.created_button_element.exists?.should be false
+  expect(@page.created_button_element).not_to exist
 end

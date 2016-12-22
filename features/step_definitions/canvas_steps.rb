@@ -3,11 +3,11 @@ When /^I search for the canvas by "([^\"]*)"$/ do |how|
 end
 
 Then /^I should see that the canvas width is "([^\"]*)"$/ do |width|
-  @element.width.should == width.to_i
+  expect(@element.width).to eql width.to_i
 end
 
 Then /^I should see that the canvas height is "([^\"]*)"$/ do |height|
-  @element.height.should == height.to_i
+  expect(@element.height).to eql height.to_i
 end
 
 When /^I search for the canvas element by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
