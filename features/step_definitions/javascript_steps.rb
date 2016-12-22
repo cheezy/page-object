@@ -32,7 +32,7 @@ end
 
 Then /^I should be able to wait for the answer "([^\"]*)"$/ do |answer|
   @page.wait_for_ajax
-  @page.results.should == answer
+  expect(@page.results).to eql answer
 end
 
 Given /^I execute the javascript "([^\"]*)"$/ do |script|
@@ -49,5 +49,5 @@ Given /^I execute the javascript "([^\"]*)" with a text field argument$/ do |scr
 end
 
 Then /^I should get the answer "([^\"]*)"$/ do |answer|
-  @answer.should == answer.to_i
+  expect(@answer).to eql answer.to_i
 end

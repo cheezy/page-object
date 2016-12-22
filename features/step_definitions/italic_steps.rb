@@ -3,7 +3,7 @@ When /^I get the italic text for the "([^\"]*)" element$/ do |el|
 end
 
 Then /^I should see "([^\"]*)" in italic$/ do |text|
-  @i.should == text
+  expect(@i).to eql text
 end
 
 When /^I search italic text for the (\w+) by "([^"]*)"$/ do |text_decorator, type|

@@ -15,5 +15,5 @@ When /^I search for the list item while the script is executing$/ do
 end
 
 Then /^I should see that the list item exists$/ do
-  @page.li_id?.should == true
+  expect(@page.li_id?).to eql true
 end

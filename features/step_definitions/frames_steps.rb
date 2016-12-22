@@ -74,12 +74,8 @@ end
 
 Then /^I should verify "([^\"]*)" is in the text field for frame 2 using "([^\"]*)"$/ do |text, arg_type|
   result = @page.send "text_field_2_#{arg_type.gsub(' ', '_')}".to_sym
-  result.should == text
+  expect(result).to eql text
 end
-
-#Then /^I should be able to get the text fields text from frame 2 using "([^\"]*)"$/ do |arg_type|
-#  @page.send("text_field_2_#{arg_type}_element").text
-#end
 
 When /^I type "([^\"]*)" into the text field from frame 1 using "([^\"]*)"$/ do |text, arg_type|
   @page.send "text_field_1_#{arg_type.gsub(' ', '_')}=".to_sym, text
@@ -87,7 +83,7 @@ end
 
 Then /^I should verify "([^\"]*)" is in the text field for frame 1 using "([^\"]*)"$/ do |text, arg_type|
   result = @page.send "text_field_1_#{arg_type.gsub(' ', '_')}".to_sym
-  result.should == text
+  expect(result).to eql text
 end
 
 class NestedFramePage
@@ -107,7 +103,7 @@ end
 
 Then /^I should be able to click the link in the frame$/ do
   @page.nested_link
-  @page.text.should include "Success"
+  expect(@page.text).to include "Success"
 end
 
 When /^I type "([^\"]*)" into the text field from frame 1 identified dynamically$/ do |value|
@@ -118,7 +114,7 @@ end
 
 Then /^I should verify "([^\"]*)" in the text field for frame 1 identified dynamically$/ do |value|
   @page.in_frame(:id => 'frame_one_1') do |frame|
-    @page.text_field_element(:name => 'senderElement', :frame => frame).value.should == value
+    expect(@page.text_field_element(:name => 'senderElement', :frame => frame).value).to eql value
   end
 end
 
@@ -130,7 +126,7 @@ end
 
 Then /^I should verify "([^\"]*)" in the text field for iframe 1 identified dynamically$/ do |value|
   @page.in_iframe(:id => 'frame_one_1') do |frame|
-    @page.text_field_element(:name => 'senderElement', :frame => frame).value.should == value
+    expect(@page.text_field_element(:name => 'senderElement', :frame => frame).value).to eql value
   end
 end
 

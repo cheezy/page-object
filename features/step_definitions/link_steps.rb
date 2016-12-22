@@ -20,7 +20,7 @@ When /^I select a link while the script is executing$/ do
 end
 
 Then(/^I should see that the link exists$/) do
-  @page.link_id?.should == true
+  expect(@page.link_id?).to be true
 end
 
 When(/^I get the href for the link$/) do
@@ -28,7 +28,7 @@ When(/^I get the href for the link$/) do
 end
 
 Then(/^I should know it was "(.*?)"$/) do |href|
-  @href.should include href
+  expect(@href).to include href
 end
 
 When(/^I get the link using the href success$/) do

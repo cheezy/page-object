@@ -3,7 +3,7 @@ When /^I retrieve the hidden field element$/ do
 end
 
 Then /^I should see the hidden field contains "([^\"]*)"$/ do |text|
-  @page.hidden_field_id.should == text
+  expect(@page.hidden_field_id).to eql text
 end
 
 When /^I search for the hidden field by "([^\"]*)"$/ do |how|
@@ -11,7 +11,7 @@ When /^I search for the hidden field by "([^\"]*)"$/ do |how|
 end
 
 Then /^the hidden field element should contain "([^\"]*)"$/ do |text|
-  @element.value.should == text
+  expect(@element.value).to eql text
 end
 
 When /^I search for the hidden field by "([^"]*)" and "([^"]*)"$/ do |param1, param2|
@@ -23,5 +23,5 @@ When /^I find a hidden field while the script is executing$/ do
 end
 
 Then /^I should see that the hidden field exists$/ do
-  @page.hidden_field_id?.should == true
+  expect(@page.hidden_field_id?).to eql true
 end

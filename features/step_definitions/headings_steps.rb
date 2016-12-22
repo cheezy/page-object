@@ -3,7 +3,7 @@ When /^I get the text for the "([^\"]*)" element$/ do |el|
 end
 
 Then /^I should see "([^\"]*)"$/ do |text|
-  @heading.should == text
+  expect(@heading).to eql text
 end
 
 When /^I search for the heading(\d+) by "([^"]*)"$/ do |head_type, type|

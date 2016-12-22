@@ -23,9 +23,9 @@ When /^I get the svg element$/ do
 end
 
 Then /^the svg width should be "(.*?)"$/ do |width|
-  @svg.attribute('width').should == width
+  expect(@svg.attribute('width')).to eql width
 end
 
 Then /^the svg height should be "(.*?)"$/ do |height|
-  @svg.attribute('height').should == height
+  expect(@svg.attribute('height')).to eql height
 end

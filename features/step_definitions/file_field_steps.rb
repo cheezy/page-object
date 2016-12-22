@@ -3,7 +3,7 @@ When /^I set the file field to the step definition file$/ do
 end
 
 Then /^its\' value should equal that file$/ do
-  __FILE__.should include @page.file_field_id_element.value[/[^\\]*$/]
+  expect(__FILE__).to include @page.file_field_id_element.value[/[^\\]*$/]
 end
 
 When /^I search for the file field by "([^\"]*)"$/ do |how|

@@ -15,5 +15,5 @@ When /^I locate a form while the script is executing$/ do
 end
 
 Then /^I should see that the form exists$/ do
-  @page.form_id?.should == true
+  expect(@page.form_id?).to be true
 end

@@ -46,11 +46,11 @@ When /^I select the buttons with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) buttons$/ do |num_buttons|
-  @elements.size.should == num_buttons.to_i
+  expect(@elements.size).to eql num_buttons.to_i
 end
 
 Then /^the value of button (\d+) should be "([^\"]*)"$/ do |button_num, value|
-  @elements[button_num.to_i - 1].value.should == value
+  expect(@elements[button_num.to_i - 1].value).to eql value
 end
 
 When /^I select the text fields with class "([^\"]*)"$/ do |class_name|
@@ -58,11 +58,11 @@ When /^I select the text fields with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) text fields$/ do |num_text_fields|
-  @elements.size.should == num_text_fields.to_i
+  expect(@elements.size).to eql num_text_fields.to_i
 end
 
 Then /^the value of text field (\d+) should be "([^\"]*)"$/ do |text_field_num, value|
-  @elements[text_field_num.to_i - 1].value.should == value
+  expect(@elements[text_field_num.to_i - 1].value).to eql value
 end
 
 When /^I select the hidden fields with class "([^\"]*)"$/ do |class_name|
@@ -70,11 +70,11 @@ When /^I select the hidden fields with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) hidden fields$/ do |num_hidden_fields|
-  @elements.size.should == num_hidden_fields.to_i
+  expect(@elements.size).to eql num_hidden_fields.to_i
 end
 
 Then /^the value of hidden field (\d+) should be "([^\"]*)"$/ do |hidden_field_num, value|
-  @elements[hidden_field_num.to_i - 1].value.should == value
+  expect(@elements[hidden_field_num.to_i - 1].value).to eql value
 end
 
 When /^I select the text areas with class "([^\"]*)"$/ do |class_name|
@@ -82,11 +82,11 @@ When /^I select the text areas with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) text areas$/ do |num_text_areas|
-  @elements.size.should == num_text_areas.to_i
+  expect(@elements.size).to eql num_text_areas.to_i
 end
 
 Then /^the value of text area (\d+) should be "([^\"]*)"$/ do |text_area_num, value|
-  @elements[text_area_num.to_i - 1].value.should == value
+  expect(@elements[text_area_num.to_i - 1].value).to eql value
 end
 
 When /^I select the select lists with class "([^\"]*)"$/ do |class_name|
@@ -94,11 +94,11 @@ When /^I select the select lists with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) select lists$/ do |num_select_lists|
-  @elements.size.should == num_select_lists.to_i
+  expect(@elements.size).to eql num_select_lists.to_i
 end
 
 Then /^the value of select list (\d+) should be "([^\"]*)"$/ do |select_list_num, value|
-  @elements[select_list_num.to_i - 1].value.should == value
+  expect(@elements[select_list_num.to_i - 1].value).to eql value
 end
 
 When /^I select the link with class "([^\"]*)"$/ do |link_class|
@@ -106,11 +106,11 @@ When /^I select the link with class "([^\"]*)"$/ do |link_class|
 end
 
 Then /^I should have (\d+) links$/ do |num_links|
-  @elements.size.should == num_links.to_i
+  expect(@elements.size).to eql num_links.to_i
 end
 
 Then /^the text of link (\d+) should be "([^\"]*)"$/ do |link_num, text|
-  @elements[link_num.to_i - 1].text.should == text
+  expect(@elements[link_num.to_i - 1].text).to eql text
 end
 
 When /^I select the check boxes with class "([^\"]*)"$/ do |class_name|
@@ -118,11 +118,11 @@ When /^I select the check boxes with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) checkboxes$/ do |num_checkboxes|
-  @elements.size.should == num_checkboxes.to_i
+  expect(@elements.size).to eql num_checkboxes.to_i
 end
 
 Then /^the value of checkbox (\d+) should be "([^\"]*)"$/ do |checkbox_num, value|
-  @elements[checkbox_num.to_i - 1].value.should == value
+  expect(@elements[checkbox_num.to_i - 1].value).to eql value
 end
 
 When /^I select the radio button with class "([^\"]*)"$/ do |class_name|
@@ -130,11 +130,11 @@ When /^I select the radio button with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) radio buttons$/ do |num_radio_buttons|
-  @elements.size.should == num_radio_buttons.to_i
+  expect(@elements.size).to eql num_radio_buttons.to_i
 end
 
 Then /^the value of radio button (\d+) should be "([^\"]*)"$/ do |radio_button_num, value|
-  @elements[radio_button_num.to_i - 1].value.should == value
+  expect(@elements[radio_button_num.to_i - 1].value).to eql value
 end
 
 When /^I select the div with class "([^\"]*)"$/ do |class_name|
@@ -142,11 +142,11 @@ When /^I select the div with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) divs$/ do |num_divs|
-  @elements.size.should == num_divs.to_i
+  expect(@elements.size).to eql num_divs.to_i
 end
 
 Then /^the text of div (\d+) should be "([^\"]*)"$/ do |div_num, text|
-  @elements[div_num.to_i - 1].text.should == text
+  expect(@elements[div_num.to_i - 1].text).to eql text
 end
 
 When /^I select the spans with class "([^\"]*)"$/ do |class_name|
@@ -154,11 +154,11 @@ When /^I select the spans with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) spans$/ do |num_spans|
-  @elements.size.should == num_spans.to_i
+  expect(@elements.size).to eql num_spans.to_i
 end
 
 Then /^the text of span (\d+) should be "([^\"]*)"$/ do |span_num, text|
-  @elements[span_num.to_i - 1].text.should == text
+  expect(@elements[span_num.to_i - 1].text).to eql text
 end
 
 When /^I select the tables with class "([^\"]*)"$/ do |class_name|
@@ -166,11 +166,11 @@ When /^I select the tables with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) tables$/ do |num_tables|
-  @elements.size.should == num_tables.to_i
+  expect(@elements.size).to eql num_tables.to_i
 end
 
 Then /^the first row first column for table (\d+) should have "([^\"]*)"$/ do |table_num, text|
-  @elements[table_num.to_i - 1][0][0].text.should == text
+  expect(@elements[table_num.to_i - 1][0][0].text).to eql text
 end
 
 When /^I select the cells with class "([^\"]*)"$/ do |cell_class|
@@ -178,11 +178,11 @@ When /^I select the cells with class "([^\"]*)"$/ do |cell_class|
 end
 
 Then /^I should have (\d+) cells$/ do |num_cells|
-  @elements.size.should == num_cells.to_i
+  expect(@elements.size).to eql num_cells.to_i
 end
 
 Then /^the text for cell (\d+) should be "([^\"]*)"$/ do |cell_num, text|
-  @elements[cell_num.to_i - 1].text.should == text
+  expect(@elements[cell_num.to_i - 1].text).to eql text
 end
 
 When /^I select the images with class "([^\"]*)"$/ do |class_name|
@@ -190,11 +190,11 @@ When /^I select the images with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) images$/ do |num_images|
-  @elements.size.should == num_images.to_i
+  expect(@elements.size).to eql num_images.to_i
 end
 
 Then /^the alt for image (\d+) should be "([^\"]*)"$/ do |image_num, alt|
-  @elements[image_num.to_i - 1].attribute(:alt).should == alt
+  expect(@elements[image_num.to_i - 1].attribute(:alt)).to eql alt
 end
 
 When /^I select the forms with class "([^\"]*)"$/ do |class_name|
@@ -202,11 +202,11 @@ When /^I select the forms with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) forms$/ do |number|
-  @elements.size.should == number.to_i
+  expect(@elements.size).to eql number.to_i
 end
 
 Then /^the action for form (\d+) should be "([^\"]*)"$/ do |form_number, action|
-  @elements[form_number.to_i-1].attribute(:action).should match action
+  expect(@elements[form_number.to_i-1].attribute(:action)).to match action
 end
 
 When /^I select the list items with class "([^\"]*)"$/ do |class_name|
@@ -214,11 +214,11 @@ When /^I select the list items with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) list items$/ do |num_list_items|
-  @elements.size.should == num_list_items.to_i
+  expect(@elements.size).to eql num_list_items.to_i
 end
 
 Then /^the text for list item (\d+) should be "([^\"]*)"$/ do |list_item_num, text|
-  @elements[list_item_num.to_i - 1].text.should == text
+  expect(@elements[list_item_num.to_i - 1].text).to eql text
 end
 
 When /^I select the unordered list with class "([^\"]*)"$/ do |class_name|
@@ -226,11 +226,11 @@ When /^I select the unordered list with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) unordered lists$/ do |num_unordered_lists|
-  @elements.size.should == num_unordered_lists.to_i
+  expect(@elements.size).to eql num_unordered_lists.to_i
 end
 
 Then /^the text for the first item in unordered list (\d+) should be "([^\"]*)"$/ do |ul_num, text|
-  @elements[ul_num.to_i - 1][0].text.should == text
+  expect(@elements[ul_num.to_i - 1][0].text).to eql text
 end
 
 When /^I select the ordered lists with class "([^\"]*)"$/ do |class_name|
@@ -238,11 +238,11 @@ When /^I select the ordered lists with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) ordered lists$/ do |num_ol|
-  @elements.size.should == num_ol.to_i
+  expect(@elements.size).to eql num_ol.to_i
 end
 
 Then /^the text for the first item in ordered list (\d+) should be "([^\"]*)"$/ do |ol_num, text|
-  @elements[ol_num.to_i - 1][0].text.should == text
+  expect(@elements[ol_num.to_i - 1][0].text).to eql text
 end
 
 When /^I select the h1s with class "([^\"]*)"$/ do |class_name|
@@ -250,11 +250,11 @@ When /^I select the h1s with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) h1s$/ do |num_h1s|
-  @elements.size.should == num_h1s.to_i
+  expect(@elements.size).to eql num_h1s.to_i
 end
 
 Then /^the text for h1 (\d+) should be "([^\"]*)"$/ do |h1_num, text|
-  @elements[h1_num.to_i - 1].text.should == text
+  expect(@elements[h1_num.to_i - 1].text).to eql text
 end
 
 When /^I select the h2s with the class "([^\"]*)"$/ do |class_name|
@@ -262,11 +262,11 @@ When /^I select the h2s with the class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) h2s$/ do |num_h2s|
-  @elements.size.should == num_h2s.to_i
+  expect(@elements.size).to eql num_h2s.to_i
 end
 
 Then /^the text for h2 (\d+) should be "([^\"]*)"$/ do |h2_num, text|
-  @elements[h2_num.to_i - 1].text.should == text
+  expect(@elements[h2_num.to_i - 1].text).to eql text
 end
 
 When /^I select the h3s with the class "([^\"]*)"$/ do |class_name|
@@ -274,11 +274,11 @@ When /^I select the h3s with the class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) h3s$/ do |num_h3s|
-  @elements.size.should == num_h3s.to_i
+  expect(@elements.size).to eql num_h3s.to_i
 end
 
 Then /^the text for h3 (\d+) should be "([^\"]*)"$/ do |h3_num, text|
-  @elements[h3_num.to_i - 1].text.should == text
+  expect(@elements[h3_num.to_i - 1].text).to eql text
 end
 
 When /^I select the h4s with the class "([^\"]*)"$/ do |class_name|
@@ -286,11 +286,11 @@ When /^I select the h4s with the class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) h4s$/ do |num_h4s|
-  @elements.size.should == num_h4s.to_i
+  expect(@elements.size).to eql num_h4s.to_i
 end
 
 Then /^the text for H4 (\d+) should be "([^\"]*)"$/ do |h4_num, text|
-  @elements[h4_num.to_i - 1].text.should == text
+  expect(@elements[h4_num.to_i - 1].text).to eql text
 end
 
 When /^I select the h5s with the class "([^\"]*)"$/ do |class_name|
@@ -298,11 +298,11 @@ When /^I select the h5s with the class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) h5s$/ do |num_h5s|
-  @elements.size.should == num_h5s.to_i
+  expect(@elements.size).to eql num_h5s.to_i
 end
 
 Then /^the text for H5 (\d+) should be "([^\"]*)"$/ do |h5_num, text|
-  @elements[h5_num.to_i - 1].text.should == text
+  expect(@elements[h5_num.to_i - 1].text).to eql text
 end
 
 When /^I select the h6s with the class "([^\"]*)"$/ do |class_name|
@@ -310,11 +310,11 @@ When /^I select the h6s with the class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) h6s$/ do |num_h6s|
-  @elements.size.should == num_h6s.to_i
+  expect(@elements.size).to eql num_h6s.to_i
 end
 
 Then /^the text for H6 (\d+) should be "([^\"]*)"$/ do |h6_num, text|
-  @elements[h6_num.to_i - 1].text.should == text
+  expect(@elements[h6_num.to_i - 1].text).to eql text
 end
 
 When /^I select the paragraph with class "([^\"]*)"$/ do |class_name|
@@ -322,11 +322,11 @@ When /^I select the paragraph with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) paragraphs$/ do |num_paragraphs|
-  @elements.size.should == num_paragraphs.to_i
+  expect(@elements.size).to eql num_paragraphs.to_i
 end
 
 Then /^the text for paragraph (\d+) should be "([^\"]*)"$/ do |para_num, text|
-  @elements[para_num.to_i - 1].text.should == text
+  expect(@elements[para_num.to_i - 1].text).to eql text
 end
 
 When /^I select all buttons using no identifier$/ do
@@ -410,11 +410,11 @@ When /^I select the labels with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) labels$/ do |num_labels|
-  @elements.size.should == num_labels.to_i
+  expect(@elements.size).to eql num_labels.to_i
 end
 
 Then /^the text for label (\d+) should be "([^\"]*)"$/ do |label_num, text|
-  @elements[label_num.to_i - 1].text.should == text
+  expect(@elements[label_num.to_i - 1].text).to eql text
 end
 
 When /^I select labels using no identifier$/ do
@@ -426,11 +426,11 @@ When /^I select the file fields with class "([^\"]*)"$/ do |class_name|
 end
 
 Then /^I should have (\d+) file fields$/ do |num_file_fields|
-  @elements.size.should == num_file_fields.to_i
+  expect(@elements.size).to eql num_file_fields.to_i
 end
 
 Then /^the title for file field (\d+) should be "([^\"]*)"$/ do |file_field_num, title|
-  @elements[file_field_num.to_i - 1].attribute('title').should == title
+  expect(@elements[file_field_num.to_i - 1].attribute('title')).to eql title
 end
 
 When /^I select the file fields using no identifier$/ do
@@ -534,11 +534,11 @@ When /^I select the bs$/ do
 end
 
 Then /^I should have (\d+) bs$/ do |num_bs|
-  @elements.size.should == num_bs.to_i
+  expect(@elements.size).to eql num_bs.to_i
 end
 
 Then /^the text for b (\d+) should be "([^\"]*)"$/ do |b_num, text|
-  @elements[b_num.to_i - 1].text.should == text
+  expect(@elements[b_num.to_i - 1].text).to eql text
 end
 
 When /^I select the is$/ do
@@ -546,9 +546,9 @@ When /^I select the is$/ do
 end
 
 Then /^I should have (\d+) is$/ do |num_is|
-  @elements.size.should == num_is.to_i
+  expect(@elements.size).to eql num_is.to_i
 end
 
 Then /^the text for i (\d+) should be "([^\"]*)"$/ do |i_num, text|
-  @elements[i_num.to_i - 1].text.should == text
+  expect(@elements[i_num.to_i - 1].text).to eql text
 end
