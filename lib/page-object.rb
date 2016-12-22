@@ -81,7 +81,7 @@ module PageObject
   def initialize_browser(root)
     @root_element = root_element_for root, PageObject::Platforms.get
     @browser = browser_for root, PageObject::Platforms.get
-    include_platform_driver(@browser)
+    include_platform_driver(root)
   end
 
   # @private
