@@ -320,7 +320,7 @@ module PageObject
       # @param the block to execute when the event occurs
       #
       def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
-        Object::Watir::Wait.until(timeout: timeout, message: message, &block)
+        element.wait_until(timeout: timeout, message: message, &block)
       end
 
       #

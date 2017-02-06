@@ -115,7 +115,7 @@ describe "Element for Watir" do
   end
   
   it "should be able to block until a user define event fires true" do
-    allow(::Watir::Wait).to receive(:until).with(timeout: 10, message: "Element blah")
+    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element blah")
     watir_element.wait_until(10, "Element blah") {true}
   end
   

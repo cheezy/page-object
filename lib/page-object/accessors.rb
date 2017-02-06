@@ -190,18 +190,7 @@ module PageObject
     #   # 'first_name?' methods
     #
     # @param  [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a text field.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :label
-    #   * :name
-    #   * :text
-    #   * :title
-    #   * :value
-    #   * :xpath
+    # @param [Hash] identifier how we find a text field.
     # @param optional block to be invoked when element method is called
     #
     def text_field(name, identifier={:index => 0}, &block)
@@ -226,16 +215,7 @@ module PageObject
     #   # will generate 'user_id', 'user_id_element' and 'user_id?' methods
     #
     # @param [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a hidden field.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text
-    #   * :value
-    #   * :xpath
+    # @param [Hash] identifier how we find a hidden field.
     # @param optional block to be invoked when element method is called
     #
     def hidden_field(name, identifier={:index => 0}, &block)
@@ -258,15 +238,7 @@ module PageObject
     #   # 'address?' methods
     #
     # @param  [String] the name used for the generated methods
-    # @param [Hash] identifier how we find a text area.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
-    #   * :label
+    # @param [Hash] identifier how we find a text area.
     # @param optional block to be invoked when element method is called
     #
     def text_area(name, identifier={:index => 0}, &block)
@@ -294,17 +266,7 @@ module PageObject
     #   # will generate 'state', 'state=', 'state_element', 'state?', "state_options" methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a select list.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text => Watir only
-    #   * :value => Watir only
-    #   * :xpath
-    #   * :label
+    # @param [Hash] identifier how we find a select list.
     # @param optional block to be invoked when element method is called
     #
     def select_list(name, identifier={:index => 0}, &block)
@@ -334,19 +296,7 @@ module PageObject
     #   # will generate 'add_to_cart', 'add_to_cart_element', and 'add_to_cart?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a link.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :href
-    #   * :id
-    #   * :index
-    #   * :link
-    #   * :link_text
-    #   * :name
-    #   * :text
-    #   * :title
-    #   * :xpath
+    # @param [Hash] identifier how we find a link.
     # @param optional block to be invoked when element method is called
     #
     def link(name, identifier={:index => 0}, &block)
@@ -370,16 +320,7 @@ module PageObject
     #   # 'active_element', and 'active?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a checkbox.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :value
-    #   * :xpath
-    #   * :label
+    # @param [Hash] identifier how we find a checkbox.
     # @param optional block to be invoked when element method is called
     #
     def checkbox(name, identifier={:index => 0}, &block)
@@ -410,16 +351,7 @@ module PageObject
     #   # 'north_element', and 'north?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a radio button.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :value
-    #   * :xpath
-    #   * :label
+    # @param [Hash] identifier how we find a radio button.
     # @param optional block to be invoked when element method is called
     #
     def radio_button(name, identifier={:index => 0}, &block)
@@ -494,18 +426,7 @@ module PageObject
     #   # will generate 'purchase', 'purchase_element', and 'purchase?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a button.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text => Watir only
-    #   * :value
-    #   * :xpath
-    #   * :src (input type=image only)
-    #   * :alt (input type=image only)
+    # @param [Hash] identifier how we find a button.
     # @param optional block to be invoked when element method is called
     #
     def button(name, identifier={:index => 0}, &block)
@@ -525,16 +446,7 @@ module PageObject
     #   # will generate 'message', 'message_element', and 'message?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a div.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text
-    #   * :title
-    #   * :xpath
+    # @param [Hash] identifier how we find a div.
     # @param optional block to be invoked when element method is called
     #
     def div(name, identifier={:index => 0}, &block)
@@ -554,16 +466,7 @@ module PageObject
     #   # will generate 'alert', 'alert_element', and 'alert?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a span.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text
-    #   * :title
-    #   * :xpath
+    # @param [Hash] identifier how we find a span.
     # @param optional block to be invoked when element method is called
     #
     def span(name, identifier={:index => 0}, &block)
@@ -584,14 +487,7 @@ module PageObject
     #   # will generate a 'cart', 'cart_element' and 'cart?' method
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a table.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a table.
     # @param optional block to be invoked when element method is called
     #
     def table(name, identifier={:index => 0}, &block)
@@ -612,16 +508,7 @@ module PageObject
     #   # will generate 'total', 'total_element', and 'total?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a cell.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text
-    #   * :xpath
-    #   * :css
+    # @param [Hash] identifier how we find a cell.
     # @param optional block to be invoked when element method is called
     #
     def cell(name, identifier={:index => 0}, &block)
@@ -644,15 +531,7 @@ module PageObject
     #   # will generate 'sums', 'sums_element', and 'sums?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a cell.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :text => Watir only
-    #   * :xpath
-    #   * :css
+    # @param [Hash] identifier how we find a cell.
     # @param optional block to be invoked when element method is called
     #
     def row(name, identifier={:index => 0}, &block)
@@ -673,16 +552,7 @@ module PageObject
     #   # will generate 'logo_element', 'logo_loaded?', and 'logo?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find an image.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :alt
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :src
-    #   * :xpath
+    # @param [Hash] identifier how we find an image.
     # @param optional block to be invoked when element method is called
     #
     def image(name, identifier={:index => 0}, &block)
@@ -703,14 +573,7 @@ module PageObject
     #   # will generate 'login_element' and 'login?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a form.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :action
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :xpath
+    # @param [Hash] identifier how we find a form.
     # @param optional block to be invoked when element method is called
     #
     def form(name, identifier={:index => 0}, &block)
@@ -727,15 +590,7 @@ module PageObject
     #   # will generate 'item_one', 'item_one_element', and 'item_one?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a list item.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text
-    #   * :xpath
+    # @param [Hash] identifier how we find a list item.
     # @param optional block to be invoked when element method is called
     #
     def list_item(name, identifier={:index => 0}, &block)
@@ -757,14 +612,7 @@ module PageObject
     #   # will generate 'menu', 'menu_element' and 'menu?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find an unordered list.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an unordered list.
     # @param optional block to be invoked when element method is called
     #
     def unordered_list(name, identifier={:index => 0}, &block)
@@ -786,14 +634,7 @@ module PageObject
     #   # will generate 'top_five', 'top_five_element' and 'top_five?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find an ordered list.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an ordered list.
     # @param optional block to be invoked when element method is called
     #
     def ordered_list(name, identifier={:index => 0}, &block)
@@ -815,13 +656,7 @@ module PageObject
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Hash] identifier how we find a H1.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    #   by combining of any of the following except xpath.
     # @param optional block to be invoked when element method is called
     #
     def h1(name, identifier={:index => 0}, &block)
@@ -841,14 +676,7 @@ module PageObject
     #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a H2.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a H2.
     # @param optional block to be invoked when element method is called
     #
     def h2(name, identifier={:index => 0}, &block)
@@ -868,14 +696,7 @@ module PageObject
     #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a H3.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a H3.
     # @param optional block to be invoked when element method is called
     #
     def h3(name, identifier={:index => 0}, &block)
@@ -895,14 +716,7 @@ module PageObject
     #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a H4.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a H4.
     # @param optional block to be invoked when element method is called
     #
     def h4(name, identifier={:index => 0}, &block)
@@ -922,14 +736,7 @@ module PageObject
     #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a H5.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a H5.
     # @param optional block to be invoked when element method is called
     #
     def h5(name, identifier={:index => 0}, &block)
@@ -949,14 +756,7 @@ module PageObject
     #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a H6.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a H6.
     # @param optional block to be invoked when element method is called
     #
     def h6(name, identifier={:index => 0}, &block)
@@ -976,14 +776,7 @@ module PageObject
     #   # will generate 'title', 'title_element', and 'title?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a paragraph.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a paragraph.
     # @param optional block to be invoked when element method is called
     #
     def paragraph(name, identifier={:index => 0}, &block)
@@ -1004,16 +797,7 @@ module PageObject
     #   # will generate 'the_file=', 'the_file_element', and 'the_file?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a file_field.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :title
-    #   * :xpath
-    #   * :label
+    # @param [Hash] identifier how we find a file_field.
     # @param optional block to be invoked when element method is called
     #
     def file_field(name, identifier={:index => 0}, &block)
@@ -1033,15 +817,7 @@ module PageObject
     #   # will generate 'message', 'message_element', and 'message?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a label.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text
-    #   * :xpath
+    # @param [Hash] identifier how we find a label.
     # @param optional block to be invoked when element method is called
     #
     def label(name, identifier={:index => 0}, &block)
@@ -1061,15 +837,7 @@ module PageObject
     #   # will generate 'message', 'message_element', and 'message?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find an area.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :text
-    #   * :xpath
+    # @param [Hash] identifier how we find an area.
     # @param optional block to be invoked when element method is called
     #
     def area(name, identifier={:index => 0}, &block)
@@ -1089,14 +857,7 @@ module PageObject
     #   # will generate 'my_canvas_element' and 'my_canvas?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a canvas.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a canvas.
     # @param optional block to be invoked when element method is called
     #
     def canvas(name, identifier={:index => 0}, &block)
@@ -1112,14 +873,7 @@ module PageObject
     #   # will generate 'acdc_element' and 'acdc?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find an audio element.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an audio element.
     # @param optional block to be invoked when element method is called
     #
     def audio(name, identifier={:index => 0}, &block)
@@ -1135,14 +889,7 @@ module PageObject
     #   # will generate 'movie_element' and 'movie?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a video element.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a video element.
     # @param optional block to be invoked when element method is called
     #
     def video(name, identifier={:index => 0}, &block)
@@ -1158,14 +905,7 @@ module PageObject
     #   # will generate 'bold', 'bold_element', and 'bold?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a b.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a b.
     # @param optional block to be invoked when element method is called
     #
     def b(name, identifier={:index => 0}, &block)
@@ -1185,14 +925,7 @@ module PageObject
     #   # will generate 'italic', 'italic_element', and 'italic?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a i. You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a i.
     # @param optional block to be invoked when element method is called
     #
     def i(name, identifier={:index => 0}, &block)
@@ -1213,14 +946,7 @@ module PageObject
     #   # will generate 'circle_element', and 'circle?' methods
     #
     # @param [Symbol] the name used for the generated methods
-    # @param [Hash] identifier how we find a svg.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find a svg.
     # @param optional block to be invoked when element method is called
     #
     def svg(name, identifier={:index => 0}, &block)
@@ -1238,14 +964,7 @@ module PageObject
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Symbol] the name of the tag for the element
-    # @param [Hash] identifier how we find an element.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an element.
     # @param optional block to be invoked when element method is called
     #
     def element(name, tag=:element, identifier={ :index => 0 }, &block)
@@ -1306,14 +1025,7 @@ module PageObject
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Symbol] the name of the tag for the element
-    # @param [Hash] identifier how we find an element.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an element.
     # @param optional block to be invoked when element method is called
     #
     def elements(name, tag=:element, identifier={:index => 0}, &block)
@@ -1340,14 +1052,7 @@ module PageObject
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Class] the class to instantiate for the element
-    # @param [Hash] identifier how we find an element.  You can use multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an element.
     #
     def page_section(name, section_class, identifier)
       define_method(name) do
@@ -1364,14 +1069,7 @@ module PageObject
     #
     # @param [Symbol] the name used for the generated method
     # @param [Class] the class to instantiate for each element
-    # @param [Hash] identifier how we find an element.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an element.
     #
     def page_sections(name, section_class, identifier)
       define_method(name) do
@@ -1391,14 +1089,7 @@ module PageObject
     #
     # @param [Symbol] the name used for the generated methods
     # @param [Symbol] the name of the tag for the element
-    # @param [Hash] identifier how we find an element.  You can use a multiple parameters
-    #   by combining of any of the following except xpath.  The valid keys are:
-    #   * :class
-    #   * :css
-    #   * :id
-    #   * :index
-    #   * :name
-    #   * :xpath
+    # @param [Hash] identifier how we find an element.
     # @param optional block to be invoked when element method is called
     #
     LocatorGenerator::BASIC_ELEMENTS.each do |tag|
