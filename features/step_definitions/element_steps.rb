@@ -63,15 +63,15 @@ When /^I locate the form$/ do
 end
 
 Then /^I should know it exists$/ do
-  expect(@element).to exist
+  expect(@element.exists?).to be true
 end
 
 Then /^I should know it is visible$/ do
-  expect(@element).to be_visible
+  expect(@element.visible?).to be true
 end
 
 Then /^I should know it is not visible$/ do
-  expect(@element).not_to be_visible
+  expect(@element.visible?).to be false
 end
 
 Then /^I should know the text is "(.*)"$/ do |text|
@@ -129,7 +129,7 @@ When /^I check an enabled button$/ do
 end
 
 Then /^it should know it is enabled$/ do
-  expect(@element).to be_enabled
+  expect(@element.enabled?).to be true
 end
 
 When /^I check a disabled button$/ do
@@ -137,7 +137,7 @@ When /^I check a disabled button$/ do
 end
 
 Then /^it should know it is not enabled$/ do
-  expect(@element).not_to be_enabled
+  expect(@element.enabled?).not_to be true
 end
 
 Then /^it should know that is it not disabled$/ do
@@ -253,7 +253,7 @@ When /^I scroll the heading element into view$/ do
 end
 
 Then /^the heading element should be visible$/ do
-  expect(@element).to be_visible
+  expect(@element.visible?).to be true
 end
 
 When /^I retrieve a div using data\-entity$/ do

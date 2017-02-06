@@ -21,7 +21,7 @@ describe "Element" do
 
     it "should check if native is enabled" do
       expect(native).to receive(:enabled?).and_return(true)
-      expect(element).to be_enabled
+      expect(element.enabled?).to be true
     end
 
     it "should click the native" do
@@ -32,11 +32,6 @@ describe "Element" do
     it "should double click the native" do
       expect(native).to receive(:double_click)
       element.double_click
-    end
-
-    it "should inspect the native" do
-      expect(native).to receive(:inspect)
-      element.inspect
     end
 
     it "should retrieve the native's style" do
@@ -50,13 +45,13 @@ describe "Element" do
     end
 
     it "should know if a native is visible" do
-      expect(native).to receive(:present?).and_return(false)
+      expect(native).to receive(:visible?).and_return(false)
       expect(element.visible?).to eq(false)
     end
 
     it "should know if a native exists" do
       expect(native).to receive(:exists?).and_return(true)
-      expect(element).to exist
+      expect(element.exists?).to be true
     end
 
     it "should flash the native" do
@@ -101,12 +96,12 @@ describe "Element" do
 
     it "should know if a native is focused" do
       expect(native).to receive(:focused?).and_return(true)
-      expect(element).to be_focused
+      expect(element.focused?).to be true
     end
 
     it "should know if a native is not focused" do
       expect(native).to receive(:focused?).and_return(false)
-      expect(element).to_not be_focused
+      expect(element.focused?).to be false
     end
 
     it "should select the native's text" do
@@ -120,8 +115,8 @@ describe "Element" do
     end
 
     it 'should check if the element is visible' do
-      expect(native).to receive(:present?).and_return(false)
-      expect(native).to receive(:present?).and_return(true)
+      expect(native).to receive(:visible?).and_return(false)
+      expect(native).to receive(:visible?).and_return(true)
       expect(element.check_visible).to be true
     end
 

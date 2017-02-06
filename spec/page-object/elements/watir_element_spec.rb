@@ -10,13 +10,13 @@ describe "Element for Watir" do
   end
 
   it "should know when it is visible" do
-    allow(watir_driver).to receive(:present?).and_return(true)
+    allow(watir_driver).to receive(:visible?).and_return(true)
     allow(watir_driver).to receive(:displayed?).and_return(true)
     expect(watir_element.visible?).to eql true
   end
 
   it "should know when it is not visible" do
-    allow(watir_driver).to receive(:present?).and_return(false)
+    allow(watir_driver).to receive(:visible?).and_return(false)
     allow(watir_driver).to receive(:displayed?).and_return(false)
     expect(watir_element.visible?).to eql false
   end

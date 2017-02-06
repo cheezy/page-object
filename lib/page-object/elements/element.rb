@@ -19,40 +19,12 @@ module PageObject
       end
 
       #
-      # click the element
-      #
-      def click
-        element.click
-      end
-
-      #
-      # return true if the element is enabled
-      #
-      def enabled?
-        element.enabled?
-      end
-
-      #
       # return true if the element is not enabled
       #
       def disabled?
         not enabled?
       end
 
-      #
-      # return true if the element is stale (no longer attached
-      # to the DOM)
-      #
-      def stale?
-        element.stale?
-      end
-
-      #
-      # get the value of the given CSS property
-      #
-      def style(property = nil)
-        element.style property
-      end
 
       def inspect
         element.inspect
@@ -101,83 +73,15 @@ module PageObject
       #
       # return true if an element is visible
       #
-      def visible?
-        element.present?
-      end
-
-      #
-      # return true if an element exists
-      #
-      def exists?
-        element.exists?
-      end
-
-      #
-      # flash the element by temporarily changing the background color
-      #
-      def flash
-        element.flash
-      end
-
-      #
-      # Get the text for the element
-      #
-      # @return [String]
-      #
-      def text
-        element.text
-      end
-
-      #
-      # Returns the html for the element
-      #
-      # @return [String]
-      #
-      def html
-        element.html
-      end
-
-      #
-      # Returns the outer html for the element
-      #
-      # @return [String]
-      #
-      def outer_html
-        element.outer_html
-      end
-
-      #
-      # Returns the inner html for the element
-      #
-      # @return [String]
-      #
-      def inner_html
-        element.inner_html
-      end
-
-      #
-      # Get the value of this element
-      #
-      # @return [String]
-      #
-      def value
-        element.value
-      end
+      # def visible?
+      #   element.present?
+      # end
 
       #
       # compare this element to another to determine if they are equal
       #
       def ==(other)
         other.is_a? self.class and element == other.element
-      end
-
-      #
-      # Get the tag name of this element
-      #
-      # @return [String]
-      #
-      def tag_name
-        element.tag_name
       end
 
       #
@@ -215,27 +119,6 @@ module PageObject
       end
 
       #
-      # Fire the provided event on the current element
-      #
-      def fire_event(event_name)
-        element.fire_event(event_name)
-      end
-
-      #
-      # hover over the element
-      #
-      def hover
-        element.hover
-      end
-
-      #
-      # double click the element
-      #
-      def double_click
-        element.double_click
-      end
-
-      #
       # find the parent element
       #
       def parent
@@ -243,34 +126,6 @@ module PageObject
         type = element.type if parent.tag_name.to_sym == :input
         cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
         cls.new(parent, :platform => :watir)
-      end
-
-      #
-      # Set the focus to the current element
-      #
-      def focus
-        element.focus
-      end
-
-      #
-      # return true if an element is focused
-      #
-      def focused?
-        element.focused?
-      end
-
-      #
-      # Select the provided text
-      #
-      def select_text(text)
-        element.select_text text
-      end
-
-      #
-      # Right click on an element
-      #
-      def right_click
-        element.right_click
       end
 
       #
@@ -321,37 +176,6 @@ module PageObject
       #
       def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
         element.wait_until(timeout: timeout, message: message, &block)
-      end
-
-      #
-      # Send keystrokes to this element
-      #
-      # @param [String, Symbol, Array]
-      #
-      # Examples:
-      #
-      #     element.send_keys "foo"                     #=> value: 'foo'
-      #     element.send_keys "tet", :arrow_left, "s"   #=> value: 'test'
-      #     element.send_keys [:control, 'a'], :space   #=> value: ' '
-      #
-      # @see Selenium::WebDriver::Keys::KEYS
-      #
-      def send_keys(*args)
-        element.send_keys(*args)
-      end
-
-      #
-      # clear the contents of the element
-      #
-      def clear
-        element.clear
-      end
-
-      #
-      # get the id of the element
-      #
-      def id
-        element.id
       end
 
       #

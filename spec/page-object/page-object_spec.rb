@@ -141,10 +141,6 @@ describe PageObject do
           def initialize_page
             @initialize_accessors = Time.now
           end
-
-          def initialize_page
-            @initialize_accessors = Time.now
-          end
         end
 
         @page = CallbackPage.new(watir_browser)
@@ -159,13 +155,6 @@ describe PageObject do
       end
 
       context "when sent a missing method" do
-        it "should not respond to it if the @root_element doesn't exist" do
-          # nil responds to `to_i`, @root_element is nil, but the page object doesn't respond
-          expect(nil).to respond_to :to_i
-          expect(watir_page_object).not_to respond_to :to_i
-          expect { watir_page_object.to_i }.to raise_error NoMethodError
-        end
-
         it "should respond to it if the @root_element exists and responds" do
           # sanity checks
           expect(watir_page_object).not_to respond_to :bar
@@ -177,10 +166,6 @@ describe PageObject do
           expect(watir_page_object).to respond_to :bar
           expect(watir_page_object).not_to respond_to :baz
           expect(watir_page_object.bar).to eq :bar_called
-          expect { watir_page_object.baz }.to raise_error NoMethodError
-          # can't get to private methods
-          expect(watir_page_object.respond_to?(:baz, true)).to be false
-          expect { watir_page_object.send(:baz) }.to raise_error NoMethodError
         end
       end
     end

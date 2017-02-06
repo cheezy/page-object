@@ -227,7 +227,7 @@ When(/^I access an element that is outside of the section$/) do
 end
 
 Then(/^I should see that it doesn't exist in the section$/) do
-  expect(@element).not_to exist
+  expect(@element.exists?).to be false
 end
 
 When(/^I select multiple sections$/) do
