@@ -3,10 +3,6 @@ module PageObject
   module Elements
     class TextField < Element
 
-      def append(text)
-        element.append(text)
-      end
-
       #
       # Set the value of the TextField
       #

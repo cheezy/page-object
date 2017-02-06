@@ -1,4 +1,3 @@
-
 module PageObject
   module Elements
     class SelectList < Element
@@ -11,21 +10,6 @@ module PageObject
       #
       def [](idx)
         options[idx]
-      end
-
-      #
-      # Select a value from the list
-      #
-      def select(value)
-        element.select(value)
-      end
-
-      #
-      # Select the option(s) whose value attribute matches the given
-      # string
-      #
-      def select_value(value)
-        element.select_value(value)
       end
 
       #
@@ -58,15 +42,6 @@ module PageObject
       # @return [Boolean]
       def include?(value)
         element.include? value
-      end
-
-      #
-      # Returns true if any of the selected options' text or label match the given value.
-      #
-      # @param [String, Regexp] value A value.
-      # @return [Boolean]
-      def selected?(value)
-        element.selected? value
       end
 
       protected

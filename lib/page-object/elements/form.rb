@@ -3,13 +3,6 @@ module PageObject
   module Elements
     class Form < Element
 
-      #
-      # Submit the form.
-      #
-      def submit
-        element.submit
-      end
-
       protected
 
       def self.watir_finders

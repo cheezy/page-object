@@ -2,13 +2,9 @@ Version 2.1
 * Enhancements
   * Removed Selenium Platform.
         Still support Selenium driver by wrapping it with a Watir browser.
-  * Added the following methods to Element
-    - outer_html
-    - inner_html
-    - stale?
-  * Added the selected? method to Option
-  * Added the append method to TextArea
   * Added ability to locate indexed element by regex (Thanks Sean MacGahan)
+  * Removed all direct delegates.  Now relies on method_missing to call Watir methods.
+    - You may have to change RSpec matchers to use method instead of predicate.
 
 Version 2.0.0 / 2016-11-22
 * Enhancements

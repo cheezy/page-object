@@ -3,13 +3,6 @@ module PageObject
   module Elements
     class Link < Element
 
-      #
-      # return the href for the link
-      #
-      def href
-        element.href
-      end
-
       protected
 
       def self.watir_finders
