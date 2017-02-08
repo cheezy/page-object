@@ -98,7 +98,7 @@ my_page_object = MyPageObject.new(browser)
 
 ### Cucumber usage:
 
-Spesify you javasctipt notes:
+Specify you javasctipt notes:
 ```ruby
 AfterConfiguration do |config|
   PageObject::JavascriptFrameworkFacade.framework=:jquery
