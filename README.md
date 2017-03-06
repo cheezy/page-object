@@ -94,6 +94,18 @@ browser = Selenium::WebDriver.for :firefox
 my_page_object = MyPageObject.new(browser)
 ````
 
+## Notes
+
+### Cucumber usage:
+
+Specify you javasctipt notes:
+```ruby
+AfterConfiguration do |config|
+  PageObject::JavascriptFrameworkFacade.framework=:jquery
+end
+
+```
+
 ## Known Issues
 
 See [http://github.com/cheezy/page-object/issues](http://github.com/cheezy/page-object/issues)
