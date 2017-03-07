@@ -35,6 +35,12 @@ module PageObject
         populate_radiobuttongroup(key, value) if is_radiobuttongroup?(key)
         populate_radiobutton(key, value) if is_radiobutton?(key) and is_enabled?(key)
         populate_text(key, value) if is_text?(key) and is_enabled?(key)
+        populate_select_list(key, value) if is_select_list?(key)
+        begin
+          populate_text(key, value) if is_text?(key) and is_enabled?(key)
+        rescue => error
+          populate_text(key, value)
+        end
       end
     end
 
@@ -57,6 +63,10 @@ module PageObject
       return self.send("select_#{key}", value)
     end
 
+    def populate_select_list(key, value)
+      self.send("#{key}_element").select(value)
+    end
+
     def is_text?(key)
       respond_to?("#{key}=".to_sym)
     end
@@ -73,10 +83,15 @@ module PageObject
       respond_to?("select_#{key}".to_sym) and respond_to?("#{key}_values")
     end
 
+    def is_select_list?(key)
+      respond_to?("#{key}_options".to_sym)
+    end
+
     def is_enabled?(key)
       return false if is_radiobuttongroup?(key)
-      return true if (self.send "#{key}_element").tag_name == "textarea"
+      return false if is_select_list?(key)
       element = self.send("#{key}_element")
+      return true if element.tag_name == "textarea"
       element.enabled? and element.visible?
     end
   end

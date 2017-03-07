@@ -12,6 +12,17 @@ module PageObject
         options[idx]
       end
 
+      def select(value)
+        options.each do |option|
+          if option.attribute(:text) == value
+            return option.click
+          elsif option.attribute(:value) == value
+            return option.click
+          end
+        end
+        raise "Failed to select value [#{value}] from list. Available options text: [#{options_text}] \n Available options value [#{options_value}]"
+      end
+
       #
       # Return an array of Options contained in the select list.
       #
