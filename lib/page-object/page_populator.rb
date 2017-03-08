@@ -36,11 +36,7 @@ module PageObject
         populate_radiobutton(key, value) if is_radiobutton?(key) and is_enabled?(key)
         populate_text(key, value) if is_text?(key) and is_enabled?(key)
         populate_select_list(key, value) if is_select_list?(key)
-        begin
-          populate_text(key, value) if is_text?(key) and is_enabled?(key)
-        rescue => error
-          populate_text(key, value)
-        end
+        populate_text(key, value) if is_text?(key) and is_enabled?(key)
       end
     end
 
