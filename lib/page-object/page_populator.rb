@@ -59,8 +59,13 @@ module PageObject
       return self.send("select_#{key}", value)
     end
 
-    def populate_select_list(key, value)
-      self.send("#{key}_element").select(value)
+  def populate_select_list(key, value)
+      select_element = self.send("#{key}_element")
+      if select_element.options.include?(value)
+        select_element.select(value) 
+      else
+        select_element.select_value(value)
+      end
     end
 
     def is_text?(key)
