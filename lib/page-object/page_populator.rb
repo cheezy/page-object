@@ -61,13 +61,14 @@ module PageObject
   def populate_select_list(key, value)
       select_element = self.send("#{key}_element")
       if select_element.options.include?(value)
-        select_element.select(value) 
+        select_element.select(value)
       else
         select_element.select_value(value)
       end
     end
 
     def is_text?(key)
+      return false if is_select_list?(key)
       respond_to?("#{key}=".to_sym)
     end
 
@@ -89,7 +90,6 @@ module PageObject
 
     def is_enabled?(key)
       return false if is_radiobuttongroup?(key)
-      return false if is_select_list?(key)
       element = self.send("#{key}_element")
       return true if element.tag_name == "textarea"
       element.enabled? and element.visible?
