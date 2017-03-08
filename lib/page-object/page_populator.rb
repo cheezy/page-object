@@ -34,7 +34,6 @@ module PageObject
         populate_checkbox(key, value) if is_checkbox?(key) and is_enabled?(key)
         populate_radiobuttongroup(key, value) if is_radiobuttongroup?(key)
         populate_radiobutton(key, value) if is_radiobutton?(key) and is_enabled?(key)
-        populate_text(key, value) if is_text?(key) and is_enabled?(key)
         populate_select_list(key, value) if is_select_list?(key)
         populate_text(key, value) if is_text?(key) and is_enabled?(key)
       end
