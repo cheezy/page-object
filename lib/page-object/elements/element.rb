@@ -42,8 +42,8 @@ module PageObject
       #
       def self.plural_form
         "#{self.to_s.split('::')[-1].
-            gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-            gsub(/([a-z\d])([A-Z])/,'\1_\2').
+            gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
+            gsub(/([a-z\d])([A-Z])/, '\1_\2').
             tr("-", "_").
             downcase}s"
       end
@@ -134,7 +134,7 @@ module PageObject
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
       #
       def when_present(timeout=::PageObject.default_element_wait)
-        element.wait_until(timeout: timeout, message: "Element not present in #{timeout} seconds",  &:present?)
+        element.wait_until(timeout: timeout, message: "Element not present in #{timeout} seconds", &:present?)
         self
       end
 
@@ -154,6 +154,7 @@ module PageObject
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
       #
       def when_visible(timeout=::PageObject.default_element_wait)
+        when_present(timeout)
         element.wait_until(timeout: timeout, message: "Element not visible in #{timeout} seconds", &:visible?)
         self
       end
@@ -164,7 +165,8 @@ module PageObject
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
       #
       def when_not_visible(timeout=::PageObject.default_element_wait)
-          element.wait_while(timeout: timeout, message: "Element still visible after #{timeout} seconds", &:visible?)
+        when_present(timeout)
+        element.wait_while(timeout: timeout, message: "Element still visible after #{timeout} seconds", &:visible?)
       end
 
       #
@@ -330,7 +332,7 @@ module PageObject
 
       def include_platform_for platform
         platform_information = PageObject::Platforms.get
-        raise ArgumentError,"Expected hash with at least a key :platform for platform information! (#{platform.inspect})" unless platform.class == Hash && platform.has_key?(:platform)
+        raise ArgumentError, "Expected hash with at least a key :platform for platform information! (#{platform.inspect})" unless platform.class == Hash && platform.has_key?(:platform)
         platform_name = platform[:platform]
 
         raise ArgumentError, "Unknown platform #{platform_name}! Expect platform to be one of the following: #{platform_information.keys.inspect}" unless platform_information.keys.include?(platform_name)
@@ -356,7 +358,7 @@ module PageObject
       end
 
       def constantize_classname name
-        name.split("::").inject(Object) { |k,n| k.const_get(n) }
+        name.split("::").inject(Object) { |k, n| k.const_get(n) }
       end
 
     end

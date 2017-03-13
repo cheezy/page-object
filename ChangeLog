@@ -1,3 +1,8 @@
+Version 2.2
+* Enhancements
+  * when_visible and when_not_visible now wait for element to be present before checking
+  * populate_page_with can populate select_list using values (Thanks vveliev)
+
 Version 2.1.1 / 2017-3-7
 * Fixes
   * Fixed issue with import ordering
