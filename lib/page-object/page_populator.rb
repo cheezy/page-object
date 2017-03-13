@@ -34,6 +34,7 @@ module PageObject
         populate_checkbox(key, value) if is_checkbox?(key) and is_enabled?(key)
         populate_radiobuttongroup(key, value) if is_radiobuttongroup?(key)
         populate_radiobutton(key, value) if is_radiobutton?(key) and is_enabled?(key)
+        populate_select_list(key, value) if is_select_list?(key)
         populate_text(key, value) if is_text?(key) and is_enabled?(key)
       end
     end
@@ -57,7 +58,17 @@ module PageObject
       return self.send("select_#{key}", value)
     end
 
+  def populate_select_list(key, value)
+      select_element = self.send("#{key}_element")
+      if select_element.options.include?(value)
+        select_element.select(value)
+      else
+        select_element.select_value(value)
+      end
+    end
+
     def is_text?(key)
+      return false if is_select_list?(key)
       respond_to?("#{key}=".to_sym)
     end
 
@@ -71,6 +82,10 @@ module PageObject
 
     def is_radiobuttongroup?(key)
       respond_to?("select_#{key}".to_sym) and respond_to?("#{key}_values")
+    end
+
+    def is_select_list?(key)
+      respond_to?("#{key}_options".to_sym)
     end
 
     def is_enabled?(key)
