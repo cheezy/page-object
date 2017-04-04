@@ -15,7 +15,6 @@ Feature: Bold
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |

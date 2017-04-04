@@ -1072,17 +1072,9 @@ module PageObject
 
         def parse_identifiers(identifier, element, tag_name=nil)
           frame_identifiers = identifier.delete(:frame)
-          identifier = add_tagname_if_needed identifier, tag_name if tag_name
-          identifier = element.watir_identifier_for identifier
           return identifier, frame_identifiers
         end
-
-        def add_tagname_if_needed identifier, tag
-          return identifier if identifier.length < 2 and not identifier[:name]
-          identifier[:tag_name] = tag if identifier[:name]
-          identifier
-        end
-
+        
         def nested_frames(frame_identifiers)
           return if frame_identifiers.nil?
           frame_str = ''

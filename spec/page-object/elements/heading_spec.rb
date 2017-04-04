@@ -4,15 +4,6 @@ require 'page-object/elements'
 describe PageObject::Elements::Heading do
   let(:heading) { PageObject::Elements::Heading }
 
-  describe "when mapping how to find an element" do
-    it "should map watir types to same" do
-      [:class, :id, :index, :name, :xpath].each do |t|
-        identifier = heading.watir_identifier_for t => 'value'
-        expect(identifier.keys.first).to eql t
-      end
-    end
-  end
-
   describe "interface" do
     it "should register with tag :h1" do
       expect(::PageObject::Elements.element_class_for(:h1)).to eql ::PageObject::Elements::Heading

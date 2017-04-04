@@ -25,7 +25,6 @@ Feature: Div
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | text      |
     | title     |
     | css       |
@@ -37,7 +36,6 @@ Feature: Div
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a div dynamically
     When I get the text from a div while the script is executing

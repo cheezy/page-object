@@ -4,15 +4,6 @@ require 'page-object/elements'
 describe PageObject::Elements::Image do
   let(:image) { PageObject::Elements::Image }
 
-  describe "when mapping how to find an element" do
-    it "should map watir types to same" do
-      [:class, :id, :index, :name, :xpath, :alt, :src].each do |t|
-        identifier = image.watir_identifier_for t => 'value'
-        expect(identifier.keys.first).to eql t
-      end
-    end
-  end
-
   describe "interface" do
     let(:image_element) { double('image_element') }
 

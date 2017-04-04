@@ -17,7 +17,6 @@ Feature: Paragraph
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | css       |
 
   Scenario Outline: Locating paragraphs using multiple parameters
@@ -27,7 +26,6 @@ Feature: Paragraph
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a paragraph dynamically
     When I get the text from a paragraph while the script is executing

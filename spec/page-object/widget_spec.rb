@@ -119,15 +119,6 @@ describe "Widget PageObject Extensions" do
   end
 
   describe "Widget Elements-GxtTable" do
-    describe "when mapping how to find an element" do
-      it "should map watir types to same" do
-        [:class, :id, :index, :xpath].each do |t|
-          identifier = GxtTable.watir_identifier_for t => 'value'
-          expect(identifier.keys.first).to eql t
-        end
-      end
-    end
-
     describe "interface" do
       let(:gxt_table_element) { double('gxt_table_element') }
 

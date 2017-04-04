@@ -20,7 +20,6 @@ Feature: Ordered list
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | css       |
 
   Scenario Outline: Locating ordered lists using multiple parameters
@@ -31,7 +30,6 @@ Feature: Ordered list
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a ordered list dynamically
     When I search for the ordered list while the script is executing

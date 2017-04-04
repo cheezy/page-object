@@ -20,7 +20,6 @@ Feature: Unordered list
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | css       |
 
   Scenario Outline: Locating unordered lists using multiple parameters
@@ -31,7 +30,6 @@ Feature: Unordered list
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a unordered list dynamically
     When I search for the unordered list while the script is executing

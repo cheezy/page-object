@@ -17,7 +17,6 @@ Feature: Span
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | text      |
     | title     |
     | css       |
@@ -29,7 +28,6 @@ Feature: Span
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a span dynamically
     When I get the text from a span while the script is executing

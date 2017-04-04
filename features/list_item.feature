@@ -17,7 +17,6 @@ Feature: List item
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | text      |
     | css       |
 
@@ -28,7 +27,6 @@ Feature: List item
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a list item dynamically
     When I search for the list item while the script is executing

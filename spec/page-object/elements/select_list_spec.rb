@@ -4,15 +4,6 @@ require 'page-object/elements'
 describe PageObject::Elements::SelectList do
   let(:selectlist) { PageObject::Elements::SelectList }
 
-  describe "when mapping how to find an element" do
-    it "should map watir types to same" do
-      [:class, :id, :index, :name, :text, :value, :xpath].each do |t|
-        identifier = selectlist.watir_identifier_for t => 'value'
-        expect(identifier.keys.first).to eql t
-      end
-    end
-  end
-
   describe "interface" do
     let(:sel_list) { double('select_list') }
     let(:opts) { [sel_list, sel_list] }

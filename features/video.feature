@@ -16,7 +16,6 @@ Feature: Support for video element
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |
@@ -28,7 +27,6 @@ Feature: Support for video element
   Examples:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Should know if it is autoplay
     When I retrieve the video element

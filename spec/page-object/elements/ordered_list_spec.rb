@@ -4,15 +4,6 @@ require 'page-object/elements'
 describe PageObject::Elements::OrderedList do
   let(:ol) { PageObject::Elements::OrderedList }
 
-  describe "when mapping how to find an element" do
-    it "should map watir types to same" do
-      [:class, :id, :index, :xpath].each do |t|
-        identifier = ol.watir_identifier_for t => 'value'
-        expect(identifier.keys.first).to eql t
-      end
-    end
-  end
-
   describe "interface" do
     let(:ol_element) { double('ol_element') }
 

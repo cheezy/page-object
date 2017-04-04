@@ -2,16 +2,6 @@ require 'spec_helper'
 require 'page-object/elements'
 
 describe PageObject::Elements::Table do
-  describe "when mapping how to find an element" do
-    it "should map watir types to same" do
-      [:class, :id, :index, :xpath].each do |t|
-        identifier = PageObject::Elements::Table.watir_identifier_for t => 'value'
-        expect(identifier.keys.first).to eql t
-      end
-    end
-
-  end
-
   describe "interface" do
     let(:table_element) { double('table_element') }
 

@@ -4,16 +4,6 @@ require 'page-object/elements'
 describe PageObject::Elements::UnorderedList do
   let(:ul) { PageObject::Elements::UnorderedList }
 
-  describe "when mapping how to find an element" do
-    it "should map watir types to same" do
-      [:class, :id, :index, :xpath].each do |t|
-        identifier = ul.watir_identifier_for t => 'value'
-        expect(identifier.keys.first).to eql t
-      end
-    end
-
-  end
-
   describe "interface" do
     let(:ul_element) { double('ul_element') }
 

@@ -4,15 +4,6 @@ require 'page-object/elements'
 describe PageObject::Elements::Button do
   let(:button) { PageObject::Elements::Button }
 
-  context "when mapping how to find an element" do
-    it "should map watir types to same" do
-      [:class, :id, :index, :name, :value, :xpath, :src, :alt, :css].each do |t|
-        identifier = button.watir_identifier_for t => 'value'
-        expect(identifier.keys.first).to eql t
-      end
-    end
-  end
-
   describe "interface" do
     let(:button_element) { double('button_element') }
 

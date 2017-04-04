@@ -17,7 +17,6 @@ Feature: Table Cell
     | id        |
     | class     |
     | xpath     |
-    | name      |
     | text      |
     | css       |
 
@@ -36,7 +35,6 @@ Feature: Table Cell
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a table cell dynamically
     When I retrieve a table cell element while the script is executing

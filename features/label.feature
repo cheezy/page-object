@@ -26,7 +26,6 @@ Feature: Handling labels with page object
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | text      |
     | css       |
 
@@ -37,7 +36,6 @@ Feature: Handling labels with page object
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a label dynamically
     When I get the text from a label while the script is executing

@@ -16,7 +16,6 @@ Feature: Area
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |

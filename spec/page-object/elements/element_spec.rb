@@ -4,16 +4,6 @@ require 'page-object/elements'
 
 describe "Element" do
 
-  context "when building the identifiers for Watir" do
-    it "should build xpath when finding elements by name where not supported" do
-      ['table', 'span', 'div', 'td', 'li', 'ol', 'ul'].each do |tag|
-        how = {:tag_name => tag, :name => 'blah'}
-        result = PageObject::Elements::Element.watir_identifier_for how
-        expect(result[:xpath]).to eql ".//#{tag}[@name='blah']"
-      end
-    end
-  end
-
   context "interaction with native element" do
     let(:wd) { double('') }
     let(:native) { double(wd: wd) }

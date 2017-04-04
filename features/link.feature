@@ -19,8 +19,6 @@ Feature: Links
     | class     |
     | name      |
     | xpath     |
-    | link      |
-    | link_text |
     | text      |
     | index     |
     | href      |

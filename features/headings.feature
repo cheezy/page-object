@@ -25,7 +25,6 @@ Feature: Headings
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |
@@ -38,7 +37,6 @@ Feature: Headings
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |
@@ -51,7 +49,6 @@ Feature: Headings
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |
@@ -64,7 +61,6 @@ Feature: Headings
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |
@@ -77,7 +73,6 @@ Feature: Headings
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |
@@ -90,7 +85,6 @@ Feature: Headings
     | search_by |
     | id        |
     | class     |
-    | name      |
     | xpath     |
     | index     |
     | css       |

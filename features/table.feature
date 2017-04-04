@@ -81,7 +81,6 @@ Feature: Table
     | class     |
     | xpath     |
     | index     |
-    | name      |
     | css       |
 
   Scenario: Matching the expected table with the table on the Page
@@ -98,7 +97,6 @@ Feature: Table
   Scenarios:
     | param1 | param2 |
     | class  | index  |
-    | name   | index  |
 
   Scenario: Finding a table dynamically
     When I retrieve a table element while the script is executing
