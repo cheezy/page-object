@@ -16,12 +16,6 @@ module PageObject
         element.height
       end
 
-      protected
-
-      def self.watir_finders
-        super + [:alt, :src]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:img] = ::PageObject::Elements::Image

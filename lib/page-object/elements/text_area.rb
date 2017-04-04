@@ -10,12 +10,6 @@ module PageObject
         element.set(new_value)
       end
 
-      protected
-
-      def self.watir_finders
-        super + [:label]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:textarea] = ::PageObject::Elements::TextArea

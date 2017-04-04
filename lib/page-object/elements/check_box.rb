@@ -23,12 +23,6 @@ module PageObject
         element.set?
       end
 
-      protected
-
-      def self.watir_finders
-        super + [:value, :label]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:checkbox] = ::PageObject::Elements::CheckBox

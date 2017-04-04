@@ -10,12 +10,6 @@ module PageObject
         element.set(new_value)
       end
 
-      protected
-
-      def self.watir_finders
-        super + [:title, :value, :text, :label]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:text] = ::PageObject::Elements::TextField

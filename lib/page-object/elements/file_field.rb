@@ -10,12 +10,6 @@ module PageObject
         element.set(new_value)
       end
 
-      protected
-
-      def self.watir_finders
-        super + [:title, :label]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:file] = ::PageObject::Elements::FileField

@@ -48,10 +48,6 @@ module PageObject
         "./child::li"
       end
 
-      def self.watir_finders
-        [:class, :id, :index, :xpath]
-      end
-
       def children
         element.uls(:xpath => child_xpath)
       end

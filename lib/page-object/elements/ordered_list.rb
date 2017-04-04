@@ -51,10 +51,6 @@ module PageObject
         "./child::li"
       end
 
-      def self.watir_finders
-        [:class, :id, :index, :xpath]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:ol] = ::PageObject::Elements::OrderedList

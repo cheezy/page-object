@@ -6,12 +6,6 @@ module PageObject
         raise "click is not available on the hidden field element"
       end
 
-      protected
-
-      def self.watir_finders
-        super + [:text, :value]
-      end
-
     end
 
     ::PageObject::Elements.type_to_class[:hidden] = ::PageObject::Elements::HiddenField

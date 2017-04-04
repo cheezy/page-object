@@ -50,10 +50,6 @@ module PageObject
         ".//child::option"
       end
 
-      def self.watir_finders
-        super + [:text, :value, :label]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:select] = ::PageObject::Elements::SelectList

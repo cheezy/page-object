@@ -7,13 +7,7 @@ module PageObject
         @element = element
         include_platform_for platform
       end
-
-      protected
-
-      def self.watir_finders
-        super + [:text, :value, :src, :alt, :css]
-      end
-
+      
     end
 
     ::PageObject::Elements.type_to_class[:submit] = ::PageObject::Elements::Button

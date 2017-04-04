@@ -9,12 +9,6 @@ module PageObject
         true
       end
 
-      protected
-
-      def self.watir_finders
-        super + [:text]
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:td] = ::PageObject::Elements::TableCell
