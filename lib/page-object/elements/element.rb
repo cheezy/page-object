@@ -15,7 +15,7 @@ module PageObject
 
       def initialize(element, platform)
         @element = element
-        include_platform_for platform
+        @platform = PageObject::Platforms::Watir::PageObject.new(@element)
       end
 
       #
@@ -232,17 +232,6 @@ module PageObject
       end
 
       protected
-
-      def include_platform_for platform
-        platform_information = PageObject::Platforms.get
-        raise ArgumentError, "Expected hash with at least a key :platform for platform information! (#{platform.inspect})" unless platform.class == Hash && platform.has_key?(:platform)
-        platform_name = platform[:platform]
-
-        raise ArgumentError, "Unknown platform #{platform_name}! Expect platform to be one of the following: #{platform_information.keys.inspect}" unless platform_information.keys.include?(platform_name)
-        base_platform_class = "#{platform_information[platform_name]}::"
-
-        @platform = constantize_classname(base_platform_class+ "PageObject").new(@element)
-      end
 
       def to_ary
         nil
