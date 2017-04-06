@@ -249,10 +249,6 @@ module PageObject
         false
       end
 
-      def constantize_classname name
-        name.split("::").inject(Object) { |k, n| k.const_get(n) }
-      end
-
     end
   end
 end

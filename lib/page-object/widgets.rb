@@ -26,10 +26,6 @@ module PageObject
 
     private
 
-    def self.constantize_classname name
-      name.split("::").inject(Object) { |k,n| k.const_get(n) }
-    end
-
     def self.define_accessors(base, widget_tag, widget_class)
       accessors_module = Module.new do
         define_method widget_tag do |name, *identifier_args, &block|
