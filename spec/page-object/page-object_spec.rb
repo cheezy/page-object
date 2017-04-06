@@ -75,7 +75,7 @@ describe PageObject do
 
   context "when created with a watir browser" do
     it "should include the WatirPageObject module" do
-      expect(watir_page_object.platform).to be_kind_of PageObject::Platforms::WatirWebDriver::PageObject
+      expect(watir_page_object.platform).to be_kind_of PageObject::Platforms::Watir::PageObject
     end
   end
 

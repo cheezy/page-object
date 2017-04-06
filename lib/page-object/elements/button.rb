@@ -3,11 +3,6 @@ module PageObject
   module Elements
     class Button < Element
 
-      def initialize(element, platform)
-        @element = element
-        include_platform_for platform
-      end
-      
     end
 
     ::PageObject::Elements.type_to_class[:submit] = ::PageObject::Elements::Button

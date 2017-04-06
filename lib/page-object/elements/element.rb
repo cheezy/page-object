@@ -6,7 +6,7 @@ module PageObject
     #
     # Contains functionality that is common across all elements.
     #
-    # @see PageObject::Platforms::WatirWebDriver::Element for the Watir version of all common methods
+    # @see PageObject::Platforms::Watir::Element for the Watir version of all common methods
     #
     class Element
       include ::PageObject::NestedElements

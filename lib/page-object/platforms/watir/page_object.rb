@@ -4,7 +4,7 @@ require 'page-object/core_ext/string'
 
 module PageObject
   module Platforms
-    module WatirWebDriver
+    module Watir
 
       #
       # Watir implementation of the page object platform driver.  You should not use the

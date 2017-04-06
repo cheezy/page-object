@@ -1,10 +1,10 @@
 module PageObject
   module Platforms
-    module WatirWebDriver
+    module Watir
 
       def self.create_page_object(browser)
         browser = selenium_browser(browser) unless watir?(browser)
-        return WatirWebDriver::PageObject.new(browser)
+        return Watir::PageObject.new(browser)
       end
 
       def self.is_for?(browser)
@@ -49,4 +49,4 @@ module PageObject
   end
 end
 
-PageObject::Platforms.register(:watir, PageObject::Platforms::WatirWebDriver)
+PageObject::Platforms.register(:watir, PageObject::Platforms::Watir)
