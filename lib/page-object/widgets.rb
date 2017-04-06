@@ -20,15 +20,7 @@ module PageObject
         define_nested_elements(Elements::Element, widget_tag)
         define_locators(PageObject, widget_tag)
 
-        PageObject::Platforms.constants.each { |platform|
-          platform_class = constantize_classname("PageObject::Platforms::#{platform}::PageObject")
-          if platform_class.respond_to?(:define_widget_accessors)
-            platform_class.send(:define_widget_accessors,widget_tag, widget_class, base_element_tag)
-          else
-            $stderr.puts "*** WARNING"
-            $stderr.puts "*** Platform PageObject::Platforms::#{platform} does not support widgets! Please add the 'define_widget_accessors' method in PageObject::Platforms::#{platform}::PageObject to support widgets."
-          end
-        }
+        PageObject::Platforms::Watir::PageObject.define_widget_accessors(widget_tag, widget_class, base_element_tag)
       end
     end
 
