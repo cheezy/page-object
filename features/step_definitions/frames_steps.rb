@@ -130,6 +130,18 @@ Then /^I should verify "([^\"]*)" in the text field for iframe 1 identified dyna
   end
 end
 
+When /^I type "([^\"]*)" into the text field from iframe 1 identified dynamically$/ do |value|
+  @page.in_iframe(:id => 'frame_one_1') do |frame|
+    @page.text_field_element(:name => 'senderElement', :frame => frame).value = value
+  end
+end
+
+Then /^I should verify "([^\"]*)" in the text field for iframe 1 identified dynamically$/ do |value|
+  @page.in_iframe(:id => 'frame_one_1') do |frame|
+    @page.text_field_element(:name => 'senderElement', :frame => frame).value.should == value
+  end
+end
+
 When /^I trigger an alert within a frame$/ do
   @page.in_frame(:id => 'frame_three_3') do |frame|
     @msg = @page.alert(frame) do
