@@ -56,6 +56,11 @@ Feature: Handling frames
     When I type "page-object" into the text field from iframe 1 identified dynamically
     Then I should verify "page-object" in the text field for iframe 1 identified dynamically
 
+  Scenario: Interacting with elements in an iframe
+    Given I am on the iframe elements page
+    When I retrieve a text field element within an iframe
+    Then I should be able to get the name of the text field element within an iframe
+
   Scenario: Handling alerts inside frames
     Given I am on the frame elements page
     When I trigger an alert within a frame
