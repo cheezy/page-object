@@ -70,3 +70,11 @@ Feature: Handling frames
     Given I am on the frame elements page
     When I trigger a prompt within a frame
     Then I should be able to get the message and default value
+
+  Scenario: Frames in sections
+    Given I am on the frame section page
+    Then I should be able to access an element in the frame in the section repeatedly
+
+  Scenario: Indexed Properties in frames
+    Given I am on the frame elements page
+    Then I can access elements in indexed properties

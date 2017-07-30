@@ -1071,8 +1071,9 @@ module PageObject
         end
 
         def parse_identifiers(identifier, element, tag_name=nil)
-          frame_identifiers = identifier.delete(:frame)
-          return identifier, frame_identifiers
+          new_identifiers = identifier.dup
+          frame_identifiers = new_identifiers.delete(:frame)
+          return new_identifiers, frame_identifiers
         end
         
         def nested_frames(frame_identifiers)
@@ -1095,7 +1096,7 @@ module PageObject
         end
 
         def switch_to_default_content(frame_identifiers)
-          @browser.wd.switch_to.default_content unless frame_identifiers.nil?
+          @browser.browser.wd.switch_to.default_content unless frame_identifiers.nil?
         end
 
         def switch_to_frame(frame_identifiers)

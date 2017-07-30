@@ -68,7 +68,7 @@ Version 1.2.0 / 2016-6-15
 
 === Version 1.1.0 / 2015-5-2
 * Enhancements
-  * Performance enhancements when initializing elements (Thanks Dane Andersen)
+  * Performance enhancements when initializing elements (Thanks Alexis Andersen)
   * Enabled button elements to return text when using selenium-webdriver.
   * Added support for :index identifier in indexed properties.
   * Added page_section and page_sections accessor methods which can specify a page object of elements on another page object.
@@ -83,7 +83,7 @@ Version 1.2.0 / 2016-6-15
   * Added hashes method to Table to return table contents as a Hash (Thanks Tobi)
   * Fixed wait_for_expected_title so it detects if the title changes (Thanks Levi Wilson)
 * Fixes
-  * Fixed issue that allows access to elements on other indexed properties (Thanks Dane Andersen)
+  * Fixed issue that allows access to elements on other indexed properties (Thanks Alexis Andersen)
   * Removed the method to clear radio buttons.  It didn't work on selenium and threw an exception on watir. (Thanks Justin Ko)
 
 === Version 1.0.2 / 2014-7-21
