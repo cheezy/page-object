@@ -295,7 +295,7 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_value_for(identifier)
-          process_watir_call("select_list(identifier).options.find {|o| o.selected?}.text",
+          process_watir_call("select_list(identifier).text",
                              Elements::SelectList, identifier)
         end
 
