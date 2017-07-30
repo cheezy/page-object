@@ -34,7 +34,7 @@ describe PageObject::JavascriptFrameworkFacade do
   end
 
   it "should not allow you to set the framework to one it does not know about" do
-    expect{ facade.framework = :blah }.to raise_error "You specified the Javascript framework blah and it is unknow to the system"
+    expect{ facade.framework = :blah }.to raise_error "You specified the Javascript framework blah and it is unknown to the system"
   end
 
   it "should allow you to add a new javascript framework" do
