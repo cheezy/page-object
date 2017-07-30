@@ -66,6 +66,7 @@ Feature: Select List
   Scenario: Clearing multiple select list
     When I clear multiple select list
     Then multiple select list should have no selected options
+    And cleared multiple select list should return nil for value
 
   Scenario: Selecting an option by its value
     When I select an option using the value "option2"

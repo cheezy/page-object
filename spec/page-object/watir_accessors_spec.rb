@@ -554,11 +554,8 @@ describe PageObject::Accessors do
     end
 
     it "should get the current item from a select list" do
-      selected = "OH"
-      expect(selected).to receive(:selected?).and_return(selected)
-      expect(selected).to receive(:text).and_return("OH")
       expect(watir_browser).to receive(:select_list).and_return watir_browser
-      expect(watir_browser).to receive(:options).and_return([selected])
+      expect(watir_browser).to receive(:text).and_return("OH")
       expect(watir_page_object.state).to eql "OH"
     end
 
