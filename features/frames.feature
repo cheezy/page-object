@@ -74,3 +74,7 @@ Feature: Handling frames
   Scenario: Frames in sections
     Given I am on the frame section page
     Then I should be able to access an element in the frame in the section repeatedly
+
+  Scenario: Indexed Properties in frames
+    Given I am on the frame elements page
+    Then I can access elements in indexed properties

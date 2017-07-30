@@ -6,6 +6,9 @@ class FramePage
   end
   in_frame(:index => 0) do |frame|
     text_field(:text_field_1_index, :name => 'senderElement', :frame => frame)
+    indexed_property :indexed_elements, [
+        [:text_field, :sender, {id: 'senderElement', frame: frame} ]
+    ]
   end
 
   in_frame(:id => 'frame_two_2') do |frame|
@@ -186,4 +189,9 @@ When /^I trigger a prompt within a frame$/ do
       @page.button_element(:id => 'prompt_button', :frame => frame).click
     end
   end
+end
+
+
+Then(/^I can access elements in indexed properties$/) do
+  expect(@page.indexed_elements[''].sender).to eq 'send_this_value'
 end
