@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.name = "page-object"
   s.version = PageObject::VERSION
   s.platform = Gem::Platform::RUBY
-  s.authors = ["Jeff Morgan", 'Dane Andersen']
-  s.email = ["jeff.morgan@leandog.com", 'dane.andersen@gmail.com']
+  s.authors = ["Jeff Morgan", 'Alexis Andersen']
+  s.email = ["jeff.morgan@leandog.com", 'alexis.t.andersen@gmail.com']
   s.license       = 'MIT'
   s.homepage = "http://github.com/cheezy/page-object"
   s.summary = %q{Page Object DSL for browser testing}
