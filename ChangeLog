@@ -3,6 +3,7 @@ Version 2.2
   * when_visible and when_not_visible now wait for element to be present before checking
   * populate_page_with can populate select_list using values (Thanks vveliev)
   * Removed all custom locator mappings
+  * Removal of the platform loading
 * Fixes
   * Moved net-http-persistent to a development dependency
 
