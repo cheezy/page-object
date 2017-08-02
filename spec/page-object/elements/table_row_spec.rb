@@ -17,14 +17,14 @@ describe PageObject::Elements::TableRow do
       end
 
       it "should return a table cell when indexed" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver)
         allow(table_row).to receive(:columns).and_return(2)
         expect(table_row_driver).to receive(:[]).with(1).and_return(table_cell)
         expect(table_row[1]).to be_instance_of PageObject::Elements::TableCell
       end
 
       it "should return the number of columns" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver)
         allow(table_row_driver).to receive(:wd).and_return(table_row_driver)
         expect(table_row_driver).to receive(:find_elements).with(:xpath, ".//child::td|th").and_return(table_row_driver)
         expect(table_row_driver).to receive(:size).and_return(3)
@@ -32,7 +32,7 @@ describe PageObject::Elements::TableRow do
       end
 
       it "should iterate over the table columns" do
-        table_row = PageObject::Elements::TableRow.new(table_row_driver, :platform => :watir)
+        table_row = PageObject::Elements::TableRow.new(table_row_driver)
         expect(table_row).to receive(:columns).and_return(2)
         allow(table_row).to receive(:[])
         count = 0

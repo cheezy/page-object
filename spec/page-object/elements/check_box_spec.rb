@@ -6,7 +6,7 @@ describe PageObject::Elements::CheckBox do
 
   describe "interface" do
     let(:check_box) { double('check_box') }
-    let(:selenium_cb) { PageObject::Elements::CheckBox.new(check_box, :platform => :selenium_webdriver) }
+    let(:selenium_cb) { PageObject::Elements::CheckBox.new(check_box) }
 
     it "should register with type :checkbox" do
       expect(::PageObject::Elements.element_class_for(:input, :checkbox)).to eql ::PageObject::Elements::CheckBox

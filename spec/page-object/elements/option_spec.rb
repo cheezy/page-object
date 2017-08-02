@@ -12,7 +12,7 @@ describe PageObject::Elements::Option do
   describe "interacting with the option" do
     let(:wd) { double('') }
     let(:native) { double(wd: wd) }
-    let(:element) { PageObject::Elements::Option.new(native, :platform => :watir) }
+    let(:element) { PageObject::Elements::Option.new(native) }
 
     it 'should know if it is selected' do
       expect(native).to receive(:selected?).and_return true

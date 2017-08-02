@@ -11,7 +11,7 @@ describe PageObject::Elements::Form do
 
     context "for watir" do
       it "should submit a form" do
-        form = PageObject::Elements::Form.new(form_element, :platform => :watir)
+        form = PageObject::Elements::Form.new(form_element)
         expect(form_element).to receive(:submit)
         form.submit
       end

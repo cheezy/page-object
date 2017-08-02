@@ -22,7 +22,7 @@ module PageObject
       # @return [PageObject::Elements::ListItem]
       #
       def [](idx)
-        Object::PageObject::Elements::ListItem.new(children[idx], :platform => :watir)
+        Object::PageObject::Elements::ListItem.new(children[idx])
       end
 
       #
@@ -38,7 +38,7 @@ module PageObject
       #
       def list_items
         children.collect do |obj|
-          Object::PageObject::Elements::ListItem.new(obj, :platform => :watir)
+          Object::PageObject::Elements::ListItem.new(obj)
         end
       end
 

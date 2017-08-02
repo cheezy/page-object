@@ -24,7 +24,7 @@ describe PageObject::Elements::SelectList do
     end
 
     context "for watir" do
-      let(:watir_sel_list) { PageObject::Elements::SelectList.new(sel_list, :platform => :watir) }
+      let(:watir_sel_list) { PageObject::Elements::SelectList.new(sel_list) }
 
       it "should return an option when indexed" do
         expect(sel_list).to receive(:options).with(no_args).and_return(opts)

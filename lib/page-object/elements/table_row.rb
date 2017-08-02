@@ -25,7 +25,7 @@ module PageObject
       def [](idx)
         idx = find_index_by_title(idx) if idx.kind_of?(String)
         return nil unless idx && columns >= idx + 1
-        initialize_cell(element[idx], :platform => :watir)
+        initialize_cell(element[idx])
       end
 
       #
@@ -41,8 +41,8 @@ module PageObject
         ".//child::td|th"
       end
 
-      def initialize_cell(row_element, platform)
-        ::PageObject::Elements::TableCell.new(row_element, platform)
+      def initialize_cell(row_element)
+        ::PageObject::Elements::TableCell.new(row_element)
       end
 
       def find_index_by_title(title)

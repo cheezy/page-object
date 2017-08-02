@@ -8,7 +8,7 @@ describe PageObject::Elements::Area do
     let(:area_element) { double('area_element') }
 
     context "when using watir" do
-      let(:watir_area) { PageObject::Elements::Area.new(area_element, :platform => :watir) }
+      let(:watir_area) { PageObject::Elements::Area.new(area_element) }
       
       it "should know its coords" do
         expect(area_element).to receive(:attribute_value).with(:coords).and_return("1,2,3,4")

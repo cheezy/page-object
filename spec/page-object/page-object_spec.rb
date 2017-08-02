@@ -79,24 +79,6 @@ describe PageObject do
     end
   end
 
-  context "when created with a non_bundled adapter" do
-    let(:custom_adapter) { mock_adapter(:custom_browser, CustomPlatform) }
-
-    it "should be an instance of whatever that objects adapter is" do
-      mock_adapters({:custom_adapter=>custom_adapter})
-      custom_page_object = PageObjectTestPageObject.new(:custom_browser)
-      expect(custom_page_object.platform).to be custom_adapter.create_page_object
-    end
-  end
-
-  context "when created with an object we do not understand" do
-    it "should throw an error" do
-      expect {
-        PageObjectTestPageObject.new("blah")
-      }.to raise_error 'Unable to pick a platform for the provided browser or element: "blah".'
-    end
-  end
-
   describe "page level functionality" do
     context "for all drivers" do
       it "should try a second time after sleeping when attach to window fails" do

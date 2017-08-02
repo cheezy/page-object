@@ -13,7 +13,7 @@ module PageObject
 
       attr_reader :element
 
-      def initialize(element, platform)
+      def initialize(element)
         @element = element
         @platform = PageObject::Platforms::Watir::PageObject.new(@element)
       end
@@ -125,7 +125,7 @@ module PageObject
         parent = element.parent
         type = element.type if parent.tag_name.to_sym == :input
         cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
-        cls.new(parent, :platform => :watir)
+        cls.new(parent)
       end
 
       #

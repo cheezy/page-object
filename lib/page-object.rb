@@ -1,7 +1,6 @@
 require 'watir'
 require 'page-object/version'
 require 'page-object/accessors'
-require 'page-object/platforms'
 require 'page-object/element_locators'
 require 'page-object/nested_elements'
 require 'page-object/page_factory'
@@ -11,6 +10,7 @@ require 'page-object/indexed_properties'
 require 'page-object/section_collection'
 require 'page-object/widgets'
 
+require 'page-object/platforms/watir'
 require 'page-object/platforms/watir/page_object'
 
 #
@@ -42,7 +42,6 @@ require 'page-object/platforms/watir/page_object'
 # @see PageObject::Accessors to see what class level methods are added to this module at runtime.
 #
 module PageObject
-  include LoadsPlatform
   include ElementLocators
   include PagePopulator
 
@@ -75,9 +74,9 @@ module PageObject
   end
 
   def initialize_browser(root)
-    @root_element = root_element_for root, PageObject::Platforms.get
-    @browser = browser_for root, PageObject::Platforms.get
-    include_platform_driver(root)
+    @root_element = PageObject::Platforms::Watir.root_element_for root
+    @browser = root 
+    @platform = PageObject::Platforms::Watir::PageObject.new @browser
   end
 
   # @private
@@ -412,11 +411,7 @@ module PageObject
   private
 
   def root
-    @root_element || browser_root_for(browser, PageObject::Platforms.get)
-  end
-
-  def include_platform_driver(browser)
-    @platform = load_platform(browser, PageObject::Platforms.get)
+    @root_element || PageObject::Platforms::Watir.browser_root_for(browser)
   end
 
   def call_block(&block)

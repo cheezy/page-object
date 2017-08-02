@@ -128,7 +128,7 @@ describe "Widget PageObject Extensions" do
       end
 
       context "for watir" do
-        let(:watir_table) { GxtTable.new(gxt_table_element, :platform => :watir) }
+        let(:watir_table) { GxtTable.new(gxt_table_element) }
 
         it "should return a table row when indexed" do
           allow(gxt_table_element).to receive(:[]).with(1).and_return(gxt_table_element)
@@ -149,7 +149,7 @@ describe "Widget PageObject Extensions" do
     context "in Watir" do
       before(:each) do
         @watir_driver = Watir::Element.new(nil, {})
-        @watir_element = PageObject::Elements::Element.new(@watir_driver, :platform => :watir)
+        @watir_element = PageObject::Elements::Element.new(@watir_driver)
         allow(@watir_driver).to receive(:exists?).and_return(true)
         allow(@watir_driver).to receive(:to_subtype).and_return(@watir_driver)
       end

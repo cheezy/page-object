@@ -15,7 +15,7 @@ describe PageObject::Elements::Table do
     end
 
     context "for watir" do
-      let(:watir_table) { PageObject::Elements::Table.new(table_element, :platform => :watir) }
+      let(:watir_table) { PageObject::Elements::Table.new(table_element) }
       
       it "should return a table row when indexed" do
         allow(table_element).to receive(:[]).with(1).and_return(table_element)

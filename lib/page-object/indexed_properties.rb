@@ -2,14 +2,12 @@ module PageObject
   module IndexedProperties
     class TableOfElements
       include PageObject
-      include LoadsPlatform
 
       def initialize (browser, identifier_list)
         initialize_browser(browser)
         @identifier_list = identifier_list
         @indexed_property_class = Class.new {
           include PageObject
-          include LoadsPlatform
           extend Accessors
 
           def initialize (browser, index, identifier_list)

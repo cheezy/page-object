@@ -13,7 +13,7 @@ describe PageObject::Elements::Canvas do
     end
 
     context "when using watir" do
-      let(:watir_canvas) { PageObject::Elements::Canvas.new(canvas_element, :platform => :watir) }
+      let(:watir_canvas) { PageObject::Elements::Canvas.new(canvas_element) }
 
       it "should know its width" do
         expect(wd).to receive(:size).and_return({'width' => 400})

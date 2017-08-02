@@ -18,7 +18,7 @@ module PageObject
       # @return [array of PageObject::Elements::Option]
       #
       def options
-        element.options.map { |e| ::PageObject::Elements::Option.new(e, :platform => :watir) }
+        element.options.map { |e| PageObject::Elements::Option.new(e) }
       end
 
       #
