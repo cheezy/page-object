@@ -69,7 +69,7 @@ module PageObject
       end
 
       def unknown_framework(framework)
-        "You specified the Javascript framework #{framework} and it is unknow to the system"
+        "You specified the Javascript framework #{framework} and it is unknown to the system"
       end
 
       def invalid_framework

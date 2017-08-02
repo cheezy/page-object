@@ -21,6 +21,8 @@ module PageObject
                 next if value.is_a? Regexp # Cannot format Regexp with %
                 if key == :index
                   how_and_what[key] = (value % index).to_i
+                elsif key == :frame
+                  how_and_what[key] = value #passthrough frame without modification
                 else
                   how_and_what[key] = value % index
                 end

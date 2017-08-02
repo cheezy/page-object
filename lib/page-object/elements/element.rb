@@ -231,6 +231,10 @@ module PageObject
         element.send m, *args, &block
       end
 
+      def respond_to_missing?(m,*args)
+        element.respond_to?(m) || super
+      end
+
       protected
 
       def to_ary

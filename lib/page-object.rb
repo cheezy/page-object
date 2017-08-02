@@ -69,7 +69,7 @@ module PageObject
   def initialize(root, visit=false)
     initialize_accessors if respond_to?(:initialize_accessors)
     initialize_browser(root)
-    goto if visit && respond_to?(:goto)
+    goto if visit && self.class.instance_methods(false).include?(:goto)
     initialize_page if respond_to?(:initialize_page)
   end
 
