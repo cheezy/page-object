@@ -292,8 +292,10 @@ module PageObject
         # See PageObject::Accessors#select_list
         #
         def select_list_value_for(identifier)
-          process_watir_call("select_list(identifier).text",
+          options = find_watir_elements("select_list(identifier).selected_options",
                              Elements::SelectList, identifier)
+          return nil if options.empty?
+          options.first.text
         end
 
         #
