@@ -19,10 +19,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'watir', '~> 6.0'
   s.add_dependency 'selenium-webdriver', '~> 3.0'
-  s.add_dependency 'page_navigation', '>= 0.9'
+  s.add_dependency 'page_navigation', '>= 0.10'
 
-  s.add_development_dependency 'rspec', '>= 3.0.0'
-  s.add_development_dependency 'cucumber', '>= 2.0.0'
+  s.add_development_dependency 'rspec', '~> 3.0'
+  s.add_development_dependency 'cucumber', '~> 2.0'
   s.add_development_dependency 'yard', '>= 0.7.2'
   s.add_development_dependency 'rack', '~> 1.0'
   s.add_development_dependency 'coveralls', '~> 0.8.1'
