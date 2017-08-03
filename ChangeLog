@@ -6,6 +6,9 @@ Version 2.2
   * Removal of the platform loading
 * Fixes
   * Moved net-http-persistent to a development dependency
+  * Fixed issue with frames, sections, and indexed properties
+  * Fixed issue impacting rspec be_visible/be_present DSL
+  * Fixed issue with getting content of empty multi-select
 
 Version 2.1.1 / 2017-3-7
 * Fixes
