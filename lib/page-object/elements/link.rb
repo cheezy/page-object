@@ -1,4 +1,3 @@
-
 module PageObject
   module Elements
     class Link < Element
@@ -6,6 +5,5 @@ module PageObject
     end
     
     ::PageObject::Elements.tag_to_class[:a] = ::PageObject::Elements::Link
-
   end
 end

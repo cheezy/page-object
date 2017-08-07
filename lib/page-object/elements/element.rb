@@ -25,16 +25,11 @@ module PageObject
         not enabled?
       end
 
-
-      def inspect
-        element.inspect
-      end
-
       #
-      # retrieve the class name for an element
+      # returns vallue of specified attribute
       #
-      def class_name
-        attribute 'class'
+      def attribute(*args)
+        attribute_value(*args)
       end
 
       #
@@ -54,10 +49,10 @@ module PageObject
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
       #
       def check_visible(timeout=::PageObject.default_element_wait)
-        timed_loop(timeout) do |element|
-          element.visible?
-        end
+        wait_until(timeout: timeout, message: "Element not visible in #{timeout} seconds", &:present?)
       end
+      alias_method :when_present, :check_visible
+      alias_method :when_visible, :check_visible
 
       #
       # Keeps checking until the element exists
@@ -65,57 +60,14 @@ module PageObject
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
       #
       def check_exists(timeout=::PageObject.default_element_wait)
-        timed_loop(timeout) do |element|
-          element.exists?
-        end
+        wait_until(timeout: timeout, &:exist?)
       end
-
-      #
-      # return true if an element is visible
-      #
-      # def visible?
-      #   element.present?
-      # end
 
       #
       # compare this element to another to determine if they are equal
       #
       def ==(other)
         other.is_a? self.class and element == other.element
-      end
-
-      #
-      # Get the value of a the given attribute of the element.  Will
-      # return the current value, even if this has been modified
-      # after the page has been loaded. More exactly, this method
-      # will  return the value of the given attribute, unless that
-      # attribute is not present, in which case the value of the
-      # property with the same name is returned. If neither value is
-      # set, nil is returned. The "style" attribute is converted as
-      # best can be to a text representation with a trailing
-      # semi-colon. The following are deemed to be "boolean"
-      # attributes, and will return either "true" or "false":
-      #
-      # async, autofocus, autoplay, checked, compact, complete,
-      # controls, declare, defaultchecked, defaultselected, defer,
-      # disabled, draggable, ended, formnovalidate, hidden, indeterminate,
-      # iscontenteditable, ismap, itemscope, loop, multiple, muted,
-      # nohref, noresize, noshade, novalidate, nowrap, open, paused,
-      # pubdate, readonly, required, reversed, scoped, seamless, seeking,
-      # selected, spellcheck, truespeed, willvalidate
-      #
-      # Finally, the following commonly mis-capitalized
-      # attribute/property names are evaluated as expected:
-      #
-      # class, readonly
-      #
-      # @param [String]
-      #   attribute name
-      # @return [String,nil]
-      #   attribute value
-      #
-      def attribute(attribute_name)
-        element.attribute_value attribute_name
       end
 
       #
@@ -129,37 +81,15 @@ module PageObject
       end
 
       #
-      # Waits until the element is present
-      #
-      # @param [Integer] (defaults to: 5) seconds to wait before timing out
-      #
-      def when_present(timeout=::PageObject.default_element_wait)
-        element.wait_until(timeout: timeout, message: "Element not present in #{timeout} seconds", &:present?)
-        self
-      end
-
-      #
       # Waits until the element is not present
       #
       # @param [Integer] (defaults to: 5) seconds to wait before
       # timing out
       #
       def when_not_present(timeout=::PageObject.default_element_wait)
-        element.wait_while(timeout: timeout, message: "Element still present in #{timeout} seconds", &:present?)
+        element.wait_while_present(timeout: timeout)
       end
 
-      #
-      # Waits until the element is visible
-      #
-      # @param [Integer] (defaults to: 5) seconds to wait before timing out
-      #
-      def when_visible(timeout=::PageObject.default_element_wait)
-        when_present(timeout)
-        element.wait_until(timeout: timeout, message: "Element not visible in #{timeout} seconds", &:visible?)
-        self
-      end
-
-      #
       # Waits until the element is not visible
       #
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
@@ -167,17 +97,6 @@ module PageObject
       def when_not_visible(timeout=::PageObject.default_element_wait)
         when_present(timeout)
         element.wait_while(timeout: timeout, message: "Element still visible after #{timeout} seconds", &:visible?)
-      end
-
-      #
-      # Waits until the block returns true
-      #
-      # @param [Integer] (defaults to: 5) seconds to wait before timing out
-      # @param [String] the message to display if the event timeouts
-      # @param the block to execute when the event occurs
-      #
-      def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
-        element.wait_until(timeout: timeout, message: message, &block)
       end
 
       #
@@ -233,24 +152,6 @@ module PageObject
 
       def respond_to_missing?(m,*args)
         element.respond_to?(m) || super
-      end
-
-      protected
-
-      def to_ary
-        nil
-      end
-
-      private
-
-      def timed_loop(timeout)
-        end_time = ::Time.now + timeout
-        until ::Time.now > end_time
-          result = yield(self)
-          return result if result
-          sleep 0.5
-        end
-        false
       end
 
     end

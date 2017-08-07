@@ -1,4 +1,3 @@
-
 module PageObject
   module Elements
     class UnorderedList < Element
@@ -55,6 +54,5 @@ module PageObject
     end
 
     ::PageObject::Elements.tag_to_class[:ul] = ::PageObject::Elements::UnorderedList
-    
   end
 end

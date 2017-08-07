@@ -23,5 +23,5 @@ Then /^I should know that the audio is paused$/ do
 end
 
 Then /^I should know that its volume is (\d+)$/ do |volume|
-  expect(@element.volume).to eql volume.to_i
+  expect(@element.volume).to eql volume.to_f
 end

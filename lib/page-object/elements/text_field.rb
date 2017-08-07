@@ -1,4 +1,3 @@
-
 module PageObject
   module Elements
     class TextField < Element

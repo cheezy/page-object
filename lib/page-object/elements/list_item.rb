@@ -5,6 +5,5 @@ module PageObject
     end
 
     ::PageObject::Elements.tag_to_class[:li] = ::PageObject::Elements::ListItem
-    
   end
 end
