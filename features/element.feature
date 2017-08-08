@@ -270,11 +270,6 @@ Feature: Elements
     When I double click the button
     Then the paragraph should read "Double Click Received"
 
-  Scenario: Scrolling so an element is visible
-    When I retrieve a heading element
-    And I scroll the heading element into view
-    Then the heading element should be visible
-
   Scenario: Expanding how we find elements to include non-standard locators
     When I retrieve a div using data-entity
     Then I should know it exists

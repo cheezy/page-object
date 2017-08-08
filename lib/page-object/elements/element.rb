@@ -26,13 +26,6 @@ module PageObject
       end
 
       #
-      # returns vallue of specified attribute
-      #
-      def attribute(*args)
-        attribute_value(*args)
-      end
-
-      #
       # specify plural form of element
       #
       def self.plural_form
@@ -97,50 +90,6 @@ module PageObject
       def when_not_visible(timeout=::PageObject.default_element_wait)
         when_present(timeout)
         element.wait_while(timeout: timeout, message: "Element still visible after #{timeout} seconds", &:visible?)
-      end
-
-      #
-      # Scroll until the element is viewable
-      #
-      def scroll_into_view
-        element.wd.location_once_scrolled_into_view
-      end
-
-      #
-      # location of element (x, y)
-      #
-      def location
-        element.wd.location
-      end
-
-      #
-      # size of element (width, height)
-      #
-      def size
-        element.wd.size
-      end
-
-      #
-      # Get height of element
-      #
-      def height
-        element.wd.size['height']
-      end
-
-      #
-      # Get width of element
-      #
-      def width
-        element.wd.size['width']
-      end
-
-      #
-      # Get centre coordinates of element
-      #
-      def centre
-        location = element.wd.location
-        size = element.wd.size
-        {'y' => (location['y'] + (size['height']/2)), 'x' => (location['x'] + (size['width']/2))}
       end
 
       # @private
