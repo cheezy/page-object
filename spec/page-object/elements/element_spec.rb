@@ -100,20 +100,19 @@ describe "Element" do
     end
 
     it "should wait until present" do
-      expect(native).to receive(:wait_until).with(timeout: 42, message: "Element not present in 42 seconds")
+      expect(native).to receive(:wait_until).with(timeout: 42, message: "Element not visible in 42 seconds")
       element.when_present(42)
     end
 
     it 'should check if the element is visible' do
-      expect(native).to receive(:visible?).and_return(false)
-      expect(native).to receive(:visible?).and_return(true)
-      expect(element.check_visible).to be true
+      msg = "Element not visible in 5 seconds"
+      expect(native).to receive(:wait_until).with(timeout: 5, message: msg).and_return(element)
+      expect(element.check_visible).to be_truthy
     end
 
     it 'should check if the element exists' do
-      expect(native).to receive(:exists?).twice.and_return(false)
-      expect(native).to receive(:exists?).and_return(true)
-      expect(element.check_exists).to be true
+      expect(native).to receive(:wait_until).with(timeout: 5).and_return(element)
+      expect(element.check_exists).to be_truthy
     end
 
     it "should send keys" do
