@@ -1,5 +1,4 @@
 require 'page-object/elements'
-require 'page-object/core_ext/string'
 
 
 module PageObject
@@ -1083,7 +1082,7 @@ module PageObject
             identifier = frame.values.first.map do |key, value|
               if value.is_a?(Regexp)
                 ":#{key} => #{value.inspect}"
-              elsif value.to_s.is_integer
+              elsif value.is_a? Integer
                 ":#{key} => #{value}"
               else
                 ":#{key} => '#{value}'"
