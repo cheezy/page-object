@@ -8,10 +8,8 @@ module PageObject
       #
       # @return [PageObject::Elements::ListItem]
       #
-      def each
-        for index in 1..self.items do
-          yield self[index-1]
-        end
+      def each(&block)
+        list_items.each(&block)
       end
 
       #
@@ -21,36 +19,24 @@ module PageObject
       # @return [PageObject::Elements::ListItem]
       #
       def [](idx)
-        Object::PageObject::Elements::ListItem.new(children[idx])
+        list_items[idx]
       end
 
       #
       # Return the number of items contained in the unordered list
       #
       def items
-        children.size
+        list_items.size
       end
 
       #
-      # Return the ListItem objects that are children of the
-      # UnorderedList
+      # Return Array of ListItem objects that are children of the UnorderedList
       #
       def list_items
-        children.collect do |obj|
+        @list_items ||= children(tag_name: 'li').map do |obj|
           Object::PageObject::Elements::ListItem.new(obj)
         end
       end
-
-      protected
-
-      def child_xpath
-        "./child::li"
-      end
-
-      def children
-        element.uls(:xpath => child_xpath)
-      end
-
     end
 
     ::PageObject::Elements.tag_to_class[:ul] = ::PageObject::Elements::UnorderedList

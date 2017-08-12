@@ -9,8 +9,8 @@ describe "Widget PageObject Extensions" do
 
       @protected
 
-      def child_xpath
-        ".//descendant::tr"
+      def strategy
+        :descendant
       end
     end
     PageObject.register_widget :gxt_table, GxtTable, :div
@@ -123,22 +123,17 @@ describe "Widget PageObject Extensions" do
       let(:gxt_table_element) { double('gxt_table_element') }
 
       before(:each) do
-        allow(gxt_table_element).to receive(:[]).and_return(gxt_table_element)
-        allow(gxt_table_element).to receive(:find_elements).and_return(gxt_table_element)
+        allow(gxt_table_element).to receive(:rows).and_return(Array.new(2, Watir::TableRow))
       end
 
       context "for watir" do
         let(:watir_table) { GxtTable.new(gxt_table_element) }
 
         it "should return a table row when indexed" do
-          allow(gxt_table_element).to receive(:[]).with(1).and_return(gxt_table_element)
           expect(watir_table[1]).to be_instance_of PageObject::Elements::TableRow
         end
 
         it "should return the number of rows" do
-          allow(gxt_table_element).to receive(:wd).and_return(gxt_table_element)
-          expect(gxt_table_element).to receive(:find_elements).with(:xpath, ".//descendant::tr").and_return(gxt_table_element)
-          expect(gxt_table_element).to receive(:size).and_return(2)
           expect(watir_table.rows).to eql 2
         end
       end

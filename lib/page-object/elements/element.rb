@@ -66,11 +66,11 @@ module PageObject
       #
       # find the parent element
       #
-      def parent
-        parent = element.parent
+      def parent(opt = {})
+        parent = element.parent(opt)
         type = element.type if parent.tag_name.to_sym == :input
         cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
-        cls.new(parent)
+        cls.new(parent.to_subtype)
       end
 
       #

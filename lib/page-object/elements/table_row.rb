@@ -8,12 +8,8 @@ module PageObject
       #
       # iterator that yields with a PageObject::Elements::TableCell
       #
-      # @return [PageObject::Elements::TableCell]
-      #
-      def each
-        for index in 1..self.columns do
-          yield self[index-1]
-        end
+      def each(&block)
+        cell_items.each(&block)
       end
 
       #
@@ -22,39 +18,33 @@ module PageObject
       # will be matched with the text from the columns in the first row.
       # The text can be a substring of the full column text.
       #
-      def [](idx)
-        idx = find_index_by_title(idx) if idx.kind_of?(String)
-        return nil unless idx && columns >= idx + 1
-        initialize_cell(element[idx])
+      def [](what)
+        idx = find_index(what)
+        idx && cell_items[idx]
       end
 
       #
       # Returns the number of columns in the table.
       #
       def columns
-        element.wd.find_elements(:xpath, child_xpath).size
+        cell_items.size
       end
 
       protected
 
-      def child_xpath
-        ".//child::td|th"
-      end
-
-      def initialize_cell(row_element)
-        ::PageObject::Elements::TableCell.new(row_element)
-      end
-
-      def find_index_by_title(title)
-        table = element.parent
-        table = table.parent if table.tag_name == 'tbody'
-        if table.instance_of? Watir::HTMLElement
-          table = table.to_subtype
+      def cell_items
+        @cell_items ||= element.cells.map do |obj|
+          ::PageObject::Elements::TableCell.new(obj)
         end
-        first_row = table[0]
-        first_row.cells.find_index {|column| column.text.include? title }
       end
 
+      def find_index(what)
+        return what if what.is_a? Integer
+
+        parent(tag_name: 'table').headers.find_index do |header|
+          header.text.include? what
+        end
+      end
     end
 
     ::PageObject::Elements.tag_to_class[:tr] = ::PageObject::Elements::TableRow
