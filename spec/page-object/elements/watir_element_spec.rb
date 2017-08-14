@@ -80,30 +80,45 @@ describe "Element for Watir" do
   end
 
   it "should be able to block until it is present" do
-    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not visible in 10 seconds")
+    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not present in 10 seconds")
     watir_element.when_present(10)
   end
   
+  it "should return the element when it is present" do
+    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not present in 10 seconds")
+    element = watir_element.when_present(10)
+    expect(element).to equal watir_element
+  end
+
   it "should use the overriden timeout when provided" do
     PageObject.default_element_wait = 20
-    allow(watir_driver).to receive(:wait_until).with(timeout: 20, message: "Element not visible in 20 seconds")
+    allow(watir_driver).to receive(:wait_until).with(timeout: 20, message: "Element not present in 20 seconds")
     watir_element.when_present
   end
 
   it "should be able to block until it is visible" do
+    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not present in 10 seconds")
     allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not visible in 10 seconds")
     watir_element.when_visible(10)
   end
   
-  it "should be able to block until it is not visible" do
+  it "should return the element when it is visible" do
+    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not present in 10 seconds")
     allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not visible in 10 seconds")
+    allow(watir_driver).to receive(:displayed?).and_return(true)
+    element = watir_element.when_visible(10)
+    expect(element).to equal watir_element
+  end
+
+  it "should be able to block until it is not visible" do
+    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element not present in 10 seconds")
     allow(watir_driver).to receive(:wait_while).with(timeout: 10, message: "Element still visible after 10 seconds")
     allow(watir_driver).to receive(:displayed?).and_return(false)
     watir_element.when_not_visible(10)
   end
   
   it "should be able to block until a user define event fires true" do
-    allow(watir_driver).to receive(:wait_until).with(10, "Element blah")
+    allow(watir_driver).to receive(:wait_until).with(timeout: 10, message: "Element blah")
     watir_element.wait_until(10, "Element blah") {true}
   end
   

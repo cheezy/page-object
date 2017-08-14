@@ -42,10 +42,10 @@ module PageObject
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
       #
       def check_visible(timeout=::PageObject.default_element_wait)
-        wait_until(timeout: timeout, message: "Element not visible in #{timeout} seconds", &:present?)
+        timed_loop(timeout) do |element|
+          element.visible?
+        end
       end
-      alias_method :when_present, :check_visible
-      alias_method :when_visible, :check_visible
 
       #
       # Keeps checking until the element exists
@@ -53,7 +53,9 @@ module PageObject
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
       #
       def check_exists(timeout=::PageObject.default_element_wait)
-        wait_until(timeout: timeout, &:exist?)
+        timed_loop(timeout) do |element|
+          element.exists?
+        end
       end
 
       #
@@ -74,15 +76,37 @@ module PageObject
       end
 
       #
+      # Waits until the element is present
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      #
+      def when_present(timeout=::PageObject.default_element_wait)
+        element.wait_until(timeout: timeout, message: "Element not present in #{timeout} seconds", &:present?)
+        self
+      end
+
+      #
       # Waits until the element is not present
       #
       # @param [Integer] (defaults to: 5) seconds to wait before
       # timing out
       #
       def when_not_present(timeout=::PageObject.default_element_wait)
-        element.wait_while_present(timeout: timeout)
+        element.wait_while(timeout: timeout, message: "Element still present in #{timeout} seconds", &:present?)
       end
 
+      #
+      # Waits until the element is visible
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      #
+      def when_visible(timeout=::PageObject.default_element_wait)
+        when_present(timeout)
+        element.wait_until(timeout: timeout, message: "Element not visible in #{timeout} seconds", &:visible?)
+        self
+      end
+
+      #
       # Waits until the element is not visible
       #
       # @param [Integer] (defaults to: 5) seconds to wait before timing out
@@ -90,6 +114,17 @@ module PageObject
       def when_not_visible(timeout=::PageObject.default_element_wait)
         when_present(timeout)
         element.wait_while(timeout: timeout, message: "Element still visible after #{timeout} seconds", &:visible?)
+      end
+
+      #
+      # Waits until the block returns true
+      #
+      # @param [Integer] (defaults to: 5) seconds to wait before timing out
+      # @param [String] the message to display if the event timeouts
+      # @param the block to execute when the event occurs
+      #
+      def wait_until(timeout=::PageObject.default_element_wait, message=nil, &block)
+        element.wait_until(timeout: timeout, message: message, &block)
       end
 
       # @private
@@ -101,6 +136,18 @@ module PageObject
 
       def respond_to_missing?(m,*args)
         element.respond_to?(m) || super
+      end
+
+      private
+
+      def timed_loop(timeout)
+        end_time = ::Time.now + timeout
+        until ::Time.now > end_time
+          result = yield(self)
+          return result if result
+          sleep 0.5
+        end
+        false
       end
 
     end
