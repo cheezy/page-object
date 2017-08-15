@@ -8,7 +8,7 @@ module PageObject
     # matching the Hash key to the name you provided when declaring
     # the element on your page.
     #
-    # Checkboxe and Radio Button values must be true or false.
+    # Checkbox and Radio Button values must be true or false.
     #
     # @example
     #   class ExamplePage
@@ -24,7 +24,7 @@ module PageObject
     #   example_page = ExamplePage.new(@browser)
     #   example_page.populate_page_with :username => 'a name', :active => true
     #
-    # @param [Hash] the data to use to populate this page.  The key
+    # @param data [Hash] the data to use to populate this page.  The key
     # can be either a string or a symbol.  The value must be a string
     # for TextField, TextArea, SelectList, and FileField and must be true or
     # false for a Checkbox or RadioButton.
@@ -58,9 +58,9 @@ module PageObject
       return self.send("select_#{key}", value)
     end
 
-  def populate_select_list(key, value)
+    def populate_select_list(key, value)
       select_element = self.send("#{key}_element")
-      if select_element.options.include?(value)
+      if select_element.options.map(&:text).include?(value)
         select_element.select(value)
       else
         select_element.select_value(value)
