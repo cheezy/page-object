@@ -15,6 +15,8 @@ end
 describe PageObject::PagePopulator  do
   let(:browser) { mock_watir_browser }
   let(:page_object) { PageObjectTestPageObject.new(browser) }
+  let(:options) { PageObject::Elements::Option.new(browser) }
+
 
   it "should set a value in a text field" do
     expect(page_object).to receive(:tf=).with('value')
@@ -54,8 +56,9 @@ describe PageObject::PagePopulator  do
   it "should set a value in a select list" do
     list = double('sl')
     expect(page_object).to receive(:sl_element).and_return(list)
-    expect(list).to receive(:options).and_return(['value'])
-    expect(list).to receive(:select).with('value')
+    expect(list).to receive(:options).and_return([options])
+    allow(options).to receive(:text)
+    expect(list).to receive(:select_value).with('value').and_return('value')
     page_object.populate_page_with('sl' => 'value')
   end
 
