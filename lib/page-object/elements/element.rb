@@ -127,6 +127,10 @@ module PageObject
         element.wait_until(timeout: timeout, message: message, &block)
       end
 
+      def name
+        element.attribute(:name)
+      end
+
       # @private
       # delegate calls to driver element
       def method_missing(*args, &block)
