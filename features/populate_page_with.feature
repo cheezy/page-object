@@ -21,3 +21,6 @@ Feature: Populate Page With
     And the First check box should be selected
     And the "Butter" radio button should be selected
     And the "muen" radio button should be selected in the group
+    When I populate the page with the data:
+      | sel_list_id | option3 |
+    Then the selected option should be "Test/Test 3"

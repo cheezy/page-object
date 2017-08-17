@@ -53,10 +53,8 @@ describe PageObject::PagePopulator  do
 
   it "should set a value in a select list" do
     list = double('sl')
-    option = double('option')
     expect(page_object).to receive(:sl_element).and_return(list)
-    expect(list).to receive(:options).and_return([option])
-    allow(option).to receive(:text)
+    allow(list).to receive(:include?)
     expect(list).to receive(:select_value).with('value').and_return('value')
     page_object.populate_page_with('sl' => 'value')
   end

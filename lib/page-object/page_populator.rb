@@ -60,11 +60,8 @@ module PageObject
 
     def populate_select_list(key, value)
       select_element = self.send("#{key}_element")
-      if select_element.options.map(&:text).include?(value)
-        select_element.select(value)
-      else
-        select_element.select_value(value)
-      end
+      return select_element.select(value) if select_element.include?(value)
+      select_element.select_value(value)
     end
 
     def is_text?(key)
