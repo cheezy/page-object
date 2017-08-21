@@ -54,9 +54,17 @@ describe PageObject::PagePopulator  do
   it "should set a value in a select list" do
     list = double('sl')
     expect(page_object).to receive(:sl_element).and_return(list)
-    expect(list).to receive(:options).and_return(['value'])
-    expect(list).to receive(:select).with('value')
+    allow(list).to receive(:include?).and_return(false)
+    expect(list).to receive(:select_value).with('value').and_return('value')
     page_object.populate_page_with('sl' => 'value')
+  end
+
+  it "should set a value in a select list by text" do
+    list = double('sl')
+    expect(page_object).to receive(:sl_element).and_return(list)
+    allow(list).to receive(:include?).and_return(true)
+    expect(list).to receive(:select).with('text').and_return('text')
+    page_object.populate_page_with('sl' => 'text')
   end
 
   it "should set a value in a file field" do
