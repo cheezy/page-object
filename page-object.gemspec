@@ -27,6 +27,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rack', '~> 1.0'
   s.add_development_dependency 'coveralls', '~> 0.8.1'
   s.add_development_dependency 'net-http-persistent'
-  s.add_development_dependency 'webdrivers'
+  s.add_development_dependency 'webdrivers', '~> 3.1'
 
 end
