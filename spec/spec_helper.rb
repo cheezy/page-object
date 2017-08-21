@@ -8,6 +8,7 @@ SimpleCov.start { add_filter 'spec/' }
 
 require 'rspec'
 require 'watir'
+require 'webdrivers'
 require 'selenium-webdriver'
 
 require 'page-object'
