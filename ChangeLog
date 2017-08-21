@@ -1,6 +1,7 @@
 Version 2.2.1
 * Fixes
   * Fixed bug when selection option by text with populate_page_with (Thanks Jason Phebus)
+  * Fixed issue with wrapping the Selenium driver with Watir (Thanks Titus Fortner)
 
 Version 2.2 / 2017-8-4
 * Enhancements
