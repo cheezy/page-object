@@ -76,7 +76,7 @@ module PageObject
   def initialize_browser(root)
     @root_element = PageObject::Platforms::Watir.root_element_for root
     @browser = root 
-    @platform = PageObject::Platforms::Watir::PageObject.new @browser
+    @platform = PageObject::Platforms::Watir.create_page_object @browser
   end
 
   # @private
