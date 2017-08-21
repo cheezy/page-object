@@ -34,8 +34,8 @@ module PageObject
       end
 
       def self.selenium_browser(root)
-        return Watir::Browser.new(root) if root.is_a?(::Selenium::WebDriver::Driver)
-        Watir::Browser.new(Selenium::WebDriver::Driver.new(root.send(:bridge)))
+        return ::Watir::Browser.new(root) if root.is_a?(::Selenium::WebDriver::Driver)
+        ::Watir::Browser.new(Selenium::WebDriver::Driver.new(root.send(:bridge)))
       end
 
       def self.watir?(browser)
