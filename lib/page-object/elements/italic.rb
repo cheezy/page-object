@@ -5,7 +5,5 @@ module PageObject
     end
 
     ::PageObject::Elements.tag_to_class[:i] = ::PageObject::Elements::Italic
-
-
   end
 end

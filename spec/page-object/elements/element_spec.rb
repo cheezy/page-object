@@ -65,7 +65,7 @@ describe "Element" do
     end
 
     it "should inspect the native's tag name" do
-      expect(native).to receive(:attribute_value).and_return('bar')
+      expect(native).to receive(:attribute).and_return('bar')
       expect(element.attribute('foo')).to eq('bar')
     end
 
@@ -129,12 +129,6 @@ describe "Element" do
     it "should inspect the native's id" do
       expect(native).to receive(:id).and_return('element123')
       expect(element.id).to eq('element123')
-    end
-
-    it "should scroll the element into view" do
-      expect(wd).to receive(:location_once_scrolled_into_view)
-      expect(native).to receive(:wd).and_return(wd)
-      element.scroll_into_view
     end
 
     it 'should return the outer html' do

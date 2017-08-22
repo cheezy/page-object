@@ -10,6 +10,5 @@ module PageObject
     ::PageObject::Elements.tag_to_class[:h4] = ::PageObject::Elements::Heading
     ::PageObject::Elements.tag_to_class[:h5] = ::PageObject::Elements::Heading
     ::PageObject::Elements.tag_to_class[:h6] = ::PageObject::Elements::Heading
-    
   end
 end

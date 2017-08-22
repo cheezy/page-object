@@ -20,11 +20,12 @@ When /^I have defined a GxtTable class extending Table$/ do
         self.send("#{name}_element").rows
       end
     end
-    
+
     protected
-      def child_xpath
-        ".//descendant::tr"
-      end
+
+    def strategy
+      :descendants
+    end
   end
 end
 

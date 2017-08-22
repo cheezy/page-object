@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'page-object/elements'
 
 describe PageObject::Elements::UnorderedList do
-  let(:ul) { PageObject::Elements::UnorderedList }
+  let(:ul) { PageObject::Elements::UnorderedList.new(ul_element) }
 
   describe "interface" do
     let(:ul_element) { double('ul_element') }
@@ -12,26 +12,22 @@ describe PageObject::Elements::UnorderedList do
     end
 
     context "for watir" do
+      before(:each) do
+        allow(ul_element).to receive(:children).and_return(Array.new(2, Watir::LI))
+      end
+
       it "should return a list item when indexed" do
-        ul = PageObject::Elements::UnorderedList.new(ul_element)
-        allow(ul_element).to receive(:uls).and_return(ul_element)
-        expect(ul_element).to receive(:[])
-        ul[1]
+        expect(ul[1]).to be_instance_of PageObject::Elements::ListItem
       end
 
       it "should know how many items it contains" do
-        ul = PageObject::Elements::UnorderedList.new(ul_element)
-        allow(ul_element).to receive(:uls).and_return([ul_element])
-        expect(ul.items).to eql 1
+        expect(ul.items).to eql 2
       end
 
       it "should know how to iterate over the items" do
-        ul = PageObject::Elements::UnorderedList.new(ul_element)
-        expect(ul).to receive(:items).and_return(5)
-        allow(ul).to receive(:[])
         count = 0
         ul.each { |item| count += 1 }
-        expect(count).to eql 5
+        expect(count).to eql 2
       end
     end
 
