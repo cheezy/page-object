@@ -1,7 +1,7 @@
 # page-object
 
 [![Gem Version](https://badge.fury.io/rb/page-object.svg)](https://rubygems.org/gems/page-object)
-[![Build Status](https://travis-ci.org/cheezy/page-object.png)](https://travis-ci.org/cheezy/page-object)
+[![Build Status](https://travis-ci.org/cheezy/page-object.svg)](https://travis-ci.org/cheezy/page-object)
 [![Coverage Status](https://coveralls.io/repos/cheezy/page-object/badge.svg?nocache)](https://coveralls.io/r/cheezy/page-object)
 
 
