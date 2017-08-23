@@ -1,4 +1,4 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 # adding rake so travis-ci will build properly
 gem 'rake'
