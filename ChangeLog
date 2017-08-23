@@ -1,4 +1,4 @@
-Version 2.2.1
+Version 2.2.1 / 2017-9-22
 * Enhancements
   * Moved some functionality from PageObject to Watir (Thanks Titus Fortner)
 * Fixes
