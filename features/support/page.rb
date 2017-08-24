@@ -134,6 +134,7 @@ class Page
   table(:table_class_index, :class => "table_class", :index => 0)
   table(:table_name_index, :name => "table_name", :index => 0)
   table(:table_with_thead_id, :id => 'table_with_thead_id')
+  table(:table_with_regex, :id => 'table_with_regex')
 
   cell(:cell_id, :id => 'cell_id')
   cell(:cell_name, :name => 'cell_name')

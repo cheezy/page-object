@@ -108,3 +108,10 @@ Feature: Table
   Scenario: Getting the text from a table
     Then I should see the text includes "Data1" when I retrieve it by "id"
     And I should see the text includes "Data2" when I retrieve it by "id"
+
+  Scenario: Get rows by text with special chars
+    When I retrieve a table element with regex characters
+    Then the data for row "Price1 |" should be "Price1 |" and "$420.99"
+    And the data for row "rice |" should be "Price |" and "$69.99"
+    And the data for row "$420.99" should be "Price1 |" and "$420.99"
+    And the data for row "$420" should be "Price1 |" and "$420.99"

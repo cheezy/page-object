@@ -1,3 +1,3 @@
 Before do
-  @browser = PageObject::PersistantBrowser.get_browser
+  @browser = PageObject::PersistentBrowser.get_browser
 end
