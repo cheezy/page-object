@@ -1,3 +1,7 @@
+Version 2.2.2
+* Fixes
+  * Fixed issue when using text for table index with special characters (Thanks Jason Phebus)
+
 Version 2.2.1 / 2017-9-22
 * Enhancements
   * Moved some functionality from PageObject to Watir (Thanks Titus Fortner)
