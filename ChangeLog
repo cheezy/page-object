@@ -1,4 +1,4 @@
-Version 2.2.2
+Version 2.2.2 / 2017-9-25
 * Fixes
   * Fixed issue when using text for table index with special characters (Thanks Jason Phebus)
 
