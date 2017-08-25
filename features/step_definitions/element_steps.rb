@@ -304,3 +304,7 @@ end
 Then(/the element centre should be greater than element x position/) do
   expect(@element.centre['x']).to be > @element.location.x
 end
+
+When(/^I retrieve a table element with regex characters$/) do
+  @element = @page.table_with_regex_element
+end

@@ -1,7 +1,7 @@
 require 'selenium/webdriver/remote/http/persistent'
 
 module PageObject
-  module PersistantBrowser
+  module PersistentBrowser
     @@browser = false
     def self.get_browser
       if !@@browser

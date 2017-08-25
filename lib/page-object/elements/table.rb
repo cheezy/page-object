@@ -58,7 +58,7 @@ module PageObject
       def find_index(what)
         return what if what.is_a? Integer
         row_items.find_index do |row|
-          row.cell(text: /#{what}/).exist?
+          row.cell(text: /#{Regexp.escape(what)}/).exist?
         end
       end
     end
