@@ -1,5 +1,4 @@
 require 'page-object/nested_elements'
-require 'watir/extensions/select_text'
 
 module PageObject
   module Elements
