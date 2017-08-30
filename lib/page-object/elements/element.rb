@@ -69,9 +69,59 @@ module PageObject
       #
       def parent(opt = {})
         parent = element.parent(opt)
-        type = element.type if parent.tag_name.to_sym == :input
-        cls = ::PageObject::Elements.element_class_for(parent.tag_name, type)
-        cls.new(parent.to_subtype)
+        pageobject_wrapper(parent)
+      end
+
+      #
+      # Return the element that exists at the same level of the DOM
+      # immediately prior to this element
+      #
+      def preceding_sibling(opt = {})
+        sibling = element.preceding_sibling(opt)
+        pageobject_wrapper(sibling)
+      end
+
+      #
+      # Return the element that exists at the same level of the DOM
+      # immediately after this element
+      #
+      def following_sibling(opt={})
+        sibling = element.following_sibling(opt)
+        pageobject_wrapper(sibling)
+      end
+
+      #
+      # Return all elements that are direct children of this element's parent
+      #
+      def siblings(opt={})
+        siblings = element.siblings(opt)
+        siblings.collect {|sibling| pageobject_wrapper(sibling)}
+      end
+
+      #
+      # Return all elements that are children of this element
+      #
+      def children(opt={})
+        children = element.children(opt)
+        children.collect {|child| pageobject_wrapper(child)}
+      end
+
+      #
+      # Return all elements that exist at the same level of the DOM
+      # immediately prior to this element
+      #
+      def preceding_siblings(opt={})
+        siblings = element.preceding_siblings(opt)
+        siblings.collect {|sibling| pageobject_wrapper(sibling)}
+      end
+
+      #
+      # Return all elements that exist at the same level of the DOM
+      # immediately after this element
+      #
+      def following_siblings(opt={})
+        siblings = element.following_siblings(opt)
+        siblings.collect {|sibling| pageobject_wrapper(sibling)}
       end
 
       #
@@ -139,6 +189,14 @@ module PageObject
 
       def respond_to_missing?(m,*args)
         element.respond_to?(m) || super
+      end
+
+      protected
+
+      def pageobject_wrapper(watir_object)
+        type = element.type if watir_object.tag_name.to_sym == :input
+        cls = ::PageObject::Elements.element_class_for(watir_object.tag_name, type)
+        cls.new(watir_object.to_subtype)
       end
 
       private

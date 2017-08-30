@@ -1,14 +1,12 @@
 require 'spec_helper'
 require 'page-object/elements'
 
-
 describe "Element" do
+  let(:wd) { double('') }
+  let(:native) { double(wd: wd) }
+  let(:element) { PageObject::Elements::Element.new(native) }
 
   context "interaction with native element" do
-    let(:wd) { double('') }
-    let(:native) { double(wd: wd) }
-    let(:element) { PageObject::Elements::Element.new(native) }
-
     it "should check if native is enabled" do
       expect(native).to receive(:enabled?).and_return(true)
       expect(element.enabled?).to be true
@@ -144,6 +142,67 @@ describe "Element" do
     it 'should know if it is stale' do
       expect(native).to receive(:stale?).and_return(false)
       expect(element.stale?).to be false
+    end
+  end
+
+  context 'walking the dom' do
+    let(:found) { double('found').as_null_object }
+
+    before do
+      allow(found).to receive(:tag_name).and_return(:span)
+    end
+
+    it 'should find the parent object' do
+      expect(native).to receive(:parent).and_return(found)
+      pageobject = element.parent
+      expect(pageobject).to be_a(::PageObject::Elements::Span)
+      expect(pageobject.tag_name).to eql :span
+    end
+
+    it 'should find the proceeding sibling' do
+      expect(native).to receive(:preceding_sibling).and_return(found)
+      pageobject = element.preceding_sibling
+      expect(pageobject).to be_a(::PageObject::Elements::Span)
+      expect(pageobject.tag_name).to eql :span
+    end
+
+    it 'should find the following sibling' do
+      expect(native).to receive(:following_sibling).and_return(found)
+      pageobject = element.following_sibling
+      expect(pageobject).to be_a(::PageObject::Elements::Span)
+      expect(pageobject.tag_name).to eql :span
+    end
+
+    it 'should find all of its siblings' do
+      expect(native).to receive(:siblings).and_return([found, found])
+      results = element.siblings
+      expect(results.size).to eql 2
+      expect(results[0]).to be_a(::PageObject::Elements::Span)
+      expect(results[1]).to be_a(::PageObject::Elements::Span)
+    end
+
+    it 'should find all of its children' do
+      expect(native).to receive(:children).and_return([found, found])
+      results = element.children
+      expect(results.size).to eql 2
+      expect(results[0]).to be_a(::PageObject::Elements::Span)
+      expect(results[1]).to be_a(::PageObject::Elements::Span)
+    end
+
+    it 'should find all of the preceding siblings' do
+      expect(native).to receive(:preceding_siblings).and_return([found, found])
+      results = element.preceding_siblings
+      expect(results.size).to eql 2
+      expect(results[0]).to be_a(::PageObject::Elements::Span)
+      expect(results[1]).to be_a(::PageObject::Elements::Span)
+    end
+
+    it 'should find all of the following siblings' do
+      expect(native).to receive(:following_siblings).and_return([found, found])
+      results = element.following_siblings
+      expect(results.size).to eql 2
+      expect(results[0]).to be_a(::PageObject::Elements::Span)
+      expect(results[1]).to be_a(::PageObject::Elements::Span)
     end
   end
 end

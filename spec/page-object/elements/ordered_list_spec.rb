@@ -5,7 +5,7 @@ describe PageObject::Elements::OrderedList do
   let(:ol) { PageObject::Elements::OrderedList }
 
   describe "interface" do
-    let(:ol_element) { double('ol_element') }
+    let(:ol_element) { double('ol_element').as_null_object }
     let(:li_element) { double('li_element') }
 
     it "should register as tag_name :ol" do
@@ -13,6 +13,10 @@ describe PageObject::Elements::OrderedList do
     end
 
     context "for watir" do
+      before(:each) do
+        allow(ol_element).to receive(:tag_name).and_return(:ol)
+      end
+
       it "should return a list item when indexed" do
         ol = PageObject::Elements::OrderedList.new(ol_element)
         expect(ol_element).to receive(:children).

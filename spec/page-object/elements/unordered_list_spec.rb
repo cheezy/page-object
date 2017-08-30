@@ -5,7 +5,8 @@ describe PageObject::Elements::UnorderedList do
   let(:ul) { PageObject::Elements::UnorderedList.new(ul_element) }
 
   describe "interface" do
-    let(:ul_element) { double('ul_element') }
+    let(:ul_element) { double('ul_element').as_null_object }
+    let(:li_element) { double('li_element').as_null_object }
 
     it "should register with tag_name :ul" do
       expect(::PageObject::Elements.element_class_for(:ul)).to eql ::PageObject::Elements::UnorderedList
@@ -13,7 +14,8 @@ describe PageObject::Elements::UnorderedList do
 
     context "for watir" do
       before(:each) do
-        allow(ul_element).to receive(:children).and_return(Array.new(2, Watir::LI))
+        allow(ul_element).to receive(:children).and_return([li_element, li_element])
+        allow(li_element).to receive(:tag_name).and_return(:li)
       end
 
       it "should return a list item when indexed" do

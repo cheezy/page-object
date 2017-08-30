@@ -33,9 +33,7 @@ module PageObject
       # Return Array of ListItem objects that are children of the UnorderedList
       #
       def list_items
-        @list_items ||= children(tag_name: 'li').map do |obj|
-          Object::PageObject::Elements::ListItem.new(obj)
-        end
+        @list_items ||= children(tag_name: 'li')
       end
     end
 

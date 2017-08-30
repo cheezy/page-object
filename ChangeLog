@@ -1,3 +1,14 @@
+Version 2.2.3
+* Enhancements
+  * Added the preceding_sibling method to Element
+  * Added the following_sibling method to Element
+  * Added the siblings method to Element
+  * Added the children method to Element
+  * Added the preceding_siblings method to Element
+  * Added the following_siblings method to Element
+* Fixes
+  * Fixed issue that occurred when things were moved around in Watir 6.8
+
 Version 2.2.2 / 2017-9-25
 * Fixes
   * Fixed issue when using text for table index with special characters (Thanks Jason Phebus)
