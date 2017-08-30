@@ -1,4 +1,4 @@
-Version 2.2.3
+Version 2.2.3 / 2017-9-30
 * Enhancements
   * Added the preceding_sibling method to Element
   * Added the following_sibling method to Element
