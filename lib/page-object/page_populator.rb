@@ -31,21 +31,25 @@ module PageObject
     #
     def populate_page_with(data)
       data.each do |key, value|
-        debugger if $VERBOSE
-        element = self.send("#{key}_element")
+        if respond_to?("#{key}_element")
+          element = self.send("#{key}_element")
+        elsif respond_to?("#{key}_elements")
+          element = self.send("#{key}_elements")
+        else
+          return
+        end
+
         case element
           when PageObject::Elements::TextArea, PageObject::Elements::TextField
-            populate_text(key, value) if is_enabled?(key)
+            populate_text(key, value) if is_enabled?(element)
           when PageObject::Elements::RadioButton
-            populate_radiobutton(key, value) if is_enabled?(key)
+            populate_radiobutton(key, value) if is_enabled?(element)
           when PageObject::Elements::CheckBox
-            populate_checkbox(key, value) if is_enabled?(key)
+            populate_checkbox(key, value) if is_enabled?(element)
           when PageObject::Elements::SelectList
             populate_select_list(key, value)
           when Array
             populate_radiobuttongroup(key, value) if is_radiobuttongroup?(key)
-          else
-            puts "FIX ME: #{element}, class #{element.class}"
         end
       end
     end
@@ -77,10 +81,7 @@ module PageObject
       respond_to?("#{key}_values")
     end
 
-    def is_enabled?(key)
-      return false if is_radiobuttongroup?(key)
-      return true if (self.send "#{key}_element").tag_name == "textarea"
-      element = self.send("#{key}_element")
+    def is_enabled?(element)
       element.enabled? and element.visible?
     end
   end
