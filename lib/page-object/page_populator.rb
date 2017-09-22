@@ -31,16 +31,31 @@ module PageObject
     #
     def populate_page_with(data)
       data.each do |key, value|
-        populate_checkbox(key, value) if is_checkbox?(key) and is_enabled?(key)
-        populate_radiobuttongroup(key, value) if is_radiobuttongroup?(key)
-        populate_radiobutton(key, value) if is_radiobutton?(key) and is_enabled?(key)
-        populate_select_list(key, value) if is_select_list?(key)
-        populate_text(key, value) if is_text?(key) and is_enabled?(key)
+        if respond_to?("#{key}_element")
+          element = self.send("#{key}_element")
+        elsif respond_to?("#{key}_elements")
+          element = self.send("#{key}_elements")
+        else
+          return
+        end
+
+        case element
+          when PageObject::Elements::TextArea, PageObject::Elements::TextField
+            populate_text(key, value) if is_enabled?(element)
+          when PageObject::Elements::RadioButton
+            populate_radiobutton(key, value) if is_enabled?(element)
+          when PageObject::Elements::CheckBox
+            populate_checkbox(key, value) if is_enabled?(element)
+          when PageObject::Elements::SelectList
+            populate_select_list(key, value)
+          when Array
+            populate_radiobuttongroup(key, value) if is_radiobuttongroup?(key)
+        end
       end
     end
 
     private
-    
+
     def populate_text(key, value)
       self.send "#{key}=", value
     end
@@ -62,31 +77,11 @@ module PageObject
       self.send "#{key}=", value
     end
 
-    def is_text?(key)
-      return false if is_select_list?(key)
-      respond_to?("#{key}=".to_sym)
-    end
-
-    def is_checkbox?(key)
-      respond_to?("check_#{key}".to_sym)
-    end
-
-    def is_radiobutton?(key)
-      respond_to?("select_#{key}".to_sym)
-    end
-
     def is_radiobuttongroup?(key)
-      respond_to?("select_#{key}".to_sym) and respond_to?("#{key}_values")
+      respond_to?("#{key}_values")
     end
 
-    def is_select_list?(key)
-      respond_to?("#{key}_options".to_sym)
-    end
-
-    def is_enabled?(key)
-      return false if is_radiobuttongroup?(key)
-      return true if (self.send "#{key}_element").tag_name == "textarea"
-      element = self.send("#{key}_element")
+    def is_enabled?(element)
       element.enabled? and element.visible?
     end
   end
