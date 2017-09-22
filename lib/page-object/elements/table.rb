@@ -42,6 +42,16 @@ module PageObject
         row_items.size
       end
 
+      #
+      # Returns the Array of values(String) in a column for the index provided. Index
+      # is zero based. If the index provided is a String then it
+      # will be matched with the text from the header. The text can be a substring of the full header text.
+      #
+      def column_values(what)
+        idx = find_index_of_header(what)
+        idx && row_items.drop(1).collect { |row| row.cell(index: idx).text }
+      end
+
       protected
 
       def row_items
@@ -53,6 +63,13 @@ module PageObject
 
       def strategy
         :children
+      end
+
+      def find_index_of_header(what)
+        return what if what.is_a? Integer
+        row_items[0].cells.find_index do |cell|
+          cell.text.include? Regexp.escape(what)
+        end
       end
 
       def find_index(what)
