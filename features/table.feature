@@ -22,7 +22,7 @@ Feature: Table
     And row "2" should have "2" columns
     And the data for the second row should be "Data1" and "Data2"
     And the data for the last row should be "Data3" and "Data4"
-    
+
   Scenario: Retrieve data from a table using a row header
     When I retrieve a table element
     Then the data for row "Data3" should be "Data3" and "Data4"
@@ -75,13 +75,13 @@ Feature: Table
     When I retrieve a table element by "<search_by>"
     Then the data for row "2" should be "Data1" and "Data2"
 
-  Scenarios:
-    | search_by |
-    | id        |
-    | class     |
-    | xpath     |
-    | index     |
-    | css       |
+    Scenarios:
+      | search_by |
+      | id        |
+      | class     |
+      | xpath     |
+      | index     |
+      | css       |
 
   Scenario: Matching the expected table with the table on the Page
     When I retrieve a table element
@@ -94,9 +94,9 @@ Feature: Table
     When I retrieve a table element by "<param1>" and "<param2>"
     Then the data for row "2" should be "Data1" and "Data2"
 
-  Scenarios:
-    | param1 | param2 |
-    | class  | index  |
+    Scenarios:
+      | param1 | param2 |
+      | class  | index  |
 
   Scenario: Finding a table dynamically
     When I retrieve a table element while the script is executing
@@ -115,3 +115,18 @@ Feature: Table
     And the data for row "rice |" should be "Price |" and "$69.99"
     And the data for row "$420.99" should be "Price1 |" and "$420.99"
     And the data for row "$420" should be "Price1 |" and "$420.99"
+
+  Scenario: Retrieving column values using header string
+    When I ask for the column values for "Header"
+    Then I should receive:
+      | values |
+      | Data2  |
+      | Data4  |
+
+  Scenario: Retrieving column values using a colunm number
+    When I ask for the column values for column 1
+    Then I should receive:
+      | values |
+      | Data2  |
+      | Data4  |
+

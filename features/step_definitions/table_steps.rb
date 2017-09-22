@@ -67,3 +67,18 @@ end
 Then /^the table should be like the expected one$/ do |expected_table|
   expect((expected_table.diff!@element.hashes)).to be_nil
 end
+
+When(/^I ask for the column values for "([^"]*)"$/) do |header|
+  @values = @page.table_id_element.column_values(header)
+end
+
+Then(/^I should receive:$/) do |table|
+  expect(@values.size).to eql 2
+  table.hashes.each do |hsh|
+    expect(@values).to include hsh['values']
+  end
+end
+
+When(/^I ask for the column values for column (\d+)$/) do |index|
+  @values = @page.table_id_element.column_values(index.to_i)
+end
