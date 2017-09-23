@@ -1,8 +1,9 @@
-Version 2.2.4
+Version 2.2.4 / 2017-9-23
 * Enhancements
   * Added the ability to get the values of a table column (Thanks sanvijay)
+  * Added the ability to populate sections with a nested entry from data_magic
 
-Version 2.2.3 / 2017-9-30
+Version 2.2.3 / 2017-8-30
 * Enhancements
   * Added the preceding_sibling method to Element
   * Added the following_sibling method to Element
@@ -13,18 +14,18 @@ Version 2.2.3 / 2017-9-30
 * Fixes
   * Fixed issue that occurred when things were moved around in Watir 6.8
 
-Version 2.2.2 / 2017-9-25
+Version 2.2.2 / 2017-8-25
 * Fixes
   * Fixed issue when using text for table index with special characters (Thanks Jason Phebus)
 
-Version 2.2.1 / 2017-9-22
+Version 2.2.1 / 2017-8-22
 * Enhancements
   * Moved some functionality from PageObject to Watir (Thanks Titus Fortner)
 * Fixes
   * Fixed bug when selection option by text with populate_page_with (Thanks Jason Phebus)
   * Fixed issue with wrapping the Selenium driver with Watir (Thanks Titus Fortner)
 
-Version 2.2 / 2017-8-4
+Version 2.2 / 2017-7-4
 * Enhancements
   * when_visible and when_not_visible now wait for element to be present before checking
   * populate_page_with can populate select_list using values (Thanks vveliev)

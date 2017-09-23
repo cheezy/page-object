@@ -1,5 +1,12 @@
 require 'spec_helper'
 
+class Section
+  include PageObject
+
+  text_field(:stf, id: 'id')
+end
+
+
 class PageObjectTestPageObject
   include PageObject
 
@@ -10,6 +17,7 @@ class PageObjectTestPageObject
   checkbox(:cb, :id => 'id')
   radio_button(:rb, :id => 'id')
   radio_button_group(:rbg, :id => 'id')
+  page_section(:section, Section, id: 'foo')
 end
 
 describe PageObject::PagePopulator  do
@@ -118,4 +126,33 @@ describe PageObject::PagePopulator  do
     expect(browser).to receive(:tag_name).and_return('input')
     page_object.populate_page_with('rb' => true)
   end
+
+  context 'when using a nested for a section' do
+    let(:section) { double('section') }
+
+    before do
+      allow(page_object).to receive(:section).and_return section
+    end
+    
+    it 'should populate a page section when the value is a hash and it exists' do
+      expect(section).to receive(:stf=).with('value')
+      expect(page_object).to receive(:is_enabled?).and_return(true)
+      page_object.populate_page_with('section' => {'stf' => 'value'})
+    end
+
+    it "should not set a value in a text field if it is not found on the page" do
+      expect(section).not_to receive(:text_field)
+      page_object.populate_page_with('section' => {'coffee' => 'value'})
+    end
+
+    it "should not populate a text field when it is disabled" do
+      expect(section).not_to receive(:stf=)
+      expect(section).to receive(:stf_element).twice.and_return(browser)
+      expect(browser).to receive(:enabled?).and_return(false)
+      expect(browser).to receive(:tag_name).and_return('input')
+      page_object.populate_page_with('section' => {'stf' => true})
+    end
+
+  end
+
 end
