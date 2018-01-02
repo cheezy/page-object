@@ -30,8 +30,8 @@ module PageObject
     # false for a Checkbox or RadioButton.
     #
     def populate_page_with(data)
-      data.each do |key, value|
-        populate_section(key, value) if value.is_a?(Hash)
+      data.to_h.each do |key, value|
+        populate_section(key, value) if value.respond_to?(:to_h)
         populate_value(self, key, value)
       end
     end
@@ -40,7 +40,7 @@ module PageObject
 
     def populate_section(section, data)
       return unless self.respond_to? section
-      data.each do |key, value|
+      data.to_h.each do |key, value|
         populate_value(self.send(section), key, value)
       end
     end
