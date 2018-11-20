@@ -25,6 +25,13 @@ module PageObject
       end
 
       #
+      # return true if the element exists and is visible
+      #
+      def present?
+        element.present?
+      end
+
+      #
       # specify plural form of element
       #
       def self.plural_form
