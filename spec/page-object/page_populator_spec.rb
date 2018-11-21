@@ -24,6 +24,15 @@ describe PageObject::PagePopulator  do
   let(:browser) { mock_watir_browser }
   let(:page_object) { PageObjectTestPageObject.new(browser) }
 
+  it "should accept any object that can be converted to a Hash" do
+    os = OpenStruct.new('tf' => 'value', 'sl' => 'value')
+    expect(page_object).to receive(:tf=).with('value')
+    expect(page_object).to receive(:sl=).with('value')
+
+    allow(page_object).to receive(:is_enabled?).and_return(true)
+    page_object.populate_page_with(os)
+  end
+
   it "should set a value in a text field" do
     expect(page_object).to receive(:tf=).with('value')
     allow(page_object).to receive(:is_enabled?).and_return(true)
@@ -138,6 +147,15 @@ describe PageObject::PagePopulator  do
       expect(section).to receive(:stf=).with('value')
       expect(page_object).to receive(:is_enabled?).and_return(true)
       page_object.populate_page_with('section' => {'stf' => 'value'})
+    end
+
+    it "populate a page section when the value responds to #to_h and it exists" do
+      os = OpenStruct.new('stf' => 'value', 'sl' => 'value')
+
+      expect(section).to receive(:stf=).with('value')
+      expect(section).to receive(:sl=).with('value')
+      expect(page_object).to receive(:is_enabled?).twice.and_return(true)
+      page_object.populate_page_with('section' => os)
     end
 
     it "should not set a value in a text field if it is not found on the page" do
