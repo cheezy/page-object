@@ -123,10 +123,6 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  Scenario: Table Cell element methods in watir
-    When I retrieve table cell
-    Then I should know the value is ""
-
   Scenario: Text Field element methods
     When I retrieve a text field
     Then I should know it exists
