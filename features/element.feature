@@ -155,10 +155,6 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  Scenario: Image element methods in watir
-    When I get the image element
-    Then I should know the value is ""
-
   Scenario: Hidden Field element methods
     When I retrieve the hidden field element
     Then I should know it exists
