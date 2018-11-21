@@ -78,10 +78,6 @@ Feature: Elements
     And I should know the attribute "readonly" is false
     And I should be able to click it
 
-  Scenario: Div element methods for watir
-    When I retrieve the div element
-    Then I should know the value is ""
-
   Scenario: Radio Button element methods
     When I retrieve a radio button
     Then I should know it exists
