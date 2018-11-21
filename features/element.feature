@@ -174,10 +174,6 @@ Feature: Elements
     And I should know the tag name is "form"
     And I should know the attribute "readonly" is false
 
-  Scenario: Form element methods in watir
-    When I locate the form
-    Then I should know the value is ""
-
   Scenario: List item element methods
     When I retrieve a list item element
     Then I should know it exists
