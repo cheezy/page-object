@@ -112,7 +112,6 @@ Feature: Elements
   Scenario: Table element methods in watir
     When I retrieve a table element
     Then I should know it exists
-    And I should know the value is ""
 
   Scenario: Table Cell element methods
     When I retrieve table cell
