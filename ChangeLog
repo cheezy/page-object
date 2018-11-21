@@ -1,4 +1,6 @@
 Version 2.2.5
+* Enhancements
+  * populate_page_with will work with anything that can be converted to a Hash (Thanks Titus Fortner)
 * Fixes
   * Fixed present? when using with ActiveSupport (Thanks Justin Ko)
 
