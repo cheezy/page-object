@@ -43,10 +43,6 @@ Feature: Elements
     And I should know the attribute "href" includes "success.html"
     And I should be able to click it
 
-  Scenario: Link element methods for watir
-    When I retrieve a link element
-    Then I should know the value is ""
-
   Scenario: Button element methods
     When I retrieve a button element
     Then I should know it exists
