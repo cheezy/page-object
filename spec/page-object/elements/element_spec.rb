@@ -103,8 +103,8 @@ describe "Element" do
     end
 
     it 'should check if the element is visible' do
-      expect(native).to receive(:visible?).and_return(false)
-      expect(native).to receive(:visible?).and_return(true)
+      expect(native).to receive(:present?).and_return(false)
+      expect(native).to receive(:present?).and_return(true)
       expect(element.check_visible).to be true
     end
 
