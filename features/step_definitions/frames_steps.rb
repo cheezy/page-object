@@ -135,9 +135,9 @@ Given /^I am on the frame section page$/ do
 end
 
 Then /^I should be able to access an element in the frame in the section repeatedly$/ do
-  expect(@page.p_on_page_element).to be_visible
-  expect(@page.frame_section.p_in_section_element).to be_visible
-  expect(@page.frame_section.success_element).to be_visible
+  expect(@page.p_on_page_element).to be_present
+  expect(@page.frame_section.p_in_section_element).to be_present
+  expect(@page.frame_section.success_element).to be_present
   expect(@page.frame_section.success_element.text).to eq 'this link should open the page success page'
   @page.frame_section.success
   expect(@page.text.strip).to eq 'Success'

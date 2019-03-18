@@ -56,7 +56,7 @@ describe PageObject::PagePopulator  do
     expect(page_object).not_to receive(:tf=)
     expect(page_object).to receive(:tf_element).twice.and_return(browser)
     expect(browser).to receive(:enabled?).and_return(true)
-    expect(browser).to receive(:visible?).and_return(false)
+    expect(browser).to receive(:present?).and_return(false)
     expect(browser).to receive(:tag_name).and_return('input')
     page_object.populate_page_with('tf' => true)
   end
@@ -114,7 +114,7 @@ describe PageObject::PagePopulator  do
     expect(page_object).not_to receive(:check_cb)
     expect(page_object).to receive(:cb_element).twice.and_return(browser)
     expect(browser).to receive(:enabled?).and_return(true)
-    expect(browser).to receive(:visible?).and_return(false)
+    expect(browser).to receive(:present?).and_return(false)
     expect(browser).to receive(:tag_name).and_return('input')
     page_object.populate_page_with('cb' => true)
   end
@@ -131,7 +131,7 @@ describe PageObject::PagePopulator  do
     expect(page_object).not_to receive(:select_rb)
     expect(page_object).to receive(:rb_element).twice.and_return(browser)
     expect(browser).to receive(:enabled?).and_return(true)
-    expect(browser).to receive(:visible?).and_return(false)
+    expect(browser).to receive(:present?).and_return(false)
     expect(browser).to receive(:tag_name).and_return('input')
     page_object.populate_page_with('rb' => true)
   end

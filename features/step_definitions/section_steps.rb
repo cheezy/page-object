@@ -272,6 +272,6 @@ When(/^I have a page section$/) do
 end
 
 Then(/^methods called on the section are passed to the root if missing$/) do
-  expect(-> { @section.visible? }).not_to raise_error
-  expect(@section.visible?).to be true
+  expect(-> { @section.present? }).not_to raise_error
+  expect(@section.present?).to be true
 end

@@ -67,11 +67,11 @@ Then /^I should know it exists$/ do
 end
 
 Then /^I should know it is visible$/ do
-  expect(@element.visible?).to be true
+  expect(@element.present?).to be true
 end
 
 Then /^I should know it is not visible$/ do
-  expect(@element.visible?).to be false
+  expect(@element.present?).to be false
 end
 
 Then /^I should know the text is "(.*)"$/ do |text|

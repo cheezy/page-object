@@ -99,7 +99,7 @@ module PageObject
       return false if is_radiobuttongroup?(receiver, key)
       return true if (receiver.send "#{key}_element").tag_name == "textarea"
       element = receiver.send("#{key}_element")
-      element.enabled? and element.visible?
+      element.enabled? and element.present?
     end
   end
 end

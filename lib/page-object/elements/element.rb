@@ -49,7 +49,7 @@ module PageObject
       #
       def check_visible(timeout=::PageObject.default_element_wait)
         timed_loop(timeout) do |element|
-          element.visible?
+          element.present?
         end
       end
 
