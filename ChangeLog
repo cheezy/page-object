@@ -1,3 +1,8 @@
+Version 2.2.6 / 2019/03/18
+* Fixes
+  * Fixed deprecation warning in populate_page_with (#467)
+  * Fixed passing PageObject::Elements::Element to drag_and_drop_on (#422)
+
 Version 2.2.5 / 2018/11/21
 * Enhancements
   * populate_page_with will work with anything that can be converted to a Hash (Thanks Titus Fortner)
