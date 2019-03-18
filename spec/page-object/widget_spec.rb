@@ -143,14 +143,12 @@ describe "Widget PageObject Extensions" do
   describe "Element with nested elements" do
     context "in Watir" do
       before(:each) do
-        @watir_driver = Watir::Element.new(nil, {})
+        @watir_driver = instance_double('Watir::Element')
         @watir_element = PageObject::Elements::Element.new(@watir_driver)
-        allow(@watir_driver).to receive(:exists?).and_return(true)
-        allow(@watir_driver).to receive(:to_subtype).and_return(@watir_driver)
       end
 
       it "should find a nested gxt_table" do
-        expect(@watir_driver).to receive(:div).and_return(@watir_driver)
+        expect(@watir_driver).to receive(:div)
         @watir_element.gxt_table_element
       end
     end
