@@ -31,6 +31,11 @@ module PageObject
         element.present?
       end
 
+      def drag_and_drop_on(droppable)
+        droppable_native = droppable.kind_of?(PageObject::Elements::Element) ? droppable.element : droppable
+        element.drag_and_drop_on(droppable_native)
+      end
+
       #
       # specify plural form of element
       #

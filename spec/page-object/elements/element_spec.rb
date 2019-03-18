@@ -151,6 +151,27 @@ describe "Element" do
       expect(native).to receive(:stale?).and_return(false)
       expect(element.stale?).to be false
     end
+
+    context 'should drag and drop on' do
+      let(:droppable_wd) { double('') }
+      let(:droppable_native) do
+        n = double(wd: droppable_wd)
+        allow(n).to receive(:kind_of?).with(Watir::Element).and_return(true)
+        allow(n).to receive(:kind_of?).with(PageObject::Elements::Element).and_return(false)
+        n
+      end
+      let(:droppable_element) { PageObject::Elements::Element.new(droppable_native) }
+
+      it 'a page object element' do
+        expect(native).to receive(:drag_and_drop_on).with(kind_of(Watir::Element))
+        element.drag_and_drop_on(droppable_element)
+      end
+
+      it 'a native element' do
+        expect(native).to receive(:drag_and_drop_on).with(kind_of(Watir::Element))
+        element.drag_and_drop_on(droppable_native)
+      end
+    end
   end
 
   context 'walking the dom' do
