@@ -149,6 +149,19 @@ describe PageObject do
           expect(watir_page_object).not_to respond_to :baz
           expect(watir_page_object.bar).to eq :bar_called
         end
+
+      end
+
+      context 'when sent present?' do
+        let(:element) { double }
+        it 'should ignore the ActiveSupport implementation' do
+          # simulate ActiveSupport being mixed in
+          allow_any_instance_of(Object).to receive(:present?)
+
+          expect(element).to receive(:present?)
+          watir_page_object.instance_variable_set(:@root_element, element)
+          watir_page_object.present?
+        end
       end
     end
 
