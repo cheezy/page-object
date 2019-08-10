@@ -3,7 +3,7 @@ dist: trusty
 rvm:
   - 2.2.7
   - 2.3.4
-  - 2.4.1
+  - 2.4.6
 cache: bundler
 addons:
   chrome: stable

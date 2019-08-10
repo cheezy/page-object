@@ -30,29 +30,23 @@ module PageObject
     def self.watir_browser(target)
       if is_remote?(target)
         Watir::Browser.new(:remote,
-                           :http_client => client,
                            :url => url,
                            :desired_capabilities => desired_capabilities)
       else
         browser = target.gsub('local_', '').to_sym
-        Watir::Browser.new browser, :http_client => client
+        Watir::Browser.new browser
       end
     end
 
     def self.selenium_browser(target)
       if is_remote?(target)
         Selenium::WebDriver.for(:remote,
-                                :http_client => client,
                                 :url => url,
                                 :desired_capabilities => desired_capabilities)
       else
         browser = target.gsub('local_', '').to_sym
-        Selenium::WebDriver.for browser, :http_client => client
+        Selenium::WebDriver.for browser
       end
-    end
-
-    def self.client
-      Selenium::WebDriver::Remote::Http::Persistent.new
     end
 
     def self.capabilities(browser, version, platform, name)
