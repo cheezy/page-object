@@ -1,9 +1,9 @@
 sudo: required
 dist: trusty
 rvm:
-  - 2.3.4
   - 2.4.6
   - 2.5.5
+  - 2.6.3
 cache: bundler
 addons:
   chrome: stable
