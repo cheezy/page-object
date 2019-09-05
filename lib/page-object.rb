@@ -404,6 +404,13 @@ module PageObject
     platform.save_screenshot file_name
   end
 
+  #
+  # Check if root element exists and is visible
+  #
+  def present?
+    root.present?
+  end
+
   def self.register_widget(widget_tag, widget_class, base_element_tag)
     Widgets.register_widget(widget_tag, widget_class, base_element_tag)
   end
