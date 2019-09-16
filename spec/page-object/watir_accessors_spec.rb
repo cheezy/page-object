@@ -8,6 +8,7 @@ class WatirAccessorsTestPageObject
   expected_element :google_search
   link(:google_search, :link => 'Google Search')
   text_field(:first_name, :id => 'first_name')
+  date_field(:date_of_birth, :id => 'date_of_birth')
   hidden_field(:social_security_number, :id => 'ssn')
   text_area(:address, :id => 'address')
   select_list(:state, :id => 'state')
@@ -46,6 +47,9 @@ class WatirBlockPageObject
 
   text_field :first_name do |element|
     "text_field"
+  end
+  date_field :date_of_birth do |element|
+    "date_field"
   end
   hidden_field :secret do |element|
     "hidden_field"
@@ -479,6 +483,39 @@ describe PageObject::Accessors do
       expect(watir_browser).to receive(:text_field).and_return(watir_browser)
       element = watir_page_object.first_name_element
       expect(element).to be_instance_of PageObject::Elements::TextField
+    end
+  end
+
+  describe "date_field accessors" do
+    context "when called on a page object" do
+      it "should generate accessor methods" do
+        expect(watir_page_object).to respond_to(:date_of_birth)
+        expect(watir_page_object).to respond_to(:date_of_birth=)
+        expect(watir_page_object).to respond_to(:date_of_birth_element)
+        expect(watir_page_object).to respond_to(:date_of_birth?)
+      end
+
+      it "should call a block on the element method when present" do
+        expect(block_page_object.date_of_birth_element).to eql "date_field"
+      end
+    end
+
+    it "should get the date from the date field element" do
+      expect(watir_browser).to receive(:date_field).and_return(watir_browser)
+      expect(watir_browser).to receive(:value).and_return('2019-12-22')
+      expect(watir_page_object.date_of_birth).to eql '2019-12-22'
+    end
+
+    it "should set some date on a date field element" do
+      expect(watir_browser).to receive(:date_field).and_return(watir_browser)
+      expect(watir_browser).to receive(:set).with('2019-12-22')
+      watir_page_object.date_of_birth = '2019-12-22'
+    end
+
+    it "should retrieve a date field element" do
+      expect(watir_browser).to receive(:date_field).and_return(watir_browser)
+      element = watir_page_object.date_of_birth_element
+      expect(element).to be_instance_of PageObject::Elements::DateField
     end
   end
 
