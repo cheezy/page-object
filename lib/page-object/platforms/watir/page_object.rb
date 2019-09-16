@@ -232,6 +232,37 @@ module PageObject
         end
 
         #
+        # platform method to get the value stored in a date field
+        # See PageObject::Accessors#date_field
+        #
+        def date_field_value_for(identifier)
+          process_watir_call("date_field(identifier).value", Elements::DateField, identifier)
+        end
+
+        #
+        # platform method to set the value for a date field
+        # See PageObject::Accessors#date_field
+        #
+        def date_field_value_set(identifier, value)
+          process_watir_call("date_field(identifier).set(value)", Elements::DateField, identifier, value)
+        end
+
+        #
+        # platform method to retrieve a date field element
+        # See PageObject::Accessors#date_field
+        #
+        def date_field_for(identifier)
+          find_watir_element("date_field(identifier)", Elements::DateField, identifier)
+        end
+
+        #
+        # platform method to retrieve an array of date field elements
+        #
+        def date_fields_for(identifier)
+          find_watir_elements("date_fields(identifier)", Elements::DateField, identifier)
+        end
+
+        #
         # platform method to get the value stored in a hidden field
         # See PageObject::Accessors#hidden_field
         #

@@ -121,6 +121,7 @@ module PageObject
 
     ADVANCED_ELEMENTS = %i(
         text_field
+        date_field
         hidden_field
         text_area
         select_list

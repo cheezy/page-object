@@ -206,6 +206,32 @@ module PageObject
     end
 
     #
+    # adds four methods to the page object - one to set value in a date field,
+    # another to retrieve value from a date field, another to return the date
+    # field element, another to check the date field's existence.
+    #
+    # @example
+    #   date_field(:date_of_birth, :id => "date_of_birth")
+    #   # will generate 'date_of_birth', 'date_of_birth=', 'date_of_birth_element',
+    #   # 'date_of_birth?' methods
+    #
+    # @param [String] the name used for the generated methods
+    # @param [Hash] identifier how we find a date field.
+    # @param optional block to be invoked when element method is called
+    #
+    def date_field(name, identifier={:index => 0}, &block)
+      standard_methods(name, identifier, 'date_field_for', &block)
+      define_method(name) do
+        return platform.date_field_value_for identifier.clone unless block_given?
+        self.send("#{name}_element").value
+      end
+      define_method("#{name}=") do |value|
+        return platform.date_field_value_set(identifier.clone, value) unless block_given?
+        self.send("#{name}_element").value = value
+      end
+    end
+
+    #
     # adds three methods to the page object - one to get the text from a hidden field,
     # another to retrieve the hidden field element, and another to check the hidden
     # field's existence.
