@@ -189,7 +189,7 @@ module PageObject
     #   # will generate 'first_name', 'first_name=', 'first_name_element',
     #   # 'first_name?' methods
     #
-    # @param  [String] the name used for the generated methods
+    # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text field.
     # @param optional block to be invoked when element method is called
     #
@@ -237,7 +237,7 @@ module PageObject
     #   # will generate 'address', 'address=', 'address_element',
     #   # 'address?' methods
     #
-    # @param  [String] the name used for the generated methods
+    # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text area.
     # @param optional block to be invoked when element method is called
     #
@@ -1153,7 +1153,7 @@ module PageObject
     #   text_fields(:first_name, :id => "first_name")
     #   # will generate 'first_name_elements'
     #
-    # @param  [String] the name used for the generated methods
+    # @param [String] the name used for the generated methods
     # @param [Hash] identifier how we find a text field.  You can use a multiple parameters
     #   by combining of any of the following except xpath.  The valid
     #   keys are the same ones supported by the standard methods.
