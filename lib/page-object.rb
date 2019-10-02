@@ -46,7 +46,11 @@ module PageObject
   include PagePopulator
 
   def method_missing(method, *args, &block)
-    @root_element.send(method, *args, &block)
+    if @root_element.respond_to?(method)
+      @root_element.send(method, *args, &block)
+    else
+      super
+    end
   end
 
   def respond_to_missing?(method, include_all = false)

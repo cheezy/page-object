@@ -175,9 +175,12 @@ module PageObject
 
       # @private
       # delegate calls to driver element
-      def method_missing(*args, &block)
-        m = args.shift
-        element.send m, *args, &block
+      def method_missing(method, *args, &block)
+        if element.respond_to?(method)
+          element.send(method, *args, &block)
+        else
+          super
+        end
       end
 
       def respond_to_missing?(m,*args)
