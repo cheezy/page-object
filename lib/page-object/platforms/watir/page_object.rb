@@ -22,6 +22,18 @@ module PageObject
           @browser = browser
         end
 
+        def method_missing(method, *args, &block)
+          if browser.respond_to?(method)
+            browser.send(method, *args, &block)
+          else
+            super
+          end
+        end
+
+        def respond_to_missing?(method, include_all = false)
+          browser.respond_to?(method) || super
+        end
+
         #
         # platform method to navigate to a provided url
         # See PageObject#navigate_to
@@ -36,30 +48,6 @@ module PageObject
         #
         def current_url
           @browser.url
-        end
-
-        #
-        # platform method to retrieve the text from the current page
-        # See PageObject#text
-        #
-        def text
-          @browser.text
-        end
-
-        #
-        # platform method to retrieve the html for the current page
-        # See PageObject#html
-        #
-        def html
-          @browser.html
-        end
-
-        #
-        # platform method to retrieve the title for the current page
-        # See PageObject#title
-        #
-        def title
-          @browser.title
         end
 
         #
@@ -116,14 +104,6 @@ module PageObject
         end
 
         #
-        # platform method to execute javascript on the browser
-        # See PageObject#execute_script
-        #
-        def execute_script(script, *args)
-          @browser.execute_script(script, *args)
-        end
-
-        #
         # platform method to handle attaching to a running window
         # See PageObject#attach_to_window
         #
@@ -157,30 +137,6 @@ module PageObject
           frame = [] if frame.nil?
           frame << {iframe: identifier}
           block.call(frame)
-        end
-
-        #
-        # platform method to refresh the page
-        # See PageObject#refresh
-        #
-        def refresh
-          @browser.refresh
-        end
-
-        #
-        # platform method to go back to the previous page
-        # See PageObject#back
-        #
-        def back
-          @browser.back
-        end
-
-        #
-        # platform method to go forward to the next page
-        # See PageObject#forward
-        #
-        def forward
-          @browser.forward
         end
 
         #
