@@ -920,14 +920,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text for a i
-        # See PageObject::Accessors#i
-        #
-        def i_text_for(identifier)
-          process_watir_call("i(identifier).text", Elements::Italic, identifier, nil, 'i')
-        end
-
-        #
         # platform method to retrieve the i element
         # See PageObject::Accessors#i
         #

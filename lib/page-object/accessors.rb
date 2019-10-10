@@ -942,7 +942,6 @@ module PageObject
     def i(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier,'i_for', &block)
       define_method(name) do
-        return platform.i_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
