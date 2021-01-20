@@ -1113,7 +1113,7 @@ module PageObject
             identifier = frame.values.first.map do |key, value|
               if value.is_a?(Regexp)
                 ":#{key} => #{value.inspect}"
-              elsif value.is_a? Integer
+              elsif value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass)
                 ":#{key} => #{value}"
               else
                 ":#{key} => '#{value}'"
