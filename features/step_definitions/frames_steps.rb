@@ -58,6 +58,10 @@ class IFramePage
   in_iframe(:class => 'iframe', :name => 'frame2') do |frame|
     text_field(:text_field_2_multiple_identifiers, :name => 'recieverElement', :frame => frame)
   end
+
+  in_iframe(:class => 'iframe', :name => 'frame2', visible: true) do |frame|
+    text_field(:text_field_2_visible_true, :name => 'recieverElement', :frame => frame)
+  end
 end
 
 
