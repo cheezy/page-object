@@ -16,6 +16,11 @@ Feature: Handling frames
 
   Scenario: Accessing elements within the frame using multiple identifiers
     Given I am on the iframe elements page
+    When I type "page-object" into the text field for frame 2 using "visible_true"
+    Then I should verify "page-object" is in the text field for frame 2 using "visible_true"
+
+  Scenario: Accessing elements within the frame using visible: true identifier
+    Given I am on the iframe elements page
     When I type "page-object" into the text field for frame 2 using "multiple identifiers"
     Then I should verify "page-object" is in the text field for frame 2 using "multiple identifiers"
 
