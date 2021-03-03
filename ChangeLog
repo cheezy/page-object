@@ -1,9 +1,10 @@
-Version 2.3.0 / 2020/02/05
+Version 2.3.0 / 2021/03/03
 * Enhancements
   * Added a date_field accessor
 * Fixes
   * Fixed PageObject#present? when using with ActiveSupport (Thanks Stephen Turley)
   * Fixed exception when method does not exist
+  * Fixed locating iframes by :visible (Thanks Joseph A. Ours)
 
 Version 2.2.6 / 2019/03/18
 * Fixes
