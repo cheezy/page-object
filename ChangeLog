@@ -1,3 +1,7 @@
+Version 2.3.1 / 2021/03/19
+* Fixes
+  * Removed dependency on Selenium-WebDriver v3
+
 Version 2.3.0 / 2021/03/03
 * Enhancements
   * Added a date_field accessor
