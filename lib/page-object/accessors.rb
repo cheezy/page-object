@@ -584,7 +584,6 @@ module PageObject
     def image(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'image_for', &block)
       define_method("#{name}_loaded?") do
-        return platform.image_loaded_for identifier.clone unless block_given?
         self.send("#{name}_element").loaded?
       end
     end
@@ -622,7 +621,6 @@ module PageObject
     def list_item(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'list_item_for', &block)
       define_method(name) do
-        return platform.list_item_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -644,7 +642,6 @@ module PageObject
     def unordered_list(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'unordered_list_for', &block)
       define_method(name) do
-        return platform.unordered_list_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -666,7 +663,6 @@ module PageObject
     def ordered_list(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'ordered_list_for', &block)
       define_method(name) do
-        return platform.ordered_list_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -688,7 +684,6 @@ module PageObject
     def h1(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier,'h1_for', &block)
       define_method(name) do
-        return platform.h1_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -708,7 +703,6 @@ module PageObject
     def h2(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'h2_for', &block)
       define_method(name) do
-        return platform.h2_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -728,7 +722,6 @@ module PageObject
     def h3(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'h3_for', &block)
       define_method(name) do
-        return platform.h3_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -748,7 +741,6 @@ module PageObject
     def h4(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'h4_for', &block)
       define_method(name) do
-        return platform.h4_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -768,7 +760,6 @@ module PageObject
     def h5(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'h5_for', &block)
       define_method(name) do
-        return platform.h5_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -788,7 +779,6 @@ module PageObject
     def h6(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'h6_for', &block)
       define_method(name) do
-        return platform.h6_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -808,7 +798,6 @@ module PageObject
     def paragraph(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'paragraph_for', &block)
       define_method(name) do
-        return platform.paragraph_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -829,8 +818,7 @@ module PageObject
     def file_field(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'file_field_for', &block)
       define_method("#{name}=") do |value|
-        return platform.file_field_value_set(identifier.clone, value) unless block_given?
-        self.send("#{name}_element").value = value
+        self.send("#{name}_element").set(value)
       end
     end
 
@@ -849,7 +837,6 @@ module PageObject
     def label(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'label_for', &block)
       define_method(name) do
-        return platform.label_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -869,7 +856,6 @@ module PageObject
     def area(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier, 'area_for', &block)
       define_method(name) do
-        return platform.click_area_for identifier.clone unless block_given?
         self.send("#{name}_element").click
       end
     end
@@ -937,7 +923,6 @@ module PageObject
     def b(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier,'b_for', &block)
       define_method(name) do
-        return platform.b_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end
@@ -957,7 +942,6 @@ module PageObject
     def i(name, identifier={:index => 0}, &block)
       standard_methods(name, identifier,'i_for', &block)
       define_method(name) do
-        return platform.i_text_for identifier.clone unless block_given?
         self.send("#{name}_element").text
       end
     end

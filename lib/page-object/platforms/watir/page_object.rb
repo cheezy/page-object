@@ -592,14 +592,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve load status of an image element
-        # See PageObject::Accessors#image
-        #
-        def image_loaded_for(identifier)
-          process_watir_call("image(identifier).loaded?", Elements::Image, identifier)
-        end
-
-        #
         # platform method to retrieve an image element
         # See PageObject::Accessors#image
         #
@@ -630,14 +622,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text from a list item
-        # See PageObject::Accessors#list_item
-        #
-        def list_item_text_for(identifier)
-          process_watir_call("li(identifier).text", Elements::ListItem, identifier, nil, 'li')
-        end
-
-        #
         # platform method to retrieve a list item element
         # See PageObject::Accessors#list_item
         #
@@ -650,14 +634,6 @@ module PageObject
         #
         def list_items_for(identifier)
           find_watir_elements("lis(identifier)", Elements::ListItem, identifier, 'li')
-        end
-
-        #
-        # platform method to retrieve the text from an unordered list
-        # See PageObject::Accessors#unordered_list
-        #
-        def unordered_list_text_for(identifier)
-          process_watir_call("ul(identifier).text", Elements::UnorderedList, identifier, nil, 'ul')
         end
 
         #
@@ -676,14 +652,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text from an ordered list
-        # See PageObject::Accessors#ordered_list
-        #
-        def ordered_list_text_for(identifier)
-          process_watir_call("ol(identifier).text", Elements::OrderedList, identifier, nil, 'ol')
-        end
-
-        #
         # platform method to retrieve an ordered list element
         # See PageObject::Accessors#ordered_list
         #
@@ -696,14 +664,6 @@ module PageObject
         #
         def ordered_lists_for(identifier)
           find_watir_elements("ols(identifier)", Elements::OrderedList, identifier, 'ol')
-        end
-
-        #
-        # platform method to retrieve the text for a h1
-        # See PageObject::Accessors#h1
-        #
-        def h1_text_for(identifier)
-          process_watir_call("h1(identifier).text", Elements::Heading, identifier, nil, 'h1')
         end
 
         #
@@ -722,14 +682,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text for a h2
-        # See PageObject::Accessors#h2
-        #
-        def h2_text_for(identifier)
-          process_watir_call("h2(identifier).text", Elements::Heading, identifier, nil, 'h2')
-        end
-
-        #
         # platform method to retrieve the h2 element
         # See PageObject::Accessors#h2
         #
@@ -742,14 +694,6 @@ module PageObject
         #
         def h2s_for(identifier)
           find_watir_elements("h2s(identifier)", Elements::Heading, identifier, 'h2')
-        end
-
-        #
-        # platform method to retrieve the text for a h3
-        # See PageObject::Accessors#h3
-        #
-        def h3_text_for(identifier)
-          process_watir_call("h3(identifier).text", Elements::Heading, identifier, nil, 'h3')
         end
 
         #
@@ -768,14 +712,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text for a h4
-        # See PageObject::Accessors#h4
-        #
-        def h4_text_for(identifier)
-          process_watir_call("h4(identifier).text", Elements::Heading, identifier, nil, 'h4')
-        end
-
-        #
         # platform method to retrieve the h4 element
         # See PageObject::Accessors#h4
         #
@@ -788,14 +724,6 @@ module PageObject
         #
         def h4s_for(identifier)
           find_watir_elements("h4s(identifier)", Elements::Heading, identifier, 'h4')
-        end
-
-        #
-        # platform method to retrieve the text for a h5
-        # See PageObject::Accessors#h5
-        #
-        def h5_text_for(identifier)
-          process_watir_call("h5(identifier).text", Elements::Heading, identifier, nil, 'h5')
         end
 
         #
@@ -814,14 +742,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text for a h6
-        # See PageObject::Accessors#h6
-        #
-        def h6_text_for(identifier)
-          process_watir_call("h6(identifier).text", Elements::Heading, identifier, nil, 'h6')
-        end
-
-        #
         # platform method to retrieve the h6 element
         # See PageObject::Accessors#h6
         #
@@ -837,14 +757,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text for a paragraph
-        # See PageObject::Accessors#paragraph
-        #
-        def paragraph_text_for(identifier)
-          process_watir_call("p(identifier).text", Elements::Paragraph, identifier, nil, 'p')
-        end
-
-        #
         # platform method to retrieve the paragraph element
         # See PageObject::Accessors#paragraph
         #
@@ -857,14 +769,6 @@ module PageObject
         #
         def paragraphs_for(identifier)
           find_watir_elements("ps(identifier)", Elements::Paragraph, identifier, 'p')
-        end
-
-        #
-        # platform method to return the text for a label
-        # See PageObject::Accessors#label
-        #
-        def label_text_for(identifier)
-          process_watir_call("label(identifier).text", Elements::Label, identifier, nil, 'label')
         end
 
         #
@@ -884,15 +788,6 @@ module PageObject
         end
 
         #
-        # platform method to set the file on a file_field element
-        # See PageObject::Accessors#file_field
-        #
-        def file_field_value_set(identifier, value)
-          process_watir_call("file_field(identifier).set(value)", Elements::FileField,
-                             identifier, value)
-        end
-
-        #
         # platform method to retrieve a file_field element
         # See PageObject::Accessors#file_field
         #
@@ -905,13 +800,6 @@ module PageObject
         #
         def file_fields_for(identifier)
           find_watir_elements("file_fields(identifier)", Elements::FileField, identifier)
-        end
-
-        #
-        # platform method to click on an area
-        #
-        def click_area_for(identifier)
-          process_watir_call("area(identifier).click", Elements::Area, identifier, nil, 'area')
         end
 
         #
@@ -1017,14 +905,6 @@ module PageObject
         end
 
         #
-        # platform method to retrieve the text for a b
-        # See PageObject::Accessors#b
-        #
-        def b_text_for(identifier)
-          process_watir_call("b(identifier).text", Elements::Bold, identifier, nil, 'b')
-        end
-
-        #
         # platform method to retrieve the b element
         # See PageObject::Accessors#b
         #
@@ -1037,14 +917,6 @@ module PageObject
         #
         def bs_for(identifier)
           find_watir_elements("bs(identifier)", Elements::Bold, identifier, 'b')
-        end
-
-        #
-        # platform method to retrieve the text for a i
-        # See PageObject::Accessors#i
-        #
-        def i_text_for(identifier)
-          process_watir_call("i(identifier).text", Elements::Italic, identifier, nil, 'i')
         end
 
         #
