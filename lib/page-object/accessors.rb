@@ -31,12 +31,13 @@ module PageObject
     # Specify the url for the page.  A call to this method will generate a
     # 'goto' method to take you to the page and a 'page_url_value' method to return the evaluated url value
     #
-    # @param url [Symbol] the symbolized name of a method that returns a valid url string
-    # @param url [String] the url for the page. The url string will be passed through ERB
-    #
-    # @example page_url('www.google.com')
-    # @example page_url('<%= @params[:url] >')
-    # @example page_url(:example_method)
+    # @overload page_url(url)
+    #   @param url [Symbol] the symbolized name of a method that returns a valid url string
+    #   @example page_url('www.google.com')
+    #   @example page_url('<%= @params[:url] >')
+    # @overload page_url(url)
+    #   @param url [String] the url for the page. The url string will be passed through ERB
+    #   @example page_url(:example_method)
     def page_url(url)
       define_method("goto") do
         platform.navigate_to self.page_url_value
@@ -47,7 +48,7 @@ module PageObject
         erb = ERB.new(%Q{#{lookup}})
         merged_params = self.class.instance_variable_get("@merged_params")
         params = merged_params ? merged_params : self.class.params
-        erb.result
+        erb.result(binding)
       end
     end
     alias_method :direct_url, :page_url
@@ -101,7 +102,7 @@ module PageObject
     #
     # Creates a method that provides a way to initialize a page based upon an expected element.
     # This is useful for pages that load dynamic content.
-    # @param name [Symbol] the name given to the element in the declaration
+    # @param name[Symbol, String] the name given to the element in the declaration
     # @param timeout [Integer] The default value is retrieved frm PageObject.default_element_wait
     #   which defaults to 5 seconds and can be set to another value
     # @return [boolean]
@@ -119,10 +120,10 @@ module PageObject
     #
     # Creates a method that provides a way to initialize a page based upon an expected element to become visible.
     # This is useful for pages that load dynamic content and might have hidden elements that are not shown.
-    # @param element_name [Symbol] the name given to the element in the declaration
+    # @param element_name [Symbol, String] the name given to the element in the declaration
     # @param timeout [Integer] The default value is retrieved frm PageObject.default_element_wait
     #   which defaults to 5 seconds and can be set to another value
-    # @param [Boolean] also check that element to be visible if set to true
+    # @param check_visible [Boolean] also check that element to be visible if set to true
     # @return [Boolean]
     #
     # @example Specify a text box named :address expected on the page within 10 seconds
@@ -1139,8 +1140,8 @@ module PageObject
     #     element(:title, :header, :id => 'title')
     #     # will generate 'title', 'title_element', and 'title?' methods
     #
-    #   @param name [Symbol] the name used for the generated methods
-    #   @param name [Symbol] the name of the tag for the element
+    #   @param name[Symbol, String] the name used for the generated methods
+    #   @param tag [Symbol, String] the name of the tag for the element
     #   @param identifier [Hash] how we find an element.
     # @overload element(name, identifier)
     #   @example
@@ -1148,13 +1149,7 @@ module PageObject
     #     # will generate 'title', 'title_element', and 'title?' methods
     #
     #   @param name [Symbol, String] the name used for the generated methods
-    #   @param name [Symbol, String] the name of the tag for the element
     #   @param identifier [Hash] how we find an element.
-    # @overload element(name, tag, &block)
-    #   @param name [String, Symbol] the name for the methods to be generated
-    #   @param tag [String, Symbol] the tag name of the desired element
-    #   @yield block to return an element
-    #   @yieldreturn [PageObject::Elements::Element, Watir::Element] desired element
     # @overload element(name, &block)
     #   @param name [String, Symbol] the name for the methods to be generated
     #   @yield block to return an element
